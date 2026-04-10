@@ -1,6 +1,6 @@
 # Week 6 — Magnetics Design
 
-> **NPTEL: Design of Power Electronic Converters** | Prof. Shabari Nath, IIT Guwahati
+> **NPTEL: Design of Modern Power Converters** | Prof. Shabari Nath, IIT Guwahati
 
 ---
 

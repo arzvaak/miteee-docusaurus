@@ -8,7 +8,7 @@ const courses = [
   {
     sem: 'Sem 5',
     code: 'MPC',
-    title: 'Motor Power Converters',
+    title: 'Design of Modern Power Converters',
     description: 'Converter topologies, semiconductor devices, gate drivers, snubbers, thermal design, magnetics, and EMI.',
     meta: '8 weeks · NPTEL DPEC',
     href: '/sem5/mpc/week-1',

@@ -1,6 +1,6 @@
 # Week 4 — Gate Drivers & Snubber Design
 
-> **NPTEL: Design of Power Electronic Converters** | Prof. Shabari Nath, IIT Guwahati
+> **NPTEL: Design of Modern Power Converters** | Prof. Shabari Nath, IIT Guwahati
 
 ---
 

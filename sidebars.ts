@@ -33,7 +33,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'MPC — Motor Power Converters',
+      label: 'MPC — Design of Modern Power Converters',
       items: [
         'sem5/mpc/week-1',
         'sem5/mpc/week-2',
