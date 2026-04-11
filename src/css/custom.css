@@ -6,7 +6,7 @@
 :root {
   --ifm-font-family-base: 'Inter', system-ui, sans-serif;
   --ifm-font-family-monospace: 'JetBrains Mono', 'Fira Code', monospace;
-  --ifm-font-size-base: 14.5px;
+  --ifm-font-size-base: 16px;
   --ifm-line-height-base: 1.75;
   --ifm-global-radius: 8px;
   --ifm-navbar-height: 52px;
