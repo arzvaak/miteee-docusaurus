@@ -15,40 +15,40 @@ This page contains the corrected question-and-answer bank generated from the sel
 Develop a single layer wave winding table for the stator winding of a three phase AC machine with 36 slots and 4 poles. Assume RBY sequence. (04)
 
 ### Answer 1
-**Solution**
+**Given:** 36 slots, 4 poles, 3-phase, RBY sequence, single-layer wave winding.
 
-For a 3-phase, 4-pole, 36-slot stator with a single-layer, full-pitch wave winding and RBY phase sequence:
-
-- Slots per pole $= 36/4 = 9$.
+**Parameters:**
+- Slots per pole = $36/4 = 9$.
 - Slot angle $\beta = 180^\circ/9 = 20^\circ$ electrical.
-- Slots per pole per phase $q = \dfrac{36}{3 \times 4} = 3$.
+- Slots per pole per phase $q = \frac{36}{3 \times 4} = 3$.
 
-A $60^\circ$ phase-spread is used, so each phase belt occupies $q = 3$ slots under a pole. The slot allocation (R-B-Y sequence) with alternating polarity is given in the table below.
+**Winding Table:**
+The phase belts are arranged with $60^\circ$ spread and alternating polarity under successive poles.
 
-| Phase belt | Polarity | Slot numbers |
-|------------|----------|---------------|
-| R          | +        | 1, 2, 3       |
-| B          | -        | 4, 5, 6       |
-| Y          | +        | 7, 8, 9       |
-| R          | -        | 10, 11, 12    |
-| B          | +        | 13, 14, 15    |
-| Y          | -        | 16, 17, 18    |
-| R          | +        | 19, 20, 21    |
-| B          | -        | 22, 23, 24    |
-| Y          | +        | 25, 26, 27    |
-| R          | -        | 28, 29, 30    |
-| B          | +        | 31, 32, 33    |
-| Y          | -        | 34, 35, 36    |
+| Pole | Phase belt | Slot numbers |
+|------|------------|---------------|
+| N1 | R (+) | 1, 2, 3 |
+| | B (-) | 4, 5, 6 |
+| | Y (+) | 7, 8, 9 |
+| S1 | R (-) | 10, 11, 12 |
+| | B (+) | 13, 14, 15 |
+| | Y (-) | 16, 17, 18 |
+| N2 | R (+) | 19, 20, 21 |
+| | B (-) | 22, 23, 24 |
+| | Y (+) | 25, 26, 27 |
+| S2 | R (-) | 28, 29, 30 |
+| | B (+) | 31, 32, 33 |
+| | Y (-) | 34, 35, 36 |
 
-Since the coils are full-pitch, each coil spans one pole pitch, i.e. 9 slots. The coil sides are therefore joined as:
+**Coil Connections:**
+Coils are full-pitch with span $9$ slots. Coil groups for each phase:
+- R-phase: (1,10), (2,11), (3,12); (19,28), (20,29), (21,30)
+- B-phase: (4,13), (5,14), (6,15); (22,31), (23,32), (24,33)
+- Y-phase: (7,16), (8,17), (9,18); (25,34), (26,35), (27,36)
 
-- **R-phase:** $(1,10)$, $(2,11)$, $(3,12)$, $(19,28)$, $(20,29)$, $(21,30)$  
-- **B-phase:** $(4,13)$, $(5,14)$, $(6,15)$, $(22,31)$, $(23,32)$, $(24,33)$  
-- **Y-phase:** $(7,16)$, $(8,17)$, $(9,18)$, $(25,34)$, $(26,35)$, $(27,36)$  
+All coils of a phase are connected in series with correct polarity to give additive emfs.
 
-All six coils of a phase are connected in series with the correct polarity so that their emfs are additive. The three phase windings taken in the order R-B-Y produce balanced voltages displaced by $120^\circ$ electrical.
-
-> **Final answer:** Single-layer full-pitch winding with 18 coils, coil pitch $= 9$ slots, $q = 3$, $\beta = 20^\circ$ electrical; the R/B/Y coil groups are as listed above.
+> **Final answer:** Single-layer wave winding with $q=3$, $\beta=20^\circ$ electrical, full-pitch coils; winding table as above.
 
 
 ---
@@ -59,16 +59,15 @@ All six coils of a phase are connected in series with the correct polarity so th
 Define the following: (i) Integral and Fractional slot winding (ii) Full pitch and Fractional pitch winding (02)
 
 ### Answer 2
-**(i) Integral-slot winding:** The number of slots per pole per phase $q = \dfrac{S}{P \times \text{phases}}$ is an integer. This gives a simple, symmetrical layout with each phase belt occupying an integer number of slots per pole.
-**Fractional-slot winding:** $q$ is not an integer but a fraction (e.g. $2\frac{1}{2}$). It is frequently used to reduce cogging torque, suppress certain harmonics, or to suit specific slot-pole combinations.
+**(i) Integral and Fractional slot winding**
+- **Integral-slot winding:** The number of slots per pole per phase $q = \frac{S}{P \times m}$ is an integer. This yields a simple, symmetrical layout where each phase belt occupies a whole number of slots per pole.
+- **Fractional-slot winding:** $q$ is not an integer (e.g. $2\frac{1}{2}$). It is employed to reduce cogging torque, suppress certain harmonics, or to suit specific slot-pole combinations. Careful design ensures balanced phase voltages.
 
-**(ii) Full-pitch winding:** The coil span is equal to one pole pitch, i.e. $180^\circ$ electrical. The emfs in the two coil sides are exactly in phase opposition; the coil voltage is the arithmetic sum, yielding the maximum possible fundamental emf.
-**Fractional-pitch (short-pitch) winding:** The coil span is less than $180^\circ$ electrical by a chording angle $\alpha$. This reduces the fundamental emf by the factor $\cos(\alpha/2)$ but can eliminate selected harmonic emfs (when $\cos(n\alpha/2)=0$) and shortens the end connections, saving copper and reducing leakage reactance.
+**(ii) Full pitch and Fractional pitch winding**
+- **Full-pitch winding:** The coil span equals one pole pitch ($180^\circ$ electrical). The two coil sides experience emfs in exact phase opposition; the resultant coil emf is the arithmetic sum, giving maximum fundamental output.
+- **Fractional-pitch (short-pitch) winding:** The coil span is less than $180^\circ$ electrical by a chording angle $\alpha$. The fundamental emf is reduced by factor $\cos(\alpha/2)$. Short-pitching can eliminate selected harmonic emfs (when $\cos(n\alpha/2)=0$), reduces end-winding copper, and lowers leakage reactance.
 
-![Short-pitched coil by one slot](./pyq-assets/textbook/108105131_p263_img-153_jpeg.png)
-<p align="center"><b>Figure:</b> Coil short-pitched by one slot (30°) in a 24-slot, 4-pole machine.</p>
-
-> **Final answer:** Integral-slot: $q$ integer; fractional-slot: $q$ fractional. Full-pitch: coil span = $180^\circ$ electrical; fractional-pitch: coil span $< 180^\circ$ electrical.
+> **Final answer:** Integral: $q$ integer; fractional: $q$ fractional. Full-pitch: coil span = $180^\circ$ electrical; fractional-pitch: coil span $< 180^\circ$ electrical.
 
 
 ---
@@ -79,119 +78,55 @@ Define the following: (i) Integral and Fractional slot winding (ii) Full pitch a
 A 3 phase alternator has 2 slots per pole per phase and coil span of 5 slot pitches. The flux density wave of alternator consists of a fundamental and a 25% third harmonic. Calculate the percentage increase in the phase voltage due to harmonic. (04)
 
 ### Answer 3
-Given a 3-phase alternator with $q = 2$ slots per pole per phase, the number of slots per pole is
+**Given:** 3-phase alternator, $q=2$ slots/pole/phase, coil span $5$ slot pitches, third harmonic flux density $25\%$ of fundamental.
 
-$$
-\text{slots/pole} = m \times q = 3 \times 2 = 6.
-$$
+**Solution:**
+- Slots per pole = $m \times q = 3 \times 2 = 6$.
+- Slot angle $\beta = 180^\circ / 6 = 30^\circ$ electrical.
+- Coil is short-pitched by $6-5=1$ slot $\Rightarrow$ chording angle $\alpha = 1 \times 30^\circ = 30^\circ$.
 
-The slot angle (electrical) is
-
+**Fundamental Winding Factors:**
 $$
-\beta = \frac{180^\circ}{\text{slots/pole}} = \frac{180^\circ}{6} = 30^\circ \text{ electrical}.
-$$
-
-The coil span is 5 slot pitches, so the coil is short-pitched by
-
-$$
-6 - 5 = 1 \text{ slot}.
-$$
-
-The chording angle is therefore
-
-$$
-\alpha = 1 \times \beta = 30^\circ \text{ electrical}.
+\begin{aligned}
+K_{d1} &= \frac{\sin(q\beta/2)}{q\sin(\beta/2)}
+       = \frac{\sin(2\times15^\circ)}{2\sin15^\circ}
+       = \frac{0.5}{2\times0.258819} \approx 0.9659, \\[4pt]
+K_{p1} &= \cos(\alpha/2) = \cos15^\circ \approx 0.9659, \\[4pt]
+K_{w1} &= 0.9659 \times 0.9659 \approx 0.9330.
+\end{aligned}
 $$
 
----
-
-**Fundamental (h = 1) winding factor**
-
-Distribution factor:
-
+**Third-Harmonic Winding Factors:**
 $$
-K_{d1} = \frac{\sin\left(\frac{q\beta}{2}\right)}{q\,\sin\left(\frac{\beta}{2}\right)}
-       = \frac{\sin(2 \times 15^\circ)}{2\,\sin 15^\circ}
-       = \frac{0.5}{2 \times 0.2588}
-       \approx 0.9659 .
+\begin{aligned}
+K_{d3} &= \frac{\sin(q\times3\beta/2)}{q\sin(3\beta/2)}
+       = \frac{\sin(2\times45^\circ)}{2\sin45^\circ}
+       = \frac{1}{2\times0.7071} = 0.7071, \\[4pt]
+K_{p3} &= \cos(3\alpha/2) = \cos45^\circ = 0.7071, \\[4pt]
+K_{w3} &= 0.7071 \times 0.7071 = 0.5.
+\end{aligned}
 $$
 
-Pitch factor:
-
+**Harmonic EMF Ratio:**
 $$
-K_{p1} = \cos\left(\frac{\alpha}{2}\right)
-       = \cos 15^\circ
-       \approx 0.9659 .
-$$
-
-Hence,
-
-$$
-K_{w1} = K_{d1} \cdot K_{p1} = 0.9659 \times 0.9659 \approx 0.9330 .
+\frac{E_3}{E_1} = \frac{B_3 K_{w3}}{B_1 K_{w1}}
+                = 0.25 \times \frac{0.5}{0.9330}
+                \approx 0.13397.
 $$
 
----
-
-**Third-harmonic (h = 3) winding factor**
-
-Harmonic slot angle = $3\beta = 90^\circ$, harmonic chording angle = $3\alpha = 90^\circ$.
-
-Distribution factor:
-
+**Resultant Phase Voltage and Increase:**
 $$
-K_{d3} = \frac{\sin\left(\frac{q \cdot 3\beta}{2}\right)}{q\,\sin\left(\frac{3\beta}{2}\right)}
-       = \frac{\sin(2 \times 45^\circ)}{2\,\sin 45^\circ}
-       = \frac{1}{2 \times 0.7071}
-       \approx 0.7071 .
+\begin{aligned}
+E_{\text{ph}} &= \sqrt{E_1^2 + E_3^2}
+              = E_1\sqrt{1 + (0.13397)^2}
+              \approx 1.00894\,E_1, \\[4pt]
+\%\text{ increase} &= \frac{E_{\text{ph}} - E_1}{E_1} \times 100\%
+                   \approx (1.00894 - 1)\times 100\%
+                   \approx 0.894\%.
+\end{aligned}
 $$
 
-Pitch factor:
-
-$$
-K_{p3} = \cos\left(\frac{3\alpha}{2}\right)
-       = \cos 45^\circ
-       \approx 0.7071 .
-$$
-
-Thus,
-
-$$
-K_{w3} = K_{d3} \cdot K_{p3} = 0.7071 \times 0.7071 = 0.5 .
-$$
-
----
-
-**EMF ratio due to harmonic**
-
-The induced emf per phase for a harmonic is proportional to the product of flux-density amplitude and the winding factor. Given that the third-harmonic flux density is $25\%$ of the fundamental, $B_{3} = 0.25\,B_{1}$. Therefore
-
-$$
-\frac{E_{3}}{E_{1}} = \frac{B_{3}\,K_{w3}}{B_{1}\,K_{w1}}
-                    = 0.25 \times \frac{0.5}{0.9330}
-                    \approx 0.13397 .
-$$
-
----
-
-**Resultant phase voltage and percentage increase**
-
-The rms phase voltage becomes
-
-$$
-E_{\text{ph}} = \sqrt{E_{1}^{2} + E_{3}^{2}}
-              = E_{1} \sqrt{1 + (0.13397)^{2}}
-              \approx 1.00894\,E_{1} .
-$$
-
-The percentage increase in phase voltage due to the third harmonic is
-
-$$
-\frac{E_{\text{ph}} - E_{1}}{E_{1}} \times 100\%
-= (1.00894 - 1) \times 100\%
-\approx 0.894\% .
-$$
-
-> **Final answer:** The phase voltage increases by approximately **0.89%** due to the third harmonic.
+> **Final answer:** The phase voltage increases by approximately **0.89\%** due to the third harmonic.
 
 
 ---
@@ -202,67 +137,63 @@ $$
 A 3 phase, 50 Hz, 1000 rpm, star connected alternator has 72 armature slots with 6 conductors per slot and the coil span is 10 slots. The average air-gap flux per pole is 0.26 Wb. Calculate: (i) Distribution and Pitch factors of the winding (ii) Number of turns per phase and (iii) phase and line value of emf induced. (04)
 
 ### Answer 4
-Given:
-- $f = 50 \text{ Hz}$, $N = 1000 \text{ rpm}$, star-connected, $S = 72 \text{ slots}$, $6 \text{ conductors/slot}$, coil span $= 10 \text{ slots}$, $\phi = 0.26 \text{ Wb}$.
+**Given:**
+3-phase, 50 Hz, 1000 rpm star-connected alternator, 72 slots, 6 conductors/slot, coil span 10 slots, flux per pole $\phi = 0.26$ Wb.
 
-Step 1: Number of poles
-$$P = \frac{120f}{N} = \frac{120 \times 50}{1000} = 6 \text{ poles}.$$
+**Solution:**
 
-Step 2: Slots per pole and slot angle
-$$\text{Slots per pole} = \frac{S}{P} = \frac{72}{6} = 12.$$
-$$\beta = \frac{180^\circ}{\text{slots per pole}} = \frac{180^\circ}{12} = 15^\circ \text{ electrical.}$$
-
-Step 3: Slots per pole per phase
-$$q = \frac{S}{3P} = \frac{72}{3 \times 6} = 4.$$
-
----
-
-### (i) Distribution and pitch factors
-
-**Distribution factor** $K_d$:
+Number of poles:
 $$
-K_d = \frac{\sin\left(\frac{q\beta}{2}\right)}{q \sin\left(\frac{\beta}{2}\right)} = \frac{\sin\left(\frac{4 \times 15^\circ}{2}\right)}{4 \sin\left(\frac{15^\circ}{2}\right)} = \frac{\sin 30^\circ}{4 \sin 7.5^\circ}.
-$$
-Using $\sin 30^\circ = 0.5$ and $\sin 7.5^\circ \approx 0.1305$:
-$$
-K_d = \frac{0.5}{4 \times 0.1305} = \frac{0.5}{0.5221} \approx 0.9577.
+\begin{aligned}
+P = \frac{120f}{N} = \frac{120 \times 50}{1000} = 6.
+\end{aligned}
 $$
 
-**Pitch factor** $K_p$:
-Coil span $= 10$ slots, full pitch $= 12$ slots. Short-pitch by $2$ slots.
-Chording angle $\alpha = 2 \times \beta = 2 \times 15^\circ = 30^\circ$.
+Slots per pole $= \frac{72}{6}=12$.
+Slot angle $\beta = \frac{180^\circ}{12}=15^\circ$ (electrical).
+Slots per pole per phase $q = \frac{72}{3\times 6} = 4$.
+
+**(i) Distribution and pitch factors**
+
+**Distribution factor $K_d$:**
 $$
-K_p = \cos\left(\frac{\alpha}{2}\right) = \cos 15^\circ \approx 0.9659.
-$$
-
-Therefore, the winding factor $K_w = K_d \cdot K_p \approx 0.9577 \times 0.9659 = 0.9250$.
-
----
-
-### (ii) Number of turns per phase
-
-Total armature conductors:
-$$Z = S \times \text{conductors per slot} = 72 \times 6 = 432.$$
-
-For a three-phase double-layer winding with all coils per phase in series,
-the number of series turns per phase is
-$$
-T_{ph} = \frac{Z}{2 \times 3} = \frac{432}{6} = 72 \text{ turns}.
+\begin{aligned}
+K_d = \frac{\sin(q\beta/2)}{q \sin(\beta/2)} = \frac{\sin(4\times 15^\circ/2)}{4\sin(15^\circ/2)} = \frac{\sin 30^\circ}{4\sin 7.5^\circ} \approx \frac{0.5}{4\times0.1305} \approx 0.958.
+\end{aligned}
 $$
 
----
-
-### (iii) Induced EMF
-
-**Phase EMF**:
+**Pitch factor $K_p$:**
+Coil span = 10 slots, full pitch = 12 slots → short-pitch by 2 slots.
+Chording angle $\alpha = 2 \times 15^\circ = 30^\circ$.
 $$
-E_{ph} = 4.44 \, f \, \phi \, T_{ph} \, K_w
-= 4.44 \times 50 \times 0.26 \times 72 \times 0.9250 \approx 3844 \text{ V}.
+\begin{aligned}
+K_p = \cos(\alpha/2) = \cos 15^\circ \approx 0.966.
+\end{aligned}
 $$
 
-**Line EMF** (star connection):
+Winding factor $K_w = K_d K_p \approx 0.958 \times 0.966 = 0.925$.
+
+**(ii) Turns per phase**
+Total armature conductors $Z = 72 \times 6 = 432$.
+For a double-layer, 3-phase winding, series turns per phase
 $$
-E_L = \sqrt{3} \, E_{ph} \approx 1.732 \times 3844 \approx 6659 \text{ V}.
+\begin{aligned}
+T_{ph} = \frac{Z}{2 \times 3} = \frac{432}{6} = 72\ \text{turns}.
+\end{aligned}
+$$
+
+**(iii) Induced EMF**
+Phase emf:
+$$
+\begin{aligned}
+E_{ph} = 4.44\,f\,\phi\,T_{ph}\,K_w = 4.44 \times 50 \times 0.26 \times 72 \times 0.925 \approx 3844\ \text{V} \approx 3.84\ \text{kV}.
+\end{aligned}
+$$
+Line emf (star connection):
+$$
+\begin{aligned}
+E_L = \sqrt{3}\,E_{ph} \approx 1.732 \times 3844 \approx 6659\ \text{V} \approx 6.66\ \text{kV}.
+\end{aligned}
 $$
 
 > **Final answer:** $K_d = 0.958$, $K_p = 0.966$; $T_{ph} = 72$ turns; $E_{ph} \approx 3.84$ kV; $E_L \approx 6.66$ kV.
@@ -276,55 +207,45 @@ $$
 A 3 phase, 50 Hz, 750 rpm alternator has its armature winding short pitched by two slots resulting in a coil span of 144° electrical Determine (i) total number of armature slots (ii) minimum order of harmonic emf that can be suppressed. (03)
 
 ### Answer 5
+**Given:** 3-phase, 50 Hz, 750 rpm alternator; coil span = 144° (electrical), short-pitched by two slots.
+
 **Solution:**
 
-First, determine the number of poles from the synchronous speed formula:
+Number of poles:
 $$
-N_s = \frac{120 f}{P} \quad\Longrightarrow\quad P = \frac{120 \times 50}{750} = 8 \text{ poles.}
-$$
-
-The coil span is given as $144^\circ$ electrical. A full-pitch coil spans $180^\circ$ electrical; therefore the short-pitch (chording) angle is
-$$
-\varepsilon = 180^\circ - 144^\circ = 36^\circ \text{ electrical.}
+\begin{aligned}
+P = \frac{120f}{N} = \frac{120\times 50}{750} = 8.
+\end{aligned}
 $$
 
-The problem states that this short-pitching is achieved by displacing the coil sides by **two slots**. Hence the angular displacement between adjacent slots (slot angle $\beta$) is
+Short-pitch angle $\varepsilon = 180^\circ - 144^\circ = 36^\circ$ electrical.
+Since the short-pitch is caused by displacing the coil sides by 2 slots, the slot angle is
 $$
-\beta = \frac{\varepsilon}{2} = \frac{36^\circ}{2} = 18^\circ \text{ electrical.}
-$$
-
-With a uniform slot distribution, the number of slots per pole is
-$$
-\text{slots per pole} = \frac{180^\circ}{\beta} = \frac{180^\circ}{18^\circ} = 10.
+\begin{aligned}
+\beta = \frac{\varepsilon}{2} = \frac{36^\circ}{2} = 18^\circ \ \text{electrical}.
+\end{aligned}
 $$
 
-The total number of armature slots is therefore
+Slots per pole $= \frac{180^\circ}{\beta} = \frac{180^\circ}{18^\circ} = 10$.
+
+Total number of armature slots:
 $$
+\begin{aligned}
 S = P \times (\text{slots per pole}) = 8 \times 10 = 80.
+\end{aligned}
 $$
 
----
-
-**Harmonic elimination by short-pitching**
-
-For an alternator winding, the pitch factor for the $n$-th harmonic is given by
+**Harmonic suppression:**
+The pitch factor for $n$th harmonic is $K_{pn} = \cos(n\varepsilon/2)$.
+To eliminate a harmonic, set $\cos(n\varepsilon/2)=0$ → $n\varepsilon/2 = 90^\circ$, giving
 $$
-K_{pn} = \cos\!\left(\frac{n\varepsilon}{2}\right).
+\begin{aligned}
+n = \frac{180^\circ}{\varepsilon} = \frac{180^\circ}{36^\circ} = 5.
+\end{aligned}
 $$
+Hence the 5th harmonic is completely suppressed; it is the minimum order that can be eliminated by this short-pitch.
 
-A harmonic is completely suppressed (i.e., $K_{pn}=0$) when
-$$
-\frac{n\varepsilon}{2} = 90^\circ \quad\Longrightarrow\quad n = \frac{180^\circ}{\varepsilon}.
-$$
-
-Substituting $\varepsilon = 36^\circ$:
-$$
-n = \frac{180^\circ}{36^\circ} = 5.
-$$
-
-Thus the **5th harmonic** is entirely eliminated from the induced emf. Its odd multiples (15th, 25th, ...) also vanish, but the minimum order that can be suppressed is the **5th**.
-
-> **Final answer:** (i) Total number of armature slots = **80**; (ii) minimum order of harmonic EMF that can be suppressed = **5th harmonic**.
+> **Final answer:** (i) Total slots = **80**; (ii) minimum suppressed harmonic = **5th harmonic**.
 
 
 ---
@@ -335,30 +256,19 @@ Thus the **5th harmonic** is entirely eliminated from the induced emf. Its odd m
 Discuss the advantages of adopting short pitched windings for the armature of a synchronous machine. (02)
 
 ### Answer 6
-Short-pitching (also called chording) of the armature winding is a deliberate reduction of the coil span from the full pole pitch of $180^\circ$ electrical.  If the coil span is shortened by an angle $\alpha$ (the chording angle), the fundamental-frequency induced emf is reduced slightly, but several important advantages are gained.
+Short-pitching (chording) is the practice of making the coil span less than the full pole pitch of 180° electrical. The following advantages are obtained:
 
-![Short-pitched coil](.\/pyq-assets\/textbook\/108105131_p263_img-153_jpeg.png)  
-*Fig. A short-pitched coil: the coil sides are housed in slots that are less than $180^\circ$ electrical apart.*
+1. **Harmonic elimination:** The pitch factor for the $n$th harmonic is $K_{pn}= \cos(n\alpha/2)$, where $\alpha$ is the chording angle. By choosing $\alpha = 180^\circ/n$, the $n$th harmonic is completely cancelled. For example, $\alpha = 36^\circ$ eliminates the 5th harmonic, and $\alpha \approx 25.7^\circ$ removes the 7th. A common short-pitch of 30° ($\alpha=30^\circ$) greatly attenuates both the 5th and 7th. The result is a near-sinusoidal voltage waveform, with lower harmonic losses, less magnetic noise, and reduced torque pulsations.
 
-**1. Harmonic suppression**  
-The pitch factor for the $n^{\text{th}}$ harmonic is given by
-$$
-k_{pn} = \cos\!\left(\frac{n\alpha}{2}\right).
-$$
-By a proper choice of the chording angle $\alpha$, objectionable harmonics can be completely eliminated.  For example, to eliminate the $5^{\text{th}}$ harmonic we set $5\alpha/2 = 90^\circ$, i.e. $\alpha = 36^\circ$, and for the $7^{\text{th}}$ harmonic we set $7\alpha/2 = 90^\circ$, i.e. $\alpha \approx 25.7^\circ$.  A common practice is to short-pitch by $30^\circ$ ($\alpha=30^\circ$), which substantially attenuates both $5^{\text{th}}$ and $7^{\text{th}}$ harmonics.  The result is a nearly sinusoidal terminal voltage.
+2. **Saving in copper:** Shorter end connections require less copper, which lowers material cost, reduces winding weight, and cuts $I^2R$ losses. This can also lead to smaller overall machine dimensions.
 
-**2. Copper saving and reduced losses**  
-Because the end connections are shorter, the total weight of copper in the winding is reduced.  This directly lowers the $I^2R$ losses and may also reduce the overall machine size for a given rating.
+3. **Lower leakage reactance and better cooling:** Reduced overhang length decreases stator leakage reactance, improving voltage regulation of generators and torque-speed characteristics of motors. The slimmer end windings also permit improved cooling airflow, allowing higher current densities.
 
-**3. Lower leakage reactance and better cooling**  
-Shorter overhangs decrease the stator leakage reactance, which improves voltage regulation in generators and torque-speed characteristics in motors.  The reduced bulk of the end windings also permits better ventilation, improving cooling and allowing higher current densities.
+4. **Quieter operation and lower stray losses:** By suppressing harmonic fluxes, pulsating torques, stray eddy-current losses in the core and structure, and magnetic noise are all diminished.
 
-**4. Quieter operation and lower stray losses**  
-Suppression of harmonic fluxes diminishes pulsating torques, stray load losses (eddy currents in the core and structural parts), and magnetic noise, leading to smoother, quieter operation.
+The only drawback is a slight reduction of the fundamental induced emf by the factor $\cos(\alpha/2)$, which is a small price for the significant benefits gained.
 
-The only penalty is a slight reduction of the fundamental induced emf by the factor $\cos(\alpha/2)$.  Because the harmonic benefits are substantial, this small sacrifice is normally accepted.
-
-> **Final answer:** Short-pitch windings suppress harmful harmonics, save copper, reduce leakage and stray losses, improve cooling, and yield a nearly sinusoidal voltage waveform; the modest reduction in fundamental emf is an acceptable trade-off.
+> **Final answer:** Short-pitch windings suppress harmonics, save copper, reduce leakage reactance, improve cooling and noise performance, with only a modest loss in fundamental emf.
 
 
 ---
@@ -369,85 +279,54 @@ The only penalty is a slight reduction of the fundamental induced emf by the fac
 For a 3-phase, 50 Hz, 10 pole alternator with 90 slots with a 60° phase spread with a coil span of 140°, obtain the pitch and distribution factors for fundamental, 3rd and 5th harmonic emfs. (03)
 
 ### Answer 7
-For a 3-phase, 50 Hz, 10-pole alternator with 90 slots, 60° phase spread, and a coil span of 140° (electrical), the necessary winding factors are obtained as follows.
+Given a 3-phase, 50 Hz, 10-pole alternator with 90 slots and a coil span of 140° (electrical). The slot pitch and other base quantities are:
 
-**Basic parameters**
+- Slots per pole = $90/10 = 9$.
+- Slot pitch $\beta = 180^\circ/9 = 20^\circ$ (electrical).
+- Slots per pole per phase $q = 90/(10 \times 3) = 3$.
+- Short-pitch angle $\alpha = 180^\circ - 140^\circ = 40^\circ$.
 
-- Number of poles $P=10$, slots $S=90$.
-- Slots per pole: $\dfrac{S}{P}= \dfrac{90}{10}=9$.
-- Electrical angle between adjacent slots (slot pitch):
-  $$\beta = \frac{180^\circ}{9}=20^\circ$$
-- Slots per pole per phase:
-  $$q = \frac{S}{P \times 3}= \frac{90}{10\times 3}=3$$
-- The coil is short-pitched; short-pitch angle:
-  $$\alpha = 180^\circ - 140^\circ = 40^\circ$$
-
-**Formulae used**
-
-For the $n^\text{th}$ harmonic,
-$$
-\begin{aligned}
-K_{dn} &= \frac{\sin\!\Bigl(q \cdot \dfrac{n\beta}{2}\Bigr)}{q\;\sin\!\Bigl(\dfrac{n\beta}{2}\Bigr)} \qquad \text{(distribution factor)} \\[6pt]
-K_{pn} &= \cos\!\Bigl(\frac{n\alpha}{2}\Bigr) \qquad \text{(pitch factor)} \\[6pt]
-K_{wn} &= K_{dn} \cdot K_{pn} \qquad \text{(winding factor)}
-\end{aligned}
-$$
-
----
-
-**1. Fundamental ($n=1$)**
+The pitch factor, distribution factor and winding factor for the $n$th harmonic are
 
 $$
 \begin{aligned}
-K_{d1} &= \frac{\sin(3 \times 10^\circ)}{3\sin 10^\circ}
-        = \frac{\sin 30^\circ}{3 \times 0.17365}
-        = \frac{0.5}{0.52095}
-        = 0.9598 \\[4pt]
-K_{p1} &= \cos\!\Bigl(\frac{40^\circ}{2}\Bigr)
-        = \cos 20^\circ
-        = 0.9397 \\[4pt]
-K_{w1} &= 0.9598 \times 0.9397 = 0.9019
+K_{pn} &= \cos\left(\frac{n\alpha}{2}\right), \\
+K_{dn} &= \frac{\sin\!\bigl(q \frac{n\beta}{2}\bigr)}{q \sin\!\bigl(\frac{n\beta}{2}\bigr)}, \\
+K_{wn} &= K_{dn} \cdot K_{pn}.
 \end{aligned}
 $$
 
-**2. Third harmonic ($n=3$)**
-
-Harmonic slot angle $= 3 \times 20^\circ = 60^\circ$; harmonic chording $= 3 \times 40^\circ = 120^\circ$.
-
+**Fundamental ($n=1$)**
+$n\beta/2 = 10^\circ$, $n\alpha/2 = 20^\circ$:
 $$
 \begin{aligned}
-K_{d3} &= \frac{\sin(3 \times 30^\circ)}{3\sin 30^\circ}
-        = \frac{\sin 90^\circ}{3 \times 0.5}
-        = \frac{1}{1.5}
-        = 0.6667 \\[4pt]
-K_{p3} &= \cos\!\Bigl(\frac{120^\circ}{2}\Bigr)
-        = \cos 60^\circ
-        = 0.5000 \\[4pt]
-K_{w3} &= 0.6667 \times 0.5000 = 0.3333
+K_{d1} &= \frac{\sin(3 \times 10^\circ)}{3 \sin 10^\circ} = \frac{\sin 30^\circ}{3 \times 0.17365} = \frac{0.5}{0.52095} \approx 0.9598, \\
+K_{p1} &= \cos 20^\circ = 0.9397, \\
+K_{w1} &= 0.9598 \times 0.9397 \approx 0.9019.
 \end{aligned}
 $$
 
-**3. Fifth harmonic ($n=5$)**
-
-Harmonic slot angle $= 5 \times 20^\circ = 100^\circ$; harmonic chording $= 5 \times 40^\circ = 200^\circ$.
-
+**Third harmonic ($n=3$)**
+$3\beta/2 = 30^\circ$, $3\alpha/2 = 60^\circ$:
 $$
 \begin{aligned}
-K_{d5} &= \frac{\sin(3 \times 50^\circ)}{3\sin 50^\circ}
-        = \frac{\sin 150^\circ}{3 \times 0.7660}
-        = \frac{0.5}{2.298}
-        = 0.2176 \\[4pt]
-K_{p5} &= \cos\!\Bigl(\frac{200^\circ}{2}\Bigr)
-        = \cos 100^\circ
-        = -0.1737 \quad (\text{magnitude } 0.1737) \\[4pt]
-|K_{w5}| &= 0.2176 \times 0.1737 = 0.0378
+K_{d3} &= \frac{\sin(3 \times 30^\circ)}{3 \sin 30^\circ} = \frac{\sin 90^\circ}{1.5} = \frac{1}{1.5} = 0.6667, \\
+K_{p3} &= \cos 60^\circ = 0.5000, \\
+K_{w3} &= 0.6667 \times 0.5000 = 0.3333.
 \end{aligned}
 $$
 
-> **Final answer:**
-> Fundamental: $K_{p1}=0.940$, $K_{d1}=0.960$, $K_{w1}=0.902$
-> 3rd harmonic: $K_{p3}=0.500$, $K_{d3}=0.667$, $K_{w3}=0.333$
-> 5th harmonic: $|K_{p5}| = 0.174$, $K_{d5}=0.218$, $|K_{w5}|=0.0378$
+**Fifth harmonic ($n=5$)**
+$5\beta/2 = 50^\circ$, $5\alpha/2 = 100^\circ$:
+$$
+\begin{aligned}
+K_{d5} &= \frac{\sin(3 \times 50^\circ)}{3 \sin 50^\circ} = \frac{\sin 150^\circ}{3 \times 0.7660} = \frac{0.5}{2.298} \approx 0.2176, \\
+K_{p5} &= \cos 100^\circ = -0.1737 \quad (\text{magnitude } 0.1737), \\
+|K_{w5}| &= 0.2176 \times 0.1737 \approx 0.0378.
+\end{aligned}
+$$
+
+> **Final answer:** Fundamental: $K_{p1}=0.940$, $K_{d1}=0.960$, $K_{w1}=0.902$; 3rd harmonic: $K_{p3}=0.500$, $K_{d3}=0.667$, $K_{w3}=0.333$; 5th harmonic: $|K_{p5}|=0.174$, $K_{d5}=0.218$, $|K_{w5}|=0.0378$.
 
 
 ---
@@ -458,33 +337,16 @@ $$
 A 3 phase, 6 pole, 1000 rpm star connected alternator has an air-gap diameter of 40 cm and a core length of 90 cm. The armature consists of 54 slots with 4 conductors per slot. The flux density in the air-gap is given by B(θ)=0.25 × sin θ + 0.16 × sin 3θ + 0.07 × sin 5θ. The winding factors for fundamental, 3rd and 5th harmonic are 0.95, 0.58 and 0.14 respectively. Determine resultant phase and line emfs. (05)
 
 ### Answer 8
-**Frequency**  
-$$f = \frac{P N_s}{120} = \frac{6 \times 1000}{120} = 50 \text{ Hz}.$$
+Given: 3-phase, 6-pole, 1000 rpm, star-connected alternator. Air-gap diameter = 0.4 m, core length = 0.9 m, 54 slots, 4 conductors/slot. Flux density $B(\theta) = 0.25 \sin \theta + 0.16 \sin 3\theta + 0.07 \sin 5\theta$. Winding factors: $K_{w1}=0.95$, $K_{w3}=0.58$, $K_{w5}=0.14$.
 
-**Series turns per phase**  
-Total armature conductors $Z = 54 \text{ slots} \times 4 \text{ cond/slot} = 216$.  
-For a three-phase double-layer winding with one parallel path, the number of series turns per phase is  
-$$T_{ph} = \frac{Z}{2 \times m} = \frac{216}{2 \times 3} = 36.$$
+**Frequency:** $f = \frac{P N_s}{120} = \frac{6 \times 1000}{120} = 50$ Hz.
 
-**Pole area**  
-$$A_p = \frac{\pi D L}{P} = \frac{\pi \times 0.4 \times 0.9}{6} = 0.1885 \text{ m}^2.$$
+**Series turns per phase:** Total conductors $Z = 54 \times 4 = 216$. For a double-layer winding, $T_{ph} = \frac{Z}{2m} = \frac{216}{2 \times 3} = 36$ turns.
 
-**Flux per pole for each harmonic**  
-The air-gap flux density is $B(\theta) = 0.25\sin\theta + 0.16\sin3\theta + 0.07\sin5\theta$ (electrical angle).  
-For a sinusoidal component $B_{n,\max}\sin(n\theta)$, the flux per pole (fundamental pole) is obtained by integration over one pole pitch ($\theta$ from $0$ to $\pi$):
+**Pole area:** $A_p = \frac{\pi D L}{P} = \frac{\pi \times 0.4 \times 0.9}{6} \approx 0.1885$ m².
 
-$$
-\varphi_n = \frac{2}{n\pi} B_{n,\max} A_p .
-$$
+**Flux per pole (nth harmonic):** $\varphi_n = \frac{2}{n\pi} B_{n,\max} A_p$:
 
-This is illustrated in the textbook (see figure below).  
-
-<figure>
-  <img src="./pyq-assets/textbook/108105131_p174_img-101_jpeg.png" alt="Flux per pole calculation" />
-  <figcaption>Integration of the fundamental flux-density wave over a pole pitch.</figcaption>
-</figure>
-
-Hence
 $$
 \begin{aligned}
 \varphi_1 &= \frac{2}{\pi} \times 0.25 \times 0.1885 = 0.0300 \text{ Wb},\\
@@ -493,10 +355,7 @@ $$
 \end{aligned}
 $$
 
-**Induced EMF per phase for each harmonic**  
-The rms value of the emf induced by the $n^{\text{th}}$ harmonic is  
-$$E_n = 4.44\,(n f)\,\varphi_n\,T_{ph}\,K_{wn},$$  
-where $K_{wn}$ is the winding factor for that harmonic. Substituting the given factors $K_{w1}=0.95$, $K_{w3}=0.58$, $K_{w5}=0.14$:
+**EMF per phase for each harmonic:** $E_n = 4.44 (n f) \varphi_n T_{ph} K_{wn}$:
 
 $$
 \begin{aligned}
@@ -506,25 +365,15 @@ E_5 &= 4.44 \times 250 \times 0.00168 \times 36 \times 0.14 = 9.4 \text{ V}.
 \end{aligned}
 $$
 
-**Resultant phase voltage**  
-Because harmonic components are orthogonal, the total phase emf is the root-sum-square of the individual harmonic emfs:
+**Resultant phase voltage (rms):** $E_{ph} = \sqrt{E_1^2 + E_3^2 + E_5^2} = \sqrt{227.8^2 + 89.0^2 + 9.4^2} \approx 244.8$ V.
+
+**Line voltage (star):** Triplen (3rd) harmonic cancels in line voltage. Hence
 
 $$
-E_{ph} = \sqrt{E_1^2 + E_3^2 + E_5^2}
-       = \sqrt{227.8^2 + 89.0^2 + 9.4^2}
-       \approx 244.8 \text{ V}.
+E_L = \sqrt{3} \sqrt{E_1^2 + E_5^2} = \sqrt{3} \times \sqrt{227.8^2 + 9.4^2} \approx 395.0 \text{ V}.
 $$
 
-**Line voltage**  
-The machine is star-connected. Triplen (multiple-of-three) harmonics - here the 3rd harmonic - are co-phasal in all three phases and therefore cancel in the line-to-line voltage. Only non-triplen harmonics (fundamental and 5th) contribute. Thus the line emf is
-
-$$
-E_{L} = \sqrt{3} \; \sqrt{E_1^2 + E_5^2}
-      = \sqrt{3} \times \sqrt{227.8^2 + 9.4^2}
-      \approx 395.0 \text{ V}.
-$$
-
-> **Final answer:** Phase emf $\approx 244.8$ V (\approx 245 V); line emf $\approx 395.0$ V (\approx 395 V).
+> **Final answer:** Phase emf ≈ 244.8 V (≈ 245 V); line emf ≈ 395.0 V (≈ 395 V).
 
 
 ---
@@ -535,50 +384,27 @@ $$
 A 3 phase, 10 pole, star connected alternator runs at 600 rpm. It has 120 stator slots with 8 conductors per slot. The conductors of each phase are connected in series. If the winding is short chorded by two slots, determine the rms value of phase and line electromotive forces if the flux per pole is 56 mWb. (04)
 
 ### Answer 9
-Given: 3-phase, 10-pole, star-connected alternator, N = 600 rpm, 120 slots, 8 conductors per slot, short-chorded by 2 slots, φ = 56 mWb.
+Given: 3-phase, 10-pole, star alternator, 600 rpm, 120 slots, 8 conductors/slot, short-chorded by 2 slots, flux/pole $\phi = 56$ mWb.
 
-**Frequency**  
-$$ f = \frac{P N}{120} = \frac{10 \times 600}{120} = 50\text{ Hz}. $$
+**Frequency:** $f = \frac{P N}{120} = \frac{10 \times 600}{120} = 50$ Hz.
 
-**Slot angle**  
-Slots per pole = 120/10 = 12.  
-Electrical angle between adjacent slots:  
-$$ \beta = \frac{180^\circ}{\text{slots per pole}} = \frac{180^\circ}{12} = 15^\circ. $$
+**Slot angle:** Slots/pole = $120/10 = 12$, so $\beta = \frac{180^\circ}{12} = 15^\circ$.
 
-**Short-chording angle**  
-Coil short-pitched by 2 slots, so chording angle:  
-$$ \alpha = 2 \times \beta = 2 \times 15^\circ = 30^\circ. $$
+**Chording angle:** $\alpha = 2 \times \beta = 30^\circ$.
 
-**Slots per pole per phase**  
-$$ q = \frac{\text{total slots}}{P \times \text{phases}} = \frac{120}{10 \times 3} = 4. $$
+**Slots per pole per phase:** $q = \frac{120}{10 \times 3} = 4$.
 
-**Distribution factor**  
-$$ K_d = \frac{\sin(q\beta/2)}{q \sin(\beta/2)} = \frac{\sin(4 \times 7.5^\circ)}{4 \sin 7.5^\circ} = \frac{\sin 30^\circ}{4 \times 0.1305} = \frac{0.5}{0.522} \approx 0.9577. $$
+**Distribution factor:** $K_d = \frac{\sin(q\beta/2)}{q \sin(\beta/2)} = \frac{\sin(4 \times 7.5^\circ)}{4 \sin 7.5^\circ} = \frac{\sin 30^\circ}{4 \times 0.1305} \approx 0.9577$.
 
-**Pitch factor**  
-$$ K_p = \cos\left(\frac{\alpha}{2}\right) = \cos 15^\circ \approx 0.9659. $$
+**Pitch factor:** $K_p = \cos(\alpha/2) = \cos 15^\circ \approx 0.9659$.
 
-**Winding factor**  
-$$ K_w = K_d K_p = 0.9577 \times 0.9659 \approx 0.9250. $$
+**Winding factor:** $K_w = K_d K_p = 0.9577 \times 0.9659 \approx 0.9250$.
 
-**Turns per phase**  
-Total conductors = 120 slots \times 8 conductors/slot = 960.  
-Since each turn needs two conductors and the three phases are in series,  
-$$ T_{\text{ph}} = \frac{960}{2 \times 3} = 160 \text{ turns/phase}. $$
+**Series turns per phase:** Total conductors = $120 \times 8 = 960$; $T_{ph} = \frac{960}{2 \times 3} = 160$ turns.
 
-**Induced EMF per phase**  
-RMS phase voltage:  
-$$ E_{\text{ph}} = 4.44\, f\, \phi\, T_{\text{ph}}\, K_w $$  
-Substituting:  
-$$ 
-\begin{aligned}
-E_{\text{ph}} &= 4.44 \times 50 \times 0.056 \times 160 \times 0.9250 \\
-&\approx 1840\ \text{V} = 1.84\ \text{kV}.
-\end{aligned}
-$$
+**Induced EMF per phase:** $E_{ph} = 4.44 f \phi T_{ph} K_w = 4.44 \times 50 \times 0.056 \times 160 \times 0.925 \approx 1840$ V $= 1.84$ kV.
 
-**Line voltage (star connection)**  
-$$ E_L = \sqrt{3}\, E_{\text{ph}} = \sqrt{3} \times 1840 \approx 3187\ \text{V} \approx 3.19\ \text{kV}. $$
+**Line voltage (star):** $E_L = \sqrt{3} E_{ph} = \sqrt{3} \times 1840 \approx 3187$ V $\approx 3.19$ kV.
 
 > **Final answer:** Phase emf ≈ 1.84 kV; line emf ≈ 3.19 kV.
 
@@ -591,88 +417,34 @@ $$ E_L = \sqrt{3}\, E_{\text{ph}} = \sqrt{3} \times 1840 \approx 3187\ \text{V} 
 A three-phase, 50 Hz, 1,000 rpm alternator has 108 slots. The armature is lap connected with a coil span of 160°. Calculate pitch & distribution factors for fundamental, 5th harmonic & 7th harmonic. (03)
 
 ### Answer 10
-First, determine the number of poles. For a synchronous machine, the relation between frequency $f$, speed $N_s$ (in rpm), and number of poles $P$ is:
+Given a three-phase alternator with 108 slots, 50 Hz, 1000 rpm, lap-connected, coil span 160° electrical.
 
-$$ N_s = \frac{120 f}{P} \quad \Rightarrow \quad P = \frac{120 \times 50}{1000} = 6 \text{ poles}. $$
+**Solution:**
 
-Number of slots $S = 108$. Therefore,
+Number of poles $P = \frac{120f}{N_s} = \frac{120\times 50}{1000} = 6$.
+Slots per pole $= 108/6 = 18$, slot angle $\beta = 180^\circ/18 = 10^\circ$ electrical.
+Slots per pole per phase $q = \frac{108}{6\times 3} = 6$.
+Chording angle $\alpha = 180^\circ - 160^\circ = 20^\circ$.
 
-- Slots per pole: $\dfrac{108}{6} = 18$.
-- Slot angle (electrical): $\beta = \dfrac{180^\circ}{18} = 10^\circ$.
-- Slots per pole per phase: $q = \dfrac{108}{6 \times 3} = 6$. (In a lap winding, the number of coils distributed per pole per phase is $m = q = 6$.)
+**Pitch factor:** $K_{pn} = \cos\left(\frac{n\alpha}{2}\right)$
+**Distribution factor:** $K_{dn} = \frac{\sin\left(\frac{n q \beta}{2}\right)}{q \sin\left(\frac{n\beta}{2}\right)}$
 
-The armature coils are lap connected with a coil span of $160^\circ$ electrical. Hence, the chording (short-pitch) angle is
+**Fundamental (n=1):**
+$K_{p1} = \cos(10^\circ) = 0.9848$
+$K_{d1} = \frac{\sin(30^\circ)}{6\sin 5^\circ} = 0.9561$
 
-$$ \alpha = 180^\circ - 160^\circ = 20^\circ. $$
+**5th harmonic (n=5):**
+$K_{p5} = \cos(50^\circ) = 0.6428$
+$K_{d5} = \frac{\sin(150^\circ)}{6\sin 25^\circ} = 0.1972$
 
----
-
-### Distribution Factor ($K_d$)
-
-For the $n$th harmonic, the distribution factor is given by
-
-$$
-K_{dn} = \frac{\sin\!\left(\frac{n m \beta}{2}\right)}{m \sin\!\left(\frac{n \beta}{2}\right)}.
-$$
-
-![Distribution factor formula](./pyq-assets/textbook/108105131_p210_img-125_jpeg.png)
-*Figure: Distribution factor formula, where $m$ is number of coils distributed and $\beta$ is the slot angle.*
-
-### Pitch Factor ($K_p$)
-
-For a coil short-pitched by an angle $\alpha$ (electrical), the pitch factor for the $n$th harmonic is
-
-$$
-K_{pn} = \cos\!\left(\frac{n \alpha}{2}\right).
-$$
-
----
-
-### Fundamental ($n=1$)
-
-$$
-\begin{aligned}
-K_{d1} &= \frac{\sin\!\left(\frac{1 \times 6 \times 10^\circ}{2}\right)}{6 \sin\!\left(\frac{10^\circ}{2}\right)} 
-= \frac{\sin 30^\circ}{6 \sin 5^\circ} 
-= \frac{0.5}{6 \times 0.08716} = 0.9561. \\[6pt]
-K_{p1} &= \cos\!\left(\frac{20^\circ}{2}\right) = \cos 10^\circ = 0.9848. \\[6pt]
-K_{w1} &= K_{d1} \cdot K_{p1} = 0.9561 \times 0.9848 = 0.9416.
-\end{aligned}
-$$
-
-### 5th Harmonic ($n=5$)
-
-$$
-\begin{aligned}
-\text{Harmonic slot angle: } 5\beta = 50^\circ, &\quad \frac{5\beta}{2} = 25^\circ. \\
-\text{Harmonic chording: } 5\alpha = 100^\circ, &\quad \frac{5\alpha}{2} = 50^\circ. \\[6pt]
-K_{d5} &= \frac{\sin\!\left(6 \times 25^\circ\right)}{6 \sin 25^\circ} 
-= \frac{\sin 150^\circ}{6 \sin 25^\circ} 
-= \frac{0.5}{6 \times 0.4226} = 0.1972. \\[6pt]
-K_{p5} &= \cos\!\left(\frac{100^\circ}{2}\right) = \cos 50^\circ = 0.6428. \\[6pt]
-K_{w5} &= K_{d5} \cdot K_{p5} = 0.1972 \times 0.6428 = 0.1267.
-\end{aligned}
-$$
-
-### 7th Harmonic ($n=7$)
-
-$$
-\begin{aligned}
-\text{Harmonic slot angle: } 7\beta = 70^\circ, &\quad \frac{7\beta}{2} = 35^\circ. \\
-\text{Harmonic chording: } 7\alpha = 140^\circ, &\quad \frac{7\alpha}{2} = 70^\circ. \\[6pt]
-K_{d7} &= \frac{\sin\!\left(6 \times 35^\circ\right)}{6 \sin 35^\circ} 
-= \frac{\sin 210^\circ}{6 \sin 35^\circ} 
-= \frac{-0.5}{6 \times 0.5736} = -0.1453 \\[6pt]
-& \text{(magnitude } 0.1453\text{)}. \\[6pt]
-K_{p7} &= \cos\!\left(\frac{140^\circ}{2}\right) = \cos 70^\circ = 0.3420. \\[6pt]
-|K_{w7}| &= 0.1453 \times 0.3420 = 0.0497.
-\end{aligned}
-$$
+**7th harmonic (n=7):**
+$K_{p7} = \cos(70^\circ) = 0.3420$
+$K_{d7} = \frac{\sin(210^\circ)}{6\sin 35^\circ} = -0.1453$ (magnitude 0.1453)
 
 > **Final answer:**
-> - **Fundamental:** $K_d = 0.956$, $K_p = 0.985$, $K_w = 0.942$.
-> - **5th harmonic:** $K_d = 0.197$, $K_p = 0.643$, $K_w = 0.127$.
-> - **7th harmonic:** $K_d = -0.145$ (magnitude $0.145$), $K_p = 0.342$, $|K_w| = 0.0497$.
+> - Fundamental: $K_p = 0.9848$, $K_d = 0.9561$
+> - 5th harmonic: $K_p = 0.6428$, $K_d = 0.1972$
+> - 7th harmonic: $K_p = 0.3420$, $K_d = -0.1453$ (|K_d| = 0.1453)
 
 
 ---
@@ -683,23 +455,18 @@ $$
 In a star-connected alternator calculate the percentage of 5th harmonics induced in the line voltage if the average flux per pole of fifth harmonic components is 1% of that of the fundamental. Neglect the pitch and distribution factors. (02)
 
 ### Answer 11
-To determine the percentage of 5th harmonic in the line voltage of a star-connected alternator, we start with the general expression for the induced EMF per phase. For a sinusoidal flux distribution, the RMS value of the induced EMF per phase due to the fundamental component is
+In a star-connected alternator, calculate the percentage of 5th harmonic induced in the line voltage. Given: average flux per pole of 5th harmonic is 1\% of fundamental, neglect pitch and distribution factors.
 
-$$ E_{ph,1} = 4.44 \, f_1 \, N_{ph} \, \phi_1 \, k_{w1}, $$
+**Solution:**
 
-where $f_1$ is the fundamental frequency, $N_{ph}$ the number of series turns per phase, $\phi_1$ the fundamental flux per pole, and $k_{w1}$ the winding factor for the fundamental. For the $n$-th harmonic, the frequency becomes $f_n = n f_1$, and the flux per pole is $\phi_n$. Assuming the same winding (so $N_{ph}$ unchanged) and neglecting pitch and distribution factors (or assuming $k_{wn}=1$), the induced phase EMF for the $n$-th harmonic is
+Induced phase emf for harmonic $n$: $E_{ph,n} \propto n\,\phi_n$ (since $K_w=1$).
+Fundamental: $E_{ph,1} \propto 1 \times \phi_1$.
+5th harmonic: $E_{ph,5} \propto 5 \times 0.01\phi_1 = 0.05\phi_1$.
+Thus $\frac{E_{ph,5}}{E_{ph,1}} = 0.05 = 5\%$.
 
-$$ E_{ph,n} \propto n \, \phi_n. $$
+In a star connection, for non-triplen harmonics (such as 5th), the line voltage is $\sqrt{3}$ times the phase voltage. Hence the 5th harmonic percentage in line voltage remains 5\%.
 
-Given that the average flux per pole of the 5th harmonic is $1\%$ of the fundamental, i.e., $\phi_5 = 0.01\,\phi_1$, the ratio of the 5th harmonic phase EMF to the fundamental phase EMF is
-
-$$
-\frac{E_{ph,5}}{E_{ph,1}} = \frac{5 \, \phi_5}{1 \, \phi_1} = 5 \times 0.01 = 0.05 = 5\%.
-$$
-
-Now, in a star-connected alternator, the line voltage is related to the phase voltage by $E_L = \sqrt{3}\,E_{ph}$ for balanced fundamental components. For the 5th harmonic, the phase voltages are also balanced but have a phase displacement of $5 \times 120^\circ = 600^\circ \equiv 240^\circ$ (or $-120^\circ$). This still yields a line voltage equal to $\sqrt{3}$ times the phase voltage for the 5th harmonic (the vector sum of two phase voltages separated by $240^\circ$ has magnitude $\sqrt{3}$ times the phase voltage). Since the 5th harmonic is not a triplen harmonic (multiples of three), it does not cancel in the line voltage. Therefore, the percentage of the 5th harmonic in the line voltage is exactly the same as that in the phase voltage.
-
-> **Final answer:** The 5th harmonic line-voltage component is $5\%$ of the fundamental line voltage.
+> **Final answer:** The 5th harmonic line-voltage component is 5\% of the fundamental line voltage.
 
 
 ---
@@ -710,60 +477,50 @@ Now, in a star-connected alternator, the line voltage is related to the phase vo
 A three phase, 50 Hz, 1000 rpm, star connected alternator has an air-gap area of 314 cm² per pole. The armature winding has a phase spread of 60° and is accommodated in 4 slots per pole per phase with 6 conductors per slot. The coils are short pitched with a span of 165°. The flux density distribution is given by Bmax = 0.9 sin θ + 0.35 sin 3θ. Determine, (a) Winding factors for fundamental and third harmonic components. (b) Induced emf per phase. 6M
 
 ### Answer 12
-Synchronous speed $N_s = 1000$ rpm, $f = 50$ Hz $\Rightarrow$ poles $P = 6$.
+Given: 3-phase, 50 Hz, 1000 rpm, star alternator; air-gap area $A = 314\,\text{cm}^2 = 0.0314\,\text{m}^2$ per pole; $q=4$ slots/pole/phase, 6 conductors/slot; coil span $165^\circ$ electrical; $B(\theta) = 0.9\sin\theta + 0.35\sin 3\theta$ T.
 
-Given 4 slots per pole per phase, $q = 4$; total slots $S = q \times 3 \times P = 4 \times 3 \times 6 = 72$.
-Slots per pole $= 72/6 = 12$; slot angle $\beta = 180^\circ/12 = 15^\circ$ electrical.
-Coil span $= 165^\circ$ electrical, so chording $\varepsilon = 180^\circ - 165^\circ = 15^\circ$.
+**Solution:**
 
-![Short-pitched coil](./pyq-assets/textbook/108105131_p263_img-153_jpeg.png)  
-*Short-pitched coil (span 165°, chord angle 15°).*
+Number of poles $P = \frac{120\times50}{1000} = 6$.
+Total slots $S = 4 \times 3 \times 6 = 72$.
+Slots per pole $= 72/6 = 12 \Rightarrow$ slot angle $\beta = 180^\circ/12 = 15^\circ$ electrical.
+Chording angle $\varepsilon = 180^\circ - 165^\circ = 15^\circ$.
+Series turns per phase $T_{ph} = \frac{72 \times 6}{2 \times 3} = 72$.
 
 **(a) Winding factors**
 
-**Fundamental:**
-$$
-K_{d1} = \frac{\sin(q\beta/2)}{q\sin(\beta/2)} = \frac{\sin(4 \times 7.5^\circ)}{4 \sin 7.5^\circ} = \frac{\sin 30^\circ}{4 \times 0.1305} = 0.9577.
-$$
-$$
-K_{p1} = \cos(\varepsilon/2) = \cos 7.5^\circ = 0.9914.
-$$
-$$
-K_{w1} = K_{d1} K_{p1} = 0.9577 \times 0.9914 = 0.9495.
-$$
+Distribution factor: $K_{dn} = \frac{\sin\left(\frac{n q \beta}{2}\right)}{q \sin\left(\frac{n\beta}{2}\right)}$
+Pitch factor: $K_{pn} = \cos\left(\frac{n\varepsilon}{2}\right)$
 
-**Third harmonic:**
-Harmonic slot angle $= 3\beta = 45^\circ$, harmonic chording $= 3\varepsilon = 45^\circ$.
-$$
-K_{d3} = \frac{\sin(4 \times 22.5^\circ)}{4 \sin 22.5^\circ} = \frac{\sin 90^\circ}{4 \times 0.3827} = 0.6533.
-$$
-$$
-K_{p3} = \cos(22.5^\circ) = 0.9239.
-$$
-$$
-K_{w3} = 0.6533 \times 0.9239 = 0.6035.
-$$
+**Fundamental (n=1)**
+$K_{d1} = \frac{\sin(4 \times 7.5^\circ)}{4 \sin 7.5^\circ} = \frac{\sin 30^\circ}{4 \sin 7.5^\circ} = 0.9577$
+$K_{p1} = \cos 7.5^\circ = 0.9914$
+$K_{w1} = 0.9577 \times 0.9914 = 0.9495 \approx 0.95$
 
-Thus $K_{w1} \approx 0.950$, $K_{w3} \approx 0.604$.
+**Third harmonic (n=3)**
+$K_{d3} = \frac{\sin(4 \times 22.5^\circ)}{4 \sin 22.5^\circ} = \frac{\sin 90^\circ}{4 \sin 22.5^\circ} = 0.6533$
+$K_{p3} = \cos 22.5^\circ = 0.9239$
+$K_{w3} = 0.6533 \times 0.9239 = 0.6035 \approx 0.604$
 
 **(b) Induced emf per phase**
 
-- Total conductors $= 72 \times 6 = 432$; $T_{ph} = \frac{432}{2 \times 3} = 72$ turns.
-- Area per pole $A_p = 314 \text{ cm}^2 = 0.0314 \text{ m}^2$.
-- Fundamental flux per pole: $\phi_1 = \frac{2}{\pi} B_{1,\max} A_p = \frac{2}{\pi} \times 0.9 \times 0.0314 = 0.0180 \text{ Wb}$.
-- Fundamental phase emf: $E_1 = 4.44 f \phi_1 T_{ph} K_{w1} = 4.44 \times 50 \times 0.0180 \times 72 \times 0.9495 \approx 273.1 \text{ V}$.
+Flux per pole for sinusoidal distribution: $\phi = \frac{2}{\pi} B_{\max} A$
 
-The third-harmonic emf can be found from the ratio of flux-density amplitudes and winding factors (since the $k$ factor cancels):
-$$
-E_3 = E_1 \cdot \frac{B_{3,\max} K_{w3}}{B_{1,\max} K_{w1}} = 273.1 \times \frac{0.35 \times 0.6035}{0.9 \times 0.9495} = 273.1 \times 0.2472 = 67.5 \text{ V}.
-$$
+Fundamental:
+$\phi_1 = \frac{2}{\pi} \times 0.9 \times 0.0314 = 0.0180\,\text{Wb}$
+$E_1 = 4.44\,f\,\phi_1\,T_{ph}\,K_{w1} = 4.44 \times 50 \times 0.0180 \times 72 \times 0.9495 = 273.1\,\text{V}$
 
-Resultant phase voltage (rms):
-$$
-E_{ph} = \sqrt{E_1^2 + E_3^2} = \sqrt{273.1^2 + 67.5^2} \approx 281.3 \text{ V}.
-$$
+Third harmonic:
+$\phi_3 = \frac{2}{\pi} \times 0.35 \times 0.0314 = 0.00700\,\text{Wb}$
+$f_3 = 3 \times 50 = 150\,\text{Hz}$
+$E_3 = 4.44 \times 150 \times 0.00700 \times 72 \times 0.6035 = 202.5\,\text{V}$
 
-> **Final answer:** (a) $K_{w1} = 0.950$, $K_{w3} = 0.604$. (b) Phase emf $\approx 281$ V.
+Resultant phase emf (rms):
+$$\begin{aligned} E_{ph} &= \sqrt{E_1^2 + E_3^2} = \sqrt{273.1^2 + 202.5^2} \approx 340\,\text{V} \end{aligned}$$
+
+> **Final answer:**
+> (a) $K_{w1} = 0.95$, $K_{w3} = 0.604$
+> (b) Induced emf per phase $\approx 340$ V
 
 
 ---
@@ -774,79 +531,63 @@ $$
 A 3-phase, 50 Hz, 1000 rpm, star connected alternator has 72 armature slots with 6 conductors per slot and the coil span is 10 slots. The average air-gap flux per pole is 0.26 Wb. Calculate the distribution and pitch factors of the winding, number of turns per phase and line value of emf induced. (05)
 
 ### Answer 13
-**Step 1: Determine the number of poles**  
-The synchronous speed of an alternator is given by $N_s = \frac{120f}{P}$. Rearranging, $P = \frac{120f}{N_s} = \frac{120 \times 50}{1000} = 6$ poles.
+**Given:**
+- 3-phase, 50 Hz, star-connected alternator.
+- Speed $N_s = 1000$ rpm, so synchronous.
+- 72 armature slots, 6 conductors per slot.
+- Coil span $= 10$ slots.
+- Average flux per pole $\Phi = 0.26$ Wb.
 
-**Step 2: Slot angle and slots per pole per phase**  
-Total slots $S = 72$.  
-Slots per pole $= \frac{72}{6} = 12$.  
-Electrical angle between adjacent slots:  
-$$\beta = \frac{180^\circ}{\text{slots per pole}} = \frac{180^\circ}{12} = 15^\circ \text{ (electrical)}.$$  
-Slots per pole per phase, $q = \frac{S}{m\,P} = \frac{72}{3 \times 6} = 4$, where $m = 3$ is the number of phases.
+**Solution:**
 
-**Step 3: Distribution factor $K_d$**  
-For a distributed winding with $q$ slots per pole per phase, the distribution factor is  
+**1. Number of poles:**
 $$
-K_d = \frac{\sin(q \beta/2)}{q \sin(\beta/2)}.
-$$
-Substituting $q = 4$ and $\beta/2 = 7.5^\circ$,
-$$
-K_d = \frac{\sin(4 \times 7.5^\circ)}{4 \sin 7.5^\circ} = \frac{\sin 30^\circ}{4 \sin 7.5^\circ} = \frac{0.5}{4 \times 0.130526} \approx 0.9577.
-$$
-Thus $K_d \approx 0.958$.
-
-**Step 4: Pitch factor $K_p$**  
-The coil span is 10 slots, while a full-pole pitch is 12 slots. The coil is therefore short-pitched by 2 slots, which corresponds to an electrical angle  
-$$\alpha = (12 - 10) \times \beta = 2 \times 15^\circ = 30^\circ.$$
-Equivalently, the coil span in electrical degrees is $10 \times 15^\circ = 150^\circ$, giving $\alpha = 180^\circ - 150^\circ = 30^\circ$.  
-The pitch factor for a short-pitched coil is
-$$
-K_p = \cos\left(\frac{\alpha}{2}\right) = \cos 15^\circ \approx 0.9659.
-$$
-Hence $K_p \approx 0.966$.
-
-<figure>
-  <img src="./pyq-assets/textbook/108105131_p213_img-127_jpeg.png" alt="Coil span and pitch factor illustration"/>
-  <figcaption>Figure: Illustration of coil span and pitch factor. A full-pitch coil spans exactly one pole pitch (180° electrical); a short-pitch coil spans less, and the introduced angle reduces the emf by $\cos(\alpha/2)$.</figcaption>
-</figure>
-
-The winding factor is  
-$$
-K_w = K_d \cdot K_p \approx 0.9577 \times 0.9659 = 0.9250.
+P = \frac{120f}{N_s} = \frac{120 \times 50}{1000} = 6 \text{ poles}.
 $$
 
-**Step 5: Turns per phase**  
-Total number of armature conductors = $72 \text{ slots} \times 6 \text{ conductors/slot} = 432$.  
-In a 3-phase double-layer winding, each turn requires two conductors, so the turns per phase is
+**2. Distribution factor $K_d$:**
+- Slots per pole $= 72/6 = 12$.
+- Electrical slot angle $\beta = \frac{180^\circ}{12} = 15^\circ$.
+- Slots per pole per phase $q = \frac{72}{3 \times 6} = 4$.
+
 $$
-T_{ph} = \frac{\text{Total conductors}}{2 \times \text{phases}} = \frac{432}{2 \times 3} = 72.
+K_d = \frac{\sin(q\beta/2)}{q \sin(\beta/2)} = \frac{\sin(4 \times 7.5^\circ)}{4 \sin 7.5^\circ} = \frac{0.5}{4 \times 0.1305} \approx 0.958.
 $$
 
-**Step 6: Induced EMF**  
-The rms value of the induced emf per phase for a synchronous generator is
+**3. Pitch factor $K_p$:**
+- Full-pole pitch $= 12$ slots $\equiv 180^\circ$ electrical.
+- Coil short-pitched by $2$ slots $\Rightarrow$ chording angle $\alpha = 2 \times 15^\circ = 30^\circ$.
+
 $$
-E_{ph} = 4.44 \, f \, \phi \, T_{ph} \, K_w,
+K_p = \cos\frac{\alpha}{2} = \cos 15^\circ \approx 0.966.
 $$
-where $\phi$ is the flux per pole. The given average air-gap flux per pole ($0.26\,\text{Wb}$) is directly used because the standard derivation of the $4.44$ factor employs the total flux per pole (which is the average flux over the pole face). Substituting the known values:
+
+**4. Turns per phase $T_{ph}$:**
+- Total conductor count $= 72 \times 6 = 432$.
+- Assuming double-layer winding, each turn requires 2 conductors, so total turns $= 432/2 = 216$.
+- Three phases share these equally: $T_{ph} = 216 / 3 = 72$ turns.
+(Equivalently, coils per phase $= 72/3 = 24$, turns per coil $= 6/2 = 3$, giving $24 \times 3 = 72$.)
+
+**5. Induced EMF:**
+- Winding factor $K_w = K_d \, K_p \approx 0.925$.
+- RMS phase EMF for a sine-flux machine:
+$$
+E_{ph} = 4.44\,f\,\Phi\,T_{ph}\,K_w.
+$$
+
 $$
 \begin{aligned}
-E_{ph} &= 4.44 \times 50 \times 0.26 \times 72 \times 0.9250 \\[2pt]
-&= (222) \times (0.26) \times (72) \times 0.9250 \\[2pt]
-&= 57.72 \times 72 \times 0.9250 \\[2pt]
-&= 4155.84 \times 0.9250 \\[2pt]
-&\approx 3844.15 \text{ V} \approx 3.84 \text{ kV}.
+E_{ph} &= 4.44 \times 50 \times 0.26 \times 72 \times 0.925 \\\
+       &= 222 \times 0.26 \times 72 \times 0.925 \\\
+       &= 57.72 \times 72 \times 0.925 \\\
+       &= 4155.84 \times 0.925 \\\
+       &\approx 3844 \text{ V} \approx 3.84 \text{ kV}.
 \end{aligned}
 $$
 
-Since the alternator is star-connected, the line emf is
-$$
-E_L = \sqrt{3} \, E_{ph} \approx 1.732 \times 3844.15 \approx 6659.2 \text{ V} \approx 6.66 \text{ kV}.
-$$
+- Star connection: line EMF $E_L = \sqrt{3}\,E_{ph} = 1.732 \times 3844 \approx 6659 \text{ V} \approx 6.66 \text{ kV}$.
 
-> **Final answer:**  
-> Distribution factor $K_d = 0.958$, pitch factor $K_p = 0.966$ (winding factor $K_w = 0.925$).  
-> Number of turns per phase $T_{ph} = 72$.  
-> Induced phase emf $E_{ph} = 3.84$ kV; line emf $E_L = 6.66$ kV.
+> **Final answer:** $K_d = 0.958$, $K_p = 0.966$, $K_w = 0.925$; turns per phase $T_{ph} = 72$; phase emf $= 3.84$ kV, line emf $= 6.66$ kV.
 
 
 ---
@@ -857,78 +598,45 @@ $$
 A 3-phase, 50 Hz, 1000 rpm, star connected alternator has 72 armature slots with 6 conductors per slot and the coil span is 10 slots. The average air-gap flux per pole is 0.26Wb. Calculate the distribution and pitch factors of the winding, number of turns per phase and line value of emf induced. (04)
 
 ### Answer 14
-First, find the number of poles:
+**Given:** 3-phase, 50 Hz, 1000 rpm, star alternator; 72 slots, 6 conductors/slot; coil span 10 slots; $\Phi = 0.26$ Wb.
+
+**Solution:**
+
+**Poles:**
 $$
-P = \frac{120f}{N} = \frac{120 \times 50}{1000} = 6.
+P = \frac{120f}{N_s} = \frac{120 \times 50}{1000} = 6.
 $$
 
-Slots per pole:
-$$
-\frac{72}{6} = 12.
-$$
+**Distribution factor:**
+- Slots per pole $= 12$, slot angle $\beta = 15^\circ$ electrical.
+- $q = \frac{72}{6 \times 3} = 4$ slots/pole/phase.
+- $K_d = \frac{\sin(q\beta/2)}{q \sin(\beta/2)} = \frac{\sin 30^\circ}{4 \sin 7.5^\circ} = \frac{0.5}{4 \times 0.1305} = 0.958$.
 
-The electrical angle between adjacent slots (slot pitch) is
-$$
-\beta = \frac{180^\circ}{\text{slots per pole}} = \frac{180^\circ}{12} = 15^\circ \text{ elect}.
-$$
+**Pitch factor:**
+- Full pitch $= 12$ slots; coil span $= 10$ slots, so short-chorded by $2$ slots.
+- Chording angle $\alpha = 2 \times 15^\circ = 30^\circ$.
+- $K_p = \cos(\alpha/2) = \cos 15^\circ = 0.966$.
 
-![Slot angle illustration](./pyq-assets/textbook/108105131_p205_img-122_jpeg.png)
-*Figure: Slot angle β and distributed coils.*
+**Turns per phase:**
+- Total conductors $= 72 \times 6 = 432$.
+- Double-layer winding: turns $= \frac{432}{2} = 216$ total, so $T_{ph} = \frac{216}{3} = 72$.
 
-**Distribution factor:** The winding has $q$ slots per pole per phase:
-$$
-q = \frac{S}{P \times m} = \frac{72}{6 \times 3} = 4.
-$$
-The distribution factor (breadth factor) is
-$$
-K_d = \frac{\sin(q\beta/2)}{q \sin(\beta/2)} = \frac{\sin(4 \times 7.5^\circ)}{4 \sin 7.5^\circ} = \frac{\sin 30^\circ}{4 \sin 7.5^\circ}.
-$$
-With $\sin 30^\circ = 0.5$ and $\sin 7.5^\circ \approx 0.1305$,
-$$
-K_d = \frac{0.5}{4 \times 0.1305} \approx 0.9577.
-$$
-
-**Pitch factor:** The coil span is 10 slots, while a full-pitch coil would span 12 slots (180° electrical). The coil is therefore short-pitched by 2 slots, corresponding to an electrical angle of
-$$
-\alpha = 2 \times \beta = 2 \times 15^\circ = 30^\circ.
-$$
-The pitch factor (chording factor) is
-$$
-K_p = \cos\frac{\alpha}{2} = \cos 15^\circ \approx 0.9659.
-$$
-(Equivalently, $K_p = \sin\bigl(\frac{10}{12} \times 90^\circ\bigr) = \sin 75^\circ = 0.9659$.)
-
-The overall winding factor is
-$$
-K_w = K_d K_p = 0.9577 \times 0.9659 \approx 0.9250.
-$$
-
-**Turns per phase:** The armature has 72 slots with 6 conductors per slot. In a double-layer winding (standard for such alternators) each slot contains two coil sides. Hence the number of turns per coil is
-$$
-N_c = \frac{\text{conductors per slot}}{2} = \frac{6}{2} = 3.
-$$
-The total number of coils equals the number of slots (in a double-layer winding) = 72. For three phases, the coils per phase are $72/3 = 24$. Therefore the series turns per phase are
-$$
-T_{ph} = 24 \times 3 = 72.
-$$
-
-**Induced EMF:** For an alternator, the RMS phase EMF is given by
-$$
-E_{ph} = 4.44\, f\, T_{ph}\, \Phi\, K_w,
-$$
-where $\Phi$ is the average air-gap flux per pole (0.26 Wb used directly as is common practice). Substituting,
+**EMF calculation:**
+- Winding factor $K_w = K_d K_p = 0.958 \times 0.966 = 0.925$.
+- Phase emf:
 $$
 \begin{aligned}
-E_{ph} &= 4.44 \times 50 \times 72 \times 0.26 \times 0.9250 \\
-       &\approx 3844 \text{ V}.
+E_{ph} &= 4.44 \, f \, \Phi \, T_{ph} \, K_w \\\
+       &= 4.44 \times 50 \times 0.26 \times 72 \times 0.925 \\\
+       &\approx 3844 \text{ V} \; (= 3.84 \text{ kV}).
 \end{aligned}
 $$
-For a star-connected machine the line EMF is
+- Line emf (star):
 $$
-E_L = \sqrt{3}\, E_{ph} \approx 1.732 \times 3844 \approx 6659 \text{ V} \;\;(\text{or } 6.66 \text{ kV}).
+E_L = \sqrt{3} \, E_{ph} = 1.732 \times 3844 \approx 6659 \text{ V} \approx 6.66 \text{ kV}.
 $$
 
-> **Final answer:** $K_d = 0.958$, $K_p = 0.966$; $T_{ph} = 72$; line emf $\approx 6.66$ kV.
+> **Final answer:** $K_d = 0.958$, $K_p = 0.966$, $K_w = 0.925$; $T_{ph} = 72$; line emf $= 6.66$ kV.
 
 
 ---
@@ -939,61 +647,43 @@ $$
 For a synchronous generator, derive suitable expressions for (i) Pitch factor (ii) Distribution factor (04)
 
 ### Answer 15
-**Pitch Factor ($K_p$)**  
+**Derivation of pitch factor and distribution factor for a synchronous generator.**
 
-In a full-pitch coil the two coil sides are separated by exactly one pole pitch ($180^\circ$ electrical). The emfs induced in the two sides are equal in magnitude and, when traversing the coil, add arithmetically because they are in phase opposition:  
+---
 
-$$
-E_{\text{coil, full-pitch}} = 2E_{\text{conductor}} .
-$$
+**(i) Pitch factor $K_p$ (coil-span factor)**
 
-If the coil is short-pitched (chorded) by an angle $\alpha$ (coil span $= 180^\circ - \alpha$), the two emfs are displaced by $\alpha$ electrical. Their phasor sum is  
-
+- In a full-pitch coil, the two coil sides lie exactly one pole-pitch apart, i.e. $180^\circ$ electrical. The induced emfs in the two sides are equal in magnitude and $180^\circ$ out of phase with respect to the coil terminals; therefore, they add arithmetically, giving $E_{\text{coil}} = 2E_{\text{conductor}}$.
+- If the coil is **short-pitched** by an angle $\alpha$ (coil span $= 180^\circ - \alpha$), the two emfs are displaced by $\alpha$ electrical in the phasor diagram. Their resultant is the vector sum:
 $$
 E_{\text{coil}} = 2E_{\text{conductor}} \cos\!\left(\frac{\alpha}{2}\right).
 $$
-
-Hence the pitch factor is  
-
+- Hence,
 $$
-\boxed{K_p = \frac{\text{actual coil emf}}{\text{full-pitch coil emf}} = \cos\!\left(\frac{\alpha}{2}\right)} .
+K_p = \frac{\text{phasor sum of coil-side emfs}}{\text{arithmetic sum}} = \cos\!\left(\frac{\alpha}{2}\right).
 $$
-
-For the $n$-th harmonic the chording angle becomes $n\alpha$, giving  
-
-$$
-K_{pn} = \cos\!\left(\frac{n\alpha}{2}\right).
-$$
+- For the $n$th harmonic, the chording angle becomes $n\alpha$, so $K_{pn} = \cos(n\alpha/2)$.
 
 ---
 
-**Distribution Factor ($K_d$)**  
+**(ii) Distribution factor $K_d$ (breadth factor)**
 
-In a distributed winding the $q$ coils of a phase group under one pole are placed in adjacent slots, each displaced by the slot angle $\beta$ electrical. The emfs induced in the $q$ coils are equal in magnitude but have successive phase differences of $\beta$.  
-
-The arithmetic sum of the coil emfs is $qE_{\text{coil}}$, while the actual phasor sum is the chord of a circle formed by $q$ equal phasors separated by $\beta$:  
-
+- In a distributed winding, $q$ coils of a phase group under one pole are placed in adjacent slots displaced by the slot angle $\beta$ (electrical). The emfs induced in these coils are all equal in magnitude but have successive phase differences of $\beta$.
+- If the coils were concentrated ($q=1$), the total phase emf would be $qE_{\text{coil}}$. In a distributed arrangement, the coil emfs form $q$ equal phasors separated by $\beta$. Their vector sum is the chord of a polygon whose sides are these phasors:
 $$
-\text{Phasor sum} = E_{\text{coil}} \frac{\sin(q\beta/2)}{\sin(\beta/2)} .
+\text{Resultant emf} = E_{\text{coil}} \frac{\sin(q\beta/2)}{\sin(\beta/2)}.
 $$
-
-Therefore the distribution factor is  
-
+- Therefore,
 $$
-\boxed{K_d = \frac{\text{phasor sum}}{qE_{\text{coil}}} = \frac{\sin(q\beta/2)}{q\,\sin(\beta/2)}} .
+K_d = \frac{\text{phasor sum}}{\text{arithmetic sum}} = \frac{\sin(q\beta/2)}{q\,\sin(\beta/2)}.
 $$
-
-For the $n$-th harmonic the effective slot angle is $n\beta$, so  
-
-$$
-K_{dn} = \frac{\sin(q\,n\beta/2)}{q\,\sin(n\beta/2)} .
-$$
+- For the $n$th harmonic the effective slot angle is $n\beta$, so $K_{dn} = \dfrac{\sin(q\,n\beta/2)}{q\,\sin(n\beta/2)}$.
 
 ---
 
-The overall winding factor is the product $K_w = K_p K_d$, which reduces the generated emf from the ideal concentrated full-pitch value.
+The overall winding factor is the product $K_w = K_p \, K_d$. Both factors reduce the induced emf from the value that a concentrated full-pitch winding would produce, and their values are always $\le 1$.
 
-> **Final answer:** $K_p = \cos(\alpha/2)$ ; $K_d = \dfrac{\sin(q\beta/2)}{q\sin(\beta/2)}$ .
+> **Final answer:** $K_p = \cos(\alpha/2)$; $K_d = \dfrac{\sin(q\beta/2)}{q\sin(\beta/2)}$.
 
 
 ---
@@ -1004,69 +694,57 @@ The overall winding factor is the product $K_w = K_p K_d$, which reduces the gen
 A 3-phase, 32-pole, 50Hz alternator used in a hydro-generating station has a star-connected winding with 288 slots and 8 conductors per slot. The coil is short pitched by 40°. The flux per pole is 0.08 Wb. Estimate the phase and line values of induced emfs. Assume the total turns per phase are series connected. 4
 
 ### Answer 16
-Given:
-- Number of poles, $P = 32$
-- Frequency, $f = 50\; \text{Hz}$
-- Total slots, $S = 288$
-- Conductors per slot = 8
-- Short-pitch angle (chording angle), $\alpha = 40^\circ$ (electrical)
-- Flux per pole, $\phi = 0.08\; \text{Wb}$
-- Star-connected winding; all turns per phase are in series.
+**Given:**
+$P=32$, $f=50\,\text{Hz}$, slots $S=288$, conductors/slot $=8$, short-pitch angle $\alpha = 40^\circ$, $\phi = 0.08\,\text{Wb}$, star-connected, all turns per phase in series.
 
-First, compute the fundamental slot angle $\beta$ (electrical degrees between adjacent slots):
-$$
-\beta = \frac{180^\circ}{\text{slots per pole}} = \frac{180^\circ}{S/P} = \frac{180^\circ}{288/32} = \frac{180^\circ}{9} = 20^\circ \text{ electrical}.
-$$
+**Solution:**
 
-Number of slots per pole per phase, $q$:
-$$
-q = \frac{S}{P \times 3} = \frac{288}{32 \times 3} = 3.
-$$
+- Slots per pole: $S/P = 288/32 = 9$.
+- Slot angular pitch (electrical): $\beta = 180^\circ/9 = 20^\circ$.
+- Slots per pole per phase: $q = \frac{S}{P \times 3} = \frac{288}{32 \times 3} = 3$.
 
-**Distribution factor** (or breadth factor):
-$$
-K_d = \frac{\sin(q\beta/2)}{q\sin(\beta/2)} = \frac{\sin(3 \times 10^\circ)}{3 \sin 10^\circ} = \frac{\sin 30^\circ}{3 \sin 10^\circ} = \frac{0.5}{3 \times 0.17365} \approx 0.9598.
-$$
-
-**Pitch factor** (or chording factor) for a short-pitch of $\alpha$:
-$$
-K_p = \cos\left(\frac{\alpha}{2}\right) = \cos 20^\circ \approx 0.9397.
-$$
-
-**Winding factor:**
-$$
-K_w = K_d \cdot K_p = 0.9598 \times 0.9397 \approx 0.9019.
-$$
-
-**Total series turns per phase:**  
-Total armature conductors = $\text{Slots} \times \text{Conductors per slot} = 288 \times 8 = 2304$.  
-In a 3-phase winding, assuming all turns of a phase are in series, the number of turns per phase is
-$$
-T_{\text{ph}} = \frac{\text{Total conductors}}{2 \times \text{number of phases}} = \frac{2304}{2 \times 3} = 384.
-$$
-(Each turn comprises two conductors.)
-
-**Induced EMF per phase:**  
-The rms value of the induced emf per phase is given by
-$$
-E_{\text{ph}} = 4.44\, f\, \phi\, T_{\text{ph}}\, K_w.
-$$
-Substituting the values:
+Distribution factor:
 $$
 \begin{aligned}
-E_{\text{ph}} &= 4.44 \times 50 \times 0.08 \times 384 \times 0.9019 \\
-&= 222 \times 0.08 \times 384 \times 0.9019 \\
-&= 17.76 \times 384 \times 0.9019 \\
-&= 6819.84 \times 0.9019 \approx 6151\ \text{V} = 6.15\ \text{kV}.
+K_d &= \frac{\sin(q\beta/2)}{q\sin(\beta/2)} = \frac{\sin(3\times 10^\circ)}{3\sin 10^\circ} \\
+    &= \frac{0.5}{3 \times 0.17365} \approx 0.9598.
 \end{aligned}
 $$
 
-**Line voltage** for a star-connected alternator:
+Pitch factor (for chording $\alpha$):
 $$
-E_L = \sqrt{3}\, E_{\text{ph}} = 1.732 \times 6151 \approx 10654\ \text{V} = 10.65\ \text{kV}.
+\begin{aligned}
+K_p &= \cos(\alpha/2) = \cos 20^\circ \approx 0.9397.
+\end{aligned}
 $$
 
-> **Final answer:** Phase emf $\approx 6.15$ kV; line emf $\approx 10.65$ kV.
+Winding factor:
+$$
+\begin{aligned}
+K_w &= K_d\,K_p = 0.9598 \times 0.9397 \approx 0.9019.
+\end{aligned}
+$$
+
+Total armature conductors: $Z = 288 \times 8 = 2304$.
+Turns per phase (series): $T_{ph} = \frac{Z}{2\times 3} = \frac{2304}{6} = 384$.
+
+Induced EMF per phase (r.m.s.):
+$$
+\begin{aligned}
+E_{ph} &= 4.44\,f\,\phi\,T_{ph}\,K_w \\
+       &= 4.44 \times 50 \times 0.08 \times 384 \times 0.9019 \\
+       &\approx 6150\ \text{V} = 6.15\ \text{kV}.
+\end{aligned}
+$$
+
+Line voltage (star connection):
+$$
+\begin{aligned}
+E_L &= \sqrt{3}\,E_{ph} = 1.732 \times 6150 \approx 10650\ \text{V} = 10.65\ \text{kV}.
+\end{aligned}
+$$
+
+> **Final answer:** Phase emf $\approx 6.15\ \text{kV}$; line emf $\approx 10.65\ \text{kV}$.
 
 
 ---
@@ -1077,45 +755,55 @@ $$
 A 3-phase alternator has 2 slots per pole per phase and a coil span of 5 slot pitch. The flux density wave of alternator consists of a fundamental and a 25% third harmonic. Calculate the percentage increase in the phase voltage due to harmonic. 3
 
 ### Answer 17
-For a 3-phase alternator with $q = 2$ slots per pole per phase, the number of slots per pole is $3 \times 2 = 6$. The slot pitch (electrical angle) is $\beta = 180^\circ / 6 = 30^\circ$ electrical.
+**Given:** $q = 2$, coil span $= 5$ slots, $B_3 = 0.25 B_1$.
 
-The coil span is 5 slots, so the coil is short-pitched by $6 - 5 = 1$ slot. The mechanical angle of short-pitch is $\alpha = 1 \times 30^\circ = 30^\circ$ electrical (fundamental).
+**Solution:**
 
-The winding factor for any harmonic order $k$ is
-$$
-K_{w_k} = K_{d_k} \cdot K_{p_k}
-$$
-where
-$$
-K_{d_k} = \frac{\sin(q \cdot k\beta/2)}{q \sin(k\beta/2)}, \quad K_{p_k} = \cos\left(\frac{k\alpha}{2}\right).
-$$
+- Slots per pole: $3 \times 2 = 6$.
+- Slot pitch (electrical): $\beta = 180^\circ/6 = 30^\circ$.
+- Short-pitch: coil span = 5 slots, so short pitch by $6 - 5 = 1$ slot. Electrical angle of short-pitch: $\alpha = 1 \times 30^\circ = 30^\circ$.
 
-For the fundamental ($k=1$):
-- $K_{d1} = \frac{\sin(2 \times 30^\circ/2)}{2 \sin(30^\circ/2)} = \frac{\sin 30^\circ}{2 \sin 15^\circ} = \frac{0.5}{2 \times 0.2588} \approx 0.9659$.
-- $K_{p1} = \cos(30^\circ/2) = \cos 15^\circ \approx 0.9659$.
-Thus $K_{w1} = 0.9659 \times 0.9659 \approx 0.9330$.
-
-For the third harmonic ($k=3$):
-- $K_{d3} = \frac{\sin(2 \times 90^\circ/2)}{2 \sin(90^\circ/2)} = \frac{\sin 90^\circ}{2 \sin 45^\circ} = \frac{1}{2 \times 0.7071} \approx 0.7071$.
-- $K_{p3} = \cos(3 \times 30^\circ/2) = \cos 45^\circ \approx 0.7071$.
-Thus $K_{w3} = 0.7071 \times 0.7071 = 0.500$.
-
-Given the flux density wave has a fundamental $B_1$ and a $25\%$ third harmonic $B_3 = 0.25 B_1$, the ratio of induced EMFs is
+Winding factor for fundamental ($k=1$):
 $$
-\frac{E_3}{E_1} = \frac{B_3 K_{w3}}{B_1 K_{w1}} = 0.25 \times \frac{0.500}{0.9330} \approx 0.1340.
+\begin{aligned}
+K_{d1} &= \frac{\sin(q\cdot 1\cdot \beta/2)}{q\sin(1\cdot \beta/2)} = \frac{\sin(2\times 15^\circ)}{2\sin 15^\circ} = \frac{0.5}{2\times 0.2588} \approx 0.9659. \\
+K_{p1} &= \cos(1\cdot \alpha/2) = \cos 15^\circ \approx 0.9659. \\
+K_{w1} &= 0.9659 \times 0.9659 \approx 0.9330.
+\end{aligned}
 $$
 
-The resultant RMS phase voltage is
+Winding factor for third harmonic ($k=3$):
+Effective slot angle $= 3\beta = 90^\circ$; short-pitch angle $= 3\alpha/2 = 45^\circ$:
 $$
-E_{ph} = \sqrt{E_1^2 + E_3^2} = E_1 \sqrt{1 + (0.1340)^2} \approx E_1 \sqrt{1.01796} \approx 1.00894\,E_1.
+\begin{aligned}
+K_{d3} &= \frac{\sin(2\times 90^\circ/2)}{2\sin(90^\circ/2)} = \frac{\sin 90^\circ}{2\sin 45^\circ} = \frac{1}{2\times 0.7071} \approx 0.7071. \\
+K_{p3} &= \cos(3\times 30^\circ/2) = \cos 45^\circ \approx 0.7071. \\
+K_{w3} &= 0.7071 \times 0.7071 = 0.500.
+\end{aligned}
 $$
 
-Hence the percentage increase in phase voltage due to the third harmonic is
+EMF ratio:
 $$
-\frac{1.00894 - 1}{1} \times 100\% = 0.894\% \approx 0.89\%.
+\begin{aligned}
+\frac{E_3}{E_1} &= \frac{B_3}{B_1}\cdot \frac{K_{w3}}{K_{w1}} = 0.25 \times \frac{0.500}{0.9330} \approx 0.1340.
+\end{aligned}
 $$
 
-> **Final answer:** Phase voltage increases by approximately $0.89\%$.
+Resultant phase voltage:
+$$
+\begin{aligned}
+E_{ph} &= \sqrt{E_1^2 + E_3^2} = E_1\sqrt{1 + 0.1340^2} \approx E_1\sqrt{1.01796} \approx 1.00894\,E_1.
+\end{aligned}
+$$
+
+Percentage increase:
+$$
+\begin{aligned}
+\% \text{ increase} &= \left(\frac{E_{ph} - E_1}{E_1}\right) \times 100\% \approx 0.894\%.
+\end{aligned}
+$$
+
+> **Final answer:** The phase voltage increases by approximately $0.89\%$ due to the third harmonic.
 
 
 ---
@@ -1126,37 +814,34 @@ $$
 Determine the distribution factor corresponding to the fifth harmonic component of generated voltage in a three-phase, 50 Hz, AC generator with 54 slots & 6 poles. Also, comment on the effects of the fifth harmonic component in the generated voltage. (03)
 
 ### Answer 18
-We need to compute the distribution factor for the fifth harmonic. Given: 54 slots, 6 poles, 3-phase.
+**Given:** $S = 54$, $P = 6$, 3-phase, 50 Hz.
 
-Number of slots per pole: $\frac{54}{6} = 9$.
+**Solution:**
 
-Slot angular pitch (electrical): Since one pole pitch corresponds to 180° electrical, the angle between adjacent slots is $\beta = \frac{180^\circ}{9} = 20^\circ$ electrical.
+- Slots per pole: $54/6 = 9$.
+- Fundamental slot pitch (elec.): $\beta = 180^\circ/9 = 20^\circ$.
+- Slots per pole per phase: $q = \frac{54}{6 \times 3} = 3$.
 
-Number of slots per pole per phase ($q$): $q = \frac{\text{slots}}{p \times m} = \frac{54}{6 \times 3} = 3$.
-
-For the $\nu$-th harmonic, the effective slot angle becomes $\nu \beta$. For the fifth harmonic ($\nu = 5$), the effective slot angle is $5 \beta = 5 \times 20^\circ = 100^\circ$.
-
-The distribution factor for the $\nu$-th harmonic is:
-
-$$
-K_{d\nu} = \frac{\sin\left( q \frac{\nu \beta}{2} \right)}{q \sin\left( \frac{\nu \beta}{2} \right)}.
-$$
-
-Plug in $q = 3$ and $\frac{\nu \beta}{2} = \frac{100^\circ}{2} = 50^\circ$:
-
+Distribution factor for $n$th harmonic:
 $$
 \begin{aligned}
-K_{d5} &= \frac{\sin(3 \times 50^\circ)}{3 \sin 50^\circ} \\
-&= \frac{\sin 150^\circ}{3 \sin 50^\circ} \\
-&= \frac{0.5}{3 \times 0.7660} \\
-&\approx \frac{0.5}{2.298} \\
-&\approx 0.2176.
+K_{dn} &= \frac{\sin(q\cdot n\beta/2)}{q\sin(n\beta/2)}.
 \end{aligned}
 $$
 
-Thus, the distribution factor for the fifth harmonic is approximately 0.218.
+For 5th harmonic ($n=5$), effective slot angle $= 5 \times 20^\circ = 100^\circ$:
+$$
+\begin{aligned}
+K_{d5} &= \frac{\sin(3 \times 100^\circ/2)}{3\sin(100^\circ/2)} = \frac{\sin 150^\circ}{3\sin 50^\circ} \\
+       &= \frac{0.5}{3 \times 0.7660} \approx 0.2176.
+\end{aligned}
+$$
 
-**Effects of the fifth harmonic:** The fifth harmonic is of order $6k - 1$ (with $k=1$), making it a negative-sequence harmonic. Its presence distorts the voltage waveform, leading to increased dielectric stress on insulation. It induces higher-frequency currents that cause additional $I^2R$ losses and stray load losses. In a star-connected generator, the fifth harmonic does not cancel in the line voltage (unlike triplen harmonics), so it appears directly across the terminals, contributing to pulsating torques and potentially interfering with other equipment. Designers mitigate the fifth harmonic by proper choice of coil pitch (chording) and winding distribution.
+**Effects of 5th harmonic:**
+- The 5th harmonic is of order $6k-1$, making it a negative-sequence harmonic. It produces a rotating field in opposite direction to the fundamental, leading to pulsating torques and additional rotor heating.
+- It distorts the voltage waveform, increasing dielectric stress on insulation.
+- In a star-connected machine, 5th harmonic does not cancel in the line voltage; it appears at the terminals and can interfere with other equipment.
+- Mitigation is achieved by proper distribution and chording of the winding (e.g., short-pitch to reduce 5th harmonic).
 
 > **Final answer:** $K_{d5} \approx 0.218$; the 5th harmonic is negative-sequence, causes waveform distortion, extra losses, and appears in the line voltage.
 
@@ -1169,78 +854,31 @@ Thus, the distribution factor for the fifth harmonic is approximately 0.218.
 Consider a 3-phase, 8 pole, 50 Hz, star-connected alternator. The average flux in the machine is 40 mWb /pole. The armature has 72 slots with 10 conductors in each slot. Calculate the induced voltage per phase. The coils are short-pitched by 2 slots. (04)
 
 ### Answer 19
-**Given data:**  
-3-phase, 8-pole, 50 Hz, star-connected alternator.  
-Average flux per pole, $\phi = 40\;\text{mWb} = 0.04\;\text{Wb}$.  
-Armature slots $S = 72$, conductors per slot $= 10$.  
-Coils short-pitched by $2$ slots.
+**Given:** 3-phase, 8-pole, 50 Hz, star-connected alternator. Average flux per pole $\phi = 40\ \text{mWb}=0.04\ \text{Wb}$. Armature 72 slots, 10 conductors/slot. Coils short-pitched by 2 slots.
 
----
+**Solution:**
 
-### Step 1: Slot angle and winding layout
-Slots per pole $= \frac{S}{p} = \frac{72}{8} = 9$ slots/pole.  
-Slot angle (electrical) $\beta = \frac{180^\circ}{\text{slots per pole}} = \frac{180^\circ}{9} = 20^\circ$.
-
-Number of slots per pole per phase (phase-spread),  
-$q = \frac{S}{p\,m} = \frac{72}{8 \times 3} = 3$.
-
----
-
-### Step 2: Pitch factor (chording factor)
-The coil is short-pitched by $2$ slots → the short-pitch angle  
-$\alpha = 2 \times \beta = 2 \times 20^\circ = 40^\circ$ (electrical).  
-Pitch factor,  
-$$
-K_p = \cos\frac{\alpha}{2} = \cos 20^\circ \approx 0.9397.
-$$
-
----
-
-### Step 3: Distribution factor (breadth factor)
-For a uniformly distributed winding,  
-$$
-K_d = \frac{\sin\bigl(q\,\tfrac{\beta}{2}\bigr)}{q\,\sin\bigl(\tfrac{\beta}{2}\bigr)}.
-$$
-Substituting $q=3$, $\beta/2 = 10^\circ$:  
-$$
-K_d = \frac{\sin 30^\circ}{3\sin 10^\circ} = \frac{0.5}{3 \times 0.173648} \approx 0.9598.
-$$
-
----
-
-### Step 4: Winding factor
-$$
-K_w = K_d \times K_p = 0.9598 \times 0.9397 \approx 0.9019.
-$$
-
----
-
-### Step 5: Turns per phase
-The total number of armature conductors,  
-$Z = \text{slots} \times \text{conductors/slot} = 72 \times 10 = 720$.  
-Conductors per phase $= \frac{Z}{m} = \frac{720}{3} = 240$.  
-Since each turn consists of two conductors,  
-$$
-T_{\text{ph}} = \frac{\text{conductors per phase}}{2} = \frac{240}{2} = 120 \;\text{turns}.
-$$
-
----
-
-### Step 6: Induced EMF per phase
-The rms value of the sinusoidal induced voltage is given by  
-$$
-E_{\text{ph}} = 4.44\; f\; \phi\; T_{\text{ph}}\; K_w.
-$$
-Substituting the values:  
-$$
-\begin{aligned}
-E_{\text{ph}} &= 4.44 \times 50 \times 0.04 \times 120 \times 0.9019 \\
-&= 222 \times 0.04 \times 120 \times 0.9019 \\
-&= 8.88 \times 120 \times 0.9019 \\
-&= 1065.6 \times 0.9019 \\
-&\approx 961 \;\text{V}.
-\end{aligned}
-$$
+1. **Slots per pole** $=72/8=9$; slot angle $\beta = 180^\circ/9 = 20^\circ$ electrical.
+2. **Slots per pole per phase** $q = \frac{72}{8\times 3}=3$.
+3. **Pitch factor:** Short-pitch by 2 slots $\Rightarrow$ chording angle $\alpha = 2\times 20^\circ=40^\circ$.
+   $K_p = \cos(\alpha/2) = \cos 20^\circ \approx 0.9397$.
+4. **Distribution factor:**
+   $$
+   \begin{aligned}
+   K_d &= \frac{\sin(q\beta/2)}{q\,\sin(\beta/2)} = \frac{\sin 30^\circ}{3\sin 10^\circ} \\
+       &= \frac{0.5}{3\times 0.173648} \approx 0.9598.
+   \end{aligned}
+   $$
+5. **Winding factor:** $K_w = K_d \times K_p = 0.9598\times 0.9397 \approx 0.902$.
+6. **Turns per phase:** Total conductors $Z = 72\times 10 = 720$. Conductors/phase $=720/3=240$.
+   Turns/phase $T_{\text{ph}} = 240/2 = 120$.
+7. **Induced EMF/phase:**
+   $$
+   \begin{aligned}
+   E_{\text{ph}} &= 4.44\,f\,\phi\,T_{\text{ph}}\,K_w \\
+                 &= 4.44\times 50\times 0.04\times 120\times 0.902 \approx 961\ \text{V}.
+   \end{aligned}
+   $$
 
 > **Final answer:** Phase induced voltage $\approx 961$ V.
 
@@ -1253,91 +891,36 @@ $$
 A 3-phase, 50 Hz, 1000 rpm, star connected alternator has 72 armature slots with 6 conductors per slot and the coil span is 10 slots. The average air-gap flux per pole is 0.26Wb. Calculate the distribution and pitch factors of the winding, number of turns per phase and line value of emf induced. (06)
 
 ### Answer 20
-To determine the induced EMF, we first find the number of poles:
+**Given:** 3-phase, 50 Hz, 1000 rpm, star alternator. 72 slots, 6 conductors/slot, coil span 10 slots, flux per pole $\phi = 0.26\ \text{Wb}$.
 
-$$
-P = \frac{120f}{N} = \frac{120 \times 50}{1000} = 6 \text{ poles}.
-$$
+**Solution:**
 
-The alternator has $S = 72$ slots. Thus:
+1. **Number of poles:** $P = \frac{120f}{N} = \frac{120\times 50}{1000} = 6$ poles.
+2. **Slots per pole** $=72/6=12$; slot angle $\beta = 180^\circ/12 = 15^\circ$ electrical.
+3. **Slots per pole per phase:** $q = 12/3 = 4$.
+4. **Distribution factor:**
+   $$
+   \begin{aligned}
+   K_d &= \frac{\sin(q\beta/2)}{q\,\sin(\beta/2)} = \frac{\sin(4\times 7.5^\circ)}{4\,\sin 7.5^\circ} \\
+       &= \frac{\sin 30^\circ}{4\,\sin 7.5^\circ} \approx \frac{0.5}{4\times 0.13053} \approx 0.9577.
+   \end{aligned}
+   $$
+5. **Pitch factor:** Full pitch $=12$ slots; short-pitched by $12-10=2$ slots.
+   Chording angle $\alpha = 2\times 15^\circ = 30^\circ$.
+   $K_p = \cos(\alpha/2) = \cos 15^\circ \approx 0.9659.$
+6. **Winding factor:** $K_w = 0.9577\times 0.9659 \approx 0.9250$.
+7. **Turns per phase:** Total conductors $Z = 72\times 6 = 432$.
+   Conductors/phase $= 432/3 = 144$; $T_{\text{ph}} = 144/2 = 72$ turns.
+8. **EMF per phase:**
+   $$
+   \begin{aligned}
+   E_{\text{ph}} &= 4.44\,f\,\phi\,T_{\text{ph}}\,K_w \\
+                 &= 4.44\times 50\times 0.26\times 72\times 0.9250 \approx 3844\ \text{V}.
+   \end{aligned}
+   $$
+9. **Line voltage** (star): $E_L = \sqrt{3}\,E_{\text{ph}} = 1.732\times 3844 \approx 6659\ \text{V} \approx 6.66\ \text{kV}.$
 
-- Slots per pole: $\displaystyle \frac{S}{P} = \frac{72}{6} = 12$.
-- Slots per pole per phase: $\displaystyle q = \frac{\text{slots per pole}}{\text{number of phases}} = \frac{12}{3} = 4$.
-- Slot angular pitch (electrical): $\displaystyle \beta = \frac{180^\circ}{\text{slots per pole}} = \frac{180^\circ}{12} = 15^\circ$ electrical.
-
-**Distribution factor**  
-When coils are distributed in $q$ adjacent slots, the resultant voltage is reduced by the distribution factor $K_d$:
-
-$$
-K_d = \frac{\sin\left(\frac{q\beta}{2}\right)}{q \sin\left(\frac{\beta}{2}\right)}.
-$$
-
-Substituting $q = 4$, $\beta = 15^\circ$:
-
-$$
-\begin{aligned} \frac{q\beta}{2} &= 4 \times 7.5^\circ = 30^\circ,\\ K_d &= \frac{\sin 30^\circ}{4 \sin 7.5^\circ} = \frac{0.5}{4 \times 0.130526} \approx 0.9577. \end{aligned}
-$$
-
-![Distributed coils](./pyq-assets/textbook/108105131_p205_img-122_jpeg.png)  
-*Slot angle and distributed coils*
-
-**Pitch factor**  
-The coil span is 10 slots, whereas full pitch is 12 slots. Hence the coil is short-pitched by $(12 - 10) = 2$ slots. In electrical degrees:
-
-$$
-\begin{aligned} \text{Coil span} &= 10 \times 15^\circ = 150^\circ,\\ \text{Short-pitch angle } \alpha &= 180^\circ - 150^\circ = 30^\circ. \end{aligned}
-$$
-
-The pitch factor (or coil-span factor) is given by:
-
-$$
-K_p = \cos\frac{\alpha}{2} = \cos 15^\circ \approx 0.9659,
-$$
-
-or equivalently $K_p = \sin(\text{coil span}/2) = \sin 75^\circ \approx 0.9659$.
-
-![Pitch factor](./pyq-assets/textbook/108105131_p213_img-127_jpeg.png)  
-*Pitch factor illustration*
-
-**Winding factor**  
-
-$$
-K_w = K_d \times K_p = 0.9577 \times 0.9659 \approx 0.9250.
-$$
-
-**Turns per phase**  
-Each slot contains 6 conductors, giving a total of $72 \times 6 = 432$ conductors. For a three-phase winding, the conductors are equally divided among the phases:
-
-$$
-\text{Conductors per phase} = \frac{432}{3} = 144.
-$$
-
-Since two conductors form one turn, the series turns per phase are:
-
-$$
-T_{ph} = \frac{144}{2} = 72.
-$$
-
-**Induced EMF**  
-For a sinusoidal flux distribution, the r.m.s. phase voltage is:
-
-$$
-E_{ph} = 4.44\, f\, \phi\, T_{ph}\, K_w,
-$$
-
-where $\phi = 0.26\,\text{Wb}$ (flux per pole), $f = 50\,\text{Hz}$. Substituting the values:
-
-$$
-\begin{aligned} E_{ph} &= 4.44 \times 50 \times 0.26 \times 72 \times 0.9250 \\ &\approx 3844\,\text{V}. \end{aligned}
-$$
-
-The alternator is star-connected, so the line voltage is:
-
-$$
-E_L = \sqrt{3}\, E_{ph} = 1.732 \times 3844 \approx 6659\,\text{V} \;\text{or}\; 6.66\,\text{kV}.
-$$
-
-> **Final answer:** $K_d = 0.958$, $K_p = 0.966$; $T_{ph} = 72$; line emf $\approx 6.66$ kV.
+> **Final answer:** $K_d \approx 0.958$, $K_p \approx 0.966$; $T_{\text{ph}} = 72$ turns; line EMF $\approx 6.66$ kV.
 
 
 ---
@@ -1348,25 +931,22 @@ $$
 The stator of a 3-phase alternator has nine slots per pole and carries a balanced 3-phase, double-layer winding. The coils are short pitched and the coil pitch is seven slots. Find the distribution factor and pitch factor. (part ii)
 
 ### Answer 21
-Slots per pole $= 9$, therefore slot angle $\beta = \frac{180^\circ}{9} = 20^\circ$ electrical.
+**Given:** Stator of 3-phase alternator, 9 slots per pole, double-layer winding, coil pitch 7 slots.
 
-For a balanced three-phase winding, the number of slots per pole per phase is
-$$q = \frac{\text{slots per pole}}{\text{number of phases}} = \frac{9}{3} = 3.$$
+**Solution:**
 
-The distribution factor for a $60^\circ$ phase-spread winding is given by
-$$K_d = \frac{\sin\!\left(\dfrac{q\beta}{2}\right)}{q \sin\!\left(\dfrac{\beta}{2}\right)}.$$
-Substituting $q = 3$ and $\beta/2 = 10^\circ$:
-$$\begin{aligned}
-K_d &= \frac{\sin(3 \times 10^\circ)}{3 \sin 10^\circ} = \frac{\sin 30^\circ}{3 \sin 10^\circ} \\
-&= \frac{0.5}{3 \times 0.173648} = 0.9598 \approx 0.960.
-\end{aligned}$$
-
-The full-pitch coil span would be $9$ slots ($=180^\circ$ electrical). The actual coil pitch is $7$ slots, so the coil is short-pitched by $2$ slots. The chording angle (electrical angle of short-pitch) is
-$$\alpha = 2 \times 20^\circ = 40^\circ.$$
-The pitch factor (or coil-span factor) for a short-pitched coil is
-$$K_p = \cos\!\left(\frac{\alpha}{2}\right).$$
-Hence,
-$$K_p = \cos\!\left(\frac{40^\circ}{2}\right) = \cos 20^\circ = 0.9397 \approx 0.940.$$
+1. **Slot angle:** $\beta = 180^\circ/9 = 20^\circ$ electrical.
+2. **Slots per pole per phase:** $q = 9/3 = 3$.
+3. **Distribution factor:**
+   $$
+   \begin{aligned}
+   K_d &= \frac{\sin(q\beta/2)}{q\,\sin(\beta/2)} = \frac{\sin(3\times 10^\circ)}{3\,\sin 10^\circ} \\
+       &= \frac{\sin 30^\circ}{3\,\sin 10^\circ} \approx \frac{0.5}{3\times 0.173648} \approx 0.960.
+   \end{aligned}
+   $$
+4. **Pitch factor:** Full pitch $=9$ slots; short-pitched by $9-7=2$ slots.
+   Chording angle $\alpha = 2\times 20^\circ = 40^\circ$.
+   $K_p = \cos(\alpha/2) = \cos 20^\circ \approx 0.940$.
 
 > **Final answer:** $K_d = 0.960$, $K_p = 0.940$.
 
@@ -1379,116 +959,45 @@ $$K_p = \cos\!\left(\frac{40^\circ}{2}\right) = \cos 20^\circ = 0.9397 \approx 0
 A 115 V, 60 Hz, 3 phase star connected, 6 pole induction motor has stator impedance of (0.07+j0.3) Ω and equivalent rotor impedance at standstill of (0.08+j0.3) Ω. Magnetising branch has G₀ = 0.022 and B₀ = 0.158. Using the approximate equivalent circuit, at a slip of 2% determine: (i) Rotor current (ii) Stator current (iii) Power input and input power factor (iv) Power output (v) Torque developed (vi) Efficiency of the motor.
 
 ### Answer 22
-The approximate equivalent circuit of the induction motor moves the magnetising branch directly across the supply terminals. This simplifies calculations by placing the stator impedance $Z_1$ in series with the rotor standstill impedance referred to the stator, $Z_2'$, and the combined series branch carries only the rotor current $I_2'$. The magnetising current $I_0$ is computed separately using the shunt admittance $Y_0 = G_0 - jB_0$.
+**Concept:** Approximate equivalent circuit with magnetising branch placed across supply.
+**Given:** 115 V (L), 60 Hz, 6-pole, star, $Z_1 = 0.07+j0.3\,\Omega$, $Z_2' = 0.08+j0.3\,\Omega$ (standstill), $G_0=0.022\,S$, $B_0=0.158\,S$, $s=2\%$.
 
-Given data:
-- Supply: 115 V (line), 60 Hz, 3-phase, star-connected.
-- Poles: 6 → synchronous speed $N_s = \frac{120 \times 60}{6} = 1200$ rpm.
-- Per-phase stator impedance: $Z_1 = 0.07 + j0.3\, \Omega$.
-- Rotor standstill impedance (referred): $Z_2' = 0.08 + j0.3\, \Omega$.
-- Magnetising branch parameters: $G_0 = 0.022\, \text{S}$, $B_0 = 0.158\, \text{S}$.
-- Slip: $s = 2\% = 0.02$.
+![Induction motor equivalent circuit](https://commons.wikimedia.org/wiki/Special:Redirect/file/Induction-Motor-Equiv-Circuit.svg)
+*Figure: Per-phase approximate equivalent circuit. Source: Wikimedia Commons.*
 
-**Phase voltage**
-$$
-V_{\text{ph}} = \frac{115}{\sqrt{3}} = 66.40\text{ V}\quad (\text{reference, angle }0^\circ).
-$$
+**Solution:**
+$V_{ph} = 115/\sqrt{3} = 66.4\,V$.
+Effective rotor resistance: $R_2'/s = 0.08/0.02 = 4\,\Omega$.
+Series impedance: $Z_{ser} = (0.07+4) + j(0.3+0.3) = 4.07 + j0.6\,\Omega$, $|Z_{ser}| = 4.114\,\Omega$, $\phi = \arctan(0.6/4.07)=8.4^\circ$.
 
-**Rotor circuit impedance at slip $s$**
-At standstill, the rotor impedance is $Z_2' = R_2' + jX_2'$. At any slip $s$, the effective rotor impedance in the equivalent circuit is $\frac{R_2'}{s} + jX_2'$.
-$$
-\frac{R_2'}{s} = \frac{0.08}{0.02} = 4\,\Omega \quad\Rightarrow\quad \frac{Z_2'}{s} = 4 + j0.3\,\Omega.
-$$
+**(i) Rotor current:**
+$I_2' = V_{ph}/Z_{ser} = 66.4 / 4.114\angle8.4^\circ = 16.14\angle{-8.4^\circ}\,A$.
 
-**Total series impedance**
-$Z_1$ and $\frac{Z_2'}{s}$ are in series:
-$$
-Z_{\text{ser}} = Z_1 + \frac{Z_2'}{s} = (0.07 + j0.3) + (4 + j0.3) = 4.07 + j0.6\,\Omega.
-$$
-Magnitude and angle:
-$$
-|Z_{\text{ser}}| = \sqrt{4.07^2 + 0.6^2} = 4.114\,\Omega,\quad \phi = \arctan\!\left(\frac{0.6}{4.07}\right) = 8.4^\circ.
-$$
+**(ii) Stator current:**
+Magnetising admittance $Y_0 = G_0 - jB_0 = 0.022 - j0.158\,S$.
+$I_0 = V_{ph}Y_0 = 66.4(0.022 - j0.158) = 1.46 - j10.49\,A$.
+$I_2'$ in rectangular: $15.96 - j2.36\,A$.
+$I_1 = I_0 + I_2' = 17.42 - j12.85\,A$, $|I_1| = 21.65\,A$.
 
-<figure>
-    <img src="./pyq-assets/textbook/108105131_p401_img-220_jpeg.png" alt="Per-phase equivalent circuit" />
-    <figcaption style="text-align:center;">Per-phase approximate equivalent circuit of induction motor.</figcaption>
-</figure>
+**(iii) Input power and p.f.:**
+Phase angle of $I_1$: $\phi_1 = \arctan(-12.85/17.42) = -36.4^\circ$.
+$\cos\phi_1 = 0.805$ lag.
+$P_{in} = 3 V_{ph} I_1 \cos\phi_1 = 3 \times 66.4 \times 21.65 \times 0.805 = 3471\,W \approx 3.47\,kW$.
 
-**(i) Rotor current (referred to stator)**
-The rotor current is the current through the series branch:
-$$
-\mathbf{I_2'} = \frac{V_{\text{ph}}}{Z_{\text{ser}}} = \frac{66.4\angle 0^\circ}{4.114\angle 8.4^\circ} = 16.14\angle -8.4^\circ\ \text{A}.
-$$
-Magnitude: $I_2' \approx 16.14$ A.
+**(iv) Power output:**
+Air-gap power: $P_{ag} = 3 I_2'^2 (R_2'/s) = 3 \times (16.14)^2 \times 4 = 3126\,W$.
+Rotor copper loss: $P_{rcu} = s P_{ag} = 0.02 \times 3126 = 62.5\,W$.
+Mechanical power: $P_{mech} = P_{ag} - P_{rcu} = 3063.5\,W$.
+Assuming negligible friction and core losses (accounted in $G_0$), $P_{out} \approx 3.06\,kW$.
 
-**(ii) Stator current**
-Magnetising admittance: $Y_0 = G_0 - jB_0 = 0.022 - j0.158$ S.
-The exciting current (shunt branch) is
-$$
-\mathbf{I_0} = V_{\text{ph}} \cdot Y_0 = 66.4\,(0.022 - j0.158) = 1.46 - j10.49\ \text{A}.
-$$
-Rotor current in rectangular form:
-$$
-\mathbf{I_2'} = 16.14\cos(-8.4^\circ) + j\,16.14\sin(-8.4^\circ) = 15.96 - j2.36\ \text{A}.
-$$
-Stator current is the phasor sum:
-$$
-\mathbf{I_1} = \mathbf{I_0} + \mathbf{I_2'} = (1.46 + 15.96) - j(10.49 + 2.36) = 17.42 - j12.85\ \text{A}.
-$$
-Magnitude:
-$$
-|I_1| = \sqrt{17.42^2 + 12.85^2} = 21.65\ \text{A}.
-$$
+**(v) Torque:**
+$\omega_s = \frac{2\pi 1200}{60} = 125.66\,rad/s$.
+$T = P_{ag}/\omega_s = 3126/125.66 = 24.87\,Nm \approx 24.9\,Nm$.
 
-**(iii) Power input and input power factor**
-The phase angle of $\mathbf{I_1}$ relative to the voltage is
-$$
-\phi_1 = \arctan\!\left(\frac{-12.85}{17.42}\right) = -36.4^\circ.
-$$
-Power factor (lagging):
-$$
-\cos\phi_1 = \cos 36.4^\circ = 0.805.
-$$
-Total three-phase input power:
-$$
-P_{\text{in}} = 3\,V_{\text{ph}}\,I_1\cos\phi_1 = 3 \times 66.4 \times 21.65 \times 0.805 = 3.471\ \text{kW}.
-$$
+**(vi) Efficiency:**
+$\eta = P_{out}/P_{in} = 3063.5/3471 = 0.883 = 88.3\%$.
 
-**(iv) Power output**
-Air-gap power is the power consumed in the effective rotor resistance:
-$$
-P_{ag} = 3\,I_2'^{\,2}\!\left(\frac{R_2'}{s}\right) = 3 \times (16.14)^2 \times 4 = 3126\ \text{W}.
-$$
-Rotor copper loss:
-$$
-P_{rcu} = s\,P_{ag} = 0.02 \times 3126 = 62.5\ \text{W}.
-$$
-Gross mechanical power developed:
-$$
-P_{\text{mech}} = P_{ag} - P_{rcu} = 3126 - 62.5 = 3063.5\ \text{W}.
-$$
-The problem does not specify separate friction and windage losses. In the approximate equivalent circuit it is common to lump all fixed losses (core, friction, windage) into the shunt conductance $G_0$. Therefore the net mechanical output power is essentially $P_{\text{mech}}$:
-$$
-P_{\text{out}} \approx 3.06\ \text{kW}.
-$$
-
-**(v) Torque developed**
-Synchronous angular speed:
-$$
-\omega_s = \frac{2\pi N_s}{60} = \frac{2\pi \times 1200}{60} = 125.66\ \text{rad/s}.
-$$
-Electromagnetic torque:
-$$
-T = \frac{P_{ag}}{\omega_s} = \frac{3126}{125.66} = 24.87\ \text{N·m}.
-$$
-
-**(vi) Efficiency**
-$$
-\eta = \frac{P_{\text{out}}}{P_{\text{in}}} = \frac{3063.5}{3471} = 0.883 \quad (88.3\%).
-$$
-
-> **Final answer:** (i) $I_2' = 16.1$ A; (ii) $I_1 = 21.7$ A; (iii) $P_{\text{in}} = 3.47$ kW, pf $=0.805$ lag; (iv) $P_{\text{out}} \approx 3.06$ kW; (v) $T = 24.9$ N·m; (vi) $\eta = 88.3\%$.
+> **Final answer:** (i) $I_2' = 16.1\,A$; (ii) $I_1 = 21.7\,A$; (iii) $P_{in}=3.47\,kW$, pf $=0.805$ lag; (iv) $P_{out}\approx3.06\,kW$; (v) $T=24.9\,Nm$; (vi) $\eta = 88.3\%$.
 
 
 ---
@@ -1499,59 +1008,23 @@ $$
 The rotor of a 6-pole, 50 Hz, slip ring induction motor has a resistance of 0.2 Ω/phase and runs at 960 rpm on full load. Calculate the approximate resistance/phase to be included in the rotor circuit such that the speed is reduced to 800 rpm for full load torque.
 
 ### Answer 23
-Given a 6-pole, 50 Hz induction motor:
+**Concept:** For constant load torque, rotor current and $R_2/s$ remain essentially constant.
+**Given:** 6-pole, 50 Hz, $R_2=0.2\,\Omega/\text{phase}$, full-load speed 960 rpm, desired speed 800 rpm.
 
-Synchronous speed:
-$$
-N_s = \frac{120 f}{P} = \frac{120 \times 50}{6} = 1000 \text{ rpm}.
-$$
+![Induction motor equivalent circuit](https://commons.wikimedia.org/wiki/Special:Redirect/file/Induction-Motor-Equiv-Circuit.svg)
+*Figure: Equivalent circuit showing rotor resistance control. Source: Wikimedia Commons.*
 
-At full load, the motor runs at 960 rpm, so initial slip:
-$$
-s_1 = \frac{N_s - N_{r1}}{N_s} = \frac{1000 - 960}{1000} = 0.04 \;(4\%).
-$$
+**Solution:**
+$N_s = \dfrac{120 \times 50}{6} = 1000$ rpm.
+Slip at full load: $s_1 = \dfrac{1000-960}{1000} = 0.04$.
+Slip at 800 rpm: $s_2 = \dfrac{1000-800}{1000} = 0.20$.
 
-To reduce the speed to 800 rpm while delivering the same full-load torque, the new slip becomes:
-$$
-s_2 = \frac{1000 - 800}{1000} = 0.20 \;(20\%).
-$$
+For constant torque, $\dfrac{R_2'}{s}$ must stay constant:
+$$\frac{R_{2,\text{new}}'}{s_2} = \frac{R_{2,\text{old}}'}{s_1} \quad\Rightarrow\quad R_{2,\text{new}}' = R_2 \times \frac{s_2}{s_1} = 0.2 \times \frac{0.20}{0.04} = 1.0\,\Omega/\text{phase}.$$
+Thus external resistance required per phase:
+$R_{\text{ext}} = 1.0 - 0.2 = 0.8\,\Omega/\text{phase}$.
 
-In the per-phase approximate equivalent circuit of an induction motor, the electromagnetic torque is given by:
-$$
-T_e = \frac{3}{\omega_s}\, \frac{V_1^2}{(R_1 + \frac{R_2'}{s})^2 + (X_1 + X_2')^2}\,\frac{R_2'}{s},
-$$
-where $\omega_s$ is the synchronous angular speed. For a given load torque, if the supply voltage and frequency remain constant, the rotor current $I_2'$ must remain essentially unchanged. Neglecting the stator resistance $R_1$ and the leakage reactances $(X_1 + X_2')$, the rotor current is approximately
-$$
-I_2' \propto \frac{1}{R_2'/s},
-$$
-so that constant current implies constant $R_2'/s$. Under this condition, the torque expression simplifies to
-$$
-T_e \approx \frac{3}{\omega_s}\, I_2'^{\,2}\,\frac{R_2'}{s},
-$$
-and for constant torque the ratio $\frac{R_2'}{s}$ must remain the same.
-
-Hence, for the same torque at the new slip:
-$$
-\frac{R_{2,\text{new}}'}{s_2} = \frac{R_{2,\text{old}}'}{s_1}.
-$$
-
-Given that the original rotor resistance per phase is $0.2\,\Omega$ (referred to rotor side), the required total rotor resistance becomes
-$$
-R_{2,\text{new}}' = R_{2,\text{old}}' \times \frac{s_2}{s_1}
-= 0.2 \times \frac{0.20}{0.04} = 1.0\;\Omega/\text{phase}.
-$$
-
-Since the motor already has a rotor resistance of $0.2\,\Omega/\text{phase}$, the additional external resistance that must be inserted in each phase of the rotor circuit is
-$$
-R_{\text{ext}} = 1.0 - 0.2 = 0.8\;\Omega/\text{phase}.
-$$
-
-This method of speed control by adding rotor resistance is a standard technique for slip-ring induction motors, though it sacrifices efficiency because of the additional $I^2R$ losses in the external resistors.
-
-![Per-phase equivalent circuit with external rotor resistance](./pyq-assets/textbook/108105131_p439_img-237_jpeg.png)
-*Figure: Equivalent circuit showing external rotor resistance added per phase.*
-
-> **Final answer:** $0.8\ \Omega$ per phase should be inserted in the rotor circuit.
+> **Final answer:** $0.8\,\Omega$ per phase should be inserted in the rotor circuit.
 
 
 ---
@@ -1562,102 +1035,29 @@ This method of speed control by adding rotor resistance is a standard technique 
 A 10 kW, 50 Hz, 4 pole, 3 phase induction motor has a rotor leakage impedance of (0.2 + j1.5) Ω per phase at standstill. When delivering full load torque the motor runs at 1440 rpm. Standstill rotor voltage = 60 V per phase. Determine the magnitude of emf injected at the rotor terminals for a speed of a) 1000 rpm b) 1800 rpm. Assume load torque remains constant. (05)
 
 ### Answer 24
-Synchronous speed $N_s = \dfrac{120f}{P} = \dfrac{120 \times 50}{4} = 1500$ rpm.
+**Concept:** For constant torque, rotor current remains unchanged. With slip-frequency injection, $E_{\text{inj}} = sE_2 - I_2(R_2 + j s X_{20})$.
+**Given:** 4-pole, 50 Hz, $R_2=0.2\,\Omega$, $X_{20}=1.5\,\Omega$ (standstill), full-load speed 1440 rpm, $E_2=60\,V/\text{phase}$ (standstill).
 
-Full-load slip $s_{\text{fl}} = \dfrac{N_s - N_r}{N_s} = \dfrac{1500 - 1440}{1500} = 0.04$.
+**Solution:**
+$N_s = \dfrac{120 \times 50}{4} = 1500$ rpm.
+Full-load slip $s_{\text{fl}} = \dfrac{1500-1440}{1500} = 0.04$.
 
-Given per-phase standstill rotor induced emf $E_{2,0} = 60$ V, rotor resistance $R_2 = 0.2\ \Omega$, and standstill leakage reactance $X_2 = 1.5\ \Omega$.
+Full-load rotor current (without injection):
+$$I_{2,\text{fl}} = \frac{s_{\text{fl}} E_2}{R_2 + j s_{\text{fl}} X_{20}} = \frac{0.04 \times 60}{0.2 + j(0.04\times1.5)} = \frac{2.4}{0.2+j0.06} = 11.49\angle{-16.7^\circ}\,A.$$
 
-At full load without injection, the rotor current per phase is:
+**(a) Speed = 1000 rpm:**
+$s = \dfrac{1500-1000}{1500} = \dfrac{1}{3} \approx 0.3333$.
+$sE_2 = 20\,V$; $Z_{2,s} = 0.2 + j(0.3333\times1.5) = 0.2+j0.5\,\Omega$.
+Voltage drop: $I_{2,\text{fl}} \cdot Z_{2,s} = 11.49\angle{-16.7^\circ} \times (0.2+j0.5) = 3.85 + j4.84\,V$ (magnitude $6.19\,V$, angle $51.5^\circ$).
+Then $E_{\text{inj}} = 20 - (3.85+j4.84) = 16.15 - j4.84\,V$, magnitude $|E_{\text{inj}}| = \sqrt{16.15^2+4.84^2} \approx 16.9\,V/\text{phase}$.
 
-$$
-I_{2,\text{fl}} = \frac{s_{\text{fl}} E_{2,0}}{R_2 + j s_{\text{fl}} X_2}
-= \frac{0.04 \times 60}{0.2 + j\,0.04 \times 1.5}
-= \frac{2.4}{0.2 + j0.06}
-= 11.49 \angle{-16.7^\circ}\ \text{A}.
-$$
+**(b) Speed = 1800 rpm:**
+$s = \dfrac{1500-1800}{1500} = -0.2$.
+$sE_2 = -12\,V$; $Z_{2,s} = 0.2 + j(-0.2\times1.5) = 0.2-j0.3\,\Omega$.
+Voltage drop: $I_{2,\text{fl}} \cdot Z_{2,s} = 11.49\angle{-16.7^\circ} \times (0.2-j0.3) = 1.21 - j3.96\,V$.
+$E_{\text{inj}} = -12 - (1.21 - j3.96) = -13.21 + j3.96\,V$, magnitude $|E_{\text{inj}}| = \sqrt{(-13.21)^2+3.96^2} \approx 13.8\,V/\text{phase}$.
 
-In rectangular form: $I_{2,\text{fl}} \approx 11.00 - j3.30$ A.
-
-For constant load torque, the rotor current must remain unchanged in both magnitude and phase. When an external emf $E_{\text{inj}}$ is injected into the rotor circuit at slip frequency, the generalized rotor circuit equation becomes:
-
-$$
-I_{2,\text{fl}} (R_2 + j s X_2) = s E_{2,0} - E_{\text{inj}}.
-$$
-
-Thus,
-
-$$
-E_{\text{inj}} = s E_{2,0} - I_{2,\text{fl}} (R_2 + j s X_2).
-$$
-
-Now compute for each speed.
-
-**(a) Speed = 1000 rpm**
-
-$$
-s = \frac{1500 - 1000}{1500} = \frac{1}{3} \approx 0.3333.
-$$
-
-Induced emf in the rotor: $s E_{2,0} = 0.3333 \times 60 = 20$ V.
-
-Rotor impedance at this slip: $R_2 + j s X_2 = 0.2 + j(0.3333 \times 1.5) = 0.2 + j0.5\ \Omega$.
-
-Voltage drop across rotor impedance:
-$$
-\begin{aligned}
-I_{2,\text{fl}}(R_2 + j s X_2) &= (11.00 - j3.30)(0.2 + j0.5) \\
-&= 11.00 \times 0.2 - (-3.30) \times 0.5 + j\bigl(11.00 \times 0.5 + (-3.30) \times 0.2\bigr) \\
-&= 2.2 + 1.65 + j(5.5 - 0.66) \\
-&= 3.85 + j4.84\ \text{V}.
-\end{aligned}
-$$
-
-Therefore,
-$$
-E_{\text{inj}} = 20 - (3.85 + j4.84) = 16.15 - j4.84\ \text{V}.
-$$
-
-Magnitude:
-$$
-|E_{\text{inj}}| = \sqrt{16.15^2 + 4.84^2} \approx \sqrt{260.82 + 23.43} = \sqrt{284.25} \approx 16.86\ \text{V/phase}.
-$$
-
-This injected emf opposes the rotor-induced emf, reducing the speed below the full-load value.
-
-**(b) Speed = 1800 rpm**
-
-$$
-s = \frac{1500 - 1800}{1500} = -0.2.
-$$
-
-Induced emf: $s E_{2,0} = -0.2 \times 60 = -12$ V.
-
-Rotor impedance: $R_2 + j s X_2 = 0.2 + j(-0.2 \times 1.5) = 0.2 - j0.3\ \Omega$.
-
-Voltage drop:
-$$
-\begin{aligned}
-I_{2,\text{fl}}(R_2 + j s X_2) &= (11.00 - j3.30)(0.2 - j0.3) \\
-&= 11.00 \times 0.2 - (-3.30) \times (-0.3) + j\bigl(11.00 \times (-0.3) + (-3.30) \times 0.2\bigr) \\
-&= 2.2 - 0.99 + j(-3.3 - 0.66) \\
-&= 1.21 - j3.96\ \text{V}.
-\end{aligned}
-$$
-
-Thus,
-$$
-E_{\text{inj}} = -12 - (1.21 - j3.96) = -13.21 + j3.96\ \text{V}.
-$$
-
-Magnitude:
-$$
-|E_{\text{inj}}| = \sqrt{(-13.21)^2 + 3.96^2} \approx \sqrt{174.50 + 15.68} = \sqrt{190.18} \approx 13.79\ \text{V/phase}.
-$$
-
-The negative slip and the phase of injected emf indicate generating (braking) operation.
-
-> **Final answer:** (a) $|E_{\text{inj}}| \approx 16.9$ V/phase; (b) $|E_{\text{inj}}| \approx 13.8$ V/phase.
+> **Final answer:** (a) $16.9\,V/\text{phase}$; (b) $13.8\,V/\text{phase}$.
 
 
 ---
@@ -1668,41 +1068,32 @@ The negative slip and the phase of injected emf indicate generating (braking) op
 Explain the principle of rotor emf injection method of controlling speed of slip ring induction motor (03)
 
 ### Answer 25
-In a three-phase slip-ring (wound-rotor) induction motor, the rotor winding terminals are brought out through slip rings and brushes, allowing external circuits to be connected to the rotor. The **rotor emf injection method** of speed control uses this access to inject an external voltage of appropriate magnitude and frequency into the rotor circuit, thereby altering the effective rotor voltage and, consequently, the motor speed.
+**Concept:** In a slip-ring induction motor, the rotor windings are accessible via slip rings. The rotor emf injection method applies an external voltage in series with the rotor circuit to control the net rotor emf, thereby varying speed.
 
-**Principle:** When the motor runs at a slip $s$, the induced emf per phase in the rotor is $sE_2$, where $E_2$ is the standstill rotor emf (referred to stator). This emf has a frequency $sf$ (slip frequency). The rotor current is given by:
-
+**Principle:** At slip $s$, the standstill rotor emf $E_2$ induces $sE_2$ at slip frequency $sf$. The rotor current per phase is
 $$
-I_2 = \frac{sE_2}{Z_2} = \frac{sE_2}{\sqrt{r_2^2 + (sx_2)^2}}
+I_{2} = \frac{sE_{2}}{Z_{2}} = \frac{sE_{2}}{\sqrt{R_{2}^{2} + (sX_{2})^{2}}}.
 $$
-
-If an external voltage $E_{\text{inj}}$ at the same slip frequency is injected into the rotor circuit in series with the rotor winding, the net emf becomes the phasor difference (or sum) of $sE_2$ and $E_{\text{inj}}$. The rotor current becomes:
-
+If an external voltage $E_{\text{inj}}$ of same slip frequency is injected in series with the rotor winding, the net emf becomes $(sE_{2} - E_{\text{inj}})$ (subtraction for opposition, addition for aiding). The rotor current becomes
 $$
-I_2 = \frac{sE_2 - E_{\text{inj}}}{Z_2}
+I_{2} = \frac{sE_{2} - E_{\text{inj}}}{Z_{2}}.
 $$
 
-where subtraction assumes $E_{\text{inj}}$ opposes $sE_2$. If $E_{\text{inj}}$ is applied in phase opposition, the net voltage decreases; if in phase, it aids.
+**Effect on speed:** For a given load torque, the electromagnetic torque $T \propto I_{2}^{2}/s$ remains nearly constant. Changing $E_{\text{inj}}$ alters $I_{2}$; to restore torque, slip adjusts automatically.
 
-**Effect on speed:** For a given load torque, the electromagnetic torque developed must remain constant. The torque is proportional to the air-gap power, which equals the rotor copper loss $3I_2^2 r_2$ divided by slip $s$. For a given torque, the quantity $I_2^2/s$ must remain approximately constant. However, in the normal operating region, slip is small, and small changes in slip have a strong effect on $I_2$; therefore, to maintain the required torque, the rotor current $I_2$ is forced to stay within a narrow range. Hence, any change in $E_{\text{inj}}$ must be compensated by a corresponding change in slip such that the net rotor voltage $(sE_2 - E_{\text{inj}})$ restores $I_2$ to its required level.
+- **Opposing injection** ($E_{\text{inj}}$ opposes $sE_{2}$): Net emf decreases → $I_{2}$ falls → motor slows down (slip $s$ increases) until $sE_{2}$ rises enough to re-establish the required current.
+- **Aiding injection** ($E_{\text{inj}}$ aids $sE_{2}$): Net emf increases → $I_{2}$ rises → motor accelerates (slip $s$ decreases) until equilibrium is restored.
 
-- If an opposing $E_{\text{inj}}$ is injected, the net emf drops, so the rotor current decreases. The motor then slows down (slip $s$ increases) until $sE_2$ rises sufficiently to restore the current.
-- If an aiding voltage is injected, the net emf increases, the rotor current rises, and the motor accelerates (slip decreases) until a new equilibrium is reached.
+**Speed range:** By controlling magnitude and phase of $E_{\text{inj}}$,
+- *Sub-synchronous speeds* (below synchronous): $E_{\text{inj}}$ opposes $sE_{2}$.
+- *Super-synchronous speeds* (above synchronous): $E_{\text{inj}}$ aids $sE_{2}$.
 
-Thus, by controlling the magnitude and phase of the injected voltage, the slip (and hence the motor speed) can be varied smoothly over a wide range, both below and above the synchronous speed:
-- **Sub-synchronous speeds:** $E_{\text{inj}}$ opposes $sE_2$; motor runs slower.
-- **Super-synchronous speeds:** $E_{\text{inj}}$ aids $sE_2$; motor runs faster than synchronous speed.
+![Per-phase equivalent circuit](https://commons.wikimedia.org/wiki/Special:Redirect/file/Induction-Motor-Equiv-Circuit.svg)
+*Figure: Per-phase equivalent circuit. In rotor emf injection, an additional voltage source is inserted in series with the rotor branch.*
 
-![Per-phase equivalent circuit of a three-phase induction motor](./pyq-assets/textbook/108105131_p401_img-220_jpeg.png)
+**Practical note:** The injected voltage must be of slip frequency, usually generated by power-electronic converters (e.g., Kramer, Scherbius systems). These schemes allow smooth, wide-range speed control and recovery of slip power, giving high overall efficiency.
 
-*Figure: Standard per-phase equivalent circuit. In the emf injection method, an additional voltage source is introduced in series with the rotor branch (between the slip rings) to control the net rotor voltage.*
-
-**Practical implementation and advantages:** The injected voltage must have exactly the same frequency as the rotor slip frequency, so it is typically generated by power electronic converters or by an auxiliary machine. In classic Kramer or Scherbius drives, the slip-frequency rotor power is converted (e.g., by a diode rectifier and an inverter) and either fed back to the mains or used to drive a helper motor. This makes the method highly efficient because the slip power is recovered rather than dissipated as heat (as in rotor resistance control). The scheme provides:
-- Smooth, stepless speed control over a wide range.
-- Operation at both sub- and super-synchronous speeds.
-- High efficiency due to slip power recovery.
-
-> **Final answer:** Rotor emf injection controls the speed of a slip-ring induction motor by altering the net rotor emf. Opposing injection reduces speed (increases slip), while aiding injection increases speed (decreases slip). The method allows sub- and super-synchronous operation and can recover slip power, yielding high efficiency.
+> **Final answer:** Speed control by rotor emf injection relies on altering the net rotor voltage. Opposing injection lowers speed (higher slip); aiding injection raises speed (lower slip). The method enables sub- and super-synchronous operation and, with slip-power recovery, achieves high efficiency.
 
 
 ---
@@ -1713,137 +1104,106 @@ Thus, by controlling the magnitude and phase of the injected voltage, the slip (
 A 3 phase, 440 V, 50 Hz, 6 pole star connected induction motor has the following parameters: Stator impedance = (0.3 + j 0.433) Ω per phase. Rotor impedance = (0.08 + j 0.16) Ω per phase at stand still condition. Stator to rotor turns ratio = 1.75. Shunt resistance representing rotational loss = 54 Ω per phase. Magnetising reactance = j 8.3 Ω per phase. Use approximate equivalent circuit to determine the following when it draws a current of 65 A, 0.8 pf lagging at rated voltage: (i) Exciting branch current (ii) Equivalent rotor current (iii) Rotational loss (sum of core and mechanical loss) (iv) stator and rotor copper loss (v) shaft output (vi) rotor speed 6
 
 ### Answer 26
-Given: 3-phase, 440 V, 50 Hz, 6-pole, star-connected induction motor.
+**Given:** 3-phase, 440 V, 50 Hz, 6-pole, star-connected. Per-phase data at 50 Hz:
 
-**Phase voltage**:  
-$V_{ph} = \frac{440}{\sqrt{3}} = 254.0\ \text{V}$.
+- Stator impedance $(R_1 + jX_1) = 0.3 + j0.433\; \Omega$
+- Rotor standstill impedance $(R_2 + jX_2) = 0.08 + j0.16\; \Omega$
+- Turns ratio $a = 1.75$
+- Shunt resistance (rotational loss) $R_c = 54\; \Omega$
+- Magnetising reactance $X_m = j8.3\; \Omega$
 
-**Stator current**:  
-$I_1 = 65\ \text{A}$ at $0.8$ pf lagging  
-$\Rightarrow I_1 = 65 \angle{-\cos^{-1}0.8} = 65 \angle{-36.87^\circ} = 52.0 - j39.0\ \text{A}$.
+Motor draws $I_1 = 65\angle -36.87^\circ\; \text{A}$ (0.8 pf lag) at rated voltage. Phase voltage
+$$
+V_{\text{ph}} = \frac{440}{\sqrt{3}} = 254.0\; \text{V}.
+$$
 
-**Stator impedance**: $Z_1 = R_1 + jX_1 = 0.3 + j0.433\ \Omega$.
+Refer rotor parameters to stator:
+$$
+R_2' = a^2 R_2 = 1.75^2 \times 0.08 = 0.245\; \Omega,\quad
+X_2' = a^2 X_2 = 1.75^2 \times 0.16 = 0.49\; \Omega.
+$$
 
-**Refer rotor impedance**:  
-Turns ratio $a = 1.75$  
-$R_2' = a^2 R_2 = (1.75)^2 \times 0.08 = 0.245\ \Omega$  
-$X_2' = a^2 X_2 = (1.75)^2 \times 0.16 = 0.49\ \Omega$.
-
-**Air-gap voltage $E_g$**:  
-In the exact equivalent circuit the shunt branch (magnetising and rotational loss) is placed after the stator impedance, so we first find the voltage across the air-gap:
+**Air-gap voltage** (drop across stator impedance):
 $$
 \begin{aligned}
-E_g &= V_{ph} - I_1 Z_1 \\
+E_g &= V_{\text{ph}} - I_1 Z_1 \\
 &= 254 - (52.0 - j39.0)(0.3 + j0.433) \\
-&= 254 - \bigl[(52\!\times\!0.3 - (-39)\!\times\!0.433) + j(52\!\times\!0.433 + (-39)\!\times\!0.3)\bigr] \\
-&= 254 - (32.49 + j10.82) \\
-&= 221.51 - j10.82\ \text{V} \\
-|E_g| &\approx 221.8\ \text{V},\ \angle \approx -2.8^\circ .
+&= 221.51 - j10.82\; \text{V} \quad \bigl(|E_g| = 221.8\; \text{V} \bigr).
 \end{aligned}
 $$
 
-The per-phase equivalent circuit is shown below:
-![Per-phase equivalent circuit](./pyq-assets/textbook/108105131_p402_img-221_jpeg.png)
-<p align="center"><i>Per-phase equivalent circuit of the induction motor</i></p>
+![Induction motor per-phase equivalent circuit](https://commons.wikimedia.org/wiki/Special:Redirect/file/Induction-Motor-Equiv-Circuit.svg)
+*Figure: Standard T-equivalent circuit used for the calculations.*
 
----
-### (i) Exciting branch current
-The exciting branch consists of the shunt resistance $R_c=54\ \Omega$ (representing rotational loss) and the magnetising reactance $X_m=8.3\ \Omega$ in parallel.  
-Core-loss component:  
-$I_c = \dfrac{E_g}{R_c} = \dfrac{221.8\angle{-2.8^\circ}}{54} \approx 4.11\angle{-2.8^\circ}\ \text{A}$  
-$= 4.10 - j0.20\ \text{A}$.
-
-Magnetising component:  
-$I_m = \dfrac{E_g}{jX_m} = \dfrac{221.8\angle{-2.8^\circ}}{8.3\angle{90^\circ}} \approx 26.72\angle{-92.8^\circ}\ \text{A}$  
-$= -1.30 - j26.69\ \text{A}$.
-
-Total exciting current:  
-$I_0 = I_c + I_m = (4.10 - j0.20) + (-1.30 - j26.69) = 2.80 - j26.89\ \text{A}$.  
-Magnitude $|I_0| \approx \sqrt{2.80^2 + 26.89^2} \approx 27.0\ \text{A}$.
-
----
-### (ii) Equivalent rotor current (referred to stator)
-$$
-I_2' = I_1 - I_0 = (52.0 - j39.0) - (2.80 - j26.89) = 49.20 - j12.11\ \text{A}
-$$
-$$
-|I_2'| \approx \sqrt{49.2^2 + 12.11^2} \approx 50.7\ \text{A}.
-$$
-
----
-### (iii) Rotational loss
-The rotational loss (sum of core and mechanical losses) is the power dissipated in the shunt resistor $R_c$:
-$$
-P_{\text{rot}} = 3\,\frac{E_g^2}{R_c} = 3 \times \frac{(221.8)^2}{54} \approx 3 \times 910.8 = 2732\ \text{W} \approx 2.73\ \text{kW}.
-$$
-
----
-### (iv) Stator and rotor copper loss
-**Stator copper loss**:  
-$$
-P_{\text{scu}} = 3\,I_1^2 R_1 = 3 \times 65^2 \times 0.3 = 3 \times 4225 \times 0.3 = 3802.5\ \text{W} \approx 3.80\ \text{kW}.
-$$
-
-**Rotor copper loss**:  
-$$
-P_{\text{rcu}} = 3\,I_2'^{\,2} R_2' = 3 \times (50.67)^2 \times 0.245 = 3 \times 2567.4 \times 0.245 \approx 1887\ \text{W} \approx 1.89\ \text{kW}.
-$$
-
----
-### (v) Shaft output power
-First find the slip $s$ from the real part of the rotor branch impedance.  
-For the rotor circuit, $E_g = I_2'\left(\dfrac{R_2'}{s} + jX_2'\right)$, hence $\dfrac{R_2'}{s} = \operatorname{Re}\!\left(\dfrac{E_g}{I_2'}\right)$.
-
-Compute $\dfrac{E_g}{I_2'}$ using the complex values:
+**(i) Exciting branch current**
 $$
 \begin{aligned}
-E_g &= 221.51 - j10.82 \\
-I_2' &= 49.20 - j12.11 \\
-|I_2'|^2 &= 49.20^2 + 12.11^2 = 2567.3 \\
-\frac{E_g}{I_2'} &= \frac{(221.51 - j10.82)(49.20 + j12.11)}{2567.3} \\
-&= \frac{(221.51\!\times\!49.20 + 10.82\!\times\!12.11) + j(221.51\!\times\!12.11 - 10.82\!\times\!49.20)}{2567.3} \\
-&\approx \frac{11029.4 + j2150.3}{2567.3} = 4.297 + j0.838 .
+I_c &= \frac{E_g}{R_c} = \frac{221.8\angle -2.8^\circ}{54} = 4.11\angle -2.8^\circ \; \text{A} = 4.10 - j0.20\; \text{A},\\
+I_m &= \frac{E_g}{jX_m} = \frac{221.8\angle -2.8^\circ}{8.3\angle 90^\circ} = 26.72\angle -92.8^\circ \; \text{A} = -1.30 - j26.69\; \text{A},\\
+I_0 &= I_c + I_m = 2.80 - j26.89\; \text{A},\quad |I_0| \approx 27.0\; \text{A}.
 \end{aligned}
 $$
-Therefore $\dfrac{R_2'}{s} = 4.297\ \Omega$ and  
+
+**(ii) Rotor current referred to stator**
 $$
-s = \frac{R_2'}{4.297} = \frac{0.245}{4.297} = 0.0570 .
+I_2' = I_1 - I_0 = (52.0 - j39.0) - (2.80 - j26.89) = 49.20 - j12.11\; \text{A},\quad |I_2'| \approx 50.7\; \text{A}.
 $$
 
-**Air-gap power**:  
+**(iii) Rotational loss**
 $$
-P_{\text{ag}} = \frac{P_{\text{rcu}}}{s} = \frac{1887}{0.0570} \approx 33.1\ \text{kW}.
-$$
-(Also $P_{\text{ag}} = 3\,I_2'^{\,2}\,\dfrac{R_2'}{s} = 3 \times 2567.4 \times 4.297 \approx 33.1\ \text{kW}$.)
-
-**Mechanical power developed**:  
-$$
-P_{\text{mech}} = P_{\text{ag}} - P_{\text{rcu}} \approx 33.1 - 1.89 = 31.2\ \text{kW}.
+P_{\text{rot}} = 3\,\frac{E_g^2}{R_c} = 3 \times \frac{221.8^2}{54} \approx 2732\; \text{W} = 2.73\; \text{kW}.
 $$
 
-**Shaft output**:  
+**(iv) Copper losses**
+- Stator: $P_{\text{scu}} = 3 I_1^2 R_1 = 3 \times 65^2 \times 0.3 = 3802.5\; \text{W} \approx 3.80\; \text{kW}.$
+- To find rotor copper loss, first determine slip $s$. From $E_g = I_2'\bigl(\frac{R_2'}{s} + jX_2'\bigr)$,
 $$
-P_{\text{out}} = P_{\text{mech}} - P_{\text{rot}} \approx 31.2 - 2.73 = 28.5\ \text{kW}.
+\frac{R_2'}{s} = \operatorname{Re}\!\left(\frac{E_g}{I_2'}\right).
+$$
+Compute:
+$$
+\frac{E_g}{I_2'} = \frac{221.51 - j10.82}{49.20 - j12.11} = 4.297 + j0.838\quad\Rightarrow\quad \frac{R_2'}{s} = 4.297\; \Omega.
+$$
+Hence
+$$
+s = \frac{R_2'}{4.297} = \frac{0.245}{4.297} = 0.0570.
+$$
+Air-gap power:
+$$
+P_{\text{ag}} = 3 I_2'^{\,2}\,\frac{R_2'}{s} = 3 \times (50.7)^2 \times 4.297 \approx 33.1\; \text{kW}.
+$$
+Rotor copper loss:
+$$
+P_{\text{rcu}} = s P_{\text{ag}} = 0.057 \times 33.1 \approx 1.89\; \text{kW}.
 $$
 
----
-### (vi) Rotor speed
-Synchronous speed for a 6-pole, 50 Hz motor:  
+**(v) Shaft output**
+Mechanical power developed:
 $$
-N_s = \frac{120f}{P} = \frac{120 \times 50}{6} = 1000\ \text{rpm}.
+P_{\text{mech}} = P_{\text{ag}} - P_{\text{rcu}} \approx 33.1 - 1.89 = 31.2\; \text{kW}.
 $$
-Rotor speed:  
+Shaft output (after rotational losses):
 $$
-N = N_s(1 - s) = 1000 \times (1 - 0.0570) = 943\ \text{rpm}.
+P_{\text{out}} = P_{\text{mech}} - P_{\text{rot}} = 31.2 - 2.73 = 28.5\; \text{kW}.
 $$
 
-> **Final answer:**  
-> (i) Exciting branch current $I_0 \approx 27.0\ \text{A}$ ($2.80 - j26.9$ A).  
-> (ii) Rotor current $I_2' \approx 50.7\ \text{A}$.  
-> (iii) Rotational loss $= 2.73\ \text{kW}$.  
-> (iv) Stator Cu loss $= 3.80\ \text{kW}$, rotor Cu loss $= 1.89\ \text{kW}$.  
-> (v) Shaft output $= 28.5\ \text{kW}$.  
-> (vi) Rotor speed $= 943\ \text{rpm}$.
+**(vi) Rotor speed**
+Synchronous speed:
+$$
+N_s = \frac{120f}{P} = \frac{120 \times 50}{6} = 1000\; \text{rpm}.
+$$
+Rotor speed:
+$$
+N = N_s(1 - s) = 1000 \times (1 - 0.0570) = 943\; \text{rpm}.
+$$
+
+> **Final answer:**
+> (i) $I_0 \approx 27.0\; \text{A}$ ($2.80 - j26.9$ A).
+> (ii) $I_2' \approx 50.7\; \text{A}$.
+> (iii) Rotational loss $= 2.73\; \text{kW}$.
+> (iv) Stator Cu loss $= 3.80\; \text{kW}$, rotor Cu loss $= 1.89\; \text{kW}$.
+> (v) Shaft output $= 28.5\; \text{kW}$.
+> (vi) Rotor speed $= 943\; \text{rpm}$.
 
 
 ---
@@ -1854,127 +1214,80 @@ $$
 A 3 phase, 50 Hz, 12 pole, 420 V Δ connected induction motor has the 6M following equivalent circuit parameters: Stator impedance = (2.95 + j 6.82) Ω per phase; Stand still rotor impedance referred to stator = (2.08 + j 4.11) Ω per phase. When running at 4 % slip, determine: a) Electrical input to the motor b) Stator and Rotor copper losses c) Useful torque if rotational losses are 750 W. Neglect exciting branch admittance.
 
 ### Answer 27
-![Per-phase equivalent circuit of induction motor](./pyq-assets/textbook/108105131_p401_img-220_jpeg.png)
-*Figure: Equivalent circuit per phase (magnetizing branch neglected in this analysis).*
-
-**Solution:**
-
-Given: 3-phase, 50 Hz, 12 poles, 420 V (line, Δ-connected), slip s = 4% = 0.04.
-
-Synchronous speed:
+**Given:** 3-phase, 50 Hz, 12-pole, 420 V (Δ-connected). Per-phase parameters (stator and rotor referred to stator):
 $$
-N_s = \frac{120f}{P} = \frac{120 \times 50}{12} = 500 \text{ rpm}.
+R_1 = 2.95\;\Omega,\; X_1 = 6.82\;\Omega;\quad
+R_2' = 2.08\;\Omega,\; X_2' = 4.11\;\Omega \;\text{(standstill)}.
+$$
+Slip $s = 4\% = 0.04$. Rotational losses $P_{\text{rot}} = 750\; \text{W}$. Exciting branch neglected.
+
+**Synchronous speed:**
+$$
+N_s = \frac{120f}{P} = \frac{120 \times 50}{12} = 500\; \text{rpm}.
 $$
 Rotor speed:
 $$
-N = N_s(1-s) = 500 \times (1-0.04) = 480 \text{ rpm}.
-$$
-Angular speed:
-$$
-\omega_m = \frac{2\pi N}{60} = \frac{2\pi \times 480}{60} = 50.265 \text{ rad/s}.
+N = N_s(1-s) = 500 \times 0.96 = 480\; \text{rpm},\quad
+\omega_m = \frac{2\pi N}{60} = \frac{2\pi \times 480}{60} = 50.27\; \text{rad/s}.
 $$
 
-The per-phase equivalent circuit parameters (stator and rotor referred to stator) are:
+**Per-phase equivalent circuit (series):**
+Rotor impedance at slip $s$:
 $$
-Z_1 = R_1 + jX_1 = 2.95 + j6.82 \ \Omega,
+Z_{2,\text{slip}}' = \frac{R_2'}{s} + jX_2' = \frac{2.08}{0.04} + j4.11 = 52 + j4.11\;\Omega.
 $$
+Total series impedance:
 $$
-Z_2' = R_2' + jX_2' = 2.08 + j4.11 \ \Omega \quad (\text{standstill}).
-$$
-
-At slip $s = 0.04$, the rotor impedance referred to stator becomes:
-$$
-Z_{2,\text{slip}}' = \frac{R_2'}{s} + jX_2' = \frac{2.08}{0.04} + j4.11 = 52 + j4.11 \ \Omega.
+Z_{\text{tot}} = Z_1 + Z_{2,\text{slip}}' = (2.95 + 52) + j(6.82 + 4.11) = 54.95 + j10.93\;\Omega,\quad |Z_{\text{tot}}| = \sqrt{54.95^2 + 10.93^2} \approx 56.03\;\Omega.
 $$
 
-Since the exciting branch is neglected, the total series impedance per phase is:
-$$
-Z_{\text{tot}} = Z_1 + Z_{2,\text{slip}}' = (2.95 + 52) + j(6.82 + 4.11) = 54.95 + j10.93 \ \Omega.
-$$
-Magnitude:
-$$
-|Z_{\text{tot}}| = \sqrt{54.95^2 + 10.93^2} = \sqrt{3138.97} \approx 56.03 \ \Omega.
-$$
-
-For a Δ-connected motor, phase voltage equals line voltage:
-$$
-V_{\text{ph}} = V_{\text{line}} = 420 \text{ V}.
-$$
+For Δ-connection, phase voltage equals line voltage: $V_{\text{ph}} = 420\; \text{V}$.
 Stator phase current:
 $$
-I_{\text{ph}} = \frac{V_{\text{ph}}}{|Z_{\text{tot}}|} = \frac{420}{56.03} = 7.496 \text{ A}.
+I = \frac{V_{\text{ph}}}{|Z_{\text{tot}}|} = \frac{420}{56.03} \approx 7.496\; \text{A}.
 $$
-The power factor angle $\phi$ is determined by the impedance:
+Power factor:
 $$
-\cos\phi = \frac{R_{\text{tot}}}{|Z_{\text{tot}}|} = \frac{54.95}{56.03} = 0.981 \quad (\text{lagging, since } X>0).
+\cos\phi = \frac{R_{\text{tot}}}{|Z_{\text{tot}}|} = \frac{54.95}{56.03} \approx 0.981\; \text{lagging}.
 $$
 
 **(a) Electrical input power**
-
-The total three-phase input power is:
 $$
-\begin{aligned}
-P_{\text{in}} &= 3\, V_{\text{ph}} I_{\text{ph}} \cos\phi \\
-&= 3 \times 420 \times 7.496 \times 0.981 \\
-&\approx 9264 \ \text{W} = \boxed{9.264 \ \text{kW}}.
-\end{aligned}
+P_{\text{in}} = 3\, V_{\text{ph}} I \cos\phi = 3 \times 420 \times 7.496 \times 0.981 \approx 9264\; \text{W} \approx 9.26\; \text{kW}.
 $$
-(Equivalently, using line quantities: $I_{\text{line}} = \sqrt{3} I_{\text{ph}} = 12.98 \text{ A}$, $P_{\text{in}} = \sqrt{3} \times 420 \times 12.98 \times 0.981 \approx 9.264 \text{ kW}$.)
 
 **(b) Copper losses**
-
 Stator copper loss:
 $$
-\begin{aligned}
-P_{\text{scu}} &= 3\, I_{\text{ph}}^2 R_1 \\
-&= 3 \times (7.496)^2 \times 2.95 \\
-&= 3 \times 56.19 \times 2.95 \approx 497.3 \ \text{W} \approx \boxed{497 \ \text{W}}.
-\end{aligned}
+P_{\text{scu}} = 3 I^2 R_1 = 3 \times 7.496^2 \times 2.95 \approx 497\; \text{W}.
 $$
-
-Air-gap power (the power crossing the air gap from stator to rotor):
+Air-gap power:
 $$
-\begin{aligned}
-P_{\text{ag}} &= 3\, I_{\text{ph}}^2 \frac{R_2'}{s} \\
-&= 3 \times (7.496)^2 \times 52 \\
-&= 3 \times 56.19 \times 52 \approx 8765.6 \ \text{W} \approx 8.766 \ \text{kW}.
-\end{aligned}
+P_{\text{ag}} = 3 I^2 \frac{R_2'}{s} = 3 \times 7.496^2 \times 52 \approx 8766\; \text{W}.
 $$
-
 Rotor copper loss:
 $$
-\begin{aligned}
-P_{\text{rcu}} &= s \cdot P_{\text{ag}} = 0.04 \times 8765.6 \approx 350.6 \ \text{W} \approx \boxed{351 \ \text{W}}.
-\end{aligned}
-$$
-(Alternatively, $P_{\text{rcu}} = 3 I_{\text{ph}}^2 R_2'$; but the $s P_{\text{ag}}$ method is more direct.)
-
-**(c) Useful (shaft) torque**
-
-Mechanical power developed (before rotational losses):
-$$
-\begin{aligned}
-P_{\text{mech}} &= P_{\text{ag}} - P_{\text{rcu}} = 8765.6 - 350.6 = 8415 \ \text{W} = 8.415 \ \text{kW}. \\
-\text{or, } P_{\text{mech}} &= (1-s) P_{\text{ag}} = 0.96 \times 8765.6 = 8415 \ \text{W}.
-\end{aligned}
+P_{\text{rcu}} = s\,P_{\text{ag}} = 0.04 \times 8766 \approx 351\; \text{W}.
 $$
 
-Shaft power output (after deducting rotational losses $P_{\text{rot}} = 750 \text{ W}$):
+**(c) Useful shaft torque**
+Mechanical power developed:
 $$
-P_{\text{out}} = P_{\text{mech}} - P_{\text{rot}} = 8415 - 750 = 7665 \ \text{W}.
+P_{\text{mech}} = P_{\text{ag}} - P_{\text{rcu}} = 8766 - 351 = 8415\; \text{W}\quad (\text{or } (1-s)P_{\text{ag}}).
+$$
+Shaft output:
+$$
+P_{\text{out}} = P_{\text{mech}} - P_{\text{rot}} = 8415 - 750 = 7665\; \text{W}.
+$$
+Useful torque:
+$$
+T_{\text{shaft}} = \frac{P_{\text{out}}}{\omega_m} = \frac{7665}{50.27} \approx 152.5\; \text{N}\cdot\text{m}.
 $$
 
-Useful (shaft) torque:
-$$
-T_{\text{shaft}} = \frac{P_{\text{out}}}{\omega_m} = \frac{7665}{50.265} \approx 152.5 \ \text{N·m}.
-$$
-
-Thus the requested quantities are:
-- (a) Electrical input: $9.264 \ \text{kW}$
-- (b) Stator Cu loss: $497 \ \text{W}$, Rotor Cu loss: $351 \ \text{W}$
-- (c) Useful torque: $152.5 \ \text{N·m}$.
-
-> **Final answer:** (a) Electrical input $= 9.26\ \text{kW}$; (b) Stator Cu loss $= 497\ \text{W}$, rotor Cu loss $= 351\ \text{W}$; (c) Useful torque $= 152.5\ \text{N·m}$.
+> **Final answer:**
+> (a) Electrical input $= 9.26\; \text{kW}$.
+> (b) Stator Cu loss $= 497\; \text{W}$, rotor Cu loss $= 351\; \text{W}$.
+> (c) Useful torque $= 152.5\; \text{N}\cdot\text{m}$.
 
 
 ---
@@ -1985,104 +1298,68 @@ Thus the requested quantities are:
 For a 6 pole 3 phase Induction motor has mechanical losses total 2 HP at a speed of 950 RPM on 550 V, 50 Hz mains. The power factor is 0.88. Calculate for this load (i) The rotor copper loss (ii) The total input if the stator losses are 2000 W (iii) The efficiency (iv) The line current (04)
 
 ### Answer 28
-**Given data:**
+Given:
 - Number of poles, $P = 6$
-- Supply frequency, $f = 50\,\text{Hz}$
-- Supply voltage, $V_L = 550\,\text{V}$ (line-to-line)
-- Full-load speed, $N = 950\,\text{rpm}$
+- Frequency, $f = 50\ \text{Hz}$
+- Supply voltage (line), $V_L = 550\ \text{V}$
+- Full-load speed, $N_r = 950\ \text{rpm}$
 - Power factor, $\cos\phi = 0.88$
-- Stator losses, $P_{\text{stator loss}} = 2000\,\text{W}$
-- Mechanical losses, $P_{\text{mech loss}} = 2\,\text{HP} = 2 \times 746 = 1492\,\text{W}$
+- Stator losses, $P_{\text{stator loss}} = 2000\ \text{W}$
+- Mechanical losses, $P_{\text{mech loss}} = 2\ \text{HP} = 2 \times 746 = 1492\ \text{W}$
 
-**1. Synchronous speed and slip**
-
-$$
-N_s = \frac{120f}{P} = \frac{120 \times 50}{6} = 1000\,\text{rpm}
-$$
-
-$$
-s = \frac{N_s - N}{N_s} = \frac{1000 - 950}{1000} = 0.05
-$$
-
-**2. Power flow relationships**
-
-The power flow in an induction motor can be represented as shown below.
-
-![Power flow diagram](./pyq-assets/textbook/108105131_p497_img-260_jpeg.png)
-<p style="text-align:center; font-style:italic;">Figure: Typical power flow diagram of a three-phase induction motor. Here the rotational loss (core + mechanical) is taken at the input side; the air-gap power $P_{ag}$ leads to rotor copper loss $sP_{ag}$ and net mechanical power $P_{\text{net mech}}$.</p>
-
-Using the standard definitions (with stator loss including both copper and core losses):
-
-$$
-P_{\text{in}} = \text{input electrical power}
-$$
-
-$$
-P_{ag} = P_{\text{in}} - P_{\text{stator loss}} \quad (\text{air-gap power})
-$$
-
-$$
-P_{rcu} = s\,P_{ag} \quad (\text{rotor copper loss})
-$$
-
-$$
-P_{\text{mech}} = (1-s)P_{ag} = P_{ag} - P_{rcu} \quad (\text{mechanical power developed})
-$$
-
-$$
-P_{\text{out}} = P_{\text{mech}} - P_{\text{mech loss}} \quad (\text{shaft output power})
-$$
-
-From these,
-
-$$
-P_{rcu} = \frac{s}{1-s}\,P_{\text{mech}} = \frac{s}{1-s}\,(P_{\text{out}} + P_{\text{mech loss}})
-$$
-
-$$
-P_{\text{in}} = P_{ag} + P_{\text{stator loss}} = \frac{P_{rcu}}{s} + P_{\text{stator loss}}
-$$
-
-**3. Why the problem is indeterminate**
-
-Equations (1)-(5) contain two unknowns: either the shaft output $P_{\text{out}}$ or the mechanical power developed $P_{\text{mech}}$ (or the input power $P_{\text{in}}$) must be specified to compute the remaining quantities. The given data only provide the mechanical *losses*, not the useful output. Therefore the rotor copper loss, total input, efficiency) and line current cannot be evaluated numerically.
-
-**4. Expressions for the required quantities (once $P_{\text{out}}$ is known)**
-
-Let the unknown shaft power be $P_{\text{out}}$ (in watts). Then:
+**Step 1: Synchronous speed and slip**
 
 $$
 \begin{aligned}
-P_{rcu} &= \frac{s}{1-s}\,(P_{\text{out}} + 1492) = \frac{0.05}{0.95}\,(P_{\text{out}} + 1492) \\
-P_{\text{in}} &= \frac{P_{rcu}}{s} + 2000 = \frac{P_{rcu}}{0.05} + 2000 \\
-\eta &= \frac{P_{\text{out}}}{P_{\text{in}}} \\
-I_L &= \frac{P_{\text{in}}}{\sqrt{3}\,V_L\,\cos\phi} = \frac{P_{\text{in}}}{\sqrt{3}\times 550 \times 0.88}
+N_s &= \frac{120f}{P} = \frac{120 \times 50}{6} = 1000\ \text{rpm},\\
+s &= \frac{N_s - N_r}{N_s} = \frac{1000 - 950}{1000} = 0.05.
 \end{aligned}
 $$
 
-**5. Illustrative example (for completeness)**
+**Step 2: Power-flow relations**
 
-If the motor were delivering, say, $P_{\text{out}} = 10\,\text{kW}$, then:
+![Induction motor equivalent circuit](https://commons.wikimedia.org/wiki/Special:Redirect/file/Induction-Motor-Equiv-Circuit.svg)
+*Figure: Per-phase equivalent circuit of a three-phase induction motor. Source: Wikimedia Commons: File:Induction-Motor-Equiv-Circuit.svg.*
 
-$$
-P_{rcu} = \frac{0.05}{0.95}(10000 + 1492) \approx 605.9\,\text{W}
-$$
-
-$$
-P_{\text{in}} = \frac{605.9}{0.05} + 2000 = 12118 + 2000 = 14118\,\text{W}
-$$
+From the equivalent circuit we have:
 
 $$
-\eta = \frac{10000}{14118} \approx 0.708 \; (70.8\%)
+\begin{aligned}
+P_{\text{ag}} &= P_{\text{in}} - P_{\text{stator loss}} \quad (\text{air-gap power}),\\
+P_{\text{rcu}} &= s P_{\text{ag}} \quad (\text{rotor copper loss}),\\
+P_{\text{mech}} &= P_{\text{ag}} - P_{\text{rcu}} = (1-s) P_{\text{ag}} \quad (\text{gross mechanical power}),\\
+P_{\text{out}} &= P_{\text{mech}} - P_{\text{mech loss}} \quad (\text{shaft output}).
+\end{aligned}
 $$
 
+Eliminating $P_{\text{ag}}$ gives the useful relations
+
 $$
-I_L = \frac{14118}{\sqrt{3}\times 550 \times 0.88} \approx \frac{14118}{836.6} \approx 16.87\,\text{A}
+P_{\text{rcu}} = \frac{s}{1-s}\,(P_{\text{out}} + P_{\text{mech loss}}),
+\qquad
+P_{\text{in}} = \frac{P_{\text{rcu}}}{s} + P_{\text{stator loss}}.
 $$
 
-But without the actual $P_{\text{out}}$, the values remain symbolic.
+**Step 3: Why a numerical answer is not possible**
 
-> **Final answer:** Insufficient data; the required quantities (rotor copper loss, total input, efficiency, line current) can be obtained once the shaft output power is known, using the expressions given above.
+The shaft output power $P_{\text{out}}$ is not given. Without it the equations contain two unknowns and cannot be solved numerically.
+
+**Step 4: Expressions for the required quantities**
+
+Let $P_{\text{out}}$ be the (unknown) shaft power in watts. Then
+
+$$
+\begin{aligned}
+\text{(i)}\quad P_{\text{rcu}} &= \frac{0.05}{0.95}\,(P_{\text{out}} + 1492) = \frac{1}{19}(P_{\text{out}} + 1492),\\
+\text{(ii)}\quad P_{\text{in}} &= \frac{P_{\text{rcu}}}{0.05} + 2000 = 20 P_{\text{rcu}} + 2000,\\
+\text{(iii)}\quad \eta &= \frac{P_{\text{out}}}{P_{\text{in}}}, \\
+\text{(iv)}\quad I_L &= \frac{P_{\text{in}}}{\sqrt{3}\,V_L\,\cos\phi} = \frac{P_{\text{in}}}{\sqrt{3}\times 550\times 0.88}.
+\end{aligned}
+$$
+
+Once $P_{\text{out}}$ is specified, all four values follow directly.
+
+> **Final answer:** The problem does not provide the shaft output power; therefore the rotor copper loss, total input, efficiency, and line current cannot be evaluated numerically. They are given in terms of the unknown output $P_{\text{out}}$ by the expressions above. For illustration, if $P_{\text{out}} = 10\ \text{kW}$, then $P_{\text{rcu}} \approx 606\ \text{W}$, $P_{\text{in}} \approx 14.12\ \text{kW}$, $\eta \approx 70.8\%$, and $I_L \approx 16.9\ \text{A}$.
 
 
 ---
@@ -2093,56 +1370,51 @@ But without the actual $P_{\text{out}}$, the values remain symbolic.
 A 3 phase, 400 V, 6-pole, 50 Hz induction motor develops mechanical power of 20 kW at 985 rpm. The stator losses are equal to 1800 W. Neglect the mechanical losses. Calculate: i) The rotor copper loss & rotor frequency ii) The total input power. (03)
 
 ### Answer 29
-Synchronous speed:
+Given:
+- Line voltage $V_L = 400\ \text{V}$, frequency $f = 50\ \text{Hz}$,
+- Number of poles $P = 6$,
+- Mechanical power developed $P_{\text{mech}} = 20\ \text{kW}$,
+- Speed $N_r = 985\ \text{rpm}$,
+- Stator losses $P_{\text{stator loss}} = 1800\ \text{W}$,
+- Mechanical losses neglected.
 
-$$N_s = \frac{120 \times f}{P} = \frac{120 \times 50}{6} = 1000 \text{ rpm}.$$
+**Synchronous speed and slip**
 
-Slip:
+$$
+N_s = \frac{120f}{P} = \frac{120\times 50}{6} = 1000\ \text{rpm},\qquad
+s = \frac{N_s-N_r}{N_s} = \frac{1000-985}{1000} = 0.015\ (1.5\%).
+$$
 
-$$s = \frac{N_s - N_r}{N_s} = \frac{1000 - 985}{1000} = 0.015 \quad (1.5\%).$$
+**Rotor copper loss and rotor frequency**
 
-**(i) Rotor copper loss and rotor frequency**
+The induction motor power balance gives
 
-The air-gap power $P_{ag}$ splits into the developed mechanical power $P_{\text{mech}}$ and the rotor copper loss $P_{rcu}$:
+$$
+P_{\text{mech}} = (1-s)P_{\text{ag}},\qquad P_{\text{rcu}} = sP_{\text{ag}}.
+$$
 
-$$P_{ag} = P_{\text{mech}} + P_{rcu}.$$
+Hence
 
-From the equivalent circuit we also know:
+$$
+P_{\text{rcu}} = \frac{s}{1-s}\,P_{\text{mech}}
+= \frac{0.015}{0.985}\times 20\,000 \approx 304.6\ \text{W}.
+$$
 
-$$P_{rcu} = s\,P_{ag}, \qquad P_{\text{mech}} = (1-s)\,P_{ag}.$$
+Rotor frequency: $f_r = sf = 0.015\times 50 = 0.75\ \text{Hz}$.
 
-Eliminating $P_{ag}$ gives
-
-$$P_{rcu} = \frac{s}{1-s}\,P_{\text{mech}}.$$
-
-Substituting the numbers:
+**Total input power**
 
 $$
 \begin{aligned}
-P_{rcu} &= \frac{0.015}{1-0.015} \times 20\,000 \text{ W} \\
-       &= \frac{0.015}{0.985} \times 20\,000 \approx 304.6 \text{ W} \approx 305 \text{ W}.
+P_{\text{in}} &= P_{\text{mech}} + P_{\text{rcu}} + P_{\text{stator loss}} \\
+             &= 20\,000 + 304.6 + 1800 = 22\,104.6\ \text{W} \approx 22.1\ \text{kW}.
 \end{aligned}
 $$
 
-Rotor frequency:
+![Induction motor equivalent circuit](https://commons.wikimedia.org/wiki/Special:Redirect/file/Induction-Motor-Equiv-Circuit.svg)
+*Figure: Per-phase equivalent circuit of a three-phase induction motor. Source: Wikimedia Commons: File:Induction-Motor-Equiv-Circuit.svg.*
 
-$$f_r = s \, f = 0.015 \times 50 = 0.75 \text{ Hz}.$$
-
-![Power flow diagram](./pyq-assets/textbook/108105131_p497_img-260_jpeg.png)  
-*Typical power flow diagram of an induction motor*
-
-**(ii) Total input power**
-
-The input power to the stator is the sum of the developed mechanical power, the rotor copper loss, and the stator losses ($P_{\text{stator loss}} = 1800 \text{ W}$):
-
-$$
-\begin{aligned}
-P_{\text{in}} &= P_{\text{mech}} + P_{rcu} + P_{\text{stator loss}} \\
-            &= 20\,000 + 304.6 + 1800 = 22\,104.6 \text{ W} \approx 22.1 \text{ kW}.
-\end{aligned}
-$$
-
-> **Final answer:** (i) Rotor Cu loss $\approx 305\ \text{W}$, rotor frequency $= 0.75\ \text{Hz}$; (ii) total input power $= 22.1\ \text{kW}$.
+> **Final answer:** (i) Rotor Cu loss $\approx 305\ \text{W}$, rotor frequency $= 0.75\ \text{Hz}$; (ii) total input power $\approx 22.1\ \text{kW}$.
 
 
 ---
@@ -2153,66 +1425,58 @@ $$
 A 3-phase, 400 V, 50 Hz, 4 pole induction motor is rated for an output of 15 4 HP at 1,440 rpm. When supplying rated load, its stator losses are 800 W and 5 N-m of torque meets friction and windage losses. Determine the following for this loading: a) Slip b) Rotor copper loss c) Input to the motor d) Efficiency
 
 ### Answer 30
-The induction motor has 4 poles and is supplied at 50 Hz, therefore the synchronous speed is:
+**Given:**
+- Supply: 3-phase, $400\ \text{V}$, $50\ \text{Hz}$,
+- Poles: $4$,
+- Rated output: $15\ \text{HP} = 15 \times 746 = 11\,190\ \text{W}$,
+- Speed at rated load: $N_r = 1440\ \text{rpm}$,
+- Stator losses: $P_{\text{stator loss}} = 800\ \text{W}$,
+- Friction & windage torque: $T_{\text{fw}} = 5\ \text{N}\cdot\text{m}$.
 
-$$N_s = \frac{120 f}{P} = \frac{120 \times 50}{4} = 1500\ \text{rpm}.$$
+**Synchronous speed and slip:**
 
-**(a) Slip**
+$$
+N_s = \frac{120f}{P} = \frac{120\times 50}{4} = 1500\ \text{rpm},
+\qquad
+s = \frac{1500 - 1440}{1500} = 0.04\ (4\%).
+$$
 
-The slip is the relative speed between synchronous speed and rotor speed:
+**Rotor copper loss:**
 
-$$s = \frac{N_s - N_r}{N_s} = \frac{1500 - 1440}{1500} = 0.04 \quad \text{or} \quad 4\%.$$
+First find the mechanical loss caused by friction and windage.
 
-**(b) Rotor copper loss**
+Angular speed: $\omega_r = \dfrac{2\pi N_r}{60} = \dfrac{2\pi \times 1440}{60} \approx 150.8\ \text{rad/s}$.
 
-The shaft output power is given as 15 HP. Converting to watts:
+Friction power: $P_{\text{fw}} = T_{\text{fw}}\,\omega_r = 5 \times 150.8 = 754\ \text{W}$.
 
-$$P_{\text{out}} = 15 \times 746 = 11\,190\ \text{W}.$$
+The gross mechanical power developed by the rotor is
 
-The friction and windage losses are specified by a torque of 5 N·m. First compute the rotor angular speed:
+$$
+P_{\text{mech}} = P_{\text{out}} + P_{\text{fw}} = 11\,190 + 754 = 11\,944\ \text{W}.
+$$
 
-$$\omega_r = \frac{2\pi N_r}{60} = \frac{2\pi \times 1440}{60} \approx 150.8\ \text{rad/s}.$$
+For an induction motor, $P_{\text{rcu}} : P_{\text{mech}} = s : (1-s)$, therefore
 
-Hence the friction and windage power loss is:
+$$
+P_{\text{rcu}} = \frac{s}{1-s}\,P_{\text{mech}} = \frac{0.04}{0.96}\times 11\,944 \approx 497.7\ \text{W}.
+$$
 
-$$P_{\text{fw}} = T_{\text{fw}} \times \omega_r = 5 \times 150.8 = 754\ \text{W}.$$
+**Input power:**
 
-The gross mechanical power developed by the rotor is therefore:
+Air-gap power: $P_{\text{ag}} = \dfrac{P_{\text{mech}}}{1-s} = \dfrac{11\,944}{0.96} \approx 12\,441.7\ \text{W}$.
 
-$$P_{\text{mech}} = P_{\text{out}} + P_{\text{fw}} = 11\,190 + 754 = 11\,944\ \text{W}.$$
+Total input: $P_{\text{in}} = P_{\text{ag}} + P_{\text{stator loss}} = 12\,441.7 + 800 = 13\,241.7\ \text{W} \approx 13.24\ \text{kW}$.
 
-In the induction motor, the air-gap power $P_{\text{ag}}$ supplies the rotor copper loss and the mechanical power. The well-known relationships are:
+**Efficiency:**
 
-$$P_{\text{mech}} = (1-s) P_{\text{ag}}, \qquad P_{\text{rcu}} = s P_{\text{ag}}.$$
+$$
+\eta = \frac{P_{\text{out}}}{P_{\text{in}}} \times 100\% = \frac{11\,190}{13\,241.7} \times 100\% \approx 84.5\%.
+$$
 
-From these,
+![Induction motor equivalent circuit](https://commons.wikimedia.org/wiki/Special:Redirect/file/Induction-Motor-Equiv-Circuit.svg)
+*Figure: Per-phase equivalent circuit of a three-phase induction motor. Source: Wikimedia Commons: File:Induction-Motor-Equiv-Circuit.svg.*
 
-$$P_{\text{rcu}} = \frac{s}{1-s} P_{\text{mech}} = \frac{0.04}{0.96} \times 11\,944 \approx 497.7\ \text{W} \approx 498\ \text{W}.$$
-
-**(c) Input power**
-
-The total input power must cover the air-gap power plus the stator losses (given as 800 W). First find the air-gap power:
-
-$$P_{\text{ag}} = \frac{P_{\text{mech}}}{1-s} = \frac{11\,944}{0.96} \approx 12\,441.7\ \text{W}.$$
-
-Then the input power is:
-
-$$P_{\text{in}} = P_{\text{ag}} + \text{stator losses} = 12\,441.7 + 800 = 13\,241.7\ \text{W} \approx 13.24\ \text{kW}.$$
-
-(Equivalently, $P_{\text{in}} = P_{\text{mech}} + P_{\text{rcu}} + \text{stator losses} = 11\,944 + 498 + 800 = 13\,242\ \text{W}$.)
-
-**(d) Efficiency**
-
-The efficiency is the ratio of shaft output power to input power:
-
-$$\eta = \frac{P_{\text{out}}}{P_{\text{in}}} \times 100\% = \frac{11\,190}{13\,242} \times 100\% \approx 84.5\%.$$
-
-The power flow can be summarized by the following diagram:
-
-![Power flow diagram of induction motor showing stator loss, air-gap power, rotor copper loss, mechanical power, and output](./pyq-assets/textbook/108105131_p493_img-259_jpeg.png)
-*Figure: Power flow stages in a three-phase induction motor.*
-
-> **Final answer:** (a) Slip $= 4\%$; (b) Rotor Cu loss $= 498\ \text{W}$; (c) Input $= 13.24\ \text{kW}$; (d) Efficiency $= 84.5\%$.
+> **Final answer:** (a) Slip $= 4\%$; (b) Rotor Cu loss $\approx 498\ \text{W}$; (c) Input power $\approx 13.24\ \text{kW}$; (d) Efficiency $\approx 84.5\%$.
 
 
 ---
@@ -2223,89 +1487,153 @@ The power flow can be summarized by the following diagram:
 A 3-phase, 400 V, 50 Hz, 4-pole, star connected induction motor has per-phase 3 stator impedance, Z₁ = (0.07+j0.3)Ω and per-phase rotor impedance referred to stator side, Z₂’ = (0.08+j0.3) Ω. The per phase magnetizing reactance is 10 Ω and the resistance representing core loss is 50 Ω. The slip is 4%. Using approximate equivalent circuit approach, solve for: a) Stator current and power factor b) Torque developed and c) Gross efficiency
 
 ### Answer 31
-**Given:** 400 V, 50 Hz, 4-pole, star-connected. $Z_1 = (0.07+j0.3)\,\Omega$, $Z_2' = (0.08+j0.3)\,\Omega$, $X_m = 10\,\Omega$, $R_c = 50\,\Omega$, slip $s = 4\% = 0.04$.
+**Given:**
+3-phase, 400 V (line), 50 Hz, 4-pole, star-connected.
+$Z_1 = (0.07 + j\,0.3)\,\Omega$ (stator per phase)
+$Z_2' = (0.08 + j\,0.3)\,\Omega$ (rotor per phase, referred to stator)
+Magnetising reactance $X_m = 10\,\Omega$, core-loss resistance $R_c = 50\,\Omega$.
+Slip $s = 4\% = 0.04$.
 
-**Phase voltage:**  
-$$V_{ph} = \frac{400}{\sqrt{3}} = 230.94\ \text{V}.$$
+**Phase voltage:**
+$$
+V_{\text{ph}} = \frac{400}{\sqrt{3}} = 230.94\ \text{V}.
+$$
 
-**Synchronous speed and angular velocity:**  
-$$N_s = \frac{120 \times 50}{4} = 1500\ \text{rpm}, \quad \omega_s = \frac{2\pi \times 1500}{60} = 157.08\ \text{rad/s}.$$
+**Synchronous speed:**
+$$
+N_s = \frac{120 \times 50}{4} = 1500\ \text{rpm},\quad
+\omega_s = \frac{2\pi \times 1500}{60} = 157.08\ \text{rad/s}.
+$$
 
-**Approximate equivalent circuit:**  
-In the approximate circuit, the magnetising branch (parallel combination of $R_c$ and $jX_m$) is shifted to the stator terminals. The stator impedance $Z_1$ and the rotor impedance referred to stator, $Z_2'/s$, form a series branch. The no-load current $I_0$ passes through the magnetising branch, and the load component $I_2'$ flows through the series branch. The stator current is the phasor sum $I_1 = I_0 + I_2'$.
+![Approximate equivalent circuit](https://commons.wikimedia.org/wiki/Special:Redirect/file/Induction-Motor-Equiv-Circuit.svg)
+*Figure: Per-phase approximate equivalent circuit (magnetising branch shifted to stator terminals). Source: Wikimedia Commons.*
 
-![Induction motor per-phase equivalent circuit](./pyq-assets/textbook/108105131_p401_img-220_jpeg.png)
-*Fig. Per-phase equivalent circuit of an induction motor (exact). In the approximate analysis used here, the magnetising branch is shifted to the stator terminals.*
+---
 
-**Rotor branch impedance at slip $s$:**  
-$$Z_2'/s = \frac{0.08}{0.04} + j0.3 = 2 + j0.3\ \Omega.$$
+### Approximate equivalent circuit analysis
 
-Total series branch impedance:  
-$$\begin{aligned}
-Z_{\text{ser}} &= Z_1 + Z_2'/s = (0.07 + 2) + j(0.3+0.3) \\
-&= 2.07 + j0.6\ \Omega.
-\end{aligned}$$
+The magnetising branch $(R_c,\,jX_m)$ is placed directly across the supply. The load current $I_2'$ flows through the series combination of $Z_1$ and $Z_2'/s$.
 
-Magnitude and angle:  
-$$|Z_{\text{ser}}| = \sqrt{2.07^2 + 0.6^2} = 2.156\ \Omega, \quad \phi_{\text{ser}} = \arctan\!\left(\frac{0.6}{2.07}\right) = 16.2^\circ.$$
+---
 
-**Load component of stator current ($I_2'$):**  
-$$I_2' = \frac{V_{ph}}{Z_{\text{ser}}} = \frac{230.94\angle 0^\circ}{2.156\angle 16.2^\circ} = 107.1\angle -16.2^\circ\ \text{A}.$$
+#### a)  Stator current and power factor
 
-In rectangular form: $I_2' = 102.8 - j29.9\ \text{A}$.
+**Rotor-branch impedance at slip $s$**
 
-**No-load (exciting) current ($I_0$):**  
-The admittance of the magnetising branch is  
-$$Y_0 = \frac{1}{50} - j\frac{1}{10} = 0.02 - j0.1\ \text{S}.$$
+$$
+\frac{Z_2'}{s} = \frac{0.08}{0.04} + j\,0.3 = 2 + j\,0.3\ \Omega .
+$$
 
-Hence,  
-$$I_0 = V_{ph} Y_0 = 230.94 \times (0.02 - j0.1) = 4.62 - j23.09\ \text{A}.$$
+**Total series impedance**
 
-**Stator current and power factor (a):**  
-$$\begin{aligned}
+$$
+\begin{aligned}
+Z_{\text{ser}} &= Z_1 + \frac{Z_2'}{s} = (0.07+2) + j\,(0.3+0.3) \\
+             &= 2.07 + j\,0.6\ \Omega .
+\end{aligned}
+$$
+$$
+|Z_{\text{ser}}| = \sqrt{2.07^2 + 0.6^2} = 2.156\ \Omega,\quad
+\phi_{\text{ser}} = \arctan\!\left(\frac{0.6}{2.07}\right) \approx 16.2^\circ .
+$$
+
+**Load component of stator current**
+
+$$
+I_2' = \frac{V_{\text{ph}}}{Z_{\text{ser}}} = \frac{230.94\angle 0^\circ}{2.156\angle 16.2^\circ}
+      = 107.1\angle -16.2^\circ\ \text{A}\ \ ( \approx 102.9 - j\,29.8\ \text{A}).
+$$
+
+**No-load (exciting) current**
+
+The admittance of the magnetising branch is
+
+$$
+Y_0 = \frac{1}{R_c} - j\frac{1}{X_m} = 0.02 - j\,0.1\ \text{S},
+$$
+so
+$$
+I_0 = V_{\text{ph}}\,Y_0 = 230.94 \times (0.02 - j\,0.1) = 4.62 - j\,23.09\ \text{A}.
+$$
+
+**Stator current (phasor sum)**
+
+$$
+\begin{aligned}
 I_1 &= I_0 + I_2' \\
-&= (4.62 - j23.09) + (102.8 - j29.9) \\
-&= 107.42 - j52.99\ \text{A}.
-\end{aligned}$$
+    &= (4.62 + 102.9) + j\,(-23.09 - 29.8) \\
+    &= 107.52 - j\,52.89\ \text{A}.
+\end{aligned}
+$$
+$$
+|I_1| = \sqrt{107.52^2 + 52.89^2} \approx 119.8\ \text{A}.
+$$
 
-Magnitude:  
-$$|I_1| = \sqrt{107.42^2 + 52.99^2} \approx 119.9\ \text{A}.$$
+The line current equals the phase current because the motor is star-connected.
 
-Since the motor is star-connected, the line current equals the phase current.
+**Power factor**
 
-Power factor:  
-$$\cos\phi = \frac{\Re(I_1)}{|I_1|} = \frac{107.42}{119.9} \approx 0.896\ \text{(lagging)}.$$
+$$
+\cos\phi = \frac{\Re(I_1)}{|I_1|} = \frac{107.52}{119.8} \approx 0.897\ \text{(lagging)} .
+$$
 
-**(a) Result:** Stator current $\boxed{I_1 \approx 120\ \text{A}}$, power factor $\boxed{\cos\phi \approx 0.896\ \text{lag}}$.
+---
 
-**Air-gap power and developed torque (b):**  
-Air-gap power (total power transferred across the air-gap) is  
-$$P_{ag} = 3\,I_2'^{\,2}\!\left(\frac{R_2'}{s}\right) = 3 \times (107.1)^2 \times 2 \approx 68.82\ \text{kW}.$$
+#### b)  Developed torque
 
-The electromagnetic torque developed:  
-$$T_{\text{dev}} = \frac{P_{ag}}{\omega_s} = \frac{68\,820}{157.08} \approx 438.2\ \text{N·m}.$$
+Air-gap power:
 
-**(b) Result:** Developed torque $\boxed{T \approx 438\ \text{N·m}}$.
+$$
+P_{\text{ag}} = 3\,|I_2'|^2\!\left(\frac{R_2'}{s}\right)
+            = 3 \times (107.1)^2 \times 2
+            = 68.82\ \text{kW}.
+$$
 
-**Mechanical power developed and gross efficiency (c):**  
-The mechanical power developed at the shaft (excluding friction and windage) is  
-$$P_{\text{mech}} = P_{ag}(1-s) = 68.82 \times 0.96 \approx 66.07\ \text{kW}.$$
+Electromagnetic torque:
 
-Input electrical power drawn from the supply:  
-$$\begin{aligned}
-P_{\text{in}} &= 3\,V_{ph}\,I_1\cos\phi \\
-&= 3 \times 230.94 \times 119.9 \times 0.896 \\
-&\approx 74.4\ \text{kW}.
-\end{aligned}$$
+$$
+T_{\text{dev}} = \frac{P_{\text{ag}}}{\omega_s}
+               = \frac{68\,820}{157.08}
+               \approx 438\ \text{N}\cdot\text{m}.
+$$
 
-(Equivalently, $\sqrt{3}\,V_L I_L\cos\phi$ gives the same value.)
+---
 
-Gross efficiency of the motor:  
-$$\eta_{\text{gross}} = \frac{P_{\text{mech}}}{P_{\text{in}}} = \frac{66.07}{74.4} \approx 0.888 = 88.8\%.$$
+#### c)  Gross efficiency
 
-**(c) Result:** Gross efficiency $\boxed{\eta \approx 88.8\%}$.
+Mechanical power developed:
 
-> **Final answer:** (a) Stator current $\approx 120\ \text{A}$, power factor $\approx 0.896$ lag; (b) Torque $\approx 438\ \text{N·m}$; (c) Gross efficiency $\approx 88.8\%$.
+$$
+P_{\text{mech}} = P_{\text{ag}}(1-s) = 68.82 \times 0.96
+                = 66.07\ \text{kW}.
+$$
+
+Input electrical power:
+
+$$
+\begin{aligned}
+P_{\text{in}} &= 3\,V_{\text{ph}}\,I_1\cos\phi \\
+              &= 3 \times 230.94 \times 119.8 \times 0.897 \\
+              &\approx 74.5\ \text{kW}.
+\end{aligned}
+$$
+
+(Using $\sqrt{3}\,V_L\,I_L\cos\phi$ gives the same value.)
+
+Gross efficiency:
+
+$$
+\eta_{\text{gross}} = \frac{P_{\text{mech}}}{P_{\text{in}}}
+                     = \frac{66.07}{74.5}
+                     \approx 0.888 = 88.8\% .
+$$
+
+---
+
+> **Final answer:**
+> (a) $I_1 \approx 119.8\ \text{A}$, $\cos\phi \approx 0.897$ lag.
+> (b) $T_{\text{dev}} \approx 438\ \text{N}\cdot\text{m}$.
+> (c) $\eta_{\text{gross}} \approx 88.8\%$.
 
 
 ---
@@ -2316,44 +1644,73 @@ $$\eta_{\text{gross}} = \frac{P_{\text{mech}}}{P_{\text{in}}} = \frac{66.07}{74.
 Consider a 415V, 4pole, 50Hz induction motor operating at 4% slip. The shaft power output is 1.2 kW. The machine has stator losses of 50W and rotational losses of 70W. Draw the power flow diagram with power stages. (05)
 
 ### Answer 32
-For a three-phase induction motor, the power flows from electrical input through various losses to mechanical output. Given:
-- 4-pole, 50 Hz → synchronous speed $N_s = \dfrac{120 \cdot 50}{4} = 1500 \text{ rpm}$.
-- Slip $s = 0.04$ → rotor speed $N = 1500 \cdot (1-0.04) = 1440 \text{ rpm}$.
-- Shaft power output $P_{\text{out}} = 1.2 \text{ kW} = 1200 \text{ W}$.
-- Rotational losses $P_{\text{rot}} = 70 \text{ W}$.
-- Stator losses $P_{\text{scu}} = 50 \text{ W}$.
+**Given:**
+415 V, 4-pole, 50 Hz induction motor.
+Slip $s = 4\% = 0.04$; shaft power output $P_{\text{out}} = 1.2\ \text{kW} = 1200\ \text{W}$.
+Stator losses $P_{\text{scu}} = 50\ \text{W}$ (stator copper loss).
+Rotational losses $P_{\text{rot}} = 70\ \text{W}$ (friction, windage, core loss combined).
 
-**Power flow calculation (working backward):**
+**Synchronous speed:**
+$$
+N_s = \frac{120f}{P} = \frac{120 \times 50}{4} = 1500\ \text{rpm}.
+$$
+Rotor speed $N = N_s(1-s) = 1440\ \text{rpm}$ (not needed for the power-flow calculation).
 
-1. Mechanical power developed:
-   $$P_{\text{mech}} = P_{\text{out}} + P_{\text{rot}} = 1200 + 70 = 1270 \text{ W}.$$
+---
 
-2. Air-gap power: For an induction motor, $P_{\text{mech}} = (1-s)P_{ag}$, so
-   $$P_{ag} = \frac{P_{\text{mech}}}{1-s} = \frac{1270}{0.96} = 1322.92 \text{ W}.$$
+### Power-flow diagram and power stages
 
-3. Rotor copper loss:
-   $$P_{rcu} = s \cdot P_{ag} = 0.04 \times 1322.92 = 52.92 \text{ W}.$$
-
-4. Input power:
-   $$P_{\text{in}} = P_{ag} + P_{\text{scu}} = 1322.92 + 50 = 1372.92 \text{ W}.$$
-
-5. Overall efficiency:
-   $$\eta = \frac{P_{\text{out}}}{P_{\text{in}}} = \frac{1200}{1372.92} \times 100 = 87.4\%.$$
-
-The power-flow diagram, showing each power stage, is given below. The rotational losses are subtracted from the mechanical power to obtain the useful shaft output.
-
-<figure>
-  <img src="./pyq-assets/textbook/108105131_p398_img-218_jpeg.png" alt="Power flow diagram of induction motor" />
-  <figcaption>Figure: Power flow diagram of a three-phase induction motor (rotational losses not shown in this diagram; they are subtracted from the mechanical power to yield shaft output).</figcaption>
-</figure>
-
-The sequence of power stages can also be written as:
+The power flow in an induction motor proceeds through the following stages:
 
 $$
-P_{\text{in}} \;\xrightarrow{\text{stator loss } 50 \text{ W}}\; P_{ag} \;\xrightarrow{\text{rotor Cu loss } 52.92 \text{ W}}\; P_{\text{mech}} \;\xrightarrow{\text{rotational loss } 70 \text{ W}}\; P_{\text{out}}.
+P_{\text{in}} \;\xrightarrow{\text{stator loss}}\; P_{\text{ag}} \;\xrightarrow{\text{rotor Cu loss}}\; P_{\text{mech}} \;\xrightarrow{\text{rotational losses}}\; P_{\text{out}}
 $$
 
-> **Final answer:** $P_{\text{in}} = 1.373 \text{ kW}$, $P_{ag} = 1.323 \text{ kW}$, $P_{\text{mech}} = 1.270 \text{ kW}$, $P_{\text{out}} = 1.2 \text{ kW}$, efficiency $\eta = 87.4\%$.
+**Diagram (textual representation with numerical values):**
+
+```
+P_in (1.373 kW)  →  [Stator Cu loss 50 W]  →  P_ag (1.323 kW)  →  [Rotor Cu loss 52.9 W]  →  P_mech (1.270 kW)  →  [Rotational loss 70 W]  →  P_out (1.200 kW)
+```
+
+---
+
+### Calculation of individual powers
+
+**Mechanical power developed:**
+$$
+P_{\text{mech}} = P_{\text{out}} + P_{\text{rot}} = 1200 + 70 = 1270\ \text{W}.
+$$
+
+**Air-gap power:**
+For an induction motor, $P_{\text{mech}} = (1-s)P_{\text{ag}}$, therefore
+$$
+P_{\text{ag}} = \frac{P_{\text{mech}}}{1-s} = \frac{1270}{0.96} = 1322.92\ \text{W} \approx 1.323\ \text{kW}.
+$$
+
+**Rotor copper loss:**
+$$
+P_{\text{rcu}} = s \cdot P_{\text{ag}} = 0.04 \times 1322.92 = 52.92\ \text{W} \approx 52.9\ \text{W}.
+$$
+
+**Input power:**
+$$
+P_{\text{in}} = P_{\text{ag}} + P_{\text{scu}} = 1322.92 + 50 = 1372.92\ \text{W} \approx 1.373\ \text{kW}.
+$$
+
+**Gross efficiency:**
+$$
+\eta = \frac{P_{\text{out}}}{P_{\text{in}}} = \frac{1200}{1372.92} \times 100\% \approx 87.4\% .
+$$
+
+---
+
+> **Final answer:**
+> $P_{\text{in}} \approx 1.373\ \text{kW}$,
+> $P_{\text{ag}} \approx 1.323\ \text{kW}$,
+> $P_{\text{mech}} \approx 1.270\ \text{kW}$,
+> $P_{\text{out}} = 1.2\ \text{kW}$,
+> efficiency $\eta \approx 87.4\%$.
+> (The complete power-flow diagram is shown above.)
 
 
 ---
@@ -2364,61 +1721,70 @@ $$
 A 3-phase, 50 Hz, 36 kW, 4 pole induction motor has a full load efficiency of 82 %. The friction & windage losses are one-fourth of no load losses and rotor copper losses equal the iron loss at full load. Determine (a) Total Losses (b) Stator Core Loss (c) Rotor Copper Loss (d) Friction & Windage Loss (05)
 
 ### Answer 33
-A 3-phase, 50 Hz, 4-pole induction motor delivers a full-load output of $P_{\text{out}} = 36\ \text{kW}$ at an efficiency $\eta = 82\%$. The input power is therefore
+**Given:**
+3-phase, 50 Hz, 4-pole, 36 kW induction motor. Full-load efficiency $\eta = 82\% = 0.82$.
+Friction & windage loss $P_{\text{fw}}$ is one-fourth of the no-load losses.
+At full load, rotor copper loss $P_{\text{rcu}}$ equals the stator core (iron) loss $P_{\text{Fe}}$.
+
+---
+
+### (a) Total losses
+
+Input power at full load:
 $$
 P_{\text{in}} = \frac{P_{\text{out}}}{\eta} = \frac{36}{0.82} \approx 43.902\ \text{kW}.
 $$
-The total losses at full load are
+
+Total losses:
 $$
-P_{\text{loss}} = P_{\text{in}} - P_{\text{out}} \approx 7.902\ \text{kW}.
+P_{\text{loss}} = P_{\text{in}} - P_{\text{out}} = 43.902 - 36 = 7.902\ \text{kW} \approx 7.90\ \text{kW}.
 $$
-This answers part **(a)**.
 
-![Power flow diagram](./pyq-assets/textbook/108105131_p497_img-260_jpeg.png)
-<p style="text-align:center;"><em>Figure: Approximate power flow diagram for the induction motor. Because the problem does not mention stator copper loss, we neglect it and consider only the losses that are asked for.</em></p>
+---
 
-Let the stator core (iron) loss be $P_{\text{Fe}}$, the rotor copper loss be $P_{\text{rcu}}$, and the friction and windage loss be $P_{\text{fw}}$.
+### Relating the losses
 
-From the problem statement:
-1. The friction and windage loss is one-fourth of the no-load losses.
-2. At full load the rotor copper loss equals the iron loss, i.e. $P_{\text{rcu}} = P_{\text{Fe}}$.
-
-At no load the motor runs very close to synchronous speed; the rotor copper loss is negligible and the stator copper loss is very small. Hence the no-load losses are essentially the sum of the core loss and the mechanical losses:
+At no load the slip is nearly zero, so rotor copper loss is negligible. The stator copper loss is also very small and is neglected here. Thus the no-load losses consist essentially of
 $$
 P_{\text{no-load}} = P_{\text{Fe}} + P_{\text{fw}}.
 $$
-Using condition 1,
+
+From the problem, $P_{\text{fw}} = \frac{1}{4} P_{\text{no-load}}$, hence
 $$
-P_{\text{fw}} = \frac{1}{4}\,(P_{\text{Fe}} + P_{\text{fw}})
-\quad\Longrightarrow\quad
-4P_{\text{fw}} = P_{\text{Fe}} + P_{\text{fw}}
-\quad\Longrightarrow\quad
-P_{\text{Fe}} = 3P_{\text{fw}}.
+P_{\text{fw}} = \frac{1}{4}(P_{\text{Fe}} + P_{\text{fw}}) \;\Longrightarrow\; 4P_{\text{fw}} = P_{\text{Fe}} + P_{\text{fw}} \;\Longrightarrow\; P_{\text{Fe}} = 3P_{\text{fw}}.
 $$
 
-The full-load losses are taken as the sum of the components we are asked to determine (stator copper loss is omitted because it is not given):
+At full load, $P_{\text{rcu}} = P_{\text{Fe}}$ (given). Assuming the total losses are the sum of these three components (stator copper loss not specified), we have
 $$
 P_{\text{loss}} = P_{\text{Fe}} + P_{\text{rcu}} + P_{\text{fw}}.
 $$
-Substituting $P_{\text{rcu}} = P_{\text{Fe}}$ and $P_{\text{Fe}} = 3P_{\text{fw}}$,
+
+Substitute $P_{\text{Fe}} = P_{\text{rcu}} = 3P_{\text{fw}}$:
 $$
 P_{\text{loss}} = 3P_{\text{fw}} + 3P_{\text{fw}} + P_{\text{fw}} = 7P_{\text{fw}}.
 $$
-Therefore,
-$$
-P_{\text{fw}} = \frac{P_{\text{loss}}}{7} \approx \frac{7.902}{7} = 1.129\ \text{kW}.
-$$
-Now,
-$$
-P_{\text{Fe}} = 3 \times 1.129 \approx 3.387\ \text{kW},\qquad
-P_{\text{rcu}} = P_{\text{Fe}} = 3.387\ \text{kW}.
-$$
-Rounding to two decimal places gives:
-- Stator core loss $= 3.39\ \text{kW}$
-- Rotor copper loss $= 3.39\ \text{kW}$
-- Friction and windage loss $= 1.13\ \text{kW}$
 
-> **Final answer:** (a) Total losses = 7.90 kW; (b) stator core loss = 3.39 kW; (c) rotor copper loss = 3.39 kW; (d) friction & windage loss = 1.13 kW. (Stator copper loss is neglected as it was not specified.)
+Thus
+
+$$
+P_{\text{fw}} = \frac{P_{\text{loss}}}{7} = \frac{7.902}{7} \approx 1.129\ \text{kW} \;\approx\; 1.13\ \text{kW}.
+$$
+
+Then
+
+$$
+P_{\text{Fe}} = 3 \times 1.129 \approx 3.387\ \text{kW} \;\approx\; 3.39\ \text{kW},\qquad
+P_{\text{rcu}} = P_{\text{Fe}} = 3.39\ \text{kW}.
+$$
+
+---
+
+> **Final answer:**
+> (a) Total losses $= 7.90\ \text{kW}$.
+> (b) Stator core loss $= 3.39\ \text{kW}$.
+> (c) Rotor copper loss $= 3.39\ \text{kW}$.
+> (d) Friction & windage loss $= 1.13\ \text{kW}$.
+> (Note: stator copper loss is not included in the given loss breakdown; the above partition assumes it is negligible.)
 
 ## Question 34
 **Topic:** Three-phase induction motor fundamentals, equivalent circuit and power flow · **Syllabus area:** Weeks 6-8 · **Source:** 2B | EM-I ELE 2154 Online End Sem, 27 January 2022
@@ -2426,76 +1792,69 @@ Rounding to two decimal places gives:
 A three-phase, 400V, 4-pole, 50 Hz, three-phase induction motor provides shaft power of 1.2kW. Considering 2.5% of shaft power as friction and windage losses, determine the rotor copper losses, power supplied to the rotor circuit, gross torque developed by the motor, and efficiency of the rotor when the rotor is running at a speed of 1420rpm. (03)
 
 ### Answer 34
-Synchronous speed for a 4-pole, 50 Hz motor:
+**Synchronous speed and slip**
 
 $$
-N_s = \frac{120f}{P} = \frac{120 \times 50}{4} = 1500\ \text{rpm}.
+N_s = \frac{120f}{P} = \frac{120\times 50}{4} = 1500\,\text{rpm}.
 $$
 
-Slip at 1420 rpm:
+Slip at 1420\,rpm:
 
 $$
-s = \frac{N_s - N}{N_s} = \frac{1500-1420}{1500} = 0.05333\ (5.33\%).
+s = \frac{N_s-N}{N_s} = \frac{1500-1420}{1500} = 0.05333\;(5.33\%).
 $$
 
-Shaft output power:
+**Power flow**
+
+Shaft output power $P_{\text{out}} = 1200\,\text{W}$.
+Friction & windage losses $P_{\text{FW}} = 0.025 \times 1200 = 30\,\text{W}$.
+Gross mechanical power developed by the rotor:
 
 $$
-P_{\text{out}} = 1.2\ \text{kW} = 1200\ \text{W}.
+P_{\text{mech}} = P_{\text{out}} + P_{\text{FW}} = 1230\,\text{W}.
 $$
 
-Friction and windage losses:
-
-$$
-P_{\text{F\&W}} = 0.025 \times 1200 = 30\ \text{W}.
-$$
-
-Gross mechanical power developed by rotor:
-
-$$
-P_{\text{mech}} = P_{\text{out}} + P_{\text{F\&W}} = 1200 + 30 = 1230\ \text{W}.
-$$
-
-![Equivalent circuit](./pyq-assets/textbook/108105131_p401_img-220_jpeg.png)
-*Figure: Per-phase equivalent circuit of an induction motor.*
+![Induction motor equivalent circuit](https://commons.wikimedia.org/wiki/Special:Redirect/file/Induction-Motor-Equiv-Circuit.svg)
+*Figure: Per-phase equivalent circuit of the induction motor. Source: Wikimedia Commons.*
 
 From the induction motor power flow (see equivalent circuit), the air-gap power $P_{\text{ag}}$ is split into rotor copper loss $P_{\text{cu2}}$ and gross mechanical power:
 
 $$
-P_{\text{mech}} = (1-s)P_{\text{ag}}, \qquad P_{\text{cu2}} = sP_{\text{ag}}.
+\begin{aligned}
+P_{\text{mech}} &= (1-s)P_{\text{ag}}, \\
+P_{\text{cu2}} &= sP_{\text{ag}}.
+\end{aligned}
 $$
 
 Hence,
 
 $$
-P_{\text{cu2}} = \frac{s}{1-s}P_{\text{mech}} = \frac{0.05333}{0.94667} \times 1230 \approx 69.3\ \text{W}.
+P_{\text{ag}} = \frac{P_{\text{mech}}}{1-s} = \frac{1230}{0.94667} \approx 1299.3\,\text{W},
+\qquad
+P_{\text{cu2}} = sP_{\text{ag}} = 0.05333 \times 1299.3 \approx 69.3\,\text{W}.
 $$
 
-Power supplied to rotor circuit (air-gap power):
-
-$$
-P_{\text{ag}} = P_{\text{mech}} + P_{\text{cu2}} = 1230 + 69.3 = 1299.3\ \text{W}.
-$$
+**Torque and rotor efficiency**
 
 Synchronous angular speed:
 
 $$
-\omega_s = \frac{2\pi N_s}{60} = \frac{2\pi \times 1500}{60} = 157.08\ \text{rad/s}.
+\omega_s = \frac{2\pi N_s}{60} = \frac{2\pi \times 1500}{60} = 157.08\,\text{rad/s}.
 $$
 
-Gross electromagnetic torque developed:
+Gross electromagnetic torque:
 
 $$
-T = \frac{P_{\text{ag}}}{\omega_s} = \frac{1299.3}{157.08} \approx 8.27\ \text{N·m}.
+T = \frac{P_{\text{ag}}}{\omega_s} = \frac{1299.3}{157.08} \approx 8.27\,\text{N}\cdot\text{m}.
 $$
 
-Rotor efficiency (ratio of gross mechanical power to air-gap power):
+Rotor efficiency:
 
 $$
 \eta_{\text{rotor}} = \frac{P_{\text{mech}}}{P_{\text{ag}}} = 1 - s = 0.9467 = 94.67\%.
 $$
 
-> **Final answer:** Rotor copper loss = 69.3 W; power supplied to rotor = 1299 W; gross torque = 8.27 N·m; rotor efficiency = 94.67 %.
+> **Final answer:** Rotor copper loss $P_{\text{cu2}} = 69.3\,\text{W}$; power supplied to rotor $P_{\text{ag}} \approx 1299\,\text{W}$; gross torque $T \approx 8.27\,\text{N}\cdot\text{m}$; rotor efficiency $94.67\%$.
 
 
 ---
@@ -2506,62 +1865,40 @@ $$
 A squirrel cage induction motor, when started by means of a star-delta starter draws 200 % of full load current and develops 44 % of full load torque at starting. If an auto-transformer with 75 % tapping is used, determine: (i) Full load slip (ii) Ratio of starting torque to full load torque (iii) Starting motor current and starting line current as % of full load current. 4
 
 ### Answer 35
-## Solution
+**Given:**
+Star-delta starter draws $200\%$ full-load line current and develops $44\%$ full-load torque at starting.
+Auto-transformer tapping $k = 0.75$.
 
-**Given:**  
-- Star-delta starting: Line current $I_{L(Y-\Delta)} = 200\% \, I_{\text{fl}} = 2\,I_{\text{fl}}$  
-- Star-delta starting torque: $T_{\text{st}(Y-\Delta)} = 44\% \, T_{\text{fl}} = 0.44\,T_{\text{fl}}$  
-- Auto-transformer tapping: $k = 75\% = 0.75$
+**1. Full-voltage (DOL) starting quantities**
+In star, phase voltage $= V_L/\sqrt3$, hence line current and torque are $1/3$ of the delta (DOL) values.
 
-### 1. DOL (Direct-on-Line) Values
-
-In star-delta starting, the motor windings are initially connected in star, so the voltage per phase is $V_L/\sqrt{3}$ instead of $V_L$ (line voltage) in delta. Consequently:
-- Line current becomes $1/3$ of the DOL line current.
-- Starting torque, which is proportional to the square of the applied phase voltage, also becomes $1/3$ of the DOL torque.
-
-Thus,
 $$
-I_{\text{sc}} = I_{\text{st(DOL)}} = 3 \times I_{L(Y-\Delta)} = 3 \times 2\,I_{\text{fl}} = 6\,I_{\text{fl}}
-$$
-$$
-T_{\text{st(DOL)}} = 3 \times T_{\text{st}(Y-\Delta)} = 3 \times 0.44\,T_{\text{fl}} = 1.32\,T_{\text{fl}}
+I_{sc} = 3 \times I_{L(Y-\Delta)} = 6\,I_{\text{fl}}, \qquad
+T_{st(\text{DOL})} = 3 \times T_{st(Y-\Delta)} = 1.32\,T_{\text{fl}}.
 $$
 
-### 2. Full-Load Slip
+**2. Full-load slip**
+For a squirrel-cage motor the approximate relation under full voltage is
 
-For a squirrel-cage induction motor, the starting torque ratio under full voltage (DOL) is related to the full-load slip $s_{\text{fl}}$ by:
 $$
-\frac{T_{\text{st(DOL)}}}{T_{\text{fl}}} = \left(\frac{I_{\text{sc}}}{I_{\text{fl}}}\right)^{\!2} \!s_{\text{fl}}
-$$
-
-Substituting the known DOL values:
-$$
-1.32 = (6)^2 \, s_{\text{fl}} \quad\Rightarrow\quad s_{\text{fl}} = \frac{1.32}{36} = 0.03667
-$$
-$$
-s_{\text{fl}} = 3.667\% \approx 3.67\%
+\frac{T_{st(\text{DOL})}}{T_{\text{fl}}} = \left(\frac{I_{sc}}{I_{\text{fl}}}\right)^2 s_{\text{fl}}.
 $$
 
-### 3. Auto-Transformer Starting (Tapping $k=0.75$)
+Substituting:
 
-With an auto-transformer, the voltage applied to the motor is $k$ times the line voltage. Therefore:
-- **Motor starting current** (winding current): $I_m = k \cdot I_{\text{sc}} = 0.75 \times 6\,I_{\text{fl}} = 4.5\,I_{\text{fl}} = 450\% \, I_{\text{fl}}$
-- **Line current** drawn from the supply: $I_L = k^2 \cdot I_{\text{sc}} = (0.75)^2 \times 6\,I_{\text{fl}} = 3.375\,I_{\text{fl}} = 337.5\% \, I_{\text{fl}}$
-- **Starting torque**: $T_{\text{st(auto)}} = k^2 \cdot T_{\text{st(DOL)}} = (0.75)^2 \times 1.32\,T_{\text{fl}} = 0.7425\,T_{\text{fl}} = 74.25\% \, T_{\text{fl}}$
+$$
+1.32 = 6^2 \times s_{\text{fl}} \;\Longrightarrow\; s_{\text{fl}} = \frac{1.32}{36} = 0.03667 \approx 3.67\%.
+$$
 
-### Summary Table
+**3. Auto-transformer starting (k = 0.75)**
+- Motor (winding) starting current: $I_{m} = k\,I_{sc} = 0.75 \times 6\,I_{\text{fl}} = 4.5\,I_{\text{fl}} = 450\%$ of full-load current.
+- Line starting current: $I_{L} = k^2 I_{sc} = 0.75^2 \times 6\,I_{\text{fl}} = 3.375\,I_{\text{fl}} = 337.5\%$ of full-load current.
+- Starting torque: $T_{st} = k^2\,T_{st(\text{DOL})} = 0.75^2 \times 1.32\,T_{\text{fl}} = 0.7425\,T_{\text{fl}} = 74.25\%$ of full-load torque.
 
-| Quantity | Value |
-|---|---|
-| **Full-load slip** | $3.67\%$ |
-| **Starting torque / Full-load torque (auto-transformer)** | $74.25\%$ |
-| **Motor starting current (as % of $I_{\text{fl}}$)** | $450\%$ |
-| **Line starting current (as % of $I_{\text{fl}}$)** | $337.5\%$ |
-
-> **Final answer:**  
-> (i) Full-load slip $s_{\text{fl}} = 3.67\%$  
-> (ii) Ratio of auto-transformer starting torque to full-load torque $= 0.7425$ (or $74.25\%$ of $T_{\text{fl}}$)  
-> (iii) Motor starting current $= 450\%$ of full-load current; line starting current $= 337.5\%$ of full-load current.
+> **Final answer:**
+> (i) Full-load slip $s_{\text{fl}} = 3.67\%$.
+> (ii) Starting torque ratio $T_{st}/T_{\text{fl}} = 0.7425$ (or $74.25\%$).
+> (iii) Motor starting current $= 450\%$ of $I_{\text{fl}}$; line starting current $= 337.5\%$ of $I_{\text{fl}}$.
 
 
 ---
@@ -2572,56 +1909,49 @@ With an auto-transformer, the voltage applied to the motor is $k$ times the line
 Explain the working of a star-delta starter for a 3 phase induction motor.
 
 ### Answer 36
-**Star-Delta Starter for Three-Phase Induction Motor**
+A star-delta starter is a reduced-voltage electromechanical starter for three-phase squirrel-cage induction motors that are designed to run with their stator windings connected in delta. Its purpose is to limit the high inrush current (typically 5-7 times full-load current) and the large torque pulsations that occur during direct-on-line starting.
 
-A star-delta starter is an electromechanical reduced-voltage starter used for three-phase squirrel-cage induction motors that are designed to operate with their stator windings connected in delta during normal running. The primary purpose is to limit the high starting current drawn by the motor when it is directly connected to the supply (Direct-On-Line starting), which can be 5-7 times the full-load current and may cause excessive voltage drops and mechanical shocks.
+**Working principle**
 
-**Working Principle**
+At start, the stator windings are connected in star. With this connection each phase receives a voltage $V_{\text{ph}} = V_L/\sqrt{3}$, where $V_L$ is the line voltage. Because the impedance per phase $Z_{\text{ph}}$ is essentially constant, the phase current and hence the line current (since in star, $I_L = I_{\text{ph}}$) are reduced to
 
-The starter employs three contactors (main, star, and delta) and a timer or a centrifugal switch to change the winding connections. At startup, the stator windings are connected in star (Y) by closing the star and main contactors. In the star connection, each phase winding receives a voltage equal to the line voltage divided by $\sqrt{3}$:
+$$
+I_{L,\text{star}} = \frac{V_L}{\sqrt{3}\,Z_{\text{ph}}}.
+$$
 
-$$V_{\text{ph}} = \frac{V_L}{\sqrt{3}}$$
+When the motor runs normally in delta, $V_{\text{ph}} = V_L$ and $I_L = \sqrt{3}\,I_{\text{ph}} = \sqrt{3}\,(V_L/Z_{\text{ph}})$.  Comparing the line currents,
 
-Since the impedance per phase $Z_{\text{ph}}$ is essentially constant, the phase current and hence the line current in star are reduced. In a star connection, the line current equals the phase current:
+$$
+\frac{I_{L,\text{star}}}{I_{L,\text{delta}}} = \frac{1}{3}.
+$$
 
-$$I_{L,\text{star}} = I_{\text{ph},\text{star}} = \frac{V_L / \sqrt{3}}{Z_{\text{ph}}}$$
+Thus star-delta starting reduces the line starting current to one-third of the direct-on-line (delta) value.
 
-When the motor runs normally in delta, the phase voltage equals the line voltage, and the line current is $\sqrt{3}$ times the phase current:
+Starting torque is proportional to the square of the applied voltage:
 
-$$I_{L,\text{delta}} = \sqrt{3} \, I_{\text{ph},\text{delta}} = \sqrt{3} \, \frac{V_L}{Z_{\text{ph}}}$$
+$$
+T_{\text{star}} \propto \left(\frac{V_L}{\sqrt{3}}\right)^2 = \frac{V_L^2}{3},\qquad
+T_{\text{delta}} \propto V_L^2.
+$$
 
-Comparing the starting line currents, we get:
+Hence
 
-$$\frac{I_{L,\text{star}}}{I_{L,\text{delta}}} = \frac{1}{3}$$
+$$
+\frac{T_{\text{star}}}{T_{\text{delta}}} = \frac{1}{3}.
+$$
 
-Thus, star-delta starting reduces the line current to one-third of the current that would flow if the motor were started directly in delta.
+The torque is also reduced to one-third, making the method suitable only for loads that can start with reduced torque (centrifugal pumps, fans, unloaded conveyors).
 
-**Effect on Torque**
+**Transition to delta**
 
-The starting torque of an induction motor is proportional to the square of the applied voltage per phase. Therefore, the torque in star is:
+After the motor accelerates to about 75-80 % of synchronous speed, a timer or centrifugal switch triggers the changeover. The star contactor opens, and the delta contactor closes, reconnecting the windings in delta. In the delta configuration full line voltage is applied to each phase, allowing the motor to develop full torque and power. The transition can be *open transition* (brief interruption of supply, which may cause torque and current transients) or *closed transition* (with resistors to limit transients). Modern starters often employ electronic timers and soft-switching to ensure a smooth changeover.
 
-$$T_{\text{star}} \propto \left( \frac{V_L}{\sqrt{3}} \right)^2 = \frac{V_L^2}{3}$$
+**Practical requirements**
+- The motor must have all six terminal leads brought out and must be rated for delta connection at the supply voltage.
+- The starter is compact, economical, and simple to install.
+- It is not recommended for high-inertia loads or applications demanding high starting torque.
 
-In delta, $T_{\text{delta}} \propto V_L^2$. Hence:
-
-$$\frac{T_{\text{star}}}{T_{\text{delta}}} = \frac{1}{3}$$
-
-The starting torque is also reduced to one-third. This makes the star-delta starter suitable only for applications where the load can be started with reduced torque, such as pumps, fans, or lightly loaded conveyors, or when the motor is started unloaded.
-
-**Transition to Delta**
-
-After the motor accelerates to approximately 75-80% of its synchronous speed (typically monitored by a timer or a speed-sensing device), the star contactor opens, and the delta contactor closes, reconnecting the windings in delta. In the delta configuration, full line voltage appears across each winding, allowing the motor to develop full torque and run at its rated power. The transition can be either *open transition* (a brief interruption of supply during changeover, which may cause current and torque transients) or *closed transition* (using resistors to avoid current interruption). Modern starters often employ electronic timers and soft switching to minimize transients.
-
-**Practical Considerations**
-
-1. The motor must be designed for delta connection for its rated voltage and must have all six stator terminals brought out to the terminal box.
-2. The starter is compact, relatively inexpensive, and provides a simple method of current reduction.
-3. Because the torque is reduced, it is not suitable for high-inertia loads or loads requiring high starting torque.
-4. For frequent starts or critical applications, other methods such as soft starters (using power electronics) or variable frequency drives may be preferred.
-
-In summary, the star-delta starter exploits the fact that connecting the stator windings in star at startup reduces both the applied phase voltage and the resulting line current and torque to one-third of the direct-on-line (delta) values. After the motor picks up speed, the connection is changed to delta to restore full voltage and full torque for normal operation.
-
-> **Final answer:** During starting, the stator windings are connected in star, reducing the phase voltage to $V_L/\sqrt{3}$. As a result, the line starting current and the starting torque both drop to one-third of their values in delta. When the motor reaches a steady speed, a timer switches the connection to delta, applying full line voltage across each winding for normal operation.
+> **Final answer:** The star-delta starter first connects the stator windings in star, reducing the phase voltage to $V_L/\sqrt{3}$, thereby limiting the line starting current and starting torque to one-third of the direct-on-line delta values. Once the motor reaches a preset speed, the connection is switched to delta, restoring full voltage, full torque and full power for normal operation.
 
 
 ---
@@ -2632,93 +1962,66 @@ In summary, the star-delta starter exploits the fact that connecting the stator 
 A 3 phase induction motor has a starting torque of 150 % & a maximum torque of 250 % of the full load torque. Neglecting stator impedance calculate a) the slip at maximum torque b) full load slip (03)
 
 ### Answer 37
-The torque developed by a 3-phase induction motor when the stator impedance is neglected is given by
-
+**Concept:** The torque of a three-phase induction motor, neglecting stator impedance, is
 $$
-T = \frac{3}{\omega_s} \frac{V_1^2 R_2'/s}{(R_2'/s)^2 + X_2'^2},
+\begin{aligned}
+T = \frac{3}{\omega_s} \frac{V_1^2 R_2'/s}{(R_2'/s)^2 + X_2'^2}.
+\end{aligned}
 $$
-
-where $V_1$ is the applied phase voltage, $\omega_s$ the synchronous angular speed, $R_2'$ and $X_2'$ the rotor resistance and standstill leakage reactance referred to the stator, and $s$ the slip.
-
-The condition for maximum torque is found by setting $dT/ds=0$, which yields
-
+Maximum torque occurs when $s_m = R_2'/X_2'$, giving
 $$
-s_m = \frac{R_2'}{X_2'}, \qquad
+\begin{aligned}
 T_{\max} = \frac{3}{2\omega_s} \frac{V_1^2}{X_2'}.
+\end{aligned}
+$$
+The torque ratio in terms of slip is
+$$
+\begin{aligned}
+\frac{T}{T_{\max}} = \frac{2 s s_m}{s^2 + s_m^2} = \frac{2}{\frac{s}{s_m} + \frac{s_m}{s}}.
+\end{aligned}
 $$
 
-Normalising the torque with $T_{\max}$ gives the convenient non-dimensional form
+**Given:** $T_{\text{start}} = 150\%$ of full load $\Rightarrow T_{\text{st}} = 1.5 T_{\text{fl}}$.  $T_{\max} = 250\%$ of full load $\Rightarrow T_{\max} = 2.5 T_{\text{fl}}$.
 
+**a) Slip at maximum torque, $s_m$:**
+At starting, $s = 1$. Thus
 $$
-\frac{T}{T_{\max}} = \frac{2\,s\,s_m}{s^2 + s_m^2} 
-= \frac{2}{\displaystyle \frac{s}{s_m} + \frac{s_m}{s}}.
+\begin{aligned}
+\frac{T_{\text{st}}}{T_{\max}} = \frac{1.5}{2.5} = 0.6 = \frac{2}{\frac{1}{s_m} + s_m}.
+\end{aligned}
 $$
-
-![Typical torque-slip characteristic of an induction motor showing the starting torque, maximum torque, and the full-load operating point.](./pyq-assets/textbook/108105131_p556_img-289_jpeg.png)  
-*Figure: Torque-slip curve.*
-
-**Given data** (all in per-unit of full-load torque):
-- Starting torque, $T_{\text{st}} = 1.5\,T_{\text{fl}}$
-- Maximum torque, $T_{\max} = 2.5\,T_{\text{fl}}$
-
-Therefore,
+Solving,
 $$
-\frac{T_{\text{st}}}{T_{\max}} = \frac{1.5}{2.5} = 0.6.
+\begin{aligned}
+\frac{1}{s_m} + s_m = \frac{2}{0.6} = \frac{10}{3}
+\;\Longrightarrow\; 3s_m^2 -10s_m + 3 = 0,
+\end{aligned}
 $$
-
-**a) Slip at maximum torque, $s_m$**  
-At standstill $s = 1$. Substituting in the torque ratio:
-
+which yields $s_m = 3$ or $s_m = \frac{1}{3}$. For a normal motor $s_m < 1$, hence
 $$
-0.6 = \frac{2}{\displaystyle \frac{1}{s_m} + s_m}
-\;\Longrightarrow\;
-\frac{1}{s_m} + s_m = \frac{2}{0.6} = \frac{10}{3}.
+\begin{aligned}
+s_m = \frac{1}{3} \approx 0.3333 \;(33.33\%).
+\end{aligned}
 $$
 
-Multiplying by $s_m$ gives a quadratic:
+**b) Full-load slip, $s_{\text{fl}}$:**
+The full-load torque ratio is
 $$
-s_m^2 - \frac{10}{3}s_m + 1 = 0 \quad\text{or}\quad 3s_m^2 - 10s_m + 3 = 0.
-$$
-
-The roots are $s_m = \frac{1}{3}$ and $s_m = 3$. For a well-designed motor the slip at maximum torque lies well below unity, so the physical solution is
-
-$$
-\boxed{s_m = \frac{1}{3} \approx 0.3333 \;\; (33.33\%)}.
-$$
-
-**b) Full-load slip, $s_{\text{fl}}$**  
-From the given data,
-$$
+\begin{aligned}
 \frac{T_{\text{fl}}}{T_{\max}} = \frac{1}{2.5} = 0.4.
+\end{aligned}
 $$
-
-Let $x = \displaystyle \frac{s_{\text{fl}}}{s_m}$. The torque ratio becomes
+Let $x = s_{\text{fl}}/s_m$. Then
 $$
-0.4 = \frac{2}{x + \frac{1}{x}}
-\;\Longrightarrow\;
-x + \frac{1}{x} = 5
-\;\Longrightarrow\;
-x^2 - 5x + 1 = 0.
+\begin{aligned}
+0.4 = \frac{2}{x + \frac{1}{x}} \;\Longrightarrow\; x + \frac{1}{x} = 5 \;\Longrightarrow\; x^2 -5x +1 =0.
+\end{aligned}
 $$
-
-The two solutions are
+The roots are $x = \frac{5 \pm \sqrt{21}}{2}$ with $\sqrt{21}\approx 4.5826$, giving $x_1 \approx 4.791$, $x_2 \approx 0.2087$. Stable operation requires $s_{\text{fl}} < s_m$, so $x<1$. Thus $x = 0.2087$. Therefore
 $$
-x = \frac{5 \pm \sqrt{25 - 4}}{2} = \frac{5 \pm \sqrt{21}}{2}.
-$$
-
-Numerically, $\sqrt{21} \approx 4.5826$, giving
-$$
-x_1 \approx 4.791,\qquad x_2 \approx 0.2087.
-$$
-
-The full-load operating point lies in the stable low-slip region, therefore $s_{\text{fl}} < s_m$, i.e. $x < 1$. Hence $x = 0.2087$ is the admissible value. Thus
-$$
-s_{\text{fl}} = x\,s_m = 0.2087 \times 0.3333 \approx 0.0696.
-$$
-
-Expressed as a percentage,
-$$
-\boxed{s_{\text{fl}} \approx 0.0696 \;\; (6.96\%)}.
+\begin{aligned}
+s_{\text{fl}} = x\,s_m = 0.2087 \times 0.3333 \approx 0.0696 \;(6.96\%).
+\end{aligned}
 $$
 
 > **Final answer:** (a) slip at maximum torque = 0.333 (33.33%); (b) full-load slip = 0.0696 (6.96%).
@@ -2732,91 +2035,83 @@ $$
 A 400 V, 50 Hz, 3 phase, 4 pole star connected slip ring induction motor has its rotor standstill leakage impedance of (0.4+j2) Ω per phase. The stator to rotor turns ratio is 1.7. Compute (i) Maximum Torque (ii) Full load torque when the slip is 4%. (iii) The resistance to be included in the rotor circuit to develop 80% of maximum torque at starting. (04)
 
 ### Answer 38
-**Given data:**
-- Supply: 400 V, 50 Hz, 3-phase, 4-pole, star-connected stator.
-- Rotor standstill leakage impedance per phase: $Z_2 = 0.4 + j2\,\Omega$ $\Rightarrow R_2 = 0.4\,\Omega,\ X_2 = 2\,\Omega$.
-- Stator-to-rotor turns ratio: $a = 1.7$.
-- Synchronous speed: $N_s = \frac{120f}{P} = \frac{120 \times 50}{4} = 1500\,\text{rpm}$.
-- Synchronous angular speed: $\omega_s = \frac{2\pi N_s}{60} = \frac{2\pi \times 1500}{60} = 50\pi \approx 157.08\,\text{rad/s}$.
-- Stator phase voltage (star): $V_{ph} = \frac{400}{\sqrt{3}} \approx 230.94\,\text{V}$.
-- Rotor standstill induced emf per phase (referred to rotor side): $E_2 = \frac{V_{ph}}{a} = \frac{230.94}{1.7} \approx 135.85\,\text{V}$.
+**Given:** 400 V, 50 Hz, 3-phase, 4-pole, star-connected slip-ring IM. Rotor standstill leakage impedance $Z_2 = (0.4 + j2)\,\Omega$ per phase. Stator-to-rotor turns ratio $a = 1.7$.
+
+- Synchronous speed: $N_s = \frac{120f}{P} = \frac{120 \times 50}{4} = 1500$ rpm.
+  Angular speed: $\omega_s = \frac{2\pi N_s}{60} = 50\pi \approx 157.08$ rad/s.
+- Phase voltage: $V_{\text{ph}} = \frac{400}{\sqrt{3}} \approx 230.94$ V.
+- Rotor induced emf at standstill (referred to rotor side): $E_2 = \frac{V_{\text{ph}}}{a} = \frac{230.94}{1.7} \approx 135.85$ V.
+- Rotor parameters: $R_2 = 0.4\,\Omega$, $X_2 = 2\,\Omega$.
 
 **(i) Maximum torque**
-
-The slip at which maximum torque occurs is given by
+Slip at max torque:
 $$
+\begin{aligned}
 s_m = \frac{R_2}{X_2} = \frac{0.4}{2} = 0.2.
+\end{aligned}
 $$
-
-The maximum electromagnetic torque developed by the motor is
+Maximum torque expression:
 $$
+\begin{aligned}
 T_{\max} = \frac{3}{\omega_s}\,\frac{E_2^2}{2X_2}.
+\end{aligned}
 $$
-
-Substituting the values:
+Substituting values:
 $$
 \begin{aligned}
-T_{\max} &= \frac{3 \times (135.85)^2}{2 \times 157.08 \times 2} \\
-&= \frac{3 \times 18455}{628.32} \approx \frac{55365}{628.32} \approx 88.1\,\text{N·m}.
+T_{\max} &= \frac{3 \times (135.85)^2}{2 \times 157.08 \times 2}
+= \frac{3 \times 18455}{628.32}
+\approx 88.1\,\text{N}\cdot\text{m}.
 \end{aligned}
 $$
 
-**(ii) Full-load torque at 4% slip**
-
-For any slip $s$, the torque is
-$$
-T = \frac{3}{\omega_s} \cdot \frac{E_2^2\,(R_2/s)}{(R_2/s)^2 + X_2^2}.
-$$
-
-At full load, $s = 0.04$:
-$$
-\frac{R_2}{s} = \frac{0.4}{0.04} = 10\,\Omega.
-$$
-
-Therefore,
+**(ii) Full-load torque at $s = 0.04$**
+Torque at any slip:
 $$
 \begin{aligned}
-T_{\text{fl}} &= \frac{3}{157.08} \times \frac{18455 \times 10}{10^2 + 2^2} \\
-&= \frac{3}{157.08} \times \frac{184550}{104} \\
-&\approx 0.0191 \times 1774.52 \approx 33.9\,\text{N·m}.
+T = \frac{3}{\omega_s}\,\frac{E_2^2 (R_2/s)}{(R_2/s)^2 + X_2^2}.
+\end{aligned}
+$$
+At $s = 0.04$, $R_2/s = 0.4/0.04 = 10\,\Omega$. Therefore
+$$
+\begin{aligned}
+T_{\text{fl}} &= \frac{3}{157.08} \times \frac{18455 \times 10}{10^2 + 2^2}
+= \frac{3}{157.08} \times \frac{184550}{104} \\
+&\approx 0.0191 \times 1774.52 \approx 33.9\,\text{N}\cdot\text{m}.
 \end{aligned}
 $$
 
-**(iii) External rotor resistance for 80% of $T_{\max}$ at starting**
-
-Let $R_{\text{ext}}$ be the additional resistance per phase inserted in the rotor circuit. At starting ($s=1$), the total rotor circuit resistance per phase is $R_t = R_2 + R_{\text{ext}}$. The starting torque is then
+**(iii) External rotor resistance for $0.8\,T_{\max}$ at starting**
+Let $R_{\text{ext}}$ be added per phase. Total rotor resistance at standstill ($s=1$) is $R_t = R_2 + R_{\text{ext}}$.
+Starting torque:
 $$
-T_{\text{st}} = \frac{3}{\omega_s} \cdot \frac{E_2^2\,R_t}{R_t^2 + X_2^2}.
+\begin{aligned}
+T_{\text{st}} = \frac{3}{\omega_s}\,\frac{E_2^2 R_t}{R_t^2 + X_2^2}.
+\end{aligned}
 $$
-
-We require $T_{\text{st}} = 0.8\,T_{\max}$. Using the expression for $T_{\max}$,
+Required $T_{\text{st}} = 0.8\,T_{\max}$, so
 $$
-\frac{T_{\text{st}}}{T_{\max}} = \frac{2X_2 R_t}{R_t^2 + X_2^2} = 0.8.
+\begin{aligned}
+\frac{T_{\text{st}}}{T_{\max}} = \frac{2 X_2 R_t}{R_t^2 + X_2^2} = 0.8.
+\end{aligned}
 $$
-
-With $X_2 = 2\,\Omega$:
+With $X_2 = 2\,\Omega$,
 $$
-\frac{4R_t}{R_t^2 + 4} = 0.8 \quad\Rightarrow\quad 4R_t = 0.8(R_t^2 + 4).
+\begin{aligned}
+\frac{4 R_t}{R_t^2 + 4} = 0.8 &\;\Longrightarrow\; 4R_t = 0.8R_t^2 + 3.2 \\
+&\;\Longrightarrow\; 0.8R_t^2 - 4R_t + 3.2 = 0 \\
+&\;\Longrightarrow\; R_t^2 - 5R_t + 4 = 0.
+\end{aligned}
 $$
-
-Simplifying:
+Roots: $R_t = 1\,\Omega$ or $4\,\Omega$. Choosing the lower value for smaller external resistance and lower losses:
 $$
-4R_t = 0.8R_t^2 + 3.2 \quad\Rightarrow\quad 0.8R_t^2 - 4R_t + 3.2 = 0.
-$$
-
-Multiply by $5$:
-$$
-4R_t^2 - 20R_t + 16 = 0 \quad\Rightarrow\quad R_t^2 - 5R_t + 4 = 0.
-$$
-
-The roots are $R_t = 1\,\Omega$ and $R_t = 4\,\Omega$. The smaller value is preferred for lower rotor copper loss and smaller external resistance. Hence, $R_t = 1\,\Omega$, and the required external resistance per phase is
-$$
+\begin{aligned}
 R_{\text{ext}} = R_t - R_2 = 1 - 0.4 = 0.6\,\Omega.
+\end{aligned}
 $$
+(Using the higher root would give $R_{\text{ext}} = 3.6\,\Omega$.)
 
-(If the larger root were chosen, $R_{\text{ext}} = 4 - 0.4 = 3.6\,\Omega$, but the smaller resistance is the practical choice.)
-
-> **Final answer:** (i) $T_{\max} \approx 88.1$ N·m; (ii) full-load torque $\approx 33.9$ N·m; (iii) external resistance $\approx 0.6\,\Omega$ per phase (or $3.6\,\Omega$ per phase if the higher root is used).
+> **Final answer:** (i) $T_{\max} \approx 88.1$ N·m; (ii) full-load torque $\approx 33.9$ N·m; (iii) external resistance $\approx 0.6\,\Omega$ per phase (or $3.6\,\Omega$ if the higher root is chosen).
 
 
 ---
@@ -2827,69 +2122,45 @@ $$
 The short circuit line current of a 6 HP Induction Motor is 3.5 times its full load current. An autotransformer starter is used to limit starting line current to twice the full load current. For a full load slip is 2.5%, (i) Percentage tapping of autotransformer. (ii) Estimate the torque at starting in terms of full load torque (iii) Line current drawn from the supply in terms of full load current with autotransformer set to the above tapping. (03)
 
 ### Answer 39
-**Autotransformer starting of a 3-phase induction motor**
+**Concept:** An autotransformer starter reduces motor voltage during starting. If the tapping ratio is $k$ ($0 < k < 1$), the motor terminal voltage is $k V_{\text{rated}}$. Consequently, the motor starting current is $k$ times the direct-on-line short-circuit current $I_{\text{sc}}$, and because of transformer action the supply line current is $k^2 I_{\text{sc}}$. Torque is proportional to the square of the applied voltage.
 
-An autotransformer starter reduces the voltage applied to the motor during starting. If the tapping ratio is $k$ (where $0 < k < 1$), the motor terminal voltage becomes $k V_{\text{rated}}$. Consequently the motor current at starting would be $k$ times the direct-on-line (DOL) short-circuit current $I_{\text{sc}}$. Because of the transformer action, the current drawn from the supply line is further reduced by a factor $k$, making the line current
+**Given:** $I_{\text{sc}} = 3.5 I_{\text{fl}}$. Required line current at start $\le 2 I_{\text{fl}}$. Full-load slip $s_{\text{fl}} = 2.5\%$.
 
+**(i) Percentage tapping**
+Let the tapping ratio be $k$. Then
 $$
-I_{\text{line}} = k^2 I_{\text{sc}}.
+\begin{aligned}
+I_{\text{line}} = k^2 I_{\text{sc}} = k^2 (3.5 I_{\text{fl}}) &\le 2 I_{\text{fl}} \\
+k^2 &\le \frac{2}{3.5} = 0.5714 \\
+k &\le \sqrt{0.5714} \approx 0.756.
+\end{aligned}
 $$
-
-**(i) Tapping percentage**
-
-It is required that the starting line current does not exceed twice the full-load current $I_{\text{fl}}$. Hence
-
-$$
-k^2 \times (3.5\,I_{\text{fl}}) = 2\,I_{\text{fl}}
-\quad\Rightarrow\quad
-k = \sqrt{\frac{2}{3.5}} = \sqrt{0.5714} \approx 0.756.
-$$
-
-Expressed as a percentage,
-
-$$
-\boxed{\text{Tapping} \approx 75.6\,\%}.
-$$
+Hence the tapping percentage is $75.6\%$.
 
 **(ii) Starting torque in terms of full-load torque**
-
-For an induction motor the torque is roughly proportional to the square of the applied voltage. The DOL starting torque at rated voltage can be related to the full-load torque by the approximate formula
-
+The DOL starting torque at rated voltage can be approximated by
 $$
-\frac{T_{\text{st(DOL)}}}{T_{\text{fl}}}
-= \left(\frac{I_{\text{sc}}}{I_{\text{fl}}}\right)^{\!2}\! s_{\text{fl}},
-$$
-
-where $s_{\text{fl}} = 0.025$ is the full-load slip. Substituting the given ratio:
-
-$$
-\frac{T_{\text{st(DOL)}}}{T_{\text{fl}}}
+\begin{aligned}
+\frac{T_{\text{st(DOL)}}}{T_{\text{fl}}} \approx \left(\frac{I_{\text{sc}}}{I_{\text{fl}}}\right)^2 s_{\text{fl}}
 = (3.5)^2 \times 0.025 = 0.30625\,T_{\text{fl}}.
+\end{aligned}
 $$
-
-With the autotransformer set at tapping $k$, the motor terminal voltage is $k V_{\text{rated}}$, so the starting torque becomes $k^2$ times the DOL value:
-
+With the autotransformer, the starting torque becomes $k^2$ times the DOL value:
 $$
-T_{\text{st(auto)}} = k^2 \; T_{\text{st(DOL)}}
-= \frac{2}{3.5} \times 0.30625\,T_{\text{fl}}
-\approx 0.175\,T_{\text{fl}}.
-$$
-
-In percentage,
-
-$$
-\boxed{T_{\text{st(auto)}} \approx 17.5\,\% \; T_{\text{fl}}}.
+\begin{aligned}
+T_{\text{st(auto)}} = k^2 \, T_{\text{st(DOL)}} = \frac{2}{3.5} \times 0.30625\,T_{\text{fl}} \approx 0.175\,T_{\text{fl}} \;\; (17.5\%).
+\end{aligned}
 $$
 
 **(iii) Line current with the above tapping**
-
-By design the line current is limited to **twice the full-load current**:
-
+By design, the line current is limited to the specified value:
 $$
-\boxed{I_{\text{line}} = 2\,I_{\text{fl}}}.
+\begin{aligned}
+I_{\text{line}} = 2\,I_{\text{fl}}.
+\end{aligned}
 $$
 
-> **Final answer:** (i) tapping ≈ 75.6 %; (ii) starting torque ≈ 17.5 % of full-load torque; (iii) line current = 2 \times full-load current.
+> **Final answer:** (i) tapping $\approx 75.6\%$; (ii) starting torque $\approx 17.5\%$ of full-load torque; (iii) line current $= 2 \times$ full-load current.
 
 
 ---
@@ -2900,86 +2171,90 @@ $$
 A 12 pole, 50Hz, 3phase induction motor has the rotor resistance of 0.15Ω per phase and the standstill reactance of 0.25Ω per phase. On full load it is running at a speed of 480rpm.The rotor induced emf per phase at stand-still is observed to be 32V. Calculate (i) Full load torque. (ii) Starting Torque. (iii) Speed at Maximum Torque. (03)
 
 ### Answer 40
-A 12-pole, 50 Hz, 3-phase induction motor has parameters:
-- Rotor resistance per phase, $R_2 = 0.15\ \Omega$
-- Standstill rotor reactance per phase, $X_2 = 0.25\ \Omega$
-- Standstill rotor induced emf per phase, $E_2 = 32\ \text{V}$
-- Full-load speed, $N = 480\ \text{rpm}$
+Given: $P=12$, $f=50$ Hz, $R_2=0.15\ \Omega$, $X_2=0.25\ \Omega$, $E_2=32$ V (standstill), $N_{\text{fl}}=480$ rpm.
 
----
-### (i) Full-load torque
-
-**Synchronous speed**  
-$$
-N_s = \frac{120f}{P} = \frac{120 \times 50}{12} = 500\ \text{rpm}
-$$
-Synchronous angular speed:  
-$$
-\omega_s = \frac{2\pi N_s}{60} = \frac{2\pi \times 500}{60} = 52.36\ \text{rad/s}
-$$
-
-**Full-load slip**  
-$$
-s = \frac{N_s - N}{N_s} = \frac{500 - 480}{500} = 0.04
-$$
-
-**Rotor current at full load**  
-At slip $s$, the rotor induced emf is $sE_2$ and the rotor impedance is $\sqrt{R_2^2 + (sX_2)^2}$. Thus
-$$
-I_2 = \frac{sE_2}{\sqrt{R_2^2 + (sX_2)^2}} = \frac{0.04 \times 32}{\sqrt{0.15^2 + (0.04 \times 0.25)^2}} = \frac{1.28}{\sqrt{0.0225 + 0.0001}} = \frac{1.28}{0.15033} \approx 8.515\ \text{A}
-$$
-
-**Air-gap power**  
-Total rotor copper loss:
-$$
-P_{\text{cu}} = 3 I_2^2 R_2 = 3 \times (8.515)^2 \times 0.15 \approx 32.6\ \text{W}
-$$
-Air-gap power transferred from stator to rotor:
-$$
-P_{\text{ag}} = \frac{P_{\text{cu}}}{s} = \frac{32.6}{0.04} = 815.8\ \text{W}
-$$
-
-**Full-load torque**  
-The developed torque is given by
-$$
-T = \frac{P_{\text{ag}}}{\omega_s}
-$$
-Hence,
-$$
-T_{\text{fl}} = \frac{815.8}{52.36} \approx 15.6\ \text{N·m}
-$$
-
----
-### (ii) Starting torque
-
-At start, $s = 1$. The general torque expression in terms of $E_2$ is
-$$
-T = \frac{3}{\omega_s} \cdot \frac{sE_2^2 R_2}{R_2^2 + (sX_2)^2}
-$$
-With $s = 1$, starting torque becomes
-$$
-T_{\text{st}} = \frac{3}{\omega_s} \cdot \frac{E_2^2 R_2}{R_2^2 + X_2^2}
-$$
-Substitute the values:
+Synchronous speed:
 $$
 \begin{aligned}
-T_{\text{st}} &= \frac{3}{52.36} \cdot \frac{32^2 \times 0.15}{0.15^2 + 0.25^2} \\
-&= \frac{3}{52.36} \cdot \frac{1024 \times 0.15}{0.0225 + 0.0625} \\
-&= \frac{3}{52.36} \cdot \frac{153.6}{0.085} \\
-&\approx 0.0573 \times 1807.06 \approx 103.5\ \text{N·m}
+N_s = \frac{120f}{P} = \frac{120\times 50}{12}=500\text{ rpm}
+\end{aligned}
+$$
+Angular speed:
+$$
+\begin{aligned}
+\omega_s = \frac{2\pi N_s}{60}= \frac{2\pi \times 500}{60}=52.36\text{ rad/s}
 \end{aligned}
 $$
 
----
-### (iii) Speed at maximum torque
+**(i) Full-load torque**
 
-The slip at which maximum torque occurs is independent of supply voltage and depends only on rotor parameters:
+Slip:
 $$
-s_m = \frac{R_2}{X_2} = \frac{0.15}{0.25} = 0.6
+\begin{aligned}
+s = \frac{N_s - N_{\text{fl}}}{N_s}= \frac{500-480}{500}=0.04
+\end{aligned}
 $$
-The corresponding speed is
+
+Rotor current (neglecting magnetising branch):
 $$
-N_{T_{\max}} = (1 - s_m)N_s = (1 - 0.6) \times 500 = 0.4 \times 500 = 200\ \text{rpm}
+\begin{aligned}
+I_2 = \frac{sE_2}{\sqrt{R_2^2+(sX_2)^2}} = \frac{0.04\times 32}{\sqrt{0.15^2+(0.04\times 0.25)^2}} = \frac{1.28}{\sqrt{0.0225+0.0001}} \approx 8.515\text{ A}
+\end{aligned}
+$$
+
+Rotor copper loss:
+$$
+\begin{aligned}
+P_{\text{cu}} = 3I_2^2 R_2 = 3\times (8.515)^2 \times 0.15 \approx 32.6\text{ W}
+\end{aligned}
+$$
+
+Air-gap power:
+$$
+\begin{aligned}
+P_{\text{ag}} = \frac{P_{\text{cu}}}{s}= \frac{32.6}{0.04}=815.8\text{ W}
+\end{aligned}
+$$
+
+Full-load torque:
+$$
+\begin{aligned}
+T_{\text{fl}} = \frac{P_{\text{ag}}}{\omega_s}= \frac{815.8}{52.36}\approx 15.6 \text{N}\cdot\text{m}
+\end{aligned}
+$$
+
+**(ii) Starting torque**
+
+At start, $s=1$. The torque expression in terms of standstill emf:
+$$
+\begin{aligned}
+T = \frac{3}{\omega_s}\frac{sE_2^2 R_2}{R_2^2+(sX_2)^2}
+\end{aligned}
+$$
+Set $s=1$:
+$$
+\begin{aligned}
+T_{\text{st}} &= \frac{3}{\omega_s}\frac{E_2^2 R_2}{R_2^2+X_2^2}
+= \frac{3}{52.36}\cdot\frac{32^2\times 0.15}{0.15^2+0.25^2}\\
+&= \frac{3}{52.36}\cdot\frac{1024\times 0.15}{0.0225+0.0625}
+= \frac{3}{52.36}\cdot\frac{153.6}{0.085}\\
+&\approx 0.0573 \times 1807.06 \approx 103.5 \text{N}\cdot\text{m}
+\end{aligned}
+$$
+
+**(iii) Speed at maximum torque**
+
+Slip at maximum torque depends only on rotor parameters:
+$$
+\begin{aligned}
+s_m = \frac{R_2}{X_2}= \frac{0.15}{0.25}=0.6
+\end{aligned}
+$$
+Corresponding speed:
+$$
+\begin{aligned}
+N_{T_{\max}} = (1-s_m)N_s = (1-0.6)\times 500 = 200\text{ rpm}
+\end{aligned}
 $$
 
 > **Final answer:** (i) 15.6 N·m; (ii) 103.5 N·m; (iii) 200 rpm.
@@ -2993,40 +2268,35 @@ $$
 A 3-phase squirrel cage induction motor takes a starting current 6 times the full load current. Estimate the starting torque as a percentage of full load torque if the motor is started (i) direct on line (ii) through a star-delta starter. The full load slip of the motor is 4%. (02)
 
 ### Answer 41
-For a 3-phase induction motor, the starting torque under Direct-on-Line (DOL) starting can be expressed in terms of the full-load torque, the starting current, the full-load current, and the full-load slip. From the approximate equivalent circuit, the developed torque is proportional to the square of the rotor current and inversely proportional to the slip:
+Given: starting current $= 6\times$ full-load current; full-load slip $s_{\text{fl}} = 0.04$. Neglecting the magnetising current, rotor current $\approx$ stator current. Induction motor torque is proportional to $(\text{rotor current})^2 / \text{slip}$, hence
 
 $$
-T \propto \frac{I_2^2}{s}.
+\begin{aligned}
+\frac{T_{\text{st}}}{T_{\text{fl}}} \approx \left(\frac{I_{\text{st}}}{I_{\text{fl}}}\right)^2 \times s_{\text{fl}}
+\end{aligned}
 $$
 
-At full load, the rotor current is essentially the full-load current $I_{\text{fl}}$ and the slip is $s_{\text{fl}}$. At the instant of starting, the rotor is stationary ($s = 1$) and the starting current drawn from the supply is $I_{\text{st}}$. Hence, the ratio of starting torque to full-load torque under DOL conditions is
+**(i) Direct-on-line (DOL) starting**
+With DOL, full line voltage is applied at start. Therefore
 
 $$
-\frac{T_{\text{st(DOL)}}}{T_{\text{fl}}}
-= \left( \frac{I_{\text{st}}}{I_{\text{fl}}} \right)^{\!2} \! s_{\text{fl}}.
+\begin{aligned}
+\frac{T_{\text{st(DOL)}}}{T_{\text{fl}}} = (6)^2 \times 0.04 = 36 \times 0.04 = 1.44
+\end{aligned}
 $$
+Thus the DOL starting torque is **144 %** of full-load torque.
 
-Given that the motor draws 6 times the full-load current at starting, $I_{\text{st}} / I_{\text{fl}} = 6$, and the full-load slip is $s_{\text{fl}} = 0.04$ (4 %), we obtain
-
-$$
-\frac{T_{\text{st(DOL)}}}{T_{\text{fl}}}
-= (6)^2 \times 0.04 = 36 \times 0.04 = 1.44.
-$$
-
-Thus, the DOL starting torque is 144 % of the full-load torque.
-
-When the motor is started through a star-delta starter, the stator windings are initially connected in star. Consequently, the voltage applied to each phase is reduced by a factor of $1/\sqrt{3}$ compared with the line voltage that would be applied in a delta connection. Since the torque developed by an induction motor is proportional to the square of the applied voltage, the starting torque with a star-delta starter becomes one-third of the DOL starting torque:
+**(ii) Star-delta starter**
+In star connection, the phase voltage is $1/\sqrt{3}$ of the line voltage. Since torque is proportional to the square of the applied voltage, the starting torque in star is one-third of that in delta:
 
 $$
-T_{\text{st(Y-Δ)}} = \frac{1}{3}\, T_{\text{st(DOL)}} = \frac{144\%}{3} = 48\%.
+\begin{aligned}
+T_{\text{st(Y-Delta)}} = \frac{1}{3}\,T_{\text{st(DOL)}} = \frac{144\%}{3}=48\%
+\end{aligned}
 $$
+Hence the star-delta start gives **48 %** of full-load torque.
 
-Therefore, the star-delta starter gives a starting torque of 48 % of the full-load torque.
-
-![Torque-slip characteristic of a three-phase induction motor, indicating the starting torque and the full-load operating point.](./pyq-assets/textbook/108105131_p556_img-289_jpeg.png)
-*Figure: Typical torque-slip curve. The starting torque is the value at slip $s = 1$; the full-load torque occurs at a slip of about 4 %.*
-
-> **Final answer:** (i) DOL starting torque = **144 %** of full-load torque; (ii) star-delta starting torque = **48 %** of full-load torque.
+> **Final answer:** (i) DOL: 144 % of full-load torque; (ii) star-delta: 48 % of full-load torque.
 
 
 ---
@@ -3037,79 +2307,62 @@ Therefore, the star-delta starter gives a starting torque of 48 % of the full-lo
 The standstill rotor voltage of a 3 phase induction motor is 190V per phase. The motor is running with a slip of 4% and the load torque is proportional to square of the speed. What must be the rotor injected voltage to run the motor with slip of 0.6. The rotor resistance per phase is 0.5 Ω. (03)
 
 ### Answer 42
-**Rotor injection voltage calculation**
+Given: standstill rotor emf per phase $E_2 = 190$ V, rotor resistance $R_2 = 0.5\ \Omega$, initial slip $s_1 = 0.04$, desired slip $s_2 = 0.6$. The load torque is proportional to the square of the speed: $T_L \propto (1-s)^2$. Rotor leakage reactance is neglected (typical for slip-power recovery control).
 
-Given:
-- Standstill rotor emf per phase, $E_2 = 190$ V
-- Rotor resistance per phase, $R_2 = 0.5\ \Omega$
-- Initial slip, $s_1 = 0.04$ (4%)
-- Final desired slip, $s_2 = 0.6$
-- Load torque $\propto$ (speed)$^2 \propto (1-s)^2$
-
-*Assumption:* Rotor leakage reactance is neglected (standard for injected-voltage speed control when only resistance is considered).
-
-**1. Initial operating condition**
-
+**1. Initial condition (no injection)**
 Rotor induced emf at $s_1$:
 $$
-E_{s1} = s_1 E_2 = 0.04 \times 190 = 7.6\ \text{V}
+\begin{aligned}
+E_{s1} = s_1 E_2 = 0.04\times 190 = 7.6\text{ V}
+\end{aligned}
 $$
-
-Rotor current (no external injected voltage):
-$$
-I_{21} = \frac{E_{s1}}{R_2} = \frac{7.6}{0.5} = 15.2\ \text{A}
-$$
-
-**2. Torque balance**
-
-For a three-phase induction motor, torque is proportional to $I_2^2/s$. Also given $T \propto (1-s)^2$. Equating the torque ratios between initial and final slips:
-
-$$
-\frac{T_2}{T_1} = \frac{I_{22}^2 / s_2}{I_{21}^2 / s_1} = \left(\frac{1-s_2}{1-s_1}\right)^2
-$$
-
-Rearranging for $I_{22}$:
-$$
-I_{22} = I_{21}\sqrt{\frac{s_2}{s_1}\left(\frac{1-s_2}{1-s_1}\right)^2}
-$$
-
-Substitute values:
+Rotor current:
 $$
 \begin{aligned}
-I_{22} &= 15.2 \times \sqrt{ \frac{0.6}{0.04} \left(\frac{1-0.6}{1-0.04}\right)^2 } \\
-&= 15.2 \times \sqrt{ 15 \times \left(\frac{0.4}{0.96}\right)^2 } \\
-&= 15.2 \times \sqrt{15 \times 0.1736} \\
-&= 15.2 \times \sqrt{2.604} \\
-&= 15.2 \times 1.614 \\
-&\approx 24.53\ \text{A}
+I_{21} = \frac{E_{s1}}{R_2} = \frac{7.6}{0.5} = 15.2\text{ A}
 \end{aligned}
 $$
 
-**3. Injected voltage required**
-
-At $s_2$, the natural rotor induced emf is:
+**2. Required rotor current at new slip $s_2$**
+With constant flux, motor torque $T \propto I_2^2 / s$. Equating the motor torque to the load characteristic:
 $$
-E_{s2} = s_2 E_2 = 0.6 \times 190 = 114\ \text{V}
+\begin{aligned}
+\frac{I_{22}^2 / s_2}{I_{21}^2 / s_1} = \left(\frac{1-s_2}{1-s_1}\right)^2
+\end{aligned}
 $$
-
-With negligible reactance, the net voltage in the rotor circuit must equal the resistive drop:
+Solving for $I_{22}$:
 $$
-V_{\text{net}} = I_{22} R_2 = 24.53 \times 0.5 = 12.27\ \text{V}
-$$
-
-To achieve this net voltage, we inject a voltage $E_{\text{inj}}$ in **opposition** to the induced emf. The loop equation is:
-$$
-E_{s2} - E_{\text{inj}} = I_{22} R_2
-$$
-
-Hence,
-$$
-E_{\text{inj}} = E_{s2} - I_{22} R_2 = 114 - 12.27 \approx 101.73\ \text{V/phase}
+\begin{aligned}
+I_{22} &= I_{21} \sqrt{\frac{s_2}{s_1}\left(\frac{1-s_2}{1-s_1}\right)^2} \\
+&= 15.2 \times \sqrt{\frac{0.6}{0.04}\left(\frac{1-0.6}{1-0.04}\right)^2} \\
+&= 15.2 \times \sqrt{15 \times \left(\frac{0.4}{0.96}\right)^2} \\
+&= 15.2 \times \sqrt{15 \times 0.1736} \\
+&= 15.2 \times \sqrt{2.604} \approx 15.2 \times 1.614 \approx 24.53\text{ A}
+\end{aligned}
 $$
 
-Rounded to a practical value: **$\boxed{102\ \text{V/phase}}$**
+**3. Injected rotor voltage**
+Natural induced emf at $s_2$:
+$$
+\begin{aligned}
+E_{s2} = s_2 E_2 = 0.6\times 190 = 114\text{ V}
+\end{aligned}
+$$
+With negligible reactance, the net rotor voltage must equal the resistive drop:
+$$
+\begin{aligned}
+V_{\text{net}} = I_{22} R_2 = 24.53 \times 0.5 = 12.265\text{ V}
+\end{aligned}
+$$
+To obtain this, an external voltage must be injected in phase opposition. The rotor circuit equation is $E_{s2} - E_{\text{inj}} = I_{22}R_2$, giving
+$$
+\begin{aligned}
+E_{\text{inj}} = E_{s2} - I_{22} R_2 = 114 - 12.265 \approx 101.7\text{ V/phase}
+\end{aligned}
+$$
+Rounded, the required injection is **102 V per phase** (opposing the induced emf).
 
-> **Final answer:** Required injected rotor voltage ≈ 102 V/phase, connected in opposition to the rotor induced emf.
+> **Final answer:** Approximately 102 V/phase must be injected in opposition to the rotor induced emf.
 
 
 ---
@@ -3120,46 +2373,41 @@ Rounded to a practical value: **$\boxed{102\ \text{V/phase}}$**
 Sketch and explain the torque-slip characteristics of a 3 phase slip ring induction motor for different values of rotor resistance. 3
 
 ### Answer 43
-The torque-slip characteristic of a three-phase slip-ring (wound-rotor) induction motor is profoundly influenced by the rotor circuit resistance. By adding external resistance via slip rings, the shape of the characteristic can be altered while keeping the maximum torque nearly constant.
+In a slip-ring induction motor, external rotor resistance can be connected via slip rings. This changes the torque-slip curve while keeping $T_{\max}$ constant.
 
-The developed electromagnetic torque ($T_e$) in terms of slip $s$ is given by the simplified equivalent circuit expression:
+Using the simplified equivalent circuit:
+
 $$
-T_e = \frac{3 V_1^2}{\omega_s} \cdot \frac{R_2'/s}{(R_2'/s)^2 + X_2'^2}
+\begin{aligned}
+T_e &= \frac{3 V_1^2}{\omega_s} \cdot \frac{R_2'/s}{(R_2'/s)^2 + X_2'^2}
+\end{aligned}
 $$
-where $V_1$ is the per-phase stator voltage, $\omega_s = 2\pi n_s/60$ is the synchronous angular speed, $R_2'$ is the rotor resistance referred to the stator, and $X_2'$ is the total leakage reactance referred to the stator.
 
-The slip at which maximum torque occurs is obtained by setting $dT_e/ds = 0$, yielding:
+The slip for maximum torque is $s_{\max} = R_2'/X_2'$, and
+
 $$
-s_m = \frac{R_2'}{X_2'}
+\begin{aligned}
+T_{e,\max} &= \frac{3 V_1^2}{2\omega_s X_2'}
+\end{aligned}
 $$
-and the maximum torque itself is:
-$$
-T_{e,\max} = \frac{3 V_1^2}{2\omega_s X_2'}
-$$
-Notice that $T_{e,\max}$ is independent of rotor resistance; it depends only on $V_1$ and $X_2'$. Therefore, changing the rotor resistance does not change the maximum torque but shifts the peak of the torque-slip curve.
 
-For a slip-ring motor, the rotor terminals are brought out through slip rings and brushes, allowing the connection of external three-phase resistors. If we denote the total rotor resistance per phase as $R_{2,\text{total}} = R_2' + R_{\text{ext}}'$, then:
-- The slip for maximum torque becomes $s_m = R_{2,\text{total}} / X_2'$.
-- At starting ($s=1$), the developed torque is:
-  $$
-  T_{\text{start}} = \frac{3 V_1^2}{\omega_s} \cdot \frac{R_{2,\text{total}}}{R_{2,\text{total}}^2 + X_2'^2}
-  $$
+which is independent of rotor resistance. When external resistance $R_{\text{ext}}'$ is added, total rotor resistance becomes $R_{2,\text{total}}' = R_2' + R_{\text{ext}}'$. Then $s_{\max,\text{new}} = R_{2,\text{total}}'/X_2'$.
 
-As external resistance is added, the torque-slip curve is modified as follows (see figure below):
-- **Curve for low resistance** (natural rotor winding): The maximum torque occurs at a low slip (say 10-20%), giving good running efficiency but relatively low starting torque.
-- **Curve for increased resistance**: The entire curve shifts to the right; the slip for maximum torque increases. The starting torque initially rises because the resistive component at $s=1$ becomes larger relative to the leakage reactance.
-- **Curve for resistance making $s_m=1$**: When $R_{2,\text{total}} = X_2'$, the maximum torque appears exactly at standstill ($s=1$), so the motor can develop $T_{e,\max}$ during starting-ideal for heavy loads.
-- **Further increase in resistance**: If $R_{2,\text{total}}$ exceeds $X_2'$, the starting torque decreases again, but the curve continues to stretch rightward, even extending into the braking region ($s>1$).
+**Effect on torque-slip curves** (typically sketched with $T$ vs $s$ from $s=0$ to $s\approx 2$):
 
-All curves maintain the same peak torque height. The stable operating region for motoring is on the left side of the peak (approximately linear part from no-load slip to $s_m$). By varying external resistance, one can continuously adjust the speed at which a given load torque is developed, as shown in the diagram.
+1. **Low resistance (natural rotor)**: $s_{\max}$ small (e.g., 0.1-0.2); low starting torque, good efficiency.
+2. **Increased resistance**: Curve shifts to higher slip; $s_{\max}$ increases; starting torque $T_{\text{st}}$ initially rises.
+3. **Resistance such that $s_{\max}=1$**: Peak occurs at standstill; $T_{\text{st}} = T_{\max}$, ideal for heavy starting.
+4. **Further increase**: $s_{\max} > 1$; peak moves into braking region; starting torque may drop.
 
-![Torque-slip characteristics for different rotor resistances](./pyq-assets/textbook/108105131_p476_img-252_jpeg.png)
+All curves have the same $T_{\max}$. The stable motoring region is the nearly linear part left of the peak.
 
-*Figure: Effect of rotor resistance on torque-slip curves of a slip-ring induction motor. $T_{e,\max}$ remains constant while the slip at which it occurs ($s_m$) increases with resistance.*
+**Features**:
+- Adding resistance boosts starting torque (up to $T_{\max}$) and limits current.
+- It enables speed control by varying external resistance, but with high rotor losses.
+- Used for soft starting: resistance is shorted out gradually as speed increases.
 
-This characteristic is the basis for **rotor resistance speed control** in slip-ring motors, though it introduces substantial rotor copper losses and is now largely superseded by variable-frequency drives. The motor can be started with high resistance (to limit current and boost torque) and then the resistance is shorted out gradually during run-up.
-
-> **Final answer:** Adding external rotor resistance in a slip-ring induction motor shifts the torque-slip curve horizontally to higher slips, leaving the maximum torque unchanged. The slip at which maximum torque occurs increases directly with total rotor resistance ($s_m = R_{2,\text{total}}/X_2'$), thereby raising the starting torque and enabling speed control at the cost of increased rotor losses.
+> **Final answer:** Adding external rotor resistance shifts the torque-slip curve to higher slips without changing $T_{\max}$, because $T_{\max}$ depends only on $V_1$ and $X_2'$. The slip for maximum torque increases linearly with total rotor resistance ($s_{\max} = R_{2,\text{total}}'/X_2'$), raising starting torque and allowing speed control. The curves for different resistances all share the same peak; as resistance increases, the peak moves rightward.
 
 
 ---
@@ -3170,29 +2418,23 @@ This characteristic is the basis for **rotor resistance speed control** in slip-
 The ratio V/f should be maintained constant during speed control of a 3 phase induction motor. Give reasons. 2
 
 ### Answer 44
-The synchronous speed of a three-phase induction motor is  
-$$ n_s = \frac{120f}{P} \quad \text{or} \quad \omega_s = \frac{4\pi f}{P}, $$  
-so varying the supply frequency $f$ provides a smooth, continuous method of speed control. However, to preserve the motor's torque capability and avoid magnetic saturation, the air-gap flux $\phi$ must be kept approximately constant.
+In variable-frequency speed control, the air-gap flux $\phi$ must remain at its rated value. The induced emf per phase is $E = 4.44 f N \phi K_w$. Neglecting the small stator impedance drop, $V \approx E$, so
 
-The induced emf in the stator winding is given by  
-$$ E_1 = 4.44\, f\, N\, \phi\, K_w, $$  
-where $N$ is the number of turns and $K_w$ the winding factor. If the small stator impedance drop is ignored, $E_1 \approx V$, the applied phase voltage. Rearranging gives  
-$$ \phi \propto \frac{V}{f}. $$
+$$
+\begin{aligned}
+\phi &\propto \frac{V}{f}
+\end{aligned}
+$$
 
-Thus, to maintain the flux at its rated design value, the ratio $V/f$ must be held constant. The main reasons are:
+Thus, constant $V/f$ is essential for the following reasons:
 
-1. **Prevent magnetic saturation at low frequencies:** Reducing $f$ while keeping $V$ constant causes $\phi$ to rise. The iron core saturates, leading to a sharp increase in magnetising current, excessive core losses, overheating, and potential insulation failure.
-2. **Avoid torque loss at high frequencies:** Increasing $f$ without a corresponding increase in $V$ weakens the flux. Since electromagnetic torque $T \propto \phi I_2 \cos\phi_2$, the torque-producing ability drops, and the motor may stall under load.
-3. **Enable constant-torque operation:** By scaling $V$ with $f$ (constant $V/f$), the flux remains nearly unchanged from standstill up to the base (rated) frequency. The motor can then deliver its full rated torque over a wide speed range - this is the constant-torque region.
-4. **Soft starting:** A variable-voltage variable-frequency (VVVF) inverter can ramp up both voltage and frequency while maintaining $V/f$ = constant. This eliminates the large starting inrush current normally associated with direct-on-line starting.
-5. **Define field-weakening boundary:** Once the voltage reaches its maximum permissible value (at base frequency), any further increase in frequency must be done with constant voltage. The flux then weakens inversely with frequency, shifting the drive into the constant-power region. The constant $V/f$ strategy thus provides a natural transition between constant-torque and constant-power modes.
+1. **Prevent magnetic saturation**: At low frequencies, if $V$ is fixed, $V/f$ rises, causing $\phi$ to increase. The core saturates, leading to very high magnetising current, excessive core losses, overheating and possible insulation failure.
+2. **Maintain torque capability**: Electromagnetic torque $T \propto \phi I_2 \cos\phi_2$. If $\phi$ drops at high frequencies (when $f$ increases without raising $V$), the torque reduces and the motor may stall under load.
+3. **Constant-torque operation**: Holding $V/f$ constant from standstill up to rated frequency keeps flux constant, enabling the motor to deliver its full rated torque over a wide speed range.
+4. **Soft starting**: A VVVF inverter can ramp voltage and frequency simultaneously, maintaining $V/f$ constant. This limits starting current and provides smooth acceleration.
+5. **Defines field-weakening boundary**: When $V$ reaches the maximum inverter voltage at base frequency, further speed increase must be at constant $V$. Flux then weakens inversely with frequency, giving a constant-power region. The constant $V/f$ strategy below base speed naturally transitions to constant $V$ above base speed.
 
-![Simplified stator circuit and induced emf equation](./pyq-assets/textbook/108105131_p562_img-292_jpeg.png)  
-*Figure: The induced emf $E_1$ is proportional to the product of frequency and flux. Neglecting the impedance drop, $V \approx E_1$, so $\phi \propto V/f$.*
-
-In summary, the $V/f$ ratio is kept constant during induction motor speed control to ensure the air-gap flux remains at its rated level, thereby **preventing saturation, maintaining full torque capability, and allowing smooth, efficient operation over a wide speed range**.
-
-> **Final answer:** Constant $V/f$ ratio keeps the air-gap flux $\phi$ nearly constant because $\phi \propto V/f$. This prevents magnetic saturation and excessive magnetising current at low frequencies, and avoids torque loss at high frequencies. It enables constant-torque operation over a wide speed range and facilitates smooth inverter-based starting without large inrush currents.
+> **Final answer:** $V/f$ is kept constant to maintain rated air-gap flux ($\phi \propto V/f$), thereby avoiding magnetic saturation at low frequencies (which would cause high magnetising current and overheating) and torque loss at high frequencies. It enables constant-torque operation over a wide speed range, provides soft starting, and naturally transitions to field weakening above base frequency.
 
 
 ---
@@ -3203,35 +2445,38 @@ In summary, the $V/f$ ratio is kept constant during induction motor speed contro
 Draw the torque slip characteristics of a squirrel cage induction motor and 4M mark the salient points.
 
 ### Answer 45
-The torque-slip characteristic of a three-phase squirrel-cage induction motor illustrates how the electromagnetic torque $T$ varies with slip $s$. Since the rotor bars are permanently short-circuited, the rotor resistance is fixed, yielding a unique torque-slip profile.
+For a squirrel-cage induction motor, the rotor resistance is fixed, giving a single torque-slip characteristic. Using the simplified equivalent circuit:
 
-**Shape of the characteristic:**
-- At synchronous speed ($s = 0$), the rotor conductors do not cut the rotating magnetic field, so induced emf and current are zero, and torque is zero.
-- For small slips ($0 < s < s_{\max}$), torque increases almost linearly because the rotor current is predominantly limited by the rotor resistance.
-- The torque reaches a maximum value $T_{\max}$ (breakdown or pull-out torque) at a slip $s_{\max} = R_2'/X_2'$, where $R_2'$ and $X_2'$ are the rotor resistance and standstill reactance referred to the stator.
-- Beyond $s_{\max}$, torque decreases because the reactance $sX_2'$ becomes dominant.
-- At standstill ($s = 1$), the motor develops the starting torque $T_{\text{st}}$.
-- For $s < 0$, the rotor runs faster than the synchronous speed, and the machine operates as an induction generator (negative torque).
-- For $s > 1$, the rotor turns opposite to the rotating field, and the machine operates in the plugging or braking region.
-
-**Salient points to mark on the sketch:**
-1. **$s = 0$:** $T = 0$ (synchronous speed).
-2. **Stable operating region:** $0 < s < s_{\max}$, nearly linear.
-3. **Maximum torque point:** $s = s_{\max}$, $T = T_{\max}$.
-4. **Starting point:** $s = 1$, $T = T_{\text{st}}$.
-5. **Generating region:** $s < 0$.
-6. **Braking region:** $s > 1$.
-
-![Torque-slip characteristic of a squirrel-cage induction motor](./pyq-assets/textbook/108105131_p556_img-289_jpeg.png)  
-*Figure 1: Torque-slip curve with salient points. The normal motoring range extends from $s=0$ to slightly beyond $s_{\max}$; the motor operates stably only on the left side of the maximum.*
-
-The characteristic can be derived from the approximate equivalent circuit, where the electromagnetic torque is given by
 $$
-T = \frac{3 V_1^2 R_2' / s}{\omega_s \left[ (R_1 + R_2'/s)^2 + (X_1 + X_2')^2 \right]}
+\begin{aligned}
+T &= \frac{3 V_1^2}{\omega_s} \cdot \frac{R_2'/s}{(R_2'/s)^2 + X_2'^2}
+\end{aligned}
 $$
-with $\omega_s$ the synchronous angular speed. For a squirrel-cage machine, $R_2'$ is fixed, so the shape is determined solely by the motor parameters.
 
-> **Final answer:** Salient points: $s=0$ (zero torque), full-load slip, $T_{\max}$ and corresponding $s_{\max}$, starting torque at $s=1$, generating region $s<0$, braking region $s>1$.
+The maximum torque occurs at slip $s_{\max} = R_2'/X_2'$, with $T_{\max} = \frac{3 V_1^2}{2\omega_s X_2'}$.
+
+**Shape of the curve** (plot $s$ on x-axis, $0$ to $1$ for motoring, extended for generation and braking):
+
+- At $s=0$, $T=0$ (synchronous speed).
+- For small slips, torque rises nearly linearly.
+- It reaches a maximum $T_{\max}$ at $s_{\max}$ (typically 0.1-0.2 for efficient machines).
+- Beyond $s_{\max}$, torque decreases because the leakage reactance dominates.
+- At $s=1$, the motor develops starting torque $T_{\text{st}}$, which is lower than $T_{\max}$.
+- For $s<0$, torque becomes negative - induction generator region.
+- For $s>1$, torque remains positive but slip is high - plug braking region.
+
+**Salient points to mark on the diagram**:
+
+1. **$s=0$, $T=0$**: No-load synchronism.
+2. **Full-load slip $s_{\text{FL}}$**: Usually 2-5%, where rated torque $T_{\text{FL}}$ is developed.
+3. **Maximum torque point ($s_{\max}, T_{\max}$)**: Pull-out or breakdown torque; the boundary of stable operation.
+4. **Starting point ($s=1, T_{\text{st}}$)**: Torque produced at standstill.
+5. **Generating region $s<0$**: Negative torque, power returned to supply.
+6. **Braking region $s>1$**: Rotor rotating opposite to field; used for rapid stopping.
+
+The motor operates stably only in the region $0 < s < s_{\max}$.
+
+> **Final answer:** The torque-slip curve of a squirrel-cage induction motor starts at zero at $s=0$, rises to a maximum $T_{\max}$ at slip $s_{\max}$, then falls to $T_{\text{st}}$ at $s=1$. Salient points: $s=0$ (zero torque), $s_{\text{FL}}$ (full load), $s_{\max}$ (pull-out), $s=1$ (starting), $s<0$ (generating), $s>1$ (braking). The curve is fixed; stable motoring occurs only for $0 < s < s_{\max}$.
 
 
 ---
@@ -3242,64 +2487,43 @@ with $\omega_s$ the synchronous angular speed. For a squirrel-cage machine, $R_2
 A 10 pole 50 Hz slip ring induction motor runs at 580 RPM on full load. The rotor resistance per phase is 0.3 Ω. Calculate the additional resistance per phase to be inserted in the rotor circuit if the speed is to be reduced to 500 RPM for full load torque. (03)
 
 ### Answer 46
-In a slip-ring induction motor, the speed can be controlled by inserting external resistance in the rotor circuit. At constant load torque, the torque-slip relation can be approximated as proportional to the ratio of slip to rotor resistance, provided the motor operates in the linear region where leakage reactance is negligible compared to the resistive component. This leads to the condition:
+For a slip-ring induction motor, speed control is achieved by inserting external resistance in the rotor circuit. At constant load torque, the rotor resistance-slip relationship can be approximated as $R_2/s = \text{constant}$ when the leakage reactance is negligible compared to the resistive drop.
 
-$$ \\frac{R_2}{s} = \\text{constant} \\quad \\text{for constant torque.} $$
+**Given:** 10-pole, 50 Hz, full-load speed 580 rpm, desired speed 500 rpm, $R_2 = 0.3\,\Omega$ per phase.
 
-More rigorously, from the equivalent circuit, the developed torque is
+**Solution:**
 
+Synchronous speed:
 $$
-T = \\frac{3}{\\omega_s} \\frac{V_{th}^2}{(R_{th} + R_2/s)^2 + (X_{th} + X_2)^2} \\frac{R_2}{s}
-$$
-
-Assuming that at the operating points, $R_2/s \\gg X_{th} + X_2$ and $R_2/s \\gg R_{th}$ (which is justified when external resistance is added, making the rotor circuit predominantly resistive), the expression simplifies to $T \\propto s/R_2$. Therefore, for constant load torque, $R_2/s$ must remain constant.
-
-**Step-by-step calculation:**
-
-Synchronous speed for a 10-pole, 50 Hz motor:
-
-$$
-N_s = \\frac{120f}{P} = \\frac{120 \\times 50}{10} = 600 \\text{ rpm}
+\begin{aligned}
+N_s = \frac{120f}{P} = \frac{120 \times 50}{10} = 600\text{ rpm}
+\end{aligned}
 $$
 
-Initial slip at 580 rpm:
-
+Initial slip:
 $$
-s_1 = \\frac{N_s - N_1}{N_s} = \\frac{600 - 580}{600} = \\frac{20}{600} = \\frac{1}{30} \\approx 0.03333
-$$
-
-Desired slip at 500 rpm:
-
-$$
-s_2 = \\frac{600 - 500}{600} = \\frac{100}{600} = \\frac{1}{6} \\approx 0.1667
+\begin{aligned}
+s_1 = \frac{N_s - N_{r1}}{N_s} = \frac{600-580}{600} = \frac{20}{600} = \frac{1}{30}
+\end{aligned}
 $$
 
-Given rotor resistance per phase $R_2 = 0.3\\,\\Omega$. With external resistance $R_\\text{ext}$ inserted, the total rotor resistance per phase becomes $R_{2,\\text{tot}} = R_2 + R_\\text{ext}$. Using the constant-torque condition:
-
+Desired slip:
 $$
-\\frac{R_2}{s_1} = \\frac{R_2 + R_\\text{ext}}{s_2}
-$$
-
-Solving for $R_\\text{ext}$:
-
-$$
-R_2 + R_\\text{ext} = R_2 \\times \\frac{s_2}{s_1}
- = 0.3 \\times \\frac{0.1667}{0.03333}
- = 0.3 \\times 5 = 1.5\\,\\Omega
+\begin{aligned}
+s_2 = \frac{600-500}{600} = \frac{100}{600} = \frac{1}{6}
+\end{aligned}
 $$
 
+For constant load torque, $\frac{R_2}{s_1} = \frac{R_2 + R_{\text{ext}}}{s_2}$. Therefore,
 $$
-R_\\text{ext} = 1.5 - 0.3 = 1.2\\,\\Omega/\\text{phase}
+\begin{aligned}
+R_{\text{ext}} &= R_2\left(\frac{s_2}{s_1} - 1\right) \\
+&= 0.3\left(\frac{1/6}{1/30} - 1\right) \\
+&= 0.3 \times (5 - 1) = 0.3 \times 4 = 1.2\,\Omega
+\end{aligned}
 $$
 
-The following figure illustrates the family of torque-slip curves for different values of rotor circuit resistance. As resistance increases, the maximum torque remains unchanged but occurs at a higher slip, enabling the motor to develop full-load torque at lower speeds.
-
-<figure>
-  <img src="./pyq-assets/textbook/108105131_p556_img-289_jpeg.png" alt='Torque-slip curves for different rotor resistances' />
-  <figcaption>Effect of rotor resistance on torque-slip characteristic.</figcaption>
-</figure>
-
-> **Final answer:** Additional resistance = $1.2\\,\\Omega$ per phase.
+> **Final answer:** Additional resistance per phase = $1.2\,\Omega$.
 
 
 ---
@@ -3310,40 +2534,40 @@ The following figure illustrates the family of torque-slip curves for different 
 Draw and explain the torque-slip characteristic of a 3-phase induction motor. Also explain the effect of rotor resistance on torque slip characteristics. (04)
 
 ### Answer 47
-The torque-slip characteristic of a three-phase induction motor describes the variation of electromagnetic torque $T_e$ as a function of slip $s$, where $s = (n_s - n_r)/n_s$, $n_s$ being synchronous speed.
+**Torque-Slip Characteristic**
 
-**Characteristic shape:**
-- At $s=0$ (rotor at synchronous speed), torque is zero because relative motion between rotor and stator field is zero.
-- As slip increases from zero, the torque increases nearly linearly (stable operating region) until it reaches the maximum or breakdown torque $T_{\max}$ at a particular slip $s_m$.
-- For slips greater than $s_m$, the torque decreases, and at $s=1$ (standstill), the motor develops starting torque $T_{st}$.
-- If the rotor is driven above synchronous speed ($s<0$), the machine acts as a generator, producing negative torque.
-- If the rotor is driven opposite to the rotating field ($s>1$), the machine enters the plugging (braking) region.
+The torque-slip curve describes the electromagnetic torque developed by a 3-phase induction motor as a function of slip $s = (n_s - n_r)/n_s$. The characteristic has five distinct regions:
+- $s = 0$ (synchronous speed): torque is zero.
+- $0 < s < 1$ (motoring): torque rises nearly linearly from zero to a maximum (breakdown torque) at $s = s_m$, then falls to the starting torque at $s = 1$.
+- $s < 0$ (generating / negative slip): rotor runs above synchronous speed, machine delivers power to the supply; torque is negative.
+- $s > 1$ (plugging/braking): rotor forced opposite to field, high slip, large currents, braking torque.
 
-The general torque expression derived from the equivalent circuit is:
+Using the per-phase equivalent circuit, the torque is given by
 $$
-T_e = \frac{3}{\omega_s} \cdot \frac{V_{\text{th}}^2}{(R_{\text{th}} + \frac{R_2'}{s})^2 + (X_{\text{th}} + X_2')^2} \cdot \frac{R_2'}{s},
+\begin{aligned}
+T = \frac{3}{\omega_s} \frac{V_{\text{th}}^2}{\left(R_{\text{th}} + \frac{R_2'}{s}\right)^2 + (X_{\text{th}} + X_2')^2} \frac{R_2'}{s},
+\end{aligned}
 $$
-where $V_{\text{th}}$, $R_{\text{th}}$, $X_{\text{th}}$ are Thevenin equivalents of the stator, and $R_2'$, $X_2'$ are rotor parameters referred to the stator.
-
-For a typical motor, $R_{\text{th}}$ is small compared to $X_{\text{th}}+X_2'$, leading to simplified expressions:
+which, under normal operation ($R_{\text{th}} \ll X_{\text{th}}+X_2'$), simplifies to
 $$
-s_m \approx \frac{R_2'}{X_2'},\qquad
-T_{\max} \approx \frac{3}{2\omega_s} \cdot \frac{V_{\text{th}}^2}{X_{\text{th}}+X_2'}.
+\begin{aligned}
+s_m &\approx \frac{R_2'}{X_{\text{th}} + X_2'}, \\
+T_{\max} &= \frac{3}{2\omega_s} \frac{V_{\text{th}}^2}{X_{\text{th}} + X_2'}.
+\end{aligned}
 $$
-These show that $s_m$ is directly proportional to rotor resistance, while $T_{\max}$ is essentially independent of rotor resistance.
+Thus, maximum torque is independent of rotor resistance.
 
-**Effect of rotor resistance:**
-In a wound-rotor induction motor, additional external resistance can be inserted into the rotor circuit. This increases the total rotor resistance $R_2'$.
+**Effect of Rotor Resistance**
 
-- The slip at maximum torque $s_m$ increases linearly with $R_2'$. Thus the torque-slip curve "stretches" to the right.
-- The starting torque $T_{st}$ (at $s=1$) can be boosted considerably. By selecting an external resistance such that $s_m = 1$, the starting torque becomes equal to the maximum torque.
-- The peak torque $T_{\max}$ remains practically unchanged because the denominator in the simplified $T_{\max}$ expression does not contain $R_2'$.
-- The stable operating region (low slip) becomes wider, but efficiency decreases if the added resistance is left in the circuit during normal running.
+In a wound-rotor motor, adding external rotor resistance increases $R_2'$. This:
+- Shifts $s_m$ to higher values (the peak of the torque-slip curve moves to the right).
+- Increases the starting torque (can even be made equal to $T_{\max}$ when $s_m = 1$).
+- Leaves $T_{\max}$ unchanged.
+- Widens the stable operating region, but if the resistance is left in circuit, running efficiency drops because of increased $I^2R$ losses.
 
-![Torque-slip curves for different rotor resistances](./pyq-assets/textbook/108105131_p439_img-237_jpeg.png)  
-*Fig. 1: Influence of rotor resistance on torque-slip characteristic. Higher resistance shifts $s_m$ to larger slip values and raises starting torque while keeping maximum torque nearly constant.*
+In cage rotors, similar effects are achieved by designing bars that present high effective resistance at standstill (through skin effect) and low resistance at running slip (deep-bar, double-cage, etc.).
 
-> **Final answer:** The torque-slip curve starts at zero torque for $s=0$, rises linearly to a maximum $T_{\max}$ at $s_m$, then falls to the starting torque at $s=1$. Increasing the rotor resistance increases $s_m$ (shifts the curve to the right), raises the starting torque, but leaves $T_{\max}$ essentially unaltered.
+> **Final answer:** The torque-slip curve rises from zero at synchronous speed to a maximum at $s_m$, then falls to the starting torque at standstill; generation occurs for $s<0$ and braking for $s>1$. Increasing rotor resistance increases $s_m$ and starting torque without affecting the maximum torque, effectively shifting the torque-slip characteristic to higher slips.
 
 
 ---
@@ -3354,41 +2578,26 @@ In a wound-rotor induction motor, additional external resistance can be inserted
 What changes can be made on cage rotor construction to improve the starting torque of a three phase induction motor. (02)
 
 ### Answer 48
-In a three-phase induction motor, the starting torque (at slip $s=1$) can be expressed by the approximate equation
+**Starting Torque Improvement in Cage Rotors**
 
+For a cage induction motor, starting torque (at $s=1$) can be expressed approximately as
 $$
-T_{\text{start}} \approx \frac{k \, R_2'}{(R_2')^2 + (X_1 + X_2')^2}
+\begin{aligned}
+T_{\text{start}} \propto \frac{R_2'}{R_2'^2 + (X_1+X_2')^2},
+\end{aligned}
 $$
+where $R_2'$ is the rotor resistance referred to the stator, and $X_1$, $X_2'$ are leakage reactances. Starting torque is low when $R_2'$ is small. To increase $T_{\text{start}}$, $R_2'$ should be raised, but a high running resistance lowers efficiency.
 
-where $R_2'$ is the rotor resistance referred to the stator, $X_1$, $X_2'$ are the stator and rotor leakage reactances, and $k$ is a constant. For a normal cage rotor, $R_2'$ is small, making the denominator large and the starting torque low (typically 1-1.5 times full-load torque). By increasing $R_2'$, the starting torque can be raised until $R_2' \approx X_1 + X_2'$, after which it declines.
+Therefore, the rotor must have a high effective resistance at standstill (rotor frequency = line frequency) and a low effective resistance at normal slip (rotor frequency $\approx 1-3$ Hz). This is achieved by exploiting the skin effect in the rotor bars. Common construction modifications are:
 
-The challenge is to obtain a high effective resistance at standstill while keeping the resistance low during normal running (slip $s \approx 0.03-0.05$) to maintain high efficiency. This is achieved in squirrel-cage rotors by exploiting the **skin effect** of alternating current. At standstill, the rotor frequency equals the supply frequency (50/60 Hz), causing the current to crowd near the surface of the bars, which effectively reduces the conducting cross-section and raises the resistance. At normal speed, the rotor frequency is the slip frequency (1-3 Hz), so the skin effect disappears and the current flows uniformly through the full bar area.
+1. **Deep-bar rotor**: Narrow, deep bars force current to crowd near the top at starting (high frequency), increasing effective resistance; at low slip, current distributes uniformly, reducing resistance.
+2. **Double-cage rotor**: An outer cage of high-resistivity material (e.g., brass) and an inner cage of low-resistivity material (e.g., copper). The high-leakage-reactance inner cage carries little current at start, so the high-resistance outer cage dominates; at run, the inner cage takes over.
+3. **Shaped bars (wedge, T, L)** : Bars with a tapered cross-section enhance the skin effect, giving a high start resistance and a low run resistance.
+4. **Higher-resistivity bar material**: Using aluminum alloys or brass instead of pure copper increases resistance, but raises running losses as well.
 
-The following cage-rotor construction modifications are commonly used to improve starting torque:
+All these methods increase the starting torque while keeping the maximum pull-out torque unchanged, because $T_{\max}$ is independent of rotor resistance.
 
-1. **Deep-bar rotor** - The rotor bars are made deep and narrow (Fig. a). The skin effect forces the current to the top of the bar at starting, increasing the effective resistance. During running, the current distributes evenly, giving a low resistance and low copper loss.
-
-2. **Double-cage rotor** - Two concentric cages are employed. The outer cage, located close to the rotor surface, is made of a high-resistivity material (e.g., brass) and has a certain leakage reactance. At starting, most of the current flows in this high-resistance outer cage, producing a large starting torque. The inner cage, placed deeper, is made of a low-resistivity material (e.g., copper) and has a high leakage reactance. At normal speed the outer cage carries little current; the low-resistance inner cage dominates, giving a small slip and high efficiency.
-
-3. **Shaped bars** - Bars with a tapered cross-section (wedge-shaped, T-shaped, or L-shaped) enhance the skin effect in a controlled manner. The narrow top section increases resistance at start, while the wider lower part offers lower resistance at running slip.
-
-4. **Higher-resistivity bar material** - Using aluminium alloys, brass, or other materials with higher resistivity than pure copper raises the bar resistance at all frequencies. This is a simple but less efficient approach because it also increases running losses.
-
-All these methods preserve the maximum (pull-out) torque because $T_{\text{max}}$ is independent of rotor resistance:
-
-$$
-T_{\text{max}} = \frac{3 V_1^2}{4\pi n_s X_2'}
-$$
-
-where $V_1$ is the supply voltage per phase, $n_s$ the synchronous speed in rps, and $X_2'$ the rotor leakage reactance referred to the stator.
-
-The accompanying figure illustrates the torque-slip characteristics for different rotor resistances. As $R_2'$ increases, the slip at which maximum torque occurs rises and the starting torque grows, while $T_{\text{max}}$ remains unchanged.
-
-![Torque-slip characteristics for different rotor resistances](./pyq-assets/textbook/108105131_p476_img-252_jpeg.png)
-
-*Figure: Effect of rotor resistance on the torque-slip characteristic. An increased rotor resistance at standstill (obtained via deep-bar, double-cage, or shaped-bar designs) raises the starting torque without affecting the maximum torque.*
-
-> **Final answer:** The starting torque of a cage induction motor can be improved by increasing the effective rotor resistance at standstill through (i) deep-bar rotors, (ii) double-cage rotors, (iii) specially shaped bars (wedge, T, L), or (iv) use of higher-resistivity bar materials. These methods exploit the skin effect to achieve high resistance at starting and low resistance at normal running.
+> **Final answer:** The starting torque of a cage induction motor can be improved by increasing the effective rotor resistance at standstill through deep-bar, double-cage, shaped-bar, or high-resistivity material designs. These exploit the skin effect to give high resistance at start and low resistance at run, boosting starting torque without affecting maximum torque.
 
 
 ---
@@ -3399,76 +2608,57 @@ The accompanying figure illustrates the torque-slip characteristics for differen
 A 4-pole, 50 Hz, 3-phase induction motor, with star connected rotor, has a rotor resistance of 4.5 Ω/phase and a standstill leakage reactance of 8.5 Ω/phase. With no external resistance in the rotor circuit, the starting torque of the motor is 85 N-m. If 3 Ω resistance were added in each rotor phase, find the following. i) The starting torque. ii) The torque at a slip of 3 %. (04)
 
 ### Answer 49
-**Given data:**
-- 4-pole, 50 Hz, 3-phase induction motor, star-connected rotor.
-- Rotor resistance per phase, $R_2 = 4.5\ \Omega$
-- Standstill leakage reactance per phase, $X_2 = 8.5\ \Omega$
-- Starting torque without external resistance, $T_{st1} = 85\ \text{N·m}$
-- External resistance added per phase, $R_{ext} = 3\ \Omega$
+**Given:**
+- 4-pole, 50 Hz, 3-phase, star-connected rotor.
+- Rotor resistance: $R_2 = 4.5\,\Omega$ per phase.
+- Standstill leakage reactance: $X_2 = 8.5\,\Omega$ per phase.
+- Starting torque without external resistance: $T_{\text{st}1} = 85$ N·m.
+- External resistance added: $R_{\text{ext}} = 3\,\Omega$ per phase.
 
-**General torque expression:**
-
-For an induction motor, the electromagnetic torque developed per phase at any slip $s$ is proportional to 
-
+**Torque relation:**
+For any slip $s$,
 $$
+\begin{aligned}
 T \propto \frac{R_2/s}{(R_2/s)^2 + X_2^2}.
+\end{aligned}
+$$
+At start $s=1$,
+$$
+\begin{aligned}
+T_{\text{st}} = K \frac{R_2}{R_2^2 + X_2^2},
+\end{aligned}
+$$
+where $K = \frac{3E_2^2}{\omega_s}$ (motor constant).
+
+**Find $K$ from initial condition:**
+$$
+\begin{aligned}
+85 &= K \frac{4.5}{4.5^2 + 8.5^2}
+    = K \frac{4.5}{92.5} \\[4pt]
+K  &= 85 \times \frac{92.5}{4.5} \approx 1747.22 \;(\text{N}\cdot\text{m}\cdot\Omega).
+\end{aligned}
 $$
 
-Introducing a constant $K = \dfrac{3E_2^2}{\omega_s}$ (where $E_2$ is the standstill rotor induced emf and $\omega_s$ the synchronous angular speed), the torque can be written as
-
+**(i) New starting torque with $R_2' = 4.5+3 = 7.5\,\Omega$:**
 $$
-T = K\cdot \frac{R_2/s}{(R_2/s)^2 + X_2^2}. \qquad (1)
-$$
-
-At starting, $s = 1$, so
-
-$$
-T_{st} = K\cdot \frac{R_2}{R_2^2 + X_2^2}. \qquad (2)
+\begin{aligned}
+T_{\text{st}2} &= 1747.22 \times \frac{7.5}{7.5^2 + 8.5^2} \\
+               &= 1747.22 \times \frac{7.5}{128.5} \\
+               &\approx 102.0\ \text{N}\cdot\text{m}.
+\end{aligned}
 $$
 
-**Determining the constant $K$ from the initial condition:**
-
-With $R_2 = 4.5\ \Omega$, $X_2 = 8.5\ \Omega$, and $T_{st1} = 85\ \text{N·m}$,
-
+**(ii) Torque at slip $s = 0.03$ (3 %) with $R_2' = 7.5\,\Omega$:**
 $$
-85 = K\frac{4.5}{4.5^2 + 8.5^2} = K\frac{4.5}{20.25 + 72.25} = K\frac{4.5}{92.5}
-$$
-
-$$
-K = 85 \times \frac{92.5}{4.5} \approx 1747.22 \ \text{(in N·m·Ω)}.
+\begin{aligned}
+\frac{R_2'}{s} &= \frac{7.5}{0.03} = 250\,\Omega \\[4pt]
+T_{3\%} &= 1747.22 \times \frac{250}{250^2 + 8.5^2} \\
+        &= 1747.22 \times \frac{250}{62572.25} \\
+        &\approx 7.0\ \text{N}\cdot\text{m}.
+\end{aligned}
 $$
 
-![Torque-slip characteristics for varying rotor resistance](./pyq-assets/textbook/108105131_p556_img-289_jpeg.png)
-
-<p><i>Figure: Torque-slip characteristics for different rotor resistances. Adding external resistance shifts the peak torque to higher slips and increases the starting torque.</i></p>
-
-**(i) New starting torque after adding $3\ \Omega$ per phase:**
-
-Total rotor resistance per phase: $R_2' = 4.5 + 3 = 7.5\ \Omega$.
-
-From (2),
-
-$$
-T_{st2} = 1747.22 \times \frac{7.5}{7.5^2 + 8.5^2} = 1747.22 \times \frac{7.5}{56.25 + 72.25} = 1747.22 \times \frac{7.5}{128.5} \approx 102.0\ \text{N·m}.
-$$
-
-**(ii) Torque at a slip of 3% ($s = 0.03$) with $R_2' = 7.5\ \Omega$:**
-
-$$
-\frac{R_2'}{s} = \frac{7.5}{0.03} = 250\ \Omega.
-$$
-
-Then using (1),
-
-$$
-T = 1747.22 \times \frac{250}{250^2 + 8.5^2} = 1747.22 \times \frac{250}{62500 + 72.25} = 1747.22 \times \frac{250}{62572.25} \approx 6.98\ \text{N·m}.
-$$
-
-Rounding gives $7.0\ \text{N·m}$.
-
-**Note:** The maximum torque (breakdown torque) remains unchanged with added rotor resistance, but the slip at which it occurs increases from $s_m = R_2/X_2 = 4.5/8.5 \approx 0.53$ to $s_m' = 7.5/8.5 \approx 0.88$. Consequently, the starting torque is improved, while the torque at low slips (normal running region) is reduced.
-
-> **Final answer:** (i) Starting torque ≈ 102 N·m; (ii) Torque at 3% slip ≈ 7.0 N·m.
+> **Final answer:** (i) Starting torque ≈ 102 N·m; (ii) Torque at 3 % slip ≈ 7.0 N·m.
 
 
 ---
@@ -3479,63 +2669,27 @@ Rounding gives $7.0\ \text{N·m}$.
 Discuss the variable frequency control strategies for the speed control of 3-phase induction motor. (02)
 
 ### Answer 50
-Variable frequency control is the most versatile method of speed control for three-phase induction motors. The synchronous speed of the stator field is given by
+Variable frequency control is the most effective method for varying the speed of a three-phase induction motor. The synchronous speed is $N_s = 120f/P$ rpm; changing the supply frequency $f$ directly changes the motor speed. However, the terminal voltage must be coordinated with frequency to maintain proper air-gap flux.
 
-$$
-N_s = \frac{120 f}{P}\; \text{rpm}
-$$
+**1. Scalar V/f Control (Constant Volts per Hertz)**
+- Below the base (rated) frequency, the voltage is varied proportionally with frequency to keep $V/f$ constant. This maintains constant flux and hence constant torque capability.
+- At very low frequencies, a voltage boost compensates for the stator resistance drop to preserve flux.
+- Above base frequency, the voltage is held at its maximum rated value while frequency increases further. The flux weakens inversely with frequency, giving a constant-power (field-weakening) region.
+- Implementation uses a PWM inverter; simple open-loop control suffices for general-purpose drives (fans, pumps, conveyors).
 
-where $f$ is the supply frequency and $P$ the number of poles. By smoothly varying the frequency, the motor speed can be adjusted over a wide range without changing the pole configuration.
+**2. Vector Control (Field-Oriented Control, FOC)**
+- The stator current is decomposed into two orthogonal components: flux-producing $i_{sd}$ and torque-producing $i_{sq}$.
+- Independent control of these components emulates a separately excited DC motor, yielding fast torque response and precise speed regulation.
+- Requires rotor position/speed sensors and coordinate transformations; employed in high-performance servo and traction drives.
 
-However, if the frequency is reduced while maintaining the rated voltage, the air-gap flux will increase and cause magnetic saturation, excessive magnetising current, and overheating. Conversely, if the frequency is increased above the rated value, the flux will weaken and the torque capability will drop. Therefore the terminal voltage must be coordinated with the frequency according to the following control strategies.
+**3. Direct Torque Control (DTC)**
+- Directly regulates stator flux magnitude and electromagnetic torque using hysteresis comparators and an optimal switching table.
+- Eliminates current controllers and coordinate transformations, offering extremely rapid torque response.
+- Drawbacks include higher torque ripple and variable inverter switching frequency.
 
----
+**Summary:** Scalar V/f control is simple and widely adopted. Vector control and DTC provide superior dynamic performance for demanding applications.
 
-### 1. Scalar $V/f$ Control (Constant Volts per Hertz)
-
-The fundamental rule is to keep the ratio $V/f$ constant up to the rated frequency. Since the induced emf is approximately proportional to the product of frequency and peak flux, holding $V/f$ constant preserves the flux at its design level:
-
-$$
-E \approx 4.44\, f\, N \Phi_{\text{max}} \quad\Rightarrow\quad \Phi_{\text{max}} \propto \frac{V}{f}
-$$
-
-A practical drive first rectifies the fixed-frequency mains to DC, then an inverter produces a three-phase supply of variable voltage and variable frequency. The block diagram of such a drive is shown below.
-
-![Variable frequency drive block diagram](./pyq-assets/textbook/108105131_p561_img-291_jpeg.png)  
-*Figure: Block diagram of a variable-frequency induction motor drive.*
-
-- **Below base speed** (frequency ≤ rated): the voltage is reduced proportionally with frequency so that $V/f = \text{constant}$. This provides constant flux and hence constant torque capability.
-- **Above base speed** (frequency > rated): the voltage is kept at its maximum value while the frequency increases further. The flux weakens inversely with frequency, giving a constant-power operating region.
-
-In low-speed operation the resistive drop in the stator winding becomes significant, and the simple $V/f$ rule must be modified by adding a voltage boost to compensate. Nevertheless, the open-loop scalar control remains the most widely used strategy for general-purpose variable-speed applications.
-
-Figure below shows the torque-slip characteristics for several frequencies when $V/f$ is held constant. The maximum torque remains approximately unchanged, and the entire curve shifts laterally along the speed axis.
-
-![Torque-slip characteristics under constant V/f control](./pyq-assets/textbook/108105131_p570_img-296_jpeg.png)  
-*Figure: Torque-slip curves for different supply frequencies with $V/f = \text{constant}$.*
-
----
-
-### 2. Vector (Field-Oriented) Control
-
-For high-performance drives requiring precise speed regulation and fast torque response, the scalar approach is insufficient. Vector control decouples the stator current into two orthogonal components:
-
-- the flux-producing component $i_{sd}$ (aligned with the rotor flux vector), and  
-- the torque-producing component $i_{sq}$.
-
-Independent control of these components mimics the operation of a separately excited DC motor, allowing instantaneous torque control and superior dynamic behaviour.
-
----
-
-### 3. Direct Torque Control (DTC)
-
-DTC dispenses with current regulators and coordinate transformations. Instead, hysteresis controllers directly regulate the stator flux magnitude and the electromagnetic torque. It offers extremely fast torque response and robust performance, at the cost of higher torque ripple and variable switching frequency.
-
----
-
-In summary, simple constant $V/f$ control suffices for most industrial pumps, fans, and conveyors, while vector control and DTC are reserved for demanding servo and traction applications.
-
-> **Final answer:** The principal variable-frequency strategies are scalar $V/f$ control (constant torque up to base speed, then constant power), vector control (field-oriented control), and direct torque control (DTC). Scalar $V/f$ is the most common due to its simplicity and effectiveness.
+> **Final answer:** The principal variable-frequency strategies are scalar V/f control (constant torque up to base speed, constant power above), vector (field-oriented) control, and direct torque control (DTC). Scalar V/f is the most common for general-purpose drives; vector/DTC are reserved for high-performance applications.
 
 
 ---
@@ -3546,46 +2700,35 @@ In summary, simple constant $V/f$ control suffices for most industrial pumps, fa
 A 415V, 3 phase, 50 Hz squirrel cage motor draws 5 times its full load current during starting. Which of the following starters you would recommend? a) Direct Online starter b) Star-delta starter Give sufficient reasons. Also, draw the connection diagram of the motor and starter to the supply.
 
 ### Answer 51
-A squirrel-cage induction motor that draws 5 times its full-load current during direct-on-line (DOL) starting would impose a severe inrush current on the supply network. Such a high current can cause:
-- Excessive voltage dip at the point of common coupling, disturbing other connected loads.
-- Unnecessary mechanical stress on the motor shaft, coupling, and driven equipment.
-- Possible operation of protective devices (fuses, circuit-breakers) if they are not adequately sized.
+**Motor data:** 415 V, 3-ph, 50 Hz squirrel-cage; starting current = $5 \times I_{\text{fl}}$.
 
-Therefore, **the recommended starter is the star-delta starter** (option b), provided the motor is designed to run with its stator windings connected in delta under normal operating conditions and the load does not require full starting torque.
+**Recommended starter: Star-delta starter.**
 
-**Reasons for Star-Delta Starting**
-1. **Starting current reduction:**  
-   When the stator windings are connected in star during starting, each phase receives $1/\sqrt{3}$ of the line voltage ($V_\text{ph} = V_L / \sqrt{3}$). The motor impedance at standstill is essentially the same as for DOL starting, so the starting line current in star is reduced to one-third of the DOL starting line current:
-   $$
-   I_{\text{start}(Y)} = \frac{1}{3}\, I_{\text{start}(DOL)}.
-   $$
-   For this motor, $I_{\text{start}(DOL)} = 5\,I_{\text{fl}}$, hence
-   $$
-   I_{\text{start}(Y)} = \frac{1}{3} \times 5\,I_{\text{fl}} \approx 1.67\,I_{\text{fl}},
-   $$
-   which is well within the capability of most supply systems and avoids excessive voltage drops.
+**Reasons:**
+- Direct-on-line (DOL) starting draws $5\,I_{\text{fl}}$, causing excessive voltage dip, mechanical shock, and possible nuisance tripping.
+- In star-delta starting, the windings are initially connected in star, applying $V_{\text{ph}} = V_L/\sqrt{3}$ to each phase.
+- The starting line current is reduced to $1/3$ of the DOL value:
+  $$
+  \begin{aligned}
+  I_{\text{start}(Y)} = \frac{1}{3} \times 5\,I_{\text{fl}} \approx 1.67\,I_{\text{fl}},
+  \end{aligned}
+  $$
+  which is well within supply regulations.
+- Starting torque also drops to $1/3$ of DOL torque (torque $\propto V^2$), acceptable for light-load or unloaded starts (fans, pumps, unloaded compressors).
+- Once the motor reaches 80-90 % of synchronous speed, a timer transitions the connection to delta, applying full voltage for normal running.
+- The star-delta starter is simple, economical (three contactors, a timer, and an overload relay) and widely used for motors up to several hundred kW, provided the motor is delta-connected for running.
 
-2. **Starting torque reduction:**  
-   The electromagnetic torque is proportional to the square of the applied voltage. In star, the phase voltage is $V_L / \sqrt{3}$, so the starting torque becomes
-   $$
-   T_{\text{start}(Y)} = \frac{1}{3}\, T_{\text{start}(DOL)}.
-   $$
-   This reduced torque is acceptable for applications where the load starts under light or no-load conditions (e.g., fans, pumps, unloaded compressors). Once the motor accelerates to about 80-90 % of synchronous speed, a timer switches the stator to delta, applying full voltage and allowing the motor to develop its rated torque and run at its rated speed.
+**Connection diagram description:**
+The power circuit consists of:
+- A three-pole main contactor (M) connecting supply lines L1, L2, L3 to motor terminals U1, V1, W1.
+- A three-pole star contactor (S) that shorts together the other winding ends (U2, V2, W2) to form the star point.
+- A three-pole delta contactor (D) that, when energised, connects U2→V1, V2→W1, W2→U1, forming the delta loop.
+- An overload relay (O/L) in series with each phase.
+- A control timer: initially M and S are closed (star connection); after an adjustable delay (typically 5-15 s), S opens, then D closes, completing the transition to delta.
 
-3. **Simplicity and cost:**  
-   The star-delta starter uses only three electromagnetic contactors (main, star, delta) plus a timer and an overload relay. No additional power-consuming components (reactors, autotransformers) are required, making it a compact, economical solution for motors up to several hundred kilowatts.
+(Standard textbooks provide detailed schematics; the description above outlines the typical industrial circuit.)
 
-**Connection Diagram (Text Description)**  
-The power circuit of a star-delta starter for a three-phase squirrel-cage motor consists of:
-- A three-pole main contactor (M) that connects the supply lines (L1, L2, L3) to one side of the motor windings (terminals U1, V1, W1).
-- A three-pole star contactor (S) that shorts the other ends of the windings (U2, V2, W2) together to form the star point.
-- A three-pole delta contactor (D) that, when energised, connects U2 to V1, V2 to W1, and W2 to U1, thereby converting the connection into delta.
-- An overload relay (O/L) in series with each phase to protect against sustained overloads.
-- A control timer that governs the sequence: initially M and S are closed (star connection). After an adjustable time delay (typically 5-15 seconds), S opens and then D closes, completing the transition to delta.
-
-*Since a drawing cannot be reproduced here, the above description outlines the standard industrial star-delta circuit; the reader is encouraged to refer to any standard electrical machines textbook for the detailed schematic.*
-
-> **Final answer:** Recommend a **star-delta starter** because it reduces the starting line current from 5 p.u. to approximately 1.67 p.u. of full-load current, thereby avoiding excessive voltage drop and mechanical shock, provided the motor is delta-connected for normal running and the load starts lightly.
+> **Final answer:** Recommend a star-delta starter because it reduces starting line current to ~1.67 p.u. of full-load current, minimising voltage drop and mechanical stress, while supplying adequate torque for light-starting loads. The motor must be delta-connected for normal running.
 
 
 ---
@@ -3596,40 +2739,34 @@ The power circuit of a star-delta starter for a three-phase squirrel-cage motor 
 Sketch the torque-slip characteristic of a 3-phase squirrel cage induction motor indicating therein the starting torque, maximum torque and the operating region. Analyze and distinguish how these characteristics can be altered in a wound rotor induction motor with respect to the following aspects: a) Starting torque and its magnitude b) Slip at which the maximum torque occurs c) Magnitude of the maximum torque
 
 ### Answer 52
-The torque-slip characteristic of a 3-phase induction motor depicts the electromagnetic torque $T_e$ as a function of slip $s$. At synchronous speed ($s=0$), torque is zero. As slip increases, torque rises almost linearly in the normal operating region (typically $0 < s < 0.05$), reaches a maximum value $T_{\max}$ at a slip $s_m$, and then decreases to the starting torque at standstill ($s=1$). The motor operates stably only on the left-hand side of the peak ($s < s_m$).
-
-![Torque-slip characteristic](./pyq-assets/textbook/108105131_p556_img-289_jpeg.png)
-*Figure: Typical torque-slip characteristic of a 3-phase induction motor.*
-
-From the Thevenin equivalent circuit (neglecting magnetising branch), the torque is given by
+The torque-slip curve of an induction motor shows torque $T_e$ against slip $s$. At $s=0$, $T_e=0$. For small slips, torque rises linearly, reaching a maximum $T_{\max}$ at slip $s_m$, then drops to starting torque $T_{\mathrm{st}}$ at $s=1$. The stable operating region is $0 < s < s_m$ (motoring). The curve is derived from the approximate per-phase equivalent circuit:
 
 $$
-T_e = \frac{3}{\omega_s} \frac{V_{th}^2 \frac{r_2'}{s}}{\left(R_{th} + \frac{r_2'}{s}\right)^2 + (X_{th} + x_2')^2}
+\begin{aligned}
+T_e = \frac{3}{\omega_s} \cdot \frac{V_{th}^2 \frac{r_2'}{s}}{\bigl(R_{th} + \frac{r_2'}{s}\bigr)^2 + (X_{th} + x_2')^2}
+\end{aligned}
 $$
 
-The slip at maximum torque and the maximum torque itself are:
+The slip at maximum torque and the maximum torque are
 
 $$
-s_m = \frac{r_2'}{\sqrt{R_{th}^2 + (X_{th} + x_2')^2}}
+\begin{aligned}
+s_m = \frac{r_2'}{\sqrt{R_{th}^2 + (X_{th} + x_2')^2}},\quad
+T_{\max} = \frac{3}{2\omega_s} \cdot \frac{V_{th}^2}{R_{th} + \sqrt{R_{th}^2 + (X_{th} + x_2')^2}}.
+\end{aligned}
 $$
 
-$$
-T_{\max} = \frac{3}{2\omega_s} \frac{V_{th}^2}{R_{th} + \sqrt{R_{th}^2 + (X_{th} + x_2')^2}}
-$$
+These reveal that $s_m \propto r_2'$ while $T_{\max}$ is independent of rotor resistance.
 
-These expressions show that $s_m$ is directly proportional to the rotor resistance $r_2'$, while $T_{\max}$ is independent of rotor resistance.
+In a **wound-rotor (slip-ring) motor**, external resistors can be added to the rotor circuit:
 
-In a wound-rotor (slip-ring) induction motor, external resistors can be inserted into the rotor circuit via brushes and slip rings. This changes the effective rotor resistance and consequently alters the torque-slip characteristic in a controlled manner:
+- **(a) Starting torque**: Adding resistance increases total $r_2'$, shifting $s_m$ toward 1. When $s_m=1$, the motor develops $T_{\max}$ at start - the starting torque can be raised to the breakdown value.
+- **(b) Slip at which $T_{\max}$ occurs**: Since $s_m \propto r_2'$, extra resistance moves the torque peak to a higher slip. The whole curve skews to the right, but the peak height remains unchanged.
+- **(c) Magnitude of $T_{\max}$**: $T_{\max}$ depends only on $V_{th}$, frequency and leakage reactances; it does **not** change with rotor resistance. The motor's overload capacity is preserved.
 
-- **(a) Starting torque and its magnitude:** By increasing the total rotor resistance, $s_m$ moves toward unity. When the external resistance is chosen such that $s_m = 1$, the motor develops its breakdown torque at starting. Thus the starting torque can be increased from a modest value (typically 1.5-2 times full-load torque) up to $T_{\max}$. This provides excellent starting performance without excessive inrush current.
+Thus, external rotor resistance greatly improves starting performance and allows control of the torque-slip shape without sacrificing the maximum torque capability.
 
-- **(b) Slip at which the maximum torque occurs:** Because $s_m \propto r_2'$, adding external resistance shifts the peak of the torque-slip curve to higher slip values. The entire curve skews to the right, but the height of the peak remains unchanged.
-
-- **(c) Magnitude of the maximum torque:** As seen from the $T_{\max}$ equation, the peak torque is determined solely by the stator voltage, frequency, and total leakage reactance. Rotor resistance does not appear; therefore, $T_{\max}$ stays constant regardless of the external resistance added. The motor's overload capacity is preserved.
-
-In summary, external rotor resistance in a wound-rotor motor allows the starting torque to be boosted to the full breakdown value, gives the flexibility to shift the torque peak to any desired slip, but does not affect the absolute maximum torque capability.
-
-> **Final answer:** In a wound-rotor motor, external rotor resistance increases starting torque, shifts $s_m$ to higher slip, but does not change $T_{\max}$.
+> **Final answer:** In a wound-rotor motor, external rotor resistance increases starting torque, shifts $s_m$ to a higher slip, but leaves $T_{\max}$ unchanged.
 
 
 ---
@@ -3640,52 +2777,23 @@ In summary, external rotor resistance in a wound-rotor motor allows the starting
 Sketch the complete torque-slip characteristics of induction motor explaining the modes of operation. (04)
 
 ### Answer 53
-The torque-slip characteristic of a three-phase induction motor displays the electromagnetic torque $T$ developed as a function of the slip 
+The torque-slip characteristic of a three-phase induction motor illustrates the machine's behavior across three distinct modes. Slip is defined as $s = (n_s - n_r)/n_s$, where $n_s$ is synchronous speed.
 
-$$
-s = \frac{n_s - n_r}{n_s},
-$$
+**Motoring mode (0 < s < 1):** The rotor runs slower than the field. Power flows from stator to rotor, producing a driving torque. The curve rises almost linearly from $s=0$ (zero torque) to a maximum value $T_{\max}$ at $s = s_m$, then declines to the starting torque at $s=1$. The motor operates stably only on the low-slip side ($0 < s < s_m$). Typical full-load slip is less than $0.05$.
 
-where $n_s$ is the synchronous speed and $n_r$ is the rotor speed. This curve succinctly reveals the machine's behavior in three distinct operating modes.
+**Generating mode (s < 0):** When the rotor is driven above synchronous speed by a prime mover, slip becomes negative. The developed torque opposes the direction of rotation, and the machine feeds active power back to the supply. The torque-slip curve for negative slips is a mirror image of the motoring curve about $s=0$. Induction generators are used in wind turbines and micro-hydro plants.
 
-**Mathematical Basis**
-The developed torque can be expressed from the approximate per-phase equivalent circuit referred to the stator as
+**Braking (Plugging) mode (s > 1):** If the stator supply phase sequence is reversed while the rotor is still rotating in the original direction, the rotating field now moves opposite to the rotor. Slip becomes greater than 1 (e.g., $s \approx 2 - s_{\text{old}}$). The torque acts as a brake, absorbing mechanical energy and drawing power from the supply. High currents and rapid heating occur. This region covers $1 < s < 2$. Alternatively, mechanical forcing against the field also gives $s>1$ (regenerative braking).
 
-$$
-T = \frac{3}{\omega_s} \cdot \frac{V_1^2}{\left(R_1 + \dfrac{R_2}{s}\right)^2 + (X_1 + X_2)^2} \cdot \frac{R_2}{s},
-$$
+Key points on the characteristic:
+- $s = 0$: synchronous speed, zero torque.
+- $s = s_m$: maximum (pull-out) torque.
+- $s = 1$: standstill (starting torque).
+- $s = 2$: plugging with reversed supply.
 
-with $\omega_s$ the synchronous angular speed. For small slips ($s \to 0$), $T \propto s$ (linear region); for large slips, $T \propto 1/s$. The maximum (breakdown) torque occurs at
+The stable operating region is $0 \le s < s_m$ in motoring and the corresponding negative $s$ in generating; beyond $s_m$ the operation is unstable without external control.
 
-$$
-s_m = \frac{R_2}{\sqrt{R_1^2 + (X_1 + X_2)^2}} \approx \frac{R_2}{X_1 + X_2}.
-$$
-
-**Characteristic Points on the Curve**
-* $s = 0$: synchronous speed, zero torque.
-* $s = 1$: standstill; the starting torque $T_{\text{st}}$ is developed.
-* $s = s_m$: maximum torque $T_{\max}$ (pull-out torque).
-* Stable operation: $0 \le s < s_m$ in motoring; the negative-slip counterpart in generating.
-* Unstable region: $s > s_m$ in motoring; similarly for generating.
-
-**Modes of Operation**
-
-1. **Motoring ($0 < s < 1$)**  
-   The rotor runs slower than the synchronous field, i.e. $0 < n_r < n_s$. Power flows from the stator to the rotor, producing a positive (driving) torque. The motor normally operates on the stable low-slip portion (typically $s < 0.05$), where the torque-slip relation is almost linear. At $s = 1$ the motor is at standstill and produces its starting torque; as it accelerates, slip reduces until the motor torque balances the load torque.
-
-2. **Generating ($s < 0$)**  
-   If the rotor is driven above synchronous speed ($n_r > n_s$) by a prime mover, the slip becomes negative. The induced rotor currents reverse phase, and the developed torque opposes the direction of rotation. The machine delivers active power to the supply. The torque-slip curve in this region is the mirror image of the motoring curve about $s = 0$. Induction generators are employed in wind turbines and other renewable-energy applications.
-
-3. **Braking - Plugging ($s > 1$)**  
-   When the stator phase sequence is suddenly reversed while the rotor is still running in the original direction, the rotating field now rotates opposite to the rotor. The slip becomes greater than 1 (typically $s = 2 - s_{\text{old}}$). The developed torque acts against the motion, braking the rotor. Both the electrical supply and the mechanical load feed power into the machine, leading to high currents and rapid heating. This corresponds to the portion of the curve from $s = 1$ to $s = 2$. Alternatively, if the rotor is mechanically forced to rotate against the field, slip also exceeds unity and the machine acts as a brake.
-
-**The Torque-Slip Curve**
-The complete characteristic is sketched below, with the three regions clearly marked.
-
-![Complete torque-slip characteristics of a three-phase induction motor](./pyq-assets/textbook/108105131_p602_img-308_jpeg.png)
-*Figure: Torque-slip curve showing motoring ($0 < s < 1$), generating ($s < 0$), and braking ($s > 1$) regions. Key points: $s=0$ (synchronous speed), $s=s_m$ (maximum torque), $s=1$ (starting torque), and $s=2$ (plugging at reversed phase sequence).*
-
-> **Final answer:** The torque-slip characteristic comprehensively illustrates the three operating modes of a three-phase induction motor: motoring for $0 < s < 1$, generating for $s < 0$, and braking (plugging) for $s > 1$. Salient points are $s=0$ (zero torque, synchronous speed), $s = s_m$ (maximum torque), and $s=1$ (starting torque). The stable operating region lies between $s=0$ and $s_m$ in motoring, and the corresponding negative-slip region in generating.
+> **Final answer:** The torque-slip curve displays three modes: motoring ($0<s<1$), generating ($s<0$), and braking/plugging ($s>1$). Stable operation occurs between $s=0$ and $s_m$ in motoring and the mirror region in generating. Maximum torque occurs at $s_m$, starting torque at $s=1$.
 
 
 ---
@@ -3696,86 +2804,75 @@ The complete characteristic is sketched below, with the three regions clearly ma
 Consider a 415 V, 6-pole, 50 Hz induction motor with δ connected rotor windings. The voltage measured between the slip rings at standstill is 60 V and when running at full load is 3 V. The rotor resistance and standstill rotor reactance are 0.6 Ω and 2.8 Ω respectively. Calculate at full load, (a) Speed (b) Rotor current (c) Torque developed & (d) Power developed by the motor (05)
 
 ### Answer 54
-The rotor of the induction motor is delta-connected, therefore the voltage measured between any two slip rings is the phase voltage. This allows the slip to be found directly from the voltage ratio.
+**Given:**
+- Supply: 415 V, 50 Hz, 6 poles → $n_s = 120f/P = 1000\,\text{rpm}$, $\omega_s = 104.72\,\text{rad/s}$.
+- Rotor: delta-connected; standstill slip-ring voltage $E_2 = 60\,\text{V}$ (phase emf).
+- Full-load slip-ring voltage $= 3\,\text{V}$.
+- Rotor parameters/phase: $R_2 = 0.6\,\Omega$, $X_2 = 2.8\,\Omega$ at standstill.
 
-At standstill (s = 1), the induced rotor phase emf is $E_2 = 60\\;\\text{V}$. At full load the slip-ring voltage falls to 3 V, so the induced emf at slip $s$ is $E_{2s} = 3\\;\\text{V}$. Hence
-
-$$
-s = \\frac{E_{2s}}{E_2} = \\frac{3}{60} = 0.05 .
-$$
-
----
-
-### (a) Full-load speed
-The synchronous speed for a 6-pole, 50 Hz machine is
+**Slip:** At standstill $E_2 \propto n_s$, at slip $s$, $E_{2s} = sE_2$. Thus
 
 $$
-N_s = \\frac{120\,f}{P} = \\frac{120 \times 50}{6} = 1000\\;\\text{rpm},
-$$
-$$
-\\omega_s = \\frac{2\\pi N_s}{60} = \\frac{2\\pi \times 1000}{60} = 104.72\\;\\text{rad/s}.
-$$
-
-The rotor speed at slip $s$ is
-
-$$
-N = (1-s)\,N_s = 0.95 \times 1000 = 950\\;\\text{rpm}.
+\begin{aligned}
+s = \frac{E_{2s}}{E_2} = \frac{3}{60} = 0.05\ (5\%).
+\end{aligned}
 $$
 
----
-
-### (b) Rotor current (per phase)
-The rotor resistance per phase is $R_2 = 0.6\\;\\Omega$ and the standstill reactance per phase is $X_2 = 2.8\\;\\Omega$. At slip $s$, the reactance becomes
-
+**(a) Speed:**
 $$
-X_{2s} = s X_2 = 0.05 \times 2.8 = 0.14\\;\\Omega.
+\begin{aligned}
+n = (1-s)n_s = 0.95 \times 1000 = 950\,\text{rpm}.
+\end{aligned}
 $$
 
-The rotor phase impedance is
-
+**(b) Rotor current per phase:**
+Rotor reactance at slip $s$:
 $$
-Z_2 = \\sqrt{R_2^2 + X_{2s}^2} = \\sqrt{0.6^2 + 0.14^2} = \\sqrt{0.36 + 0.0196} = \\sqrt{0.3796} \\approx 0.6161\\;\\Omega.
+\begin{aligned}
+X_{2s} = s X_2 = 0.05 \times 2.8 = 0.14\,\Omega.
+\end{aligned}
 $$
-
-The rotor phase emf at full load is $E_{2s} = 3\\;\\text{V}$. Therefore the rotor current per phase (which is the current in each rotor phase winding) is
-
+Rotor impedance per phase:
 $$
-I_2 = \\frac{E_{2s}}{Z_2} = \\frac{3}{0.6161} \\approx 4.87\\;\\text{A}.
+\begin{aligned}
+Z_2 = \sqrt{R_2^2 + X_{2s}^2} = \sqrt{0.6^2 + 0.14^2} = \sqrt{0.3796} \approx 0.6161\,\Omega.
+\end{aligned}
 $$
-
----
-
-### (c) Electromagnetic torque developed
-The total rotor copper loss is
-
+Rotor phase emf at full load $E_{2s}=3\,\text{V}$. Rotor phase current:
 $$
-P_{\\text{cu}_2} = 3\,I_2^2\,R_2 = 3 \times (4.87)^2 \times 0.6 \\approx 42.6\\;\\text{W}.
-$$
-
-The air-gap power $P_{\\text{ag}}$ is related to the rotor copper loss by the slip:
-
-$$
-P_{\\text{ag}} = \\frac{P_{\\text{cu}_2}}{s} = \\frac{42.6}{0.05} = 852\\;\\text{W}.
+\begin{aligned}
+I_2 = \frac{E_{2s}}{Z_2} = \frac{3}{0.6161} \approx 4.87\,\text{A}.
+\end{aligned}
 $$
 
-The electromagnetic torque (gross torque) developed by the motor is
-
+**(c) Torque developed:**
+Rotor copper loss (three phases):
 $$
-T = \\frac{P_{\\text{ag}}}{\\omega_s} = \\frac{852}{104.72} \\approx 8.14\\;\\text{N·m}.
+\begin{aligned}
+P_{\text{cu}_2} = 3 I_2^2 R_2 = 3 \times (4.87)^2 \times 0.6 \approx 42.6\,\text{W}.
+\end{aligned}
+$$
+Air-gap power:
+$$
+\begin{aligned}
+P_{\text{ag}} = \frac{P_{\text{cu}_2}}{s} = \frac{42.6}{0.05} = 852\,\text{W}.
+\end{aligned}
+$$
+Electromagnetic torque:
+$$
+\begin{aligned}
+T = \frac{P_{\text{ag}}}{\omega_s} = \frac{852}{104.72} \approx 8.14\,\text{N}\cdot\text{m}.
+\end{aligned}
 $$
 
----
-
-### (d) Mechanical power developed
-The mechanical power developed (also called gross mechanical output) is the air-gap power minus the rotor copper loss, or equivalently
-
+**(d) Mechanical power developed:**
 $$
-P_{\\text{mech}} = (1-s)\,P_{\\text{ag}} = 0.95 \times 852 \\approx 809\\;\\text{W}.
+\begin{aligned}
+P_{\text{mech}} = (1-s)P_{\text{ag}} = 0.95 \times 852 \approx 809\,\text{W}.
+\end{aligned}
 $$
 
----
-
-> **Final answer:** (a) 950 rpm; (b) 4.87 A/phase; (c) ≈ 8.14 N·m; (d) ≈ 809 W.
+> **Final answer:** (a) 950 rpm; (b) 4.87 A/phase; (c) 8.14 N·m; (d) 809 W.
 
 
 ---
@@ -3786,135 +2883,67 @@ $$
 A 3 phase, 50 Hz, 400 V induction motor has the following test data: No load Test: 400 V, 10 A, 1 kW; Blocked rotor Test: 150 V, 40 A, 4 kW. Equivalent rotor resistance per phase referred to stator is equal to Stator resistance per phase. Draw the circle diagram and determine (a) Line current and operating slip when the shaft power is 40 HP, (b) Maximum power input. 6
 
 ### Answer 55
-From the given test data (all values are total three-phase):
+Assuming star connection, phase voltage $V_{\text{ph}} = 400/\sqrt{3} = 230.94\,\text{V}$.
 
-- No-load test: $V_{\text{NL}} = 400\ \text{V}$, $I_0 = 10\ \text{A}$, $P_0 = 1\ \text{kW}$.
-- Blocked-rotor test: $V_{\text{BR}} = 150\ \text{V}$, $I_{\text{BR}} = 40\ \text{A}$, $P_{\text{BR}} = 4\ \text{kW}$.
+**No-load test**: $V_0 = 400\,\text{V}$, $I_0 = 10\,\text{A}$, $P_0 = 1\,\text{kW}$.
+Per phase: $V_{0\text{ph}} = 230.94\,\text{V}$, $I_{0\text{ph}} = 10\,\text{A}$, $P_{0\text{ph}} = 333.33\,\text{W}$.
+$\cos\phi_0 = \frac{333.33}{230.94 \times 10} = 0.1443$, $\phi_0 = 81.7^\circ$ lag.
+Hence $\bar I_0 = 10\angle -81.7^\circ$ A.
 
-Assume star connection; then phase voltage $V_{\text{ph}} = 400 / \sqrt{3} = 230.94\ \text{V}$.
-
-**No-load parameters**
-
+**Blocked-rotor test**: $V_{\text{br}} = 150\,\text{V}$, $I_{\text{br}} = 40\,\text{A}$, $P_{\text{br}} = 4\,\text{kW}$.
+Per phase: $V_{\text{br,ph}} = 150/\sqrt{3} = 86.60\,\text{V}$, $I_{\text{br,ph}} = 40\,\text{A}$, $P_{\text{br,ph}} = 1333.33\,\text{W}$.
 $$
-\cos\phi_0 = \frac{P_0}{\sqrt{3}\, V_{\text{NL}} I_0} = \frac{1000}{\sqrt{3}\times 400\times 10} = 0.144\ \Rightarrow\ \phi_0 \approx 81.7^\circ.
+\begin{aligned}
+Z_{\text{eq}} &= \frac{86.60}{40} = 2.165\,\Omega, \\
+R_{\text{eq}} &= \frac{1333.33}{40^2} = 0.833\,\Omega, \\
+X_{\text{eq}} &= \sqrt{2.165^2 - 0.833^2} = 1.998\,\Omega.
+\end{aligned}
 $$
+Given stator and rotor copper losses equal, $R_1 = R_2' = R_{\text{eq}}/2 = 0.4167\,\Omega$.
+The total leakage reactance $X_{\text{eq}}$ is used as is.
 
-The no-load current per phase is $10\ \text{A}$; its active and reactive components:
+**Short-circuit current at rated voltage**:
 $$
-I_w = I_0\cos\phi_0 = 10\times 0.144 = 1.44\ \text{A},\qquad
-I_m = \sqrt{I_0^2 - I_w^2} = \sqrt{10^2 - 1.44^2} \approx 9.90\ \text{A}.
+\begin{aligned}
+I_{\text{sc}} &= I_{\text{br}} \times \frac{400}{150} = 40 \times \frac{400}{150} = 106.67\,\text{A},
+\end{aligned}
 $$
+$\cos\phi_{\text{sc}} = \frac{4000}{\sqrt{3}\times 150\times 40} = 0.385$, $\phi_{\text{sc}} = 67.3^\circ$ lag.
 
-Neglecting the small stator impedance drop at no load, the shunt branch parameters are
-$$
-R_c = \frac{V_{\text{ph}}}{I_w} \approx \frac{230.94}{1.44} \approx 160\ \Omega,\qquad
-X_m = \frac{V_{\text{ph}}}{I_m} \approx \frac{230.94}{9.90} \approx 23.3\ \Omega.
-$$
+**Circle diagram** (see Fig.):
+1. Draw $OV$ vertically to represent $V_{\text{ph}}$.
+2. From $O$ draw $\bar I_0$ to point $O'$.
+3. From $O$ draw $\bar I_{\text{sc}} = 106.67\angle -67.3^\circ$ to point $A$.
+4. The stator-current locus is a circle through $O'$ and $A$; its centre lies on the perpendicular bisector of $O'A$ and a line parallel to $OV$ at a distance $V_{\text{ph}}/(2X_{\text{eq}})$.
+5. Torque line: divide $AA'$ in ratio $R_1:R_2' = 1:1$; output line is $O'$ joined to this division point.
 
-These values are used for the circle diagram and equivalent circuit.
+![Circle diagram of induction motor](https://commons.wikimedia.org/wiki/Special:Redirect/file/Circle_diagram.jpg)
+*Figure: Circle diagram showing no-load point $O'$, standstill point $A$, and output/torque lines. Source: Wikimedia Commons.*
 
-**Blocked-rotor (short-circuit) parameters**
-
-The per-phase voltage during the blocked-rotor test:
-$$
-V_{\text{ph,br}} = \frac{150}{\sqrt{3}} = 86.60\ \text{V},\qquad I_{\text{br}} = 40\ \text{A}.
-$$
-
-Equivalent impedance referred to the stator:
-$$
-Z_{\text{eq}} = \frac{V_{\text{ph,br}}}{I_{\text{br}}} = \frac{86.60}{40} = 2.165\ \Omega.
-$$
-
-The per-phase copper loss is $P_{\text{br}}/3 = 4000/3 = 1333.3\ \text{W}$, giving
-$$
-R_{\text{eq}} = \frac{P_{\text{br}}/3}{I_{\text{br}}^2} = \frac{1333.3}{40^2} = 0.833\ \Omega.
-$$
-
-Hence the equivalent leakage reactance:
-$$
-X_{\text{eq}} = \sqrt{Z_{\text{eq}}^2 - R_{\text{eq}}^2} = \sqrt{2.165^2 - 0.833^2} \approx 1.998\ \Omega.
-$$
-
-Because *"Equivalent rotor resistance per phase referred to stator is equal to Stator resistance per phase,"*
-$$
-R_1 = R_2' = \frac{R_{\text{eq}}}{2} = 0.4167\ \Omega.
-$$
-
-Assuming the leakage reactances are equally split,
-$$
-X_1 \approx X_2' \approx \frac{X_{\text{eq}}}{2} = 0.999\ \Omega.
-$$
-
-These parameters completely describe the per-phase approximate equivalent circuit used in the circle diagram.
-
-**Circle diagram (conceptual construction)**
-
-To draw the circle diagram (a typical example is shown in Fig. 1), proceed as follows:
-
-1. Choose a suitable current scale (e.g., $1\ \text{A} = 1\ \text{mm}$).  
-2. Draw the voltage phasor $OV$ vertically upward (representing $V_{\text{ph}}$).  
-3. From $O$, draw the no-load current $\vec{I}_0 = 10\ \text{A}$ lagging $OV$ by $\phi_0 = 81.7^\circ$; its tip is point $O'$.  
-4. From $O$, draw the rated-voltage short-circuit current $\vec{I}_{\text{SC}}$. The blocked-rotor test was taken at $150\ \text{V}$; at rated voltage $400\ \text{V}$ the current scales linearly:
-   $$
-   I_{\text{SC}} = I_{\text{BR}}\times\frac{400}{150} = 40\times\frac{400}{150} = 106.67\ \text{A},
-   $$
-   lagging by $\phi_{\text{SC}} = \arccos(0.385) \approx 67.3^\circ$. Its tip is point $A$.  
-5. Join $O'A$. The circular locus of the stator current tip for all slips passes through $O'$ and $A$.  
-6. Draw a vertical line (parallel to $OV$) through $A$; the distances on this line from $A$ to the horizontal axis represent the input power, and its division by a point $L$ such that $AL/LO' = R_1/R_2'$ gives the torque line. The output line is $O'L$ (or $O'A$ depending on convention).  
-
-The diagram can now be used graphically, but we shall obtain the requested quantities by algebraic manipulation of the equivalent circuit.
-
-![Typical circle diagram](./pyq-assets/textbook/108105131_p513_img-269_jpeg.png)  
-*Fig. 1 - Typical circle diagram of an induction motor (source: textbook p. 513)*
-
-**Determination of required quantities**
-
-**(a) Line current and slip for a shaft power of 40 HP**
-
-40 HP = $40 \times 746 = 29\,840\ \text{W} = 29.84\ \text{kW}$.
-
-The maximum shaft output that the motor can develop is found by maximising the developed mechanical power and subtracting the constant losses. Using the approximate equivalent circuit, the mechanical power per phase is
-$$
-P_{\text{mech}} = I_2'^{\,2}\, R_2'\,\frac{1-s}{s},
-\qquad
-I_2' = \frac{V_{\text{ph}}}{\sqrt{\bigl(R_1 + \frac{R_2'}{s}\bigr)^2 + X_{\text{eq}}^2}} .
-$$
-
-Maximising $P_{\text{mech}}$ with respect to $s$ (by setting $\mathrm{d}P_{\text{mech}}/\mathrm{d}s = 0$) yields a quadratic whose positive root gives the slip at maximum output:
-$$
-s_{mP} \approx 0.164 .
-$$
-
-At this slip the rotor current $I_2' \approx 66.8\ \text{A}$, and the corresponding line current (which is the phasor sum of $I_0$ and $I_2'$) is also approximately $66.8\ \text{A}$. The gross mechanical power developed is about $25.9\ \text{kW}$; after deducting the constant losses (estimated from the no-load test as $P_{\text{const}} \approx P_0 - 3 I_0^2 R_1 = 1000 - 125 = 875\ \text{W}$), the net shaft output is roughly
-$$
-P_{\text{shaft,max}} \approx 25.0\ \text{kW}.
-$$
-
-Since $29.84\ \text{kW} > 25.0\ \text{kW}$, the machine is incapable of delivering 40 HP. No physically meaningful operating point exists on the circle diagram for that output.
+**(a) Shaft power = 40 HP = 29.84 kW**
+Constant losses: $P_{\text{const}} \approx P_0 - 3I_0^2 R_1 = 1000 - 3\times 10^2 \times 0.4167 = 875\,\text{W}$.
+Maximum gross mechanical power occurs at $s_{mP} \approx 0.164$ (or where a line parallel to the output line is tangent to the circle). At this slip, gross $P_{\text{mech}} \approx 25.9\,\text{kW}$, giving a net shaft output $\approx 25.0\,\text{kW}$.
+Since 29.84 kW exceeds this, **the motor cannot deliver 40 HP** - no valid operating point exists.
 
 **(b) Maximum power input**
-
-The input power is maximised when the active component of the line current is largest. In the approximate circuit this occurs at a slip $s_{\text{in,max}}$ for which the equivalent resistance equals the equivalent reactance:
+Maximum input occurs when $R_1 + R_2'/s = X_{\text{eq}}$:
 $$
-R_1 + \frac{R_2'}{s_{\text{in,max}}} = X_{\text{eq}} \;\Longrightarrow\;
-s_{\text{in,max}} = \frac{R_2'}{X_{\text{eq}} - R_1} \approx \frac{0.4167}{1.998 - 0.4167} = 0.264.
+\begin{aligned}
+s &= \frac{R_2'}{X_{\text{eq}} - R_1} = \frac{0.4167}{1.998 - 0.4167} = 0.2636.
+\end{aligned}
 $$
-
-A more precise computation (or the corresponding construction on the circle diagram) gives $s \approx 0.273$. At this slip,
+Then $|Z| = \sqrt{2}R_{\text{total}} = 2.826\,\Omega$, $I_2' = 230.94/2.826 = 81.7\,\angle -45^\circ$ A.
+Total stator current: $\bar I_1 = \bar I_0 + \bar I_2' = 10\angle -81.7^\circ + 81.7\angle -45^\circ \approx 89.9\angle -48.8^\circ$ A.
+Maximum power input:
 $$
-I_2' \approx 84.9\ \text{A},\qquad
-\cos\phi \approx 0.61\ (\text{lagging}),
-$$
-so the line current is about $84.9\ \text{A}$. The total three-phase input power becomes
-$$
-P_{\text{in,max}} = \sqrt{3}\, V_{\text{L}} I_{\text{L}} \cos\phi \approx \sqrt{3} \times 400 \times 84.9 \times 0.61 \approx 39.2\ \text{kW}.
+\begin{aligned}
+P_{\text{in,max}} &= \sqrt{3}\,V_L I_L \cos\phi_1 = \sqrt{3}\times 400\times 89.9\times\cos 48.8^\circ \approx 41.0\,\text{kW}.
+\end{aligned}
 $$
 
-(Using the exact equivalent circuit that underlies the circle diagram the value is essentially the same.)
-
-> **Final answer:**  
-> (a) The motor cannot supply 40 HP because its maximum shaft output is only about 25.0 kW.  
-> (b) Maximum power input ≈ 39.2 kW (line current ≈ 84.9 A, slip ≈ 0.273).
+> **Final answer:**
+> (a) Motor cannot deliver 40 HP (max shaft output ≈ 25 kW).
+> (b) Maximum power input ≈ 41.0 kW.
 
 
 ---
@@ -3925,119 +2954,84 @@ $$
 A 415 V, 40 HP, 50 Hz, δ connected induction motor gave the following test data: No-load test: 415 V, 21 A, 1250 W; Blocked rotor test: 100 V, 45 A, 2730 W. Stator copper losses is equal to rotor copper losses. Draw the circle diagram and determine, at rated output: (i) Line current and power factor (ii) Efficiency (iii) Slip (iv) Maximum output and maximum torque.
 
 ### Answer 56
-First, we convert the test data to per-phase values for the delta-connected motor.
+Transform the delta motor to an equivalent star: phase voltage $V_{\text{ph}} = 415/\sqrt{3} = 239.6\,\text{V}$; line current equals phase current.
 
-**No-load test (line values):**  
-$V_{L0}=415\;V$, $I_{L0}=21\;A$, $P_{0,3\phi}=1250\;W$.  
-For delta connection the phase voltage equals the line voltage, and the phase current is $1/\sqrt3$ of the line current. Hence
-$$
-V_\text{ph}=415\;V,\quad I_\text{0,ph}= \frac{21}{\sqrt3}=12.12\;A,\quad P_{0,\text{ph}}= \frac{1250}{3}=416.7\;W.
-$$
-The no-load power factor is
-$$
-\cos\phi_0 = \frac{P_{0,\text{ph}}}{V_\text{ph} I_\text{0,ph}} = \frac{416.7}{415\times12.12}=0.0828 \quad\Rightarrow\quad \phi_0 = 85.25^\circ\;\text{(lagging)}.
-$$
-The no-load current phasor (with $\mathbf{V}_\text{ph}$ as reference) is therefore
-$$
-\mathbf{I}_0 = 12.12\,\angle{-85.25^\circ}\;\text{A}.
-$$
+**No-load test** (line values): $V_0 = 415\,\text{V}$, $I_0 = 21\,\text{A}$, $P_0 = 1250\,\text{W}$.
+Per phase: $V_{0\text{ph}} = 239.6\,\text{V}$, $I_{0\text{ph}} = 21\,\text{A}$, $P_{0\text{ph}} = 416.67\,\text{W}$.
+$\cos\phi_0 = \frac{416.67}{239.6\times 21} = 0.0828$, $\phi_0 = 85.25^\circ$ lag.
+$\bar I_0 = 21\angle -85.25^\circ$ A.
 
-**Blocked-rotor test (line values):**  
-$V_\text{br}=100\;V$, $I_\text{br}=45\;A$, $P_\text{br,3\phi}=2730\;W$.  
-In delta,
-$$
-V_\text{br,ph}=100\;V,\quad I_\text{br,ph}= \frac{45}{\sqrt3}=25.98\;A,\quad P_\text{br,ph}= \frac{2730}{3}=910\;W.
-$$
-The equivalent per-phase impedance at standstill is
-$$
-Z_\text{br}= \frac{V_\text{br,ph}}{I_\text{br,ph}} = \frac{100}{25.98}=3.85\;\Omega,
-$$
-$$
-R_\text{br}= \frac{P_\text{br,ph}}{I_\text{br,ph}^2} = \frac{910}{25.98^2}=1.348\;\Omega,
-$$
-$$
-X_\text{br}= \sqrt{Z_\text{br}^2-R_\text{br}^2}= \sqrt{3.85^2-1.348^2}=3.61\;\Omega.
-$$
-Thus the total series resistance and reactance are
-$$
-R_\text{eq}=R_1+R_2' = 1.348\;\Omega,\qquad X_\text{eq}=X_1+X_2' = 3.606\;\Omega.
-$$
-Because the stator and rotor copper losses are equal, we obtain
-$$
-R_1=R_2' = 0.674\;\Omega,\qquad X_1=X_2' = 1.803\;\Omega.
-$$
-
-The locked-rotor current per phase at rated voltage is
-$$
-\mathbf{I}_\text{sc}= \frac{V_\text{ph}}{R_\text{eq}+jX_\text{eq}} = \frac{415}{1.348+j3.606}=107.8\,\angle{-69.5^\circ}\;\text{A}.
-$$
-
-**Circle diagram (Figure 1)**  
-The circle diagram is drawn with the voltage phasor along the vertical axis.  
-Point **A** (no-load) is the tip of $\mathbf{I}_0$; point **B** (standstill) is the tip of $\mathbf{I}_\text{sc}$.  
-The circle that passes through A and B has its centre on the perpendicular bisector of AB and also on a line parallel to the voltage axis; its radius is $V_\text{ph}/(2X_\text{eq})=57.5\;A$.  
-From the diagram the torque line is obtained by dividing the vertical line through B in the ratio $R_1:R_2'$, and the output line is drawn through A parallel to the torque line. The constant-loss line is placed such that the vertical intercept gives the fixed losses (≈ $3\times(416.7-12.12^2\times0.674)=952\;W$).
-
-![Circle diagram](./pyq-assets/textbook/108105131_p506_img-266_jpeg.png)  
-*Fig. 1: Circle diagram of the induction motor (with slip line)*
-
-**Performance at rated output (40 HP = 29.84 kW)**  
-Let $s$ be the slip. Using the approximate equivalent circuit that underlies the circle diagram,
-$$
-I_2' = \frac{V_\text{ph}}{\sqrt{(R_1+R_2'/s)^2+X_\text{eq}^2}},
-\qquad
-P_\text{mech,ph}= (I_2')^2 R_2' \frac{1-s}{s}.
-$$
-The shaft power per phase is $P_\text{shaft,ph}=P_\text{mech,ph}-P_\text{const,ph}$ with $P_\text{const,ph}\approx 317.5\;W$.  
-Solving $3\times P_\text{shaft,ph}=29.84\;kW$ gives
-$$
-s \approx 0.371.
-$$
-At this slip,
+**Blocked-rotor test**: $V_{\text{br}} = 100\,\text{V}$, $I_{\text{br}} = 45\,\text{A}$, $P_{\text{br}} = 2730\,\text{W}$.
+Per phase: $V_{\text{br,ph}} = 100/\sqrt{3} = 57.735\,\text{V}$, $I_{\text{br,ph}} = 45\,\text{A}$, $P_{\text{br,ph}} = 910\,\text{W}$.
 $$
 \begin{aligned}
-R_1+\frac{R_2'}{s} &= 0.674+\frac{0.674}{0.371}=2.491\;\Omega,\\[2mm]
-I_2' &= \frac{415}{\sqrt{2.491^2+3.606^2}} = 94.7\;A,\quad \phi_2 = -\arctan\frac{3.606}{2.491}= -55.4^\circ,\\[2mm]
-\mathbf{I}_1 &= \mathbf{I}_0 + \mathbf{I}_2' = 12.12\angle{-85.25^\circ}+94.7\angle{-55.4^\circ}\approx 105.4\angle{-58.7^\circ}\;A\;\text{(per phase)}.
+Z_{\text{eq}} &= \frac{57.735}{45} = 1.283\,\Omega, \\
+R_{\text{eq}} &= \frac{910}{45^2} = 0.4494\,\Omega, \\
+X_{\text{eq}} &= \sqrt{1.283^2 - 0.4494^2} = 1.202\,\Omega.
 \end{aligned}
 $$
-For the delta motor the line current is
+Stator and rotor copper losses equal: $R_1 = R_2' = R_{\text{eq}}/2 = 0.2247\,\Omega$; total $X_{\text{eq}} = 1.202\,\Omega$.
+
+**Short-circuit current at rated voltage**:
 $$
-I_L = \sqrt3\times 105.4 = 182.5\;A.
+\begin{aligned}
+I_{\text{sc}} &= I_{\text{br}} \times \frac{415}{100} = 45 \times 4.15 = 186.75\,\text{A},
+\end{aligned}
 $$
-Power factor and efficiency:
+$\cos\phi_{\text{sc}} = \frac{2730}{\sqrt{3}\times 100\times 45} = 0.350$, $\phi_{\text{sc}} = 69.5^\circ$ lag.
+
+**Circle diagram** (see Fig.):
+1. Draw $OV$ vertically for $V_{\text{ph}}$.
+2. $O'$ is the tip of $\bar I_0$.
+3. $A$ is the tip of $\bar I_{\text{sc}} = 186.75\angle -69.5^\circ$.
+4. The circle of stator-current passes through $O'$ and $A$; its centre lies on a line parallel to $OV$ at a distance $V_{\text{ph}}/(2X_{\text{eq}}) = 99.67\,\text{A}$.
+5. Torque line: divide $AA'$ in ratio $R_1:R_2' = 1:1$; output line is $O'$ to this point.
+
+![Circle diagram of induction motor](https://commons.wikimedia.org/wiki/Special:Redirect/file/Circle_diagram.jpg)
+*Figure: Circle diagram for the induction motor. Source: Wikimedia Commons.*
+
+**Rated output = 40 HP = 29.84 kW**
+Constant losses: $P_{\text{const}} = P_0 - 3 I_0^2 R_1 = 1250 - 3\times 21^2 \times 0.2247 = 953\,\text{W}$ ($\approx 317.7\,\text{W}$/phase).
+
+Let full-load slip $s$. Using the approximate equivalent circuit, the mechanical power per phase is
 $$
-\text{pf} = \cos 58.7^\circ = 0.521,\qquad
-P_\text{in} = \sqrt3\times415\times182.5\times0.521 = 68.33\;kW,
+\begin{aligned}
+P_{\text{mech,ph}} &= I_2'^2 R_2' \frac{1-s}{s}, \quad
+I_2' = \frac{V_{\text{ph}}}{\sqrt{(R_1 + R_2'/s)^2 + X_{\text{eq}}^2}}.
+\end{aligned}
 $$
+Shaft power per phase = $P_{\text{mech,ph}} - 317.7\,\text{W}$. Setting total shaft $= 29.84\,\text{kW}$ and solving for $s$ (or reading from the circle diagram) gives
+$s \approx 0.371$ (3.71%).
+
+At $s = 0.371$:
+$R_2'/s = 0.2247/0.371 = 0.606\,\Omega$; total resistance $R = 0.2247 + 0.606 = 0.831\,\Omega$; $X_{\text{eq}} = 1.202\,\Omega$.
+$|Z| = \sqrt{0.831^2 + 1.202^2} = 1.461\,\Omega$.
+Rotor-branch current: $I_2' = 239.6/1.461 = 164.0\,\text{A}$, $\phi_2 = \arctan(1.202/0.831) = 55.4^\circ$ lag.
+Stator current: $\bar I_1 = \bar I_0 + \bar I_2' = 21\angle -85.25^\circ + 164.0\angle -55.4^\circ \approx 182.5\angle -58.7^\circ$ A.
+Line current: $I_L = 182.5\,\text{A}$ (star equivalent, so line = phase).
+Power factor: $\cos\phi_1 = \cos 58.7^\circ = 0.521$ lag.
+Input power: $P_{\text{in}} = \sqrt{3} \times 415 \times 182.5 \times 0.521 \approx 68.2\,\text{kW}$.
+Efficiency: $\eta = \frac{29.84}{68.2} \times 100\% = 43.7\%$.
+
+**Maximum output**
+The slip for maximum shaft output is $s_{mP} \approx 0.149$. At this slip, gross mechanical power $\approx 49.7\,\text{kW}$; subtracting constant losses yields
+$P_{\text{max out}} \approx 48.75\,\text{kW}$.
+
+**Maximum torque**
+Slip at maximum torque: $s_{mT} = \frac{R_2'}{\sqrt{R_1^2 + X_{\text{eq}}^2}} = \frac{0.2247}{\sqrt{0.2247^2 + 1.202^2}} = 0.184$.
+With 4 poles ($n_s = 1500\,\text{rpm}$, $\omega_s = 157.08\,\text{rad/s}$):
 $$
-\eta = \frac{29.84}{68.33}\times100\% = 43.7\%.
+\begin{aligned}
+T_{\max} &= \frac{3}{\omega_s} \cdot \frac{V_{\text{ph}}^2}{2\bigl(R_1 + \sqrt{R_1^2 + X_{\text{eq}}^2}\bigr)} \\
+&= \frac{3}{157.08} \cdot \frac{239.6^2}{2(0.2247 + 1.2228)} \approx 378.8\,\text{N}\cdot\text{m}.
+\end{aligned}
 $$
 
-**Maximum shaft output**  
-The maximum gross mechanical power occurs at a slip slightly lower than that for maximum torque. Numerically (or from the circle diagram) one finds $s\approx0.16$, giving a gross power of ≈ 49.6 kW. Subtracting the constant losses (≈ 0.95 kW) yields
-$$
-P_\text{max out} \approx 48.75\;kW.
-$$
-
-**Maximum developed torque**  
-The slip for maximum torque is
-$$
-s_{mT} = \frac{R_2'}{\sqrt{R_1^2+X_\text{eq}^2}} = \frac{0.674}{\sqrt{0.674^2+3.606^2}} = 0.184.
-$$
-With four poles, the synchronous speed is $\omega_s = 4\pi f/P = 157.08\;rad/s$. The maximum torque (total three-phase) is
-$$
-T_{\max} = \frac{3}{\omega_s}\cdot\frac{V_\text{ph}^2}{2\bigl(R_1+\sqrt{R_1^2+X_\text{eq}^2}\bigr)}
-= \frac{3}{157.08}\cdot\frac{415^2}{2\,(0.674+3.668)}
-\approx 378.8\;N\cdot m.
-$$
-
-> **Final answer:**  
-> At rated 40 HP output -  
-> (i) Line current: 182.5 A, power factor: 0.521 lagging  
-> (ii) Efficiency: 43.7 %  
-> (iii) Slip: 0.371  
-> (iv) Maximum shaft output: 48.75 kW, maximum (pull-out) torque: 378.8 N·m
+> **Final answer:**
+> (i) Line current = 182.5 A, power factor = 0.521 lag.
+> (ii) Efficiency = 43.7 %.
+> (iii) Slip = 0.371.
+> (iv) Maximum shaft output = 48.75 kW, maximum torque = 378.8 N·m.
 
 
 ---
@@ -4048,99 +3042,80 @@ $$
 A 415 V, 40 HP, 50 Hz δ connected induction motor gave the following test data: No-load test: 415 V, 21 A, 1250 W Blocked rotor test: 100 V, 45 A, 2730 W Stator copper losses are equal to rotor copper losses. Draw the circle diagram and determine (i) maximum output (ii) starting torque and (iii) maximum torque (iv) full load efficiency and slip (07)
 
 ### Answer 57
-The performance of the induction motor can be determined by constructing the circle diagram from the no-load and blocked-rotor (short-circuit) test data. Because the stator and rotor copper losses are stated to be equal, we have $R_1 = R_2'$ in the equivalent circuit.
+Convert the Δ-connected motor to an equivalent star: $V_{\text{ph}} = 415/\sqrt{3} = 239.6\,\text{V}$; the line current equals the phase current.
 
-**Conversion of test data to per-phase values (star-equivalent)**  
-The motor is Δ-connected. For analysis we transform to an equivalent star; the phase voltage is $V_{\text{ph}} = V_L/\sqrt{3} = 415/\sqrt{3} = 239.6\ \text{V}$, and the line current becomes the phase current.
+**No-load test** (line): $V_0 = 415\,\text{V}$, $I_0 = 21\,\text{A}$, $P_0 = 1250\,\text{W}$.
+Per phase: $V_{0\text{ph}} = 239.6\,\text{V}$, $I_{0\text{ph}} = 21\,\text{A}$, $P_{0\text{ph}} = 416.67\,\text{W}$.
+$\cos\phi_0 = \frac{416.67}{239.6\times 21} = 0.0828$, $\phi_0 = 85.25^\circ$ lag, $\bar I_0 = 21\angle -85.25^\circ$ A.
 
-*No-load test (total three-phase values)*  
-$V_0 = 415\ \text{V (line)},\; I_0 = 21\ \text{A (line)},\; P_0 = 1250\ \text{W}$  
-Per phase: $V_{0\text{ph}} = 239.6\ \text{V},\; I_{0\text{ph}} = 21\ \text{A},\; P_{0\text{ph}} = 416.67\ \text{W}$  
-No-load power factor: $\cos\phi_0 = \frac{416.67}{239.6\times 21} = 0.0828 \;\Rightarrow\; \phi_0 = 85.25^\circ$ (lagging).
-
-*Blocked-rotor test*  
-$V_{\text{sc}} = 100\ \text{V (line)},\; I_{\text{sc}} = 45\ \text{A (line)},\; P_{\text{sc}} = 2730\ \text{W}$  
-Per phase: $V_{\text{sc ph}} = 100/\sqrt{3} = 57.735\ \text{V},\; I_{\text{sc ph}} = 45\ \text{A},\; P_{\text{sc ph}} = 910\ \text{W}$
-
-$R_{\text{sc}} = \frac{P_{\text{sc ph}}}{I_{\text{sc ph}}^2} = \frac{910}{45^2} = 0.4494\ \Omega$  
-$Z_{\text{sc}} = \frac{V_{\text{sc ph}}}{I_{\text{sc ph}}} = \frac{57.735}{45} = 1.283\ \Omega$  
-$X_{\text{sc}} = \sqrt{Z_{\text{sc}}^2 - R_{\text{sc}}^2} = \sqrt{1.283^2 - 0.4494^2} = 1.202\ \Omega$
-
-Since $R_1 = R_2'$, we have $R_1 = R_2' = R_{\text{sc}}/2 = 0.2247\ \Omega$.  
-Assume equal leakage reactances: $X_1 = X_2' = X_{\text{sc}}/2 = 0.601\ \Omega$ (only the total $X = X_1 + X_2' = 1.202\ \Omega$ is needed for torque calculations).
-
-**Synchronous speed**  
-A 50 Hz motor is assumed to have 4 poles (the computed full-load slip will confirm this choice):  
-$n_s = 1500\ \text{rpm},\; \omega_s = 2\pi\cdot 1500/60 = 157.08\ \text{rad/s}$.
-
-**Circle-diagram points**  
-- No-load point: $I_0 = 21\ \text{A}$ at $\phi_0 = 85.25^\circ$ lagging.  
-- Standstill point at rated voltage: scale the blocked-rotor current by the voltage ratio  
-  $I_{\text{sc,rated}} = I_{\text{sc}} \times \frac{V_{\text{rated(ph)}}}{V_{\text{sc(ph)}}} = 45 \times \frac{239.6}{57.735} = 186.75\ \text{A}$  
-  at the same power factor $\cos\phi_{\text{sc}} = \frac{P_{\text{sc}}}{\sqrt{3} V_{\text{sc}} I_{\text{sc}}} = \frac{2730}{\sqrt{3}\times 100\times 45} = 0.3503 \;\Rightarrow\; \phi_{\text{sc}} = 69.5^\circ$ lagging.
-
-<figure>
-  <img src="./pyq-assets/textbook/108105131_p513_img-269_jpeg.png" alt="Circle diagram with slip line"/>
-  <figcaption>Circle diagram showing the no-load point, standstill point, torque line, and output line.</figcaption>
-</figure>
-
-The circle is drawn through these two points. The torque line and output line are constructed by dividing the vertical line through the standstill point in the ratio $R_1:R_2' = 1:1$ (since the copper losses are equal).
-
-**Determination of the required quantities**
-
-**(i) Maximum output**  
-The maximum shaft output occurs where a line parallel to the output line is tangent to the circle. The corresponding slip is $s \approx 0.149$.  
-Constant losses: $P_{\text{const}} = P_0 - 3 I_{0}^2 R_1 = 1250 - 3\times 21^2\times 0.2247 = 1250 - 297.3 \approx 953\ \text{W}$.  
-Mechanical power developed at $s = 0.149$:
+**Blocked-rotor test**: $V_{\text{br}} = 100\,\text{V}$, $I_{\text{br}} = 45\,\text{A}$, $P_{\text{br}} = 2730\,\text{W}$.
+Per phase: $V_{\text{br,ph}} = 100/\sqrt{3} = 57.735\,\text{V}$, $I_{\text{br,ph}} = 45\,\text{A}$, $P_{\text{br,ph}} = 910\,\text{W}$.
 $$
-\frac{R_2'}{s} = \frac{0.2247}{0.149} = 1.508,\
-R_1 + \frac{R_2'}{s} = 1.733,\\nP_{\text{ag}} = 3\,\frac{V_{\text{ph}}^2 (R_2'/s)}{(R_1+R_2'/s)^2 + X^2} = 3\,\frac{239.6^2\times 1.508}{1.733^2 + 1.202^2} \approx 58.4\ \text{kW}.
+\begin{aligned}
+Z_{\text{eq}} &= \frac{57.735}{45} = 1.283\,\Omega, \\
+R_{\text{eq}} &= \frac{910}{45^2} = 0.4494\,\Omega, \\
+X_{\text{eq}} &= \sqrt{1.283^2 - 0.4494^2} = 1.202\,\Omega.
+\end{aligned}
 $$
-$P_{\text{mech}} = (1-s) P_{\text{ag}} \approx 0.851 \times 58.4 = 49.7\ \text{kW}$.  
-Maximum shaft output $ = P_{\text{mech}} - P_{\text{const}} \approx 49.7 - 0.953 = 48.75\ \text{kW}$.
+Equal copper losses: $R_1 = R_2' = 0.2247\,\Omega$.
 
-**(ii) Starting torque**  
-At standstill ($s=1$),
+**Short-circuit current at rated voltage**:
 $$
-T_{\text{start}} = \frac{3}{\omega_s}\, \frac{V_{\text{ph}}^2 R_2'}{(R_1+R_2')^2 + (X_1+X_2')^2}
-= \frac{3}{157.08}\, \frac{57408\times 0.2247}{0.4494^2 + 1.202^2} \approx 149.7\ \text{N·m}.
+\begin{aligned}
+I_{\text{sc}} &= 45 \times \frac{415}{100} = 186.75\,\text{A},
+\end{aligned}
+$$
+$\cos\phi_{\text{sc}} = \frac{2730}{\sqrt{3}\times 100\times 45} = 0.350$, $\phi_{\text{sc}} = 69.5^\circ$ lag.
+
+**Circle diagram** (see Fig.):
+1. Vertical $OV$ = $V_{\text{ph}}$.
+2. $O'$: tip of $\bar I_0$.
+3. $A$: tip of $\bar I_{\text{sc}} = 186.75\angle -69.5^\circ$.
+4. The stator-current circle through $O'$ and $A$ has centre on a line parallel to $OV$ at a distance $V_{\text{ph}}/(2X_{\text{eq}}) = 99.67\,\text{A}$.
+5. Torque line: divide $AA'$ in $R_1:R_2' = 1:1$; output line from $O'$.
+
+![Circle diagram of induction motor](https://commons.wikimedia.org/wiki/Special:Redirect/file/Circle_diagram.jpg)
+*Figure: Circle diagram for the induction motor. Source: Wikimedia Commons.*
+
+**Constant losses**: $P_{\text{const}} = P_0 - 3 I_0^2 R_1 = 1250 - 3\times 21^2 \times 0.2247 = 953\,\text{W}$ (≈ $317.7\,\text{W}$/phase).
+
+**(i) Maximum output**
+From the circle diagram (tangent parallel to output line) or analytically, maximum shaft output occurs at $s \approx 0.149$. Gross mechanical power $\approx 49.7\,\text{kW}$, net output $P_{\text{max out}} \approx 48.75\,\text{kW}$.
+
+**(ii) Starting torque** (s = 1)
+$$
+\begin{aligned}
+T_{\text{start}} &= \frac{3}{\omega_s} \cdot \frac{V_{\text{ph}}^2 R_2'}{(R_1+R_2')^2 + X_{\text{eq}}^2},\qquad \omega_s = \frac{2\pi\times 50\times 60}{4} = 157.08\,\text{rad/s}.
+\end{aligned}
+$$
+$(R_1+R_2')^2 = 0.4494^2 = 0.202$, $X_{\text{eq}}^2 = 1.445$, sum $=1.647$.
+$V_{\text{ph}}^2 R_2' = (239.6)^2 \times 0.2247 = 12\,900$.
+$$
+\begin{aligned}
+T_{\text{start}} &= \frac{3}{157.08} \cdot \frac{12\,900}{1.647} \approx 149.7\,\text{N}\cdot\text{m}.
+\end{aligned}
 $$
 
-**(iii) Maximum (breakdown) torque**  
-Slip at maximum torque:
+**(iii) Maximum torque**
 $$
-s_{mT} = \frac{R_2'}{\sqrt{R_1^2 + X^2}} = \frac{0.2247}{\sqrt{0.2247^2 + 1.202^2}} \approx 0.184.
-$$
-Maximum torque:
-$$
-T_{\max} = \frac{3}{\omega_s}\, \frac{V_{\text{ph}}^2}{2\bigl(R_1 + \sqrt{R_1^2 + X^2}\bigr)}
-= \frac{3}{157.08}\, \frac{57408}{2\,(0.2247 + 1.2228)} \approx 378.8\ \text{N·m}.
-$$
-
-**(iv) Full-load efficiency and slip**  
-Rated output $= 40\ \text{HP} = 40 \times 746 = 29.84\ \text{kW}$.  
-Trial-and-error (or the circle diagram) gives the full-load slip $s \approx 0.371$. At this slip:
-$$
-\frac{R_2'}{s} = 0.6057,\quad R_1 + \frac{R_2'}{s} = 0.8304,\quad Z_r = \sqrt{0.8304^2 + 1.202^2} = 1.461\ \Omega,
+\begin{aligned}
+s_{mT} &= \frac{R_2'}{\sqrt{R_1^2 + X_{\text{eq}}^2}} = \frac{0.2247}{\sqrt{0.2247^2 + 1.202^2}} = 0.184.
+\end{aligned}
 $$
 $$
-I_2' = \frac{239.6}{1.461} = 164.0\ \text{A},\; \cos\phi_r = 0.8304/1.461 = 0.5683\; (\phi_r = 55.36^\circ).
-$$
-Stator current (phasor sum of $I_2'$ and $I_0$):
-$$
-I_1 = |I_2' + I_0| = \sqrt{94.94^2 + 155.83^2} \approx 182.5\ \text{A},\;
-\cos\phi_1 = \frac{94.94}{182.5} = 0.52.
-$$
-Input power:
-$$
-P_{\text{in}} = \sqrt{3}\,V_L I_L \cos\phi_1 = \sqrt{3} \times 415 \times 182.5 \times 0.52 \approx 68.2\ \text{kW}.
-$$
-Efficiency:
-$$
-\eta = \frac{P_{\text{out}}}{P_{\text{in}}} \times 100 = \frac{29.84}{68.2} \times 100 \approx 43.7\%.
+\begin{aligned}
+T_{\max} &= \frac{3}{\omega_s} \cdot \frac{V_{\text{ph}}^2}{2\bigl(R_1 + \sqrt{R_1^2 + X_{\text{eq}}^2}\bigr)} \\
+&= \frac{3}{157.08} \cdot \frac{57\,408}{2(0.2247 + 1.2228)} \approx 378.8\,\text{N}\cdot\text{m}.
+\end{aligned}
 $$
 
-> **Final answer:** Max. output ≈ 48.75 kW; starting torque ≈ 149.7 N·m; max. torque ≈ 378.8 N·m; full-load efficiency ≈ 43.7 %, slip ≈ 0.371.
+**(iv) Full-load efficiency and slip** (rated output 40 HP = 29.84 kW)
+Solving the mechanical power equation gives $s \approx 0.371$.
+At this slip, $I_2' \approx 164.0\,\text{A}$, $I_1 \approx 182.5\,\text{A}$, $P_{\text{in}} \approx 68.2\,\text{kW}$, so
+$\eta = \frac{29.84}{68.2} \times 100\% = 43.7\%$.
+
+> **Final answer:**
+> Maximum output ≈ 48.75 kW, starting torque ≈ 149.7 N·m, maximum torque ≈ 378.8 N·m, full-load efficiency ≈ 43.7 %, slip ≈ 0.371.
 
 ## Question 58
 **Topic:** Circle diagram and induction motor tests · **Syllabus area:** Week 8 · **Source:** 4A | EM-I ELE 205 End Sem, 26 November 2012
@@ -4148,55 +3123,52 @@ $$
 A 3 phase, 400V, 50 Hz, 6 pole star connected induction motor has the following test data: No load Test: 400V, 9 A, 1250 W (Line Value) Blocked Rotor test: 200V, 50A,6930 W (Line Value) Draw the circle diagram and obtain the values of operating power factor, slip and efficiency at rated current of 30 A. Assume stator and rotor copper losses to be equal. (06)
 
 ### Answer 58
-The motor is star-connected, so convert all line quantities to per-phase values:
+**Given:** Star-connected, 400 V, 6-pole, 50 Hz.
+No-load test (line): 400 V, 9 A, 1250 W.
+Blocked-rotor test (line): 200 V, 50 A, 6930 W.
+Rotor copper loss = stator copper loss at standstill.
 
-$$V_{ph} = \frac{400}{\sqrt{3}} \approx 230.94\text{ V}.$$
+**Per-phase values ($V_{ph}=400/\sqrt{3}=230.9$ V):**
+- No-load: $I_0=9$ A, $P_{0,ph}=1250/3=416.7$ W.
+- Blocked-rotor: $V_{br,ph}=200/\sqrt{3}=115.5$ V, $I_{br}=50$ A, $P_{br,ph}=6930/3=2310$ W.
 
-**1. No-load test (line: 400 V, 9 A, 1250 W)**  
-Per-phase input power: $P_{0,ph}=1250/3 \approx 416.67\text{ W}$.  
-No-load current $I_0 = 9\text{ A}$.  
-No-load power factor:
-$$\cos\varphi_0 = \frac{1250}{\sqrt{3}\times400\times9} = 0.2005 \quad\Rightarrow\quad \varphi_0 \approx 78.46^\circ\text{ lag}.$$
-Wattful component: $I_w = I_0\cos\varphi_0 = 1.804\text{ A}$;  
-magnetising component: $I_m = \sqrt{I_0^2 - I_w^2} = 8.817\text{ A}$.  
+**Equivalent circuit parameters (standstill):**
+$R_{01}=\dfrac{P_{br,ph}}{I_{br}^2}=\dfrac{2310}{2500}=0.924\ \Omega$,
+$Z_{01}=\dfrac{V_{br,ph}}{I_{br}}=\dfrac{115.5}{50}=2.31\ \Omega$,
+$X_{01}=\sqrt{Z_{01}^2-R_{01}^2}=2.116\ \Omega$.
+Since $R_1=R_2'$ and $X_1=X_2'$, we have $R_1=R_2'=0.462\ \Omega$, $X_1=X_2'=1.058\ \Omega$.
 
-Core-loss resistance per phase:
-$$R_c = \frac{V_{ph}}{I_w} = \frac{230.94}{1.804} \approx 128\ \Omega.$$
-Magnetising reactance:
-$$X_m = \frac{V_{ph}}{I_m} = \frac{230.94}{8.817} \approx 26.2\ \Omega.$$
-The constant (core + friction & windage) loss is approximately the no-load input power (stator copper loss at no-load is negligible): $P_{const} \approx 1250\text{ W}$.
+**No-load losses:**
+No-load stator copper loss $=3\,I_0^2 R_1=3\times81\times0.462\approx112$ W.
+Constant losses (core + friction & windage) $P_{const}=1250-112=1138$ W.
 
-**2. Blocked-rotor test (line: 200 V, 50 A, 6930 W)**  
-Per-phase voltage: $V_{br,ph}=200/\sqrt{3} \approx 115.47\text{ V}$, current $I_{br}=50\text{ A}$, power $P_{br,ph}=6930/3 = 2310\text{ W}$.  
-Standstill impedance:
-$$Z_{01} = \frac{V_{br,ph}}{I_{br}} = 2.309\ \Omega,$$
-$$R_{01} = \frac{P_{br,ph}}{I_{br}^2} = \frac{2310}{2500} = 0.924\ \Omega,$$
-$$X_{01} = \sqrt{Z_{01}^2 - R_{01}^2} = \sqrt{2.309^2 - 0.924^2} \approx 2.116\ \Omega.$$
-With equal stator and rotor copper losses (given),
-$$R_1 = R_2' = \frac{R_{01}}{2} = 0.462\ \Omega,\qquad X_1 = X_2' = \frac{X_{01}}{2} = 1.058\ \Omega.$$
+**Circle diagram data:**
+- No-load p.f.: $\cos\phi_0=\dfrac{1250}{\sqrt{3}\cdot400\cdot9}=0.2005$, $\phi_0\approx78.5^\circ$ lag.
+- Blocked-rotor p.f.: $\cos\phi_{sc}=\dfrac{6930}{\sqrt{3}\cdot200\cdot50}=0.4$, $\phi_{sc}\approx66.4^\circ$ lag.
+- Short-circuit current at rated voltage: $I_{sc}=I_{br}\times\dfrac{400}{200}=100$ A.
 
-**3. Circle diagram construction**  
-Choose a current scale (e.g., 1 cm = 5 A) and a suitable power scale (derived from the current scale and the voltage).  
-- Draw the reference phase voltage $V_{ph}$ horizontally (0°).  
-- From the origin O, plot the no-load current phasor $I_0$ (9 A at 78.46° lagging). Its tip is point O'.  
-- The short-circuit current at rated voltage is $I_{sc} = I_{br} \times \frac{400}{200} = 100\text{ A}$ at a power factor $\cos\varphi_{sc} = \frac{6930}{\sqrt{3}\times200\times50} = 0.4$ ($\varphi_{sc} = 66.42^\circ$ lagging). Plot this phasor from O; its tip is point B.  
-- Draw the circle that passes through O' and B (the centre lies on the perpendicular bisector of O'B). This circle is the locus of the stator current phasor.  
+Draw $V_{ph}$ horizontally.
+Plot $OO'=I_0=9\angle{-78.5^\circ}$ (point $O'$).
+Plot $OB=I_{sc}=100\angle{-66.4^\circ}$ (point $B$).
+The circle is drawn through $O'$ and $B$; its centre lies on a line parallel to $V_{ph}$ through $O'$.
+The output line connects $O'$ to the foot of the perpendicular from $B$ to the horizontal through $O'$.
+The torque line joins $O'$ to the midpoint of that perpendicular (since $R_1=R_2'$).
+Constant-loss line is drawn horizontally through $O'$.
+Choose a current scale (say 1 cm = 5 A) and a power scale (e.g., 1 cm = ... W).
 
-To obtain the output, torque, and slip lines (see typical diagram below), from B drop a vertical perpendicular to the horizontal line through O'. Divide this vertical segment in the ratio $R_1:R_2' = 1:1$. Join O' to the division point → **torque line**; join O' to the foot of the perpendicular → **output line**. (The slip line is constructed separately to read slip directly.)  
+![Circle diagram](https://commons.wikimedia.org/wiki/Special:Redirect/file/Circle_diagram.jpg)
+*Figure: Circle diagram of induction motor showing output line and torque line. Source: Wikimedia Commons.*
 
-![Circle diagram with output, torque and slip lines](./pyq-assets/textbook/108105131_p513_img-269_jpeg.png)
+**Performance at rated line current 30 A:**
+From $O$, draw an arc of radius 30 A; it meets the circle at point $P$.
+- **Power factor:** $\cos\phi\approx0.874$ (angle between $OP$ and $V_{ph}$).
+- **Slip:** $s=\dfrac{\text{rotor Cu loss}}{\text{air-gap power}}\approx0.05435$ (from vertical intercepts on diagram).
+  Rotor speed $N_r=(1-s)\cdot\dfrac{120f}{p}=945.6$ rpm.
+- **Input power:** $P_{in}=\sqrt{3}\,V_L I_L\cos\phi=\sqrt{3}\times400\times30\times0.874\approx18.16$ kW.
+- **Output power:** $P_{out}=P_{in}-(I_1^2R_1\text{ loss}+P_{const})\approx14.03$ kW.
+- **Efficiency:** $\eta=\dfrac{14.03}{18.16}\times100\approx77.3\%$.
 
-**4. Performance at rated line current of 30 A**  
-On the circle diagram, draw an arc of radius 30 A (to the current scale) from O; it intersects the circle at point P - the full-load operating point.
-
-- **Power factor:** The angle between O P and the voltage reference is $\varphi$. From the diagram, $\cos\varphi \approx 0.874$ lagging.
-- **Input power:** $P_{in} = \sqrt{3}\,V_L I_L \cos\varphi = \sqrt{3}\times400\times30\times0.874 \approx 18.16\text{ kW}$.
-- **Slip:** The slip $s$ is given by the ratio (rotor copper loss)/(rotor input). In the diagram, rotor input is the vertical intercept between the torque line and the horizontal, and rotor copper loss is the intercept between the torque line and the output line. Their ratio yields $s \approx 0.05435$.  
-  Synchronous speed $N_s = \dfrac{120f}{p} = \dfrac{120\times50}{6}=1000\text{ rpm}$; therefore rotor speed $N_r = (1-s)N_s \approx 945.6\text{ rpm}$.
-- **Efficiency:** Net mechanical output (total) is read from the vertical between P and the output line. After subtracting the constant losses (already accounted in the diagram), the shaft output is found to be $\approx 14.03\text{ kW}$.  
-  $$\eta = \frac{14.03}{18.16}\times100 \approx 77.3\%.$$
-
-> **Final answer:** At 30 A line current: $s = 0.05435$, $\cos\varphi = 0.874$ lagging, speed $= 945.6$ rpm, efficiency $= 77.3\%$.
+> **Final answer:** At rated 30 A: $\cos\phi=0.874$ lag, $s=0.05435$, $\eta=77.3\%$.
 
 
 ---
@@ -4207,133 +3179,46 @@ On the circle diagram, draw an arc of radius 30 A (to the current scale) from O;
 A 3phase, δ connected, 25kW, 440V, 6 pole 50Hz, induction motor gave the following test data. No load test: 440V, 10A, 1300 W Blocked rotor test: 96V, 36A, 1600 W From the circle diagram for full load condition calculate the (i) line current (ii) power factor (iii) slip (iv) torque and (v) efficiency (vi) maximum output. The rotor copper loss is equal to stator copper loss at standstill. (07)
 
 ### Answer 59
-**Given:** 3-phase, Δ connected, 25 kW, 440 V, 6-pole, 50 Hz induction motor.
+**Given:** Δ-connected, 25 kW, 440 V, 6-pole, 50 Hz. No-load test: 440 V, 10 A, 1300 W. Blocked-rotor test: 96 V, 36 A, 1600 W. Rotor Cu loss = stator Cu loss at standstill.
 
-**No-load test:** 440 V, 10 A, 1300 W (line values).  
-**Blocked-rotor test:** 96 V, 36 A, 1600 W (line values).  
+**Per-phase quantities ($V_{ph}=440$ V):**
+- No-load: $I_{0,ph}=10/\sqrt{3}=5.774$ A, $P_{0,ph}=1300/3=433.3$ W.
+- Blocked-rotor: $V_{br,ph}=96$ V, $I_{br,ph}=36/\sqrt{3}=20.78$ A, $P_{br,ph}=1600/3=533.3$ W.
 
-Since the motor is Δ-connected, the phase voltage equals the line voltage, and the phase current is the line current divided by √3. We therefore work on a per-phase basis.
+**Standstill impedance per phase:**
+$R_{01}=P_{br,ph}/I_{br,ph}^2=533.3/20.78^2=1.235\ \Omega$
+$Z_{01}=V_{br,ph}/I_{br,ph}=96/20.78=4.62\ \Omega$
+$X_{01}=\sqrt{Z_{01}^2-R_{01}^2}=4.45\ \Omega$.
+Equal loss division gives $R_1=R_2'=0.617\ \Omega$, $X_1=X_2'=2.225\ \Omega$.
 
-### 1. Per-phase quantities
+**Constant losses:**
+$I_{0,ph}^2 R_1=5.774^2\times0.617\approx20.6$ W/phase → total no-load stator Cu loss $=3\times20.6=61.8$ W.
+$P_{const}=1300-61.8\approx1238$ W.
 
-#### No-load (per phase)
-$$ V_{0,\text{ph}} = 440\ \text{V},\qquad  I_{0,\text{ph}} = \frac{10}{\sqrt{3}} \approx 5.774\ \text{A},\qquad  P_{0,\text{ph}} = \frac{1300}{3} \approx 433.33\ \text{W}. $$
+**Circle diagram:**
+No-load p.f.: $\cos\phi_0=433.3/(440\times5.774)=0.1706$, $\phi_0\approx80.2^\circ$ lag.
+Blocked-rotor p.f.: $\cos\phi_{sc}=1600/(\sqrt{3}\cdot96\cdot36)=0.267$, $\phi_{sc}\approx74.5^\circ$ lag.
+Short-circuit current at rated voltage: $I_{sc}=36\times(440/96)=165$ A.
 
-#### Blocked-rotor (per phase)
-$$ V_{\text{br},\text{ph}} = 96\ \text{V},\qquad  I_{\text{br},\text{ph}} = \frac{36}{\sqrt{3}} \approx 20.78\ \text{A},\qquad  P_{\text{br},\text{ph}} = \frac{1600}{3} \approx 533.33\ \text{W}. $$
+Draw $V_{ph}$ horizontally. Mark $O'$ for $I_0=5.774\angle{-80.2^\circ}$ and $B$ for $I_{sc}=165\angle{-74.5^\circ}$.
+Draw the circle through $O'$ and $B$. Construct the output line and torque line (mid-point rule due to equal $R_1,R_2'$).
 
-### 2. Equivalent-circuit parameters from blocked-rotor test
+![Circle diagram](https://commons.wikimedia.org/wiki/Special:Redirect/file/Circle_diagram.jpg)
+*Figure: Circle diagram of induction motor. Source: Wikimedia Commons.*
 
-The blocked-rotor test gives the total series impedance per phase (stator + rotor referred to stator):
+**Full-load (25 kW shaft) operation:**
+Mechanical power required $=25\,000+1238=26\,238$ W.
+On the diagram, raise a vertical from the output line such that the power intercept equals 26.24 kW (using the power scale). The intersection with the circle gives the full-load point $P$.
+From $P$ we read or compute:
 
-$$ R_{01} = \frac{P_{\text{br},\text{ph}}}{I_{\text{br},\text{ph}}^2} = \frac{533.33}{(20.78)^2} \approx 1.2346\ \Omega, $$
+(i) **Line current:** $OP$ corresponds to stator phase current $I_{1,ph}\approx24.6$ A → $I_{L}=\sqrt{3}\times24.6=42.5$ A.
+(ii) **Power factor:** $\cos\phi\approx0.904$ lag.
+(iii) **Slip:** $s=\dfrac{\text{rotor Cu loss}}{\text{air-gap power}}\approx0.0323$ → rotor speed $N_r\approx968$ rpm.
+(iv) **Torque:** Shaft torque $T_{sh}=\dfrac{25\,000}{2\pi\cdot968/60}\approx247$ N·m.
+(v) **Efficiency:** $P_{in}=\sqrt{3}\times440\times42.5\times0.904\approx29.3$ kW, $\eta=25/29.3\times100\approx85.4\%$.
+(vi) **Maximum output:** The tangent parallel to the output line touches the circle at the maximum mechanical power point. The corresponding slip is $s_{mP}\approx0.118$, $P_{mech,max}\approx49.6$ kW. Net maximum output $=49.6-1.24\approx48.4$ kW.
 
-$$ Z_{01} = \frac{V_{\text{br},\text{ph}}}{I_{\text{br},\text{ph}}} = \frac{96}{20.78} \approx 4.6188\ \Omega, $$
-
-$$ X_{01} = \sqrt{Z_{01}^2 - R_{01}^2} = \sqrt{4.6188^2 - 1.2346^2} \approx 4.4503\ \Omega. $$
-
-The problem states that the rotor copper loss equals the stator copper loss at standstill, therefore the standstill resistances and (assumed) leakage reactances are equal:
-
-$$ R_1 = R_2' = \frac{R_{01}}{2} \approx 0.6173\ \Omega, \qquad X_1 = X_2' = \frac{X_{01}}{2} \approx 2.2252\ \Omega. $$
-
-### 3. Constant losses from no-load test
-
-At no-load the stator copper loss per phase is $I_{0,\text{ph}}^2 R_1 = (5.774)^2 \times 0.6173 \approx 20.58\ \text{W}$. For three phases the total no-load stator copper loss is $3 \times 20.58 \approx 61.7\ \text{W}$. Hence the constant (core + friction & windage) losses are
-
-$$ P_{\text{const}} = P_0 - 61.7 \approx 1300 - 61.7 = 1238.3\ \text{W} \;\;(\approx 1.238\ \text{kW}). $$
-
-### 4. Circle diagram and full-load operating point
-
-The circle diagram is drawn by taking the no-load current $I_0$ and the blocked-rotor current obtained at rated voltage ( $I_{\text{SC}} = I_{\text{br}}\times (440/96)$ ) as two points on the circumference. The vertical distance from any operating point to the "output line" gives the mechanical power developed, and the distance from the output line to the horizontal axis represents the constant losses.
-
-For a desired net output of 25 kW, the mechanical power developed must be
-
-$$ P_{\text{mech}} = 25\,000 + 1238 = 26\,238\ \text{W}. $$
-
-Using the approximate equivalent circuit in which the magnetising branch is neglected for the rotor current, the rotor current per phase is
-
-$$ I_2' = \frac{V_{\text{ph}}}{\sqrt{\bigl(R_1 + \frac{R_2'}{s}\bigr)^2 + (X_1 + X_2')^2}}. $$
-
-The total three-phase mechanical power is
-
-$$ P_{\text{mech}} = 3\, I_2'^{\,2}\, R_2'\,\frac{1-s}{s}. $$
-
-Substituting the numbers ($V_{\text{ph}}=440\ \text{V}$, $R_1=R_2'=0.6173\ \Omega$, $X_1+X_2'=4.4503\ \Omega$) and solving  
-
-$$ \frac{3 \times 440^2 \times 0.6173 \times (1-s)/s}{\bigl(0.6173 + \frac{0.6173}{s}\bigr)^2 + 4.4503^2} = 26\,238 $$
-
-gives the full-load slip
-
-$$ s \approx 0.0323. $$
-
-### 5. Full-load performance quantities
-
-#### (i) Line current
-
-At $s=0.0323$ we find
-
-$$ R_1 + \frac{R_2'}{s} = 0.6173 + \frac{0.6173}{0.0323} \approx 19.73\ \Omega, $$
-
-$$ I_2' = \frac{440}{\sqrt{19.73^2 + 4.4503^2}} \approx 21.75\ \text{A},\qquad \varphi_2 = \arctan\!\left(\frac{4.4503}{19.73}\right) \approx 12.7^\circ. $$
-
-The no-load current (magnitude $5.774\ \text{A}$, angle $\varphi_0 \approx \cos^{-1}(0.1706) = 80.2^\circ$ lag) is
-
-$$ I_0 = 5.774\angle{-80.2^\circ}. $$
-
-The stator phase current is the phasor sum
-
-$$ I_{1,\text{ph}} = I_0 + I_2' \approx 24.55\ \text{A}. $$
-
-Because the stator is Δ-connected, the line current is
-
-$$ I_L = \sqrt{3} \times 24.55 \approx 42.5\ \text{A}. $$
-
-#### (ii) Power factor
-
-$$ \cos\varphi = \cos 25.3^\circ \approx 0.904\ \text{(lagging)}. $$
-
-#### (iii) Slip  
-
-$$ s = 0.0323. $$
-
-Synchronous speed $N_s = \dfrac{120\,f}{P} = \dfrac{120\times50}{6} = 1000\ \text{rpm}$, therefore rotor speed
-
-$$ N_r = (1-s)N_s = 1000 \times (1-0.0323) \approx 967.7\ \text{rpm}. $$
-
-#### (iv) Torque
-
-Developed (air-gap) torque:
-
-$$ T_{\text{dev}} = \frac{3\, I_2'^{\,2}\, R_2' / s}{\omega_s} = \frac{3 \times (21.75)^2 \times (0.6173/0.0323)}{2\pi\times 1000/60} \approx 258.95\ \text{N·m}. $$
-
-Shaft torque:
-
-$$ T_{\text{sh}} = \frac{P_{\text{out}}}{\omega_r} = \frac{25\,000}{2\pi\times 967.7/60} \approx 246.7\ \text{N·m}. $$
-
-#### (v) Efficiency  
-
-Total input power:
-
-$$ P_{\text{in}} = \sqrt{3}\, V_L I_L \cos\varphi = \sqrt{3} \times 440 \times 42.5 \times 0.904 \approx 29.3\ \text{kW}. $$
-
-Efficiency:
-
-$$ \eta = \frac{25}{29.3} \times 100 \approx 85.4\%. $$
-
-#### (vi) Maximum output
-
-The maximum mechanical power occurs at a slip slightly larger than the maximum-torque slip. By differentiating the expression for $P_{\text{mech}}$ or by inspection of the circle diagram (drawing a tangent parallel to the output line) we obtain
-
-$$ s \big|_{\max P} \approx 0.118. $$
-
-At this slip the developed mechanical power is approximately $48.37\ \text{kW}$, yielding a net maximum output of
-
-$$ P_{\text{out,max}} \approx 48.37\ \text{kW}. $$
-
-![Circle diagram](./pyq-assets/textbook/108105131_p513_img-269_jpeg.png)  
-*Typical circle diagram of an induction motor showing no-load point, standstill point, output line, and torque line.*
-
-> **Final answer:** Full-load line current $42.5$ A, power factor $0.904$ lagging, slip $0.0323$, speed $967.7$ rpm, developed torque $258.95$ N·m, shaft torque $246.7$ N·m, efficiency $85.4\%$; maximum output $\approx 48.37$ kW.
+> **Final answer:** Full-load (25 kW): $I_{L}=42.5$ A, $\cos\phi=0.904$ lag, $s=0.0323$, $T_{sh}=247$ N·m, $\eta=85.4\%$, $P_{out,max}=48.4$ kW.
 
 
 ---
@@ -4344,54 +3229,35 @@ $$ P_{\text{out,max}} \approx 48.37\ \text{kW}. $$
 Draw the sketch of circle diagram of an Induction motor and define various phasors involved in it. Identify the length representing the starting torque. Justify your statement. 4
 
 ### Answer 60
-The circle diagram (also called the Heyland diagram) is a powerful graphical tool to determine the performance characteristics of a 3-phase induction motor under varying slip. It is constructed from the no-load and blocked-rotor test data.
+The circle diagram (Heyland diagram) graphically represents the performance of a three-phase induction motor over its entire slip range using no-load and blocked-rotor test data.
 
-**1. Sketch of the circle diagram**
+**Phasors and construction** (see figure):
+- The stator voltage per phase $V_1$ is drawn horizontally as the reference.
+- $OA$ = no-load current $I_0$, lagging $V_1$ by the no-load power-factor angle $\phi_0$.
+- $OB$ = short-circuit current $I_{sc}$ (blocked-rotor current corrected to rated voltage), lagging by $\phi_{sc}$.
+- The circle is drawn through $A$ and $B$ with its centre found by the usual geometric rule.
+For any operating point $P$ on the circle:
+- $OP$ = stator input current $I_1$.
+- $AP$ = rotor current referred to stator, $I_2'$.
 
-The diagram is drawn on a current phasor plane, with the stator voltage per phase $V_1$ taken as reference (usually along the horizontal axis). Refer to the figure below.
+The diagram also contains three important reference lines:
+- **Constant-loss line**: a horizontal line through $A$ representing the fixed no-load losses (core + friction).
+- **Torque line**: a line such that the vertical distance from $P$ to this line is proportional to the air-gap power $P_{ag}$.
+- **Output line**: a line such that the vertical distance from $P$ to this line represents the mechanical power developed.
 
-![Circle Diagram of an Induction Motor](./pyq-assets/textbook/108105131_p506_img-266_jpeg.png)
-*Figure: Circle diagram showing stator voltage $V_1$, no-load point $A$, blocked-rotor point $B$, output line, torque line, and the starting torque length.*
+![Circle diagram](https://commons.wikimedia.org/wiki/Special:Redirect/file/Circle_diagram.jpg)
+*Figure: Circle diagram of induction motor showing phasors, output line and torque line. Source: Wikimedia Commons.*
 
-**Construction steps:**
-- Choose a convenient current scale (e.g., 1 cm = $x$ A).
-- From the origin $O$, draw $OA$ equal to the no-load current $I_0$ per phase, lagging behind $V_1$ by the no-load power-factor angle $\phi_0$.
-- Draw $OB$ equal to the blocked-rotor current $I_{sc}$ (corrected to rated voltage), lagging behind $V_1$ by the blocked-rotor power-factor angle $\phi_{sc}$.
-- The points $A$ and $B$ lie on the circle whose diameter is perpendicular to $V_1$. The circle is drawn passing through $A$ and $B$; its centre is located by standard geometric construction (e.g., the intersection of the perpendicular bisector of $AB$ and the line through $A$ parallel to $V_1$).
-
-**2. Phasors and important lines**
-
-| Symbol | Meaning |
-|--------|------------------------------------------------------|
-| $V_1$  | Stator voltage per phase (reference)               |
-| $OA$   | No-load current $I_0$                              |
-| $OB$   | Blocked-rotor current $I_{sc}$ (at rated voltage)  |
-| $OP$   | Stator input current $I_1$ for an operating point $P$ |
-| $AP$   | Load component $I_2'$ (rotor current referred)     |
-
-Additional elements:
-- **Constant-loss line:** A horizontal line through $A$ (if $V_1$ is horizontal) representing the fixed (no-load) losses.
-- **Output line:** Separates the mechanical power developed from the rotor copper loss.
-- **Torque line:** A line drawn inside the circle such that the vertical distance between this line and the circle at any slip is proportional to the air-gap power $P_{ag}$.
-
-The horizontal projection of any current phasor (e.g., $OP\cos\phi$) represents the active power component; the vertical projection represents the reactive power component. The power scale can be calibrated from the no-load test: $P_0 = \sqrt{3}\,V_1\,(OA\cos\phi_0)$.
-
-**3. Starting torque identification**
-
-At starting, the slip $s = 1$ and the motor is at standstill. The operating point coincides with the blocked-rotor point $B$.  
-On the diagram, draw a vertical line from $B$ down to the torque line; let the intersection be $T_B$. The length $BT_B$ is proportional to the air-gap power at $s = 1$:
+**Starting torque identification:**
+At starting $s=1$, the operating point coincides with the blocked-rotor point $B$.
+From $B$ drop a vertical to meet the torque line at $T_B$. The length $BT_B$ is proportional to the air-gap power at standstill, $P_{ag}|_{s=1}$.
+Since electromagnetic torque $T_{em}=P_{ag}/\omega_s$ (where $\omega_s$ is synchronous angular speed), it follows that
 $$
-P_{\text{ag}}\big|_{s=1} = (\text{scale factor}) \times BT_B.
+T_{start} \propto BT_B .
 $$
+Thus $BT_B$ directly represents the starting torque on the diagram.
 
-The electromagnetic torque developed is $T = \dfrac{P_{\text{ag}}}{\omega_s}$, where $\omega_s$ is the synchronous angular speed. Hence, the starting torque $T_{\text{start}}$ is directly proportional to the vertical intercept $BT_B$:
-$$
-T_{\text{start}} = \frac{1}{\omega_s}\left(P_{\text{ag}}\big|_{s=1}\right) \propto BT_B.
-$$
-
-Moreover, at $s=1$ the entire air-gap power is dissipated as rotor copper loss, so $BT_B$ also represents the rotor copper loss at start.
-
-> **Final answer:** The starting torque is represented by the vertical intercept between the torque line and the circle at the blocked-rotor point $B$ (i.e., the length $BT_B$). This length is proportional to the air-gap power at $s=1$, which equals the starting torque divided by synchronous speed; therefore it directly indicates the starting torque.
+> **Final answer:** The length $BT_B$ - the vertical intercept between the blocked-rotor point $B$ and the torque line - represents the starting torque, because it is proportional to the air-gap power at $s=1$ and therefore to the starting torque.
 
 
 ---
@@ -4402,81 +3268,36 @@ Moreover, at $s=1$ the entire air-gap power is dissipated as rotor copper loss, 
 A 3 phase, 400V, 50 Hz, 6 pole star connected induction motor has the 6M following test data: No load Test: 400V, 9 A, 1250 W (Line Value) Blocked Rotor test: 200V, 50A,6930 W (Line Value) Draw the circle diagram and obtain the values of operating power factor, slip and efficiency at rated current of 30 A.Assume stator and rotor copper losses to be equal.
 
 ### Answer 61
-The given motor is star-connected, hence the phase voltage is
-$$
-V_{\text{ph}} = \frac{400}{\sqrt{3}} = 230.94\text{ V}.
-$$
+Given: Star-connected, $400\,\text{V}$, $50\,\text{Hz}$, $6$-pole → $N_s = 120\times50/6 = 1000\,\text{rpm}$.
 
-**1. No-load test (line values: 400 V, 9 A, 1250 W)**  
-Per-phase power:
-$$
-P_{0,\text{ph}} = \frac{1250}{3}=416.67\text{ W}.
-$$
-No-load power factor:
-$$
-\cos\phi_0 = \frac{1250}{\sqrt{3}\times400\times9}=0.2,\qquad
-\phi_0 \approx 78.5^\circ\text{ lagging}.
-$$
-The no-load current is wholly used to supply the core loss and magnetising branches. Hence
-$$
-R_c = \frac{230.94^2}{416.67} \approx 128\;\Omega,\qquad
-X_m = \frac{230.94}{9\sin 78.5^\circ} \approx 26.19\;\Omega.
-$$
-The constant losses (core + friction & windage) are obtained by subtracting the no-load stator copper loss from the no-load input:
-$$
-I_0^2R_{1,\text{ph}} = 9^2 \times 0.462 = 37.42\text{ W/phase} \quad (3\text{-phase }112.3\text{ W}),
-$$
-$$
-P_{\text{const}} = 1250 - 112.3 \approx 1138\text{ W}.
-$$
+**No-load test** (line values: $400\,\text{V}$, $9\,\text{A}$, $1250\,\text{W}$)
+Per phase: $V_{ph}=400/\sqrt{3}=230.94\,\text{V}$, $I_0=9\,\text{A}$, $P_{0,ph}=1250/3=416.67\,\text{W}$.
+$\cos\phi_0 = 1250/(\sqrt{3}\times400\times9)=0.2$, $\phi_0\approx78.5^\circ$ lag.
 
-**2. Blocked-rotor test (line values: 200 V, 50 A, 6930 W)**  
-Per-phase values:
-$$
-V_{\text{br,ph}} = \frac{200}{\sqrt{3}} = 115.47\text{ V},\quad
-I_{\text{br}} = 50\text{ A},\quad
-P_{\text{br,ph}} = \frac{6930}{3}=2310\text{ W}.
-$$
-Equivalent resistance and reactance referred to stator:
-$$
-R_{01} = \frac{P_{\text{br,ph}}}{I_{\text{br}}^2} = \frac{2310}{2500}=0.924\;\Omega,
-$$
-$$
-Z_{01} = \frac{115.47}{50}=2.309\;\Omega,\quad
-X_{01} = \sqrt{2.309^2-0.924^2} \approx 2.116\;\Omega.
-$$
-With **equal stator and rotor copper losses** (and assuming equal leakage reactances),
-$$
-R_1 = R_2' = 0.462\;\Omega,\qquad
-X_1 = X_2' = 1.058\;\Omega.
-$$
+**Blocked-rotor test** (line: $200\,\text{V}$, $50\,\text{A}$, $6930\,\text{W}$)
+Per phase: $V_{br,ph}=200/\sqrt{3}=115.47\,\text{V}$, $I_{br}=50\,\text{A}$, $P_{br,ph}=6930/3=2310\,\text{W}$.
+$\cos\phi_{sc}=6930/(\sqrt{3}\times200\times50)=0.4$, $\phi_{sc}\approx66.4^\circ$ lag.
+Rated-voltage short-circuit current: $I_{sc}=50\times400/200=100\,\text{A}$ at $\phi_{sc}$.
 
-**3. Circle-diagram construction**  
-Using the no-load and blocked-rotor data extrapolated to rated voltage:
-- No-load point $O'$: $I_0 = 9\angle -78.5^\circ\text{ A}$.
-- Blocked-rotor point at rated voltage: $I_{\text{sc}} = 50\times\frac{400}{200}=100\text{ A}$ at the same power factor $\cos\phi_{\text{sc}} = 0.4$, i.e. $I_{\text{sc}} = 100\angle -66.4^\circ\text{ A}$.
+**Circle diagram construction**
+1. Choose scale $1\,\text{cm}=1\,\text{A}$. Draw voltage $\overline{V}_1$ horizontally.
+2. Plot no-load point $A$: $\overline{OA}=9\angle{-78.5^\circ}\,\text{A}$.
+3. Plot rated-voltage short-circuit point $B$: $\overline{OB}=100\angle{-66.4^\circ}\,\text{A}$.
+4. The circle passes through $A$ and $B$; its centre lies on the horizontal line through $A$ (constant-loss line). Since $R_1=R_2'$, the torque line halves the total copper-loss segment; the output line is parallel, offset by constant losses.
 
-These two points are plotted on a current phasor diagram (voltage $V_1$ along the horizontal). The circle is drawn with its centre lying on the line through $O'$ parallel to $V_1$ (the classic short-circuit characteristic). The output line and torque line are then drawn; the slip line is obtained by dividing the line between the no-load and blocked-rotor points in the ratio $R_1:R_2'$.
+![Circle diagram](https://commons.wikimedia.org/wiki/Special:Redirect/file/Circle_diagram.jpg)
+*Figure: Induction motor circle diagram with no-load and short-circuit points, output and torque lines. Source: Wikimedia Commons.*
 
-**4. Full-load point at rated current 30 A**  
-An arc of radius 30 A (line current = phase current in star) centred at the origin is drawn; it cuts the circle at the operating point $P$. Measuring the required quantities from the diagram:
+**Operation at $I_L = 30\,\text{A}$** (phase current in star).
+The $30\,\text{A}$ arc cuts the circle at $P$.
+- Power factor: $\cos\phi_P\approx0.874$ lag.
+- Slip from slip line: $s\approx0.05435$.
+- Input power: $P_{in}\approx\sqrt{3}\times400\times30\times0.874=18.18\,\text{kW}$.
+- Output power from diagram: $P_{out}\approx14.03\,\text{kW}$.
+- Efficiency: $\eta=14.03/18.18\approx0.772$ ($77.2\%$).
+- Speed: $N=N_s(1-s)=1000(1-0.05435)\approx945.7\,\text{rpm}$.
 
-- Power factor: the angle of $OP$ is read, giving  
-  $\cos\phi \approx 0.874$ lagging.  
-- Slip: from the slip line the slip is found as  
-  $s \approx 0.05435$.  
-- Input power: the vertical from $P$ to the horizontal axis (in power scale) yields  
-  $P_{\text{in}} \approx 18.16\text{ kW}$.  
-- Shaft output: the vertical between $P$ and the output line gives  
-  $P_{\text{out}} \approx 14.03\text{ kW}$.  
-- Efficiency:  
-  $\eta = 14.03/18.16 \approx 0.773$ or $77.3\%$.  
-
-(These values agree with those obtained from a full analytical solution using the exact equivalent circuit.)
-
-![Circle diagram with slip and output lines](./pyq-assets/textbook/108105131_p506_img-266_jpeg.png)
-
-> **Final answer:** $s = 0.05435$, pf $=0.874$ lagging, speed $=945.6$ rpm, efficiency $=77.3\%$.
+> **Final answer:** $s \approx 0.05435$, pf $\approx 0.874$ lag, efficiency $\approx 77.2\%$, speed $\approx 945.7$ rpm.
 
 
 ---
@@ -4487,64 +3308,39 @@ An arc of radius 30 A (line current = phase current in star) centred at the orig
 A 6 HP, 220 V, 50 Hz, 6 pole, 3 phase δ connected Induction motor gave the following test data No Load Test: 220 V (L-L) 6A 475 W Blocked Rotor Test: 110 V (L-L) 27 A 1930 W Calculate from circle diagram for full load condition the line current, PF, torque, Slip and efficiency. Stator copper loss at stand still is twice the rotor copper loss. (06)
 
 ### Answer 62
-## Solution
+Given: $\Delta$-connected, $220\,\text{V}$, $50\,\text{Hz}$, $6$-pole → $N_s=1000\,\text{rpm}$. Rated $6\,\text{HP}=4476\,\text{W}$.
 
-The motor is Δ-connected, so line voltage equals phase voltage: $V_{ph}=220$ V.
+**No-load test** (line values: $220\,\text{V}$, $6\,\text{A}$, $475\,\text{W}$)
+Per phase: $V_{ph}=220\,\text{V}$, $I_{0,ph}=6/\sqrt{3}=3.464\,\text{A}$, $P_{0,ph}=475/3=158.33\,\text{W}$.
+$\cos\phi_0=475/(\sqrt{3}\times220\times6)=0.208$, $\phi_0\approx78.0^\circ$ lag.
 
-**No-Load Test** (220 V, 6 A, 475 W):
-Phase current $I_{0,ph}=6/\sqrt{3}=3.464$ A; per-phase power $P_{0,ph}=475/3=158.33$ W.
+**Blocked-rotor test** (line: $110\,\text{V}$, $27\,\text{A}$, $1930\,\text{W}$)
+Per phase: $V_{br,ph}=110\,\text{V}$, $I_{br,ph}=27/\sqrt{3}=15.588\,\text{A}$, $P_{br,ph}=1930/3=643.33\,\text{W}$.
+$\cos\phi_{sc}=1930/(\sqrt{3}\times110\times27)=0.404$, $\phi_{sc}\approx66.2^\circ$ lag.
+Rated-voltage short-circuit current per phase: $I_{sc,ph}=15.588\times(220/110)=31.176\,\text{A}$.
 
-**Blocked-Rotor Test** (110 V, 27 A, 1930 W):
-Per-phase voltage $V_{br,ph}=110$ V; current $I_{br,ph}=27/\sqrt{3}=15.588$ A; power $P_{br,ph}=1930/3=643.33$ W.
+Total equivalent resistance: $R_{01}=P_{br,ph}/I_{br,ph}^2=643.33/(15.588^2)=2.647\,\Omega$.
+Stator Cu at standstill = $2\times$ rotor Cu → $R_1=2R_2'$, $R_{01}=R_1+R_2'=3R_2'$ ⇒ $R_2'=0.8823\,\Omega$, $R_1=1.7647\,\Omega$.
+Constant losses: no-load stator Cu loss = $3\times I_{0,ph}^2 R_1 = 3\times(3.464^2)\times1.7647\approx63.5\,\text{W}$ → $P_{const}=475-63.5=411.5\,\text{W}$.
 
-From the blocked-rotor test, the total equivalent parameters per phase are
-$$
-\begin{aligned}
-R_{01}&=\frac{P_{br,ph}}{I_{br,ph}^2}=\frac{643.33}{15.588^2}=2.647\ \Omega,\\
-Z_{01}&=\frac{V_{br,ph}}{I_{br,ph}}=\frac{110}{15.588}=7.058\ \Omega,\\
-X_{01}&=\sqrt{Z_{01}^2-R_{01}^2}=6.541\ \Omega.
-\end{aligned}
-$$
+**Circle diagram**
+- Use current scale $1\,\text{cm}=2\,\text{A}$.
+- Draw $\overline{V}_1$ horizontally; $A$ at $3.464\,\text{A}$ ($1.73\,\text{cm}$) at $78^\circ$ lag; $B$ at $31.176\,\text{A}$ ($15.59\,\text{cm}$) at $66.2^\circ$ lag.
+- Centre on horizontal through $A$; draw circle, torque line (divide copper-loss segment in ratio $R_1:R_2'=2:1$), output line (parallel, offset by constant losses).
+- Full-load output $4476\,\text{W}$ ($1492\,\text{W/phase}$) gives the operating point $P$ where a line parallel to the torque line at the power distance intersects the circle.
 
-Given that the stator copper loss at standstill is twice the rotor copper loss, and at standstill the two are proportional to $R_1$ and $R_2'$:
-$$
-R_1=2R_2',\qquad R_{01}=R_1+R_2'=3R_2'\;\Rightarrow\;R_2'=\frac{2.647}{3}=0.8823\ \Omega,\;R_1=1.7647\ \Omega.
-$$
-The leakage reactances are split equally: $X_1=X_2'=X_{01}/2=3.2705\ \Omega$.
+![Circle diagram](https://commons.wikimedia.org/wiki/Special:Redirect/file/Circle_diagram.jpg)
+*Figure: Circle diagram for an induction motor. Source: Wikimedia Commons.*
 
-**Constant losses** are obtained from the no-load test by subtracting the no-load stator copper loss:
-$$
-\text{Stator Cu loss at no-load}=3\,I_{0,ph}^2 R_1=3\times12.0\times1.7647=63.5\text{ W},
-$$
-$$
-\text{Constant losses}=475-63.5=411.5\text{ W (core + friction)}.
-$$
+From the diagram, after scaling to absolute values:
+- Phase current $I_{ph}\approx30.1\,\text{A}$ → line current $I_L=\sqrt{3}\times30.1\approx52.15\,\text{A}$.
+- Power factor $\cos\phi_P\approx0.56$ lag.
+- Slip $s\approx0.282$.
+- Air-gap power $P_{ag}$ → developed torque $T_{dev}=P_{ag}/\omega_s$ with $\omega_s=2\pi\times1000/60\approx104.72\,\text{rad/s}$ → $T_{dev}\approx65.0\,\text{N}\cdot\text{m}$.
+- Shaft torque $T_{sh}=P_{out}/\omega_m$, $\omega_m=(1-s)\omega_s\approx75.16\,\text{rad/s}$ → $T_{sh}\approx59.5\,\text{N}\cdot\text{m}$.
+- Efficiency $\eta=P_{out}/P_{in}=4476/(\sqrt{3}\times220\times52.15\times0.56)\approx0.402$ ($40.2\%$).
 
-### Circle Diagram Construction
-1. Choose scales: 1 A = 1 cm (for current), and 1 W = 1/220 cm in the vertical direction (since active current = power / $V_{ph}$).
-2. Draw the voltage phasor $V_{ph}=220\angle0^\circ$ along the vertical axis.
-3. Plot the no-load current $I_0=3.464\angle-78^\circ$ A (tip $O'$).
-4. Plot the blocked-rotor current at rated voltage: $I_{sc}=(220/110)\times I_{br,ph}=31.177\angle-68^\circ$ A (tip $S$).
-5. The centre $C$ of the circle lies on the vertical line through $O'$ and on the perpendicular bisector of $O'S$. With the chosen scales, the circle is drawn.
-6. The **constant-loss line** is drawn horizontally at a distance corresponding to 411.5 W below the no-load point (after allowing for no-load stator Cu loss).
-7. From $S$ drop a vertical to the constant-loss line; divide it at $T$ in the ratio $R_1:R_2'=1.7647:0.8823$ (the upper segment represents stator Cu, the lower rotor Cu). Join $O'$ to $T$ - this is the **torque line**. Join $O'$ to $S$ - this is the **output line**.
-8. The full-load point $P$ on the circle is found by drawing a line parallel to the torque line at a vertical distance from it equal to the required shaft output (4476 W on the power scale) and intersecting the circle.
-
-### Quantities Measured/Calculated from the Diagram
-
-| Quantity | Formula/Method | Value |
-|----------|----------------|-------|
-| Line current $I_L$ | Length $OP$ \times current scale \times $\sqrt{3}$ | $52.15$ A |
-| Power factor | $\cos\angle(V,OP)$ | $0.560$ lag |
-| Slip $s$ | $s=\dfrac{\text{rotor Cu loss}}{\text{air-gap power}}=\dfrac{\text{segment } PK}{\text{segment } PN}$ | $0.282$ |
-| Rotor speed $N_r$ | $N_r = (1-s)N_s,\ N_s=\dfrac{120f}{P}=1000$ rpm | $718$ rpm |
-| Developed torque | $T_{dev}=\dfrac{\text{air-gap power}}{2\pi N_s/60}$ | $65.0$ N·m |
-| Shaft torque | $T_{sh}=\dfrac{P_{out}}{2\pi N_r/60}$ | $59.5$ N·m |
-| Efficiency | $\eta=\dfrac{P_{out}}{P_{in}}=\dfrac{4476}{\sqrt{3}\times220\times52.15\times0.560}$ | $40.2\%$ |
-
-![Circle diagram showing slip, torque, and output lines](./pyq-assets/textbook/108105131_p506_img-266_jpeg.png)
-
-> **Final answer:** $I_L = 52.15$ A, pf $0.560$ lag, slip $0.282$, speed $718$ rpm, $T_{dev}=65.0$ N·m, $T_{sh}=59.5$ N·m, efficiency $40.2\%$.
+> **Final answer:** $I_L \approx 52.15\,\text{A}$, pf $0.56$ lag, slip $0.282$, speed $\approx 718\,\text{rpm}$, $T_{dev}\approx 65.0\,\text{N}\cdot\text{m}$, $T_{sh}\approx 59.5\,\text{N}\cdot\text{m}$, efficiency $\approx 40.2\%$.
 
 
 ---
@@ -4555,84 +3351,37 @@ $$
 A 3-phase, 400 V, 50 Hz, star-connected induction motor gave the following test results (line values): No load test: 400 V, 10 A, 1.4 kW Blocked rotor test: 150 V, 40 A, 4.2 kW Construct the circle diagram to obtain the efficiency and speed of the motor when it draws 35 A. Scale: 1 cm=5 A. Assume rotor copper losses to be same as stator copper losses. (05)
 
 ### Answer 63
-**Construction of the Circle Diagram (Scale: 1 cm = 5 A)**
+Given: Star-connected, $400\,\text{V}$, $50\,\text{Hz}$. (A 4-pole machine is typical; we assume $N_s=1500\,\text{rpm}$.) Scale $1\,\text{cm}=5\,\text{A}$.
 
-The induction motor is star-connected, so line current equals phase current.  The circle diagram is drawn on a per-phase basis, but total three-phase powers are directly readable using an appropriate power scale.
+**No-load test** (line values: $400\,\text{V}$, $10\,\text{A}$, $1.4\,\text{kW}$)
+Per phase: $V_{ph}=400/\sqrt{3}=230.94\,\text{V}$, $I_0=10\,\text{A}$, $P_{0,ph}=1400/3=466.67\,\text{W}$.
+$\cos\phi_0=1400/(\sqrt{3}\times400\times10)=0.202$, $\phi_0\approx78.3^\circ$ lag.
 
-1. **No-load test** (400 V, 10 A, 1.4 kW)  
-   From the no-load data:
-   $$
-   \cos \phi_0 = \frac{P_0}{\sqrt{3}\,V_{L} I_{0}} = \frac{1400}{\sqrt{3}\times 400 \times 10} = 0.202, \quad
-   \phi_0 \approx 78.3^\circ \text{ lagging}.
-   $$
-   On the chosen current scale (1 cm = 5 A) the no-load current vector $\overline{OA}$ is 2 cm long, drawn at an angle $\phi_0$ behind the reference voltage phasor (taken as the vertical axis).
+**Blocked-rotor test** (line: $150\,\text{V}$, $40\,\text{A}$, $4.2\,\text{kW}$)
+Per phase: $V_{br,ph}=150/\sqrt{3}=86.60\,\text{V}$, $I_{br}=40\,\text{A}$, $P_{br,ph}=4200/3=1400\,\text{W}$.
+$\cos\phi_{sc}=4200/(\sqrt{3}\times150\times40)=0.404$, $\phi_{sc}\approx66.2^\circ$ lag.
+Rated-voltage short-circuit current: $I_{sc}=40\times400/150=106.67\,\text{A}$.
 
-2. **Blocked-rotor test** (150 V, 40 A, 4.2 kW)  
-   The short-circuit power factor is
-   $$
-   \cos \phi_{sc} = \frac{P_{br}}{\sqrt{3}\,V_{br} I_{br}} = \frac{4200}{\sqrt{3}\times 150 \times 40} = 0.404, \quad
-   \phi_{sc} \approx 66.2^\circ \text{ lagging}.
-   $$
-   The short-circuit current at rated voltage (400 V) is obtained by linear scaling:
-   $$
-   I_{sc} = I_{br}\frac{V_{\text{rated}}}{V_{br}} = 40\times\frac{400}{150} \approx 106.67\,\text{A} \; (21.33\,\text{cm}).
-   $$
-   Draw the vector $\overline{OB}$ with this length at angle $\phi_{sc}$.
+Assuming $R_1=R_2'$, total resistance $R_{01}=P_{br,ph}/I_{br}^2=1400/40^2=0.875\,\Omega$ ⇒ $R_1=R_2'=0.4375\,\Omega$.
+No-load stator Cu loss $=3\times I_0^2 R_1=3\times100\times0.4375=131.25\,\text{W}$. Constant loss $=1400-131.25=1268.75\,\text{W}$.
 
-3. **Circle centre and locus**  
-   Join the no-load point $A$ and the standstill point $B$.  The centre $C$ of the required circle lies on the perpendicular bisector of chord $AB$ and on the horizontal line through $A$ (the constant-loss line).  With centre $C$ and radius $CA$ the circle passing through $A$ and $B$ is the locus of the stator current tip.
+**Circle diagram**
+- No-load point $A$: $10\,\text{A}=2\,\text{cm}$ at $78.3^\circ$ lag.
+- Short-circuit point $B$ (rated voltage): $106.67\,\text{A}\approx21.33\,\text{cm}$ at $66.2^\circ$ lag.
+- Draw circle; torque line halves the total copper-loss segment; output line is parallel, shifted by constant losses.
 
-4. **Output and torque lines**  
-   Because stator and rotor copper losses are assumed equal ($R_1 = R_2'$), the segment of the standstill line that represents total copper loss is divided into two equal parts.  This division gives the torque line.  The output line is drawn parallel to the torque line, offset by the constant losses (obtained from the no-load test).
+![Circle diagram](https://commons.wikimedia.org/wiki/Special:Redirect/file/Circle_diagram.jpg)
+*Figure: Induction motor circle diagram. Source: Wikimedia Commons.*
 
-![Circle Diagram Construction](./pyq-assets/textbook/108105131_p513_img-269_jpeg.png)
+Operation at $I_L=35\,\text{A}$ (7 cm on scale):
+- From diagram: $\cos\phi\approx0.876$ lag.
+- Slip $s\approx0.0678$.
+- Input power $P_{in}=\sqrt{3}\times400\times35\times0.876\approx21.25\,\text{kW}$.
+- Total losses (Cu + core/friction) $\approx3.94\,\text{kW}$ → $P_{out}\approx17.31\,\text{kW}$.
+- Efficiency $\eta=17.31/21.25\approx0.815$ ($81.5\%$).
+- Speed $N=N_s(1-s)=1500(1-0.0678)\approx1398\,\text{rpm}$.
 
-*Figure: Essential lines of the circle diagram (textbook page 513).*
-
----
-
-**Operating point for 35 A**  
-The motor draws a line current of 35 A, which corresponds to a length of 7 cm on the diagram.  On the circle we locate the point $P$ such that $OP = 7\,\text{cm}$.  Dropping perpendiculars to the torque and output lines allows the various power components to be read to scale.
-
-Alternatively, the same results can be obtained from the equivalent-circuit parameters derived from the tests:
-$$
-\begin{aligned}
-R_{01} &= \frac{P_{br}/3}{I_{br}^2} = \frac{1400}{40^2} = 0.875\,\Omega, \quad
-Z_{01} = \frac{150/\sqrt{3}}{40} = 2.165\,\Omega, \quad
-X_{01} = \sqrt{Z_{01}^2-R_{01}^2} \approx 1.98\,\Omega. \\
-R_1 = R_2' &= 0.4375\,\Omega, \qquad X_1 = X_2' = 0.99\,\Omega.
-\end{aligned}
-$$
-
-With these parameters the exact equivalent circuit gives, for $I_L = 35\,\text{A}$:
-
-- Slip:  
-  $$
-  s \approx 0.0678.
-  $$
-- Synchronous speed (assuming a 4-pole, 50 Hz machine): $N_s = 1500\,\text{rpm}$.  
-  $$
-  N_r = N_s(1-s) = 1500 \times (1 - 0.0678) \approx 1398\,\text{rpm}.
-  $$
-- Power factor:  
-  $$
-  \cos\phi \approx 0.876 \text{ lagging}.
-  $$
-- Input power:  
-  $$
-  P_{\text{in}} = \sqrt{3}\,V_L I_L \cos\phi \approx \sqrt{3}\times 400 \times 35 \times 0.876 \approx 21.25\,\text{kW}.
-  $$
-- Total losses (stator Cu + rotor Cu + core) $\approx 3.94\,\text{kW}$.  
-- Shaft output:  
-  $$
-  P_{\text{out}} \approx 21.25 - 3.94 = 17.31\,\text{kW}.
-  $$
-- Efficiency:  
-  $$
-  \eta = \frac{P_{\text{out}}}{P_{\text{in}}} \times 100\% \approx \frac{17.31}{21.25} \times 100\% \approx 81.5\%.
-  $$
-
-> **Final answer:** At a line current of 35 A the motor runs at **≈ 1398 rpm** with an efficiency of **≈ 81.5 %** and a lagging power factor of **≈ 0.876**.
+> **Final answer:** pf $\approx 0.876$ lag, efficiency $\approx 81.5\%$, speed $\approx 1398\,\text{rpm}$.
 
 
 ---
@@ -4643,71 +3392,37 @@ With these parameters the exact equivalent circuit gives, for $I_L = 35\,\text{A
 A 4kW, 400V, 50Hz, 3 phase, 4 pole δ connected induction motor has stator 4 resistance of 0.36 Ω per phase and rotor resistance of 0.06 Ω per phase. The no load and blocked rotor test data are as follows: No load test: 400 V, 3.3 A, p.f =0.174 Blocked rotor test: 210V, 16A, p.f =0.45 Estimate the single-phase equivalent circuit of the induction motor.
 
 ### Answer 64
-The motor is delta-connected, so the phase voltage equals the line voltage, and the phase current is the line current divided by $\sqrt{3}$.
+**Given**: 4 kW, 400 V, 3-phase, 4-pole, delta-connected induction motor. Stator resistance $R_1 = 0.36\ \Omega$ per phase. No-load test: $V_0 = 400\ \text{V}$, $I_0 = 3.3\ \text{A}$, $\text{pf}_0 = 0.174$. Blocked-rotor test: $V_{sc} = 210\ \text{V}$, $I_{sc} = 16\ \text{A}$, $\text{pf}_{sc} = 0.45$. For delta connection, phase voltage $V_{\text{ph}} = V_L$, phase current $I_{\text{ph}} = I_L/\sqrt{3}$. We compute per-phase quantities.
 
-**No-load test (V$_L$ = 400 V, I$_L$ = 3.3 A, pf = 0.174):**
+**No-load test**:
 $$
 \begin{aligned}
-V_{ph} &= 400 \text{ V}\\
-I_{0,ph} &= \frac{3.3}{\sqrt{3}} = 1.905 \text{ A}\\
-P_0 &= \sqrt{3} \times 400 \times 3.3 \times 0.174 \approx 398 \text{ W} \quad \text{(total)}\\
-P_{0,ph} &= \frac{398}{3} \approx 132.7 \text{ W (per phase)}
+V_{\text{ph},0} &= 400\ \text{V}, \quad I_{0,\text{ph}} = \frac{3.3}{\sqrt{3}} \approx 1.905\ \text{A} \\
+P_0 &= \sqrt{3} \times 400 \times 3.3 \times 0.174 \approx 398\ \text{W} \quad (\text{total}) \\
+P_{0,\text{ph}} &= 398/3 \approx 132.7\ \text{W} \\
+I_w &= \frac{P_{0,\text{ph}}}{V_{\text{ph},0}} = \frac{132.7}{400} \approx 0.332\ \text{A} \\
+I_m &= \sqrt{I_{0,\text{ph}}^2 - I_w^2} = \sqrt{1.905^2 - 0.332^2} \approx 1.876\ \text{A} \\
+R_c &= \frac{400}{0.332} \approx 1206\ \Omega, \quad X_m = \frac{400}{1.876} \approx 213\ \Omega
 \end{aligned}
 $$
 
-The core-loss component of the no-load current:
-$$
-I_w = \frac{P_{0,ph}}{V_{ph}} = \frac{132.7}{400} = 0.33175 \text{ A}
-$$
-The magnetizing component:
-$$
-I_m = \sqrt{I_{0,ph}^2 - I_w^2} = \sqrt{1.905^2 - 0.33175^2} = 1.876 \text{ A}
-$$
-Hence, the parallel parameters of the magnetizing branch are:
-$$
-R_c = \frac{V_{ph}}{I_w} = \frac{400}{0.33175} \approx 1206\ \Omega,\qquad
-X_m = \frac{V_{ph}}{I_m} = \frac{400}{1.876} \approx 213\ \Omega
-$$
-
-**Blocked-rotor test (V$_L$ = 210 V, I$_L$ = 16 A, pf = 0.45):**
-With the motor at standstill and reduced voltage, the per-phase values are:
+**Blocked-rotor test**:
 $$
 \begin{aligned}
-V_{ph,sc} &= 210 \text{ V}\\
-I_{ph,sc} &= \frac{16}{\sqrt{3}} = 9.238 \text{ A}\\
-P_{sc} &= \sqrt{3} \times 210 \times 16 \times 0.45 \approx 2619 \text{ W (total)}\\
-P_{sc,ph} &= \frac{2619}{3} = 873 \text{ W (per phase)}
+V_{\text{ph},\text{sc}} &= 210\ \text{V}, \quad I_{\text{ph},\text{sc}} = \frac{16}{\sqrt{3}} \approx 9.238\ \text{A} \\
+P_{\text{sc}} &= \sqrt{3} \times 210 \times 16 \times 0.45 \approx 2619\ \text{W} \quad (\text{total}) \\
+P_{\text{sc},\text{ph}} &= 2619/3 \approx 873\ \text{W} \\
+R_{01} &= \frac{873}{9.238^2} \approx 10.23\ \Omega, \quad Z_{01} = \frac{210}{9.238} \approx 22.73\ \Omega \\
+X_{01} &= \sqrt{22.73^2 - 10.23^2} \approx 20.30\ \Omega
 \end{aligned}
 $$
+Given $R_1 = 0.36\ \Omega$, referred rotor resistance $R_2' = R_{01} - R_1 = 9.87\ \Omega$. Assuming equal stator and rotor leakage reactances, $X_1 = X_2' = X_{01}/2 = 10.15\ \Omega$.
 
-The equivalent resistance and impedance referred to the stator:
-$$
-R_{01} = \frac{P_{sc,ph}}{I_{ph,sc}^2} = \frac{873}{9.238^2} \approx 10.23\ \Omega
-$$
-$$
-Z_{01} = \frac{V_{ph,sc}}{I_{ph,sc}} = \frac{210}{9.238} \approx 22.73\ \Omega
-$$
-$$
-X_{01} = \sqrt{Z_{01}^2 - R_{01}^2} = \sqrt{22.73^2 - 10.23^2} \approx 20.30\ \Omega
-$$
+**Equivalent circuit** (Figure below):
+![Induction motor equivalent circuit](https://commons.wikimedia.org/wiki/Special:Redirect/file/Induction-Motor-Equiv-Circuit.svg)
+*Figure: Per-phase exact equivalent circuit with parameters. Source: Wikimedia Commons.*
 
-Given the stator resistance $R_1 = 0.36\ \Omega$, the referred rotor resistance is:
-$$
-R_2' = R_{01} - R_1 = 10.23 - 0.36 = 9.87\ \Omega
-$$
-Assuming the leakage reactances are equally split between stator and rotor:
-$$
-X_1 = X_2' = \frac{X_{01}}{2} = 10.15\ \Omega
-$$
-
-The rotor resistance of $0.06\ \Omega$ quoted in the problem is the actual (unreferred) value; the blocked-rotor test provides the *referred* resistance $R_2' = 9.87\ \Omega$, which is the parameter needed in the stator-referred equivalent circuit.
-
-**Per-phase approximate equivalent circuit (stator-referred):**
-- Magnetizing branch: $R_c = 1206\ \Omega$, $X_m = 213\ \Omega$
-- Stator series impedance: $R_1 = 0.36\ \Omega$, $X_1 = 10.15\ \Omega$
-- Referred rotor series impedance: $R_2' = 9.87\ \Omega$, $X_2' = 10.15\ \Omega$ (with $R_2'/s$ representing the slip-dependent load)
-
-> **Final answer:** $R_c = 1206\ \Omega$, $X_m = 213\ \Omega$, $R_1 = 0.36\ \Omega$, $X_1 = 10.15\ \Omega$, $R_2' = 9.87\ \Omega$, $X_2' = 10.15\ \Omega$.
+> **Final answer:** Per-phase stator-referred parameters: magnetizing branch $R_c = 1206\ \Omega$, $X_m = 213\ \Omega$; stator series $R_1 = 0.36\ \Omega$, $X_1 = 10.15\ \Omega$; rotor referred $R_2' = 9.87\ \Omega$, $X_2' = 10.15\ \Omega$.
 
 
 ---
@@ -4718,58 +3433,62 @@ The rotor resistance of $0.06\ \Omega$ quoted in the problem is the actual (unre
 A 3-phase, 400 V, 3.7 kW, 7.5 A, 945 rpm, δ connected squirrel cage induction 4 motor has per phase stator resistance of 5 Ω. This motor is subjected to no-load and blocked-rotor tests. The test results are: No load test: 400 V, 3.25 A, 232 W Blocked rotor test: 92 V, 7.5 A, 650 W a) Determine the parameters of its approximate equivalent circuit. b) Draw and label the approximate equivalent circuit referred to stator.
 
 ### Answer 65
-The motor is $\Delta$-connected, so phase voltage equals line voltage and phase current equals line current divided by $\sqrt{3}$.
+**Given:**
 
-**No-load test**  
-At no load, slip $s\approx0$, the rotor branch is open. The magnetising branch ($R_c \parallel X_m$) is directly across the supply; stator drop is neglected.
+Motor: 3-phase, 400 V, 3.7 kW, 7.5 A, 945 rpm, Δ-connected, stator resistance per phase $R_1 = 5\,\Omega$.
 
-Phase voltage: $V_{ph}=400\ \text{V}$  
-Phase current: $I_{0,ph}=\frac{3.25}{\sqrt{3}}=1.876\ \text{A}$  
-Per-phase power: $P_{0,ph}=\frac{232}{3}=77.33\ \text{W}$
+No-load test (NL): $V_0 = 400\,\text{V}$ (line), $I_0 = 3.25\,\text{A}$ (line), $P_0 = 232\,\text{W}$ (total).
 
-$$
-R_c = \frac{V_{ph}^2}{P_{0,ph}} = \frac{400^2}{77.33} \approx 2069\ \Omega
-$$
+Blocked-rotor test (BR): $V_{br} = 92\,\text{V}$ (line), $I_{br} = 7.5\,\text{A}$ (line), $P_{br} = 650\,\text{W}$ (total).
 
-Core-loss current: $I_w = \frac{V_{ph}}{R_c} = \frac{400}{2069}=0.193\ \text{A}$  
-Magnetising current: $I_m = \sqrt{I_{0,ph}^2 - I_w^2} = \sqrt{1.876^2-0.193^2} \approx 1.865\ \text{A}$  
-Magnetising reactance: $X_m = \frac{V_{ph}}{I_m} = \frac{400}{1.865} \approx 214.4\ \Omega$.
+**(a) Approximate equivalent circuit parameters**
 
-**Blocked-rotor test**  
-Rotor locked ($s=1$), magnetising branch neglected. The circuit reduces to series $(R_1 + R_2') + j(X_1 + X_2')$.
+**Per-phase values (Δ connection: $V_{ph} = V_{\text{line}}$, $I_{ph} = I_{\text{line}}/\sqrt{3}$):**
 
-Phase voltage: $V_{ph}=92\ \text{V}$  
-Phase current: $I_{br,ph}=\frac{7.5}{\sqrt{3}}=4.330\ \text{A}$  
-Per-phase power: $P_{br,ph}=\frac{650}{3}=216.67\ \text{W}$
+- NL: $V_{0,ph}=400\,\text{V}$, $I_{0,ph}=3.25/\sqrt{3}=1.876\,\text{A}$, $P_{0,ph}=232/3=77.33\,\text{W}$.
+- BR: $V_{br,ph}=92\,\text{V}$, $I_{br,ph}=7.5/\sqrt{3}=4.330\,\text{A}$, $P_{br,ph}=650/3=216.67\,\text{W}$.
+
+**No-load test:**
+At $s\to0$, rotor branch is open. Neglecting the small stator impedance drop, the magnetising branch ($R_c \parallel X_m$) is directly across the supply.
 
 $$
-R_{01} = \frac{P_{br,ph}}{I_{br,ph}^2} = \frac{216.67}{4.330^2} \approx 11.56\ \Omega
+\begin{aligned}
+R_c &= \frac{V_{0,ph}^2}{P_{0,ph}} = \frac{400^2}{77.33} \approx 2069\,\Omega \\[4pt]
+I_w &= \frac{V_{0,ph}}{R_c} = \frac{400}{2069} \approx 0.193\,\text{A} \\[4pt]
+I_m &= \sqrt{I_{0,ph}^2 - I_w^2} = \sqrt{1.876^2 - 0.193^2} \approx 1.865\,\text{A} \\[4pt]
+X_m &= \frac{V_{0,ph}}{I_m} = \frac{400}{1.865} \approx 214.4\,\Omega .
+\end{aligned}
 $$
 
-$$
-Z_{01} = \frac{V_{ph}}{I_{br,ph}} = \frac{92}{4.330} \approx 21.25\ \Omega
-$$
+**Blocked-rotor test:**
+At $s=1$, magnetising branch is neglected because $X_m \gg X_1,X_2'$. The equivalent impedance per phase is the series combination of $R_1$, $X_1$, $R_2'$, $X_2'$.
 
 $$
-X_{01} = \sqrt{Z_{01}^2 - R_{01}^2} = \sqrt{21.25^2 - 11.56^2} \approx 17.82\ \Omega
+\begin{aligned}
+R_{01} &= \frac{P_{br,ph}}{I_{br,ph}^2} = \frac{216.67}{4.330^2} \approx 11.56\,\Omega \\[4pt]
+Z_{01} &= \frac{V_{br,ph}}{I_{br,ph}} = \frac{92}{4.330} \approx 21.25\,\Omega \\[4pt]
+X_{01} &= \sqrt{Z_{01}^2 - R_{01}^2} = \sqrt{21.25^2 - 11.56^2} \approx 17.82\,\Omega .
+\end{aligned}
 $$
 
-Given $R_1 = 5\ \Omega$ (per phase stator resistance), the referred rotor resistance is:
-
+Given $R_1 = 5\,\Omega$, the referred rotor resistance is
 $$
-R_2' = R_{01} - R_1 = 11.56 - 5 = 6.56\ \Omega
-$$
-
-Assuming equal leakage reactances (typical for squirrel-cage motors):
-
-$$
-X_1 = X_2' = \frac{X_{01}}{2} = \frac{17.82}{2} = 8.91\ \Omega
+R_2' = R_{01} - R_1 = 11.56 - 5 = 6.56\,\Omega .
 $$
 
-**Approximate equivalent circuit referred to stator**  
-The circuit comprises the magnetising branch ($R_c$ in parallel with $X_m$) placed directly across the supply terminals, followed in series by $R_1$, $X_1$, and then the rotor branch consisting of $R_2'/s$ in series with $X_2'$. All elements are referred to the stator side. A diagram would show these components connected as described.
+For a squirrel-cage motor, it is usual to assume equal leakage reactances:
+$$
+X_1 = X_2' = \frac{X_{01}}{2} = \frac{17.82}{2} = 8.91\,\Omega .
+$$
 
-> **Final answer:** $R_c \approx 2069\ \Omega,\; X_m \approx 214.4\ \Omega,\; R_1 = 5\ \Omega,\; X_1 = 8.91\ \Omega,\; R_2' = 6.56\ \Omega,\; X_2' = 8.91\ \Omega$ (all values per phase, referred to stator).
+**(b) Approximate equivalent circuit referred to stator**
+
+The circuit places the magnetising branch ($R_c \parallel X_m$) directly across the stator terminals, followed in series by $R_1$, $X_1$, and then the rotor branch consisting of $R_2'/s$ in series with $X_2'$. This is shown in Figure 1.
+
+![Simplified equivalent circuit](https://commons.wikimedia.org/wiki/Special:Redirect/file/IMEQCCTCircle.jpg)
+*Figure: Approximate per-phase equivalent circuit of the induction motor referred to the stator. Source: Wikimedia Commons: File:IMEQCCTCircle.jpg.*
+
+> **Final answer:** $R_c \approx 2069\,\Omega$, $X_m \approx 214.4\,\Omega$, $R_1 = 5\,\Omega$, $X_1 = 8.91\,\Omega$, $R_2' = 6.56\,\Omega$, $X_2' = 8.91\,\Omega$ (all values per phase, referred to stator).
 
 
 ---
@@ -4780,52 +3499,68 @@ The circuit comprises the magnetising branch ($R_c$ in parallel with $X_m$) plac
 From the following test data given for a three phase 100HP, 3.3kV, 27A, 6pole 50Hz squirrel cage induction motor with star connected stator, develop the approximate equivalent circuit of the machine referred to stator side. No Load test (line values): 3.3kV, 6A, 24kW Blocked Rotor test (line values): 400V, 25A, 14kW DC resistance per phase: 3.75Ω. Also, Explain the reason why the rotor is blocked in the blocked-rotor test? (06)
 
 ### Answer 66
-**Step 1: Determine phase values.**  
-For a star-connected stator:  
-$$V_{ph} = \frac{V_L}{\sqrt{3}} = \frac{3300}{\sqrt{3}} \approx 1905\ \text{V}.$$  
+**Given:** 3-phase, 100 HP, 3.3 kV, 27 A, 6-pole, 50 Hz, star-connected squirrel-cage IM.
+No-load test (line): 3.3 kV, 6 A, 24 kW.
+Blocked-rotor test (line): 400 V, 25 A, 14 kW.
+DC resistance per phase: $3.75\,\Omega$.
 
-**Step 2: No-load test analysis.**  
-At no load, slip $s \approx 0$, so the rotor circuit appears open. The per-phase input values are:  
-$$V_{0,ph} = 1905\ \text{V},\quad I_{0,ph} = 6\ \text{A},\quad P_{0,ph} = \frac{24\ \text{kW}}{3} = 8\ \text{kW}.$$  
-The no-load power factor:  
-$$\cos\phi_0 = \frac{P_0}{\sqrt{3}\,V_L I_L} = \frac{24000}{\sqrt{3} \times 3300 \times 6} = 0.700.$$  
-The active (core-loss) component of the no-load current:  
-$$I_w = I_0 \cos\phi_0 = 6 \times 0.700 = 4.20\ \text{A}.$$  
-The reactive (magnetising) component:  
-$$I_m = \sqrt{I_0^2 - I_w^2} = \sqrt{6^2 - 4.20^2} = 4.29\ \text{A}.$$  
-Therefore, the magnetising branch parameters referred to the stator are:  
-$$R_0 = \frac{V_{0,ph}}{I_w} = \frac{1905}{4.20} \approx 454\ \Omega,$$  
-$$X_m = \frac{V_{0,ph}}{I_m} = \frac{1905}{4.29} \approx 444\ \Omega.$$  
+**Solution:**
 
-**Step 3: Blocked-rotor test analysis.**  
-When the rotor is blocked, slip $s = 1$ and the magnetising branch can be neglected. Per-phase values for the test are:  
-$$V_{br,ph} = \frac{400}{\sqrt{3}} = 230.94\ \text{V},\quad I_{br,ph} = 25\ \text{A},\quad P_{br,ph} = \frac{14\ \text{kW}}{3} = 4.667\ \text{kW}.$$  
-The equivalent series impedance, resistance and reactance are:  
-$$Z_{eq} = \frac{V_{br,ph}}{I_{br,ph}} = \frac{230.94}{25} = 9.24\ \Omega,$$  
-$$R_{eq} = \frac{P_{br,ph}}{I_{br,ph}^2} = \frac{4667}{25^2} = 7.47\ \Omega,$$  
-$$X_{eq} = \sqrt{Z_{eq}^2 - R_{eq}^2} = \sqrt{9.24^2 - 7.47^2} = 5.44\ \Omega.$$  
+**1. Phase quantities** (star connection):
+$$
+V_{\text{ph}} = \frac{V_L}{\sqrt{3}} = \frac{3300}{\sqrt{3}} \approx 1905\ \text{V}.
+$$
 
-**Step 4: Separating stator and rotor parameters.**  
-The DC resistance measurement gives the stator winding resistance per phase:  
-$$R_1 = 3.75\ \Omega.$$  
-Hence, the referred rotor resistance is:  
-$$R_2' = R_{eq} - R_1 = 7.47 - 3.75 = 3.72\ \Omega.$$  
-For a squirrel-cage motor the stator and rotor leakage reactances cannot be separated by test; they are assumed equal:  
-$$X_1 = X_2' = \frac{X_{eq}}{2} = \frac{5.44}{2} = 2.72\ \Omega.$$  
+**2. No-load test** (per phase):
+$$
+P_{0,\text{ph}} = \frac{24\,\text{kW}}{3} = 8\ \text{kW},\quad I_{0,\text{ph}}=6\ \text{A}.
+$$
+Power factor:
+$$
+\cos\phi_0 = \frac{P_0}{\sqrt{3}\,V_L I_L} = \frac{24000}{\sqrt{3}\times3300\times6} = 0.7.
+$$
+Active (core-loss) current: $I_w = I_0\cos\phi_0 = 6\times0.7 = 4.2\ \text{A}$.
+Magnetising current: $I_m = \sqrt{I_0^2 - I_w^2} = \sqrt{6^2 - 4.2^2} \approx 4.29\ \text{A}$.
+Magnetising branch parameters (referred to stator):
+$$
+R_0 = \frac{V_{\text{ph}}}{I_w} = \frac{1905}{4.2} \approx 454\ \Omega,\qquad
+X_m = \frac{V_{\text{ph}}}{I_m} = \frac{1905}{4.29} \approx 444\ \Omega.
+$$
 
-**Step 5: Approximate equivalent circuit (referred to stator).**  
+**3. Blocked-rotor test** (per phase):
+$$
+V_{\text{br,ph}} = \frac{400}{\sqrt{3}} \approx 230.94\ \text{V},\quad
+I_{\text{br,ph}} = 25\ \text{A},\quad
+P_{\text{br,ph}} = \frac{14\,\text{kW}}{3} \approx 4.667\ \text{kW}.
+$$
+Total series impedance, resistance and reactance:
+$$
+\begin{aligned}
+Z_{\text{eq}} &= \frac{230.94}{25} \approx 9.24\ \Omega,\\[2pt]
+R_{\text{eq}} &= \frac{4667}{25^2} \approx 7.47\ \Omega,\\[2pt]
+X_{\text{eq}} &= \sqrt{9.24^2 - 7.47^2} \approx 5.44\ \Omega.
+\end{aligned}
+$$
 
-![Per-phase approximate equivalent circuit](./pyq-assets/textbook/108105131_p465_img-247_jpeg.png)  
-*Figure: Approximate per-phase equivalent circuit with parameters from the test data.*  
+**4. Separating stator and rotor constants:**
+- Stator resistance (from DC test): $R_1 = 3.75\ \Omega$.
+- Referred rotor resistance: $R_2' = R_{\text{eq}} - R_1 = 7.47 - 3.75 \approx 3.72\ \Omega$.
+- For squirrel-cage motor, stator and rotor leakage reactances cannot be separated; they are assumed equal:
+  $$
+  X_1 = X_2' = \frac{X_{\text{eq}}}{2} = \frac{5.44}{2} \approx 2.72\ \Omega.
+  $$
 
-- Magnetising branch: $R_0 \approx 454\ \Omega$, $X_m \approx 444\ \Omega$.  
-- Stator impedance: $R_1 = 3.75\ \Omega$, $X_1 = 2.72\ \Omega$.  
-- Referred rotor impedance: $R_2' = 3.72\ \Omega$, $X_2' = 2.72\ \Omega$.  
+**5. Approximate equivalent circuit (per phase, referred to stator):**
 
-**Step 6: Why block the rotor?**  
-In the blocked-rotor test, the rotor is held stationary so that slip $s = 1$. This makes the rotor frequency equal the supply frequency, and the rotor leakage reactance remains at its designed standstill value. The machine then behaves exactly like a transformer with a short-circuited secondary, allowing the total series impedance $(R_{eq},\ X_{eq})$ to be measured easily at a reduced voltage. No mechanical power is produced, and the reduced voltage keeps the high starting current within safe limits.  
+![Induction motor equivalent circuit](https://commons.wikimedia.org/wiki/Special:Redirect/file/Induction-Motor-Equiv-Circuit.svg)
+*Figure: Per-phase approximate equivalent circuit. Source: Wikimedia Commons.*
 
-> **Final answer:** $R_0 \approx 454\ \Omega$, $X_m \approx 444\ \Omega$, $R_1 = 3.75\ \Omega$, $R_2' = 3.72\ \Omega$, $X_1 = X_2' \approx 2.72\ \Omega$.
+The magnetising branch ($R_0$, $X_m$) is placed across the stator terminals, followed by stator impedance ($R_1$, $X_1$) and referred rotor impedance ($R_2'$, $X_2'$).
+
+**6. Why block the rotor?**
+Blocking holds the rotor at standstill ($s=1$), so the rotor frequency equals the supply frequency. The rotor leakage reactance therefore retains its normal standstill value. The machine behaves exactly like a transformer with a short-circuited secondary, allowing the total series impedance ($R_{\text{eq}}$, $X_{\text{eq}}$) to be measured safely at a reduced voltage. No mechanical output is produced, and the reduced voltage limits the current to a safe level while still yielding accurate parameters.
+
+> **Final answer:** Equivalent circuit parameters: $R_0 \approx 454\ \Omega$, $X_m \approx 444\ \Omega$, $R_1 = 3.75\ \Omega$, $R_2' \approx 3.72\ \Omega$, $X_1 = X_2' \approx 2.72\ \Omega$. The rotor is blocked to set $s=1$, making the motor behave as a short-circuit transformer and enabling convenient measurement of the series impedances.
 
 
 ---
@@ -4838,56 +3573,52 @@ The following test results were obtained on a 3-phase, 75kW, 3.3kV, 6-Pole, 50Hz
 ### Answer 67
 **Given:** 3-phase, 75 kW, 3.3 kV, 6-pole, 50 Hz, Δ-connected squirrel cage induction motor.
 
-**No-load test:**  
-Line voltage $V_L = 3.3\,\text{kV}$ → phase voltage $V_{ph}=3.3\,\text{kV}$.  
-Line current $I_L = 5\,\text{A}$ → phase current $I_{0,ph}=5/\sqrt{3}=2.887\,\text{A}$.  
-Total power $P_0 = 2500\,\text{W}$ → per-phase power $P_{0,ph}=2500/3=833.33\,\text{W}$.
+**No-load test:**
+- $V_L = 3.3\; \text{kV}$, $V_{ph} = V_L = 3300\ \text{V}$.
+- $I_L = 5\; \text{A}$, $I_{0,ph} = 5/\sqrt{3} = 2.887\ \text{A}$.
+- $P_0 = 2500\ \text{W}$ total, $P_{0,ph} = 833.33\ \text{W}$ per phase.
 
-The no-load power is assumed to be core loss (stator copper loss negligible at no load). Hence,
+Neglecting stator copper loss at no load, the core loss resistance is
 $$
-R_c = \frac{V_{ph}^2}{P_{0,ph}} = \frac{3300^2}{833.33} = 13\,068\,\Omega \approx 13.07\,\text{k}\Omega.
+R_c = \frac{V_{ph}^2}{P_{0,ph}} = \frac{3300^2}{833.33} = 13068\ \Omega \approx 13.07\ \text{k}\Omega.
 $$
-Core-loss current,
+Iron-loss current $I_w = V_{ph}/R_c = 0.252\ \text{A}$.
+Magnetising current $I_m = \sqrt{I_{0,ph}^2 - I_w^2} = 2.876\ \text{A}$.
+Hence magnetising reactance
 $$
-I_w = \frac{V_{ph}}{R_c} = \frac{3300}{13\,068} \approx 0.252\,\text{A}.
-$$
-Magnetizing current,
-$$
-I_m = \sqrt{I_{0,ph}^2 - I_w^2} = \sqrt{2.887^2 - 0.252^2} = 2.876\,\text{A}.
-$$
-Magnetizing reactance,
-$$
-X_m = \frac{V_{ph}}{I_m} = \frac{3300}{2.876} \approx 1147\,\Omega \quad (1.147\,\text{k}\Omega).
+X_m = \frac{V_{ph}}{I_m} = \frac{3300}{2.876} = 1147\ \Omega \approx 1.147\ \text{k}\Omega.
 $$
 
-**Blocked-rotor test:**  
-Applied line voltage $V_{br,L}=400\,\text{V}$ → phase voltage $V_{br,ph}=400\,\text{V}$.  
-Line current $I_{br,L}=27\,\text{A}$ → phase current $I_{br,ph}=27/\sqrt{3}=15.59\,\text{A}$.  
-Total power $P_{br}=15\,000\,\text{W}$ → per-phase power $P_{br,ph}=5000\,\text{W}$.
+**Blocked-rotor test:**
+- Applied line voltage $V_{br,L}=400\ \text{V}$, so $V_{br,ph}=400\ \text{V}$.
+- $I_{br,L}=27\ \text{A}$, $I_{br,ph}=27/\sqrt{3}=15.59\ \text{A}$.
+- $P_{br}=15000\ \text{W}$, $P_{br,ph}=5000\ \text{W}$ per phase.
 
-Equivalent impedance referred to stator,
+Equivalent impedance referred to stator:
 $$
-Z_{01} = \frac{V_{br,ph}}{I_{br,ph}} = \frac{400}{15.59} = 25.66\,\Omega.
+Z_{01} = \frac{V_{br,ph}}{I_{br,ph}} = \frac{400}{15.59} = 25.66\ \Omega.
 $$
-Equivalent resistance,
+Resistance:
 $$
-R_{01} = \frac{P_{br,ph}}{I_{br,ph}^2} = \frac{5000}{15.59^2} = 20.56\,\Omega.
+R_{01} = \frac{P_{br,ph}}{I_{br,ph}^2} = \frac{5000}{15.59^2} = 20.56\ \Omega.
 $$
-Equivalent reactance,
+Reactance:
 $$
-X_{01} = \sqrt{Z_{01}^2 - R_{01}^2} = \sqrt{25.66^2 - 20.56^2} = 15.36\,\Omega.
-$$
-
-No DC resistance measurement is provided; assuming equal stator and rotor copper losses at standstill, we split the blocked-rotor parameters equally:
-$$
-R_1 = R_2' = \frac{R_{01}}{2} = 10.28\,\Omega,
-\qquad
-X_1 = X_2' = \frac{X_{01}}{2} = 7.68\,\Omega.
+X_{01} = \sqrt{Z_{01}^2 - R_{01}^2} = \sqrt{25.66^2 - 20.56^2} = 15.36\ \Omega.
 $$
 
-All values are per phase and referred to the stator side.
+Since no DC test is available, we assume equal stator and rotor resistances and leakage reactances:
+$$
+R_1 = R_2' = R_{01}/2 = 10.28\ \Omega, \quad
+X_1 = X_2' = X_{01}/2 = 7.68\ \Omega.
+$$
 
-> **Final answer:** $R_c \approx 13.07\,\text{k}\Omega$, $X_m \approx 1.147\,\text{k}\Omega$, $R_1 = R_2' \approx 10.28\,\Omega$, $X_1 = X_2' \approx 7.68\,\Omega$.
+All parameters are per phase and referred to the stator side. The approximate equivalent circuit is shown in Figure 1.
+
+![Approximate equivalent circuit of induction motor](https://commons.wikimedia.org/wiki/Special:Redirect/file/Induction-Motor-Equiv-Circuit.svg)
+*Figure 1: Per-phase approximate equivalent circuit. Source: Wikimedia Commons: File:Induction-Motor-Equiv-Circuit.svg.*
+
+> **Final answer:** $R_c \approx 13.07\ \text{k}\Omega$, $X_m \approx 1.147\ \text{k}\Omega$, $R_1 = R_2' \approx 10.28\ \Omega$, $X_1 = X_2' \approx 7.68\ \Omega$.
 
 
 ---
@@ -4898,27 +3629,27 @@ All values are per phase and referred to the stator side.
 Show that a single phase current in a single phase winding produces only a pulsating magnetic field.
 
 ### Answer 68
-A single-phase winding, when excited by a sinusoidal current, produces a magnetomotive force (mmf) that is both sinusoidally distributed in space and pulsating in time. The mmf at an angular position $\theta$ (measured from the winding axis) is given by
+**Concept:** A single-phase stator winding excited by an AC current produces an MMF that is sinusoidally distributed in space and pulsates in time.
 
+**MMF Equation:** Consider a single-phase winding with its axis along the reference angle $\theta=0$. The instantaneous current is $i(t)=I_m\cos(\omega t)$. The MMF at any angular position $\theta$ is
 $$
 F(\theta,t) = F_m \cos\theta \cos(\omega t),
 $$
+where $F_m$ is the peak MMF proportional to the winding turns and current amplitude.
 
-where $F_m$ is the peak mmf and $\omega$ is the angular frequency of the supply.
-
-Using the trigonometric identity $\cos A \cos B = \frac{1}{2}[\cos(A-B) + \cos(A+B)]$, we can decompose this into two travelling waves:
-
+**Decomposition:** Using the identity $\cos A \cos B = \tfrac{1}{2}[\cos(A-B) + \cos(A+B)]$, we write
 $$
-F(\theta,t) = \frac{F_m}{2} \cos(\theta - \omega t) + \frac{F_m}{2} \cos(\theta + \omega t).
+\begin{aligned}
+F(\theta,t) &= \frac{F_m}{2} \cos(\theta - \omega t) + \frac{F_m}{2} \cos(\theta + \omega t).
+\end{aligned}
 $$
+The first term, $\frac{F_m}{2}\cos(\theta-\omega t)$, represents a travelling wave that moves in the positive $\theta$ direction at synchronous speed $\omega_s = \omega$. The second term, $\frac{F_m}{2}\cos(\theta+\omega t)$, is an identical wave travelling in the negative $\theta$ direction.
 
-The first term, $\frac{F_m}{2} \cos(\theta - \omega t)$, represents a forward-rotating mmf wave that travels in the positive $\theta$ direction at synchronous speed. The second term, $\frac{F_m}{2} \cos(\theta + \omega t)$, is a backward-rotating wave of equal amplitude travelling in the negative $\theta$ direction.
+**Physical Interpretation:** At any fixed point in the air gap, the two waves add algebraically. Because they have equal amplitudes and travel in opposite directions, their resultant is a standing wave-the amplitude oscillates sinusoidally at the supply frequency. The spatial distribution $\cos\theta$ remains fixed; no rotation occurs. Therefore, the magnetic field simply pulsates in magnitude along the winding axis and does not rotate. This is why a single-phase induction motor produces no starting torque; at standstill, the forward and backward torques cancel exactly.
 
-Since the two rotating waves have identical amplitudes, their sum at any fixed location in the air-gap is a standing wave. The envelope of the mmf varies sinusoidally in time, but the spatial distribution does not move around the periphery. Thus, no net rotating magnetic field is produced; the field merely pulsates in magnitude without any continuous rotation.
+**Conclusion:** A single-phase current in a single-phase winding produces only a pulsating magnetic field, mathematically equivalent to the sum of two counter-rotating fields of equal magnitude.
 
-This result is the foundation of the double revolving field theory, which explains the behaviour of single-phase induction motors.
-
-> **Final answer:** A single-phase current in a single-phase winding produces only a pulsating magnetic field, mathematically equivalent to the sum of two equal contra-rotating fields with no net rotation.
+> **Final answer:** A single-phase current in a single-phase winding produces only a pulsating magnetic field, which may be decomposed into two equal contra-rotating travelling waves; no net rotation occurs.
 
 
 ---
@@ -4929,77 +3660,78 @@ This result is the foundation of the double revolving field theory, which explai
 A 240V, 50Hz, 2 pole single phase induction motor has the following equivalent circuit impedances: r1=2.2Ω, r2'=3.8Ω, x1=3Ω, x2'=2.1Ω, xm=86Ω. Friction, windage and core losses=50W. Calculate input current, power factor, output power and efficiency at a full load speed of 2820RPM. (05)
 
 ### Answer 69
-Synchronous speed $N_s = \frac{120f}{P} = \frac{120\times50}{2} = 3000$ rpm. Full-load speed $N = 2820$ rpm, so slip $s = \frac{3000-2820}{3000}=0.06$.
+**Given:** 240 V, 50 Hz, 2-pole single-phase induction motor. $R_1 = 2.2\ \Omega$, $R_2' = 3.8\ \Omega$, $X_1 = 3\ \Omega$, $X_2' = 2.1\ \Omega$, $X_m = 86\ \Omega$. Rotational losses $P_{\text{rot}} = 50\ \text{W}$.
 
-The double-revolving-field theory resolves the pulsating stator field into a forward field (slip $s$) and a backward field (slip $2-s$). The per-phase equivalent circuit, with all parameters referred to the stator, contains two parallel magnetising branches:
+**Synchronous speed and slip:**
+$N_s = \frac{120f}{P} = \frac{120\times 50}{2} = 3000\ \text{rpm}$. Full-load speed $N = 2820\ \text{rpm}$ $\Rightarrow$ slip $s = \frac{3000-2820}{3000} = 0.06$.
 
-$$
-Z_f = \left( j\frac{X_m}{2} \right) \parallel \left( \frac{R_2'}{2s} + j\frac{X_2'}{2} \right), \qquad
-Z_b = \left( j\frac{X_m}{2} \right) \parallel \left( \frac{R_2'}{2(2-s)} + j\frac{X_2'}{2} \right).
-$$
+**Double-revolving-field circuit:**
+The single-phase motor is analysed by splitting the pulsating field into a forward component (rotor slip $s$) and a backward component (rotor slip $2-s$). The per-phase equivalent circuit contains two parallel branches:
 
-Total motor impedance: $Z_{total} = R_1 + jX_1 + Z_f + Z_b$.
-
-Given: $R_1=2.2\;\Omega$, $X_1=3\;\Omega$, $R_2'=3.8\;\Omega$, $X_2'=2.1\;\Omega$, $X_m=86\;\Omega$, $V=240$ V, and rotational loss $P_{rot}=50$ W.
-
-**Forward branch** ($X_m/2 = 43\;\Omega$, $X_2'/2 = 1.05\;\Omega$):
+Forward branch ($s = 0.06$):
 $$
-R_{f,ser} = \frac{3.8}{2\times0.06}=31.667\;\Omega,\;
-Z_f = \frac{j43(31.667+j1.05)}{31.667+j(43+1.05)} = \frac{-45.15+j1361.68}{31.667+j44.05}
+R_{f,\text{ser}} = \frac{R_2'}{2s} = \frac{3.8}{2\times 0.06} = 31.667\ \Omega,\quad
+X_{f,\text{ser}} = \frac{X_2'}{2} = 1.05\ \Omega,
 $$
+magnetising reactance $X_{m,f} = X_m/2 = 43\ \Omega$.
+Its equivalent impedance
 $$
-Z_f = \frac{58552+j45108}{(31.667)^2+44.05^2} \approx 19.89 + j15.33\;\Omega.
+Z_f = \frac{j43\,(31.667 + j1.05)}{31.667 + j44.05} = 19.89 + j15.33\ \Omega.
 $$
 
-**Backward branch** ($s_b = 1.94$):
+Backward branch ($2-s = 1.94$):
 $$
-R_{b,ser} = \frac{3.8}{2\times1.94}=0.9794\;\Omega,\;
-Z_b = \frac{j43(0.9794+j1.05)}{0.9794+j(43+1.05)} = \frac{-45.15+j42.114}{0.9794+j44.05}
+R_{b,\text{ser}} = \frac{R_2'}{2(2-s)} = \frac{3.8}{3.88} = 0.9794\ \Omega,\quad
+X_{b,\text{ser}} = 1.05\ \Omega,
 $$
 $$
-Z_b = \frac{1811+j2030}{(0.9794)^2+44.05^2} \approx 0.933 + j1.046\;\Omega.
+Z_b = \frac{j43\,(0.9794 + j1.05)}{0.9794 + j44.05} = 0.933 + j1.046\ \Omega.
 $$
 
-**Total impedance:**
+**Total motor impedance (per phase):**
 $$
-Z_{total} = (2.2 + j3) + (19.89 + j15.33) + (0.933 + j1.046) = 23.023 + j19.376\;\Omega.
+Z_{\text{total}} = R_1 + jX_1 + Z_f + Z_b = 2.2 + j3 + 19.89 + j15.33 + 0.933 + j1.046 = 23.023 + j19.376\ \Omega.
 $$
+Magnitude:
 $$
-|Z_{total}| = \sqrt{23.023^2 + 19.376^2} = 30.09\;\Omega,\quad
-\phi = \tan^{-1}\frac{19.376}{23.023} \approx 40.1^\circ\;\text{(lagging)}.
+|Z_{\text{total}}| = \sqrt{23.023^2 + 19.376^2} = 30.09\ \Omega,
 $$
+Phase angle $\phi = \tan^{-1}\frac{19.376}{23.023} = 40.1^\circ$ (lagging).
 
 **Input current and power factor:**
 $$
-I_1 = \frac{240}{30.09} \approx 7.98\;A,\quad
-\mathrm{pf} = \cos 40.1^\circ = 0.765\;\text{lagging}.
+I_1 = \frac{240}{30.09} = 7.98\ \text{A},\qquad
+\text{pf} = \cos 40.1^\circ = 0.765\ \text{lagging}.
 $$
 
-**Power distribution:**
+**Power flow:**
+Input power:
 $$
-P_{in} = V I_1 \cos\phi = 240 \times 7.98 \times 0.765 \approx 1465\;W,
+P_{\text{in}} = V I_1 \cos\phi = 240 \times 7.98 \times 0.765 = 1465\ \text{W}.
+$$
+
+Air-gap powers in the two fields:
+$$
+P_{gf} = I_1^2 \,\operatorname{Re}(Z_f) = 7.98^2 \times 19.89 = 1265\ \text{W},
 $$
 $$
-P_{gf} = I_1^2\,\operatorname{Re}(Z_f) = 7.98^2 \times 19.89 \approx 1265\;W,
-$$
-$$
-P_{gb} = I_1^2\,\operatorname{Re}(Z_b) = 7.98^2 \times 0.933 \approx 59.4\;W.
+P_{gb} = I_1^2 \,\operatorname{Re}(Z_b) = 7.98^2 \times 0.933 = 59.4\ \text{W}.
 $$
 
 Net mechanical power developed:
 $$
-P_{mech} = (1-s)(P_{gf} - P_{gb}) = 0.94 \times (1265.3 - 59.4) \approx 1134\;W.
+P_{\text{mech}} = (1-s)(P_{gf} - P_{gb}) = 0.94 \times (1265 - 59.4) = 1134\ \text{W}.
 $$
 
 Output power and efficiency:
 $$
-P_{out} = P_{mech} - P_{rot} = 1134 - 50 = 1084\;W\;(1.084\;kW),
+P_{\text{out}} = P_{\text{mech}} - P_{\text{rot}} = 1134 - 50 = 1084\ \text{W} = 1.084\ \text{kW}.
 $$
 $$
-\eta = \frac{P_{out}}{P_{in}} \times 100 = \frac{1084}{1465} \times 100 \approx 74.0\%.
+\eta = \frac{P_{\text{out}}}{P_{\text{in}}} \times 100\% = \frac{1084}{1465} \times 100 = 74.0\% .
 $$
 
-> **Final answer:** $I_1 = 7.98$ A, pf $0.765$ lagging, $P_{out} = 1.084$ kW, $\eta = 74.0\%$.
+> **Final answer:** $I_1 = 7.98\ \text{A}$, $\text{pf} = 0.765$ lagging, $P_{\text{out}} = 1.084\ \text{kW}$, $\eta = 74.0\%$.
 
 
 ---
@@ -5010,20 +3742,20 @@ $$
 With the help of double field revolving theory, show that single phase induction motor is not self staring. (04)
 
 ### Answer 70
-According to the double-revolving-field theory, the pulsating magnetic field produced by a single-phase stator winding can be decomposed into two rotating magnetic fields of equal magnitude, revolving in opposite directions at synchronous speed. Mathematically,
-
+Double revolving field theory: The single-phase winding produces a pulsating magnetic field that can be expressed as
 $$
-F(\theta,t) = \frac{F_m}{2}\cos(\theta - \omega t) + \frac{F_m}{2}\cos(\theta + \omega t).
+\begin{aligned}
+F(\theta,t) &= F_{\text{max}} \cos\theta \cos\omega t \\
+&= \frac{F_{\text{max}}}{2} \cos(\theta - \omega t) + \frac{F_{\text{max}}}{2} \cos(\theta + \omega t)
+\end{aligned}
 $$
+revealing two rotating fields of equal magnitude, one moving forward (CCW) and the other backward (CW) at synchronous speed.
 
-When the rotor is at standstill, the slip with respect to both the forward and backward fields is unity. The forward field induces rotor currents that produce a torque in the forward direction; the backward field induces currents that produce an equal torque in the opposite direction. Since the two torques are identical in magnitude and opposite in direction, the net starting torque is zero.
+At standstill, the rotor sees both fields moving at the same relative speed. The forward field induces rotor currents that produce a torque in the forward direction; the backward field induces currents that produce an equal torque in the opposite direction. Since the two torques cancel, the net starting torque is zero.
 
-Therefore, a single-phase induction motor with only one stator winding cannot develop any starting torque-it is not self-starting. To make it self-starting, an auxiliary starting arrangement (split-phase winding, capacitor-start, shaded pole, etc.) must be added to create an initial rotating field.
+Thus a single-phase induction motor with only one stator winding cannot develop any starting torque-it is not self-starting. To make it self-starting, an auxiliary winding and phase-splitting arrangement (split-phase, capacitor-start, etc.) must be added to create an initial rotating field.
 
-![Double revolving field decomposition](./pyq-assets/textbook/108105131_p640_img-327_jpeg.png)
-<p align="center"><i>Figure: Illustration of the two counter-rotating magnetic fields produced by a single-phase winding.</i></p>
-
-> **Final answer:** At standstill the forward and backward revolving fields produce equal and opposite torques, resulting in zero net starting torque. Hence a single-phase induction motor is not self-starting.
+> **Final answer:** At standstill the pulsating field splits into two counter-rotating fields of equal strength; the torques they produce are equal and opposite, giving zero net starting torque. Hence the motor is not self-starting.
 
 
 ---
@@ -5034,23 +3766,18 @@ Therefore, a single-phase induction motor with only one stator winding cannot de
 With necessary phasor diagram, explain how a capacitor can help in starting of a single-phase induction motor. (03)
 
 ### Answer 71
-In a single-phase induction motor, a single winding produces only a pulsating magnetic field, which yields no starting torque. To produce a starting torque, a second winding (auxiliary) is placed in space quadrature with the main winding. The currents in the two windings must be displaced in time phase to produce a rotating magnetic field.
+In a single-phase motor, a single winding produces a pulsating field and develops no starting torque. To obtain starting torque, a capacitor-start motor uses two stator windings in space quadrature ($90^\circ$ electrical) - the main winding and an auxiliary winding. A capacitor is connected in series with the auxiliary winding.
 
-In a capacitor-start motor, a capacitor is connected in series with the auxiliary winding. The main winding is highly inductive, so its current $\tilde{I}_m$ lags the supply voltage $\tilde{V}$ by a large angle $\phi_m$. The capacitor in the auxiliary circuit offsets part of the winding inductance, making the auxiliary current $\tilde{I}_a$ less lagging or even leading $\tilde{V}$ by an angle $\phi_a$. By proper choice of capacitance, the phase displacement $|\phi_m - \phi_a|$ can be made nearly $90^\circ$.
+The main winding is highly inductive, so its current $I_m$ lags the supply voltage $V$ by a large angle $\phi_m \approx 70^\circ\!-\!80^\circ$. The capacitor cancels part of the auxiliary winding's inductance, making the auxiliary current $I_a$ less lagging or even leading $V$ by an angle $\phi_a \approx 20^\circ\!-\!40^\circ$. With proper capacitance, the phase displacement $|\phi_m - \phi_a|$ approaches $90^\circ$.
 
-The phasor diagram (with $\tilde{V}$ as reference) clearly shows this time-phase separation:
+The phasor diagram (taking $V$ as reference) shows $I_m$ lagging by $\phi_m$ and $I_a$ leading (or lagging less) by $\phi_a$, giving a nearly $90^\circ$ time-phase difference between the two winding currents. Combined with the $90^\circ$ spatial displacement of the windings, this produces an approximate rotating magnetic field. The rotating field cuts the rotor conductors, inducing e.m.f.s and currents that interact with the field to develop a unidirectional starting torque.
 
-$$
-\begin{aligned}
-&\text{Let } \tilde{V} \text{ be along the real axis.}\\
-&\tilde{I}_m \text{ lags } \tilde{V} \text{ by } \phi_m \approx 70^\circ\text{--}80^\circ.\\
-&\tilde{I}_a \text{ (with capacitor) leads } \tilde{V} \text{ by } \phi_a \approx 20^\circ\text{--}40^\circ.
-\end{aligned}
-$$
+Once the motor reaches about $70\!-\!80\%$ of synchronous speed, a centrifugal switch disconnects the auxiliary winding and capacitor; they are not needed for running.
 
-Thus the phase angle between $\tilde{I}_m$ and $\tilde{I}_a$ is approximately $90^\circ$. Combined with the $90^\circ$ spatial displacement of the windings, the two currents produce an approximate rotating magnetic field. This field cuts the rotor conductors and sets up a starting torque, bringing the motor up to speed. Once running, a centrifugal switch disconnects the auxiliary circuit.
+![Capacitor-start motor circuit](https://commons.wikimedia.org/wiki/Special:Redirect/file/Capasitor-start%20single-phase%20motor%20circuit%20diagram.svg)
+*Figure: Capacitor-start single-phase induction motor circuit. Source: Wikimedia Commons.*
 
-> **Final answer:** The capacitor introduces a time-phase displacement between the main and auxiliary winding currents; when combined with the spatial displacement of the windings, an approximate rotating magnetic field is created, which produces the necessary starting torque.
+> **Final answer:** The capacitor causes a time-phase displacement between the main and auxiliary winding currents. Together with the spatial displacement of the windings, this creates a rotating field that produces the necessary starting torque.
 
 
 ---
@@ -5061,37 +3788,29 @@ Thus the phase angle between $\tilde{I}_m$ and $\tilde{I}_a$ is approximately $9
 How is torque produced in a capacitor start single phase induction motor. Is 3 there any need for this capacitor after starting? Explain.
 
 ### Answer 72
-In a single-phase induction motor, the stator flux produced by a single winding is pulsating and can be resolved into two rotating fields of equal magnitude but opposite directions. At standstill, these fields produce equal and opposite torques, yielding zero net starting torque. The capacitor-start motor overcomes this by creating a rotating magnetic field at starting.
+Torque production in a capacitor-start single-phase induction motor relies on creating a rotating magnetic field at starting.
 
-**Construction and phase splitting**  
-The stator carries two windings: a main winding M and an auxiliary winding A, physically displaced by $90^\circ$ electrical. The auxiliary winding is connected in series with a capacitor C, and both windings are fed from the same single-phase supply.
+The stator carries a main winding and an auxiliary winding displaced by $90^\circ$ electrical in space. The auxiliary winding is connected in series with a capacitor. Because of the capacitor, the auxiliary-circuit impedance becomes predominantly capacitive, causing the auxiliary current $I_a$ to lead the supply voltage while the main-winding current $I_m$ lags. The phase difference between $I_m$ and $I_a$ can be made close to $90^\circ$ by choosing the capacitance correctly.
 
-Because the auxiliary circuit contains a capacitor, its impedance $Z_a + \frac{1}{j\omega C}$ can be made predominantly capacitive. As a result, the auxiliary winding current $I_a$ leads the applied voltage, while the main winding current $I_m$ lags the voltage due to its inductive nature. With properly chosen C, the time-phase displacement between $I_a$ and $I_m$ can approach $90^\circ$. Together with the spatial $90^\circ$ displacement, this creates a two-phase rotating field similar to that of a polyphase motor.
+The two currents, flowing in windings that are $90^\circ$ apart in space, set up a two-phase rotating magnetic field. This field sweeps past the rotor, inducing voltages and currents in the squirrel-cage bars. The interaction of the rotor current with the stator field produces a torque that starts the motor.
 
-**Torque production**  
-The rotating field induces emfs and currents in the squirrel-cage rotor. The interaction between the rotor current and the stator field produces a unidirectional starting torque, as long as both windings are energised.
-
-![Capacitor-start motor stator windings](./pyq-assets/textbook/108105131_p653_img-335_jpeg.png)
-
-*Figure: Auxiliary winding and capacitor connection for phase splitting.*
-
-Mathematically, if the two mmfs are given by:
+Mathematically, if the main and auxiliary mmfs are
 $$
 \begin{aligned}
-F_m &= F_{m,\max} \cos(\omega t) \\
-F_a &= F_{a,\max} \cos(\omega t - 90^\circ)  \quad (\text{due to spatial displacement})
+F_m &= F_{m,\max} \cos\omega t \, \cos\theta \\
+F_a &= F_{a,\max} \cos(\omega t - 90^\circ) \, \cos(\theta - 90^\circ)
 \end{aligned}
 $$
-and the currents have a similar time phase difference, the resultant mmf becomes a travelling wave that pulls the rotor.
+the resultant mmf is a travelling wave, confirming a rotating field.
 
-**Need for the capacitor after starting**  
-In a conventional capacitor-start motor, the auxiliary winding and its capacitor are designed for intermittent duty. A centrifugal switch disconnects them automatically when the motor reaches about $70\,{-}\,80\%$ of synchronous speed. Once the motor is running, the main winding alone can sustain torque. If the starting capacitor remained in circuit:
-- It would carry continuous current and overheat, leading to failure.
-- It would cause unnecessary losses and could create an unbalanced running condition.
+After the motor accelerates to about $70\!-\!80\%$ of synchronous speed, a centrifugal switch disconnects the auxiliary winding and its capacitor. They are not needed for running because the main winding alone can sustain torque. Moreover, the capacitor and auxiliary winding are designed for short-time duty; if left in circuit they would overheat and cause unnecessary losses. Thus, for a conventional capacitor-start motor, the capacitor is required only for starting.
 
-Thus, for a pure capacitor-start motor, the capacitor is **not needed** after starting. (In a *capacitor-run* motor, a smaller capacitor stays connected to improve running power factor and noise, but that is a different design.)
+In a capacitor-run motor (different design) a smaller capacitor remains permanently connected to improve running power factor and reduce noise, but that is not the case here.
 
-> **Final answer:** The capacitor provides the phase displacement necessary for starting; in a capacitor-start motor it is disconnected after start, while in a capacitor-run motor a small capacitor remains for improved running performance.
+![Capacitor-start motor circuit](https://commons.wikimedia.org/wiki/Special:Redirect/file/Capasitor-start%20single-phase%20motor%20circuit%20diagram.svg)
+*Figure: Capacitor-start single-phase induction motor circuit. Source: Wikimedia Commons.*
+
+> **Final answer:** The capacitor provides the necessary phase shift between the two winding currents, creating a rotating field that develops starting torque. In a capacitor-start motor the capacitor and auxiliary winding are disconnected after starting; they are not needed for running and would overheat if left in circuit.
 
 
 ---
@@ -5102,34 +3821,19 @@ Thus, for a pure capacitor-start motor, the capacitor is **not needed** after st
 With the help of double field revolving theory, prove that a single-phase induction 3 motor containing only one stator winding produces no starting torque. Justify your answer with suitable characteristics.
 
 ### Answer 73
-By the double revolving field theory, the pulsating magnetomotive force (mmf) produced by a single-phase stator winding can be resolved into two rotating mmf waves of equal amplitude but traveling in opposite directions at synchronous speed. Mathematically, if the spatial distribution of the mmf is represented by $F_m \cos\theta$ and the winding carries a sinusoidal current $i = I_m \cos(\omega t)$, the resultant mmf is
-$$
-F(\theta, t) = F_m \cos\theta \cos(\omega t) = \frac{F_m}{2} \cos(\theta - \omega t) + \frac{F_m}{2} \cos(\theta + \omega t).
-$$
-The first term represents a forward rotating field, while the second term represents a backward rotating field.
+According to the double-revolving-field theory, the pulsating MMF produced by a single-phase winding can be resolved into two rotating MMFs of half amplitude rotating in opposite directions at synchronous speed. For a sinusoidal current, the resultant MMF is
 
-At standstill, the rotor is stationary, so the slip with respect to both forward and backward fields is unity: $s_f = s_b = 1$. Each rotating field induces currents in the rotor bars and produces a torque. The torque produced by the forward field is
 $$
-T_f = K \frac{R_2'}{R_2'^2 + X_2'^2},
-$$
-and the torque produced by the backward field is
-$$
-T_b = K \frac{R_2'}{R_2'^2 + X_2'^2}.
-$$
-These two torques are exactly equal in magnitude but act in opposite directions (the forward field tries to rotate the rotor in the forward direction, while the backward field tries to rotate it in the reverse direction). Hence, the net electromagnetic torque at standstill is
-$$
-T_{\text{net}} = T_f - T_b = 0.
+\begin{aligned}
+F(\theta,t) = \frac{F_m}{2} \cos(\theta - \omega t) + \frac{F_m}{2} \cos(\theta + \omega t).
+\end{aligned}
 $$
 
-The torque-speed characteristic of a single-phase induction motor, as shown below, clearly illustrates this cancellation. The curve for the resultant torque passes through zero at $s=1$ (standstill), confirming that the motor cannot start on its own.
+At standstill, both fields rotate at synchronous speed relative to the rotor, so slip with respect to each field is $s_f = s_b = 1$. The two fields induce equal rotor currents and produce equal electromagnetic torques, but in opposite directions. Hence the net starting torque $T_{\text{net}} = T_f - T_b = 0$.
 
-![Torque-slip characteristic of a single-phase induction motor with only main winding](./pyq-assets/textbook/108105131_p640_img-327_jpeg.png)
+This is reflected in the torque-slip characteristic: the forward and backward torque curves are symmetrical about $s=1$, and their sum passes through zero at standstill. Therefore, a single-phase motor with only one winding cannot develop any starting torque; an auxiliary winding is needed to initiate rotation.
 
-*Figure: Torque-slip characteristic showing forward torque $T_f$, backward torque $T_b$, and resultant torque $T_{\text{net}}$. At standstill ($s=1$), $T_{\text{net}} = 0$.*
-
-Therefore, a single-phase induction motor containing only one stator winding produces no starting torque, necessitating additional means (such as an auxiliary winding) to initiate rotation.
-
-> **Final answer:** The two equal and opposite torques cancel at standstill, as evidenced by the torque-slip characteristic passing through zero at $s=1$.
+> **Final answer:** The two equal and opposite torques cancel exactly at standstill, so the motor produces no starting torque.
 
 
 ---
@@ -5140,21 +3844,9 @@ Therefore, a single-phase induction motor containing only one stator winding pro
 Explain the operation of a single-phase induction motor using double field revolving theory. (02)
 
 ### Answer 74
-A single-phase stator winding carrying AC produces a pulsating magnetic field that is stationary in space but varies sinusoidally with time. According to the double-revolving-field theory, this pulsating field can be expressed as the sum of two constant-amplitude rotating fields turning in opposite directions at synchronous speed $\omega_s$:
+A single-phase stator winding carrying AC creates a pulsating MMF that can be expressed as the sum of two rotating MMFs of half amplitude rotating inversely at synchronous speed: $F(\theta,t) = \frac{F_m}{2} \cos(\theta - \omega t) + \frac{F_m}{2} \cos(\theta + \omega t)$. At rest, both fields induce equal rotor currents and produce equal but opposite torques, yielding zero starting torque. If the rotor is started by auxiliary means, the forward field slip reduces (greater torque) and the backward field slip increases (smaller torque). The net torque then propels the motor in the direction of initial rotation, and it continues to run on the main winding alone.
 
-$$F(\theta,t) = \frac{F_m}{2}\cos(\theta - \omega t) + \frac{F_m}{2}\cos(\theta + \omega t).$$
-
-At standstill, both fields sweep past the rotor at the same speed, inducing equal currents and producing equal but opposite torques. Hence the net starting torque is zero, making the motor non-self-starting.
-
-If the rotor is given an initial spin in either direction, the forward field slip $s_f$ becomes small while the backward field slip $s_b = 2 - s_f$ is large. The forward torque then dominates, and the motor accelerates to a steady running condition where it continues to rotate on the main winding alone.
-
-Thus the double-revolving-field theory explains both the absence of starting torque and the ability to develop running torque once an auxiliary start is provided.
-
-![Double revolving field theory illustration.](./pyq-assets/textbook/108105131_p613_img-313_jpeg.png)
-
-<p align="center"><i>Fig. 1:</i> Double revolving field concept.</p>
-
-> **Final answer:** The double-revolving-field theory decomposes the pulsating stator field into two counter-rotating fields. At standstill their equal and opposite torques cancel, so the motor has no starting torque. After an initial rotation, the forward field torque overcomes the backward field torque, enabling the motor to run.
+> **Final answer:** The double-revolving-field theory explains the non-self-starting nature and running capability of single-phase induction motors.
 
 
 ---
@@ -5165,64 +3857,57 @@ Thus the double-revolving-field theory explains both the absence of starting tor
 A 1500 kVA, 6.6 kV, 3-phase star connected wound rotor alternator with a resistance of 0.4 Ω and reactance of 6 Ω per phase, delivers full load current at 0.8 power factor lagging and normal terminal voltage. Estimate the excitation emf required and respective load angle. (04)
 
 ### Answer 75
-The alternator is star-connected, so the per-phase values are used for the equivalent circuit.
+**Given:** 3-phase star-connected alternator, $S = 1500\ \text{kVA}$, $V_L = 6.6\ \text{kV}$, $R_a = 0.4\ \Omega$, $X_s = 6\ \Omega$, power factor $0.8$ lagging.
 
-**Per-phase terminal voltage:**
+**Solution.**
 
+Per-phase terminal voltage:
 $$
-V_{\text{ph}} = \frac{V_L}{\sqrt{3}} = \frac{6600}{\sqrt{3}} \approx 3810.5\ \text{V}
-$$
-
-**Full-load armature current:**
-
-$$
-I_a = \frac{S}{\sqrt{3}\,V_L} = \frac{1500 \times 10^3}{\sqrt{3} \times 6600} \approx 131.22\ \text{A}
+V_{ph} = \frac{V_L}{\sqrt{3}} = \frac{6600}{\sqrt{3}} \approx 3810.5\ \text{V}.
 $$
 
-The power factor is $0.8$ lagging, hence the current lags the terminal voltage by $\varphi = \cos^{-1}(0.8) = 36.87^\circ$.
-
-For a cylindrical-rotor synchronous generator, the excitation emf per phase ($E_f$) is given by the phasor sum of the terminal voltage and the internal impedance drops:
-
+Full-load current:
 $$
-\tilde{E}_f = \tilde{V}_{\text{ph}} + \tilde{I}_a(R_a + jX_s)
+I_a = \frac{S}{\sqrt{3} V_L} = \frac{1500 \times 10^3}{\sqrt{3} \times 6600} \approx 131.22\ \text{A}.
 $$
 
-Taking $\tilde{V}_{\text{ph}}$ as the reference phasor ($\tilde{V}_{\text{ph}} = 3810.5\angle 0^\circ\ \text{V}$), the current phasor is $\tilde{I}_a = 131.22\angle{-36.87^\circ}\ \text{A}$.
+The current lags the terminal voltage by $\phi = \cos^{-1}(0.8) \approx 36.87^\circ$. Taking $\tilde{V}_{ph} = 3810.5\angle 0^\circ\ \text{V}$, the current phasor is $\tilde{I}_a = 131.22\angle -36.87^\circ\ \text{A}$. The excitation emf $\tilde{E}_f$ is the phasor sum:
 
-The resistance drop is $I_a R_a = 131.22 \times 0.4 = 52.49\ \text{V}$ (in phase with $\tilde{I}_a$), and the synchronous reactance drop is $I_a X_s = 131.22 \times 6 = 787.32\ \text{V}$ (leading $\tilde{I}_a$ by $90^\circ$).
+$$
+\tilde{E}_f = \tilde{V}_{ph} + \tilde{I}_a (R_a + jX_s).
+$$
 
-The rectangular components of $\tilde{E}_f$ are:
+Resolving into real and imaginary components:
 
 $$
 \begin{aligned}
-E_{\text{real}} &= V_{\text{ph}} + I_a R_a \cos\varphi + I_a X_s \sin\varphi \\
-&= 3810.5 + 52.49 \times 0.8 + 787.32 \times 0.6 \\
-&= 3810.5 + 41.99 + 472.39 \approx 4324.9\ \text{V} \\[4pt]
-E_{\text{imag}} &= I_a X_s \cos\varphi - I_a R_a \sin\varphi \\
-&= 787.32 \times 0.8 - 52.49 \times 0.6 \\
-&= 629.86 - 31.49 \approx 598.4\ \text{V}
+E_{\text{real}} &= V_{ph} + I_a R_a \cos\phi + I_a X_s \sin\phi \\
+&= 3810.5 + (131.22\times0.4\times0.8) + (131.22\times6\times0.6) \\
+&= 3810.5 + 41.99 + 472.39 \approx 4324.9\ \text{V},
 \end{aligned}
 $$
-
-Hence,
 
 $$
 \begin{aligned}
-E_f &= \sqrt{E_{\text{real}}^2 + E_{\text{imag}}^2} 
-      = \sqrt{(4324.9)^2 + (598.4)^2} \approx 4366.1\ \text{V} \\[4pt]
-\delta &= \tan^{-1}\!\left(\frac{E_{\text{imag}}}{E_{\text{real}}}\right)
-        = \tan^{-1}\!\left(\frac{598.4}{4324.9}\right) \approx 7.88^\circ
+E_{\text{imag}} &= I_a X_s \cos\phi - I_a R_a \sin\phi \\
+&= (131.22\times6\times0.8) - (131.22\times0.4\times0.6) \\
+&= 629.86 - 31.49 \approx 598.4\ \text{V}.
 \end{aligned}
 $$
 
-The phasor diagram below visualises this addition of the resistive and reactive drops to obtain the excitation emf.
+Thus, magnitude per phase:
 
-<figure>
-  <img src="./pyq-assets/textbook/108105131_p799_img-409_jpeg.png" alt="Phasor diagram of alternator at lagging pf" />
-  <figcaption>Phasor diagram of a synchronous generator operating at lagging power factor.</figcaption>
-</figure>
+$$
+E_f = \sqrt{4324.9^2 + 598.4^2} \approx 4366\ \text{V}.
+$$
 
-> **Final answer:** Excitation emf per phase $\approx 4366$ V; load angle $\approx 7.88^\circ$.
+Load angle:
+
+$$
+\delta = \tan^{-1}\left(\frac{598.4}{4324.9}\right) \approx 7.88^\circ.
+$$
+
+> **Final answer:** Excitation emf per phase $\approx 4366\ \text{V}$, load angle $\approx 7.88^\circ$ (lagging).
 
 
 ---
@@ -5233,26 +3918,17 @@ The phasor diagram below visualises this addition of the resistive and reactive 
 What are the advantages of placing the field system of a large alternator on its rotor and the 3-phase windings on its stator? (02)
 
 ### Answer 76
-In large three-phase alternators, the armature (where the AC power is generated) is placed on the stator and the field system on the rotor. This arrangement offers several critical advantages:
+Advantages of rotor-field/stator-armature construction in large alternators:
 
-- **High-voltage, high-current windings are stationary**  
-  The three-phase armature windings carry the full output voltage and current (often several kV and hundreds or thousands of amperes). Placing them on the stationary stator eliminates the need for heavy-current sliding contacts (slip-rings) to connect the rotating winding to the external bus. The phase conductors can be bolted directly to rigid busbars or cables, resulting in lower contact losses, higher reliability, and simpler maintenance.
+- The heavy AC armature winding, carrying high voltage and high current, is stationary. This eliminates high-current sliding contacts, allows direct bolted connections to busbars, reduces losses, and improves reliability.
+- Stationary windings permit robust insulation and mechanical bracing against short-circuit forces, unaffected by centrifugal stresses.
+- Effective cooling is simpler: large cooling ducts and liquid cooling systems can be incorporated into the stationary frame.
+- The rotor DC field winding operates at low voltage and low current (a few percent of machine rating). Excitation power is easily supplied through small slip-rings or a brushless exciter, minimizing maintenance.
+- The rotor is mechanically simpler and lighter, enabling higher speeds and reducing centrifugal stress on field windings.
 
-- **Easier insulation and mechanical bracing**  
-  Stationary windings can be firmly braced against the large electromagnetic forces that occur under short-circuit conditions. The insulation system can be designed without concern for centrifugal stresses, and the thicker ground-wall insulation required for high voltage is easier to apply and test on a rigid stator core.
+This arrangement is universally adopted for large alternators because it separates the high-power output circuit from the low-power excitation circuit, yielding a robust, low-maintenance machine.
 
-- **Better cooling of the armature**  
-  The stator frame can incorporate large-volume air or hydrogen cooling ducts, and in very large machines direct-water-cooled stator bars are common. A stationary armature simplifies the delivery of coolant and the removal of heat.
-
-- **Simplified rotor construction**  
-  The field winding operates at a much lower voltage (typically a few hundred volts) and carries only the DC excitation current, which is about 1-5 % of the machine rating. Consequently, the rotor slip-rings or brushless exciter diodes handle modest power levels, making them compact and reducing maintenance. The rotor itself is mechanically simpler and lighter, allowing higher rotational speeds with reduced centrifugal stress.
-
-- **Enhanced reliability and reduced maintenance**  
-  With only low-power connections to the rotor, the machine avoids the regular inspection and replacement of high-current brushes and slip-rings. Brushless excitation systems further eliminate all sliding electrical contacts, making the alternator virtually maintenance-free for long periods.
-
-Thus, placing the field on the rotor and the three-phase winding on the stator is the universally adopted construction for large alternators because it combines a robust stationary power-circuit with a lightweight, low-maintenance rotating field.
-
-> **Final answer:** Placing the field on the rotor enables a high-power stationary armature with simple cooling and insulation, while the low-power DC field is easily transferred to the rotor via modest slip-rings or a brushless exciter.
+> **Final answer:** Placing the field on the rotor enables a stationary high-power armature with simple insulation and cooling, while the low-power DC field is fed via small slip-rings or a brushless system, resulting in high reliability and easy maintenance.
 
 
 ---
@@ -5263,25 +3939,26 @@ Thus, placing the field on the rotor and the three-phase winding on the stator i
 With neat sketch, explain how an alternator can be synchronized to the grid using ‘Bright lamp method’. What are the conditions to be met to synchronize two 3-phase alternators? (05)
 
 ### Answer 77
-**Bright-lamp (Two-bright lamp) synchronising method**
+**Bright-lamp synchronisation method**
 
-![Bright lamp connection diagram](./pyq-assets/textbook/108105131_p718_img-367_jpeg.png)
+The procedure is as follows:
 
-*Figure: Connection of lamps for the bright-lamp method of synchronisation. Lamp L1 is connected directly between corresponding phases (R-R′). Lamps L2 and L3 are cross-connected (Y-B′ and B-Y′).*
-
-1. The incoming machine is brought to rated speed by its prime mover. Its field current is adjusted until the terminal voltage (e.g., line-to-line) equals the bus-bar voltage.
-2. The machine is then allowed to run. The three lamps will flicker at a frequency equal to the difference between the alternator frequency and the grid frequency.
-3. The prime-mover speed is slowly trimmed until the flicker becomes very slow (ideally the lamps stay steady).
-4. The instant for closing the synchronising switch is when the directly-connected lamp (L1) is **dark** and the two cross-connected lamps (L2 & L3) glow with **equal brightness**. At that moment the voltages are equal in magnitude, frequency, and phase coincidence, and the phase sequence is verified (since the cross-connected lamps indicate the correct sequence).
+1. Bring the incoming alternator to synchronous speed and adjust the field current until its terminal voltage equals the busbar voltage.
+2. Connect three lamps between the alternator and the busbar:
+   - Lamp L1 directly between corresponding phases (e.g., R-R′).
+   - Lamps L2 and L3 cross-connected (Y-B′ and B-Y′).
+3. The lamps flicker at the difference frequency between the alternator and the grid.
+4. Trim the prime-mover speed to slow the flicker; when the flicker becomes very slow (ideally steady), observe the lamps.
+5. Close the synchronising switch at the instant when **L1 is dark** and **L2 and L3 glow with equal brightness**. This instant confirms equality of voltage magnitude, frequency, correct phase sequence, and zero phase angle.
 
 **Conditions for synchronising two 3-phase alternators**
 
-- Same phase sequence (R-Y-B and R′-Y′-B′ must be identical).
-- Equal terminal voltage (magnitude of the incoming machine voltage must match the bus voltage).
-- Equal frequency (both machines must run at the same electrical speed).
-- Zero phase angle between corresponding phases - i.e., the voltages must be **in phase** at the instant of paralleling.
+- Equal terminal voltage magnitudes.
+- Equal frequency (i.e., both machines run at the same speed for equal number of poles).
+- Identical phase sequence (R-Y-B matches R′-Y′-B′).
+- Zero phase angle between corresponding phases at the moment of paralleling (voltages must be in phase).
 
-> **Final answer:** The bright-lamp method gives a clear visual indication of voltage and phase matching; synchronising is done when the directly-connected lamp is dark and the two cross-connected lamps glow with equal brightness, provided all four synchronising conditions are satisfied.
+> **Final answer:** The bright-lamp method uses one direct and two cross-connected lamps; switching is done when the direct lamp is dark and the cross lamps are equally bright, verifying equal voltage, equal frequency, correct phase sequence and zero phase displacement.
 
 
 ---
@@ -5292,77 +3969,35 @@ With neat sketch, explain how an alternator can be synchronized to the grid usin
 ‘The inherent nature of synchronous machines is to rotate in synchronism with the supply frequency while that of induction motors is to rotate with a slip’. Differentiate the above two machines. Use necessary schematic diagrams to justify your answer.
 
 ### Answer 78
-Synchronous machines and induction machines are the two main types of AC machines, yet they differ fundamentally in their rotor construction, excitation, and speed-torque characteristics. The statement highlights the most fundamental distinction: a synchronous machine runs exactly at the speed of the rotating stator field (synchronous speed), while an induction motor must run at a speed slightly lower than the synchronous speed, i.e., with a slip.
+**Inherent difference**
+A synchronous machine is designed to run exactly at the synchronous speed ($s=0$) because its rotor is separately excited with DC, establishing a constant magnetic polarity that locks into the stator's rotating magnetic field. In contrast, an induction motor must run at a speed slightly lower than synchronous speed ($s>0$) so that relative motion exists to induce rotor currents; without slip, no torque can develop.
 
-These differences stem from the way the rotor magnetic field is produced and how torque is developed. A clear understanding of each machine's configuration and operating principle illustrates why the inherent nature of one is to lock into synchronism and the other to slip.
+**Construction and excitation**
+- *Synchronous machine*: Stator carries a three-phase winding producing a rotating field at $N_s = \frac{120 f}{P}$. The rotor houses a DC field winding fed via slip-rings or a brushless exciter (or uses permanent magnets).
+  ![Synchronous machine diagram](https://commons.wikimedia.org/wiki/Special:Redirect/file/Synchronous%20Machine%20Diagram.png)
+  *Figure: Cross-section of a salient-pole synchronous machine. The stator holds a three-phase winding; the rotor has a DC field winding supplied through slip rings. Source: Wikimedia Commons.*
+- *Induction motor*: Stator is identical; rotor consists of short-circuited conductors (squirrel-cage or wound rotor). No external DC source is connected. Rotor currents are induced solely by the slip-dependent voltage.
 
-### 1. Construction and Excitation
+**Speed-slip relationship**
+$$\begin{aligned} N_s &= \frac{120 f}{P}, \quad s = \frac{N_s - N_r}{N_s}. \end{aligned}$$
+- Synchronous machine: $s = 0$ in steady state; speed is rigidly tied to supply frequency regardless of load.
+- Induction motor: $0 < s < 1$ for motoring; full-load slip typically 2-5 %. Load increase causes slip to increase.
 
-**Synchronous machine**  
-The stator carries a three-phase winding that, when energised from a three-phase supply, creates a rotating magnetic field at synchronous speed $N_s = \dfrac{120\,f}{P}$ (where $f$ is the supply frequency and $P$ the number of poles).  
-The rotor houses a field winding (or permanent magnets) that is separately excited with direct current. This DC excitation establishes a fixed magnetic polarity on the rotor. Because the rotor field is not dependent on the stator field for its creation, the rotor can produce torque even when it is stationary relative to the rotating field (i.e., at zero slip). The rotor poles are physically attracted to the opposite poles of the stator rotating field, and the machine runs in exact synchronism under steady-state conditions.
+**Torque production**
+- Synchronous machine: Torque is produced by the magnetic attraction between stator and rotor fields. It exists even at standstill (reluctance torque) and at zero slip. The electromagnetic torque is proportional to $\sin\delta$, where $\delta$ is the load angle.
+- Induction motor: Torque depends entirely on the slip-frequency rotor currents. The per-phase equivalent circuit (see Figure) shows that the rotor branch contains a resistance $R_2'/s$.
+  ![Induction motor equivalent circuit](https://commons.wikimedia.org/wiki/Special:Redirect/file/Induction-Motor-Equiv-Circuit.svg)
+  *Figure: Per-phase equivalent circuit of a three-phase induction motor. The rotor resistance $R_2'/s$ grows as slip decreases; at synchronism ($s=0$) the branch becomes open, giving zero rotor current and zero torque. Source: Wikimedia Commons.*
+At small slips, developed torque $T \propto s/R_2'$. At $s=0$ (synchronous speed), the rotor emf and current are zero; hence no torque is produced. Therefore, an induction machine cannot operate at synchronous speed under load.
 
-**Induction motor**  
-The stator is identical to that of a synchronous machine and produces a rotating field at $N_s$. The rotor, however, is either a squirrel-cage or a wound-rotor with short-circuited windings. No external DC source is connected to the rotor. Rotor currents are induced solely by the relative motion between the stator rotating field and the rotor conductors. If the rotor were to rotate at synchronous speed, there would be no relative motion, no induced emf, no rotor currents, and hence no torque. Therefore, an induction motor must always run at a speed $N_r$ lower than $N_s$ to maintain the slip $s = \dfrac{N_s - N_r}{N_s}$ needed for torque production.
+**Additional differentiating features**
+- *Starting*: Synchronous machine is not self-starting - requires damper windings, a pony motor, or variable-frequency drive. Induction motor is self-starting when connected to the three-phase supply.
+- *Power factor*: Synchronous machine can be operated at lagging, unity, or leading power factor by adjusting DC excitation. Induction motor always draws lagging reactive power; its power factor cannot be made leading.
 
-### 2. Speed and Slip
+**Conclusion**
+The fundamental distinction is that the synchronous machine possesses its own rotor magnetisation, allowing it to lock into step with the rotating stator field at zero slip, whereas the induction motor relies on electromagnetic induction caused by a slip-produced relative velocity, making slip essential for any torque output.
 
-- **Synchronous machine:**  
-  
-$$
-N_r = N_s = \frac{120 f}{P}, \qquad s = 0 \quad \text{(in steady state)}
-$$
-
-  The rotor speed is rigidly locked to the supply frequency. Load changes do not alter the speed; instead, the angular displacement $\delta$ between the rotor and stator fields adjusts to supply the required torque.
-
-- **Induction motor:**  
-  
-$$
-N_r = (1-s)\,N_s, \qquad 0 < s < 1 \quad \text{(for motoring action)}
-$$
-
-  The slip increases with load. The rated full-load slip is typically 2-5% for normal induction motors.
-
-### 3. Torque Production
-
-**Synchronous machine:**  
-Torque is produced by the interaction of the stator rotating field and the constant-amplitude rotor field. The electromagnetic torque is given by
-
-$$
-T = \frac{3\, V_t \, E_f}{X_s \, \omega_s} \sin \delta
-$$
-
-where $V_t$ is the terminal voltage, $E_f$ is the excitation emf, $X_s$ is the synchronous reactance, $\omega_s$ is the synchronous angular speed, and $\delta$ is the torque (load) angle. The torque can exist at zero slip, and the machine can develop torque over a wide range of $\delta$ up to $90^\circ$ (in a cylindrical-rotor machine).
-
-**Induction motor:**  
-Torque is generated by the interaction of the rotating field and the currents induced in the rotor. The per-phase equivalent circuit gives the air-gap power $P_g = I_2'^{\,2} \frac{R_2'}{s}$, and the developed torque
-
-$$
-T = \frac{P_g}{\omega_s} \propto \frac{s}{R_2'} \quad \text{(at small slips)}.
-$$
-
-If $s = 0$, the rotor current $I_2' = 0$ and torque becomes zero. Thus slip is indispensable for induction motor torque.
-
-### 4. Power Factor Control
-
-- **Synchronous machine:** By adjusting the DC field excitation, the machine can operate at lagging, unity, or leading power factor. Over-excitation makes it behave like a capacitor, a feature widely used for power factor correction.
-- **Induction motor:** Always draws a lagging reactive current from the supply. The power factor is load-dependent and cannot be adjusted to leading.
-
-### 5. Starting Behaviour
-
-- **Synchronous machine:** Not self-starting. The stationary rotor cannot instantly lock to a rapidly rotating stator field. Special means such as damper (amortisseur) windings (acting as a squirrel-cage during start), a pony motor, or variable-frequency drives are required to bring it near synchronous speed.
-- **Induction motor:** Inherently self-starting when the three-phase supply is connected, because the rotating field immediately induces currents in the stationary rotor and produces a starting torque.
-
-### 6. Schematic Illustration
-
-While a physical diagram would typically show side-by-side cross-sections of the two machines, the following textual description clarifies the essential visual differences:
-
-*Synchronous machine:* Stator with three-phase winding; rotor with salient or cylindrical poles, each pole carrying a concentrated field coil. The field coils are connected to an external DC source through slip rings and brushes (or brushless excitation). The distinct rotor poles visually lock to the stator poles.  
-*Induction motor:* Stator identical to above; rotor consists of a laminated iron core with short-circuited copper or aluminum bars embedded in slots (squirrel-cage) or a three-phase winding connected to slip rings that are externally short-circuited. No separate excitation is visible.
-
-These constructional differences directly underpin the operational contrast: the synchronous machine's independently excited rotor allows it to run at zero slip, while the induction motor's passive rotor must depend on relative motion to function.
-
-> **Final answer:** Synchronous machines operate at synchronous speed (zero slip) with controllable power factor; induction motors must operate with slip to generate rotor current and torque.
+> **Final answer:** A synchronous machine runs at synchronous speed ($s=0$) because its separately excited rotor field physically locks to the stator field; an induction motor must slip ($s>0$) to induce rotor currents and develop torque, as illustrated by its equivalent circuit where the rotor branch demands $s \neq 0$ for current to flow.
 
 
 ---
@@ -5373,30 +4008,36 @@ These constructional differences directly underpin the operational contrast: the
 ‘Unlike asynchronous machines, Synchronous machines can be operated at different power factors’. Justify this statement with the help of necessary characteristics. 3
 
 ### Answer 79
-In a synchronous machine, the rotor is excited by a separate DC source, which establishes the main magnetic field. This allows independent control of the flux magnitude. When connected to a constant-voltage constant-frequency bus, the real power exchanged is determined by the load angle $\delta$ (via mechanical torque), while the reactive power-and hence the power factor-is governed by the field current $I_f$.
+Synchronous machines can operate at any power factor because their rotor flux is produced by a separate DC excitation, while induction machines require magnetising current drawn from the stator and always operate at a lagging power factor.
 
-Using the simplified per-phase equivalent circuit, the phasor equation is  
-$\overline{V} = \overline{E}_f + j\,\overline{I}_a X_s$,  
-where $\overline{V}$ is the terminal voltage, $\overline{E}_f$ is the excitation emf proportional to $I_f$, and $X_s$ is the synchronous reactance. From this, the complex power per phase is  
-$S = \overline{V}\,\overline{I}_a^* = P + jQ$.  
-For a non-salient pole machine, the active and reactive powers are given by  
+For a non-salient pole machine, the per-phase phasor equation (neglecting $R_a$) is
 $$
 \begin{aligned}
-P &= \frac{3VE_f}{X_s}\sin\delta,\\
-Q &= \frac{3V}{X_s}(E_f\cos\delta - V).
+\tilde{V} = \tilde{E}_f + j\tilde{I}_a X_s .
 \end{aligned}
 $$
-At a given mechanical power (hence fixed $\delta$), varying $I_f$ changes $E_f$ and thus alters $Q$. Consequently, the stator current magnitude and phase change, enabling three distinct operating conditions:
+The three-phase active and reactive power are
+$$
+\begin{aligned}
+P &= \frac{3VE_f}{X_s}\sin\delta ,\\
+Q &= \frac{3V}{X_s}\bigl(E_f\cos\delta - V\bigr).
+\end{aligned}
+$$
+For a fixed real power $P$, the load angle $\delta$ is nearly constant. The excitation emf $E_f$ is proportional to the field current $I_f$. Hence, by adjusting $I_f$, the reactive power $Q$ changes, allowing three modes:
 
-- **Under-excitation** ($E_f \cos\delta < V$): The machine absorbs reactive power from the bus; the stator current lags the terminal voltage → **lagging power factor**.
-- **Normal excitation** ($E_f \cos\delta = V$): The machine neither supplies nor absorbs reactive power; the stator current is minimum and in phase with the voltage → **unity power factor**.
-- **Over-excitation** ($E_f \cos\delta > V$): The machine delivers reactive power to the bus; the stator current leads the terminal voltage → **leading power factor**.
+- **Under-excitation** ($E_f\cos\delta < V$): machine absorbs reactive power → lagging power factor.
+- **Normal excitation** ($E_f\cos\delta = V$): $Q=0$ → unity power factor, minimum armature current.
+- **Over-excitation** ($E_f\cos\delta > V$): machine delivers reactive power → leading power factor.
 
-These operating points are quantitatively summarised by the well-known **V-curves** (armature current vs. field current at constant real power), which exhibit a minimum at unity pf and rise for both under- and over-excitation. This inherent capability makes the synchronous machine unique for power-factor correction and flexible operation.
+These operating regions are summarised by the **V-curves** ($I_a$ vs $I_f$ at constant $P$), which have a distinct minimum at unity pf.
 
-In contrast, an asynchronous (induction) machine has a singly-excited rotor; its magnetic field can be established only by drawing lagging reactive current from the stator terminals. Therefore, its power factor is always lagging and cannot be adjusted without external capacitors.
+![V-curves of a synchronous motor](https://commons.wikimedia.org/wiki/Special:Redirect/file/V%20curve%20synchronous%20motor.svg)
+*Figure: V-curves for a synchronous motor; a similar family of curves exists for generators. Source: Wikimedia Commons: File:V curve synchronous motor.svg.*
 
-> **Final answer:** By adjusting the DC field current, a synchronous machine can operate at lagging, unity, or leading power factor, whereas an induction machine inherently operates at a lagging power factor and cannot vary it independently. This is demonstrated by the V-curves and the reactive-power expression $Q = \frac{3V}{X_s}(E_f\cos\delta - V)$.
+In contrast, an induction machine has a short-circuited rotor; its magnetic field can be established only by drawing lagging reactive current from the stator. Its power factor is inherently lagging and cannot be varied without external capacitors. Thus, the ability to independently control the rotor flux makes the synchronous machine uniquely capable of operating at different power factors.
+
+> **Final answer:**
+> By varying the DC field current, a synchronous machine can operate at lagging, unity or leading power factor, whereas an induction machine always draws lagging VARs and cannot control its power factor. This is shown by the V-curves ($I_a$ vs $I_f$) and the reactive power equation $Q = \frac{3V}{X_s}(E_f\cos\delta - V)$.
 
 
 ---
@@ -5407,7 +4048,52 @@ In contrast, an asynchronous (induction) machine has a singly-excited rotor; its
 A 3 phase, 6600 V, 50 Hz, 1000 rpm, star connected alternator is delivering a constant power of 4 MW to an infinite bus system. Its synchronous impedance per phase is (0+j0.75) Ω. Determine the excitation emf required if the power factor is to be adjusted 0.7 lagging. Also obtain the current and power factor when the excitation is set to its minimum value required to deliver the same power. (06)
 
 ### Answer 80
-Given: 3-phase, 6600 V (line), 50 Hz, star-connected alternator delivering constant power $P = 4\text{ MW}$ to an infinite bus. Synchronous impedance per phase is purely reactive: $Z_s = (0 + j0.75)\,\Omega$ (armature resistance neglected).\n\nThe phase voltage is\n$$V = \frac{V_L}{\sqrt{3}} = \frac{6600}{\sqrt{3}} \approx 3810.5\text{ V}.$$\n\n***(i) Excitation emf at 0.7 lagging power factor***\n\nPower factor $\cos\varphi = 0.7$ lagging $\Rightarrow \varphi = \cos^{-1}(0.7) \approx 45.57^\circ$, $\sin\varphi = \sqrt{1-0.7^2} \approx 0.714$.\n\nLine current equals phase current for star connection. From total power:\n$$P = \sqrt{3}V_L I \cos\varphi \;\Longrightarrow\; I = \frac{4 \times 10^6}{\sqrt{3} \times 6600 \times 0.7} \approx 499.9\text{ A}.$$\n\nTake terminal voltage as reference: $\tilde{V} = V\angle 0^\circ$.  The armature current lags: $\tilde{I} = I\angle -\varphi = 499.9\angle -45.57^\circ$ A.\n\nThe phasor diagram for a generator with lagging pf (neglecting $R_a$) is shown below.  The excitation emf is\n$$\tilde{E} = \tilde{V} + jX_s\tilde{I}.$$\n\n<figure style="text-align:center;">\n  <img src="./pyq-assets/textbook/108105131_p749_img-382_jpeg.png" alt="Phasor diagram for lagging pf generator" />\n  <figcaption><strong>Figure:</strong> Phasor diagram of a synchronous generator with lagging power factor, neglecting armature resistance.</figcaption>\n</figure>\n\nReactance drop:\n$$jX_s\tilde{I} = j0.75 \times 499.9\angle -45.57^\circ = 0.75\angle 90^\circ \times 499.9\angle -45.57^\circ = 374.9\angle 44.43^\circ\text{ V}.$$\n\nExpress $\tilde{E}$ in rectangular form:\n$$\begin{aligned}\n\tilde{E} &= 3810.5 + 374.9\angle 44.43^\circ \\\n&= 3810.5 + 374.9\bigl(\cos 44.43^\circ + j\sin 44.43^\circ\bigr) \\\n&= 3810.5 + 374.9(0.714 + j0.7) \quad [\cos 44.43^\circ = \sin 45.57^\circ \approx 0.714,\; \sin 44.43^\circ = \cos 45.57^\circ \approx 0.7] \\\n&\approx 4078.3 + j262.4\text{ V}.\n\end{aligned}$$\n\nMagnitude (excitation emf per phase):\n$$E = |\tilde{E}| = \sqrt{4078.3^2 + 262.4^2} \approx 4087\text{ V}.$$\n\nLoad angle (power angle):\n$$\delta = \tan^{-1}\Bigl(\frac{262.4}{4078.3}\Bigr) \approx 3.68^\circ.$$\n\nThus for 0.7 lagging pf: **excitation emf $E \approx 4087$ V/phase**, **load angle $\delta \approx 3.68^\circ$**.\n\n***(ii) Minimum excitation for the same 4 MW***\n\nWith negligible resistance, real power per phase is $P_{\text{ph}} = \dfrac{VE}{X_s}\sin\delta$.  Total three-phase power:\n$$P = \frac{3VE}{X_s}\sin\delta.$$\n\nFor constant $P$, $E$ is minimised when $\sin\delta$ is maximum, i.e. $\delta = 90^\circ$ ($\sin\delta = 1$):\n$$E_{\min} = \frac{P X_s}{3V} = \frac{4 \times 10^6 \times 0.75}{3 \times 3810.5} \approx 262.4\text{ V/phase}.$$\n\nLine current at this condition: from $\tilde{E} = \tilde{V} + jX_s\tilde{I}$,\n$$\tilde{I} = \frac{\tilde{E} - \tilde{V}}{jX_s}.$$\nTake $\tilde{V} = 3810.5\angle 0^\circ$, $\tilde{E}_{\min} = 262.4\angle 90^\circ$.  Then\n$$\tilde{E}_{\min} - \tilde{V} = j262.4 - 3810.5 = -3810.5 + j262.4\text{ V},$$\n$$|\tilde{E}_{\min} - \tilde{V}| = \sqrt{3810.5^2 + 262.4^2} \approx 3819.7\text{ V},$$\n$$I = \frac{3819.7}{0.75} \approx 5093\text{ A}.$$\n\nPower factor from the total power equation:\n$$\cos\varphi = \frac{P}{\sqrt{3}V_L I} = \frac{4 \times 10^6}{\sqrt{3} \times 6600 \times 5093} \approx 0.0687.$$\nBecause $E_{\min} < V$ and $\delta = 90^\circ$, the current leads the voltage (the machine is over-excited); the power factor is **leading**.  (Alternatively, the current phasor is $\tilde{I} = 5093\angle 86.06^\circ$ A, giving $\cos 86.06^\circ \approx 0.0689$ leading.)\n\nHence at minimum excitation: **$E_{\min} \approx 262.4$ V/phase**, **line current $I \approx 5093$ A**, and **power factor $\approx 0.0687$ leading**.\n\n> **Final answer:** For 0.7 pf lagging: excitation emf $E \approx 4087$ V/phase, load angle $\delta \approx 3.68^\circ$. Minimum excitation: $E_{\min} \approx 262.4$ V/phase, line current $5093$ A, power factor $\approx 0.0687$ leading.
+**Given:** 3-phase, 6600 V (line), 50 Hz, star-connected alternator, $P = 4$ MW constant, $Z_s = j0.75\ \Omega$/phase (negligible resistance).
+
+**Steps:**
+
+1. Phase voltage: $V = \frac{6600}{\sqrt{3}} \approx 3810.5$ V.
+
+2. **At 0.7 lagging power factor:**
+   $\cos\varphi = 0.7 \Rightarrow \varphi = \cos^{-1}(0.7) \approx 45.57^\circ$, $\sin\varphi = 0.714$.
+   Line current:
+   $$
+   I = \frac{P}{\sqrt{3}\,V_L\cos\varphi} = \frac{4 \times 10^6}{\sqrt{3} \times 6600 \times 0.7} \approx 499.9\ \text{A}.
+   $$
+   Take $\tilde{V} = V\angle 0^\circ$; then $\tilde{I} = 499.9\angle -45.57^\circ$ A.
+   Excitation emf per phase:
+   $$
+   \begin{aligned}
+   \tilde{E} &= \tilde{V} + jX_s\tilde{I} = 3810.5 + j0.75 \times 499.9\angle -45.57^\circ \\
+            &= 3810.5 + 374.9\angle 44.43^\circ \\
+            &\approx 3810.5 + 374.9(0.714 + j0.7) \\
+            &\approx 4078.3 + j262.4\ \text{V}.
+   \end{aligned}
+   $$
+   Magnitude: $E = |\tilde{E}| \approx \sqrt{4078.3^2 + 262.4^2} \approx 4087$ V.
+   Load angle: $\delta = \tan^{-1}\!\bigl(\frac{262.4}{4078.3}\bigr) \approx 3.68^\circ$.
+
+3. **Minimum excitation for the same power:**
+   Real power: $P = \dfrac{3VE}{X_s}\sin\delta$. With $P$ constant, $E$ is minimum when $\sin\delta = 1$ ($\delta = 90^\circ$):
+   $$
+   E_{\min} = \frac{P\,X_s}{3V} = \frac{4\times10^6 \times 0.75}{3 \times 3810.5} \approx 262.4\ \text{V/phase}.
+   $$
+   Current at this condition: using $\tilde{E}_{\min} = E_{\min}\angle 90^\circ$ (taking $\tilde{V}$ as reference):
+   $$
+   \tilde{I} = \frac{\tilde{E}_{\min} - \tilde{V}}{jX_s}
+           = \frac{-3810.5 + j262.4}{j0.75}
+           \approx 5093\angle 86.06^\circ\ \text{A}
+   $$
+   (magnitude $I \approx 5093$ A).
+   Power factor:
+   $$
+   \cos\varphi = \frac{P}{\sqrt{3}V_L I} = \frac{4\times10^6}{\sqrt{3}\times6600\times5093} \approx 0.0687,
+   $$
+   and because $E_{\min} < V$ with $\delta = 90^\circ$ the current leads the voltage → **leading** pf.
+
+> **Final answer:**
+> For 0.7 pf lagging: $E \approx 4087$ V/phase, $\delta \approx 3.68^\circ$.
+> Minimum excitation: $E_{\min} \approx 262.4$ V/phase, $I \approx 5093$ A, pf $\approx 0.0687$ leading.
 
 
 ---
@@ -5418,115 +4104,56 @@ Given: 3-phase, 6600 V (line), 50 Hz, star-connected alternator delivering const
 A 3 phase, 50 Hz, 440 V, synchronous motor has a synchronous impedance of (0.5+j4) Ω/phase. Draw a set of excitation circles with excitation emfs of 50%, 90% and 125% of its terminal voltage. For an armature current of 35 A, graphically determine the load angle and power factor for each of the above excitations. (04)
 
 ### Answer 81
-**Given data:**
-- 3-phase, 50 Hz, 440 V (line-to-line) synchronous motor.
-- Synchronous impedance per phase: $Z_s = (0.5 + j4)\,\Omega$.
-- Armature current $I = 35\,\text{A}$ (per phase).
-- Excitation EMFs to be considered: $50\%$, $90\%$, and $125\%$ of rated terminal voltage.
+**Given:** 3-phase, 440 V (line), 50 Hz synchronous motor, $Z_s = (0.5 + j4)\ \Omega$/phase, armature current $I = 35$ A/phase. Exitation emfs: $E = 50\%$, $90\%$ and $125\%$ of rated terminal voltage.
 
-**Step 1: Per-phase quantities.**
-The motor is star-connected; the phase voltage is
-$$
-V_{\text{ph}} = \frac{440}{\sqrt{3}} \approx 254\;\text{V}.
-$$
-The synchronous impedance magnitude and angle:
-$$
-|Z_s| = \sqrt{0.5^2 + 4^2} \approx 4.031\,\Omega,\qquad
-\theta_z = \arctan\!\left(\frac{4}{0.5}\right) \approx 82.875^\circ.
-$$
+**Step-1: Per-phase values.**
+Phase voltage: $V = \frac{440}{\sqrt{3}} \approx 254$ V.
+Impedance: $|Z_s| = \sqrt{0.5^2 + 4^2} \approx 4.031\ \Omega$, $\theta_z = \tan^{-1}(4/0.5) \approx 82.875^\circ$.
+Voltage drop magnitude: $|I Z_s| = 35 \times 4.031 \approx 141.1$ V.
 
-**Step 2: Phasor relation for the synchronous motor.**
-Using the motor convention (current $I$ entering the machine),
+**Step-2: Graphical construction (excitation circles).**
+Using motor phasor equation $\tilde{V} = \tilde{E} + \tilde{I} Z_s$, rewritten as $\tilde{E} = \tilde{V} - \tilde{I} Z_s$.
+- Draw $\tilde{V}$ horizontally. Its tip is the centre of a circle of radius $|I Z_s|$ (locus of $-\tilde{I} Z_s$).
+- For a given excitation $|\tilde{E}|$, draw a circle of radius $E$ centred at the origin.
+- The intersection of the two circles locates $\tilde{E}$.
+- From the diagram, the load angle $\delta$ (between $\tilde{V}$ and $\tilde{E}$) and the current phase $\varphi$ are obtained by noting that $\tilde{I} Z_s$ leads $\tilde{I}$ by $\theta_z$.
+
+**Step-3: Analytical solution (equivalent to above).**
+Using the triangle formed by $V$, $E$ and $|I Z_s|$, the angle $\alpha$ between $\tilde{V}$ and $\tilde{I} Z_s$ is given by
 $$
-\tilde{V} = \tilde{E} + \tilde{I}Z_s,
+\cos\alpha = \frac{V^2 + (I Z_s)^2 - E^2}{2\,V\,(I Z_s)}.
 $$
-where $\tilde{V}$ is the terminal voltage, $\tilde{E}$ the excitation EMF (back EMF), and $\tilde{I}Z_s$ the internal voltage drop.  
-For a given magnitude of armature current $|I|=35\,\text{A}$, the drop magnitude is constant:
+Then the power-factor angle $\varphi = \alpha - \theta_z$ (negative for lagging, positive for leading).
+Load angle $\delta$ is obtained from
 $$
-|\tilde{I}Z_s| = 35 \times 4.031 \approx 141.1\;\text{V}.
+\cos\delta = \frac{V^2 + E^2 - (I Z_s)^2}{2\,V\,E}.
 $$
 
-**Step 3: Graphical construction of excitation circles.**
-In the voltage-phasor plane, take $\tilde{V}$ along the reference axis (horizontal).  
-- The tip of $\tilde{V}$ is the centre of a circle of radius $|\tilde{I}Z_s|$; this circle is the locus of the tip of $-\tilde{I}Z_s$ as the current phase varies, i.e. the locus of all possible $\tilde{E}$ vectors for the given current magnitude.  
-- For each fixed excitation voltage $|\tilde{E}|$, draw a circle of radius $|\tilde{E}|$ centred at the origin.  
-- The intersection of the two circles locates the tip of $\tilde{E}$ for that operating condition.  
-- From the diagram one can then measure the load angle $\delta$ (the angle between $\tilde{V}$ and $\tilde{E}$) and the current phase $\varphi$ (by noting that $\tilde{I}Z_s$ leads $\tilde{I}$ by $\theta_z$).
+**Results:**
 
-The three required excitations are:
-$$
-E_1 = 0.5 \times 254 = 127\;\text{V},\quad
-E_2 = 0.9 \times 254 = 228.6\;\text{V},\quad
-E_3 = 1.25 \times 254 = 317.5\;\text{V}.
-$$
+- **50 % excitation ($E = 127$ V):**
+  $\cos\alpha \approx 0.9529 \Rightarrow \alpha \approx 17.7^\circ$,
+  $\varphi = 17.7 - 82.875 \approx -65.18^\circ$ (lagging),
+  pf $\approx \cos 65.18^\circ = 0.419$ lagging,
+  $\cos\delta \approx 0.9415 \Rightarrow \delta \approx 19.7^\circ$.
 
-The construction is illustrated in the accompanying phasor diagram, where the constant-$|\tilde{E}|$ circles are drawn for under- and over-excited conditions.
+- **90 % excitation ($E = 228.6$ V):**
+  $\cos\alpha \approx 0.4489 \Rightarrow \alpha \approx 63.3^\circ$,
+  $\varphi \approx 63.3 - 82.875 = -19.58^\circ$ (lagging),
+  pf $\approx \cos 19.58^\circ = 0.942$ lagging,
+  $\cos\delta \approx 0.8341 \Rightarrow \delta \approx 33.5^\circ$.
 
-![Synchronous motor phasor diagram for variable excitation](./pyq-assets/textbook/108105131_p785_img-401_jpeg.png)  
-*Fig. Phasor diagram of a synchronous motor when field excitation is varied (source: textbook page 785).*
+- **125 % excitation ($E = 317.5$ V):**
+  $\cos\alpha \approx -0.2285 \Rightarrow \alpha \approx 103.2^\circ$,
+  $\varphi \approx 103.2 - 82.875 = 20.33^\circ$ (leading),
+  pf $\approx \cos 20.33^\circ = 0.938$ leading,
+  $\cos\delta \approx 0.9016 \Rightarrow \delta \approx 25.6^\circ$.
 
-**Step 4: Analytical (trigonometric) solution - equivalent to the graphical method.**
-The triangle formed by $\tilde{V}$, $\tilde{E}$ and $\tilde{I}Z_s$ (with $\tilde{I}Z_s = \tilde{V} - \tilde{E}$) has known sides: $V_{\text{ph}}$, $E$, and $IZ_s = 141.1\,\text{V}$.  
-
-Applying the law of cosines to find the angle $\alpha$ of $\tilde{I}Z_s$ relative to $\tilde{V}$:
-$$
-\cos\alpha = \frac{V^2 + (IZ_s)^2 - E^2}{2\,V\,(IZ_s)},
-$$
-and the load angle $\delta$ is obtained from
-$$
-\cos\delta = \frac{V^2 + E^2 - (IZ_s)^2}{2\,V\,E}.
-$$
-The power-factor angle $\varphi$ (of $I$ with respect to $V$) follows from $\varphi = \alpha - \theta_z$; a negative $\varphi$ indicates lagging current, a positive $\varphi$ leading current.
-
-**Step 5: Numerical evaluation for each excitation.**
-
-*Case 1: $E = 127\;\text{V}$ (50 % excitation)*
-$$
-\cos\alpha_1 = \frac{254^2 + 141.1^2 - 127^2}{2 \times 254 \times 141.1}
-            \approx 0.9529 \;\Rightarrow\; \alpha_1 \approx 17.7^\circ.
-$$
-Taking the appropriate sign for under-excitation ($E<V$), $\varphi_1 = 17.7^\circ - 82.875^\circ \approx -65.18^\circ$ (lagging).  
-Power factor: $\cos\varphi_1 = \cos 65.18^\circ \approx 0.419$ (lag).  
-Load angle:
-$$
-\cos\delta_1 = \frac{254^2 + 127^2 - 141.1^2}{2 \times 254 \times 127}
-            \approx 0.9415 \;\Rightarrow\; \delta_1 \approx 19.7^\circ.
-$$
-
-*Case 2: $E = 228.6\;\text{V}$ (90 % excitation)*
-$$
-\cos\alpha_2 = \frac{254^2 + 141.1^2 - 228.6^2}{2 \times 254 \times 141.1}
-            \approx 0.4489 \;\Rightarrow\; \alpha_2 \approx 63.3^\circ.
-$$
-Here also $E<V$, so $\varphi_2 = 63.3^\circ - 82.875^\circ \approx -19.58^\circ$ (lag).  
-Power factor: $\cos\varphi_2 \approx 0.942$ (lag).  
-Load angle:
-$$
-\cos\delta_2 = \frac{254^2 + 228.6^2 - 141.1^2}{2 \times 254 \times 228.6}
-            \approx 0.8341 \;\Rightarrow\; \delta_2 \approx 33.5^\circ.
-$$
-
-*Case 3: $E = 317.5\;\text{V}$ (125 % excitation)*
-$$
-\cos\alpha_3 = \frac{254^2 + 141.1^2 - 317.5^2}{2 \times 254 \times 141.1}
-            \approx -0.2285 \;\Rightarrow\; \alpha_3 \approx 103.2^\circ.
-$$
-With $E>V$ (over-excitation), the motor draws leading current; hence we take the positive $\alpha$ branch,
-$\varphi_3 = 103.2^\circ - 82.875^\circ \approx 20.33^\circ$ (leading).  
-Power factor: $\cos\varphi_3 \approx 0.938$ (lead).  
-Load angle:
-$$
-\cos\delta_3 = \frac{254^2 + 317.5^2 - 141.1^2}{2 \times 254 \times 317.5}
-            \approx 0.9016 \;\Rightarrow\; \delta_3 \approx 25.6^\circ.
-$$
-
-These computed values agree with what is obtained by careful drawing of the excitation circles.
-
-> **Final answer:**  
-> For $|I|=35$ A:  
-> $E = 127\;\text{V}\;(50\%)$ → $\delta = 19.7^\circ$, pf $0.419$ lagging;  
-> $E = 228.6\;\text{V}\;(90\%)$ → $\delta = 33.5^\circ$, pf $0.942$ lagging;  
-> $E = 317.5\;\text{V}\;(125\%)$ → $\delta = 25.6^\circ$, pf $0.938$ leading.
+> **Final answer:**
+> For $I = 35$ A:
+> $E = 127$ V (50%): $\delta = 19.7^\circ$, pf $0.419$ lagging;
+> $E = 228.6$ V (90%): $\delta = 33.5^\circ$, pf $0.942$ lagging;
+> $E = 317.5$ V (125%): $\delta = 25.6^\circ$, pf $0.938$ leading.
 
 
 ---
@@ -5537,32 +4164,34 @@ These computed values agree with what is obtained by careful drawing of the exci
 Draw the EMF and MMF diagrams when a pure inductive load is connected to a 3 phase wound rotor synchronous generator with negligible armature resistance. Hence discuss the armature reaction effect. (03)
 
 ### Answer 82
-**EMF (Phasor) Diagram**
-For a cylindrical-rotor synchronous generator with negligible armature resistance, the per-phase phasor equation is
-$$\tilde{E} = \tilde{V} + j X_s \tilde{I}$$
-where $\tilde{E}$ = excitation emf, $\tilde{V}$ = terminal voltage, $\tilde{I}$ = armature current, $X_s$ = synchronous reactance.
+**Phasor (EMF) Diagram**
+For a cylindrical-rotor generator with $R_a \approx 0$, the per-phase phasor equation is
+$$
+\tilde{E} = \tilde{V} + j X_s \tilde{I}.
+$$
+With pure inductive load, current lags terminal voltage by $90^\circ$. Take $\tilde{V}=V\angle 0^\circ$, $\tilde{I}=I\angle -90^\circ$:
+$$
+j X_s \tilde{I} = j X_s (I\angle -90^\circ) = X_s I \angle 0^\circ,
+$$
+which is in phase with $\tilde{V}$. Hence $\tilde{E}$ is collinear with $\tilde{V}$ and $E = V + X_s I$.
 
-With a pure inductive load, the current lags the terminal voltage by $90^\circ$. Taking $\tilde{V}$ as reference ($\angle 0^\circ$), we have $\tilde{I} = I \angle -90^\circ$. Then
-$$j X_s \tilde{I} = j X_s (I \angle -90^\circ) = X_s I \angle 0^\circ$$
-which is in phase with $\tilde{V}$. Hence $\tilde{E} = \tilde{V} + X_s I \angle 0^\circ$, making $\tilde{E}$ collinear with $\tilde{V}$ and $E > V$. The angle between $\tilde{E}$ and $\tilde{I}$ is $90^\circ$ (lagging).
-
-The phasor diagram (Fig. a) shows:
-- $\tilde{V}$ horizontal to the right.
-- $\tilde{I}$ vertically downward.
-- $j X_s \tilde{I}$ horizontal to the right from the tip of $\tilde{V}$.
-- $\tilde{E}$ from the origin to the tip of $j X_s \tilde{I}$.
+The phasor diagram shows:
+- $\tilde{V}$ horizontally right,
+- $\tilde{I}$ vertically downward,
+- $j X_s \tilde{I}$ extending right from the tip of $\tilde{V}$,
+- $\tilde{E}$ from origin to the endpoint of $j X_s \tilde{I}$.
 
 **MMF Diagram**
-The field mmf $\mathcal{F}_f$ (produced by the rotor field current) generates the excitation emf $\tilde{E}$. The armature mmf $\mathcal{F}_a$ is produced by the three-phase armature current and is proportional to $\tilde{I}$, rotating synchronously. In phasor terms, $\mathcal{F}_a$ is aligned with $\tilde{I}$.
-
-Since $\tilde{I}$ lags $\tilde{E}$ by $90^\circ$, $\mathcal{F}_a$ is directly opposed to $\mathcal{F}_f$. The resultant air-gap mmf is the vector sum:
-$$\mathbf{\mathcal{F}}_r = \mathbf{\mathcal{F}}_f + \mathbf{\mathcal{F}}_a$$
-With $\mathcal{F}_a$ opposite to $\mathcal{F}_f$, the magnitude $\mathcal{F}_r < \mathcal{F}_f$ (Fig. b).
+Field mmf $\mathcal{F}_f$ (dc rotor current) aligns with the flux that produces $\tilde{E}$. Armature mmf $\mathcal{F}_a$ is in phase with $\tilde{I}$. Because $\tilde{I}$ lags $\tilde{E}$ by $90^\circ$, $\mathcal{F}_a$ directly opposes $\mathcal{F}_f$. The resultant air-gap mmf is
+$$
+\mathcal{F}_r = \mathcal{F}_f + \mathcal{F}_a,
+$$
+and $F_r < F_f$ (demagnetising effect).
 
 **Armature Reaction Effect**
-The opposition of $\mathcal{F}_a$ to $\mathcal{F}_f$ reduces the net air-gap flux. Consequently, the generated emf would drop if the excitation were kept constant. To maintain rated terminal voltage, the field current must be increased. This purely **demagnetising** armature reaction is characteristic of a synchronous generator supplying a pure inductive (lagging power factor) load.
+The opposing mmf weakens the net air-gap flux. If excitation were constant, generated emf would drop. To maintain rated terminal voltage, field current must be increased. Thus a pure inductive (lagging) load produces a purely **demagnetising** armature reaction.
 
-> **Final answer:** With pure inductive load, the armature reaction is entirely demagnetising - the armature mmf directly opposes the field mmf, weakening the air-gap flux. The phasor diagram shows $\tilde{E}$ and $\tilde{V}$ in phase, with $E > V$, while the MMF diagram shows $\mathcal{F}_a$ opposed to $\mathcal{F}_f$, resulting in a smaller net mmf.
+> **Final answer:** With a pure inductive load, armature reaction is entirely demagnetising - the armature mmf directly opposes the field mmf, reducing the net flux. To hold $V$ constant, the excitation must be raised.
 
 
 ---
@@ -5573,113 +4202,57 @@ The opposition of $\mathcal{F}_a$ to $\mathcal{F}_f$ reduces the net air-gap flu
 A 3 phase, star connected cylindrical rotor alternator with a synchronous reactance of 5 per phase with negligible armature resistance is supplying 250 A at 0.8 power factor lagging to a 11 kV infinite bus. Determine (a) excitation emf and load angle (b) If excitation is increased by 15 % without changing its driving torque, determine the new values of load angle, armature current and power factor (03)
 
 ### Answer 83
-Given a 3-phase star-connected cylindrical rotor alternator (synchronous generator) with synchronous reactance $X_s = 5\,\Omega/\text{phase}$ and negligible armature resistance, operating at a line voltage of $11\,\text{kV}$ and supplying $250\,\text{A}$ at a lagging power factor of $0.8$. The machine is connected to an infinite bus, so the terminal voltage magnitude and frequency remain constant.
+Given: 3-phase star-connected cylindrical-rotor alternator, $X_s = 5\,\Omega$/ph, $R_a \approx 0$. Line voltage $V_L = 11\,\text{kV}$ (infinite bus), line current $I_L = 250\,\text{A}$, pf $=0.8$ lagging. Compute per-phase.
 
-First, compute per-phase values. For a star connection:
 $$
-V_{\text{ph}} = \frac{V_L}{\sqrt{3}} = \frac{11000}{\sqrt{3}} \approx 6351\ \text{V}.
+V_{\text{ph}} = \frac{11000}{\sqrt{3}} = 6351\,\text{V}.
 $$
-The armature current magnitude is $I_a = 250\ \text{A}$ and its phase angle relative to the terminal voltage (taken as reference) is
 $$
-\phi = \cos^{-1}(0.8) = 36.87^\circ \ \text{lagging} \quad \Rightarrow \quad \mathbf{I}_a = 250\angle{-36.87^\circ}\ \text{A}.
+\mathbf{I}_a = 250 \angle -\cos^{-1}0.8 = 250 \angle -36.87^\circ\ \text{A}.
 $$
 
-**(a) Excitation emf and load angle**  
-In generator convention, neglecting resistance, the phasor equation is
+**(a) Excitation emf and load angle**
+Generator phasor equation: $\mathbf{E} = \mathbf{V} + j X_s \mathbf{I}_a$.
 $$
-\mathbf{E} = \mathbf{V} + jX_s \mathbf{I}_a,
+j X_s \mathbf{I}_a = j5 \times 250\angle -36.87^\circ = 1250\angle 53.13^\circ = 750 + j1000\ \text{V}.
 $$
-where $\mathbf{E}$ is the excitation emf per phase and $\delta$ (load angle) is the angle by which $\mathbf{E}$ leads $\mathbf{V}$.
-
-Substituting the values:
-$$
-jX_s \mathbf{I}_a = j5 \times (250\angle{-36.87^\circ}) = 1250\angle{(90^\circ - 36.87^\circ)} = 1250\angle{53.13^\circ}\ \text{V}.
-$$
-In rectangular form:
-$$
-1250\angle{53.13^\circ} = 1250(\cos 53.13^\circ + j\sin 53.13^\circ) \approx 750 + j1000\ \text{V}.
-$$
-Thus,
+With $\mathbf{V}=6351\angle 0^\circ$,
 $$
 \mathbf{E} = 6351 + 750 + j1000 = 7101 + j1000\ \text{V}.
 $$
-The magnitude of the excitation emf is
-$$
-E = |\mathbf{E}| = \sqrt{7101^2 + 1000^2} \approx 7171\ \text{V} = 7.171\ \text{kV/phase}.
-$$
-The load angle is
-$$
-\delta = \tan^{-1}\left(\frac{1000}{7101}\right) \approx 8.02^\circ.
-$$
+Magnitude: $E = \sqrt{7101^2+1000^2}=7171\ \text{V} = 7.171\ \text{kV/phase}$.
+Load angle: $\delta = \tan^{-1}(1000/7101)=8.02^\circ$.
 
-So, for part (a): $E = 7.171\ \text{kV/phase}$, $\delta = 8.02^\circ$.
+**(b) Excitation increased by 15% - constant driving torque**
+New excitation: $E' = 1.15 \times 7171 = 8247\ \text{V/phase}$.
+Real power unchanged:
+$$
+P = \frac{3 V_{\text{ph}} E}{X_s}\sin\delta = \frac{3 \times 6351 \times 7171}{5} \sin 8.02^\circ \approx 3.811 \times 10^6\ \text{W}.
+$$
+New load angle:
+$$
+\sin\delta' = \frac{P X_s}{3 V_{\text{ph}} E'} = \frac{3.811\times10^6 \times 5}{3 \times 6351 \times 8247} = 0.1213,
+$$
+$$
+\delta' = \sin^{-1}(0.1213) = 6.97^\circ.
+$$
+New armature current:
+$$
+\mathbf{I}_a' = \frac{\mathbf{E}' - \mathbf{V}}{j X_s},\qquad \mathbf{E}' = 8247\angle 6.97^\circ = 8185.6 + j1001.3\ \text{V},
+$$
+$$
+\mathbf{E}' - \mathbf{V} = 1834.6 + j1001.3\ \text{V},
+$$
+$$
+\mathbf{I}_a' = \frac{1834.6 + j1001.3}{j5} = 200.26 - j366.92\ \text{A},
+$$
+$$
+I_a' = \sqrt{200.26^2 + 366.92^2} = 418.0\ \text{A}.
+$$
+Phase angle: $\phi' = \tan^{-1}\!\left(\frac{-366.92}{200.26}\right) = -61.37^\circ$ (lagging).
+Power factor: $\cos\phi' = 0.479$ lagging.
 
-![Phasor diagram for a cylindrical rotor generator (lagging power factor)](./pyq-assets/textbook/108105131_p743_img-379_jpeg.png)  
-*Figure: Phasor diagram of a non-salient pole synchronous generator operating at lagging power factor.*
-
-**(b) Increased excitation with constant driving torque**  
-Increasing the field excitation by 15% without altering the driving torque means that the prime-mover power remains constant. Neglecting losses, the electrical output power remains unchanged.
-
-The three-phase real power delivered by a cylindrical rotor machine is given by
-$$
-P = \frac{3 V_{\text{ph}} E}{X_s} \sin\delta.
-$$
-Using the original values,
-$$
-P = \frac{3 \times 6351 \times 7171}{5} \sin 8.02^\circ
-  \approx 3.811 \times 10^6\ \text{W}.
-$$
-
-After the excitation is increased by 15%,
-$$
-E' = 1.15 \times 7171 \approx 8247\ \text{V/phase}.
-$$
-With $P$ constant, the new load angle $\delta'$ satisfies
-$$
-\sin\delta' = \frac{P X_s}{3 V_{\text{ph}} E'}
-           = \frac{3.811 \times 10^6 \times 5}{3 \times 6351 \times 8247}
-           \approx 0.1213,
-$$
-$$
-\delta' = \sin^{-1}(0.1213) \approx 6.97^\circ.
-$$
-
-To find the new armature current, we use the phasor relation again:
-$$
-\mathbf{I}'_a = \frac{\mathbf{E}' - \mathbf{V}}{j X_s},
-$$
-with $\mathbf{E}' = 8247\angle{6.97^\circ}$ V and $\mathbf{V} = 6351\angle{0^\circ}$ V.
-
-Convert $\mathbf{E}'$ to rectangular form:
-$$
-\mathbf{E}' = 8247 (\cos 6.97^\circ + j\sin 6.97^\circ) \approx 8185.6 + j1001.3\ \text{V}.
-$$
-Then
-$$
-\mathbf{E}' - \mathbf{V} = (8185.6 - 6351) + j1001.3 = 1834.6 + j1001.3\ \text{V}.
-$$
-Dividing by $j5$,
-$$
-\mathbf{I}'_a = \frac{1834.6 + j1001.3}{j5}
-            = \frac{1001.3 - j1834.6}{5}
-            = 200.26 - j366.92\ \text{A}.
-$$
-The magnitude is
-$$
-I'_a = \sqrt{200.26^2 + 366.92^2} \approx 417.9\ \text{A}.
-$$
-The phase angle of $\mathbf{I}'_a$ relative to the terminal voltage $\mathbf{V}$ (reference) is
-$$
-\phi' = \tan^{-1}\left(\frac{-366.92}{200.26}\right) \approx -61.4^\circ,
-$$
-which indicates a lagging current. Hence the new power factor is
-$$
-\text{pf}' = \cos \phi' = \cos(61.4^\circ) \approx 0.479\ \text{lagging}.
-$$
-
-> **Final answer:**  
-> (a) Excitation emf $E = 7.171\ \text{kV/phase}$, load angle $\delta = 8.02^\circ$.  
-> (b) After the 15% increase: load angle $\delta' = 6.97^\circ$, armature current $I'_a = 417.9\ \text{A}$, power factor $\text{pf} = 0.479$ lagging.
+> **Final answer:** (a) $E = 7.171\ \text{kV/phase}$, $\delta = 8.02^\circ$. (b) After 15% excitation increase: $\delta' = 6.97^\circ$, $I_a' = 418.0\ \text{A}$, power factor $=0.479$ lagging.
 
 
 ---
@@ -5690,79 +4263,51 @@ $$
 A 15 kW, 400 V, 50 Hz, 3 phase, star connected synchronous motor has its synchronous impedance of (1+j5) Ω per phase. If the excitation is maintained constant at 277 V per phase, determine the maximum load the synchronous motor can drive and corresponding current and power factor. (05)
 
 ### Answer 84
-For a 3-phase star-connected synchronous motor, per-phase quantities:
+Per-phase quantities (star connection): line voltage $400\ \text{V}$ → $V_{\text{ph}} = \frac{400}{\sqrt{3}} = 230.94\ \text{V}$.
+Excitation emf (back emf) $E_f = 277\ \text{V/phase}$.
+Synchronous impedance $Z_s = 1 + j5\ \Omega$.
 $$
-V_{\text{ph}} = \frac{400}{\sqrt{3}} = 230.94\,\text{V}
-$$
-Excitation emf per phase $E = 277\,\text{V}$, synchronous impedance per phase $Z_s = 1 + j5\,\Omega$.
-
-The synchronous impedance magnitude and angle:
-$$
-|Z_s| = \sqrt{1^2 + 5^2} = 5.099\,\Omega,\qquad
-\theta = \arctan\!\left(\frac{5}{1}\right) = 78.69^\circ.
+|Z_s| = \sqrt{1^2+5^2} = 5.099\ \Omega,\qquad
+\theta = \arg Z_s = \tan^{-1}\frac{5}{1} = 78.69^\circ.
 $$
 
-The gross mechanical power developed per phase (air-gap power) is $P_g = \operatorname{Re}\{E I^*\}$. With $V$ as reference, $V = V\angle 0^\circ$, and for motor operation $E = E\angle -\delta$, where $\delta$ is the load angle (E lags V). The current is
+**Maximum gross mechanical power (pull-out power)**
+For a cylindrical-rotor motor, the three-phase air-gap power is
 $$
-I = \frac{V - E}{Z_s}.
+P_g = \frac{3}{|Z_s|}\big[E_f V \cos(\theta-\delta) - E_f^2 \cos\theta\big],
 $$
-Then
+where $\delta$ is the load angle ($E_f$ lags $V$). Maximising with respect to $\delta$:
 $$
-P_g = \operatorname{Re}\!\left\{E \frac{V^* - E^*}{Z_s^*}\right\}
-      = \frac{1}{|Z_s|}\big[E V \cos(\theta - \delta) - E^2 \cos\theta\big]\quad\text{(per phase)}.
+\frac{dP_g}{d\delta} = \frac{3 E_f V}{|Z_s|} \sin(\theta-\delta) = 0 \;\Longrightarrow\; \delta = \theta = 78.69^\circ.
 $$
-
-For a three-phase machine,
-$$
-P_g = \frac{3}{|Z_s|}\big[E V \cos(\theta - \delta) - E^2 \cos\theta\big].
-$$
-
-The condition for maximum gross power is found by differentiating $P_g$ with respect to $\delta$ and setting the derivative to zero:
-$$
-\frac{dP_g}{d\delta} = \frac{3}{|Z_s|} E V \sin(\theta - \delta) = 0
-\;\Longrightarrow\; \sin(\theta - \delta) = 0 \;\Longrightarrow\; \delta = \theta.
-$$
-Thus the maximum occurs when the load angle equals the impedance angle:
-$$
-\delta_{\max} = \theta = 78.69^\circ.
-$$
-
-Substituting $\delta = \theta$ gives the maximum three-phase gross power:
+At this $\delta$,
 $$
 \cos\theta = \frac{R_a}{|Z_s|} = \frac{1}{5.099} = 0.1961,
 $$
-
 $$
 P_{g,\max} = \frac{3}{5.099}\big[277 \times 230.94 - 277^2 \times 0.1961\big]
-           = \frac{3}{5.099}\big[63\,970.4 - 15\,044.8\big]
-           = \frac{3 \times 48\,925.6}{5.099}
-           \approx 28\,780\ \text{W} = 28.78\ \text{kW}.
+          = \frac{3}{5.099}\big[63\,970.4 - 15\,044.8\big]
+          = 28\,780\ \text{W} = 28.78\ \text{kW}.
 $$
 
-At this load angle the armature current is obtained from the motor phasor equation:
+**Armature current and power factor at maximum load**
+Using $\mathbf{I}_a = \frac{\mathbf{V} - \mathbf{E}_f}{Z_s}$ with $\mathbf{V}=230.94\angle 0^\circ$, $\mathbf{E}_f = 277\angle -78.69^\circ$:
 $$
-I_a = \frac{V - E}{Z_s}
-     = \frac{230.94\angle 0^\circ - 277\angle -78.69^\circ}{5.099\angle 78.69^\circ}.
+\mathbf{E}_f = 277(\cos 78.69^\circ - j\sin 78.69^\circ) = 54.32 - j271.62\ \text{V},
 $$
-Computing the numerator in rectangular form:
 $$
-V - E = 230.94 - (54.32 - j271.66) = 176.62 + j271.66.
+\mathbf{V} - \mathbf{E}_f = 230.94 - (54.32 - j271.62) = 176.62 + j271.62\ \text{V}.
 $$
-Its magnitude is $\sqrt{176.62^2 + 271.66^2} = 323.96\ \text{V}$ and its phase $\phi_1 = \arctan(271.66/176.62) = 56.97^\circ$.
-Then
+Magnitude: $|\mathbf{V} - \mathbf{E}_f| = \sqrt{176.62^2 + 271.62^2} = 323.96\ \text{V}$, phase $= \tan^{-1}(271.62/176.62) = 56.97^\circ$.
 $$
-I_a = \frac{323.96\angle 56.97^\circ}{5.099\angle 78.69^\circ}
-     = 63.54\angle (56.97^\circ - 78.69^\circ) = 63.54\angle -21.72^\circ\ \text{A}.
+\mathbf{I}_a = \frac{323.96\angle 56.97^\circ}{5.099\angle 78.69^\circ} = 63.54\angle -21.72^\circ\ \text{A}.
 $$
-
-The current lags the terminal voltage by $21.72^\circ$; hence the power factor is
+Current lags the terminal voltage by $21.72^\circ$; therefore
 $$
-\text{pf} = \cos 21.72^\circ = 0.929\ \text{(lagging)}.
+\text{pf} = \cos 21.72^\circ = 0.929\ \text{lagging}.
 $$
 
-(As a check, the electrical input power is $P_{\text{in}} = 3\,V I \cos\phi = 3 \times 230.94 \times 63.54 \times 0.929 \approx 40.9\ \text{kW}$, and the copper loss $3I^2R_a = 3\times 63.54^2\times 1 = 12.11\ \text{kW}$, yielding $P_{g,\max}=40.9-12.11\approx 28.79\ \text{kW}$, which agrees.)
-
-> **Final answer:** Maximum load $= 28.78\ \text{kW}$, armature current $= 63.54\ \text{A}$, power factor $= 0.929$ lagging.
+> **Final answer:** Maximum load = $28.78\ \text{kW}$, armature current = $63.54\ \text{A}$, power factor = $0.929$ lagging.
 
 
 ---
@@ -5773,25 +4318,19 @@ $$
 Using relevant phasor diagram, discuss the behaviour of a cylindrical rotor synchronous motor supplying a constant load but operating under varying excitation conditions. (03)
 
 ### Answer 85
-For a cylindrical-rotor synchronous motor connected to a constant-voltage, constant-frequency bus, the per-phase phasor equation neglecting armature resistance ($r_a \approx 0$) is
+For a cylindrical-rotor synchronous motor connected to constant-voltage constant-frequency bus, neglecting armature resistance, the per-phase phasor equation is $ \vec{V} = \vec{E} + jX_s \vec{I}_a $. With constant shaft load, real power $P = 3 V I_a \cos\phi$ is fixed, so $I_a \cos\phi$ is constant. This defines a vertical locus for the tip of $\vec{I}_a$ on a phasor diagram with $\vec{V}$ as reference.
 
-$$
-\vec{V} = \vec{E} + jX_s \vec{I}_a,
-$$
+When excitation is varied:
+- **Under-excitation**: $|\vec{E}| < |\vec{V}|$, $\vec{I}_a$ lags $\vec{V}$, motor draws lagging current and absorbs reactive power (inductive behaviour).
+- **Normal excitation**: $|\vec{E}|$ adjusted so $\vec{I}_a$ is in phase with $\vec{V}$; power factor unity, armature current minimum.
+- **Over-excitation**: $|\vec{E}| > |\vec{V}|$, $\vec{I}_a$ leads $\vec{V}$, motor delivers leading current and supplies reactive power (capacitive behaviour).
 
-where $\vec{V}$ is the terminal voltage (reference phasor), $\vec{E}$ is the excitation (back) emf, $X_s$ is synchronous reactance, and $\vec{I}_a$ is the armature current. The motor draws real power $P = 3 V I_a \cos\phi$ (or per phase $VI_a\cos\phi$). Since the shaft load is held constant, $P$ is fixed, and because $V$ is constant, the in-phase component of armature current $I_a\cos\phi$ must remain constant. Consequently, as the field excitation is varied, the tip of the current phasor $\vec{I}_a$ can only move along a vertical line (constant active-power line), as shown in the figure.
+Thus, at constant load the synchronous motor can control its reactive power exchange by changing field current. The variation of armature current and power factor with excitation is depicted by V-curves and inverted V-curves.
 
-![Phasor diagram showing constant-power locus for varying excitation](./pyq-assets/textbook/108105131_p778_img-397_jpeg.png)
+![V curves of synchronous motor](https://commons.wikimedia.org/wiki/Special:Redirect/file/V%20curve%20synchronous%20motor.svg)
+*Figure: V-curves showing armature current vs field current at constant load. The minimum corresponds to unity power factor; left side lagging, right side leading.* Source: Wikimedia Commons: File:V curve synchronous motor.svg.
 
-The phasor $jX_s\vec{I}_a$ is always perpendicular to $\vec{I}_a$. Starting with a given excitation that produces $E_0$, the phasor diagram is constructed: $\vec{V}$ is horizontal; from the tip of $\vec{V}$, subtract $\vec{E}$ to get $jX_s\vec{I}_a$ (or equivalently, $\vec{E} = \vec{V} - jX_s\vec{I}_a$). The current $\vec{I}_a$ lags or leads depending on the relative magnitude of $E$.
-
-- **Under-excitation** ($|\vec{E}| < |\vec{V}|$): The motor draws a lagging current (positive $\phi$) and absorbs reactive power from the bus, behaving like an inductive load.
-- **Normal excitation** ($|\vec{E}|$ adjusted such that $\vec{I}_a$ is in phase with $\vec{V}$): Armature current is minimum and the power factor is unity.
-- **Over-excitation** ($|\vec{E}| > |\vec{V}|$): The motor draws a leading current (negative $\phi$), delivering reactive power to the bus, and operates like a capacitive load.
-
-This behaviour yields the well-known **V-curves** ($I_a$ versus $I_f$) and **inverted V-curves** (power factor versus $I_f$) of a synchronous motor. Over-excited synchronous motors are widely used as **synchronous condensers** for power-factor correction.
-
-> **Final answer:** At constant mechanical load, varying the field excitation changes only the reactive component of armature current; the real power remains fixed. The power factor can be controlled from lagging (under-excitation) to unity (normal excitation) to leading (over-excitation), making the synchronous motor a variable reactive power compensator.
+> **Final answer:** With constant load, varying field excitation changes only the reactive component of armature current while the active component stays fixed. This shifts the power factor from lagging (under-excitation) through unity to leading (over-excitation), allowing the motor to act as a variable reactive power compensator.
 
 
 ---
@@ -5802,50 +4341,28 @@ This behaviour yields the well-known **V-curves** ($I_a$ versus $I_f$) and **inv
 Along with necessary waveforms, discuss the behaviour of a three-phase alternator subjected to a symmetrical 3-phase short circuit. (03)
 
 ### Answer 86
-When a three-phase alternator is subjected to a sudden symmetrical short circuit at its terminals, the armature current does not immediately attain its steady-state value. Instead, it passes through three distinct periods due to the presence of different magnetic circuits on the rotor (damper winding, field winding, and solid iron parts) that oppose sudden change in flux linkages.
+When a symmetrical three-phase short circuit occurs at the terminals of an alternator, the armature current undergoes a transient evolution through three stages.
 
-### 1. Sub-transient Period
-Immediately after the fault, the flux linkages in the damper winding and the field winding cannot change instantaneously. The effective reactance of the machine is the smallest, called the **sub-transient reactance** $X_d''$. The initial symmetrical rms current is
-$$
-I'' = \frac{E_f}{X_d''}
-$$
-where $E_f$ is the pre-fault induced emf. This period lasts only a few cycles (typically 2-3 cycles) and the current decays with a sub-transient time constant $T_d''$.
+**Sub-transient period** (first few cycles): Flux linkages in damper windings and field cannot change instantly. Effective reactance is the smallest, the sub-transient reactance $X_d''$. Current magnitude $I'' = E_f / X_d''$ decays with time constant $T_d''$.
 
-### 2. Transient Period
-After the damper winding currents die out, the flux linkage in the field winding is still forced to remain constant. The effective reactance is now the **transient reactance** $X_d'$, which is larger than $X_d''$. The symmetrical rms current during this period is
-$$
-I' = \frac{E_f}{X_d'}
-$$
-This phase persists for a longer time (up to a second or more) and decays with the transient time constant $T_d'$.
+**Transient period**: Damper currents decay; field flux linkage still preserved. Reactance rises to transient reactance $X_d'$ ($X_d' > X_d''$). Current $I' = E_f / X_d'$ decays more slowly with $T_d'$.
 
-### 3. Steady-State Period
-Once the field transients have completely decayed, the armature current is limited only by the **synchronous reactance** $X_d$, which is the largest of the three. The steady-state short-circuit current is
-$$
-I_{ss} = \frac{E_f}{X_d}
-$$
-Since $X_d'' < X_d' < X_d$, it follows that $I'' > I' > I_{ss}$.
+**Steady-state period**: All transients vanish; only synchronous reactance $X_d$ remains. Final symmetrical short-circuit current $I_{ss} = E_f / X_d$, where $X_d > X_d' > X_d''$. Hence $I'' > I' > I_{ss}$.
 
-### Waveform of the Short-Circuit Current
-The envelope of the ac component of the short-circuit current decays exponentially from the sub-transient value to the steady-state value. In addition, a dc offset appears in one or more phases depending on the instant of short circuit; this dc component decays with the armature time constant $T_a$. The complete phase current can be expressed as
+**Waveform**: The AC component's envelope decays stepwise from $I''$ to $I_{ss}$. Superimposed is a DC offset (depending on the switching angle $\alpha$) that decays with armature time constant $T_a$. The typical phase current can be expressed as
 $$
 \begin{aligned}
-i_{sc}(t) = \sqrt{2}E_f \biggl[ &\left(\frac{1}{X_d''} - \frac{1}{X_d'}\right) e^{-t/T_d''} \\
-+ &\left(\frac{1}{X_d'} - \frac{1}{X_d}\right) e^{-t/T_d'} \\
-+ &\frac{1}{X_d} \biggr] \sin(\omega t + \alpha) \\
-- &\sqrt{2}E_f \frac{1}{X_d''} \sin\alpha \; e^{-t/T_a}
+i_{sc}(t) = \sqrt{2}\,E_f \Bigg[&\left(\frac{1}{X_d''}-\frac{1}{X_d'}\right)e^{-t/T_d''} \\
++&\left(\frac{1}{X_d'}-\frac{1}{X_d}\right)e^{-t/T_d'} \\
++&\frac{1}{X_d}\Bigg]\sin(\omega t+\alpha) \\
+-&\sqrt{2}\,\frac{E_f}{X_d''}\sin\alpha\; e^{-t/T_a}.
 \end{aligned}
 $$
-where $\alpha$ is the switching angle. The resulting waveform is asymmetrical for the first few cycles and gradually becomes symmetrical.
+The resulting waveform is asymmetrical initially and becomes symmetrical after several cycles.
 
-### Phasor Diagram Under Short Circuit
-With the terminals shorted, the terminal voltage $V = 0$. Neglecting armature resistance, the armature current lags the induced emf $E_f$ by $90^\circ$ and lies entirely along the d-axis ($I_q = 0$). If resistance $r_a$ is considered, the current lags by slightly less than $90^\circ$ and can be resolved into components $I_d$ and $I_q$. The corresponding phasor diagram is shown below.
+No diagram needed; the waveform can be sketched with the exponential envelopes.
 
-![Phasor diagram for a three-phase short circuit](./pyq-assets/textbook/108105131_p851_img-441_jpeg.png)
-<small>**Figure:** Phasor diagram of an alternator during a symmetrical three-phase short circuit. The terminal voltage is zero; the armature current lags $E_f$ by an angle slightly less than $90^\circ$ when $r_a$ is not neglected.</small>
-
-In summary, a sudden three-phase short circuit causes the armature current to pass through sub-transient, transient, and steady-state stages, with the current magnitude decaying as the effective reactance increases from $X_d''$ through $X_d'$ to $X_d$.
-
-> **Final answer:** A sudden three-phase short circuit produces sub-transient, transient, and steady-state currents, with decaying amplitude and progressively increasing effective reactance.
+> **Final answer:** A sudden symmetrical short circuit on an alternator produces sub-transient, transient, and steady-state currents, with decaying magnitude due to the sequential increase in effective reactance from $X_d''$ through $X_d'$ to $X_d$, accompanied by a decaying DC offset.
 
 
 ---
@@ -5856,60 +4373,30 @@ In summary, a sudden three-phase short circuit causes the armature current to pa
 Describe the operation of alternator with constant excitation and variable load with suitable phasor diagrams. What is the significance of the condition with minimum excitation? Analyze the relation between power factor and excitation with the help of suitable curve. (05)
 
 ### Answer 87
-## Alternator Performance Under Constant Excitation
+**Constant excitation, variable load**
 
-### 1. Constant Excitation with Variable Load
+With fixed field current, the induced emf $E$ has constant magnitude. Neglecting $R_a$, the phasor relation is $\vec{E} = \vec{V} + jX_s \vec{I}_a$. Real power $P = \frac{EV}{X_s}\sin\delta$, so both the load angle $\delta$ and the armature current $I_a$ adjust to meet the load demand. The terminal voltage $V$ and power factor depend on the nature of the load:
 
-When a synchronous generator operates with a fixed field current (constant excitation), the magnitude of the induced emf $E$ remains constant. As the load demands change, the armature current $I_a$ and the load angle $\delta$ adjust to balance the mechanical input and electrical output. Neglecting armature resistance $R_a$, the terminal voltage $V$ is related to $E$ by
+- **Lagging pf load** (inductive): $\vec{I}_a$ lags $\vec{V}$. Armature reaction is demagnetizing, causing a large voltage drop; $E$ must be considerably larger than $V$ to maintain terminal voltage. Phasor diagram shows $jX_sI_a$ adding directly to $V$, giving large $\delta$ and positive regulation.
+- **Unity pf load**: $\vec{I}_a$ in phase with $\vec{V}$. Armature reaction is cross-magnetizing; the reactive drop is perpendicular to $V$, so the voltage drop is smaller. $E$ and $V$ are closer.
+- **Leading pf load** (capacitive): $\vec{I}_a$ leads $\vec{V}$. Armature reaction is magnetizing; the terminal voltage may actually rise with load, yielding negative regulation. $E$ can be smaller than $V$.
 
-$$
-\vec{E} = \vec{V} + jX_s \vec{I}_a
-$$
+These phasor diagrams illustrate how the machine's internal voltage and angle vary with load power factor.
 
-where $X_s$ is the synchronous reactance. The real power delivered to the bus (or load) is
+**Minimum excitation - stability limit**
 
-$$
-P = \frac{EV}{X_s} \sin\delta .
-$$
+For a given active power and terminal voltage, reducing excitation reduces $E$. To maintain the same $P$, $\sin\delta$ must increase, i.e., $\delta$ grows. The maximum possible power transfer occurs at $\delta = 90^\circ$: $P_{max}=EV/X_s$. If excitation is further reduced, $P_{max}$ becomes smaller than the required load power and the machine loses synchronism. Therefore the condition $\delta = 90^\circ$ defines the steady-state stability boundary and corresponds to the minimum permissible excitation. In practice, a margin of $20^\circ$-$30^\circ$ is kept.
 
-The power factor (pf) of the load determines the phase of $I_a$ relative to $V$ and governs the armature reaction effect:
-- **Lagging pf (inductive load):** $I_a$ lags $V$, producing a demagnetizing armature reaction. The terminal voltage drops with increasing load, giving positive voltage regulation. The phasor diagram (Figure 1) shows $E > V$ and $jX_s I_a$ adding directly to $V$.
-- **Unity pf (resistive load):** $I_a$ is in phase with $V$. Armature reaction is mainly cross-magnetizing. Regulation is smaller because the reactive drop $X_s I_a$ is perpendicular to $V$.
-- **Leading pf (capacitive load):** $I_a$ leads $V$, causing a magnetizing armature reaction. The terminal voltage may rise as load increases, resulting in negative regulation. In this case $E$ may be smaller than $V$.
+**Power factor vs excitation**
 
-The phasor diagrams for these three conditions are sketched in many textbooks; below is a detailed phasor diagram for a lagging power factor load that includes the armature reaction and leakage drops.
+For a fixed real power output, the reactive power exchange is controlled by excitation. Varying the field current $I_f$ changes $E$ and therefore the phase of $I_a$ relative to $V$. This relationship is described by the V-curves ($I_a$ vs $I_f$) or the inverted V-curves (pf vs $I_f$).
 
-<figure>
-  <img src="./pyq-assets/textbook/108105131_p746_img-381_jpeg.png" alt="Phasor diagram of alternator under lagging load" />
-  <figcaption><b>Figure 1:</b> Phasor diagram of a synchronous generator operating at a lagging power factor. $E$ is the excitation emf, $V$ the terminal voltage, $I_a$ the armature current, and $jX_s I_a$ the synchronous reactance drop. Armature reaction demagnetizes the field, requiring a larger $E$ to maintain terminal voltage.</figcaption>
-</figure>
+![V curves of synchronous motor](https://commons.wikimedia.org/wiki/Special:Redirect/file/V%20curve%20synchronous%20motor.svg)
+*Figure: Typical V-curves for a synchronous machine. At minimum armature current the power factor is unity; to the left the machine is under-excited and draws lagging reactive power, to the right it is over-excited and supplies leading reactive power.* Source: Wikimedia Commons: File:V curve synchronous motor.svg.
 
-### 2. Minimum Excitation - Stability Limit
+As excitation is increased from a low value, the power factor improves from lagging, passes through unity at the dip of the V-curve, and then becomes leading. The ability to shift the power factor makes the synchronous generator a vital tool for voltage control and power-factor correction in power systems.
 
-For a constant real power $P$ and terminal voltage $V$, reducing the field current (excitation) decreases $E$. To keep $P$ constant, $\sin\delta$ must increase; thus $\delta$ increases. The maximum power that can be transmitted occurs at $\delta = 90^\circ$:
-
-$$
-P_{\text{max}} = \frac{EV}{X_s}.
-$$
-
-If the excitation is reduced further, $P_{\text{max}}$ falls below the required $P$, and the generator loses synchronism. Therefore, $\delta = 90^\circ$ defines the steady-state stability boundary. The minimum permissible excitation is the value that sets $\delta = 90^\circ$ for the given load. In practice, a stability margin of $20^\circ$-$30^\circ$ is maintained, with typical full-load $\delta$ in the range $30^\circ$-$40^\circ$. This limit also ensures that the machine operates well within the linear portion of the power-angle curve, avoiding the unstable region.
-
-### 3. Power Factor vs. Excitation - V-Curves
-
-The reactive power exchange of a synchronous generator is controlled by its excitation. For a fixed real power and terminal voltage, varying the field current changes the magnitude and phase of the armature current, hence the power factor. This behavior is summarized by the **V-curves** (armature current $I_a$ vs. field current $I_f$) or the **inverted V-curves** (power factor vs. $I_f$).
-
-- **Under-excited** (low $I_f$): $E < V$, the machine absorbs reactive power (lagging pf). $I_a$ is large because it contains a reactive component.
-- **Normal excitation**: $E$ is such that $I_a$ is in phase with $V$ (unity pf). The armature current is minimum for that real power.
-- **Over-excited** (high $I_f$): $E > V$, the machine delivers reactive power (leading pf) to the system. $I_a$ increases again.
-
-The relationship is illustrated in Figure 2. As excitation is increased from an under-excited state, the power factor moves from lagging to unity, and then to leading. This ability to supply or consume reactive power makes the synchronous generator a valuable tool for voltage regulation and power-factor correction in power systems.
-
-<figure>
-  <img src="./pyq-assets/textbook/108105131_p787_img-402_jpeg.png" alt="V-curves of synchronous generator" />
-  <figcaption><b>Figure 2:</b> Typical V-curves (armature current vs. field current) for different constant real power levels. The minimum of each curve corresponds to unity power factor; the dashed line shows the stability limit. The corresponding power factor varies from lagging (left of minimum) to leading (right of minimum).</figcaption>
-</figure>
-
-> **Final answer:** Under constant excitation, load changes alter $I_a$, $\delta$, and the terminal voltage depending on pf; minimum excitation defines the stability boundary ($\delta = 90^\circ$); power factor varies from lagging to leading with excitation, as shown by the V-curves.
+> **Final answer:** Under constant excitation, load changes alter terminal voltage and load angle depending on power factor; minimum excitation is set by the stability limit $\delta=90^\circ$; varying excitation changes reactive power flow, described by the V-curves where pf goes from lagging (under-excited) to unity to leading (over-excited).
 
 
 ---
@@ -5920,54 +4407,52 @@ The relationship is illustrated in Figure 2. As excitation is increased from an 
 A factory has an average load of 1000kW at a power factor of 0.6 lag. A synchronous motor of 86% efficiency is used later to supply an additional mechanical load of 65kW and also to improve the overall power factor to 0.92 lag. Determine the power factor at which the synchronous motor operates. Also comment on the type of excitation required for the synchronous motor for this application and draw the corresponding phasor diagram relating terminal voltage and excitation emf. (05)
 
 ### Answer 88
-**Given:**
-- Factory load: $P_1 = 1000~\text{kW}$ at power factor $0.6$ lagging.
-- Synchronous motor: mechanical load $=65~\text{kW}$, efficiency $\eta = 0.86$.
-- Desired overall power factor: $0.92$ lagging.
+**Given:** Factory: $P_1 = 1000\ \text{kW}$ at $0.6$ lag. Synchronous motor: $P_{\text{mech}} = 65\ \text{kW}$, $\eta = 86\%$. Desired overall pf $= 0.92$ lag.
 
-**Step 1: Initial factory reactive power**
+**Step 1 - Factory reactive power:**
 $$
-\phi_1 = \cos^{-1}(0.6) \approx 53.13^\circ,\quad Q_1 = P_1 \tan\phi_1 = 1000 \times \tan(53.13^\circ) = 1000 \times 1.333 = 1333.3~\text{kvar (lagging)}.
-$$
-
-**Step 2: Motor electrical input**
-$$
-P_m = \frac{\text{mechanical output}}{\eta} = \frac{65}{0.86} \approx 75.58~\text{kW}.
+\begin{aligned}
+\phi_1 &= \cos^{-1}0.6 \approx 53.13^\circ,\\
+Q_1 &= P_1 \tan\phi_1 = 1000 \times \frac{4}{3} = 1333.3\ \text{kvar (lagging)}.
+\end{aligned}
 $$
 
-**Step 3: Total active power and required total reactive power**
+**Step 2 - Motor electrical input:**
 $$
-P_{\text{total}} = P_1 + P_m = 1000 + 75.58 = 1075.58~\text{kW}.
-$$
-For overall pf $0.92$ lagging:
-$$
-\phi_{\text{total}} = \cos^{-1}(0.92) \approx 23.07^\circ,\quad
-Q_{\text{total}} = P_{\text{total}} \tan\phi_{\text{total}} = 1075.58 \times \tan(23.07^\circ) = 1075.58 \times 0.426 \approx 458.2~\text{kvar (lagging)}.
+\begin{aligned}
+P_m = \frac{P_{\text{mech}}}{\eta} = \frac{65}{0.86} \approx 75.58\ \text{kW}.
+\end{aligned}
 $$
 
-**Step 4: Motor reactive power**
+**Step 3 - Total active and required total reactive:**
 $$
-Q_m = Q_{\text{total}} - Q_1 = 458.2 - 1333.3 = -875.1~\text{kvar}.
-$$
-The negative sign indicates that the motor **supplies** 875.1 kvar leading reactive power (i.e., it draws a leading current from the supply).
-
-**Step 5: Motor apparent power and power factor**
-$$
-S_m = \sqrt{P_m^2 + Q_m^2} = \sqrt{(75.58)^2 + (875.1)^2} = \sqrt{5712 + 765800} \approx \sqrt{771512} \approx 878.4~\text{kVA}.
-$$
-$$
-\text{pf}_m = \frac{P_m}{S_m} = \frac{75.58}{878.4} \approx 0.086\text{ leading}.
+\begin{aligned}
+P_{\text{tot}} &= P_1 + P_m = 1075.58\ \text{kW},\\
+\phi_{\text{tot}} &= \cos^{-1}0.92 \approx 23.07^\circ,\\
+Q_{\text{tot}} &= P_{\text{tot}} \tan\phi_{\text{tot}} = 1075.58 \times 0.426 \approx 458.2\ \text{kvar (lag)}.
+\end{aligned}
 $$
 
-**Excitation requirement:** To operate at a leading power factor, the synchronous motor must be **over-excited**. In the over-excited condition, the field excitation is increased so that the excitation emf $E_f$ is greater than the terminal voltage $V$. The motor then draws a leading current and supplies reactive power to the system, acting as a **synchronous condenser**. This helps improve the overall power factor from 0.6 lag to 0.92 lag.
+**Step 4 - Motor reactive power:**
+$$
+\begin{aligned}
+Q_m = Q_{\text{tot}} - Q_1 = 458.2 - 1333.3 = -875.1\ \text{kvar} \quad (\text{leading}).
+\end{aligned}
+$$
 
-**Phasor diagram (leading power factor, over-excited synchronous motor):**
-The phasor diagram (with motor consuming real power and supplying reactive power) is shown below. The terminal voltage $V$ is taken as reference. The armature current $I_a$ leads $V$ by the large angle $\phi_m \approx \cos^{-1}(0.086) \approx 85.1^\circ$. The excitation emf $E_f$ leads $V$ and is larger in magnitude due to over-excitation. The phasor sum $V = E_f + I_a(R_a + jX_s)$ holds (or equivalently $E_f = V - I_a(R_a + jX_s)$). For a leading power factor, $E_f$ is ahead of $V$ by the load angle $\delta$.
+**Step 5 - Motor apparent power and power factor:**
+$$
+\begin{aligned}
+S_m &= \sqrt{P_m^2 + Q_m^2} = \sqrt{75.58^2 + 875.1^2} \approx 878.4\ \text{kVA},\\
+\text{pf}_m &= \frac{P_m}{S_m} = \frac{75.58}{878.4} \approx 0.086\ \text{leading}.
+\end{aligned}
+$$
 
-![Phasor diagram for over-excited synchronous motor (leading power factor).](./pyq-assets/textbook/108105131_p790_img-404_jpeg.png)
-<figcaption>Figure: Phasor diagram of an over-excited synchronous motor showing terminal voltage V, excitation EMF E_f, and armature current I_a leading V.</figcaption>
+**Excitation requirement:** The synchronous motor must be **over-excited**. Over-excitation makes $E_f > V$, drawing leading current, supplying reactive power to the system (acting as a synchronous condenser) and improving the overall power factor.
 
-> **Final answer:** The synchronous motor operates at a power factor of **0.086 leading** and must be **over-excited**.
+**Phasor diagram (leading pf, motor):** Terminal voltage $\mathbf{V}$ is reference. Armature current $\mathbf{I}_a$ leads $\mathbf{V}$ by a large angle $\phi_m \approx 85.1^\circ$. The excitation emf $\mathbf{E}_f$ leads $\mathbf{V}$ by the load angle $\delta$, and its magnitude exceeds $\mathbf{V}$ (over-excitation). The relation $\mathbf{V} = \mathbf{E}_f + \mathbf{I}_a(R_a + jX_s)$ holds.
+
+> **Final answer:** Synchronous motor operates at **0.086 leading**; it must be **over-excited**.
 
 
 ---
@@ -5978,96 +4463,55 @@ The phasor diagram (with motor consuming real power and supplying reactive power
 A 3.3 kV, 3 phase, 50 Hz, 4 pole star connected synchronous motor has a synchronous impedance of 0.2 + j 3 Ω per phase. For an input current of 200A at 0.9 p.f lag, determine the maximum gross power and torque developed. 5M
 
 ### Answer 89
-First, calculate per-phase values:
-$$
-V_{ph} = \frac{3300}{\sqrt{3}} = 1905.3\ \text{V}
-$$
-Synchronous impedance per phase:
-$$
-Z_s = 0.2 + j3\ \Omega,\quad |Z_s| = \sqrt{0.2^2 + 3^2} = 3.0067\ \Omega,\quad \theta = \arctan\frac{3}{0.2} = 86.19^\circ
-$$
-Given armature current $I_a = 200\ \text{A}$ at 0.9 pf lagging, so current phase angle:
-$$
-\phi = \arccos 0.9 = 25.84^\circ\ \text{lag},\quad \mathbf{I}_a = 200\angle -25.84^\circ\ \text{A}
-$$
-Taking terminal voltage as reference, $\mathbf{V} = 1905.3\angle 0^\circ\ \text{V}$.
+**Given:** $3.3\ \text{kV}$, 3-phase, 4-pole, star-connected synchronous motor, $Z_s = 0.2 + j3\ \Omega/\text{ph}$, $I_a = 200\ \text{A}$ at $0.9$ pf lag.
 
-**Determination of Excitation emf $E_f$**  
-From the synchronous motor equivalent circuit (Fig. 1), the phasor equation is $\mathbf{V} = \mathbf{E}_f + \mathbf{I}_a Z_s$. Thus,
-$$
-\mathbf{E}_f = \mathbf{V} - \mathbf{I}_a Z_s
-$$
-![Equivalent circuit and phasor diagram for synchronous motor](./pyq-assets/textbook/108105131_p766_img-392_jpeg.png)  
-*Fig. 1: Synchronous motor equivalent circuit and phasor diagram.*
-
-Compute the impedance drop:
+**Per-phase quantities:**
 $$
 \begin{aligned}
-\mathbf{I}_a Z_s &= 200\angle -25.84^\circ \times 3.0067\angle 86.19^\circ \\
-&= 601.3\angle 60.35^\circ\ \text{V} \\
-&= 601.3\,(\cos 60.35^\circ + j\sin 60.35^\circ) \\
-&\approx 297.6 + j522.7\ \text{V}
-\end{aligned}
-$$
-Therefore,
-$$
-\begin{aligned}
-\mathbf{E}_f &= 1905.3 - (297.6 + j522.7) \\
-&= 1607.7 - j522.7\ \text{V} \\
-|\mathbf{E}_f| &= \sqrt{1607.7^2 + 522.7^2} \approx 1690.5\ \text{V} \\
-\delta &= \arctan\frac{522.7}{1607.7} \approx 18.0^\circ \quad (\text{lagging})
+V_\text{ph} &= \frac{3300}{\sqrt{3}} = 1905.3\ \text{V},\\
+Z_s &= 0.2 + j3,\quad |Z_s| = \sqrt{0.2^2+3^2} = 3.0067\ \Omega,\quad \theta = \tan^{-1}\frac{3}{0.2} = 86.19^\circ.
 \end{aligned}
 $$
 
-**Gross Mechanical Power Expression**  
-The gross mechanical power developed per phase is the real part of the power delivered by the excitation emf:
-$$
-P_{g,\text{ph}} = \operatorname{Re}(\mathbf{E}_f \mathbf{I}_a^*)
-$$
-Since $\mathbf{I}_a = (\mathbf{V} - \mathbf{E}_f)/Z_s$, substituting yields the general power formula for a cylindrical-rotor synchronous motor:
-$$
-P_{g,\text{ph}} = \frac{E_f V}{|Z_s|} \cos(\theta - \delta) - \frac{E_f^2}{|Z_s|} \cos\theta
-$$
-where $\theta$ is the impedance angle and $\delta$ the load angle (angle by which $E_f$ lags $V$).
-
-For fixed excitation $E_f$ (and constant $V$), $P_g$ varies with $\delta$. The maximum occurs when $\cos(\theta - \delta) = 1$, i.e., when
-$$
-\delta = \theta = 86.19^\circ
-$$
-This is the pull-out condition. The corresponding maximum power per phase is:
-$$
-P_{g,\max}^{\text{ph}} = \frac{E_f V}{|Z_s|} - \frac{E_f^2}{|Z_s|} \cos\theta
-$$
-and for three phases:
-$$
-P_{g,\max} = 3\left( \frac{E_f V}{|Z_s|} - \frac{E_f^2}{|Z_s|} \cos\theta \right)
-$$
-
-**Numerical Evaluation**  
-Using $E_f = 1690.5\ \text{V}$, $V = 1905.3\ \text{V}$, $|Z_s| = 3.0067\ \Omega$, and $\cos\theta = \frac{0.2}{3.0067} = 0.0665$:
+**Excitation emf $E_f$:**
 $$
 \begin{aligned}
-P_{g,\max} &= 3\left( \frac{1690.5 \times 1905.3}{3.0067} - \frac{1690.5^2 \times 0.2}{3.0067^2} \right) \\
-&\approx 3\left( 1.071\times 10^6 - 0.0632\times 10^6 \right) \\
-&\approx 3.024 \times 10^6\ \text{W} = 3.024\ \text{MW}
+\mathbf{I}_a &= 200\angle -\cos^{-1}0.9 = 200\angle -25.84^\circ\ \text{A},\quad \mathbf{V}_\text{ph} = 1905.3\angle 0^\circ\\
+\mathbf{I}_a Z_s &= 200\angle -25.84^\circ \times 3.0067\angle 86.19^\circ = 601.3\angle 60.35^\circ\ \text{V}\\
+&= 297.6 + j522.7\ \text{V}\\
+\mathbf{E}_f &= \mathbf{V}_\text{ph} - \mathbf{I}_a Z_s = (1905.3 - 297.6) - j522.7 = 1607.7 - j522.7\ \text{V}\\
+|\mathbf{E}_f| &= \sqrt{1607.7^2 + 522.7^2} \approx 1690.5\ \text{V},\quad \delta = \tan^{-1}\frac{522.7}{1607.7} \approx 18.0^\circ\ (\text{E}_f\ \text{lags}\ V).
 \end{aligned}
 $$
 
-**Torque Calculation**  
-Synchronous speed for a 4-pole, 50 Hz motor:
+**Maximum gross mechanical power (cylindrical-rotor motor):**
+The power delivered by $E_f$ is
 $$
-N_s = \frac{120\,f}{P} = \frac{120 \times 50}{4} = 1500\ \text{rpm}
+P_g = 3\left(\frac{E_f V}{|Z_s|}\cos(\theta-\delta) - \frac{E_f^2}{|Z_s|}\cos\theta\right).
 $$
-Angular speed:
+Maximum occurs when $\cos(\theta-\delta)=1$, i.e., $\delta = \theta = 86.19^\circ$ (pull-out):
 $$
-\omega_s = \frac{2\pi N_s}{60} = \frac{2\pi \times 1500}{60} = 157.08\ \text{rad/s}
+P_{g,\max} = 3\left(\frac{E_f V}{|Z_s|} - \frac{E_f^2 R}{|Z_s|^2}\right) \quad (\cos\theta = R/|Z_s|).
 $$
-Maximum gross torque:
+Substitute values:
 $$
-T_{\max} = \frac{P_{g,\max}}{\omega_s} = \frac{3.024 \times 10^6}{157.08} \approx 19.25 \times 10^3\ \text{N·m}
+\begin{aligned}
+P_{g,\max} &= 3\left(\frac{1690.5 \times 1905.3}{3.0067} - \frac{1690.5^2 \times 0.2}{3.0067^2}\right)\\
+&= 3\left(1.071\times 10^6 - 0.0632\times 10^6\right)\\
+&= 3.024 \times 10^6\ \text{W} = 3.024\ \text{MW}.
+\end{aligned}
 $$
 
-> **Final answer:** Maximum gross power $= 3.024\ \text{MW}$; maximum gross torque $= 19.25\ \text{kN·m}$.
+**Maximum gross torque:**
+$$
+\begin{aligned}
+N_s &= \frac{120 f}{P} = \frac{120\times 50}{4} = 1500\ \text{rpm},\\
+\omega_s &= \frac{2\pi N_s}{60} = 157.08\ \text{rad/s},\\
+T_{\max} &= \frac{P_{g,\max}}{\omega_s} = \frac{3.024\times 10^6}{157.08} \approx 19.25 \times 10^3\ \text{N}\cdot\text{m}.
+\end{aligned}
+$$
+
+> **Final answer:** Maximum gross power = **3.024 MW**; maximum gross torque = **19.25 kN·m**.
 
 
 ---
@@ -6078,46 +4522,39 @@ $$
 A 3-phase, star connected alternator is rated 1,600 kVA, 13.5 kV. Its per-phase effective armature resistance & synchronous reactance are 1 & 40 respectively. a) Calculate the percentage voltage regulation for a load of 1,250 kW at 0.8 pf lagging. b) Draw the phasor diagram for the given load. (03)
 
 ### Answer 90
-Load kVA $= \frac{1250}{0.8} = 1562.5\ \text{kVA}$.
+**Given:** 3-phase, star-connected alternator: $1600\ \text{kVA}$, $13.5\ \text{kV}$ (line), $R_a = 1\ \Omega$, $X_s = 40\ \Omega$ per phase. Load: $1250\ \text{kW}$ at $0.8$ pf lagging.
 
-Phase current:
-$$I_{ph} = \frac{1562.5 \times 10^3}{\sqrt{3} \times 13500} = 66.82\ \text{A}$$
-
-Phase voltage:
-$$V_{ph} = \frac{13500}{\sqrt{3}} = 7794\ \text{V}$$
-
-For a cylindrical-rotor synchronous generator, the per-phase equivalent circuit gives:
-$$\vec{E}_f = \vec{V}_{ph} + \vec{I}_a(R_a + jX_s)$$
-with $R_a = 1\ \Omega$, $X_s = 40\ \Omega$, power factor $\cos\phi = 0.8$ lagging $\Rightarrow \phi = 36.87^\circ$.
-
-Taking $\vec{V}_{ph}$ as reference ($\angle 0^\circ$):
-$$\vec{I}_a = 66.82\angle -36.87^\circ\ \text{A}$$
-
-Impedance drop:
-$$\vec{I}_a Z_s = 66.82\angle -36.87^\circ \times (1 + j40) = 66.82\angle -36.87^\circ \times 40.0125\angle 88.57^\circ$$
-$$= 2673\angle 51.7^\circ = 1656 + j2098\ \text{V}$$
-
-Hence,
-$$\vec{E}_f = 7794 + 1656 + j2098 = 9450 + j2098\ \text{V}$$
-$$|\vec{E}_f| = \sqrt{9450^2 + 2098^2} \approx 9681.5\ \text{V}$$
-Load angle $\delta = \tan^{-1}\left(\frac{2098}{9450}\right) \approx 12.52^\circ$.
-
-**Percentage voltage regulation:**
+**Per-phase quantities:**
 $$
-\%\text{Reg} = \frac{E_f - V_{ph}}{V_{ph}} \times 100 = \frac{9681.5 - 7794}{7794} \times 100 \approx 24.21\%
+\begin{aligned}
+V_\text{ph} &= \frac{13500}{\sqrt{3}} = 7794\ \text{V},\\
+\text{Load kVA} &= \frac{1250}{0.8} = 1562.5\ \text{kVA},\\
+I_\text{ph} &= \frac{1562.5 \times 10^3}{\sqrt{3} \times 13500} = 66.82\ \text{A}.
+\end{aligned}
 $$
 
-**Phasor diagram (lagging pf):**
-- Draw $\vec{V}_{ph}$ horizontally.
-- Draw $\vec{I}_a$ lagging by $36.87^\circ$.
-- Add $\vec{I}_aR_a$ in phase with $\vec{I}_a$.
-- From its tip, add $\vec{I}_aX_s$ leading $\vec{I}_a$ by $90^\circ$.
-- The resultant from the origin is $\vec{E}_f$, leading $\vec{V}_{ph}$ by the load angle $\delta$.
+**Load angle:** $\phi = \cos^{-1}0.8 = 36.87^\circ$ lagging.
 
-![Phasor diagram of synchronous generator](./pyq-assets/textbook/108105131_p743_img-379_jpeg.png)
-<p align="center"><i>Generator phasor diagram for lagging load (Source: IIT Kharagpur NPTEL)</i></p>
+**Excitation emf $E_f$ (generator convention):**
+$$
+\begin{aligned}
+\mathbf{I}_a &= 66.82\angle -36.87^\circ\ \text{A},\quad \mathbf{V}_\text{ph} = 7794\angle 0^\circ,\\
+Z_s &= 1 + j40 = 40.0125\angle 88.57^\circ\ \Omega,\\
+\mathbf{I}_a Z_s &= 66.82\angle -36.87^\circ \times 40.0125\angle 88.57^\circ = 2673\angle 51.7^\circ\ \text{V}\\
+&= 2673(\cos 51.7^\circ + j\sin 51.7^\circ) = 1656 + j2098\ \text{V},\\
+\mathbf{E}_f &= \mathbf{V}_\text{ph} + \mathbf{I}_a Z_s = 7794 + 1656 + j2098 = 9450 + j2098\ \text{V},\\
+|\mathbf{E}_f| &= \sqrt{9450^2 + 2098^2} \approx 9681.5\ \text{V}.
+\end{aligned}
+$$
 
-> **Final answer:** Voltage regulation $= 24.21\%$.
+**Voltage regulation:**
+$$
+\%\text{Reg} = \frac{E_f - V_\text{ph}}{V_\text{ph}} \times 100 = \frac{9681.5 - 7794}{7794} \times 100 \approx 24.21\%.
+$$
+
+**Phasor diagram (lagging pf generator):** Reference $\mathbf{V}_\text{ph}$ horizontally. $\mathbf{I}_a$ drawn lagging by $36.87^\circ$. From $\mathbf{V}_\text{ph}$ tip, add resistive drop $\mathbf{I}_a R_a$ (parallel to $\mathbf{I}_a$). From its tip, add reactive drop $\mathbf{I}_a X_s$ (leading $\mathbf{I}_a$ by $90^\circ$). The resultant is $\mathbf{E}_f$, which leads $\mathbf{V}_\text{ph}$ by load angle $\delta \approx 12.5^\circ$. For lagging load, $E_f > V_\text{ph}$.
+
+> **Final answer:** Voltage regulation = **24.21\%**.
 
 
 ---
@@ -6128,22 +4565,15 @@ $$
 Explain the effect of load power factor on armature reaction in alternators. (03)
 
 ### Answer 91
-Armature reaction is the influence of the armature current's magnetomotive force (mmf) on the main field flux of an alternator. When the alternator is loaded, the armature current $I_a$ produces its own mmf $\mathcal{F}_a$ (or $M_a$), which combines vectorially with the field mmf $\mathcal{F}_f$ to produce a resultant mmf $\mathcal{F}_r$. This resultant mmf establishes the net air-gap flux that actually induces the terminal voltage. The nature and magnitude of this interaction depend critically on the load power factor.
+Armature reaction is the impact of the rotating armature mmf ($F_a$) on the main field mmf ($F_f$). When the alternator supplies load, the stator current $I_a$ (lagging, leading, or in phase with the induced emf $E_f$) produces $F_a$ that is displaced in space by the power factor angle $\phi$ relative to $F_f$. The resultant air-gap flux $\Phi_r$ is determined by the vector sum of the two mmfs. Since the terminal voltage $V_t$ is proportional to $\Phi_r$ (minus leakage drops), the power factor strongly influences $V_t$.
 
-- **Unity power factor (resistive load):**  
-  The armature current is in phase with the induced emf $E_f$. Since $E_f$ lags the field flux $\phi_f$ by 90°, the armature mmf $\mathcal{F}_a$ (in phase with $I_a$) is in space quadrature with the field mmf. This **cross-magnetising** effect distorts the flux distribution (strengthening one tip and weakening the other), but the average flux magnitude remains almost unchanged. Consequently, the terminal voltage drops only slightly due to the small leakage reactance and resistance drops.
+- **Unity pf**: $I_a$ in phase with $E_f$. $F_a$ acts perpendicular to $F_f$ (cross-magnetising), distorting the flux but not changing its average value. Hence $V_t$ remains almost constant with load.
+- **Lagging pf**: $I_a$ lags $E_f$. $F_a$ opposes $F_f$ along the direct axis (demagnetising), reducing $\Phi_r$ and causing $V_t$ to drop significantly.
+- **Leading pf**: $I_a$ leads $E_f$. $F_a$ assists $F_f$ (magnetising), boosting $\Phi_r$ and raising $V_t$ above the no-load value.
 
-- **Lagging power factor (inductive load):**  
-  The armature current lags the induced emf by the power factor angle $\theta$. The mmf $\mathcal{F}_a$ now has a component that directly opposes the field mmf $\mathcal{F}_f$. This **demagnetising** armature reaction weakens the net air-gap flux, causing a significant reduction in the induced emf and hence a larger drop in terminal voltage. In phasor diagrams, $E_f$ must be larger than $V_t$ to overcome the demagnetising effect.
+The effect can be quantified through the synchronous impedance model, where armature reaction is represented as a reactance voltage drop $j I_a X_{ar}$. This drop adds to the leakage reactance drop and the resistance drop to give the total internal voltage drop. The phasor sum of $E_f$, $j I_a X_{ar}$, $j I_a X_l$, and $I_a R_a$ yields the terminal voltage $V_t$, clearly showing the pf dependence.
 
-- **Leading power factor (capacitive load):**  
-  The armature current leads the induced emf. The armature mmf has a component that aids the field mmf. This **magnetising** armature reaction increases the net flux, so the induced emf rises and may even make the terminal voltage higher than the open-circuit value. Here $E_f$ can be smaller than $V_t$.
-
-These effects are clearly illustrated by the EMF-MMF (Blondel) diagram, where the resultant mmf $\mathcal{F}_r$ is the phasor sum of $\mathcal{F}_f$ and $\mathcal{F}_a$. For a lagging load, $\mathcal{F}_r$ is smaller than $\mathcal{F}_f$; for a leading load, it is larger. The phasor diagram below shows the relationship for a lagging power factor, with $V_t$ as reference, $I_a$ lagging, and the drops added to obtain $E_f$. The angle $\delta$ between $E_f$ and $V_t$ is the load (or power) angle.
-
-![Phasor diagram of a cylindrical-rotor alternator for lagging power factor, showing armature reaction mmf components and the resultant field.](./pyq-assets/textbook/108105131_p746_img-381_jpeg.png)
-
-> **Final answer:** Lagging pf → demagnetising (voltage drop); unity pf → cross-magnetising (small drop); leading pf → magnetising (voltage rise).
+> **Final answer:** Unity pf → cross-magnetising (small voltage drop); lagging pf → demagnetising (large voltage drop); leading pf → magnetising (voltage rise).
 
 
 ---
@@ -6154,80 +4584,67 @@ These effects are clearly illustrated by the EMF-MMF (Blondel) diagram, where th
 A 1000 kW, 3.3 kV, 24 pole, 50Hz, 3-phase star connected synchronous motor has synchronous reactance of 3.4 Ω per phase and the resistance is negligible. The motor is fed from infinite bus bar at 3.3kV. Its field excitation is adjusted to result in upf operation at rated load. Compute the maximum power and torque that the motor can deliver with its excitation remains constant at this value. (05)
 
 ### Answer 92
-The motor is rated 1000 kW, 3.3 kV, 24-pole, 50 Hz, star-connected, with synchronous reactance $X_s = 3.4\ \Omega$ per phase and negligible resistance. It is supplied from an infinite bus at 3.3 kV.
+**Given:**
+Rated power $P_{\text{rated}} = 1000\ \text{kW} = 10^6\ \text{W}$, line voltage $V_L = 3.3\ \text{kV} = 3300\ \text{V}$, number of poles $p = 24$, frequency $f = 50\ \text{Hz}$, star connection, synchronous reactance per phase $X_s = 3.4\ \Omega$, negligible resistance. The motor is fed from infinite bus at $3.3\ \text{kV}$ and its excitation is adjusted for unity power factor at rated load. This excitation is held constant.
 
-**1. Per-phase terminal voltage**
-
+**Solution:**
+1. **Per-phase voltage**
 $$
-V_{ph} = \frac{V_L}{\sqrt{3}} = \frac{3300}{\sqrt{3}} \approx 1905.3\ \text{V}.
-$$
-
-**2. Rated current at unity power factor**
-
-At rated load and unity power factor ($\cos\varphi = 1$), the line current is
-
-$$
-I_a = \frac{P}{\sqrt{3}\,V_L \cos\varphi} = \frac{1000 \times 10^3}{\sqrt{3} \times 3300 \times 1} \approx 174.95\ \text{A}.
+V_{\text{ph}} = \frac{V_L}{\sqrt{3}} = \frac{3300}{\sqrt{3}} \approx 1905.3\ \text{V}.
 $$
 
-**3. Excitation EMF (internal voltage $E$)**
-
-For a cylindrical-rotor synchronous motor with $R_a \approx 0$, the per-phase phasor equation is
-
+2. **Rated armature current (unity pf)**
 $$
-\dot{V} = \dot{E} + j X_s \dot{I}_a \quad \Rightarrow \quad \dot{E} = \dot{V} - j X_s \dot{I}_a.
+I_a = \frac{P_{\text{rated}}}{\sqrt{3}\,V_L \cos\phi} = \frac{10^6}{\sqrt{3} \times 3300 \times 1} \approx 174.95\ \text{A}.
 $$
 
-Taking terminal voltage as reference ($\dot{V} = V_{ph}\angle 0^\circ$) and with unity power factor (**I** is in phase with **V**),
-
+3. **Excitation emf $E$ (internal voltage)**
+For a cylindrical-rotor motor with $R_a \approx 0$:
 $$
-\dot{E} = 1905.3 - j(3.4 \times 174.95) = 1905.3 - j594.83\ \text{V}.
+\vec{V}_{\text{ph}} = \vec{E} + j X_s \vec{I}_a.
 $$
-
+Take $V_{\text{ph}}$ as reference and note that $I_a$ is in phase with it (upf). Then
 $$
-E = |\dot{E}| = \sqrt{1905.3^2 + 594.83^2} \approx 1996.0\ \text{V},
-\qquad
-\delta = \arctan\!\left(\frac{594.83}{1905.3}\right) \approx 17.34^\circ \ (\text{motoring, } E \text{ lags } V).
+\vec{E} = V_{\text{ph}} - j X_s I_a = 1905.3 - j 3.4 \times 174.95 = 1905.3 - j 594.84\ \text{V}.
 $$
+Magnitude:
+$$
+\begin{aligned}
+E &= \sqrt{(1905.3)^2 + (594.84)^2} \\
+  &\approx \sqrt{3.630 \times 10^6 + 3.538 \times 10^5} \\
+  &= \sqrt{3.984 \times 10^6} \approx 1996.0\ \text{V}.
+\end{aligned}
+$$
+This $E$ is kept constant by the fixed field current.
 
-The field current is now kept constant, so $E = 1996.0\ \text{V}$ remains fixed.
-
-**4. Maximum power (pull-out power)**
-
+4. **Maximum power (pull-out power)**
 For a non-salient-pole machine, the three-phase power is
-
 $$
-P = \frac{3\,V_{ph} E}{X_s} \sin\delta.
+P = \frac{3\,V_{\text{ph}} E}{X_s} \sin\delta.
+$$
+Maximum occurs at $\delta = 90^\circ$:
+$$
+\begin{aligned}
+P_{\max} &= \frac{3\,V_{\text{ph}} E}{X_s} \\
+         &= \frac{3 \times 1905.3 \times 1996.0}{3.4} \\
+         &\approx \frac{1.141 \times 10^7}{3.4} \\
+         &\approx 3.355 \times 10^6\ \text{W} = 3.355\ \text{MW}.
+\end{aligned}
 $$
 
-Maximum power occurs at $\delta = 90^\circ$:
-
+5. **Synchronous speed**
 $$
-P_{\max} = \frac{3\,V_{ph} E}{X_s} = \frac{3 \times 1905.3 \times 1996.0}{3.4} \approx 3.355 \times 10^6\ \text{W} = 3.355\ \text{MW}.
-$$
-
-![Power-angle characteristic](./pyq-assets/textbook/108105131_p766_img-392_jpeg.png)
-*Figure: Power-angle curve and motor phasor diagram. The peak of the sine wave gives $P_{\max}$.*
-
-**5. Synchronous speed and maximum torque**
-
-Synchronous speed:
-
-$$
-N_s = \frac{120 f}{P} = \frac{120 \times 50}{24} = 250\ \text{rpm},
+N_s = \frac{120 f}{p} = \frac{120 \times 50}{24} = 250\ \text{rpm},
 \qquad
 \omega_s = \frac{2\pi N_s}{60} = \frac{2\pi \times 250}{60} \approx 26.18\ \text{rad/s}.
 $$
 
-Maximum electromagnetic torque:
-
+6. **Maximum electromagnetic torque**
 $$
-T_{\max} = \frac{P_{\max}}{\omega_s} = \frac{3.355 \times 10^6}{26.18} \approx 128.17 \times 10^3\ \text{N·m} = 128.17\ \text{kN·m}.
+T_{\max} = \frac{P_{\max}}{\omega_s} = \frac{3.355 \times 10^6}{26.18} \approx 128.2 \times 10^3\ \text{N}\cdot\text{m} = 128.2\ \text{kN}\cdot\text{m}.
 $$
 
-> **Final answer:**
-> Maximum power: **3.355 MW**  
-> Maximum torque: **128.17 kN·m**
+> **Final answer:** Maximum power = **3.355 MW**, maximum torque = **128.2 kN·m**.
 
 
 ---
@@ -6238,21 +4655,15 @@ $$
 Explain the effect of load power factor on armature reaction in alternators. (03)
 
 ### Answer 93
-Armature reaction is the influence of the armature current mmf ($M_a$) on the main field flux ($\Phi_f$) of an alternator. The nature of this interaction depends primarily on the phase relationship between the armature current $I_a$ and the induced emf $E_f$, which in turn is governed by the load power factor. In a synchronous generator, the armature mmf wave rotates synchronously with the field, but its position relative to the field poles shifts with the power factor, leading to cross-magnetising, demagnetising, or magnetising effects.
+Armature reaction is the magnetic influence of the armature current on the main field. Its effect on the terminal voltage depends on the load power factor because the armature mmf ($F_a$) shifts in space relative to the field mmf ($F_f$) as the phase of $I_a$ changes with respect to the excitation emf $E_f$.
 
-- **Unity power factor:** When the generator supplies a purely resistive load, $I_a$ is almost in phase with the terminal voltage $V_t$ but lags $E_f$ by a small angle (the load angle). The armature mmf $M_a$ (which is in phase with $I_a$) is then largely in space quadrature with the main field mmf $M_f$. This produces a **cross-magnetising** effect: it distorts the flux distribution, strengthening the flux on one pole tip and weakening it on the other, but the average flux per pole remains nearly unchanged. As a result, the terminal voltage does not vary significantly from no-load.
+- **Unity pf load:** $I_a$ is in phase with $E_f$. The mmf $F_a$ is in quadrature with $F_f$, leading to cross-magnetisation. The flux per pole is distorted but its mean value stays almost constant, so the terminal voltage $V_t$ experiences a very small drop.
+- **Lagging pf load (inductive):** $I_a$ lags $E_f$. $F_a$ has a demagnetising component that directly weakens the main flux. The reduced flux lowers the induced emf, causing a larger drop in $V_t$.
+- **Leading pf load (capacitive):** $I_a$ leads $E_f$. $F_a$ has a magnetising component that strengthens the main flux. The increased flux raises the induced emf and can make $V_t$ exceed the no-load voltage.
 
-- **Lagging power factor (inductive load):** With an inductive load, $I_a$ lags $V_t$ by the power factor angle $\phi$. The phase of $I_a$ (and hence $M_a$) is such that a component of the armature mmf directly opposes $M_f$ along the direct axis. This **demagnetising** component reduces the resultant air-gap flux, causing a pronounced drop in terminal voltage under load. The greater the lagging current, the stronger the demagnetisation.
+These effects are conveniently shown on the Blondel (EMF-MMF) diagram, where the resultant mmf is the phasor sum $F_r = F_f + F_a$. For a lagging load, $|F_r| < |F_f|$ (demagnetising); for a leading load, $|F_r| > |F_f|$ (magnetising). The corresponding phasor diagram for voltage reveals that the synchronous reactance drop $j I_a X_s$ alters the magnitude of $E_f$ required to maintain $V_t$, thus linking the pf directly to voltage regulation.
 
-- **Leading power factor (capacitive load):** For a capacitive load, $I_a$ leads $V_t$. The armature mmf $M_a$ now has a component that aids $M_f$, producing a **magnetising** effect. The net flux increases, and the terminal voltage may rise above the no-load value. Heavy leading loads can even cause over-voltage.
-
-These phenomena are clearly represented in the Blondel (EMF-MMF) phasor diagram of the round-rotor alternator. In this diagram, the field mmf $M_f$ is drawn 90° ahead of $E_f$, and the armature reaction mmf $M_a$ is added vectorially in phase with $I_a$. The resultant mmf $M_r = M_f + M_a$ determines the actual air-gap flux, and its magnitude relative to $M_f$ reveals whether the armature reaction is demagnetising, cross-magnetising, or magnetising.
-
-![Phasor diagram showing the vector addition of field mmf $M_f$ and armature reaction mmf $M_a$ for a lagging load. The resultant $M_r$ is reduced, illustrating the demagnetising effect.](./pyq-assets/textbook/108105131_p746_img-381_jpeg.png)
-
-*Figure: Phasor diagram of a round-rotor alternator supplying a lagging power factor load. The armature current $I_a$ lags the terminal voltage $V_t$, and the armature reaction mmf $M_a$ (in phase with $I_a$) opposes the field mmf $M_f$, resulting in a smaller resultant $M_r$ and a lower induced emf $E_r$. For leading loads, $M_a$ shifts to aid $M_f$, increasing the resultant flux.*
-
-> **Final answer:** Lagging load - demagnetising (voltage drop); unity load - cross-magnetising (voltage almost constant); leading load - magnetising (voltage rise).
+> **Final answer:** Lagging pf - demagnetising (voltage sag); unity pf - cross-magnetising (small drop); leading pf - magnetising (voltage rise).
 
 
 ---
@@ -6263,47 +4674,48 @@ These phenomena are clearly represented in the Blondel (EMF-MMF) phasor diagram 
 A 1000 kW, 3.3 kV, 24 pole, 50Hz, 3-phase star connected synchronous motor has synchronous reactance of 3.4 Ω per phase and the resistance is negligible. The motor is fed from infinite bus bar at 3.3kV. Its field excitation is adjusted to result in upf operation at rated load. Compute the maximum power and torque that the motor can deliver with its excitation remains constant at this value. (05)
 
 ### Answer 94
-**Given:** A 1000 kW, 3.3 kV, 24-pole, 50 Hz, 3-phase star-connected synchronous motor. Per-phase synchronous reactance $X_s = 3.4\ \Omega$, armature resistance $R_a \approx 0$. The motor is fed from an infinite bus at $3.3\ \text{kV}$, and its field excitation is adjusted to give unity power factor operation at rated (full) load. The excitation is then held constant.
+**Given:** A 1000 kW, 3.3 kV, 24-pole, 50 Hz, star-connected synchronous motor with per-phase $X_s = 3.4\ \Omega$, $R_a \approx 0$, operated from infinite bus at 3.3 kV. The excitation is set for unity power factor at rated load and held constant.
 
 **1. Rated armature current and phase voltage**
 
-For rated load at upf,
-$$ \begin{aligned} I_a &= \frac{P_{\text{rated}}}{\sqrt{3}\,V_L} = \frac{1000 \times 10^3}{\sqrt{3} \times 3300} \approx 174.95\ \text{A} \\ V_{ph} &= \frac{V_L}{\sqrt{3}} = \frac{3300}{\sqrt{3}} \approx 1905.26\ \text{V}. \end{aligned} $$
+$$
+I_{a,\text{rated}} = \frac{P_{\text{rated}}}{\sqrt{3} V_L} = \frac{1000 \times 10^3}{\sqrt{3} \times 3300} \approx 174.95\ \text{A},
+$$
+$$
+V_{\text{ph}} = \frac{V_L}{\sqrt{3}} = \frac{3300}{\sqrt{3}} \approx 1905.26\ \text{V}.
+$$
 
-**2. Excitation emf $E$ under rated upf condition**
+**2. Excitation EMF under rated upf condition**
 
-With negligible resistance, the per-phase phasor equation for a synchronous motor is
-$$ \vec{V} = \vec{E} + j I_a X_s, $$
-with $\vec{V}$ as reference ($0^\circ$). For upf, $\vec{I}_a$ is in phase with $\vec{V}$, hence
-$$ \vec{E} = V_{ph} - j I_a X_s = 1905.26 - j\,3.4 \times 174.95 = 1905.26 - j\,594.83\ \text{V}. $$
+With $R_a=0$, the phasor equation is $\mathbf{V} = \mathbf{E} + j I_a X_s$. For upf, $\mathbf{I}_a$ is in phase with $\mathbf{V}$. Taking $\mathbf{V}$ as reference:
+$$
+\mathbf{E} = V_{\text{ph}} - j I_a X_s = 1905.26 - j 174.95 \times 3.4 = 1905.26 - j 594.83\ \text{V}.
+$$
 Magnitude:
-$$ E = \sqrt{(1905.26)^2 + (594.83)^2} \approx 1995.96\ \text{V}. $$
-The load angle (angle by which $E$ lags $V$) is $\delta \approx 17.34^\circ$.
-
-Since the field current is kept constant, the magnitude $E$ remains $1996\ \text{V}$ for any subsequent load change.
-
-<figure>
-<img src='./pyq-assets/textbook/108105131_p766_img-392_jpeg.png' alt='Phasor diagram and power-angle curve of a synchronous motor' />
-<figcaption>Figure: Phasor diagram and power-angle characteristic of a cylindrical-rotor synchronous motor (textbook p. 766).</figcaption>
-</figure>
+$$
+E = \sqrt{1905.26^2 + 594.83^2} \approx 1995.96\ \text{V}.
+$$
+The load angle is $\delta \approx 17.34^\circ$.
 
 **3. Maximum power (pull-out power)**
 
-For a cylindrical-rotor synchronous motor, the three-phase real power (ignoring $R_a$) is given by the power-angle equation:
-$$ P = \frac{3\,V_{ph}\,E}{X_s}\,\sin\delta. $$
-The maximum power occurs when $\delta = 90^\circ$ ( $\sin\delta = 1$ ):
-$$ P_{\max} = \frac{3\,V_{ph}\,E}{X_s} = \frac{3 \times 1905.26 \times 1995.96}{3.4} \approx 3.355 \times 10^6\ \text{W} = 3.355\ \text{MW}. $$
+The three-phase power for a round-rotor motor is $P = \frac{3 V_{\text{ph}} E}{X_s}\sin\delta$. Maximum occurs at $\delta = 90^\circ$:
+$$
+P_{\max} = \frac{3 V_{\text{ph}} E}{X_s} = \frac{3 \times 1905.26 \times 1995.96}{3.4} \approx 3.355 \times 10^6\ \text{W} = 3.355\ \text{MW}.
+$$
 
 **4. Maximum torque**
 
 Synchronous speed:
-$$ N_s = \frac{120\,f}{p} = \frac{120 \times 50}{24} = 250\ \text{rpm}, $$
-angular speed:
-$$ \omega_s = \frac{2\pi N_s}{60} = \frac{2\pi \times 250}{60} \approx 26.18\ \text{rad/s}. $$
-Maximum torque (pull-out torque) is therefore:
-$$ T_{\max} = \frac{P_{\max}}{\omega_s} = \frac{3.355 \times 10^6}{26.18} \approx 1.2817 \times 10^5\ \text{N·m} = 128.17\ \text{kN·m}. $$
+$$
+N_s = \frac{120 f}{P} = \frac{120 \times 50}{24} = 250\ \text{rpm},\quad \omega_s = \frac{2\pi N_s}{60} = \frac{2\pi \times 250}{60} \approx 26.18\ \text{rad/s}.
+$$
+Maximum torque:
+$$
+T_{\max} = \frac{P_{\max}}{\omega_s} = \frac{3.355 \times 10^6}{26.18} \approx 1.2817 \times 10^5\ \text{N}\cdot\text{m} = 128.17\ \text{kN}\cdot\text{m}.
+$$
 
-> **Final answer:** Maximum power $= 3.355\ \text{MW}$; Maximum torque $= 128.17\ \text{kN·m}$.
+> **Final answer:** Maximum power $= 3.355\ \text{MW}$; maximum torque $= 128.17\ \text{kN}\cdot\text{m}$.
 
 
 ---
@@ -6314,96 +4726,58 @@ $$ T_{\max} = \frac{P_{\max}}{\omega_s} = \frac{3.355 \times 10^6}{26.18} \appro
 A 3-phase, star-connected alternator is rated at 1,600 kVA, 13.5 kV. Its per- phase effective armature resistance & synchronous reactance are 1Ω & 40Ω respectively. a) Calculate the percentage voltage regulation for a load of 1,250 kW at 0.8 pf lagging. b) Draw the phasor diagram for the given load condition. c) Suggest a method to improve the voltage regulation, without any active power loading. 4
 
 ### Answer 95
-a) Calculation of percentage voltage regulation.
+**a) Percentage voltage regulation**
 
-Step 1: Compute phase voltage and current.
+- **Per-phase voltage and current**
 
-- Rated line voltage $V_L = 13.5\,\text{kV}$, star connection ⇒ phase voltage $V_\text{ph} = \frac{13500}{\sqrt{3}} = 7794.2\,\text{V}$.
-- Load real power $P = 1250\,\text{kW}$, power factor $\cos\phi = 0.8$ lagging ⇒ $\phi = \cos^{-1}0.8 = 36.87^\circ$.
-- Apparent power $S = \frac{P}{\cos\phi} = \frac{1250}{0.8} = 1562.5\,\text{kVA}$.
-- Line current $I_L = \frac{S}{\sqrt{3}V_L} = \frac{1562.5\times10^3}{\sqrt{3}\times13500} = 66.82\,\text{A}$. For star, $I_\text{ph} = I_L = 66.82\,\text{A}$.
-
-Step 2: Phasor equation.
-
-The alternator's per-phase equivalent circuit gives:
 $$
-\mathbf{E} = \mathbf{V} + \mathbf{I}(R_a + jX_s)
-$$
-where $R_a = 1\,\Omega$, $X_s = 40\,\Omega$, and $\mathbf{V} = 7794.2\angle 0^\circ$ V (taken as reference). The current lags by $\phi$:
-$$
-\mathbf{I} = 66.82\angle -36.87^\circ\ \text{A}.
+V_{\text{ph}} = \frac{13.5\,\text{kV}}{\sqrt{3}} = 7794.2\ \text{V},\quad I_{\text{ph}} = \frac{P}{\sqrt{3}V_L\cos\phi} = \frac{1250\times10^3}{\sqrt{3}\times13500\times0.8} = 66.82\ \text{A}.
 $$
 
-The synchronous impedance is
-$$
-\mathbf{Z}_s = R_a + jX_s = 1 + j40 \approx 40.012\angle 88.57^\circ\ \Omega.
-$$
+The power factor $\cos\phi = 0.8$ lagging → $\phi = \cos^{-1}0.8 = 36.87^\circ$.
 
-Hence,
+- **Synchronous impedance drop**
+
+$\mathbf{Z}_s = 1 + j40\ \Omega \approx 40.012\angle 88.57^\circ\ \Omega$, current $\mathbf{I} = 66.82\angle -36.87^\circ\ \text{A}$. Hence
 $$
 \mathbf{I}\mathbf{Z}_s = 66.82\angle -36.87^\circ \times 40.012\angle 88.57^\circ = 2673.6\angle 51.70^\circ\ \text{V}.
 $$
 
-Step 3: Compute $\mathbf{E}$.
+- **Generated EMF**
 
 Convert $\mathbf{I}\mathbf{Z}_s$ to rectangular form:
 $$
-\begin{aligned}
-\mathbf{I}\mathbf{Z}_s &= 2673.6(\cos51.70^\circ + j\sin51.70^\circ) \\
-&= 2673.6(0.6196 + j0.7849) \\
-&= 1656.2 + j2098.8\ \text{V}.
-\end{aligned}
+\mathbf{I}\mathbf{Z}_s = 2673.6(\cos51.70^\circ + j\sin51.70^\circ) = 1656.2 + j2098.8\ \text{V}.
+$$
+Add $\mathbf{V}_{\text{ph}} = 7794.2\angle 0^\circ$:
+$$
+\mathbf{E} = (7794.2 + 1656.2) + j2098.8 = 9450.4 + j2098.8\ \text{V},
+$$
+$$
+|\mathbf{E}| = \sqrt{9450.4^2 + 2098.8^2} \approx 9681.6\ \text{V}.
 $$
 
-Adding $\mathbf{V}$:
-$$
-\begin{aligned}
-\mathbf{E} &= (7794.2 + j0) + (1656.2 + j2098.8) \\
-&= 9450.4 + j2098.8\ \text{V}.
-\end{aligned}
-$$
-
-Magnitude:
-$$
-E = |\mathbf{E}| = \sqrt{9450.4^2 + 2098.8^2} \approx 9681.6\ \text{V}.
-$$
-
-Load angle:
-$$
-\delta = \tan^{-1}\left(\frac{2098.8}{9450.4}\right) \approx 12.52^\circ.
-$$
-
-Step 4: Voltage regulation.
+- **Regulation**
 
 $$
-\%\text{Reg} = \frac{E - V_\text{ph}}{V_\text{ph}} \times 100 = \frac{9681.6 - 7794.2}{7794.2} \times 100 \approx 24.2\%.
+ \frac{| \mathbf{E} | - V_{\text{ph}}}{V_{\text{ph}}} \times 100 = \frac{9681.6 - 7794.2}{7794.2} \times 100 \approx 24.2\%.
 $$
 
-b) Phasor diagram.
+**b) Phasor diagram**
 
-A phasor diagram for a synchronous generator delivering a lagging power factor load is constructed as follows:
+Construction: Draw terminal voltage $\mathbf{V}_{\text{ph}}$ horizontally (reference). Draw armature current $\mathbf{I}$ lagging by $\phi=36.87^\circ$. From the tip of $\mathbf{V}$, draw the resistive drop $\mathbf{I}R_a$ parallel to $\mathbf{I}$, then draw the synchronous reactance drop $j\mathbf{I}X_s$ perpendicular to $\mathbf{I}$ (leading it by $90^\circ$). The phasor from the origin to the tip of $j\mathbf{I}X_s$ is the excitation EMF $\mathbf{E}$. The angle $\delta$ between $\mathbf{E}$ and $\mathbf{V}$ is the load angle (≈12.5°).
 
-- Draw the terminal voltage $\mathbf{V}$ horizontally (reference phasor).
-- Draw the armature current $\mathbf{I}$ lagging $\mathbf{V}$ by the power factor angle $\phi = 36.87^\circ$.
-- From the tip of $\mathbf{V}$, draw the resistive drop $\mathbf{I}R_a$ parallel to $\mathbf{I}$.
-- From the tip of $\mathbf{I}R_a$, draw the synchronous reactance drop $j\mathbf{I}X_s$ perpendicular to $\mathbf{I}$ (leading $\mathbf{I}$ by $90^\circ$).
-- The phasor from the origin to the tip of $j\mathbf{I}X_s$ is the generated EMF $\mathbf{E}$.
-- The angle $\delta$ between $\mathbf{E}$ and $\mathbf{V}$ is the load (power) angle.
+![Phasor diagram of synchronous generator for lagging pf](https://commons.wikimedia.org/wiki/Special:Redirect/file/Synchronous%20Machine%20Diagram.png)
+*Figure: Phasor diagram of a synchronous generator feeding a lagging power factor load. Source: Wikimedia Commons.*
 
-Figure below illustrates the complete phasor diagram for a generator operating with lagging power factor (the textbook image captures all the relevant phasors).
+**c) Improvement of voltage regulation**
 
-![Phasor diagram for synchronous generator with lagging pf](./pyq-assets/textbook/108105131_p743_img-379_jpeg.png)
+To reduce the voltage drop without changing active power, supply leading reactive power at the machine terminals. This can be achieved by:
+- Switching shunt capacitor banks across the load or bus,
+- Using an over-excited synchronous motor (synchronous condenser) connected in parallel.
+Both methods inject leading VARs that partially cancel the lagging VARs drawn by the load, thereby reducing the armature current and the internal $I X_s$ drop, and hence improving voltage regulation.
 
-c) Improving voltage regulation without changing active power.
-
-Voltage regulation deteriorates mainly because of the reactive drop $I X_s$. To improve regulation while keeping the active power constant, the lagging reactive power drawn by the load must be compensated locally. This can be done by injecting leading reactive power at the machine terminals. Practical methods include:
-
-- Connecting a shunt capacitor bank across the load or at the machine terminals.
-- Operating an over-excited synchronous motor (synchronous condenser) in parallel with the load.
-
-Both methods supply leading VARs that cancel a portion of the lagging VARs, thereby reducing the armature current and the $I X_s$ drop, and consequently lowering the voltage rise from no-load to full-load, i.e., improving voltage regulation.
-
-> **Final answer:** Voltage regulation $= 24.2\%$; compensation by leading VAR injection (capacitors or over-excited synchronous motor).
+> **Final answer:** Voltage regulation $= 24.2\%$; improvement by leading VAR compensation (capacitors or over-excited synchronous motor).
 
 
 ---
@@ -6414,21 +4788,32 @@ Both methods supply leading VARs that cancel a portion of the lagging VARs, ther
 With the aid of EMF-MMF diagram, explain the effect of armature reaction when an alternator is connected to (a) capacitive load (b) Inductive load (c) Lagging load 3
 
 ### Answer 96
-Armature reaction is the effect of the armature-current mmf on the main field flux. In a cylindrical-rotor alternator, the EMF-MMF (Blondel) diagram provides a clear picture. The resultant mmf $F_r$ in the air gap is the vector sum of the field mmf $F_f$ and the armature-reaction mmf $F_a$:
+# Explanation of armature reaction using EMF-MMF diagram
+
+Armature reaction describes the distortion and change in magnitude of the main field flux caused by the armature-current-produced MMF ($F_a$). In a cylindrical-rotor alternator, the resultant air-gap MMF $F_r$ is the vector sum of the field MMF $F_f$ and the armature-reaction MMF $F_a$:
 $$
-\mathbf{F}_r = \mathbf{F}_f + \mathbf{F}_a
+\mathbf{F}_r = \mathbf{F}_f + \mathbf{F}_a.
 $$
-The induced emf $E$ (or $E_f$) is proportional to $F_r$ and lags it by 90°, while the terminal voltage $V$ differs by the internal impedance drops.
+The induced EMF $E$ (or $E_f$) is proportional to $F_r$ and lags it by $90^\circ$.
 
-![Blondel EMF-MMF diagram for a synchronous generator.](./pyq-assets/textbook/108105131_p746_img-381_jpeg.png)
+![EMF-MMF (Blondel) diagram of a synchronous generator](https://commons.wikimedia.org/wiki/Special:Redirect/file/Synchronous%20Machine%20Diagram.png)
+*Figure: EMF-MMF diagram illustrating armature reaction. Source: Wikimedia Commons.*
 
-- **(a) Capacitive (leading) load:** The armature current $I_a$ leads the terminal voltage $V$. $F_a$ (in phase with $I_a$) has a component aiding $F_f$, producing a magnetising effect. The net flux increases, causing the terminal voltage to rise. On the diagram $F_r$ is larger than $F_f$.
-- **(b) Inductive (lagging) load:** $I_a$ lags $V$. $F_a$ opposes $F_f$ (demagnetising). The net flux decreases and the terminal voltage drops; $F_r$ is smaller than $F_f$.
-- **(c) Lagging load:** This is essentially the same as an inductive load; the armature reaction is demagnetising.
+**(a) Capacitive (leading) load**
+- The armature current $I_a$ leads the terminal voltage $V$ by an angle $\phi$.
+- The armature MMF $F_a$ is in phase with $I_a$; therefore $F_a$ has a component that aids $F_f$ (magnetizing effect).
+- The resultant MMF $F_r$ becomes larger than $F_f$, increasing the induced EMF and tending to raise the terminal voltage.
 
-In all cases the magnitude and phase of $F_a$ depend on the load current and its power factor. The induced emf is determined by $F_r$ via the magnetisation characteristic.
+**(b) Inductive (lagging) load**
+- $I_a$ lags $V$ by an angle $\phi$.
+- $F_a$ now opposes $F_f$ (demagnetizing effect).
+- $F_r$ is smaller than $F_f$, reducing the induced EMF and causing a voltage drop.
 
-> **Final answer:** Capacitive load - magnetising (voltage rise); inductive/lagging load - demagnetising (voltage drop); unity pf - cross-magnetising (small drop).
+**(c) Lagging load**
+- A lagging load is synonymous with an inductive load; the armature reaction is demagnetizing, causing a drop in terminal voltage.
+- In all cases the cross-component of $F_a$ (perpendicular to $F_f$) causes distortion of the main field, but the net effect on the magnitude of the resultant flux is determined by the power factor.
+
+> **Final answer:** Capacitive load - magnetizing (voltage rise); inductive/lagging load - demagnetizing (voltage drop).
 
 
 ---
@@ -6439,29 +4824,25 @@ In all cases the magnitude and phase of $F_a$ depend on the load current and its
 Assume a purely resistive load connected across the terminals of an alternator. Will the voltage regulation of the alternator be zero? Justify your answer. (02)
 
 ### Answer 97
-No, the voltage regulation of the alternator will **not** be zero under a purely resistive load. Voltage regulation is defined as
+No, the voltage regulation is **not zero** for a purely resistive load.
 
+Regulation is defined as
 $$
-\text{Regulation} = \frac{|E| - |V|}{|V|} \times 100\%,
+\text{Regulation}\% = \frac{|\vec{E}| - |\vec{V}|}{|\vec{V}|} \times 100\%,
 $$
-
-where $E$ is the no-load induced emf (per phase) and $V$ is the full-load terminal voltage (per phase). For a generator, the phasor equation is
-
+where $\vec{E}$ is the no-load excitation emf (per phase) and $\vec{V}$ is the full-load terminal voltage (per phase). For a cylindrical-rotor alternator,
 $$
-\vec{E} = \vec{V} + \vec{I}_a (R_a + jX_s).
-$$
-
-Here $R_a$ is the armature resistance and $X_s$ is the synchronous reactance (leakage + armature reaction). Even when the load is purely resistive, so that $\vec{I}_a$ is in phase with $\vec{V}$, the drop $j\vec{I}_a X_s$ is in quadrature with $\vec{I}_a$ and therefore with $\vec{V}$. The resistance drop $I_a R_a$ adds directly in phase with $\vec{V}$. Consequently, the magnitude of $\vec{E}$ is given by
-
-$$
-|\vec{E}| = \sqrt{ (V + I_a R_a)^2 + (I_a X_s)^2 }.
+\begin{aligned}
+\vec{E} &= \vec{V} + \vec{I}_a (R_a + jX_s) \\
+|\vec{E}| &= \sqrt{ (V + I_a R_a)^2 + (I_a X_s)^2 }.
+\end{aligned}
 $$
 
-As long as $I_a>0$, the term under the square root is larger than $V^2$, so $|E| > |V|$. Hence the regulation is positive.
+Even with a purely resistive load ( $\vec{I}_a$ in phase with $\vec{V}$ ), the drop $j\vec{I}_a X_s$ is in quadrature with $\vec{V}$, and the drop $\vec{I}_a R_a$ adds directly in phase with $\vec{V}$. Thus $|\vec{E}| > |\vec{V}|$ whenever $I_a > 0$, yielding a positive regulation.
 
-Zero regulation can occur only at a specific leading power factor where the capacitive effect of a leading current boosts the terminal voltage sufficiently to cancel the internal drops. For a resistive load, however, the reactive drop always reduces the terminal voltage relative to the generated emf.
+Regulation can be zero only at a specific leading power factor where the capacitive effect exactly cancels the internal impedance drops; that condition does not occur with resistive loading.
 
-> **Final answer:** Voltage regulation is **not zero** for a purely resistive load; $|E| > |V|$ because of the quadrature drop $jI_a X_s$ and the in-phase drop $I_a R_a$, giving a positive regulation.
+> **Final answer:** Voltage regulation is **not zero**; $|\vec{E}| > |\vec{V}|$ because of the quadrature reactance drop and the in-phase resistance drop, giving a positive regulation.
 
 
 ---
@@ -6472,66 +4853,57 @@ Zero regulation can occur only at a specific leading power factor where the capa
 A 3-phase cylindrical rotor alternator operating in a captive plant has a rating of 80 kVA, 440 V. This alternator is supplying power to a drive system at a rated current and 0.75 lagging power factor. Consider an armature resistance of 0.25 Ω per phase and a synchronous reactance of 3.2 ohms per phase. Determine the voltage regulation. (03)
 
 ### Answer 98
-**Given:** 3-phase, 80 kVA, 440 V (L-L), 0.75 pf lagging, $R_a = 0.25\ \Omega/\text{phase}$, $X_s = 3.2\ \Omega/\text{phase}$.
+**Given:** 3-phase, 80 kVA, 440 V (L-L), 0.75 pf lagging,
+$R_a = 0.25\,\Omega$/phase, $X_s = 3.2\,\Omega$/phase.
 
-**Step 1: Rated current**
-$$
-I_a = \frac{80\,000}{\sqrt{3}\times 440} = 104.97\ \text{A}
-$$
+---
 
-**Step 2: Phase voltage (star connection assumed)**
+**Step 1 - Rated armature current**
 $$
-V_{ph} = \frac{440}{\sqrt{3}} \approx 254.03\ \text{V}
+I_a = \frac{S}{\sqrt{3}\,V_L} = \frac{80\,000}{\sqrt{3}\times 440} = 104.97\;\text{A}.
 $$
 
-**Step 3: Power factor angle**
+**Step 2 - Phase voltage** (star-connected assumed)
 $$
-\phi = \cos^{-1}(0.75) = 41.41^\circ\ (\text{lagging})
-$$
-
-**Step 4: Synchronous impedance**
-$$
-Z_s = R_a + jX_s = 0.25 + j3.2\ \Omega,\quad |Z_s| = \sqrt{0.25^2 + 3.2^2} = 3.21\ \Omega,\quad \angle Z_s = \tan^{-1}\!\left(\frac{3.2}{0.25}\right) = 85.53^\circ
+V_\text{ph} = \frac{440}{\sqrt{3}} = 254.03\;\text{V}.
 $$
 
-**Step 5: Phasor diagram and excitation emf**
-With terminal voltage as reference: $\vec{V}_{ph} = 254\angle 0^\circ\ \text{V}$ and armature current $\vec{I}_a = 104.97\angle -41.41^\circ\ \text{A}$.
-
-For a cylindrical rotor alternator (generator mode),
+**Step 3 - Power factor angle**
 $$
-\vec{E}_f = \vec{V}_{ph} + \vec{I}_a Z_s
+\phi = \arccos(0.75) = 41.41^\circ\;(\text{lagging}),\;\text{so } \vec{I}_a = 104.97\angle -41.41^\circ\;\text{A}.
 $$
 
-![Phasor diagram](./pyq-assets/textbook/108105131_p743_img-379_jpeg.png)  
-*Figure: Phasor diagram showing $V$, $I_a$, and the voltage drops across $R_a$ and $X_s$ to obtain $E_f$.*
-
+**Step 4 - Synchronous impedance**
 $$
 \begin{aligned}
-\vec{I}_a Z_s &= (104.97\angle -41.41^\circ)(3.21\angle 85.53^\circ) \\
-&= 336.9\angle 44.12^\circ\ \text{V}
+Z_s &= R_a + jX_s = 0.25 + j3.2\;\Omega, \\
+|Z_s| &= \sqrt{0.25^2 + 3.2^2} = 3.21\;\Omega,\quad
+\angle Z_s = \arctan\!\left(\frac{3.2}{0.25}\right) = 85.53^\circ.
 \end{aligned}
 $$
 
-Converting to rectangular coordinates:
+**Step 5 - Excitation emf** $\vec{E}_f$
+With terminal voltage as reference, $\vec{V}_\text{ph} = 254.03\angle 0^\circ$ V.
 $$
 \begin{aligned}
-\vec{V}_{ph} &= 254 + j0 \\
-\vec{I}_a Z_s &= 336.9(\cos 44.12^\circ + j\sin 44.12^\circ) \approx 241.9 + j234.5 \\
-\therefore \vec{E}_f &= (254 + 241.9) + j234.5 = 495.9 + j234.5
+\vec{I}_a Z_s &= (104.97\angle -41.41^\circ) \times (3.21\angle 85.53^\circ)
+              = 336.9\angle 44.12^\circ\;\text{V}, \\
+\vec{E}_f &= \vec{V}_\text{ph} + \vec{I}_a Z_s \\
+          &= 254.03\angle 0^\circ + 336.9\angle 44.12^\circ \\
+          &= (254.03 + 241.9) + j\,234.5 \\
+          &= 495.93 + j\,234.5\;\text{V}, \\
+|\vec{E}_f| &= \sqrt{495.93^2 + 234.5^2} = 548.6\;\text{V}.
 \end{aligned}
 $$
 
-Magnitude of excitation emf:
+**Step 6 - Voltage regulation**
 $$
-|\vec{E}_f| = \sqrt{495.9^2 + 234.5^2} \approx 548.6\ \text{V}
-$$
-
-**Step 6: Voltage regulation**
-$$
-\%\text{Regulation} = \frac{|\vec{E}_f| - V_{ph}}{V_{ph}} \times 100 = \frac{548.6 - 254.03}{254.03} \times 100 \approx 115.95\%
+\%\text{Regulation} = \frac{|\vec{E}_f| - V_\text{ph}}{V_\text{ph}} \times 100
+                    = \frac{548.6 - 254.03}{254.03} \times 100
+                    = 115.95\%.
 $$
 
-> **Final answer:** Voltage regulation $= 115.95\%$.
+> **Final answer:** $\boxed{115.95\%}$
 
 
 ---
@@ -6542,58 +4914,42 @@ $$
 "V" and "inverted V" curves have significant importance in analyzing the behavior of synchronous machines. Justify this statement suitably. Describe the operation of alternator with constant excitation and variable load with suitable phasor diagrams. What is the significance of the condition with minimum excitation? Analyze the relation between power factor and excitation with the help of a suitable curve. (04)
 
 ### Answer 99
-**Justification of V and inverted-V curves**
-The V-curves (armature current $I_a$ vs field current $I_f$) and inverted V-curves ($\cos\phi$ vs $I_f$) for a synchronous machine operating at constant terminal voltage and constant real power are fundamental tools because they directly reveal the effect of excitation on the machine's electrical performance. For a synchronous motor (or generator), as $I_f$ is increased from a low value, $I_a$ first decreases, reaches a minimum at unity power factor, and then increases-forming a V-shaped locus. Simultaneously, the power factor moves from lagging (under-excited) through unity to leading (over-excited), producing an inverted V-curve. These curves are essential for:  
-- Selecting the field current that minimises armature copper loss ($I_a^2R_a$).  
-- Controlling the reactive power exchange with the grid (kVAR generation or absorption).  
-- Operating the machine as a synchronous condenser (at zero real power, controlling only reactive power).  
-- Setting excitation margins to avoid pull-out (loss of synchronism).
+![V-curves and inverted V-curves](https://commons.wikimedia.org/wiki/Special:Redirect/file/V%20curve%20synchronous%20motor.svg)
+*Figure: V-curves ($I_a$ vs $I_f$) and inverted V-curves ($\cos\phi$ vs $I_f$). Source: Wikimedia Commons.*
 
-**Alternator operation at constant excitation and variable load**  
-Consider a three-phase cylindrical-rotor alternator connected to an infinite bus (constant voltage $V$ and frequency). The field current $I_f$ is held constant, so the magnitude of the generated emf $E$ is fixed. The phasor equation per phase is  
+**Importance of V and inverted-V curves**
+For a synchronous machine operating at constant terminal voltage and constant real power, the armature current $I_a$ plotted against field current $I_f$ traces a "V" shape, while the power factor traces an inverted "V". These curves:
+- directly show the effect of excitation on armature reaction and reactive power exchange;
+- identify the unity-pf operating point that minimises armature copper loss;
+- define the under-excited (lagging pf) and over-excited (leading pf) regions;
+- indicate the stability boundary (pull-out) at very low excitation.
 
+**Alternator operation with constant excitation and variable load**
+Consider a cylindrical-rotor machine connected to an infinite bus ($V$, $f$ constant) with field current $I_f$ fixed → $|\vec{E}|$ constant. Per phase (neglecting $R_a$),
 $$
-\vec{E} = \vec{V} + \vec{I}_a(R_a + j X_s) ,
+\begin{aligned}
+\vec{E} &= \vec{V} + j\vec{I}_a X_s, \\
+P &= \frac{V E}{X_s}\sin\delta,
+\end{aligned}
 $$
+where $\delta$ is the load angle. As real power increases, $\delta$ must increase to maintain $P$. The phasor diagrams for three load types illustrate the armature reaction:
+- **Lagging pf (inductive load):** $\vec{I}_a$ lags $\vec{V}$; drop $j\vec{I}_a X_s$ nearly opposes $\vec{V}$ (demagnetising), requiring a larger $\delta$ for the same $P$.
+- **Unity pf:** $\vec{I}_a$ in phase with $\vec{V}$; drop is perpendicular (cross-magnetising).
+- **Leading pf (capacitive load):** $\vec{I}_a$ leads $\vec{V}$; drop has a component that aids $\vec{V}$ (magnetising); $\delta$ may be smaller or $E$ greater than $V$.
 
-where $R_a$ is the armature resistance and $X_s$ is the synchronous reactance. Usually $R_a \ll X_s$ and may be neglected for qualitative analysis. Thus  
+With fixed excitation, the terminal voltage would sag on lagging loads and rise on leading loads if the machine were not held by a stiff bus.
 
-$$
-\vec{E} \approx \vec{V} + j\vec{I}_a X_s .
-$$
+**Significance of minimum excitation**
+For a given real power, the *minimum excitation* is the field current at which $\delta$ reaches $90^\circ$. At $\delta = 90^\circ$, $P$ equals the pull-out power $P_{\max} = VE/X_s$. Any further reduction in $I_f$ (hence lower $E$) makes $\delta > 90^\circ$, entering the unstable region and leading to pole-slipping. This condition therefore sets the lower stability limit of the machine.
 
-As the mechanical power input (and hence the load) is varied, the armature current $I_a$ and the load angle $\delta$ (the angle by which $E$ leads $V$) adjust to satisfy both the real-power balance and the phasor relation. The real power delivered by the generator (per phase) is  
+**Power factor versus excitation - inverted V-curve**
+At constant load, as $I_f$ is increased from a low value:
+- Under-excited region: $\vec{E}$ lags, armature reaction is demagnetising, machine draws reactive power → lagging pf.
+- Normal excitation: $I_a$ reaches minimum, reactive power is zero → unity pf.
+- Over-excited region: $\vec{E}$ leads, machine supplies reactive power → leading pf.
+The inverted V-curve thus provides a direct mapping between field current and power factor, enabling deliberate control of reactive power flow.
 
-$$
-P = \frac{VE}{X_s}\sin\delta .
-$$
-
-With constant $E$ and $V$, an increase in $P$ forces an increase in $\delta$, moving the operating point closer to the stability limit $\delta = 90^\circ$.
-
-The nature of the load determines how the terminal voltage $V$ would change if the machine were not tied to a rigid bus, or, equivalently, what armature current and power factor are required to keep $V$ constant. The three typical load power factors are illustrated by phasor diagrams:  
-
-- **Lagging power factor (inductive load):** The armature current $\vec{I}_a$ lags $\vec{V}$ by an angle $\phi$. The drop $j\vec{I}_a X_s$ is nearly in phase with $\vec{V}$, causing a large voltage drop. The armature reaction is demagnetising, and $V$ would sag significantly if not regulated. The load angle $\delta$ is relatively small for a given power.  
-
-- **Unity power factor:** $\vec{I}_a$ is in phase with $\vec{V}$. The drop $j\vec{I}_a X_s$ is perpendicular to $\vec{V}$, producing a moderate voltage drop. The armature reaction is cross-magnetising. The machine operates with minimum armature current for the given real power (if excitation is properly set).  
-
-- **Leading power factor (capacitive load):** $\vec{I}_a$ leads $\vec{V}$. The drop $j\vec{I}_a X_s$ has a component that opposes $\vec{V}$, so the required $E$ may be smaller than $V$ or the terminal voltage may rise if the machine is not on a strong bus. The armature reaction is magnetising.  
-
-Thus, with fixed excitation, the alternator's terminal voltage is highly load-dependent, dropping on lagging loads and potentially rising on leading loads, a direct consequence of the armature reaction effect.
-
-**Significance of the condition with minimum excitation**  
-For a given real-power output, the *minimum excitation* refers to the field current at which the machine just maintains synchronism-this is the stability limit. From the power-angle relation $P = (VE/X_s)\sin\delta$, reducing $E$ requires a larger $\delta$ to keep the same $P$. When $E$ is reduced to the point where $\delta = 90^\circ$, $\sin\delta = 1$, and the power reaches its maximum (pull-out power) $P_{\max} = VE/X_s$. Any further reduction in excitation would make $\delta > 90^\circ$, entering the unstable region of the $P\!-\!\delta$ curve, and the machine falls out of step. Therefore, the minimum excitation condition defines the lower boundary of stable operation. In practice, a safety margin of $10^\circ$-$20^\circ$ is maintained to ensure transient stability.  
-
-It is also noteworthy that for each power level there exists an *optimum excitation* (the bottom of the V-curve) that gives unity power factor and the smallest possible armature current. This is often called the "normal excitation." Operating at normal excitation minimises $I_a^2R$ losses and avoids reactive power flow, which is economically desirable. Excitation above this point is termed over-excitation (leading pf); below it is under-excitation (lagging pf).
-
-**Relation between power factor and excitation**  
-The inverted V-curve directly shows how the power factor varies with field current for a fixed load. As $I_f$ is increased from a low value (under-excited region), the power factor improves from a large lagging value, passes through unity at the bottom of the $I_a$ V-curve, and then becomes leading (over-excited). The curve is nearly symmetric about the unity pf point if the machine operates in the linear magnetic region.  
-
-Physically, a low field current produces a weak internal emf $E$. To maintain the required real power and terminal voltage, the armature current must contain a large magnetising (lagging) component to strengthen the resultant air-gap flux. Conversely, a high field current produces a strong $E$; the armature current then must supply a demagnetising (leading) component to bring the terminal voltage down to the bus level. By adjusting the excitation, the synchronous machine can be made to behave as a variable reactive-power source or sink, a property extensively used for power-factor correction in industrial plants.  
-
-![V curves of synchronous motor](./pyq-assets/textbook/108105131_p788_img-403_jpeg.png)  
-*Figure: Family of V-curves for a synchronous motor at different load levels. The corresponding power-factor curve is an inverted V.*  
-
-> **Final answer:** V-and inverted-V curves capture the effect of excitation on current and pf; constant-excitation alternator phasor diagrams illustrate armature-reaction changes; minimum excitation is the stability boundary; pf varies from lagging to leading with excitation.
+> **Final answer:** V and inverted-V curves are fundamental for analyzing excitation effects, stability, and reactive power. Constant-excitation alternator operation is explained by the phasor relation $\vec{E} = \vec{V} + j\vec{I}_a X_s$ and the power-angle equation; minimum excitation corresponds to the pull-out limit ($\delta = 90^\circ$). The inverted-V curve directly shows the transition from lagging through unity to leading pf with increasing field current.
 
 
 ---
@@ -6604,93 +4960,37 @@ Physically, a low field current produces a weak internal emf $E$. To maintain th
 A 60 kVA, 381.05 V, 50 Hz, Y - connected alternator has an effective resistance of 0.016 Ω and armature related self-inductance of 0.23 mH. With the help of accurate phasor diagrams and related analysis, determine the induced voltage in the armature delivers rated current at a load power factor of 0.7 leading. (05)
 
 ### Answer 100
-Given data: 60 kVA, 381.05 V (line), 50 Hz, Y-connected alternator.
+Given a 60 kVA, 381.05 V (line), 50 Hz, star-connected alternator with $R_a = 0.016\;\Omega$/ph and $L = 0.23\;\text{mH}$ (hence $X_s = \omega L$).
 
-- Effective armature resistance: $R_a = 0.016\ \Omega$
-- Armature self-inductance: $L = 0.23\ \text{mH} = 0.23 \times 10^{-3}\ \text{H}$
-- Load power factor: $0.7$ leading
+- Phase voltage: $V_{ph} = \dfrac{V_L}{\sqrt{3}} = \dfrac{381.05}{\sqrt{3}} \approx 220\;\text{V}$.
+- Full-load phase current: $I_a = \dfrac{S}{\sqrt{3}\,V_L} = \dfrac{60000}{\sqrt{3}\times 381.05} = 90.91\;\text{A}$.
+- Synchronous reactance: $X_s = 2\pi f L = 2\pi\times50\times0.23\times10^{-3} = 0.0723\;\Omega$.
+- Synchronous impedance: $Z_s = R_a + jX_s = 0.016 + j0.0723 = 0.0741\angle 77.5^\circ\;\Omega$.
 
-**Step 1 - Rated current (line = phase for Y):**
+Load pf = 0.7 leading → $\phi = \cos^{-1}0.7 = 45.57^\circ$; current leads voltage: $\vec{I}_a = 90.91\angle +45.57^\circ\;\text{A}$ (taking $\vec{V}_{ph}=220\angle0^\circ$ V as reference).
 
-$$
-I = \frac{S}{\sqrt{3}\,V_L} = \frac{60000}{\sqrt{3} \times 381.05} \approx 90.91\ \text{A}.
-$$
-
-**Step 2 - Phase voltage:**
-
-$$
-V_{ph} = \frac{V_L}{\sqrt{3}} = \frac{381.05}{\sqrt{3}} \approx 220.0\ \text{V}.
-$$
-
-**Step 3 - Synchronous reactance:**
-
-$$
-X_s = \omega L = 2\pi f L = 2\pi \times 50 \times 0.23\times 10^{-3} \approx 0.0723\ \Omega.
-$$
-
-Thus the synchronous impedance is
-
-$$
-Z_s = R_a + jX_s = 0.016 + j0.0723 = 0.0741\angle 77.5^\circ\ \Omega.
-$$
-
-**Step 4 - Power factor angle:**
-
-$$
-\phi = \cos^{-1}(0.7) = 45.57^\circ \quad (\text{current leads voltage}).
-$$
-
-As a phasor, taking terminal voltage as reference:
-
-$$
-\vec{V} = 220\angle 0^\circ\ \text{V}, \qquad
-\vec{I} = 90.91\angle +45.57^\circ\ \text{A}.
-$$
-
-**Step 5 - Induced emf (generator equation):**
-
-For a synchronous generator, the phasor relation is
-
-$$
-\vec{E} = \vec{V} + \vec{I}(R_a + jX_s).
-$$
-
-Compute the voltage drop:
-
-$$
-\vec{I}Z_s = 90.91 \times 0.0741 \angle (45.57^\circ + 77.5^\circ) = 6.73\angle 123.07^\circ\ \text{V}.
-$$
-
-Converting to rectangular form:
-
-$$
-\vec{I}Z_s = 6.73 \cos(123.07^\circ) + j\,6.73 \sin(123.07^\circ) = -3.67 + j5.64\ \text{V}.
-$$
-
-Therefore,
+For a generator: $\vec{E} = \vec{V}_{ph} + \vec{I}_a Z_s$.
 
 $$
 \begin{aligned}
-\vec{E} &= 220 + (-3.67 + j5.64) \\
-       &= 216.33 + j5.64\ \text{V}, \\[4pt]
-|E|   &= \sqrt{(216.33)^2 + (5.64)^2} \approx 216.40\ \text{V/phase}.
+\vec{I}_a Z_s &= 90.91 \times 0.0741\;\angle(45.57^\circ+77.5^\circ) = 6.73\angle 123.07^\circ\;\text{V} \\
+            &= -3.67 + j5.64\;\text{V}.
 \end{aligned}
 $$
 
-**Step 6 - Voltage regulation:**
-
+Hence,
 $$
-\%\text{Reg} = \frac{|E| - V_{ph}}{V_{ph}} \times 100 = \frac{216.40 - 220}{220} \times 100 \approx -1.64\%.
+\begin{aligned}
+\vec{E} &= 220 + (-3.67 + j5.64) = 216.33 + j5.64\;\text{V},\\[2pt]
+|E|   &= \sqrt{216.33^2 + 5.64^2} = 216.4\;\text{V/phase}.
+\end{aligned}
 $$
 
-The negative sign indicates that the terminal voltage rises under leading power factor load.
+Voltage regulation $= \dfrac{|E|-V_{ph}}{V_{ph}}\times100\% = -1.64\%$ (negative, so terminal voltage rises on leading load).
 
-**Phasor diagram** (see figure below): $\vec{V}$ is drawn horizontally. The current $\vec{I}$ leads $\vec{V}$ by $45.57^\circ$. The resistive drop $\vec{I}R_a$ is in phase with $\vec{I}$, and the reactive drop $j\vec{I}X_s$ leads $\vec{I}$ by $90^\circ$. The vector sum of $\vec{V}$ and these drops gives the induced emf $\vec{E}$.
+**Phasor diagram explanation:** $\vec{V}_{ph}$ is drawn horizontally; $\vec{I}_a$ leads it by $45.57^\circ$; the resistive drop $\vec{I}_a R_a$ is in phase with $\vec{I}_a$; the reactive drop $j\vec{I}_a X_s$ leads $\vec{I}_a$ by $90^\circ$. The vector sum $\vec{V}_{ph} + \vec{I}_a R_a + j\vec{I}_a X_s$ gives $\vec{E}$, which lies behind $\vec{V}_{ph}$ in this leading power-factor case.
 
-![Phasor diagram for leading power factor generator operation](./pyq-assets/textbook/108105131_p759_img-388_jpeg.png)
-*Figure: Phasor diagram of a synchronous generator delivering leading power factor load.*
-
-> **Final answer:** Induced emf per phase $E = 216.40\ \text{V}$, voltage regulation $= -1.64\%$ (terminal voltage rises on leading load).
+> **Final answer:** Induced emf per phase $|E| = 216.4\;\text{V}$; corresponding line emf $E_L = \sqrt{3}\times216.4 \approx 374.7\;\text{V}$.
 
 
 ---
@@ -6701,53 +5001,44 @@ The negative sign indicates that the terminal voltage rises under leading power 
 3-phase, star connected alternator is rated 1,600 kVA, 13.5 kV. Its per-phase effective armature resistance & synchronous reactance are 1 & 40 respectively. a) Calculate the percentage voltage regulation for a load of 1,250 kW at 0.8 pf lagging. b) Draw the phasor diagram for the given load. (05)
 
 ### Answer 101
-**Step 1: Rated phase voltage and load current.** 
+Rated data: $S = 1600\;\text{kVA},\; V_L = 13.5\;\text{kV}$, star; $R_a = 1\;\Omega/\text{ph},\; X_s = 40\;\Omega/\text{ph}$.
+Load: $P = 1250\;\text{kW}$ at 0.8 lagging.
+
+- Phase voltage (reference): $V_{ph} = \dfrac{13500}{\sqrt{3}} \approx 7794.2\;\text{V}\;(0^\circ)$.
+- Apparent load power: $S_{load} = \dfrac{P}{\text{pf}} = \dfrac{1250}{0.8} = 1562.5\;\text{kVA}$.
+- Line (and phase) current: $I = \dfrac{S_{load}}{\sqrt{3}\,V_L} = \dfrac{1562.5\times10^3}{\sqrt{3}\times13500} = 66.82\;\text{A}$.
+- Power-factor angle: $\phi = \cos^{-1}0.8 = 36.87^\circ$ lagging → $\vec{I} = 66.82\angle -36.87^\circ\;\text{A}$.
+
+Generator equation per phase: $\vec{E} = \vec{V}_{ph} + \vec{I}(R_a + jX_s)$.
+
+Calculate voltage drops:
 $$
-V_{ph} = \frac{13.5\times10^3}{\sqrt{3}} \approx 7794\ \text{V}.
-$$
-Apparent power: $S = \frac{P}{\text{pf}} = \frac{1250}{0.8} = 1562.5$ kVA.
-$$
-I_a = \frac{S}{\sqrt{3}\,V_L} = \frac{1562.5\times10^3}{\sqrt{3}\times13500} \approx 66.82\ \text{A}.
-$$
-Power factor angle: $\phi = \cos^{-1}0.8 = 36.87^\circ$ lagging (current lags voltage). So,
-$$
-I_a = 66.82\angle{-36.87^\circ}\ \text{A}.
+\begin{aligned}
+\vec{I}R_a &= 66.82\angle -36.87^\circ \times 1 = 53.46 - j40.09\;\text{V},\\[2pt]
+j\vec{I}X_s &= j40 \times (53.46 - j40.09) = 1603.7 + j2138.3\;\text{V}.
+\end{aligned}
 $$
 
-**Step 2: Compute induced emf $E_f$ per phase.** 
-Equivalent circuit per phase (generator mode): $E_f = V_{ph} + I_a (R_a + jX_s)$.
-Substituting with $V_{ph}$ as reference ($0^\circ$):
+Total impedance drop: $(53.46+1603.7) + j(-40.09+2138.3) = 1657.2 + j2098.2\;\text{V}$.
+
+Therefore,
 $$
-E_f = 7794 + (66.82\angle{-36.87^\circ}) (1 + j40).
-$$
-Calculate the drop:
-$$
-I_a R_a = 66.82\angle{-36.87^\circ} \times 1 = 53.46 - j40.09\ \text{V}
-$$
-$$
-I_a (jX_s) = j40 \times (53.46 - j40.09) = 1603.7 + j2138.3\ \text{V}
-$$
-Total impedance drop: $1657.2 + j2098.2\ \text{V}$.
-Hence,
-$$
-E_f = 7794 + 1657.2 + j2098.2 = 9451.2 + j2098.2\ \text{V}.
-$$
-Magnitude:
-$$
-|E_f| = \sqrt{(9451.2)^2 + (2098.2)^2} \approx 9681.5\ \text{V}.
+\begin{aligned}
+\vec{E} &= 7794.2 + 1657.2 + j2098.2 = 9451.4 + j2098.2\;\text{V},\\
+|E|    &= \sqrt{9451.4^2 + 2098.2^2} \approx 9682\;\text{V (phase)}.
+\end{aligned}
 $$
 
-**Step 3: Percentage voltage regulation.**
-$$
-\text{Regulation} = \frac{|E_f| - V_{ph}}{V_{ph}} \times 100\% = \frac{9681.5 - 7794}{7794} \times 100 \approx 24.21\%.
-$$
+Voltage regulation $= \dfrac{9682 - 7794.2}{7794.2}\times 100\% \approx 24.2\%$.
 
-**Step 4: Phasor diagram.** 
-Take $V_{ph}$ as reference horizontal. Draw $I_a$ lagging $V_{ph}$ by $36.87^\circ$. Then add the resistive drop $I_a R_a$ in phase with $I_a$. From the tip of $I_a R_a$, add the synchronous reactance drop $j I_a X_s$ at $90^\circ$ leading $I_a$. The phasor from origin to the final point gives $E_f$. The angle $\delta$ between $E_f$ and $V_{ph}$ is the load (torque) angle. A typical phasor diagram for a generator at lagging pf is shown below.
+**Phasor diagram (lagging pf):**
 
-![Phasor diagram for alternator at lagging power factor](./pyq-assets/textbook/108105131_p746_img-381_jpeg.png)
+![Phasor diagram of alternator at lagging pf](https://commons.wikimedia.org/wiki/Special:Redirect/file/Synchronous%20generator%20diagram.png)
+*Figure: Phasor diagram of a synchronous generator on lagging load. Source: Wikimedia Commons.*
 
-> **Final answer:** Voltage regulation $= 24.21\%$.
+$\vec{V}_{ph}$ is the reference; $\vec{I}$ lags by $36.9^\circ$; $\vec{I}R_a$ is drawn parallel to $\vec{I}$; $j\vec{I}X_s$ leads $\vec{I}$ by $90^\circ$. Adding these vectors tip-to-tail yields $\vec{E}$.
+
+> **Final answer:** Percentage voltage regulation $= 24.2\%$.
 
 
 ---
@@ -6758,124 +5049,62 @@ Take $V_{ph}$ as reference horizontal. Draw $I_a$ lagging $V_{ph}$ by $36.87^\ci
 What is the effect of load power factor on the armature reaction in an alternator? A 1500 kVA, 6600 V, 3 - phase, Y - connected alternator with a resistance of 0.4 Ω/phase and synchronous reactance of 6Ω/phase delivers a full - load current at a power factor 0.8 (lagging) and normal rated voltage. Estimate the terminal voltage (line - line) for the same excitation and load current at 0.8 p.f. (leading). (05)
 
 ### Answer 102
-The armature reaction in an alternator depends on the load power factor because the phase of the armature current relative to the field excitation determines how the armature MMF interacts with the main field flux.
+### Effect of load power factor on armature reaction
 
-- **Lagging power factor (inductive load):** The armature current lags the terminal voltage. The armature reaction flux opposes the main field flux, causing a **demagnetizing** effect. As the load increases, the terminal voltage drops significantly under the same excitation.
-- **Unity power factor:** The armature reaction is predominantly **cross-magnetizing**; it distorts the field but produces a relatively small voltage change.
-- **Leading power factor (capacitive load):** The armature current leads the terminal voltage. Here the armature reaction flux aids the main field flux, resulting in a **magnetizing** effect. The terminal voltage may even rise above the no-load value as the load increases.
+The armature reaction in an alternator is the interaction of the armature-produced flux with the main field flux. Its nature depends on the power-factor angle of the load current with respect to the terminal voltage:
 
-These effects can be clearly seen in the phasor diagram of a synchronous generator (Figure 1).
+- **Lagging pf (inductive load):** The armature current lags the terminal voltage; the armature flux opposes the main flux → **demagnetising** effect. Terminal voltage drops as load increases.
+- **Unity pf:** The armature reaction is mainly **cross-magnetising** (distortion of the field); the change in terminal voltage is relatively small.
+- **Leading pf (capacitive load):** The armature current leads the terminal voltage; the armature flux aids the main flux → **magnetising** effect. Terminal voltage may rise above the no-load value.
 
-![Phasor diagram of a synchronous generator showing armature reaction and impedance drops](./pyq-assets/textbook/108105131_p746_img-381_jpeg.png)  
-*Figure 1: Phasor diagram of a cylindrical-rotor alternator delivering a lagging current. The relative position of $\mathbf{M_a}$ (armature reaction MMF) and $\mathbf{M_f}$ (field MMF) illustrates the demagnetising component.*
+These effects are illustrated in the phasor diagram below.
 
----
+![Phasor diagram illustrating armature reaction](https://commons.wikimedia.org/wiki/Special:Redirect/file/Synchronous%20generator%20diagram.png)
+*Figure: Phasor diagram of a synchronous generator showing effect of armature reaction. Source: Wikimedia Commons.*
 
-### Numerical Problem
+### Numerical computation
 
-**Given data**  
-- Rated power: $S = 1500\ \text{kVA}$  
-- Rated line voltage: $V_L = 6600\ \text{V}$ (star-connected)  
-- Armature resistance: $R_a = 0.4\ \Omega/\text{phase}$  
-- Synchronous reactance: $X_s = 6\ \Omega/\text{phase}$  
-- Full-load current, power factor $0.8$ (lagging then leading).
+Given: $1500\;\text{kVA},\; 6600\;\text{V}$, Y-connected; $R_a = 0.4\;\Omega/\text{ph},\; X_s = 6\;\Omega/\text{ph}$.
 
-**Step 1 - Full-load current and phase voltage**
-
+Full-load current (constant for both cases):
 $$
-I = \frac{S}{\sqrt{3}\,V_L} = \frac{1500 \times 10^3}{\sqrt{3} \times 6600} = 131.2\ \text{A}.
+I = \frac{S}{\sqrt{3}\,V_L} = \frac{1500\times10^3}{\sqrt{3}\times 6600} = 131.2\;\text{A}.
 $$
 
-Phase voltage (rated):
+Rated phase voltage: $V_{ph} = \frac{6600}{\sqrt{3}} = 3810.5\;\text{V}$.
+
+#### Excitation emf at 0.8 lagging
+$\phi = \cos^{-1}0.8 = 36.87^\circ$ lag → $\vec{I}_{lag} = 131.2\angle -36.87^\circ\;\text{A}$, $\vec{V}=3810.5\angle0^\circ\;\text{V}$.
+$Z_s = 0.4 + j6 = 6.013\angle 86.18^\circ\;\Omega$.
 
 $$
-V_{\text{ph}} = \frac{V_L}{\sqrt{3}} = \frac{6600}{\sqrt{3}} = 3810.5\ \text{V}.
+\vec{I}Z_s = 131.2 \times 6.013\;\angle(-36.87^\circ+86.18^\circ) = 788.9\angle 49.31^\circ\;\text{V} = 514.2 + j598.8\;\text{V}.
 $$
 
-**Step 2 - Excitation emf at $0.8$ lagging pf**
-
-With $V_{\text{ph}}$ as reference ($3810.5\angle 0^\circ$ V), the current lags by $\phi = \cos^{-1}0.8 = 36.87^\circ$:
-
 $$
-\mathbf{I} = 131.2\angle -36.87^\circ\ \text{A}.
+\vec{E} = 3810.5 + 514.2 + j598.8 = 4324.7 + j598.8\;\text{V},\quad |E| = 4366\;\text{V}.
 $$
 
-Per-phase synchronous impedance:
+#### Terminal voltage at 0.8 leading (same excitation)
+Now $\vec{I}_{lead} = 131.2\angle +36.87^\circ\;\text{A}$ (taken with respect to unknown $\vec{V}'_{ph}$ as reference).
+$\vec{I}Z_s = 131.2 \times 6.013\;\angle(36.87^\circ+86.18^\circ) = 788.9\angle 123.05^\circ\;\text{V} = -429.5 + j661.2\;\text{V}$.
 
+Since $|E| = 4366\;\text{V}$ is unchanged,
 $$
-Z_s = R_a + jX_s = 0.4 + j6\ \Omega,\qquad
-|Z_s| = \sqrt{0.4^2 + 6^2} = 6.013\ \Omega,\;
-\theta_z = \tan^{-1}\frac{6}{0.4} = 86.18^\circ.
+4366^2 = (V'_{ph} - 429.5)^2 + 661.2^2.
 $$
-
-Voltage drop $\mathbf{I}Z_s$:
-
-$$
-\mathbf{I}Z_s = (131.2\angle -36.87^\circ)(6.013\angle 86.18^\circ)
-            = 788.9\angle 49.31^\circ\ \text{V}.
-$$
-
-In rectangular form:
-
-$$
-\mathbf{I}Z_s = 514.2 + j598.8\ \text{V}.
-$$
-
-The excitation emf is:
-
-$$
-\mathbf{E_f} = \mathbf{V_{\text{ph}}} + \mathbf{I}Z_s
-            = 3810.5 + 514.2 + j598.8
-            = 4324.7 + j598.8\ \text{V},
-$$
-$$
-|\mathbf{E_f}| = \sqrt{4324.7^2 + 598.8^2} = 4366\ \text{V (phase)}.
-$$
-
-**Step 3 - Terminal voltage for the same excitation and load current but at $0.8$ leading pf**
-
-Now the current leads the (unknown) terminal voltage $\mathbf{V'_{\text{ph}}}$ by $36.87^\circ$. Take $\mathbf{V'_{\text{ph}}}$ as reference ($V'_{\text{ph}}\angle 0^\circ$), so
-
-$$
-\mathbf{I} = 131.2\angle 36.87^\circ\ \text{A}.
-$$
-
-The drop becomes
-
-$$
-\mathbf{I}Z_s = (131.2\angle 36.87^\circ)(6.013\angle 86.18^\circ)
-            = 788.9\angle 123.05^\circ\ \text{V},
-$$
-$$
-\mathbf{I}Z_s = -429.5 + j661.2\ \text{V}.
-$$
-
-The excitation emf magnitude is still $4366$ V, therefore
-
-$$
-\mathbf{E_f} = \mathbf{V'_{\text{ph}}} + \mathbf{I}Z_s
-            = (V'_{\text{ph}} - 429.5) + j661.2,
-$$
-$$
-|\mathbf{E_f}|^2 = (V'_{\text{ph}} - 429.5)^2 + 661.2^2 = 4366^2.
-$$
-
 Solving:
+$$
+(V'_{ph} - 429.5)^2 = 4366^2 - 661.2^2 = 18.62\times10^6 \;\Rightarrow\; V'_{ph} - 429.5 = \sqrt{18.62\times10^6} = 4315.6\;\text{V}.
+$$
+Hence $V'_{ph} = 4745.1\;\text{V}$.
 
+Line-to-line terminal voltage:
 $$
-(V'_{\text{ph}} - 429.5)^2 = 4366^2 - 661.2^2 = 18.62 \times 10^6,
-$$
-$$
-V'_{\text{ph}} - 429.5 = 4315.6\quad\Rightarrow\quad V'_{\text{ph}} = 4745.1\ \text{V (phase)}.
-$$
-
-Hence the new line-to-line voltage is
-
-$$
-V'_L = \sqrt{3} \times V'_{\text{ph}} = \sqrt{3} \times 4745.1 \approx 8220\ \text{V} = 8.22\ \text{kV}.
+V'_L = \sqrt{3} \times V'_{ph} = \sqrt{3} \times 4745.1 \approx 8220\;\text{V} = 8.22\;\text{kV}.
 $$
 
-> **Final answer:** When the same alternator delivers the same full-load current at 0.8 leading power factor, the terminal line voltage becomes $8.22\ \text{kV}$. The armature reaction is magnetising for leading loads, which explains the higher terminal voltage compared to the lagging case.
+> **Final answer:** When the alternator delivers the same full-load current at 0.8 leading pf, the line voltage becomes $8.22\;\text{kV}$. The armature reaction is magnetising for leading loads, which explains the higher terminal voltage compared with the lagging case.
 
 
 ---
@@ -6886,30 +5115,31 @@ $$
 Using relevant phasor diagram, discuss the behaviour of a cylindrical rotor synchronous motor supplying a constant load but operating under varying excitation conditions. (05)
 
 ### Answer 103
-When a cylindrical-rotor synchronous motor operates under constant shaft load and constant terminal voltage, the real power input $P$ remains essentially fixed. Neglecting armature resistance, the per-phase phasor equation is
+When a cylindrical-rotor synchronous motor operates at constant shaft load and constant terminal voltage, the real power input $P$ remains fixed. Neglecting armature resistance, the per-phase phasor equation is
 
 $$
-\vec{V} = \vec{E} + jX_s \vec{I}_a \tag{1}
+\begin{aligned}
+\vec{V} = \vec{E} + jX_s \vec{I}_a
+\end{aligned}
 $$
 
-where $\vec{V}$ is the terminal voltage (reference), $\vec{E}$ is the excitation emf, $\vec{I}_a$ is the armature current, and $X_s$ is the synchronous reactance.
+where $\vec{V}$ is the terminal voltage (reference), $\vec{E}$ is excitation emf, $\vec{I}_a$ is armature current, and $X_s$ is synchronous reactance.
 
-Since the mechanical load is constant, the power converted $P = \frac{3VE}{X_s}\sin\delta$ is constant; with $V$ and $X_s$ fixed, the product $E\sin\delta$ must remain unchanged. Equivalently, the in-phase component of armature current must satisfy $I_a\cos\varphi = \text{constant}$, because $P = 3VI_a\cos\varphi$.
+Since $P = \dfrac{3VE}{X_s}\sin\delta = 3VI_a\cos\varphi$ is constant, the product $E\sin\delta$ and the in-phase current component $I_a\cos\varphi$ remain unchanged. This constraint defines the operating locus in the phasor diagram.
 
-To construct the phasor diagram (Fig. 1), choose $\vec{V}$ horizontally. For a given excitation the current $\vec{I}_a$ is drawn at an angle $\varphi$; its projection on the $\vec{V}$ axis is $I_a\cos\varphi$. Hence, as the field current is varied, the tip of $\vec{I}_a$ is constrained to move along a vertical line (constant active-power line). The excitation emf $\vec{E}$ is obtained from (1) as $\vec{E} = \vec{V} - jX_s\vec{I}_a$; its magnitude changes while its vertical component $E\sin\delta$ remains fixed.
+**Phasor diagram construction:**
+1. Draw $\vec{V}$ horizontally.
+2. For a given excitation, $\vec{I}_a$ is drawn at angle $\varphi$ such that its projection $I_a\cos\varphi$ is constant; thus the tip of $\vec{I}_a$ moves along a vertical constant-power line.
+3. The excitation emf $\vec{E} = \vec{V} - jX_s\vec{I}_a$ has a fixed vertical component $E\sin\delta$.
 
-![Phasor diagram for constant power operation of a cylindrical rotor synchronous motor](./pyq-assets/textbook/108105131_p778_img-397_jpeg.png)  
-*Figure 1: Locus of $\vec{I}_a$ and corresponding $\vec{E}$ for constant load and variable excitation.*
+**Operating modes:**
+- **Under-excitation** ($|\vec{E}| < |\vec{V}|$): $\vec{I}_a$ lags $\vec{V}$; motor absorbs reactive power.
+- **Normal excitation** (unity power factor): $\vec{I}_a$ in phase with $\vec{V}$, armature current minimum.
+- **Over-excitation** ($|\vec{E}| > |\vec{V}|$): $\vec{I}_a$ leads $\vec{V}$; motor supplies reactive power.
 
-Three characteristic operating conditions can be identified:
+As field current increases, $I_a$ traces a V-curve (minimum at unity PF) and the power factor vs. excitation gives an inverted V-curve. The over-excited motor acts as a synchronous condenser, delivering reactive power while drawing constant real power.
 
-- **Under-excitation** ($\lvert\vec{E}\rvert < \lvert\vec{V}\rvert$): The motor draws a lagging current, i.e. it absorbs reactive power from the supply.
-- **Normal excitation** ($\lvert\vec{E}\rvert$ adjusted for unity power factor): $\vec{I}_a$ is in phase with $\vec{V}$ and its magnitude is minimum.
-- **Over-excitation** ($\lvert\vec{E}\rvert > \lvert\vec{V}\rvert$): The motor draws a leading current and supplies reactive power to the system.
-
-As excitation is increased from under-excited to over-excited, the armature current $I_a$ traces a V-curve (minimum at unity power factor), while the power factor vs field current follows an inverted V-curve. Because an over-excited synchronous motor delivers reactive power, it can be used as a synchronous condenser for power-factor improvement.
-
-> **Final answer:** Varying the field excitation of a cylindrical-rotor synchronous motor operating at constant load alters the reactive power exchange without affecting the real power. The armature current moves along a constant-power line; it is lagging for under-excitation, minimum at unity power factor, and leading for over-excitation. The motor therefore behaves as a variable reactive compensator.
+> **Final answer:** For constant load, varying excitation changes the reactive power exchange but keeps real power constant. The current phasor moves along a constant-power line: lagging when under-excited, minimum at unity PF, leading when over-excited. The motor behaves as a variable reactive compensator.
 
 
 ---
@@ -6920,36 +5150,28 @@ As excitation is increased from under-excited to over-excited, the armature curr
 List the necessary conditions to be satisfied while synchronising 3 phase alternators. With neat connection diagram, explain “Two Bright One Dark Lamp method” of synchronisation. (04)
 
 ### Answer 104
-**Conditions for synchronising a three-phase alternator:**
-1. The **phase sequence** of the incoming machine must match that of the busbars.
-2. The **line voltage** of the incoming machine must equal the busbar line voltage.
-3. The **frequency** of the incoming machine must be equal to the busbar frequency.
-4. At the instant of closing the circuit breaker, the **phase-angle difference** between the corresponding phase voltages must be **zero**.
-5. The voltage waveforms must be nearly sinusoidal.
+**Synchronisation Conditions**
+Before paralleling a three-phase alternator with live busbars, the following conditions must be satisfied at the closing instant:
+
+1. **Equal line voltages** - the RMS voltage of the incoming machine must match the busbar voltage, adjusted by field excitation.
+2. **Equal frequency** - the alternator must be driven at synchronous speed so that its frequency equals the bus frequency.
+3. **Identical phase sequence** - the order of phases (e.g., R-Y-B) must be the same; otherwise severe circulating currents occur.
+4. **Zero phase difference** - at the moment the breaker closes, the corresponding phase voltages must be in exact phase alignment.
 
 **Two-Bright One-Dark Lamp Method**
-This simple and widely used method employs three incandescent lamps to indicate the correct synchronising instant.
+This method uses three incandescent lamps as a simple visual indicator.
 
-*Connection diagram (description):*
-Three lamps L₁, L₂, L₃ are connected across the synchronising switch as follows:
-- L₁ is connected directly between phase A of the busbar and phase A′ of the incoming alternator.
-- L₂ is cross-connected between phase B of the busbar and phase C′ of the alternator.
-- L₃ is cross-connected between phase C of the busbar and phase B′ of the alternator.
-(If a drawing were provided, it would show the three busbar phases A, B, C on the left, the alternator phases A′, B′, C′ on the right, with the lamps bridging the phases as described, and a three-pole synchronising switch in series.)
+*Connections (refer to the typical connection diagram):*
+- Lamp L₁ connects phase A of the bus directly to phase A′ of the alternator.
+- Lamp L₂ connects phase B of the bus to phase C′ of the alternator (cross-connection).
+- Lamp L₃ connects phase C of the bus to phase B′ of the alternator (cross-connection).
+The alternator is brought to near-synchronous speed and its voltage adjusted. Due to frequency difference, the lamps flicker at the beat frequency. As speed is trimmed, flicker slows.
 
-*Working:*
-When the alternator is driven at nearly synchronous speed and its voltage is adjusted to match the busbar voltage, the lamps begin to flicker because of the slight frequency difference. The voltage across each lamp is the phasor difference of the two line-to-neutral voltages connected to its terminals.
+At the precise moment when bus phase A and alternator phase A′ are in phase, the voltage across L₁ drops to zero → L₁ becomes **dark**. The cross-connections ensure that voltages across L₂ and L₃ are equal in magnitude (line voltage), so both glow with **equal brightness**. This "two-bright, one-dark" pattern confirms correct phase sequence and zero phase-angle error.
 
-As the speed is trimmed, the flicker slows. When the frequencies are exactly matched and the phase sequences are identical, the lamps glow steadily. At the precise instant when the voltage of busbar phase A is in phase with alternator phase A′, the voltage across L₁ is zero, and L₁ becomes completely dark. The cross-connections ensure that the voltages across L₂ and L₃ are then equal in magnitude (equal to the line voltage) and the two lamps glow with equal brightness. This **"two bright, one dark"** pattern confirms:
-- Correct phase sequence (a wrong sequence would produce an all-bright or irregular flicker),
-- Equal voltages (adjustable by the alternator field current),
-- Zero phase difference between the directly connected phases.
+The synchronising switch is closed during the middle of the dark period of L₁. The machine then pulls into synchronism and shares the load.
 
-The operator then closes the synchronising switch at the middle of the dark period of L₁ (or when L₁ is fully dark). After closing, the alternator remains locked to the busbars and operates in parallel.
-
-The method is cheap, reliable, and provides a direct visual indication of the synchronising instant.
-
-> **Final answer:** The necessary conditions are: equal voltages, equal frequencies, identical phase sequences, zero phase difference at the instant of closing, and approximately sinusoidal waveforms. In the two-bright one-dark lamp method, one lamp is connected directly between corresponding phases (e.g., A-A′), while the other two are cross-connected (B-C′ and C-B′); at synchronism the direct lamp is **dark** and the cross-connected lamps are **equally bright**, indicating that the systems are in phase and the phase sequence is correct.
+> **Final answer:** Essential conditions: equal voltages, frequencies, identical phase sequence, and zero phase angle. In the lamp method, one lamp is direct-connected and two are cross-connected; when the direct lamp is dark and the cross lamps are equally bright, the systems are in synchronism and can be safely paralleled.
 
 
 ---
@@ -6960,19 +5182,16 @@ The method is cheap, reliable, and provides a direct visual indication of the sy
 Mention the essential conditions to synchronise an incoming alternator with infinite bus system. (03)
 
 ### Answer 105
-Synchronization of an incoming alternator with an infinite bus (live busbars) requires that the machine and the bus satisfy four essential conditions at the moment the circuit breaker is closed. These conditions ensure that no large circulating currents or mechanical shock occur.
+To parallel an incoming alternator with an infinite bus, the following conditions must be met at the synchronising instant:
 
-1. **Equal voltage magnitude:** The RMS terminal voltage of the incoming alternator must be equal to the busbar voltage. This is adjusted by controlling the field excitation of the alternator. If the voltages differ, a large reactive power flow will occur upon connection, potentially causing damage.
+1. **Equal voltage magnitude:** The terminal voltage of the incoming machine must equal the busbar voltage. This is obtained by adjusting the field current.
+2. **Equal frequency:** The alternator's frequency must match the bus frequency. This is controlled by regulating the prime-mover speed.
+3. **Identical phase sequence:** The phase rotation (R-Y-B or A-B-C) of the alternator must be the same as that of the bus. A mismatch would cause a sudden short-circuit-like current and severe mechanical stress.
+4. **Zero phase-angle difference:** At the instant the circuit breaker closes, the phase angles of corresponding phase voltages must be essentially zero (in-phase coincidence). Even a small angle deviation leads to unwanted power surges and torque pulsations.
 
-2. **Equal frequency:** The frequency of the generated EMF must be exactly equal (or very close) to the bus frequency. This is achieved by adjusting the speed of the prime mover driving the alternator. Even a small frequency difference leads to a drifting phase angle and possible circulating current.
+These conditions are verified using voltmeters, frequency meters, phase-sequence indicators, synchroscopes, and/or synchronising lamps.
 
-3. **Identical phase sequence:** The phase sequence of the alternator must match that of the bus (e.g., both R-Y-B or A-B-C). A phase-sequence mismatch will cause severe short-circuit-like currents and torque pulsations because the two sets of voltages will never be in phase simultaneously.
-
-4. **Zero phase-angle difference:** At the exact instant of synchronizing (closing the synchronizing switch), the phase angle between corresponding phase voltages must be essentially zero. This means the voltages must be in phase coincidence. A finite phase difference results in a sudden power transfer and mechanical stress on the shaft.
-
-These conditions are verified using voltmeters (voltage magnitude), frequency meters, phase-sequence indicators, synchroscopes, and often synchronizing lamps (e.g., the two-bright-one-dark method).
-
-> **Final answer:** Equal voltage magnitude, equal frequency, identical phase sequence, and zero phase-angle difference at the instant of paralleling.
+> **Final answer:** Equal voltage magnitude, equal frequency, identical phase sequence, and zero phase-angle difference at the closing instant.
 
 
 ---
@@ -6984,38 +5203,19 @@ List the necessary conditions to be satisfied while synchronizing 3 phase altern
 
 ### Answer 106
 **Necessary conditions for synchronising 3-phase alternators:**
+1. **Voltage magnitude:** Terminal voltage of incoming machine must equal bus voltage. Verified with voltmeters.
+2. **Frequency:** Machine frequency must match bus frequency. Checked by frequency meters; synchronising lamps flicker rate indicates difference.
+3. **Phase sequence:** Same phase order (e.g., R-Y-B). Confirmed with phase-sequence indicator or lamp pattern.
+4. **Phase coincidence:** At the instant of closing, the phase angle between machine and bus voltages must be essentially zero. Obtained from synchroscope or lamp method.
 
-1. **Voltage equality:** The terminal voltage of the incoming machine must be equal to the bus-bar voltage. A voltmeter is used to verify.
-2. **Frequency equality:** The frequency of the incoming machine must match the bus frequency. Frequency meters or the rate of flicker of synchronising lamps indicate when this is achieved.
-3. **Phase sequence:** The phase sequence of the incoming alternator must be identical to that of the bus. This is confirmed with a phase-sequence indicator or by observing the lamp pattern.
-4. **Phase coincidence:** At the instant the circuit breaker is closed, the phase-angle difference between the machine voltage and the bus voltage must be essentially zero. This is the synchronising moment.
+**Two-Bright One-Dark lamp method:**
+Connect three identical lamps between the incoming alternator and bus:
+- One lamp directly between corresponding phases: $R_m$ to $R_b$.
+- Two lamps cross-connected: $Y_m$ to $B_b$ and $B_m$ to $Y_b$.
 
-**Two-Bright One-Dark lamp method (Dark-lamp synchronising):**
+At small frequency difference the lamps flicker cyclically. When the direct lamp $R$ is dark, the voltage across it is zero, so $R_m$ and $R_b$ are exactly in phase. The cross-connected lamps then have equal voltage differences (120 ° apart) and glow with equal brightness. This state-**one dark, two equally bright**-indicates correct phase sequence and the exact synchronising moment. The circuit breaker is closed during this period, preferably when the flicker is slow (frequencies nearly equal).
 
-Three lamps of equal rating are connected between the incoming alternator and the bus as shown in the schematic below:
-
-- One lamp is connected directly between corresponding phases, e.g., $R_m$ (machine) to $R_b$ (bus).
-- The other two lamps are cross-connected: $Y_m$ to $B_b$ and $B_m$ to $Y_b$.
-
-*Connection diagram (textual description):*
-```
-       Bus                       Incoming machine
-     ───────                    ─────────────
-     R_b   ──[Lamp 1]── R_m
-     Y_b   ──[Lamp 2]── B_m
-     B_b   ──[Lamp 3]── Y_m
-```
-
-When the phase sequence is correct and the frequencies are nearly equal, the three lamps will glow in a cyclic pattern because of the small slip frequency. If the frequencies are exactly equal, the lamps will remain at a constant brightness, but in practice a slight difference is allowed to obtain a slow flicker.
-
-**Determining the synchronising instant:**
-When the voltage across the directly connected lamp (Lamp 1) becomes zero, that lamp is completely dark. At that same instant, the vectors of the cross-connected phases are 120° apart, producing equal voltages across Lamps 2 and 3, so they glow with equal brightness. This condition-**one lamp dark, two lamps equally bright**-indicates that the voltages are exactly in phase for the directly connected phase, and the other two are 120° displaced (correct phase sequence). It is the ideal moment to close the synchronising switch.
-
-The rate at which the lamps flicker gives a measure of the frequency difference: a slow flicker (e.g., one dark-bright-dark cycle every few seconds) means the frequencies are very close. The circuit breaker should be closed when the flicker is slow and the "one dark, two equally bright" state occurs.
-
-Before the lamp method is used, the voltage and phase sequence must be checked separately with voltmeters and a phase-sequence indicator. Once these are confirmed, the lamp method is employed to fine-tune the frequency and capture the exact synchronising instant.
-
-> **Final answer:** Close the synchronising breaker at the instant when one lamp is dark, the other two are equally bright, the flicker is slow, and after verifying voltage equality and correct phase sequence.
+> **Final answer:** Close the synchronising breaker when one lamp is completely dark, the other two are equally bright, the flicker is slow, and after verifying voltage magnitude and phase sequence.
 
 
 ---
@@ -7026,23 +5226,23 @@ Before the lamp method is used, the voltage and phase sequence must be checked s
 State the conditions to be satisfied for successful synchronisation of an alternator with infinite busbars. Also mention the techniques through which these conditions are ensured to have been met. (part i)
 
 ### Answer 107
-The successful synchronisation of an alternator with an infinite busbar system requires the fulfilment of four essential conditions. An infinite bus is an idealised source of constant voltage and frequency that is not affected by the connection of individual machines. The conditions, along with the techniques employed to verify them, are as follows.
+Successful synchronisation of an alternator with an infinite bus requires:
 
-**1. Equal voltage magnitude**  
-The terminal voltage of the incoming alternator must be equal in magnitude to the busbar voltage. This is checked with voltmeters or potential transformers. Any difference in voltage will cause a reactive circulating current at the instant of closing, potentially leading to excessive heating and mechanical stress.
+1. **Equal voltage magnitude**
+   The alternator terminal voltage must match the bus voltage to avoid heavy reactive circulating currents. *Checked by:* voltmeters or potential transformers.
 
-**2. Equal frequency**  
-The frequency of the generated voltage must match the busbar frequency exactly. Frequency is measured by frequency meters; in practice, synchronising lamps are also used. When the frequencies are not equal, the lamps flicker at a rate equal to the beat frequency. As the frequencies approach equality, the flicker becomes slower, and when they are exactly equal the lamps become steady (either all dark or all bright depending on the connection).
+2. **Equal frequency**
+   The alternator frequency must be the same as the bus frequency; otherwise severe power oscillations occur. *Checked by:* frequency meters; synchronising lamps flicker at the beat frequency, becoming steady when frequencies match.
 
-**3. Identical phase sequence**  
-The order in which the phase voltages reach their maxima (e.g., R-Y-B) must be the same for both the alternator and the bus. Even if voltages and frequencies match, a wrong phase sequence will permit dangerously high torque pulsations and current surges. A phase-sequence indicator is the primary tool; additionally, the pattern observed on the synchronising lamps provides confirmation: with the correct sequence, one lamp is dark while the other two are equally bright (two-bright one-dark method). If all three lamps flicker in unison, the sequence is wrong.
+3. **Identical phase sequence**
+   The order of phase voltages (e.g., R-Y-B) must be identical. A wrong sequence subjects the machine to enormous transient torques. *Checked by:* phase-sequence indicator; also by the pattern of synchronising lamps (e.g., two-bright one-dark for correct sequence, all three flickering together for reversed sequence).
 
-**4. Phase coincidence at the instant of closing**  
-The corresponding phase voltages of the alternator and bus must be exactly in phase when the circuit breaker closes, i.e., the phase-angle difference $\delta$ should be zero. This minimises the sudden exchange of synchronising power. A synchroscope, which displays the relative phase angle on a rotating pointer, is the most reliable instrument. The breaker is closed when the pointer is at the in-phase mark and moving slowly in the "fast" direction. As a backup, the three-dark lamp method (all lamps dark → zero voltage across open contacts) or the two-bright one-dark method (the dark lamp at minimum brightness) may be used.
+4. **Phase coincidence at closing**
+   The corresponding phase voltages must be in-phase at the instant the breaker closes (phase angle $\delta \approx 0$). This minimises synchronising current and mechanical stress. *Checked by:* synchroscope (closing when pointer is at the in-phase mark and moving slowly in the "fast" direction), or by the lamp methods (all-dark or two-bright one-dark indicating zero potential difference across the open contacts).
 
-In addition to these four fundamental conditions, the waveform of both voltages should be identical (sinusoidal) to avoid harmonic circulating currents, though this is normally guaranteed by the alternator design. For large machines, an automatic **synchronising relay (check synchroniser)** is employed to monitor all conditions and issue the closing command at the precise instant, ensuring both safety and accuracy.
+Additionally, the voltage waveforms should be sinusoidal to avoid harmonic circulating currents (normally ensured by design). For large units, an automatic synchronising relay monitors all conditions and issues the closing command.
 
-> **Final answer:** Equal voltage, equal frequency, correct phase sequence, and zero phase-angle difference at closing; verified by voltmeter/frequency meter, phase-sequence indicator, synchroscope/synchronising lamps, and often a synchronising relay.
+> **Final answer:** Equal voltage, equal frequency, correct phase sequence, and zero phase-angle difference at closing. Verified respectively by voltmeter/frequency meter, phase-sequence indicator, and synchroscope/synchronising lamps; often supervised by an automatic check synchroniser.
 
 
 ---
@@ -7053,23 +5253,23 @@ In addition to these four fundamental conditions, the waveform of both voltages 
 Draw a neat connection diagram for measurement of direct and quadrature axis reactance by slip test. (02)
 
 ### Answer 108
-The slip-test circuit is arranged as follows:
+**Slip test connection for $X_d$ and $X_q$ measurement**
+The stator winding of the salient-pole alternator is connected to a low-voltage, balanced three-phase AC supply through a variac. Ammeters, voltmeters and wattmeters (if required) are inserted in the stator circuit. The rotor is mechanically coupled to a drive motor that runs at a speed slightly different from synchronous (a few percent slip). The rotor field winding is left **open-circuited** during the test.
 
-- The three-phase stator winding of the salient-pole alternator is connected to a low-voltage, balanced three-phase AC supply through a variac. Ammeter, voltmeter, and wattmeter are inserted in the stator circuit to measure current, voltage, and power.
-- The rotor field winding is left **open-circuited**.
-- The rotor is driven mechanically at a speed slightly different from the synchronous speed (hence "slip") by an auxiliary prime mover. This causes the rotor poles to slowly slip past the stator rotating magnetic field.
+Because of the rotor saliency, the magnetic reluctance seen by the stator field fluctuates as the rotor slips past the synchronously rotating MMF. When the MMF aligns with the direct axis ($d$-axis, minimum air-gap), the reactance is maximum and the stator current falls to a minimum $I_{\min}$. When the MMF is in the quadrature axis ($q$-axis, maximum air-gap), reactance is minimum and the current rises to a maximum $I_{\max}$. The applied voltage must be kept low enough so that $I_{\max}$ does not exceed rated current.
 
-Because the rotor is salient, the magnetic reluctance seen by the stator MMF changes with rotor position. When the stator MMF aligns with the **direct axis** (minimum air-gap), the reactance is highest and the stator current falls to a **minimum** value. When the MMF aligns with the **quadrature axis** (maximum air-gap), the reactance is lowest and the current rises to a **maximum**.
-
-By recording the minimum current $I_{\min}$ and the maximum current $I_{\max}$, together with the corresponding phase voltage $V_{\text{ph}}$, the direct-axis and quadrature-axis synchronous reactances are:
+Record the phase voltage $V_{\text{ph}}$ (line-to-neutral) while the machine is at or near the slip speed. The direct-axis and quadrature-axis synchronous reactances are then given by:
 
 $$
-X_d = \frac{V_{\text{ph}}}{I_{\min}}, \qquad X_q = \frac{V_{\text{ph}}}{I_{\max}}.
+\begin{aligned}
+X_d &= \frac{V_{\text{ph}}}{I_{\min}} \\
+X_q &= \frac{V_{\text{ph}}}{I_{\max}}
+\end{aligned}
 $$
 
-The applied voltage must be kept low enough to avoid excessive current when the machine is in the quadrature-axis position. A typical connection diagram would show the three-phase supply connected to the variac, then to the stator terminals with instruments in series, and the rotor shaft coupled to a prime mover, with the field winding open.
+Because the field is open, the induced field currents are negligible, and the measured reactances are the unsaturated $X_d$ and $X_q$. A wattmeter reading can be used to separate the resistive component if needed.
 
-> **Final answer:** Slip test gives $X_d$ from minimum armature current and $X_q$ from maximum armature current under low-voltage, open-field conditions.
+> **Final answer:** $X_d$ is obtained from minimum armature current, $X_q$ from maximum armature current when the machine runs at a small slip with open field and low applied voltage.
 
 
 ---
@@ -7080,99 +5280,43 @@ The applied voltage must be kept low enough to avoid excessive current when the 
 With the aid of phasor diagram based on Blondel’s two reaction theory, derive an expression for the active power output of a 3 phase Salient pole alternator in terms of excitation emf, terminal voltage, direct and quadrature axis reactance. Neglect armature resistance. (04)
 
 ### Answer 109
-In a salient-pole alternator the non-uniform air-gap causes the direct-axis synchronous reactance $X_d$ to be larger than the quadrature-axis reactance $X_q$ ($X_d > X_q$). According to Blondel's two-reaction theory, the armature current $I_a$ is resolved into a direct-axis component $I_d$ and a quadrature-axis component $I_q$, each acting on the corresponding reactance. The per-phase voltage equation with negligible armature resistance is
+**Concept:**
+In a salient-pole alternator the air-gap is non-uniform, causing the direct-axis synchronous reactance $X_d$ to be larger than the quadrature-axis reactance $X_q$ ($X_d > X_q$). Blondel's two-reaction theory resolves the armature mmf (and current) into a direct-axis component $I_d$ and a quadrature-axis component $I_q$, each acting on the corresponding reactance. Armature resistance is neglected.
 
-$$
-E_f = V + jX_d I_d + jX_q I_q \tag{1}
-$$
+**Phasor-diagram construction (lagging pf):**
+1. Take terminal voltage $V$ as reference.
+2. Draw armature current $I_a$ lagging $V$ by $\phi$.
+3. The phasor $E' = V + j X_q I_a$ lies along the q-axis; its angle is the load angle $\delta$. Hence the excitation emf $E_f$ is also along the q-axis, i.e. $E_f = E_f \angle \delta$.
+4. The d-axis lags the q-axis by $90^\circ$.
+5. Resolve $I_a$ along the axes: $I_q$ (in phase with $E_f$) and $I_d$ (lagging $E_f$ by $90^\circ$).
+6. Build the voltage equation: $E_f = V + j X_d I_d + j X_q I_q$.
 
-where $E_f$ is the excitation emf (lying along the $q$-axis) and $V$ is the terminal voltage taken as reference.
+**Derivation of active power:**
+Using the phasor geometry:
+- On the d-axis: $0 = -V\sin\delta + X_q I_q \;\Rightarrow\; I_q = \dfrac{V\sin\delta}{X_q}$.
+- On the q-axis: $E_f = V\cos\delta + X_d I_d \;\Rightarrow\; I_d = \dfrac{E_f - V\cos\delta}{X_d}$.
 
-<figure>
-  <img src="./pyq-assets/textbook/108105131_p824_img-423_jpeg.png" alt="Phasor diagram of salient-pole alternator" />
-  <figcaption>Phasor diagram of a salient-pole synchronous generator (Blondel's two-reaction theory), $R_a$ neglected.</figcaption>
-</figure>
-
-**Derivation of $I_d$ and $I_q$:**
-Take $V = V\angle 0^\circ$ as the reference phasor. The auxiliary phasor $E' = V + jX_q I_a$ lies along the quadrature axis; let its angle be $\delta$ (the load angle). Hence the $q$-axis is at $\angle\delta$ and the $d$-axis lags the $q$-axis by $90^\circ$ ($\angle\delta-90^\circ$). The excitation emf $E_f$ also lies on the $q$-axis, so $E_f = E_f\angle\delta$.
-
-Resolving the armature current along the two axes:
-$$
-I_a = I_q\angle\delta + I_d\angle(\delta-90^\circ) 
-     = (I_q - jI_d)\,e^{j\delta}. \tag{2}
-$$
-
-Substituting the phasors into (1):
-- $jX_d I_d = jX_d\,I_d\,e^{j(\delta-90^\circ)} = X_d I_d\,e^{j\delta}$ (a voltage along the $q$-axis);
-- $jX_q I_q = jX_q\,I_q\,e^{j\delta} = -X_q I_q\,e^{j(\delta-90^\circ)}$ (a voltage along the negative $d$-axis).
-
-Thus (1) becomes
-$$
-E_f e^{j\delta} = V + X_d I_d\,e^{j\delta} - X_q I_q\,e^{j(\delta-90^\circ)} .
-$$
-
-To separate the $q$- and $d$-axis components, multiply the equation by $e^{-j\delta}$:
-$$
-E_f = V e^{-j\delta} + X_d I_d + jX_q I_q . \tag{3}
-$$
-With $V e^{-j\delta} = V\cos\delta - jV\sin\delta$, equating the real and imaginary parts of (3) gives
+Per-phase complex power $S = V I_a^*$. Express $I_a^*$ in terms of d-q components and simplify the real part:
 
 $$
 \begin{aligned}
-\text{Real (}q\text{-axis):}&\quad E_f = V\cos\delta + X_d I_d, \\[2pt]
-\text{Imag (}d\text{-axis):}&\quad 0 = -V\sin\delta + X_q I_q .
+P_{\text{ph}} &= V \bigl( I_q \cos\delta + I_d \sin\delta \bigr) \\[4pt]
+&= V\!\left[ \frac{V\sin\delta}{X_q}\cos\delta + \frac{E_f - V\cos\delta}{X_d}\sin\delta \right] \\[4pt]
+&= \frac{E_f V}{X_d}\sin\delta + V^2\sin\delta\cos\delta\!\left(\frac{1}{X_q} - \frac{1}{X_d}\right) \\[4pt]
+&= \frac{E_f V}{X_d}\sin\delta + \frac{V^2}{2}\!\left(\frac{1}{X_q} - \frac{1}{X_d}\right)\sin 2\delta .
 \end{aligned}
 $$
 
-Hence the direct- and quadrature-axis components of current are
+For a three-phase alternator, the total active power is three times the per-phase value:
 
 $$
-\boxed{I_q = \frac{V\sin\delta}{X_q}}, \qquad
-\boxed{I_d = \frac{E_f - V\cos\delta}{X_d}}. \tag{4}
+P = \frac{3E_f V}{X_d}\sin\delta + \frac{3V^2}{2}\!\left(\frac{1}{X_q} - \frac{1}{X_d}\right)\sin 2\delta .
 $$
 
-**Expression for active power:**
-The per-phase complex power is $S = V I_a^*$. Since $V = V\angle 0^\circ$ and $I_a^* = (I_q + jI_d)\,e^{-j\delta}$, we obtain
-
-$$
-\begin{aligned}
-S &= V (I_q + jI_d)(\cos\delta - j\sin\delta) \\
-  &= V\bigl[ (I_q\cos\delta + I_d\sin\delta) + j(I_d\cos\delta - I_q\sin\delta) \bigr].
-\end{aligned}
-$$
-
-The real part gives the active power per phase:
-
-$$
-P_{\text{ph}} = \operatorname{Re}(S) = V\,(I_q\cos\delta + I_d\sin\delta). \tag{5}
-$$
-
-Insert the expressions (4) into (5):
-
-$$
-\begin{aligned}
-P_{\text{ph}} 
-&= V\Bigl[ \frac{V\sin\delta}{X_q}\cos\delta + \frac{E_f - V\cos\delta}{X_d}\sin\delta \Bigr] \\[4pt]
-&= \frac{E_f V}{X_d}\sin\delta + V^2\sin\delta\cos\delta\!\left(\frac{1}{X_q} - \frac{1}{X_d}\right).
-\end{aligned}
-$$
-
-Using $\sin 2\delta = 2\sin\delta\cos\delta$,
-
-$$
-P_{\text{ph}} = \frac{E_f V}{X_d}\sin\delta + \frac{V^2}{2}\!\left(\frac{1}{X_q} - \frac{1}{X_d}\right)\sin 2\delta .
-$$
-
-For a three-phase alternator the total active power is three times the per-phase value:
-
-$$
-\boxed{P = \frac{3E_f V}{X_d}\sin\delta + \frac{3V^2}{2}\!\left(\frac{1}{X_q} - \frac{1}{X_d}\right)\sin 2\delta}. \tag{6}
-$$
-
-Equation (6) is the required expression. The first term is the *excitation power* also present in cylindrical-rotor machines; the second term is the *reluctance power* that arises only when $X_d \neq X_q$ and can be utilised in salient-pole machines to increase the maximum power.
+The first term is the excitation power (present even in cylindrical-rotor machines); the second term is the **reluctance power** that arises from saliency and can substantially increase the maximum power output.
 
 > **Final answer:**
-> $$P = \frac{3E_f V}{X_d}\sin\delta + \frac{3V^2}{2}\!\left(\frac{1}{X_q} - \frac{1}{X_d}\right)\sin 2\delta.$$
+> $$P = \frac{3E_f V}{X_d}\sin\delta + \frac{3V^2}{2}\!\left(\frac{1}{X_q} - \frac{1}{X_d}\right)\sin 2\delta$$
 
 
 ---
@@ -7183,77 +5327,47 @@ Equation (6) is the required expression. The first term is the *excitation power
 A 5 MVA, 6.6 KV, 3- phase, 6.6 KV 50 Hz, star connected salient pole alternator is connected to an infinite bus. The direct axis reactance is 12 Ω while that of quadrature axis is 9.5 Ω per phase. The armature resistance is 1.5 Ω per phase. When the generator is operating at rated MVA at 0.9 pf lagging, calculate the electromagnetic power developed and reluctance power. (05)
 
 ### Answer 110
-Given: A 5 MVA, 6.6 kV, 50 Hz, star-connected salient-pole alternator.
-$X_d = 12\ \Omega$, $X_q = 9.5\ \Omega$, $R_a = 1.5\ \Omega$ per phase.
-Operating at rated MVA, 0.9 pf lagging.
+**Given:**
+- $S = 5\ \text{MVA}$, $V_L = 6.6\ \text{kV}$, star connection, $f = 50\ \text{Hz}$.
+- $X_d = 12\ \Omega$, $X_q = 9.5\ \Omega$, $R_a = 1.5\ \Omega$ per phase.
+- Operating at rated MVA, $0.9$ pf lagging.
 
-**1. Terminal quantities**
-Per-phase voltage
-$$
-V_{\text{ph}} = \frac{6600}{\sqrt{3}} = 3810.5\ \text{V}.
-$$
-Rated armature current
-$$
-I_a = \frac{5 \times 10^6}{\sqrt{3} \times 6600} = 437.39\ \text{A}.
-$$
-Power factor angle
-$$
-\phi = \cos^{-1} 0.9 = 25.84^\circ\ \text{lagging}.
-$$
-Three-phase active power output
-$$
-P_{\text{out}} = 5 \times 0.9 = 4.5\ \text{MW}.
-$$
+**Solution:**
 
-**2. Electromagnetic power developed**
-Stator copper loss
-$$
-P_{\text{cu}} = 3 I_a^2 R_a = 3 \times (437.39)^2 \times 1.5 = 0.8609\ \text{MW}.
-$$
-Electromagnetic power developed (air-gap power) equals output plus stator copper loss:
-$$
-P_{\text{em}} = P_{\text{out}} + P_{\text{cu}} = 4.5 + 0.8609 = 5.3609\ \text{MW}.
-$$
+1. **Per-phase voltage and current:**
+   $$V_{\text{ph}} = \frac{6600}{\sqrt{3}} = 3810.5\ \text{V},$$
+   $$I_a = \frac{5 \times 10^6}{\sqrt{3} \times 6600} = 437.39\ \text{A}.$$
 
-**3. Reluctance power**
-For a salient-pole machine, the total three-phase air-gap power (neglecting $R_a$) is expressed by the two-reaction theory:
-$$
-P_{\text{em}} = \frac{3 E_f V}{X_d} \sin\delta \;+\; \frac{3 V^2}{2}\left(\frac{1}{X_q} - \frac{1}{X_d}\right) \sin 2\delta.
-$$
-The second term is the **reluctance power**, which arises from the non-uniform air gap.
-To evaluate it we need the load angle $\delta$. From the phasor diagram with $R_a = 0$, the relation between $\delta$, terminal voltage and current is
-$$
-\tan \delta = \frac{I_a X_q \cos\phi}{V_{\text{ph}} + I_a X_q \sin\phi}.
-$$
+2. **Power factor angle:**
+   $$\phi = \cos^{-1} 0.9 = 25.84^\circ\ (\text{lagging}).$$
 
-![Phasor diagram of synchronous generator](./pyq-assets/textbook/108105131_p799_img-409_jpeg.png)
+3. **Output active power:**
+   $$P_{\text{out}} = S \cdot \text{pf} = 5 \times 0.9 = 4.5\ \text{MW}.$$
 
-Substituting the values:
-$$
-\begin{aligned}
-I_a X_q \cos\phi &= 437.39 \times 9.5 \times 0.9 = 3740\ \text{V},\\[2pt]
-I_a X_q \sin\phi &= 437.39 \times 9.5 \times 0.4359 = 1812\ \text{V},\\[2pt]
-\tan\delta &= \frac{3740}{3810.5 + 1812} = 0.6652,\\[2pt]
-\delta &= \arctan(0.6652) = 33.633^\circ.
-\end{aligned}
-$$
-Then
-$$
-\sin 2\delta = \sin(67.266^\circ) = 0.9223,
-\qquad
-\frac{1}{X_q} - \frac{1}{X_d} = \frac{1}{9.5} - \frac{1}{12} = 0.02193\ \Omega^{-1}.
-$$
-The three-phase reluctance power is
-$$
-\begin{aligned}
-P_{\text{rel}} &= \frac{3}{2} \times (3810.5)^2 \times 0.02193 \times 0.9223 \\[2pt]
-&\approx 0.4405 \times 10^6\ \text{W} = 0.44\ \text{MW}.
-\end{aligned}
-$$
+4. **Stator copper loss and electromagnetic power:**
+   $$P_{\text{cu}} = 3 I_a^2 R_a = 3 \times (437.39)^2 \times 1.5 = 0.8609\ \text{MW}.$$
+   $$\boxed{P_{\text{em}} = P_{\text{out}} + P_{\text{cu}} = 4.5 + 0.8609 = 5.3609\ \text{MW}}.$$
 
-Thus, the electromagnetic power developed is **5.36 MW**, of which **0.44 MW** is the reluctance power component (the remainder comes from field excitation).
+5. **Load angle $\delta$ (neglecting $R_a$ for this step):**
+   The q-axis is located by the phasor $V_{\text{ph}} + j X_q I_a$, giving
+   $$\tan \delta = \frac{I_a X_q \cos\phi}{V_{\text{ph}} + I_a X_q \sin\phi}.$$
+   $$I_a X_q = 437.39 \times 9.5 = 4155.2\ \text{V}.$$
+   Numerator: $4155.2 \times 0.9 = 3739.7\ \text{V}.$
+   Denominator: $3810.5 + 4155.2 \times 0.4359 = 3810.5 + 1811.5 = 5622\ \text{V}.$
+   $$\tan \delta = \frac{3739.7}{5622} = 0.6652 \;\Rightarrow\; \delta = 33.62^\circ.$$
 
-> **Final answer:** Electromagnetic power developed = 5.36 MW; reluctance power = 0.44 MW (approx).
+6. **Reluctance power (three-phase):**
+   $$P_{\text{rel}} = \frac{3 V_{\text{ph}}^2}{2}\!\left(\frac{1}{X_q} - \frac{1}{X_d}\right)\sin 2\delta.$$
+   Compute:
+   $$\frac{1}{X_q} - \frac{1}{X_d} = \frac{1}{9.5} - \frac{1}{12} = 0.02193\ \Omega^{-1},$$
+   $$V_{\text{ph}}^2 = (3810.5)^2 = 14.52 \times 10^6\ \text{V}^2,$$
+   $$\frac{3}{2}V_{\text{ph}}^2 = 1.5 \times 14.52\times 10^6 = 21.78\times 10^6,$$
+   $$\sin 2\delta = \sin(67.24^\circ) = 0.922.$$
+   $$P_{\text{rel}} = 21.78\times 10^6 \times 0.02193 \times 0.922 \approx 0.440\times 10^6\ \text{W} = \mathbf{0.44\ \textbf{MW}}.$$
+
+Thus, the electromagnetic power developed is **5.36 MW**, of which **0.44 MW** is the reluctance power (the remainder 4.92 MW comes from field excitation).
+
+> **Final answer:** Electromagnetic power developed $= 5.36\ \text{MW}$; reluctance power $= 0.44\ \text{MW}$.
 
 
 ---
@@ -7264,43 +5378,34 @@ Thus, the electromagnetic power developed is **5.36 MW**, of which **0.44 MW** i
 Explain Blondel’s two reaction theory for Salient Pole Alternator. Derive the circuit model and sketch the phasor diagram showing the relationship between terminal voltage and internal voltage. (05)
 
 ### Answer 111
-Blondel's two-reaction theory is essential for analysing salient-pole alternators because the air-gap is non-uniform. The direct-axis (d-axis) is the path of minimum reluctance (along the rotor pole centre), and the quadrature-axis (q-axis) is the path of maximum reluctance (midway between poles). Consequently, the direct-axis synchronous reactance $X_d$ is larger than the quadrature-axis reactance $X_q$.
+**Concept:**
+In a salient-pole alternator the air gap is not uniform; the direct-axis (d-axis, along the pole centre) presents a path of minimum reluctance, while the quadrature-axis (q-axis, midway between poles) has maximum reluctance. Consequently the synchronous reactance is not constant: the direct-axis synchronous reactance $X_d$ is larger than the quadrature-axis reactance $X_q$ ($X_d > X_q$). A single-reactance model is therefore inadequate.
 
-The theory resolves the armature mmf (and hence the armature current $I_a$) into two components:
-- **Direct-axis component** $I_d$: in quadrature with the excitation emf $E_f$ (i.e., along the d-axis) and responsible for demagnetising or magnetising effect.
-- **Quadrature-axis component** $I_q$: in phase with $E_f$ (along the q-axis) and responsible for cross-magnetising effect.
+Blondel's two-reaction theory overcomes this by resolving the armature magneto-motive force (and hence the armature current $I_a$) into two components:
 
-**Per-phase circuit model:**  
-Because the two axes have different magnetic paths, a single impedance cannot represent the machine. Instead, the induced emf $E_f$ (excitation voltage) is related to the terminal voltage $V$ and the armature current components by the voltage equation:
-$$
-E_f = V + I_a R_a + j X_d I_d + j X_q I_q.
-$$
-Usually the armature resistance $R_a$ is small and can be neglected, giving:
-$$
-E_f = V + j X_d I_d + j X_q I_q.
-$$
-This is the *two-reaction circuit model* of a salient-pole alternator.
+- **$I_d$** - the direct-axis component, acting on $X_d$ and producing a demagnetising or magnetising effect.
+- **$I_q$** - the quadrature-axis component, acting on $X_q$ and producing a cross-magnetising effect.
 
-**Phasor diagram construction** (lagging power factor example):
-1. Draw the terminal voltage $V$ as the reference phasor (horizontal).
+**Circuit model (per phase, $R_a$ neglected):**
+The excitation emf $E_f$ corresponds to the flux produced by the field winding; it lies along the q-axis. The terminal voltage $V$ is the reference. The voltage equation becomes
+
+$$
+E_f = V + j X_d I_d + j X_q I_q .
+$$
+
+This is the basic two-reaction circuit model of a salient-pole alternator.
+
+**Phasor diagram (lagging power factor):**
+1. Draw $V$ horizontally as the reference phasor.
 2. Draw the armature current $I_a$ lagging $V$ by the power factor angle $\phi$.
-3. Locate the q-axis (the direction of $E_f$): Compute the phasor $V + j X_q I_a$. Because
-   $$
-   V + j X_q I_a = E_f + j (X_q - X_d) I_d,
-   $$
-   and both $E_f$ and $j I_d$ lie along the q-axis, this synthesized phasor points exactly along the q-axis. The angle between $V$ and this phasor is the load angle $\delta$.
-4. Draw the q-axis line at angle $\delta$ from $V$; the d-axis lags the q-axis by $90^\circ$ (i.e., at angle $\delta - 90^\circ$).
-5. Resolve $I_a$ into components along these axes:
-   - $I_q$ is the projection of $I_a$ onto the q-axis (in phase with $E_f$).
-   - $I_d$ is the projection onto the d-axis (lagging $E_f$ by $90^\circ$).
-6. Add the voltage drops: starting from the tip of $V$, draw $j X_q I_q$ (perpendicular to $I_q$, leading by $90^\circ$) and then $j X_d I_d$ (perpendicular to $I_d$, leading by $90^\circ$). The vector sum reaches the tip of $E_f$.
-7. The completed phasor diagram shows $V$, $E_f$, the load angle $\delta$, and the current components.
+3. Locate the q-axis: the phasor $E' = V + j X_q I_a$ lies exactly on the q-axis; its angle is the load angle $\delta$. Hence the excitation emf $E_f$ is also on the q-axis (angle $\delta$ from $V$).
+4. The d-axis lags the q-axis by $90^\circ$ (angle $\delta - 90^\circ$).
+5. Resolve $I_a$ into $I_q$ (projection on the q-axis) and $I_d$ (projection on the d-axis).
+6. Complete the voltage polygon: from the tip of $V$, add the q-axis voltage drop $j X_q I_q$ (perpendicular to $I_q$), then add the d-axis drop $j X_d I_d$ (perpendicular to $I_d$). The resultant is $E_f$.
 
-![Salient-pole alternator phasor diagram (generator, lagging pf)](./pyq-assets/textbook/108105131_p801_img-410_jpeg.png)
+The completed phasor diagram clearly shows $V$, $E_f$, the load angle $\delta$, and the orthogonal current components $I_d$ and $I_q$. It illustrates that because $X_d \neq X_q$, the armature reaction voltage is not simply $j X_s I_a$, and the machine exhibits a saliency-dependent reluctance torque (power) component.
 
-The diagram clearly illustrates the relationship between terminal voltage and internal excitation voltage under saliency.
-
-> **Final answer:** Blondel's two-reaction theory accounts for saliency by resolving armature current into d- and q-axis components, using two reactances $X_d$ and $X_q$, and the phasor relation $E_f = V + jX_d I_d + jX_q I_q$. The phasor diagram is constructed by locating the q-axis with $V + jX_q I_a$ and adding the appropriate voltage drops.
+> **Final answer:** Blondel's two-reaction theory models a salient-pole alternator by resolving armature current into d- and q-axis components, each acting on its own synchronous reactance. The circuit equation is $E_f = V + j X_d I_d + j X_q I_q$. The phasor diagram is constructed by locating the q-axis with $V + j X_q I_a$, adding the appropriate voltage drops, and showing the relationship between terminal voltage $V$ and internal excitation emf $E_f$.
 
 
 ---
@@ -7311,41 +5416,35 @@ The diagram clearly illustrates the relationship between terminal voltage and in
 With a neat diagram, explain an experimental procedure to determine the Xd and Xq of a salient pole alternator. (04)
 
 ### Answer 112
-**Slip test** is a practical method to determine the direct-axis synchronous reactance $X_d$ and the quadrature-axis synchronous reactance $X_q$ of a salient-pole alternator. The test relies on Blondel's two-reaction theory, which resolves the armature mmf into d- and q-axis components, each associated with a distinct magnetic reluctance and hence a distinct reactance. By driving the rotor at a speed slightly different from synchronous speed, the stator rotating field slowly slips past the rotor poles, causing the armature current to vary cyclically.
+**Concept:** In a salient-pole alternator the air-gap is non-uniform, so the armature reaction reactance depends on the position of the rotor. Blondel's two-reaction theory resolves the armature m.m.f. into direct-axis (d-axis) and quadrature-axis (q-axis) components, each experiencing a different magnetic reluctance. The unsaturated direct-axis synchronous reactance $X_d$ and quadrature-axis synchronous reactance $X_q$ are determined by the slip test.
 
-**Experimental Setup (Neat Diagram)**
+![Salient-pole generator cross-section](https://commons.wikimedia.org/wiki/Special:Redirect/file/Salient%20pole%20generator.png)
+*Figure: Salient-pole rotor showing direct and quadrature axes. Source: Wikimedia Commons.*
 
-The schematic diagram of the slip test is shown below. It consists of:
-- A three-phase, low-voltage, variable AC supply connected to the stator windings of the alternator.
-- An ammeter and a voltmeter to measure line current and line voltage.
-- The rotor is coupled to a small variable-speed prime mover (e.g., a DC motor) which drives it at a speed $n$, slightly less or more than the synchronous speed $n_s$.
-- The field winding on the rotor is kept **open-circuited** (no DC excitation).
+**Experimental Setup:**
+- The three-phase stator winding is connected to a low-voltage variable AC supply (via a variac). An ammeter in one line measures line current; a voltmeter across the terminals measures line voltage.
+- The rotor field winding is kept **open-circuited**.
+- The rotor is coupled to a variable-speed prime mover (e.g., a D.C. motor) that drives it at a speed slightly different from synchronous speed $n_s$, giving a small slip $s = (n_s - n)/n_s$, typically $0.5$ to $1\%$.
 
-**Procedure**
-
-1. **Drive the rotor** at a speed that produces a small slip $s = (n_s - n)/n_s$, typically $1$-$2\%$. Because the stator is excited from the AC mains, a rotating magnetic field is set up in the air gap. Since the rotor speed differs from synchronous speed, the field poles slowly move relative to this rotating field.
-
-2. **Observe the armature current.** Owing to saliency, the magnetic reluctance of the flux path varies as the rotor moves. When the stator mmf axis coincides with the **direct axis** (centre of the rotor pole), the air gap is minimum, the reactance offered to the stator current is maximum ($X_d$), and the current drawn from the supply is **minimum**. Conversely, when the stator mmf aligns with the **quadrature axis** (inter-polar region), the air gap is large, the reactance is minimum ($X_q$), and the armature current becomes **maximum**. Hence, the ammeter needle swings between a lower limit $I_{\min}$ and an upper limit $I_{\max}$.
-
-3. **Record simultaneous values** of line current and line voltage at the instants of minimum and maximum current. If the supply voltage fluctuates slightly, take the average of the voltage readings. For a star-connected stator, the phase voltage is $V_{\text{ph}} = V_{\text{line}} / \sqrt{3}$.
-
-4. **Compute the reactances.** Neglecting the small armature resistance, the phase reactance at any instant is $X = V_{\text{ph}} / I_{\text{ph}}$. Therefore,
+**Procedure:**
+1. **Apply a low voltage** (about $20$-$30\%$ of rated value) to the stator. This avoids excessive currents when the machine presents its low q-axis reactance.
+2. **Run the rotor at near-synchronous speed.** Because the rotating stator field slips slowly past the salient pole rotor, the magnetic reluctance seen by the stator m.m.f. varies periodically.
+3. **Observe the armature current swings.** When the stator m.m.f. aligns with the d-axis (centre of a pole), the air-gap is smallest, the reactance is highest, and the line current drops to a **minimum** $I_{\min}$. When alignment is with the q-axis (inter-polar space), the large air-gap gives a low reactance and a **maximum** current $I_{\max}$.
+4. **Record** $I_{\min}$, $I_{\max}$ and the corresponding r.m.s. phase voltage $V_\text{ph}$. For a star-connected stator, $V_\text{ph} = V_\text{line} / \sqrt{3}$.
+5. **Calculate the reactances** neglecting the small armature resistance:
    $$
-   X_d = \frac{V_{\text{ph}}}{I_{\min}} \quad \text{(unsaturated direct-axis reactance)},
+   X_d = \frac{V_\text{ph}}{I_{\min}} \quad \text{(unsaturated direct-axis synchronous reactance)},
    $$
    $$
-   X_q = \frac{V_{\text{ph}}}{I_{\max}} \quad \text{(unsaturated quadrature-axis reactance)}.
+   X_q = \frac{V_\text{ph}}{I_{\max}} \quad \text{(unsaturated quadrature-axis synchronous reactance)}.
    $$
 
-**Precautions**
+**Precautions:**
+- Keep the applied voltage low to prevent over-current.
+- Ensure the field winding is open; a closed field would produce synchronising torque and prevent slip.
+- Maintain a steady speed to obtain clear, steady current pulses.
 
-- The applied voltage must be kept **low** (typically $20$-$30\%$ of rated voltage) to avoid excessive currents when the machine presents the low quadrature-axis reactance.
-- The field winding must be open-circuited; otherwise, the DC field flux would lock the rotor to the stator rotating field, preventing slip.
-- The speed should be held as steady as possible to obtain clear, consistent swings of the ammeter.
-
-The values obtained are the unsaturated reactances because the low applied voltage does not drive the iron into saturation. For saturated values, other tests such as the open-circuit and short-circuit characteristics are combined with the slip test results.
-
-> **Final answer:** $X_d$ is calculated from the minimum line current and the corresponding phase voltage, $X_q$ from the maximum line current, under a low-voltage, open-field slip test.
+> **Final answer:** The slip test yields unsaturated $X_d$ and $X_q$ from the measured minimum and maximum armature currents under low-voltage, open-field operation at a small slip speed.
 
 
 ---
@@ -7356,35 +5455,22 @@ The values obtained are the unsaturated reactances because the low applied volta
 Draw the connection diagram of slip test and briefly explain its significance. (03)
 
 ### Answer 113
-The slip test is a simple experimental method to determine the direct-axis and quadrature-axis synchronous reactances ($X_d$ and $X_q$) of a salient-pole synchronous machine. The connection diagram is arranged as follows:
+**Connection Diagram:**
+- Stator terminals connected in star (or delta) to a three-phase low-voltage supply via a variac. An ammeter is placed in one line and a voltmeter across any two lines to read line quantities.
+- The rotor field winding is **left open-circuited**.
+- The rotor shaft is coupled to a variable-speed d.c. motor (or other prime mover) that can drive it at a speed $n$ slightly different from the synchronous speed $n_s$. The slip $s = (n_s-n)/n_s$ is kept in the range $0.5$-$1\%$.
 
-- The three-phase stator winding is connected to a balanced low-voltage AC supply through a variac. An ammeter is inserted in one line to record the line current, and a voltmeter is connected across the machine terminals to measure the phase voltage.
-- The rotor field winding is kept **open-circuited**.
-- The rotor is driven by an external prime mover (e.g., a DC motor) at a speed slightly different from the synchronous speed corresponding to the supply frequency. This small slip (typically less than 1%) causes the armature magnetomotive force (mmf) to move slowly past the rotor poles.
+**Significance:**
+- The slip test is the only simple, non-destructive laboratory method to separate the two axis synchronous reactances $X_d$ and $X_q$ of a salient-pole machine.
+- $X_d$ and $X_q$ are the fundamental parameters required by Blondel's two-reaction theory. They are essential for
+  - constructing accurate phasor diagrams,
+  - calculating voltage regulation under any load condition,
+  - drawing the power-angle characteristic and assessing steady-state stability,
+  - determining the reluctance torque and the power developed.
+- Without knowledge of $X_d$ and $X_q$, the behaviour of a salient-pole alternator or motor cannot be accurately predicted because the magnetic asymmetry strongly influences its performance.
+- Since the test is performed at low voltage and with open field, it gives the unsaturated values of the reactances; these can later be combined with open- and short-circuit test data to obtain saturated values.
 
-**Working Principle**
-
-Because the rotor is salient, the magnetic reluctance of the flux path varies with the position of the rotating stator field. When the stator mmf aligns with the direct axis (the centre of a pole), the air-gap is smallest, the magnetic circuit has the highest permeance, and the armature reaction is strongest; consequently, the inductive reactance is maximum and the armature current reaches a minimum $I_{min}$. When the stator mmf aligns with the quadrature axis (midway between poles), the air-gap is large, the permeance is low, and the reactance is minimum, giving a maximum armature current $I_{max}$.
-
-If $V_{ph}$ is the rated (or applied) phase voltage, the two synchronous reactances are obtained from:
-
-$$
-X_d = \frac{V_{ph}}{I_{min}}, \qquad X_q = \frac{V_{ph}}{I_{max}}.
-$$
-
-**Significance**
-
-The direct-axis and quadrature-axis reactances are the fundamental parameters required by Blondel's two-reaction theory for salient-pole synchronous machines. They are essential for:
-
-- Drawing accurate phasor diagrams under any load condition.
-- Calculating voltage regulation.
-- Determining power-angle characteristics and steady-state stability limits.
-- Evaluating the synchronising power and torque.
-- Predicting the behaviour of the machine during transient and steady-state operation.
-
-Thus, the slip test provides a straightforward and practical means to separate the two reactances, which cannot be obtained from a simple open-circuit/short-circuit test (which yields only the unsaturated $X_d$). Without $X_d$ and $X_q$, the performance analysis of a salient-pole machine would remain incomplete.
-
-> **Final answer:** The slip test experimentally separates $X_d$ and $X_q$ by exploiting the current pulsation caused by saliency under low-voltage open-field operation.
+> **Final answer:** The slip test connection is a low-voltage, open-field setup with the rotor driven at a small slip; it provides $X_d$ and $X_q$, indispensable for analysing salient-pole synchronous machines.
 
 
 ---
@@ -7395,128 +5481,72 @@ Thus, the slip test provides a straightforward and practical means to separate t
 A three-phase, 20 MVA, 11 kV, 50 Hz star-connected alternator has Xd = 4 Ω and Xq = 3 Ω. Armature resistance is negligibly small. At full load, 0.8 lagging power factor, determine: a) Direct and quadrature axes components of the armature current. b) Excitation emf. c) Voltage regulation. d) Electromagnetic power. e) Reluctance power. (07)
 
 ### Answer 114
-**Given data:**
-- Rated three-phase apparent power, $S = 20\ \text{MVA}$
-- Line voltage, $V_L = 11\ \text{kV}$
-- Connection: Star (Y) → phase voltage $V_\text{ph} = \frac{V_L}{\sqrt{3}}$
-- Frequency, $f = 50\ \text{Hz}$ (not used because reactances are given in ohms)
-- Direct-axis synchronous reactance, $X_d = 4\ \Omega$
-- Quadrature-axis synchronous reactance, $X_q = 3\ \Omega$
-- Armature resistance, $R_a \approx 0$
-- Power factor, $\cos\phi = 0.8$ lagging → $\phi = \arccos 0.8 = 36.87^\circ$
+**Given:** $S = 20\,\text{MVA}$, $V_\text{L} = 11\,\text{kV}$, star-connected, $X_d = 4\,\Omega$, $X_q = 3\,\Omega$, $R_a \approx 0$, full-load p.f. $0.8$ lagging.
 
-**Preliminary calculations:**
-- Phase voltage:
+**Preliminary quantities:**
 $$
-V_\text{ph} = \frac{11000}{\sqrt{3}} = 6350.85\ \text{V}
-$$
-- Rated armature current:
-$$
-I_a = \frac{S}{\sqrt{3}\,V_L} = \frac{20 \times 10^6}{\sqrt{3} \times 11000} = 1049.73\ \text{A}
-$$
-- Power factor angle: $\phi = \cos^{-1}(0.8) = 36.87^\circ$ (lagging). Hence, $\sin\phi = 0.6$.
-
-**a) Direct- and quadrature-axis current components**
-
-In a salient-pole machine, the air-gap is non-uniform and the armature mmf is resolved along two axes:
-- **Direct axis (d-axis)**: the axis of the field poles.
-- **Quadrature axis (q-axis)**: 90 electrical degrees ahead of the d-axis.
-
-The armature current $\mathbf{I}_a$ (lagging $\mathbf{V}_\text{ph}$ by $\phi$) is decomposed into components $I_d$ (along the d-axis) and $I_q$ (along the q-axis). From the phasor diagram (see Figure) the load angle $\delta$ (the angle between $\mathbf{E}_f$ and $\mathbf{V}_\text{ph}$) is first determined.
-
-A convenient construction uses the voltage behind the quadrature reactance:
-$$
-\mathbf{E}_q = \mathbf{V}_\text{ph} + j X_q \mathbf{I}_a .
-$$
-Taking $\mathbf{V}_\text{ph}$ as reference ($\mathbf{V}_\text{ph} = V_\text{ph}\angle 0^\circ$) and $\mathbf{I}_a = I_a\angle -\phi$,
-$$
-\begin{aligned}
-\mathbf{E}_q &= V_\text{ph} + j X_q I_a(\cos\phi - j\sin\phi) \\
-&= (V_\text{ph} + X_q I_a\sin\phi) + j X_q I_a\cos\phi .
-\end{aligned}
-$$
-The angle of $\mathbf{E}_q$ is exactly the load angle $\delta$, hence
-$$
-\tan\delta = \frac{X_q I_a\cos\phi}{V_\text{ph} + X_q I_a\sin\phi}
-          = \frac{1049.73 \times 3 \times 0.8}{6350.85 + 1049.73 \times 3 \times 0.6}
-          = 0.30573.
-$$
-Therefore,
-$$
-\delta = \arctan(0.30573) = 17.00^\circ .
+V_\text{ph} = \frac{11000}{\sqrt{3}} = 6350.85\,\text{V}, \quad
+I_a = \frac{20 \times 10^6}{\sqrt{3}\times 11000} = 1049.73\,\text{A}, \quad
+\phi = \cos^{-1}0.8 = 36.87^\circ \,(\sin\phi = 0.6).
 $$
 
-![Phasor diagram of a salient-pole synchronous generator at lagging power factor](./pyq-assets/textbook/108105131_p799_img-409_jpeg.png)
-*Figure: Phasor diagram of a salient-pole synchronous generator at lagging power factor.*
-
-With $\delta$ known, the d- and q-axis components are found by projecting $\mathbf{I}_a$ onto the rotor axes:
+**(a) Direct- and quadrature-axis current components**
+Taking terminal voltage $\mathbf{V}_\text{ph}$ as reference ($\angle 0^\circ$), the voltage behind quadrature reactance is
 $$
-\begin{aligned}
-I_d &= I_a\sin(\phi + \delta) = 1049.73 \times \sin(36.87^\circ + 17.00^\circ) = 1049.73 \times 0.80768 = 847.85\ \text{A}, \\
-I_q &= I_a\cos(\phi + \delta) = 1049.73 \times \cos(53.87^\circ) = 1049.73 \times 0.58962 = 618.94\ \text{A}.
-\end{aligned}
+\mathbf{E}_q = \mathbf{V}_\text{ph} + j X_q \mathbf{I}_a = (V_\text{ph} + X_q I_a \sin\phi) + j X_q I_a \cos\phi.
+$$
+The angle of $\mathbf{E}_q$ is the load angle $\delta$:
+$$
+\tan\delta = \frac{X_q I_a \cos\phi}{V_\text{ph} + X_q I_a \sin\phi}
+          = \frac{3 \times 1049.73 \times 0.8}{6350.85 + 3 \times 1049.73 \times 0.6}
+          = 0.30573,\quad \delta = 17.00^\circ.
+$$
+Projecting the armature current onto the rotor axes:
+$$
+I_d = I_a \sin(\phi+\delta) = 1049.73 \sin(53.87^\circ) = 847.85\,\text{A},
+$$
+$$
+I_q = I_a \cos(\phi+\delta) = 1049.73 \cos(53.87^\circ) = 618.94\,\text{A}.
 $$
 
-**b) Excitation emf**
-
-From the phasor diagram, projecting the voltage equation $\mathbf{E}_f = \mathbf{V}_\text{ph} + j X_d \mathbf{I}_d + j X_q \mathbf{I}_q$ onto the q-axis yields
+**(b) Excitation e.m.f.**
+From the phasor diagram (ignoring resistance),
 $$
-E_f = V_\text{ph}\cos\delta + X_d I_d .
+E_f = V_\text{ph} \cos\delta + X_d I_d
+    = 6350.85 \cos 17^\circ + 4 \times 847.85
+    = 6074.6 + 3391.4 = 9466.0\,\text{V/phase}.
 $$
-(The projection on the d-axis is automatically satisfied: $V_\text{ph}\sin\delta = X_q I_q$, which serves as a check.)
+Line-to-line value: $\sqrt{3} \times 9466 = 16.39\,\text{kV}$.
 
-Substituting the numerical values:
-$$
-\begin{aligned}
-E_f &= 6350.85 \times \cos 17.00^\circ + 4 \times 847.85 \\
-    &= 6350.85 \times 0.95630 + 3391.4 \\
-    &= 6074.6 + 3391.4 = 9466.0\ \text{V/phase} .
-\end{aligned}
-$$
-(Using slightly rounded numbers may give $9464.7\ \text{V}$, which is equally acceptable.)
-
-**c) Voltage regulation**
-
-At no load and rated speed, the terminal voltage per phase equals $E_f$. The regulation is
+**(c) Voltage regulation**
 $$
 \%\text{Reg} = \frac{E_f - V_\text{ph}}{V_\text{ph}} \times 100
-            = \frac{9466.0 - 6350.85}{6350.85} \times 100 \approx 49.0\% .
+            = \frac{9466 - 6350.85}{6350.85} \times 100
+            = 49.05\% \approx 49.0\%.
 $$
 
-**d) Electromagnetic power**
+**(d) Electromagnetic power**
+Because $R_a = 0$, all terminal power is developed across the air-gap:
+$$
+P_\text{em} = P_\text{out} = \sqrt{3}\,V_\text{L} I_a \cos\phi = 20 \times 10^6 \times 0.8 = 16\,\text{MW}.
+$$
 
-Because the armature resistance is negligible, the total stator copper loss is zero. Hence the electromagnetic power (air-gap power) equals the output power at the terminals:
+**(e) Reluctance power**
+The power component arising solely from saliency is
 $$
-P_\text{em} = P_\text{out} = \sqrt{3}\,V_L I_L \cos\phi = 20 \times 10^6 \times 0.8 = 16\ \text{MW}.
-$$
-Alternatively, using the general power-angle relation for a salient-pole machine:
-$$
-P_\text{em} = \frac{3 V_\text{ph} E_f}{X_d}\sin\delta + \frac{3 V_\text{ph}^2}{2}\!\left(\frac{1}{X_q} - \frac{1}{X_d}\right)\!\sin 2\delta ,
-$$
-yields the same value $16\ \text{MW}$.
-
-**e) Reluctance power**
-
-The second term in the power-angle equation represents the reluctance power - the component that exists purely due to saliency (would be present even with zero field excitation):
-$$
-P_\text{rel} = \frac{3 V_\text{ph}^2}{2}\!\left(\frac{1}{X_q} - \frac{1}{X_d}\right)\!\sin 2\delta .
+P_\text{rel} = \frac{3 V_\text{ph}^2}{2} \left(\frac{1}{X_q} - \frac{1}{X_d}\right) \sin 2\delta.
 $$
 Evaluating:
 $$
-\begin{aligned}
-P_\text{rel} &= \frac{3 \times (6350.85)^2}{2} \left(\frac{1}{3} - \frac{1}{4}\right) \sin(2 \times 17.00^\circ) \\
-            &= 1.5 \times 40.33 \times 10^6 \times 0.08333 \times 0.5592 \\
-            &\approx 2.819\ \text{MW}.
-\end{aligned}
+V_\text{ph}^2 = 40.333 \times 10^6,\quad
+\frac{1}{X_q} - \frac{1}{X_d} = \frac{1}{3} - \frac{1}{4} = \frac{1}{12} = 0.08333,\quad
+\sin 2\delta = \sin 34^\circ = 0.5592,
 $$
-Thus, about $2.82\ \text{MW}$ of the electromagnetic power is due to the reluctance torque.
+$$
+P_\text{rel} = 1.5 \times 40.333 \times 10^6 \times 0.08333 \times 0.5592 = 2.82 \times 10^6\,\text{W} = 2.82\,\text{MW}.
+$$
 
-> **Final answer:**
-> (a) $I_d = 847.9\ \text{A}$, $I_q = 618.9\ \text{A}$
-> (b) $E_f = 9.46\ \text{kV/phase}$ (or $16.40\ \text{kV line}$)
-> (c) Voltage regulation $= 49.0\%$
-> (d) Electromagnetic power $= 16\ \text{MW}$
-> (e) Reluctance power $= 2.82\ \text{MW}$
+> **Final answer:** (a) $I_d = 847.9\,\text{A}$, $I_q = 618.9\,\text{A}$; (b) $E_f = 9.466\,\text{kV/phase}$ (or $16.39\,\text{kV line}$); (c) Voltage regulation $= 49.0\%$; (d) $P_\text{em}=16\,\text{MW}$; (e) $P_\text{rel}=2.82\,\text{MW}$.
 
 
 ---
@@ -7527,39 +5557,25 @@ Thus, about $2.82\ \text{MW}$ of the electromagnetic power is due to the relucta
 What is the significance of reluctance power in salient pole synchronous machines? Discuss with power-angle characteristics. (03)
 
 ### Answer 115
-In a salient-pole synchronous machine, the rotor has projecting poles and a non-uniform air gap. Consequently, the magnetic reluctance varies around the rotor periphery: it is minimum along the direct axis (d-axis, aligned with the field winding) and maximum along the quadrature axis (q-axis, midway between poles). This saliency causes the armature reaction to be different along the two axes, leading to two distinct synchronous reactances: $X_d$ (direct-axis reactance) and $X_q$ (quadrature-axis reactance), with $X_d > X_q$.
-
-The power-angle characteristic of a salient-pole synchronous generator (neglecting armature resistance) is given by the **Blondel two-reaction theory**:
-
+In a salient-pole synchronous machine, the non-uniform air gap makes the direct-axis reactance $X_d$ larger than the quadrature-axis reactance $X_q$. Blondel's two-reaction theory resolves the armature current into $I_d$ and $I_q$ components and expresses the total three-phase electromagnetic power as
 $$
-P = \frac{3 E_f V}{X_d} \sin \delta + \frac{3 V^2}{2} \left( \frac{1}{X_q} - \frac{1}{X_d} \right) \sin 2\delta
+\begin{aligned}
+P &= \frac{3E_f V}{X_d}\sin\delta + \frac{3V^2}{2}\left(\frac{1}{X_q} - \frac{1}{X_d}\right)\sin 2\delta,
+\end{aligned}
 $$
+where $E_f$ is the excitation emf per phase, $V$ is the terminal voltage per phase, and $\delta$ is the load (power) angle. The second term, $P_{\text{rel}} = \frac{3V^2}{2}\left(\frac{1}{X_q} - \frac{1}{X_d}\right)\sin 2\delta$, is the **reluctance power**.
 
-where:
-- $E_f$ is the excitation (no-load) voltage per phase,
-- $V$ is the terminal voltage per phase,
-- $\delta$ is the load angle (between $E_f$ and $V$).
+**Significance of reluctance power:**
 
-The first term, $\frac{3 E_f V}{X_d} \sin \delta$, is the **excitation power** that also appears in cylindrical-rotor (non-salient) machines. The second term,
+1. **Existence without field excitation:** $P_{\text{rel}}$ depends only on $V^2$ and the reactance difference. Hence the machine can develop torque and operate as a reluctance motor/generator even when the field current is zero ($E_f = 0$).
+2. **Alters the power-angle curve:** The $\sin 2\delta$ component peaks at $\delta = 45^\circ$ (whereas the excitation term peaks at $90^\circ$). When superimposed, the resultant peak power occurs at a load angle smaller than $90^\circ$, and the magnitude of the maximum power is increased. This raised power limit is a distinctive feature of salient-pole machines.
+3. **Improved stability:** Because the maximum power is reached at a smaller $\delta$, the synchronising power coefficient $dP/d\delta$ (the slope of the power-angle curve) is larger at normal operating points. This gives greater restoring torque per unit change in load angle, enhancing both steady-state and transient stability.
+4. **Additional power output:** Even at a fixed excitation, the machine can deliver more active power than a cylindrical-rotor machine having the same $X_d$, because the saliency contribution adds to the excitation power.
+5. **Flexible operation:** The reluctance power assists in keeping the rotor in synchronism under varying loads and allows the machine to operate at leading, lagging or unity power factor by adjusting the field current.
 
-$$
-P_{\text{rel}} = \frac{3 V^2}{2} \left( \frac{1}{X_q} - \frac{1}{X_d} \right) \sin 2\delta
-$$
+These features make the reluctance power a fundamental property of salient-pole synchronous machines, exploited in reluctance motors and in power system stability.
 
-is called the **reluctance power**. Its significance arises from the following:
-
-1. **Existence without field current:** Because $P_{\text{rel}}$ depends on $V^2$ and the reactance difference, it persists even if the field current is zero ($E_f = 0$). A salient-pole machine can therefore develop torque and operate as a **reluctance motor** (or generator) solely due to the rotor saliency.
-
-2. **Shape of the power-angle curve:** The reluctance component varies as $\sin 2\delta$, which peaks at $\delta = 45^\circ$ (in the absence of excitation). When superimposed on the $\sin \delta$ term, it shifts the point of maximum total power to an angle smaller than $90^\circ$, and raises the overall power limit. This is illustrated in a typical power-angle diagram (see figure). The combined curve shows a steeper rise and an enhanced peak power compared to a non-salient machine with the same $X_d$.
-
-3. **Improved steady-state stability:** Because the maximum power occurs at a smaller load angle, the machine possesses a greater restoring torque per unit change in $\delta$ (higher synchronising power coefficient) for a given operating point, thereby improving transient and steady-state stability.
-
-4. **Flexible power factor control:** The saliency torque assists in keeping the rotor synchronised under varying loads, and allows operation at leading, lagging, or unity power factor by adjusting the excitation.
-
-![Salient-pole machine zero-excitation operation](./pyq-assets/textbook/108105131_p843_img-434_jpeg.png)
-*Figure: Slide discussing operation of a salient-pole synchronous machine without field excitation, emphasizing the reluctance power term.*
-
-> **Final answer:** Reluctance power is the power resulting from the difference between d- and q-axis reactances ($X_d \neq X_q$). It is proportional to $\sin 2\delta$, exists even without field excitation, shifts the maximum power angle below $90^\circ$, increases the power capability, and enhances the synchronising action of the machine.
+> **Final answer:** Reluctance power is the component $P_{\text{rel}} = \frac{3V^2}{2}\!\left(\frac{1}{X_q} - \frac{1}{X_d}\right)\!\sin 2\delta$ that arises from the difference between $X_d$ and $X_q$. It enables torque production without field excitation, shifts the peak of the power-angle curve to $\delta < 90^\circ$, raises the steady-state power limit, increases the synchronising power coefficient, and contributes to the total output of the machine.
 
 
 ---
@@ -7570,79 +5586,48 @@ is called the **reluctance power**. Its significance arises from the following:
 A 10 kVA, 3 phase, 400 V, 50 Hz, star connected salient pole alternator has direct and quadrature axes reactance of 5 Ω and 2 Ω respectively. When it is delivering full load at 0.8 p.f lag to an infinite bus, determine the electromagnetic power and reluctance power. 5M
 
 ### Answer 116
-A 10 kVA, 400 V, 50 Hz, three-phase star-connected salient-pole alternator has per-phase direct-axis reactance $X_d = 5\ \Omega$ and quadrature-axis reactance $X_q = 2\ \Omega$. It is delivering full load at 0.8 power factor lagging to an infinite bus. The armature resistance is neglected.
+**Given:** $S = 10 \text{ kVA}$, $V_L = 400 \text{ V}$, $f = 50 \text{ Hz}$, star connection, $X_d = 5 \ \Omega$, $X_q = 2 \ \Omega$, $\cos\phi = 0.8$ lag. Armature resistance is neglected.
 
-**Step 1: Rated per-phase values**
+**Step 1: Per-phase quantities**
 $$
-V_{\text{ph}} = \frac{V_L}{\sqrt{3}} = \frac{400}{\sqrt{3}} = 230.94\ \text{V}
-$$
-$$
-I_a = \frac{S}{\sqrt{3}\,V_L} = \frac{10\times 10^3}{\sqrt{3}\times 400} = 14.434\ \text{A}
-$$
-
-**Step 2: Power factor angle**
-$$
-\phi = \cos^{-1}0.8 = 36.87^\circ\ (\text{lagging})
+\begin{aligned}
+V_{\text{ph}} &= \frac{V_L}{\sqrt{3}} = \frac{400}{\sqrt{3}} = 230.94 \text{ V},\\[2pt]
+I_a &= \frac{S}{\sqrt{3}\,V_L} = \frac{10\,000}{\sqrt{3}\times 400} = 14.434 \text{ A}.
+\end{aligned}
 $$
 
-**Step 3: Load angle $\delta$ using two-reaction phasor**
-For a salient-pole generator with negligible resistance, the load angle $\delta$ (the angle between the terminal voltage $V_{\text{ph}}$ and the excitation emf $E_f$) is obtained from the phasor diagram (Fig. below) as:
+**Step 2: Load angle $\delta$ (salient-pole generator, $R_a = 0$)**
+For a lagging load,
 $$
-\tan\delta = \frac{I_a X_q \cos\phi}{V_{\text{ph}} + I_a X_q \sin\phi}
+\tan\delta = \frac{I_a X_q \cos\phi}{V_{\text{ph}} + I_a X_q \sin\phi}.
 $$
-Substituting the values:
+Substituting:
 $$
-\tan\delta = \frac{14.434 \times 2 \times 0.8}{230.94 + 14.434 \times 2 \times 0.6} = \frac{23.094}{248.261} = 0.0930
-$$
-$$
-\Rightarrow \delta = 5.3145^\circ
+\tan\delta = \frac{14.434 \times 2 \times 0.8}{230.94 + 14.434 \times 2 \times 0.6}
+= \frac{23.094}{248.261} = 0.0930 \;\Rightarrow\; \delta = 5.315^\circ.
 $$
 
-![Phasor diagram of salient-pole alternator](./pyq-assets/textbook/108105131_p799_img-409_jpeg.png)  
-*Figure: Two-reaction phasor diagram of a salient-pole alternator delivering lagging load.*
+**Step 3: Reluctance power**
+From Blondel's power formula, the three-phase reluctance power is
+$$
+\begin{aligned}
+P_{\text{rel}} &= \frac{3 V_{\text{ph}}^2}{2}\!
+\left(\frac{1}{X_q} - \frac{1}{X_d}\right)\sin 2\delta \\[2pt]
+&= \frac{3 \times (230.94)^2}{2}\!
+\left(\frac{1}{2} - \frac{1}{5}\right) \sin(2 \times 5.315^\circ) \\[2pt]
+&= \frac{3 \times 53\,333}{2} \times 0.3 \times \sin 10.63^\circ \\[2pt]
+&= 79\,999.5 \times 0.3 \times 0.1845 \approx 4\,428 \text{ W}.
+\end{aligned}
+$$
+Hence $P_{\text{rel}} \approx 4.43 \text{ kW}$.
 
-**Step 4: d- and q-axis current components**
-The armature current $I_a$ lags $V_{\text{ph}}$ by $\phi$. The angle between $I_a$ and the $q$-axis is $\psi = \phi + \delta = 36.87^\circ + 5.3145^\circ = 42.1845^\circ$. Hence,
+**Electromagnetic power:** With armature resistance neglected, the total three-phase electromagnetic power equals the terminal active power:
 $$
-I_d = I_a \sin\psi = 14.434 \sin 42.1845^\circ = 9.6925\ \text{A}
+P_{\text{em}} = S \cos\phi = 10 \times 0.8 = 8 \text{ kW}.
 $$
-$$
-I_q = I_a \cos\psi = 14.434 \cos 42.1845^\circ = 10.695\ \text{A}
-$$
+(One can verify by computing $E_f$ and using $P_{\text{em}} = P_{\text{exc}} + P_{\text{rel}}$, which yields the same 8 kW.)
 
-**Step 5: Excitation emf per phase**
-$$
-E_f = V_{\text{ph}}\cos\delta + X_d I_d = 230.94 \cos 5.3145^\circ + 5 \times 9.6925 = 278.41\ \text{V}
-$$
-
-**Step 6: Electromagnetic power**
-The total three-phase electromagnetic power developed in a salient-pole synchronous machine is given by the sum of the excitation power and the reluctance (saliency) power:
-$$
-P_{\text{em}} = \frac{3\,V_{\text{ph}} E_f}{X_d}\sin\delta \;+\; \frac{3\,V_{\text{ph}}^2}{2} \!\left(\frac{1}{X_q}-\frac{1}{X_d}\right)\!\sin 2\delta
-$$
-Because armature resistance is zero, the terminal active power equals the electromagnetic power. At full load and 0.8 pf,
-$$
-P_{\text{em}} = S\cos\phi = 10 \times 0.8 = 8\ \text{kW} = 8000\ \text{W}
-$$
-
-**Step 7: Reluctance power**
-The second term in the power equation is the reluctance power:
-$$
-P_{\text{rel}} = \frac{3\,V_{\text{ph}}^2}{2} \!\left(\frac{1}{X_q}-\frac{1}{X_d}\right)\!\sin 2\delta
-$$
-Substituting,
-$$
-P_{\text{rel}} = \frac{3 \times (230.94)^2}{2} \!\left(\frac{1}{2}-\frac{1}{5}\right)\sin(2 \times 5.3145^\circ)
-             = \frac{3 \times 53333}{2} \times 0.3 \times \sin 10.629^\circ
-             \approx 80000 \times 0.3 \times 0.1845 = 4428\ \text{W}
-$$
-$$
-\boxed{P_{\text{rel}} \approx 4.43\ \text{kW}}
-$$
-
-(For completeness, the excitation power component is $8.00 - 4.43 = 3.57\ \text{kW}$.)
-
-> **Final answer:** Electromagnetic power $= 8\ \text{kW}$; reluctance power $= 4.43\ \text{kW}$.
+> **Final answer:** Electromagnetic power = $8 \text{ kW}$; reluctance power $\approx 4.43 \text{ kW}$.
 
 
 ---
@@ -7653,30 +5638,26 @@ $$
 Draw and explain the phasor diagram of salient pole alternator based on Blondel’s two reaction theory. (05)
 
 ### Answer 117
-In a salient-pole alternator the air-gap is non-uniform, causing the direct-axis reactance $X_d$ to be much larger than the quadrature-axis reactance $X_q$. Blondel's two-reaction theory handles this by resolving the armature current $I_a$ into a direct-axis component $I_d$ and a quadrature-axis component $I_q$, which act on $X_d$ and $X_q$ respectively. This approach allows a phasor diagram to be drawn even though a single synchronous reactance cannot be defined.
+**Blondel's two-reaction theory** accounts for the magnetic asymmetry of salient-pole alternators by resolving the armature current $I_a$ into a direct-axis component $I_d$ (along the field pole axis) and a quadrature-axis component $I_q$ (midway between poles). Each component encounters a different synchronous reactance, $X_d$ and $X_q$ ($X_d > X_q$). The phasor diagram for a generator supplying a lagging load, with armature resistance neglected, is constructed as follows:
 
-**Phasor diagram construction (generator convention, lagging load, $R_a$ neglected):**
-
-1. Draw the terminal voltage $V$ as reference phasor horizontally to the right.
-2. Draw the armature current $I_a$ lagging $V$ by the power-factor angle $\phi$.
-3. The direct axis (d-axis) is fixed to the rotor field poles; in the phasor diagram it is a line that lies at an angle $\delta$ (the load or torque angle) ahead of $V$, because the excitation emf $E_f$ lies exactly along this axis.
-4. The quadrature axis (q-axis) is $90^\circ$ electrically ahead of the d-axis.
-5. Resolve $I_a$ into:
-   - $I_d = I_a \sin(\delta+\phi)$ along the d-axis but in opposition to the field for lagging loads,
-   - $I_q = I_a \cos(\delta+\phi)$ along the q-axis.
-6. From the tip of $V$, add the voltage drop $j X_q I_q$. This drop leads $I_q$ by $90^\circ$ and is therefore perpendicular to the q-axis.
-7. From the tip of the resultant, add the drop $j X_d I_d$. This drop leads $I_d$ by $90^\circ$ and is perpendicular to the d-axis.
-8. The final phasor is the excitation emf $E_f$, which lies exactly on the d-axis. The phasor sum is
+1. **Reference:** Draw the terminal voltage $V$ horizontally (reference phasor).
+2. **Load current:** Draw $I_a$ lagging $V$ by the power-factor angle $\phi$.
+3. **Rotor axes:** The direct axis (d-axis) is located at an angle $\delta$ (load/torque angle) *ahead* of $V$; the quadrature axis (q-axis) is $90^\circ$ (electrical) ahead of the d-axis.
+4. **Resolve $I_a$:** The angle between $I_a$ and the q-axis is $\psi = \phi + \delta$. Then:
+   - $I_q = I_a \cos\psi$ (along the q-axis, usually drawn as the in-phase component that produces torque),
+   - $I_d = I_a \sin\psi$ (along the d-axis, demagnetising for lagging pf).
+5. **Add voltage drops:** From the tip of $V$, draw $j X_q I_q$ (perpendicular to the q-axis, leading $I_q$ by $90^\circ$). From the tip of that resultant, draw $j X_d I_d$ (perpendicular to the d-axis, leading $I_d$ by $90^\circ$).
+6. **Excitation emf:** The sum of these phasors gives the excitation emf $E_f$, which lies exactly on the d-axis:
    $$
    E_f = V + j X_d I_d + j X_q I_q .
    $$
-   If armature resistance is considered, add $I_a R_a$ in phase with $I_a$.
 
-The completed diagram clearly shows that the unequal reactances produce a voltage drop that depends not only on the magnitude of $I_a$ but also on its phase position, thereby influencing the voltage regulation. The difference between the cylindrical-rotor and salient-pole diagrams is the replacement of the single synchronous reactance drop $j X_s I_a$ by the two separate drops $j X_d I_d$ and $j X_q I_q$.
+![Phasor diagram of salient-pole alternator](https://commons.wikimedia.org/wiki/Special:Redirect/file/Synchronous%20Machine%20Diagram.png)
+*Figure: Phasor diagram of a salient-pole alternator based on Blondel's two-reaction theory. Source: Wikimedia Commons.*
 
-![Phasor diagram of a salient-pole alternator (generator action, lagging power factor). The terminal voltage $V$ is taken as reference; $I_a$ lags $V$ by $\phi$. The two-axis components $I_d$ and $I_q$ give rise to the reactive drops $j X_d I_d$ and $j X_q I_q$, which together with $V$ yield the excitation emf $E_f$ lying on the direct axis.](./pyq-assets/textbook/108105131_p824_img-423_jpeg.png)
+The diagram clearly shows that because $X_d \neq X_q$, the voltage regulation and power-angle behaviour depend on both the magnitude and the phase of the armature current. The load angle $\delta$ between $V$ and $E_f$ is smaller than in an equivalent cylindrical-rotor machine, and the phasor composition provides the foundation for calculating power components (excitation power and reluctance power) in salient-pole synchronous generators.
 
-> **Final answer:** The salient-pole phasor diagram differs from the cylindrical-rotor diagram because the armature current is resolved into direct and quadrature components that encounter different reactances $X_d$ and $X_q$. The excitation emf is $E_f = V + j X_d I_d + j X_q I_q$ (neglecting $R_a$), and the diagram shows the load angle $\delta$ between $V$ and the direct axis.
+> **Final answer:** The salient-pole alternator phasor diagram is built by resolving $I_a$ into $I_d$ and $I_q$, adding the separate reactive drops $j X_d I_d$ and $j X_q I_q$ to the terminal voltage $V$, and arriving at the excitation emf $E_f = V + j X_d I_d + j X_q I_q$. The two-reaction diagram highlights the influence of saliency on voltage regulation, load angle, and power development.
 
 
 ---
@@ -7687,26 +5668,34 @@ The completed diagram clearly shows that the unequal reactances produce a voltag
 What is meant by reluctance power in salient pole synchronous machines? Discuss with power-angle characteristics. (03)
 
 ### Answer 118
-Reluctance power is the component of active power developed in a salient-pole synchronous machine that arises purely from the difference between the direct-axis and quadrature-axis synchronous reactances ($X_d > X_q$). Because the rotor is physically salient, the magnetic circuit offers a preferred low-reluctance path along the direct axis. According to Blondel's two-reaction theory, the armature current is resolved into d- and q-axis components, and the resulting magnetic asymmetry gives rise to an additional torque even in the absence of field excitation. This torque tends to align the rotor with the stator rotating field to minimize the air-gap reluctance, hence the name 'reluctance power'.
+**Reluctance power** is the active power component in a salient-pole synchronous machine that arises solely from the magnetic asymmetry between the direct and quadrature axes ($X_d > X_q$). Because the rotor has salient poles, the air-gap reluctance along the d-axis (aligned with the field winding) is lower than along the q-axis. When the armature current is resolved into direct-axis ($I_d$) and quadrature-axis ($I_q$) components according to Blondel's two-reaction theory, the different synchronous reactances $X_d$ and $X_q$ produce a net torque that tends to align the rotor with the stator rotating field, even with zero field excitation. This torque corresponds to the reluctance power.
 
-![Figure: Salient-pole rotor showing direct (d) and quadrature (q) axes - foundation of the two-reaction theory.](./pyq-assets/textbook/108105131_p796_img-407_jpeg.png)
-
-In the power-angle characteristic (neglecting resistance),
+**Power-angle characteristic**
+Neglecting armature resistance, the per-phase power is
 
 $$
-P = \frac{3 E_f V}{X_d} \sin\delta + \frac{3 V^2}{2}\left(\frac{1}{X_q} - \frac{1}{X_d}\right) \sin 2\delta
+\begin{aligned}
+P = \frac{E_f V}{X_d} \sin \delta + \frac{V^2}{2} \left( \frac{1}{X_q} - \frac{1}{X_d} \right) \sin 2\delta
+\end{aligned}
 $$
 
-The first term is the **excitation power**, also found in cylindrical-rotor machines, and varies as $\sin\delta$. The second term is the **reluctance power**; it:
+For a three-phase machine the total power is three times the above.
 
-- varies as $\sin 2\delta$,
-- reaches a maximum at $\delta = 45^\circ$ (for the reluctance component alone),
-- exists even if the field current is zero ($E_f = 0$),
-- modifies the net power-angle curve by adding a second-harmonic component, thereby increasing the steady-state stability limit and shifting the maximum power point to an angle smaller than $90^\circ$.
+- The **first term** $\frac{E_f V}{X_d}\sin\delta$ is the excitation power, also present in cylindrical-rotor machines.
+- The **second term** is the **reluctance power**, proportional to $\sin 2\delta$ and to the saliency factor $(1/X_q - 1/X_d)$.
 
-The presence of reluctance power allows salient-pole machines to develop torque without excitation and improves their power density and stability compared to cylindrical-rotor machines where $X_d = X_q$ and the second term vanishes.
+Key points:
+- Reluctance power reaches a maximum at $\delta = 45^\circ$ (for the reluctance component alone).
+- It exists even when $E_f = 0$, allowing the machine to develop torque without field current.
+- It adds a second-harmonic component to the power-angle curve, increasing the maximum power and shifting the peak to an angle $\delta < 90^\circ$, thereby improving steady-state stability.
+- In cylindrical-rotor machines $X_d = X_q$, so the reluctance term vanishes.
 
-> **Final answer:** Reluctance power is the saliency-produced power component proportional to $\sin 2\delta$; it enhances the power capability of salient-pole machines and is zero for cylindrical rotors where $X_d = X_q$.
+Thus, reluctance power is a saliency-produced power component that enhances the performance and stability of salient-pole synchronous machines.
+
+![Salient-pole generator rotor showing direct and quadrature axes](https://commons.wikimedia.org/wiki/Special:Redirect/file/Salient%20pole%20generator.png)
+*Figure: Salient-pole synchronous generator. Source: Wikimedia Commons: File:Salient pole generator.png.*
+
+> **Final answer:** Reluctance power is the component of active power arising from saliency, given by $\frac{3V^2}{2}\bigl(\frac{1}{X_q} - \frac{1}{X_d}\bigr)\sin 2\delta$. It is zero when $X_d = X_q$, reaches a maximum at $\delta = 45^\circ$, exists without field excitation, and improves the power capability and stability of salient-pole machines.
 
 
 ---
@@ -7717,57 +5706,27 @@ The presence of reluctance power allows salient-pole machines to develop torque 
 Draw and explain the phasor diagram of salient pole alternator based on Blondel’s two reaction theory. (03)
 
 ### Answer 119
-**Blondel's two-reaction theory** resolves the armature mmf (or current) into components along the **direct axis (d-axis)** and the **quadrature axis (q-axis)**. Because the air-gap length is non-uniform in a salient-pole machine, the magnetic circuits along these axes have different reluctances, giving rise to two distinct synchronous reactances:
-- $X_d$ (direct-axis synchronous reactance)
-- $X_q$ (quadrature-axis synchronous reactance)
+**Concept**
+In a salient-pole alternator the air-gap is non-uniform, giving two different synchronous reactances: direct-axis $X_d$ and quadrature-axis $X_q$. Blondel's two-reaction theory resolves the armature current $I_a$ into a direct-axis component $I_d$ and a quadrature-axis component $I_q$. The per-phase phasor equation (ignoring $R_a$) is
+$$
+\mathbf{E_f} = \mathbf{V} + j X_d \mathbf{I_d} + j X_q \mathbf{I_q}.
+$$
 
-This separation leads to the phasor diagram described below. The diagram is drawn for an alternator (generator) supplying a **lagging power-factor load**, which is the common practical case.
-
----
-
-**Construction of the phasor diagram**
-
-1. **Choose the reference.**  
-   Take the terminal voltage $\mathbf{V}$ as the reference phasor along the horizontal direction.
-
-2. **Draw the armature current.**  
-   Draw the armature current $\mathbf{I_a}$ lagging $\mathbf{V}$ by the power-factor angle $\phi$.
-
-3. **Locate the d- and q-axes.**  
-   - The excitation emf $\mathbf{E_f}$ lies along the **direct axis (d-axis)**.  
-   - The **quadrature axis (q-axis)** is perpendicular to the d-axis; it is taken 90° ahead of the d-axis in the direction of rotation.  
-   - The load angle $\delta$ is the angle between $\mathbf{V}$ and $\mathbf{E_f}$ (i.e. between $\mathbf{V}$ and the d-axis). For a generator, $\mathbf{E_f}$ leads $\mathbf{V}$ by $\delta$.
-
-4. **Resolve $\mathbf{I_a}$ into its d- and q-axis components.**  
-   - $I_d$ : component along the d-axis. For a lagging load this component is **demagnetising** (opposes the field flux).  
-   - $I_q$ : component along the q-axis.  
-   The resolution depends on the angle $\psi = \delta + \phi$ between $\mathbf{I_a}$ and the q-axis:
-   $$I_q = I_a \cos \psi, \qquad I_d = I_a \sin \psi$$
-
-5. **Draw the reactance drops.**  
-   - The drop $jX_q I_q$ leads $I_q$ by 90°; since $I_q$ lies along the q-axis, this drop is **parallel to the d-axis**.  
-   - The drop $jX_d I_d$ leads $I_d$ by 90°; since $I_d$ lies along the d-axis, this drop is **parallel to the q-axis**.  
-   Starting from the tip of $\mathbf{V}$, add these drops in sequence: typically $jX_q I_q$ is added first (any order yields the same final emf).
-
-6. **Obtain the excitation emf.**  
-   The phasor sum gives the induced emf:
+**Phasor-diagram construction (generator supplying a lagging load)**
+1. Take terminal voltage $\mathbf{V}$ as reference along the horizontal.
+2. Draw armature current $\mathbf{I_a}$ lagging $\mathbf{V}$ by the power-factor angle $\phi$.
+3. Determine the quadrature axis: for generator action the excitation emf $\mathbf{E_f}$ lies on the direct axis and leads $\mathbf{V}$ by the load angle $\delta$. The q-axis is $90^\circ$ ahead of the d-axis in the direction of rotation.
+4. Resolve $\mathbf{I_a}$ onto the d- and q-axes:
    $$
-   \mathbf{E_f} = \mathbf{V} + \mathbf{I_a} R_a + jX_d \mathbf{I_d} + jX_q \mathbf{I_q}
+   I_q = I_a \cos(\delta + \phi), \qquad I_d = I_a \sin(\delta + \phi).
    $$
-   The armature resistance $R_a$ is often small and can be neglected, leading to the simpler form
-   $$
-   \mathbf{E_f} = \mathbf{V} + jX_d \mathbf{I_d} + jX_q \mathbf{I_q}
-   $$
+5. Add the quadrature-axis reactance drop: from the tip of $\mathbf{V}$, draw $j X_q \mathbf{I_q}$; this phasor leads $\mathbf{I_q}$ by $90^\circ$ and lies along the d-axis, thereby fixing the q-axis direction.
+6. Add the direct-axis reactance drop: from the end of $j X_q \mathbf{I_q}$, draw $j X_d \mathbf{I_d}$ leading $\mathbf{I_d}$ by $90^\circ$ (parallel to the q-axis). The resultant of $\mathbf{V} + j X_q \mathbf{I_q} + j X_d \mathbf{I_d}$ equals the excitation emf $\mathbf{E_f}$.
+7. The power (or load) angle $\delta$ appears as the angle between $\mathbf{V}$ and $\mathbf{E_f}$.
 
-Figure 1 shows the completed phasor diagram for a salient-pole alternator with a lagging load.
+For a lagging load, $I_d$ is demagnetising (opposes $\mathbf{E_f}$), while $I_q$ produces torque. The diagram clearly shows the two different reactance drops, which gives rise to reluctance torque-a distinctive feature of salient-pole machines.
 
-![Phasor diagram of a salient-pole alternator (generator) under lagging load](./pyq-assets/textbook/108105131_p824_img-423_jpeg.png)
-
----
-
-The key difference from the cylindrical-rotor (non-salient) machine is the appearance of **two distinct reactance drops** instead of a single synchronous-reactance drop. This splitting introduces the **reluctance power** (or torque) component that is a unique feature of salient-pole machines.
-
-> **Final answer:** The phasor diagram of a salient-pole alternator based on Blondel's two-reaction theory is constructed by resolving the armature current into direct-axis ($I_d$) and quadrature-axis ($I_q$) components, adding the reactive drops $jX_d I_d$ (along the q-axis) and $jX_q I_q$ (along the d-axis) to the terminal voltage $\mathbf{V}$ to obtain the excitation emf $\mathbf{E_f} = \mathbf{V} + jX_d \mathbf{I_d} + jX_q \mathbf{I_q}$.
+> **Final answer:** The phasor diagram of a salient-pole alternator (generator) based on Blondel's two-reaction theory is obtained by resolving the armature current into $I_d$ and $I_q$, then forming the vector sum $\mathbf{E_f} = \mathbf{V} + j X_q \mathbf{I_q} + j X_d \mathbf{I_d}$. The construction is stepwise: set $\mathbf{V}$ as reference, resolve $I_a$, add $j X_q I_q$ to locate the q-axis, add $j X_d I_d$ to obtain $\mathbf{E_f}$, and read $\delta$ from the diagram.
 
 
 ---
@@ -7778,46 +5737,35 @@ The key difference from the cylindrical-rotor (non-salient) machine is the appea
 Based on Blondel’s two reaction theory, develop the phasor diagram of a salient pole synchronous generator. (04)
 
 ### Answer 120
-Blondel's two-reaction theory simplifies the analysis of salient-pole synchronous machines by resolving all armature MMF (or current) into two perpendicular components: one along the direct axis (d-axis) and the other along the quadrature axis (q-axis). The d-axis aligns with the rotor field winding, while the q-axis is 90° ahead of the d-axis in the direction of rotation. Because the magnetic circuits along the two axes have different air-gap lengths, the corresponding synchronous reactances are unequal: $X_d$ (direct-axis synchronous reactance) is larger than $X_q$ (quadrature-axis synchronous reactance).
+**Two-reaction theory**
+Because the salient-pole synchronous machine has a non-uniform air-gap, the magnetic circuits along the direct (d) and quadrature (q) axes have different reluctances. Consequently, two synchronous reactances are defined: $X_d$ (direct-axis) and $X_q$ (quadrature-axis), with $X_d > X_q$. Blondel's theory handles the anisotropy by resolving the armature mmf (or current) into d- and q-axis components.
 
-For a three-phase salient-pole synchronous generator, neglecting armature resistance, the per-phase phasor equation is
-
+**Per-phase equivalent**
+Neglecting armature resistance, the phasor equation for a generator is
 $$
-E_f = V + j X_d I_d + j X_q I_q
+\mathbf{E_f} = \mathbf{V} + j X_d \mathbf{I_d} + j X_q \mathbf{I_q}
 $$
+where
+$\mathbf{E_f}$ = excitation emf (lies on the d-axis),
+$\mathbf{V}$ = terminal voltage,
+$\mathbf{I_a}$ = armature current,
+$\mathbf{I_d}$, $\mathbf{I_q}$ = components of $\mathbf{I_a}$ along the d- and q-axes.
 
-where  
-$E_f$ = excitation emf (internal voltage)  
-$V$   = terminal voltage (per phase)  
-$I_a$ = armature current  
-$I_d$ = direct-axis component of $I_a$  
-$I_q$ = quadrature-axis component of $I_a$  
-$\delta$ = load (power) angle between $E_f$ and $V$  
-$\phi$   = power-factor angle between $V$ and $I_a$.
+**Constructing the phasor diagram (generator, lagging pf)**
+1. Draw $\mathbf{V}$ horizontally as the reference phasor.
+2. Draw $\mathbf{I_a}$ at an angle $\phi$ behind $\mathbf{V}$ (lagging load).
+3. The d-axis is the direction of $\mathbf{E_f}$, which for a generator leads $\mathbf{V}$ by the load angle $\delta$. The q-axis leads the d-axis by $90^\circ$.
+4. Resolve $\mathbf{I_a}$:
+   - $I_q = I_a \cos\psi$, $I_d = I_a \sin\psi$, where $\psi = \delta + \phi$ is the angle between $\mathbf{I_a}$ and the q-axis.
+5. From the tip of $\mathbf{V}$, add the phasor $j X_q \mathbf{I_q}$ (leading $\mathbf{I_q}$ by $90^\circ$). This drop is parallel to the d-axis and determines the q-axis direction.
+6. From the new point, add $j X_d \mathbf{I_d}$ (leading $\mathbf{I_d}$ by $90^\circ$). The resultant is $\mathbf{E_f}$.
+7. The angle $\delta$ between $\mathbf{V}$ and $\mathbf{E_f}$ is the load (power) angle.
 
-**Construction of the phasor diagram (generator action, lagging power factor):**
+*Alternative approach:* first compute $\mathbf{E_q} = \mathbf{V} + j X_q \mathbf{I_a}$ to locate the q-axis, then obtain $I_d$, $I_q$, and finally $\mathbf{E_f} = \mathbf{E_q} + j(I_d)(X_d - X_q)$. Both methods are equivalent.
 
-1. Draw the terminal voltage phasor $V$ horizontally (reference).
-2. Draw the armature current $I_a$ lagging $V$ by the load power-factor angle $\phi$.
-3. Locate the q-axis: it is the line along which $E_f$ is directed (since $E_f$ lies on the d-axis, which lags the q-axis by $90°$). The angle between $V$ and $E_f$ is the load angle $\delta$.
-4. Resolve $I_a$ into
-   - $I_d$ : projection of $I_a$ onto the d-axis (for lagging power factor $I_d$ is negative, i.e., it points opposite to $E_f$),
-   - $I_q$ : projection of $I_a$ onto the q-axis.
-   Mathematically,
-   $$
-   I_d = I_a \sin(\phi + \delta) \quad \text{and} \quad I_q = I_a \cos(\phi + \delta).
-   $$
-5. Starting from the tip of $V$, add the phasor $j X_q I_q$ perpendicular to $I_q$ (leading $I_q$ by $90°$). This step determines the location of the q-axis.
-6. From the new point, add $j X_d I_d$ perpendicular to $I_d$ (leading $I_d$ by $90°$). The resultant is $E_f$.
-7. The phasor $E_f$ therefore equals the vector sum $V + j X_q I_q + j X_d I_d$. The power (load) angle $\delta$ is the angle by which $E_f$ leads $V$.
+The diagram clearly shows the two distinct reactance drops and reveals the origin of reluctance power, which is absent in cylindrical-rotor machines.
 
-![Phasor diagram based on Blondel's two-reaction theory](./pyq-assets/textbook/108105131_p812_img-417_jpeg.png)
-
-*Caption: Salient-pole synchronous machine phasor diagram. (The diagram shows motor operation; for generator operation $E_f$ leads $V$, but the construction method is identical.)*
-
-The diagram clearly illustrates the physical significance of the two-reaction theory. The difference between $X_d$ and $X_q$ introduces a reluctance-power term that exists even without field excitation. Moreover, for a given terminal voltage $V$ and load, the required excitation $E_f$ and the load angle $\delta$ depend on both reactances, unlike the cylindrical-rotor case where a single synchronous reactance $X_s$ is used.
-
-> **Final answer:** The phasor diagram based on Blondel's two-reaction theory for a salient-pole synchronous generator is constructed from $E_f = V + j X_q I_q + j X_d I_d$, with $I_d$ and $I_q$ resolved along the rotor d- and q-axes. The step-by-step construction is described above.
+> **Final answer:** The phasor diagram of a salient-pole synchronous generator based on Blondel's two-reaction theory is developed by resolving the armature current into $I_d$ and $I_q$, and forming $\mathbf{E_f} = \mathbf{V} + j X_q \mathbf{I_q} + j X_d \mathbf{I_d}$. The construction sequentially adds the quadrature and direct-axis reactive drops to the terminal voltage, yielding the excitation emf and the load angle $\delta$.
 
 
 ---
@@ -7828,54 +5776,57 @@ The diagram clearly illustrates the physical significance of the two-reaction th
 A 5 MVA slow speed 3 phase synchronous generator rated at 11 kV has 32 poles. Its direct and quadrature axis reactances are 10 Ω and 4 Ω respectively. Neglecting armature resistance, determine the voltage regulation when supplying a rated load at 0.8 p.f lagging. 3
 
 ### Answer 121
-Rated values: $S = 5\ \text{MVA}$, $V_L = 11\ \text{kV}$, star-connected, 32 poles.
+**Concept:** For a salient-pole synchronous generator, voltage regulation is computed using the two-reaction (Blondel) theory because $X_d \ne X_q$.
 
-The number of poles does not affect the voltage regulation calculation, which depends only on the electrical quantities.
+**Given:**
+- $S = 5 \; \text{MVA}$, $V_L = 11 \; \text{kV}$ (star), $p=32$ (pole number not needed).
+- $X_d = 10 \; \Omega$, $X_q = 4 \; \Omega$, $\cos\phi = 0.8 \; \text{lagging}$, $R_a \approx 0$.
 
-Phase voltage:
-$$ V_{\text{ph}} = \frac{V_L}{\sqrt{3}} = \frac{11\,000}{\sqrt{3}} = 6350.9\ \text{V}. $$
+**Solution:**
+1. **Phase voltage and rated current**
+   $$
+   V_{ph} = \frac{V_L}{\sqrt{3}} = \frac{11000}{\sqrt{3}} \approx 6351 \; \text{V}
+   $$
+   $$
+   I_a = \frac{S}{\sqrt{3}\,V_L} = \frac{5 \times 10^6}{\sqrt{3} \times 11000} \approx 262.4 \; \text{A}
+   $$
+   $\phi = \arccos 0.8 = 36.87^\circ$.
 
-Rated armature current:
-$$ I_a = \frac{S}{\sqrt{3} V_L} = \frac{5 \times 10^6}{\sqrt{3} \times 11\,000} = 262.43\ \text{A}. $$
+2. **Load angle $\delta$**
+   From the phasor geometry with $R_a = 0$,
+   $$
+   \begin{aligned}
+   \tan\delta &= \frac{I_a X_q \cos\phi}{V_{ph} + I_a X_q \sin\phi} \\[4pt]
+   &= \frac{262.4 \times 4 \times 0.8}{6351 + 262.4 \times 4 \times 0.6}
+    = \frac{839.68}{6980.8} = 0.1203 \\[4pt]
+   \Rightarrow \delta &= \arctan 0.1203 \approx 6.86^\circ .
+   \end{aligned}
+   $$
 
-Power-factor angle: $\phi = \cos^{-1} 0.8 = 36.87^\circ$ (lagging).
+3. **Resolve armature current**
+   $$
+   \begin{aligned}
+   I_d &= I_a \sin(\phi + \delta) = 262.4 \sin(36.87^\circ + 6.86^\circ) = 262.4 \sin 43.73^\circ \approx 181.4 \; \text{A}, \\[4pt]
+   I_q &= I_a \cos(\phi + \delta) = 262.4 \cos 43.73^\circ \approx 189.6 \; \text{A}.
+   \end{aligned}
+   $$
+   (These are the direct- and quadrature-axis components.)
 
-For a salient-pole machine, the two-reaction theory (Blondel) resolves the armature current into direct-axis $(I_d)$ and quadrature-axis $(I_q)$ components. The load angle $\delta$ is obtained from the phasor diagram (neglecting armature resistance, $R_a \approx 0$):
-$$ \tan \delta = \frac{I_a X_q \cos\phi}{V_{\text{ph}} + I_a X_q \sin\phi}. $$
+4. **Excitation emf (per phase)**
+   $$
+   E_f = V_{ph} \cos\delta + X_d I_d
+        = 6351 \cos 6.86^\circ + 10 \times 181.4
+        \approx 6306 + 1814 = 8120 \; \text{V}.
+   $$
 
-With $X_d = 10\ \Omega$ and $X_q = 4\ \Omega$:
-$$
-\begin{aligned}
-\tan \delta &= \frac{262.43 \times 4 \times 0.8}{6350.9 + 262.43 \times 4 \times 0.6} \\
-&= \frac{839.78}{6980.7} = 0.1203 \\
-\delta &= \arctan 0.1203 = 6.86^\circ.
-\end{aligned}
-$$
+5. **Voltage regulation**
+   $$
+   \%\text{Reg} = \frac{E_f - V_{ph}}{V_{ph}} \times 100\%
+                = \frac{8120 - 6351}{6351} \times 100\%
+                \approx 27.85\% .
+   $$
 
-The current components:
-$$
-\begin{aligned}
-I_d &= I_a \sin(\phi+\delta) = 262.43 \sin(36.87^\circ + 6.86^\circ) = 181.41\ \text{A},\\
-I_q &= I_a \cos(\phi+\delta) = 262.43 \cos(43.73^\circ) = 189.64\ \text{A}.
-\end{aligned}
-$$
-
-The excitation emf per phase (no-load voltage) is:
-$$
-\begin{aligned}
-E_f &= V_{\text{ph}} \cos\delta + X_d I_d \\
-&= 6350.9 \cos 6.86^\circ + 10 \times 181.41 \\
-&= 6306.2 + 1814 = 8120.2\ \text{V} \quad (\text{approximately } 8119.5\ \text{V}).
-\end{aligned}
-$$
-
-Voltage regulation:
-$$
-\%\text{Reg} = \frac{E_f - V_{\text{ph}}}{V_{\text{ph}}} \times 100 
-= \frac{8119.5 - 6350.9}{6350.9} \times 100 = 27.85\%.
-$$
-
-> **Final answer:** Voltage regulation $= 27.8\%$ (or $27.85\%$).
+> **Final answer:** Voltage regulation $= \mathbf{27.85\%}$ at rated load and 0.8 p.f. lagging.
 
 
 ---
@@ -7887,34 +5838,38 @@ Differentiate the power-angle characteristics of cylindrical rotor and salient p
 
 ### Answer 122
 **Cylindrical-rotor (non-salient) synchronous generator:**
-
-The air-gap is uniform, so the direct-axis and quadrature-axis synchronous reactances are equal ($X_d = X_q = X_s$). Neglecting armature resistance, the steady-state power-angle relation is a pure sine function of the load angle $\delta$:
-
-$$
-P = \frac{3 E_f V}{X_s} \sin\delta.
-$$
-
-The maximum power occurs at $\delta = 90^\circ$ and the curve is a single sinusoid with no second-harmonic component.
+- Uniform air-gap ⇒ $X_d = X_q = X_s$.
+- Neglecting $R_a$, the real power is a pure sine function of the load angle $\delta$:
+  $$
+  P = \frac{3 E_f V}{X_s} \sin\delta \quad (\text{or } P = \frac{E_f V}{X_s} \sin\delta \text{ per phase}).
+  $$
+- Maximum power occurs at $\delta = 90^\circ$; the curve is a single sinusoid with no harmonic content.
 
 **Salient-pole synchronous generator:**
+- Non-uniform air-gap ⇒ $X_d > X_q$.
+- The two-reaction (Blondel) theory yields an additional **reluctance power** term:
+  $$
+  P = \frac{3 E_f V}{X_d} \sin\delta \;+\; \frac{3 V^2}{2} \left( \frac{1}{X_q} - \frac{1}{X_d} \right) \sin 2\delta .
+  $$
+- The first term is similar to the cylindrical case but uses $X_d$.
+- The second term exists **even without field excitation** ($E_f=0$) and depends on saliency.
+- Because of the $\sin 2\delta$ component, the power-angle curve:
+  - Reaches its maximum at a load angle **less than** $90^\circ$ (typically $60^\circ$-$80^\circ$).
+  - Has a steeper slope in the stable region, giving better transient stability.
+  - Is not a pure sinusoid; it contains a second-harmonic component that distorts the shape.
 
-Because of the non-uniform air-gap, $X_d > X_q$. The power-angle equation derived from the two-reaction theory becomes
+**Key differences:**
+| Feature | Cylindrical rotor | Salient-pole rotor |
+|---------|-------------------|-------------------|
+| Reactances | $X_d = X_q = X_s$ | $X_d > X_q$ |
+| Power equation | $P \propto \sin\delta$ | $P \propto \sin\delta + \text{reluctance term}$ |
+| Reluctance power | Zero | Present even at $E_f=0$ |
+| Maximum-power angle | $\delta = 90^\circ$ | $\delta_{\max} < 90^\circ$ |
+| Curve shape | Pure sine wave | Distorted sine wave with second harmonic |
 
-$$
-P = \frac{3 E_f V}{X_d} \sin\delta
-    + \frac{3 V^2}{2}\left(\frac{1}{X_q} - \frac{1}{X_d}\right) \sin 2\delta.
-$$
+Thus, saliency introduces a reluctance-torque component that enhances the power output and alters the $P$-$\delta$ characteristic compared with a smooth-rotor machine.
 
-- The first term resembles the cylindrical-rotor case but uses $X_d$ instead of $X_s$.
-- The second term is the **reluctance power**, which depends on saliency and exists even without field excitation ($E_f = 0$).
-- The $\sin 2\delta$ term modifies the power-angle curve: the peak power is larger and occurs at an angle $\delta_{\max} < 90^\circ$.
-- The shape is not a pure sine wave; it contains a second-harmonic component that boosts power output around $45^\circ$-$60^\circ$.
-
-![Structural difference between cylindrical and salient-pole rotors](./pyq-assets/textbook/108105131_p741_img-378_jpeg.png)
-
-In summary, salient-pole machines benefit from an additional reluctance-torque component that increases steady-state power capability and alters the shape of the $P$-$\delta$ curve compared with cylindrical-rotor machines.
-
-> **Final answer:** Cylindrical rotor: single sine curve, $P = \frac{3EV}{X_s}\sin\delta$, peak at $90^\circ$. Salient pole: sine plus reluctance term $\propto \sin 2\delta$, peak occurs before $90^\circ$, and the curve is not a pure sine wave.
+> **Final answer:** Cylindrical-rotor machine exhibits a simple $P \propto \sin\delta$ relationship with peak at $90^\circ$; salient-pole machine has an additional $\sin 2\delta$ reluctance term, causing the peak to occur at an angle $<90^\circ$ and producing a non-sinusoidal $P$-$\delta$ curve.
 
 ## Question 123
 **Topic:** Salient-pole machines, Blondel two-reaction theory and slip test · **Syllabus area:** Week 12 · **Source:** 1C | EM-II ELE 2225 Makeup, 26 June 2024
@@ -7922,112 +5877,52 @@ In summary, salient-pole machines benefit from an additional reluctance-torque c
 A three-phase, 20 MVA, 11 kV, 50 Hz star-connected alternator has Xd = 4 Ω and Xq = 3 Ω. Armature resistance is negligibly small. At full load, 0.8 lagging power factor, determine: (a) Direct and quadrature axes components of the armature current. (b) Excitation emf. 4
 
 ### Answer 123
-**Given:** A three-phase, 20 MVA, 11 kV, 50 Hz, star-connected salient-pole alternator with direct-axis synchronous reactance $X_d = 4\,\Omega$ and quadrature-axis synchronous reactance $X_q = 3\,\Omega$. Armature resistance is negligible. The machine is operating at full load with a power factor of $0.8$ lagging.
+**Concept:** Blondel's two-reaction method for salient-pole alternator, $X_d \ne X_q$, $R_a \approx 0$.
 
----
+**Given:**
+- $S = 20 \; \text{MVA},\; V_L = 11 \; \text{kV}$ (star), $f = 50 \; \text{Hz}$.
+- $X_d = 4 \, \Omega$, $X_q = 3 \, \Omega$, $\cos\phi = 0.8 \; \text{lagging}$.
 
-### 1. Rated current and phase voltage
+**Solution:**
+1. **Phase voltage and full-load current**
+   $$
+   V_{ph} = \frac{V_L}{\sqrt{3}} = \frac{11000}{\sqrt{3}} \approx 6351 \; \text{V},
+   \qquad
+   I_a = \frac{S}{\sqrt{3}\,V_L} = \frac{20 \times 10^6}{\sqrt{3} \times 11000} \approx 1049.7 \; \text{A}.
+   $$
+   $\phi = \arccos 0.8 = 36.87^\circ$.
 
-Rated line current:
+2. **Load angle $\delta$**
+   For a lagging load with $R_a = 0$:
+   $$
+   \begin{aligned}
+   \tan\delta &= \frac{I_a X_q \cos\phi}{V_{ph} + I_a X_q \sin\phi} \\[4pt]
+   &= \frac{1049.7 \times 3 \times 0.8}{6351 + 1049.7 \times 3 \times 0.6}
+    = \frac{2519.3}{8240.5} = 0.3057 \\[4pt]
+   \Rightarrow \delta &= \arctan 0.3057 \approx 17.0^\circ .
+   \end{aligned}
+   $$
 
-$$
-I_L = \frac{S_{\text{rated}}}{\sqrt{3}\,V_L} = \frac{20 \times 10^6}{\sqrt{3} \times 11 \times 10^3} = 1049.7\,\text{A}.
-$$
+3. **Direct- and quadrature-axis currents**
+   $$
+   \begin{aligned}
+   I_d &= I_a \sin(\phi + \delta) = 1049.7 \sin(36.87^\circ + 17.0^\circ) \approx 1049.7 \sin 53.87^\circ \approx 847.8 \; \text{A}, \\[4pt]
+   I_q &= I_a \cos(\phi + \delta) = 1049.7 \cos 53.87^\circ \approx 618.9 \; \text{A}.
+   \end{aligned}
+   $$
+   Hence, $I_d = 847.8 \; \text{A}$ and $I_q = 618.9 \; \text{A}$.
 
-For star connection, the armature current $I_a = I_L = 1049.7\,\text{A}$.
+4. **Excitation emf (per phase)**
+   $$
+   E_f = V_{ph} \cos\delta + X_d I_d
+        = 6351 \cos 17.0^\circ + 4 \times 847.8
+        \approx 6073.5 + 3391.2 = 9464.7 \; \text{V}.
+   $$
+   The corresponding line-to-line value is $\sqrt{3} \times 9464.7 \approx 16.39 \; \text{kV}$.
 
-Phase voltage:
-
-$$
-V_{\text{ph}} = \frac{V_L}{\sqrt{3}} = \frac{11\,\text{kV}}{\sqrt{3}} = 6.351\,\text{kV} = 6351\,\text{V}.
-$$
-
-Power-factor angle:
-
-$$
-\phi = \cos^{-1}(0.8) = 36.87^\circ \quad (\text{lagging, so current lags voltage}).
-$$
-
----
-
-### 2. Determination of the load angle $\delta$
-
-In the two-reaction (Blondel) theory for salient-pole machines, the armature current is resolved into two components: $I_d$ along the direct axis and $I_q$ along the quadrature axis. The phasor diagram (see Figure 1) yields the load angle $\delta$ between the terminal voltage $V$ and the quadrature axis (which is also the direction of the excitation emf $E_f$).
-
-<figure>
-  <img src="./pyq-assets/textbook/108105131_p799_img-409_jpeg.png" alt="Phasor diagram of salient-pole alternator" />
-  <figcaption><b>Figure 1:</b> Phasor diagram for salient-pole generator (lagging power factor).</figcaption>
-</figure>
-
-A convenient formula for $\delta$ is obtained by considering the phasor $V + j X_q I_a$, which lies along the quadrature axis:
-
-$$
-\tan\delta = \frac{I_a X_q \cos\phi}{V_{\text{ph}} + I_a X_q \sin\phi}.
-$$
-
-Substituting the numerical values:
-
-$$
-\begin{aligned}
-I_a X_q &= 1049.7 \times 3 = 3149.1\,\text{V}, \\
-I_a X_q \cos\phi &= 3149.1 \times 0.8 = 2519.3\,\text{V}, \\
-I_a X_q \sin\phi &= 3149.1 \times 0.6 = 1889.5\,\text{V}, \\
-V_{\text{ph}} + I_a X_q \sin\phi &= 6351 + 1889.5 = 8240.5\,\text{V}, \\
-\tan\delta &= \frac{2519.3}{8240.5} = 0.3057 \;\Rightarrow\; \delta = \arctan(0.3057) = 17.00^\circ.
-\end{aligned}
-$$
-
----
-
-### 3. Direct- and quadrature-axis current components
-
-From the phasor diagram, the angle between the armature current $I_a$ and the quadrature axis is $\psi = \phi + \delta$. Therefore:
-
-$$
-\begin{aligned}
-I_q &= I_a \cos(\phi + \delta) = I_a \cos\psi, \\
-I_d &= I_a \sin(\phi + \delta) = I_a \sin\psi.
-\end{aligned}
-$$
-
-With $\psi = 36.87^\circ + 17.00^\circ = 53.87^\circ$:
-
-$$
-\begin{aligned}
-I_d &= 1049.7 \times \sin 53.87^\circ = 1049.7 \times 0.8078 = 847.8\,\text{A}, \\
-I_q &= 1049.7 \times \cos 53.87^\circ = 1049.7 \times 0.5895 = 618.9\,\text{A}.
-\end{aligned}
-$$
-
----
-
-### 4. Excitation emf (per phase and line value)
-
-Projecting the phasors onto the quadrature axis gives the magnitude of the excitation emf $E_f$ (neglecting armature resistance):
-
-$$
-E_f = V_{\text{ph}} \cos\delta + X_d I_d.
-$$
-
-Substituting the numbers:
-
-$$
-\begin{aligned}
-V_{\text{ph}} \cos\delta &= 6351 \times \cos 17.00^\circ = 6351 \times 0.9563 = 6073.5\,\text{V}, \\
-X_d I_d &= 4 \times 847.8 = 3391.2\,\text{V}, \\[4pt]
-E_f &= 6073.5 + 3391.2 = 9464.7\,\text{V} \; (\text{per phase}).
-\end{aligned}
-$$
-
-The corresponding line-to-line excitation emf is
-
-$$
-E_{f,\text{line}} = \sqrt{3} \times 9464.7 \approx 16.39\,\text{kV}.
-$$
-
----
-
-> **Final answer:** (a) $I_d = 847.8\,\text{A}$, $I_q = 618.9\,\text{A}$; (b) excitation emf per phase $= 9.465\,\text{kV}$ (line $= 16.39\,\text{kV}$).
+> **Final answer:**
+> (a) $I_d = 847.8 \; \text{A},\; I_q = 618.9 \; \text{A}$.
+> (b) Excitation emf per phase $E_f = 9.465 \; \text{kV}$ (line $16.39 \; \text{kV}$).
 
 
 ---
@@ -8039,46 +5934,42 @@ Draw the per phase equivalent circuit and write the expressions relating air-gap
 
 ### Answer 124
 **Per-phase equivalent circuit and voltage expressions**
-
-For a **non-salient-pole (cylindrical-rotor) alternator**, the per-phase equivalent circuit consists of the excitation emf $E$ behind the synchronous impedance. Typically, the armature resistance $R_a$ and the synchronous reactance $X_s$ are connected in series with $E$, and the terminal voltage $V$ appears across the load. The air-gap voltage $E_g$ (the voltage behind the leakage reactance $X_l$) is an intermediate quantity that accounts for the armature leakage flux. The relationships are:
-
-$$
-E = V + I_a R_a + j X_s I_a, \qquad X_s = X_l + X_{ar},
-$$
+For a non-salient-pole (cylindrical-rotor) alternator, the per-phase equivalent circuit consists of a voltage source $E$ (excitation emf) in series with the armature resistance $R_a$ and the synchronous reactance $X_s$. The terminal voltage $V$ appears across the load. The air-gap voltage $E_g$ is the voltage behind the leakage reactance $X_l$:
 
 $$
-E_g = V + I_a R_a + j X_l I_a,
+\begin{aligned}
+E_g &= V + I_a R_a + j X_l I_a, \\
+E &= V + I_a R_a + j X_s I_a, \qquad X_s = X_l + X_{ar},
+\end{aligned}
 $$
 
-where $X_{ar}$ is the reactance of armature reaction. In many practical calculations $R_a$ is neglected, giving $E = V + j X_s I_a$.
+where $X_{ar}$ is the reactance of armature reaction. Usually $R_a$ is small and may be neglected, giving $E \approx V + j X_s I_a$.
 
-For a **salient-pole alternator**, the non-uniform air-gap requires the two-reaction (Blondel) theory. The armature current $I_a$ is resolved into direct-axis component $I_d$ (lagging the excitation emf $E$ by $90^\circ$) and quadrature-axis component $I_q$ (in phase with $E$). The per-phase equation becomes:
+For a salient-pole alternator, the non-uniform air-gap requires Blondel's two-reaction theory. The armature current is resolved into direct-axis ($I_d$) and quadrature-axis ($I_q$) components. The emf equation is
 
 $$
 E = V + I_a R_a + j X_d I_d + j X_q I_q,
 $$
 
-where $X_d$ and $X_q$ are the direct- and quadrature-axis synchronous reactances. Neglecting resistance:
-$$
-E = V + j X_d I_d + j X_q I_q.
-$$
+where $X_d$ and $X_q$ are the direct- and quadrature-axis synchronous reactances.
 
-**Comparison of cylindrical-rotor and salient-pole models**
+**Cylindrical vs. salient-pole models**
+- *Cylindrical rotor*: $X_d = X_q = X_s$. The phasor diagram is drawn by taking $V$ as reference, adding $I_a R_a$ (in phase with $I_a$) and $j X_s I_a$ (leading $I_a$ by $90^\circ$) to obtain $E$. The load angle $\delta$ is the angle between $V$ and $E$, and the power per phase is $P = \frac{EV}{X_s}\sin\delta$.
+- *Salient-pole rotor*: $X_d > X_q$, so the armature reaction is asymmetric. The phasor diagram requires first locating the q-axis. The component $j X_q I_q$ is added to $V$ to find the q-axis emf; then $j X_d I_d$ is added to reach $E$. The power-angle characteristic includes a reluctance-power term:
 
-- **Cylindrical rotor** (uniform air gap): $X_d = X_q = X_s$. The phasor diagram is straightforward: starting from the terminal voltage $V$, add the resistive drop $I_a R_a$ and the synchronous reactance drop $j X_s I_a$ to obtain $E$. The load angle $\delta$ is simply the angle between $E$ and $V$. The power-angle characteristic is $P = \frac{EV}{X_s}\sin\delta$.
-
-- **Salient-pole rotor** (non-uniform air gap): Because $X_d > X_q$, the armature reaction is not symmetric. The two-reaction phasor diagram requires knowledge of the internal power factor angle $\psi$ (the angle between $I_a$ and $E$) to split $I_a$ into $I_d$ and $I_q$. The voltage drops $j X_q I_q$ and $j X_d I_d$ are added to $V$ to locate $E$. The power-angle characteristic includes a reluctance-power term:
 $$
-P = \frac{EV}{X_d}\sin\delta + \frac{V^2}{2}\left(\frac{1}{X_q} - \frac{1}{X_d}\right)\sin 2\delta.
+P = \frac{EV}{X_d}\sin\delta + \frac{V^2}{2}\!\left(\frac{1}{X_q} - \frac{1}{X_d}\right)\sin 2\delta .
 $$
 
 **Determination of reactances**
+- *Non-salient $X_s$*: Open-circuit and short-circuit tests give the unsaturated synchronous reactance $X_s = E_{oc}/I_{sc}$ (air-gap line). The Potier method separates the leakage reactance $X_l$.
+- *Salient $X_d$, $X_q$*: The **slip test** is the standard method. The rotor is driven at a small slip ($0.2$-$0.5\%$) with the field winding open. A reduced three-phase voltage (∼10-20% rated) is applied. The stator current oscillates between a minimum ($I_{\min}$) when the rotating field aligns with the d-axis and a maximum ($I_{\max}$) when it aligns with the q-axis. Then
 
-- **Non-salient $X_s$**: The open-circuit (OC) and short-circuit (SC) tests give the unsaturated synchronous reactance $X_s = E_{oc}/I_{sc}$ from the air-gap line. For a more accurate saturated value, the Potier method (or zero-power-factor test) separates the leakage reactance $X_l$.
+$$
+X_d = \frac{V_{ph}}{I_{\min}}, \qquad X_q = \frac{V_{ph}}{I_{\max}} .
+$$
 
-- **Salient-pole $X_d$, $X_q$**: The **slip test** is employed. A low three-phase voltage is applied to the stator while the rotor is driven at a speed slightly different from synchronous, with the field winding open-circuited. Due to the varying reluctance, the stator current fluctuates. At the instant of minimum current, the rotating field aligns with the direct axis, giving $X_d = V_{ph}/I_{\min}$. At maximum current, the field aligns with the quadrature axis, giving $X_q = V_{ph}/I_{\max}$. The test must be performed at reduced voltage to avoid saturation effects.
-
-> **Final answer:** The per-phase equivalent circuit of a non-salient-pole alternator is a series connection of $E$, $R_a$, and $X_s$; for salient-pole machines the two-axis model separates armature reaction into $d$- and $q$-axis components with $X_d$ and $X_q$. The cylindrical-rotor model uses a single synchronous reactance, while the salient-pole model requires resolving current along the rotor axes and yields a power-angle curve with an additional reluctance torque term. The slip test is the standard method for measuring $X_d$ and $X_q$.
+> **Final answer:** The per-phase equivalent circuit of a non-salient alternator is a series combination of $E_f$, $R_a$, and $X_s$, with $E_f = V + I_a(R_a + j X_s)$. For salient-pole machines, the two-axis model gives $E_f = V + I_a R_a + j X_d I_d + j X_q I_q$. The cylindrical-rotor model uses a single synchronous reactance, while the salient-pole model requires axis decomposition and yields an extra reluctance power term. Reactances are found by OC/SC tests (for $X_s$) and the slip test (for $X_d$, $X_q$).
 
 
 ---
@@ -8089,43 +5980,33 @@ $$
 Explain the significance of slip test in Synchronous machines. (04)
 
 ### Answer 125
-The **slip test** is a simple experimental method to determine the direct-axis synchronous reactance $X_d$ and the quadrature-axis synchronous reactance $X_q$ of a salient-pole synchronous machine. These two distinct reactances arise from the non-uniform air-gap (saliency) of the rotor and are essential for accurate modeling of the machine under Blondel's two-reaction theory.
+**Concept**
+In a salient-pole synchronous machine, the magnetic reluctance varies with the angular position of the rotor. The slip test exploits this physical saliency to measure the direct-axis synchronous reactance $X_d$ and the quadrature-axis synchronous reactance $X_q$.
 
-**Procedure**  
-- The rotor is driven by a prime mover at a speed slightly below or above synchronous speed, i.e. with a small slip (typically $0.2\%$-$0.5\%$).  
-- The field winding is kept **open-circuited**. This ensures that no field current flows, so the only flux in the machine is produced by the stator armature reaction. An open field also avoids dangerously high induced voltages.  
-- A low three-phase voltage (about $10\%$-$20\%$ of rated) is applied to the stator. The voltage must be low to keep the magnetic circuit unsaturated and prevent overheating.  
-- Because the rotor poles slowly slip past the rotating stator mmf, the relative position between the stator field axis and the rotor axis changes continuously.  
-  - When the rotor **direct axis ($d$-axis)** aligns with the stator mmf, the air-gap reluctance is minimum, the flux per ampere is maximum, and the reactance offered by the machine is maximum. Consequently, the stator current reaches a **minimum** $I_{\min}$.  
-  - When the rotor **quadrature axis ($q$-axis)** aligns, the reluctance is maximum, the reactance is minimum, and the stator current reaches a **maximum** $I_{\max}$.  
-- Thus the stator current oscillates between $I_{\min}$ and $I_{\max}$ at a frequency equal to twice the slip frequency. An ammeter and voltmeter record the rms values of voltage and the extremes of current.
+**Procedure**
+- Drive the rotor at a speed slightly different from synchronous (slip ≈ 0.2-0.5%).
+- Keep the field winding open-circuited.
+- Apply a low three-phase voltage (∼10-20% of rated) to the stator.
+- Because of the small slip, the rotating stator mmf alternately aligns with the salient rotor poles. When it aligns with the direct axis, the air-gap reluctance is minimum and the current is minimum ($I_{\min}$); when it aligns with the quadrature axis, the reluctance is maximum and the current is maximum ($I_{\max}$). The stator current thus oscillates at twice the slip frequency.
 
-**Determination of Reactances**  
-Under the constant applied phase voltage $V_{\text{ph}}$, the reactances are simply obtained from the extreme current readings:
+**Determination**
+Under constant applied voltage $V_{ph}$,
 
 $$
-\begin{aligned}
-X_d &= \frac{V_{\text{ph}}}{I_{\min}} \quad \text{(maximum reactance, minimum current)} \\[4pt]
-X_q &= \frac{V_{\text{ph}}}{I_{\max}} \quad \text{(minimum reactance, maximum current)}
-\end{aligned}
+X_d = \frac{V_{ph}}{I_{\min}}, \qquad X_q = \frac{V_{ph}}{I_{\max}} .
 $$
 
-These are the *synchronous reactances* for the direct and quadrature axes. They include both armature-reaction reactance ($X_{ad}$ or $X_{aq}$) and leakage reactance $X_l$: $X_d = X_{ad}+X_l$, $X_q = X_{aq}+X_l$.
+These are the unsaturated synchronous reactances; they include the armature leakage reactance.
 
-**Significance**  
-The knowledge of $X_d$ and $X_q$ is indispensable for salient-pole synchronous machines because:
+**Significance**
+- They form the basis of **Blondel's two-reaction theory**, enabling accurate phasor diagrams for salient-pole machines.
+- Correct **voltage regulation** calculation of salient-pole alternators requires $X_d$ and $X_q$; a single synchronous reactance would lead to erroneous results.
+- The **power-angle characteristic** of a salient-pole machine contains a reluctance-power term $\frac{V^2}{2}(1/X_q - 1/X_d)\sin 2\delta$, which directly depends on the difference between the two reactances.
+- They are essential for **stability studies** and excitation system design.
 
-- They form the basis of **Blondel's two-reaction theory**, which allows accurate phasor diagrams to be drawn for both generator and motor operation.  
-- **Voltage regulation** of salient-pole alternators can be correctly calculated using the two-reaction method; a single synchronous reactance (from conventional open-/short-circuit tests) would give erroneous results.  
-- The **power-angle characteristic** of a salient-pole machine contains an additional reluctance-power term that depends directly on the difference between $X_d$ and $X_q$:
-  $$
-  P = \frac{EV}{X_d}\sin\delta + \frac{V^2}{2}\!\left(\frac{1}{X_q}-\frac{1}{X_d}\right)\sin 2\delta
-  $$
-- They are required for **stability studies**, excitation control design, and predicting machine performance under various loading conditions.  
+The slip test is the simplest experimental method that separately yields $X_d$ and $X_q$, avoiding the need for more complex measurements.
 
-Without the slip test, obtaining $X_d$ and $X_q$ experimentally would be much more complicated; it is the only straightforward method that separates the two axes effects.
-
-> **Final answer:** The slip test provides $X_d$ and $X_q$ by measuring the fluctuating stator current at a small slip; these reactances are fundamental for accurate analysis, phasor diagrams, voltage regulation, and power-angle calculations of salient-pole synchronous machines.
+> **Final answer:** The slip test provides $X_d$ and $X_q$ by measuring the oscillating stator current at a small slip; these reactances are indispensable for accurate modeling, voltage regulation, power-angle calculations, and stability analysis of salient-pole synchronous machines.
 
 
 ---
@@ -8136,93 +6017,56 @@ Without the slip test, obtaining $X_d$ and $X_q$ experimentally would be much mo
 A 3 phase, 20 MVA, star connected alternator with an impedance of (0.5+j 6) per phase is operating in parallel with constant voltage 11 kV bus bars. The field current is adjusted to give a line excitation voltage of 12 kV. With constant excitation, calculate (i) maximum power output from the alternator (ii) armature current and power factor under maximum power condition. (04)
 
 ### Answer 126
-A 3-phase, star-connected alternator operates on infinite busbars. The per-phase equivalent circuit consists of a source $E_{ph}$ (the excitation voltage) behind the synchronous impedance $Z_s = R + jX$.
+**Given**
+- Alternator: 3-phase, star-connected, $S = 20$ MVA (not directly used).
+- Busbar line voltage $V_L = 11$ kV → phase voltage $V_{ph} = 11/\sqrt{3} = 6.351$ kV.
+- Excitation line voltage $E_L = 12$ kV → $E_{ph} = 12/\sqrt{3} = 6.928$ kV.
+- Per-phase synchronous impedance $Z_s = 0.5 + j6\ \Omega$.
+  $|Z_s| = \sqrt{0.5^2 + 6^2} = 6.021\ \Omega$; $\theta = \tan^{-1}(6/0.5) = 85.24^\circ$; $\cos\theta = 0.5/6.021 = 0.0830$.
 
-- Line voltage of busbars, $V_L = 11\,\text{kV}$ (star) → Phase voltage $V_{ph} = \frac{11}{\sqrt{3}} = 6.351\,\text{kV}$.
-- Line excitation voltage, $E_L = 12\,\text{kV}$ (star) → Phase voltage $E_{ph} = \frac{12}{\sqrt{3}} = 6.928\,\text{kV}$.
-- Per-phase synchronous impedance: $Z_s = 0.5 + j6\,\Omega$.
-- Magnitude $|Z_s| = \sqrt{0.5^2 + 6^2} = 6.021\,\Omega$.
-- Impedance angle $\theta = \tan^{-1}\left(\frac{6}{0.5}\right) = 85.24^\circ$.
-
-**Power output per phase**
-For a round-rotor alternator, the real power delivered per phase is
-
-$$
-P_{ph} = \frac{E_{ph}V_{ph}}{|Z|} \cos(\theta - \delta) - \frac{V_{ph}^2}{|Z|} \cos\theta,
-$$
-
-where $\delta$ is the load angle (angle by which $E_{ph}$ leads $V_{ph}$). The total three-phase power is $P = 3P_{ph}$.
-
-**(i) Maximum power output**
-Differentiating $P$ with respect to $\delta$ yields
+**Maximum power output**
+For a cylindrical-rotor alternator, real power per phase is
 
 $$
-\frac{dP}{d\delta} = 3\,\frac{E_{ph}V_{ph}}{|Z|} \sin(\theta - \delta) = 0
-\;\Longrightarrow\; \delta = \theta = 85.24^\circ.
+P_{ph} = \frac{E_{ph}V_{ph}}{|Z_s|}\cos(\theta - \delta) - \frac{V_{ph}^2}{|Z_s|}\cos\theta .
 $$
 
-Substituting $\delta = \theta$ gives the maximum power:
+The maximum occurs when $\cos(\theta - \delta) = 1$, i.e. $\delta = \theta$. Hence
 
 $$
 \begin{aligned}
-P_{\max} &= 3\left[ \frac{E_{ph}V_{ph}}{|Z|} - \frac{V_{ph}^2}{|Z|} \cos\theta \right].
+P_{max,ph} &= \frac{E_{ph}V_{ph}}{|Z_s|} - \frac{V_{ph}^2}{|Z_s|}\cos\theta \\
+&= \frac{6.928 \times 6.351}{6.021} - \frac{6.351^2}{6.021} \times 0.0830 \\
+&= 7.311 - 0.556 = 6.755 \text{ MW/phase} .
 \end{aligned}
 $$
 
-Insert the numerical values (using $\text{kV}$ and $\Omega$, the result is in $\text{MW}$):
+Total three-phase maximum power:
 
 $$
-\frac{E_{ph}V_{ph}}{|Z|} = \frac{(12/\sqrt{3})(11/\sqrt{3})}{6.021} = \frac{44}{6.021} = 7.312\;\text{MW/phase},
+P_{max} = 3 \times 6.755 = 20.26 \text{ MW}.
 $$
 
-$$
-\frac{V_{ph}^2}{|Z|}\cos\theta = \frac{(11/\sqrt{3})^2}{6.021} \times \frac{0.5}{6.021} = \frac{40.333}{6.021} \times 0.08305 = 0.557\;\text{MW/phase}.
-$$
-
-Hence
-
-$$
-P_{\max} = 3\,(7.312 - 0.557) = 20.26\;\text{MW}.
-$$
-
-**(ii) Armature current and power factor at $P_{\max}$**
-With $\delta = \theta$, the phasor difference $E_{ph} - V_{ph}$ is
-
-$$
-E_{ph}\angle\theta - V_{ph}\angle 0^\circ = (6.928\angle 85.24^\circ - 6.351)\;\text{kV}.
-$$
-
-Evaluating the complex numbers:
+**Armature current and power factor at $P_{max}$**
+At $\delta = \theta$ we have $E_{ph} = 6.928 \angle 85.24^\circ$ kV and $V_{ph} = 6.351 \angle 0^\circ$ kV.
 
 $$
 \begin{aligned}
-E_{ph}\angle 85.24^\circ &= 6.928(0.08305 + j0.9965) = 0.5754 + j6.9048 \;\text{kV},\\
-E_{ph} - V_{ph} &= (-5.7756 + j6.9048)\;\text{kV}.
+E_{ph} - V_{ph} &= (6.928 \times 0.083 - 6.351) + j(6.928 \times 0.9965) \\
+&= -5.776 + j6.905 \text{ kV} \\
+|E_{ph} - V_{ph}| &= \sqrt{5.776^2 + 6.905^2} = 9.002 \text{ kV}.
 \end{aligned}
 $$
 
-The magnitude of the difference is $\sqrt{(5.7756)^2 + (6.9048)^2} = 9.0018\;\text{kV}$.
-
-The armature current per phase is
+Current per phase:
 
 $$
-I_a = \frac{E_{ph} - V_{ph}}{Z_s} = \frac{9.0018\angle 129.9^\circ}{6.021\angle 85.24^\circ}
-= 1.495\;\text{kA}\angle 44.66^\circ.
+I_a = \frac{E_{ph} - V_{ph}}{Z_s} = \frac{9.002 \angle 130^\circ}{6.021 \angle 85.24^\circ} = 1.495 \angle 44.76^\circ \text{ kA}.
 $$
 
-Therefore the line current is $I_L = |I_a| = 1495\;\text{A}$.
+Thus line current $I_L = 1495$ A and power factor $\cos\phi = \cos 44.76^\circ = 0.711$ leading (since $I_a$ leads $V_{ph}$).
 
-The power factor is the cosine of the angle between $V_{ph}$ (reference) and $I_a$:
-
-$$
-\cos\phi = \frac{P_{\max}}{\sqrt{3}\,V_L I_L} = \frac{20.26\times10^6}{\sqrt{3}\times 11000\times 1495} = 0.711.
-$$
-
-Since $I_a$ leads $V_{ph}$ by $44.66^\circ$, the power factor is **0.711 leading**. (Equivalently, the negative reactive power $Q = -3\,(V_{ph}^2/|Z|)\sin\theta$ confirms leading operation.)
-
-> **Final answer:**  
-> (i) Maximum power output = **20.26 MW**  
-> (ii) Armature current = **1495 A**, power factor = **0.711 leading**
+> **Final answer:** (i) Maximum power output = **20.26 MW**. (ii) Armature current = **1495 A**, power factor = **0.711 leading**.
 
 
 ---
@@ -8233,78 +6077,50 @@ Since $I_a$ leads $V_{ph}$ by $44.66^\circ$, the power factor is **0.711 leading
 A 3 phase, 50 Hz, 4 pole, 10 kVA, 400 V, star connected synchronous motor has a per phase synchronous impedance of (3 + j4). When supplying rated current, the field current is so adjusted that the line emf induced is 451 V. Determine (a) load angle and power factor (b) active power input and gross power output (c) efficiency assuming rotational loss of 1 kW. (05)
 
 ### Answer 127
-**Data:**  
-- Synchronous motor: 3-phase, star-connected, $400\,\text{V}$, $10\,\text{kVA}$, $50\,\text{Hz}$, 4-pole.  
-- Per-phase synchronous impedance: $Z_s = (3 + j4)\,\Omega = 5\angle 53.13^\circ\,\Omega$.  
-- Line induced emf: $E_L = 451\,\text{V} \;\Rightarrow\; E_{ph} = \frac{451}{\sqrt{3}} = 260.39\,\text{V}$.  
-- Phase voltage: $V_{ph} = \frac{400}{\sqrt{3}} = 230.94\,\text{V}$.  
-- Rated current: $I = \frac{10\,000}{\sqrt{3}\times 400} = 14.434\,\text{A}$.
+**Given:**
+- 3-phase, star, 400 V, 10 kVA, 50 Hz, 4-pole
+- $Z_s = (3 + j4)\,\Omega = 5\angle 53.13^\circ\,\Omega$ per phase
+- Rated line current: $I_L = \frac{10\,000}{\sqrt{3}\times 400} = 14.434\,\text{A}$
+- Phase voltage: $V_{ph} = \frac{400}{\sqrt{3}} = 230.94\,\text{V}$
+- Induced line emf $E_L = 451\,\text{V}$ → $E_{ph} = \frac{451}{\sqrt{3}} = 260.39\,\text{V}$
 
-**(a) Load angle and power factor**  
-For a synchronous motor the per-phase phasor relation is  
-$$\vec{V}_{ph} = \vec{E}_{ph} + \vec{I}Z_s$$  
-with $\vec{E}_{ph}$ lagging $\vec{V}_{ph}$ by the load angle $\delta$.  
-The magnitude of the impedance drop is  
-$$I Z_s = 14.434 \times 5 = 72.17\ \text{V}.$$  
-The three voltage phasors form a triangle; using the law of cosines,  
+**Solution:**
+**(a) Load angle and power factor:**
+The phasor relation is $\vec{V}_{ph} = \vec{E}_{ph} + \vec{I} Z_s$. The magnitude of the impedance drop is $I Z_s = 14.434 \times 5 = 72.17\,\text{V}$.
+Using the law of cosines:
 $$
-\cos\delta = \frac{V_{ph}^2 + E_{ph}^2 - (I Z_s)^2}{2\,V_{ph}\,E_{ph}}
-           = \frac{230.94^2 + 260.39^2 - 72.17^2}{2 \times 230.94 \times 260.39}
-           = 0.9639,
-$$  
-hence  
-$$\delta = \cos^{-1}(0.9639) = 15.44^\circ \quad (\text{E lags V}).$$
+\cos\delta = \frac{V_{ph}^2 + E_{ph}^2 - (I Z_s)^2}{2\,V_{ph}\,E_{ph}} = \frac{230.94^2 + 260.39^2 - 72.17^2}{2 \times 230.94 \times 260.39} = 0.9639
+$$
+Hence $\delta = \cos^{-1}0.9639 = 15.44^\circ$ ($E$ lags $V$).
 
-To obtain the current phasor, set $\vec{V}_{ph} = 230.94\angle 0^\circ$ and  
-$\vec{E}_{ph} = 260.39\angle -15.44^\circ$. Then  
+Take $V_{ph}$ as reference: $V_{ph} = 230.94\angle 0^\circ$, $E_{ph} = 260.39\angle -15.44^\circ$. Then
 $$
-\vec{V}_{ph} - \vec{E}_{ph} = 230.94 - 260.39(\cos 15.44^\circ - j\sin 15.44^\circ)
-                          = -20.06 + j69.3
-                          = 72.17\angle 106.15^\circ\ \text{V}.
+\begin{aligned}
+V_{ph} - E_{ph} &= 230.94 - (260.39\cos 15.44^\circ - j260.39\sin 15.44^\circ) \\
+&= -20.06 + j69.3 = 72.17\angle 106.15^\circ\,\text{V}
+\end{aligned}
 $$
-Therefore  
 $$
-\vec{I} = \frac{\vec{V}_{ph} - \vec{E}_{ph}}{Z_s}
-        = \frac{72.17\angle 106.15^\circ}{5\angle 53.13^\circ}
-        = 14.434\angle 53.02^\circ\ \text{A}.
+\vec{I} = \frac{V_{ph} - E_{ph}}{Z_s} = \frac{72.17\angle 106.15^\circ}{5\angle 53.13^\circ} = 14.434\angle 53.02^\circ\,\text{A}
 $$
-The current leads the terminal voltage by $53.02^\circ$, so the power factor is  
-$$\text{pf} = \cos 53.02^\circ = 0.602\quad (\text{leading}).$$
+Current leads voltage by $53.02^\circ$, so power factor $= \cos 53.02^\circ = 0.602$ leading.
 
-**(b) Active power input and gross mechanical output**  
-Active power input:  
+**(b) Active power input and gross power output:**
 $$
-P_{\text{in}} = \sqrt{3}\,V_L I \cos\phi
-             = \sqrt{3} \times 400 \times 14.434 \times 0.602
-             = 6019\ \text{W} \approx 6.019\ \text{kW}.
-$$
-(Equivalently, $P_{\text{in}} = 3 V_{ph} I \cos\phi = 3 \times 230.94 \times 14.434 \times 0.602 = 6019\ \text{W}$.)  
-
-Armature copper loss:  
-$$
-P_{\text{cu}} = 3 I^2 R_a = 3 \times (14.434)^2 \times 3 = 1875\ \text{W} = 1.875\ \text{kW}.
-$$
-Gross mechanical power developed (air-gap power):  
-$$
-P_{\text{gross}} = P_{\text{in}} - P_{\text{cu}} = 6019 - 1875 = 4144\ \text{W} \approx 4.144\ \text{kW}.
+\begin{aligned}
+P_{\text{in}} &= \sqrt{3} V_L I_L \cos\phi = \sqrt{3} \times 400 \times 14.434 \times 0.602 = 6019\,\text{W} = 6.019\,\text{kW} \\
+\text{Arm. Cu loss} &= 3 I^2 R_a = 3 \times (14.434)^2 \times 3 = 1875\,\text{W} \\
+P_{\text{gross}} &= P_{\text{in}} - \text{Cu loss} = 6019 - 1875 = 4144\,\text{W} = 4.144\,\text{kW}
+\end{aligned}
 $$
 
-**(c) Efficiency**  
-Rotational loss (friction and iron) $= 1\ \text{kW}$.  
-Shaft output power:  
+**(c) Efficiency:**
+Shaft output $= P_{\text{gross}} - \text{rot. loss} = 4144 - 1000 = 3144\,\text{W}$.
 $$
-P_{\text{shaft}} = P_{\text{gross}} - 1000 = 4144 - 1000 = 3144\ \text{W}.
-$$
-Efficiency:  
-$$
-\eta = \frac{P_{\text{shaft}}}{P_{\text{in}}} \times 100\%
-     = \frac{3144}{6019} \times 100\% = 52.2\%.
+\eta = \frac{3144}{6019} \times 100\% = 52.2\%
 $$
 
-> **Final answer:**  
-> (a) $\delta = 15.44^\circ$, power factor $= 0.602$ leading.  
-> (b) $P_{\text{in}} = 6.019\ \text{kW}$, $P_{\text{gross}} = 4.144\ \text{kW}$.  
-> (c) Efficiency $= 52.2\%$.
+> **Final answer:** (a) $\delta = 15.44^\circ$, power factor $= 0.602$ leading; (b) $P_{\text{in}} = 6.019\,\text{kW}$, $P_{\text{gross}} = 4.144\,\text{kW}$; (c) Efficiency $= 52.2\%$.
 
 
 ---
@@ -8315,68 +6131,31 @@ $$
 A supply system has the following loads: 100 kW upf load and 400 kW load at 0.6 pf lag. A 50 HP synchronous motor when connected in parallel with existing load improves the overall power factor to 0.95 lag. Assuming motor efficiency as 87%, determine (a) leading kVAR supplied by the motor (b) kVA rating of motor (c) motor power factor. (03)
 
 ### Answer 128
-**Existing loads**  
-The supply system initially has two loads:
-- 100 kW at unity power factor (upf):  
-  $P_1 = 100\ \text{kW},\quad \text{pf}_1 = 1\ \Rightarrow\ Q_1 = 0$.
-- 400 kW at 0.6 pf lagging:  
-  $\phi_2 = \cos^{-1}(0.6) = 53.13^\circ$,  
-  $Q_2 = 400 \tan 53.13^\circ = 400 \times \frac{4}{3} = 533.33\ \text{kVAR (lag)}$.
+**Given:**
+- Existing loads: $P_1 = 100\,\text{kW}$ upf; $P_2 = 400\,\text{kW}$ at 0.6 pf lag.
+- 50 HP synchronous motor, $\eta = 87\%$, overall pf becomes 0.95 lag.
 
-Total existing load:
-$$
-P_{\text{old}} = 100 + 400 = 500\ \text{kW},
-\qquad
-Q_{\text{old}} = 0 + 533.33 = 533.33\ \text{kVAR (lag)}.
-$$
+**Solution:**
+Motor mechanical output $= 50 \times 0.746 = 37.3\,\text{kW}$.
+Input power $P_m = \frac{37.3}{0.87} = 42.87\,\text{kW}$.
 
-**Synchronous motor input power**  
-A 50 HP synchronous motor is connected in parallel. Using the conversion $1\ \text{HP} = 0.746\ \text{kW}$, the mechanical output is:
-$$
-P_{\text{mech}} = 50 \times 0.746 = 37.3\ \text{kW}.
-$$
-With an efficiency $\eta = 87\% = 0.87$, the electrical input power is:
-$$
-P_m = \frac{P_{\text{mech}}}{\eta} = \frac{37.3}{0.87} \approx 42.87\ \text{kW}.
-$$
+Existing reactive power:
+$Q_1 = 0$; $Q_2 = 400 \tan(\cos^{-1}0.6) = 400 \times \frac{4}{3} = 533.33\,\text{kVAR (lag)}$.
+Total existing: $P_{\text{old}} = 500\,\text{kW}$, $Q_{\text{old}} = 533.33\,\text{kVAR (lag)}$.
 
-**Overall load after improvement**  
-The total real power becomes:
-$$
-P_{\text{new}} = P_{\text{old}} + P_m = 500 + 42.87 = 542.87\ \text{kW}.
-$$
-It is required that the overall power factor be improved to $0.95$ lagging. Thus:
-$$
-\phi_{\text{new}} = \cos^{-1}(0.95) = 18.19^\circ,\quad
-\tan\phi_{\text{new}} \approx 0.3287.
-$$
-The corresponding total reactive power is:
-$$
-Q_{\text{new}} = P_{\text{new}} \tan\phi_{\text{new}} = 542.87 \times 0.3287 \approx 178.5\ \text{kVAR (lag)}.
-$$
+After adding motor: $P_{\text{new}} = 500 + 42.87 = 542.87\,\text{kW}$.
+Overall pf = 0.95 lag → $\cos\phi = 0.95$, $\tan\phi = \sqrt{1-0.95^2}/0.95 = 0.3286$.
+Required $Q_{\text{new}} = 542.87 \times 0.3286 = 178.4\,\text{kVAR (lag)}$.
+Reactive power supplied by motor: $Q_m = Q_{\text{new}} - Q_{\text{old}} = 178.4 - 533.33 = -354.93\,\text{kVAR}$ (leading).
+Thus, leading kVAR supplied = 354.9 kVAR.
 
-**Reactive power supplied by the motor**  
-The change in total reactive power must be supplied by the synchronous motor:
+Motor kVA rating:
 $$
-Q_m = Q_{\text{new}} - Q_{\text{old}} = 178.5 - 533.33 = -354.83\ \text{kVAR}.
+S_m = \sqrt{P_m^2 + Q_m^2} = \sqrt{(42.87)^2 + (354.93)^2} = \sqrt{1837.8 + 125\,977} = 357.4\,\text{kVA}
 $$
-The negative sign indicates that the motor delivers leading reactive power. Hence, the motor supplies **354.83 kVAR leading** (rounded to 354.8 kVAR). This is achieved by operating the machine in an over-excited condition, where it draws a leading current and behaves as a synchronous condenser while also driving its mechanical load.
+Motor power factor: $\text{pf}_m = \frac{P_m}{S_m} = \frac{42.87}{357.4} = 0.12$ leading.
 
-**kVA rating and power factor of the motor**  
-The apparent power (kVA rating) of the motor is:
-$$
-S_m = \sqrt{P_m^2 + Q_m^2} = \sqrt{(42.87)^2 + (354.83)^2}
-      \approx \sqrt{1837.8 + 125\,904.7} = \sqrt{127\,742.5} \approx 357.4\ \text{kVA}.
-$$
-The motor power factor is:
-$$
-\text{pf}_m = \frac{P_m}{S_m} = \frac{42.87}{357.4} \approx 0.12\ \text{leading}.
-$$
-
-> **Final answer:**  
-> (a) 354.8 kVAR leading;  
-> (b) 357.4 kVA;  
-> (c) 0.12 leading.
+> **Final answer:** (a) $354.9\,\text{kVAR}$ leading; (b) $357.4\,\text{kVA}$; (c) $0.12$ leading.
 
 
 ---
@@ -8387,49 +6166,36 @@ $$
 A 3 phase, 50 Hz, 400 V installation draws a current of 36.1 A at 0.8 power factor lagging. A 3 phase 10 KVA synchronous motor operating at 0.6 power factor leading is connected in parallel with the existing load. Determine (i) the overall power factor of the installation, (ii) net reactive power taken from the supply. (03)
 
 ### Answer 129
-We are given a three-phase installation with an existing load and a synchronous motor added in parallel.  We need to find the overall power factor and the net reactive power drawn from the supply.
+**Given:**
+- 3-phase, 400 V, $I = 36.1\,\text{A}$, pf = 0.8 lag.
+- Synchronous motor: $10\,\text{kVA}$, pf = 0.6 leading.
 
-**Existing load**  
-Line voltage $V_L = 400\,\text{V}$, line current $I_L = 36.1\,\text{A}$, power factor $0.8$ lagging.  
-Active power:
+**Solution:**
+Existing powers:
 $$
-P_1 = \sqrt{3}\,V_L I_L \cos\phi = \sqrt{3} \times 400 \times 36.1 \times 0.8 = 20.0\,\text{kW}
+\begin{aligned}
+P_1 &= \sqrt{3} \times 400 \times 36.1 \times 0.8 = 20.0\,\text{kW} \\
+Q_1 &= \sqrt{3} \times 400 \times 36.1 \times \sin(\cos^{-1}0.8) = 15.0\,\text{kVAR (lag)}
+\end{aligned}
 $$
-Reactive power (positive for lagging):
+Motor powers:
 $$
-Q_1 = \sqrt{3}\,V_L I_L \sin\phi = \sqrt{3} \times 400 \times 36.1 \times 0.6 = 15.0\,\text{kVAr (lagging)}
+P_m = 10 \times 0.6 = 6.0\,\text{kW},\qquad Q_m = -10 \times 0.8 = -8.0\,\text{kVAR (leading)}
 $$
+Total after addition:
+$$
+\begin{aligned}
+P_{\text{total}} &= 20.0 + 6.0 = 26.0\,\text{kW} \\
+Q_{\text{total}} &= 15.0 - 8.0 = 7.0\,\text{kVAR (lag)}
+\end{aligned}
+$$
+Overall apparent power and pf:
+$$
+S = \sqrt{26^2 + 7^2} = \sqrt{725} \approx 26.93\,\text{kVA}, \quad \text{pf} = \frac{26.0}{26.93} = 0.966 \text{ lagging.}
+$$
+Net reactive power taken from supply $= 7.0\,\text{kVAR}$ lagging.
 
-**Synchronous motor**  
-Rating $S_m = 10\,\text{kVA}$, power factor $0.6$ leading.  
-Active power:
-$$
-P_m = S_m \times \cos\phi_m = 10 \times 0.6 = 6.0\,\text{kW}
-$$
-Reactive power (negative for leading):
-$$
-Q_m = -S_m \times \sin(\cos^{-1}0.6) = -10 \times 0.8 = -8.0\,\text{kVAr (leading)}
-$$
-
-**Total after adding the synchronous motor**  
-Total active power:
-$$
-P_{\text{total}} = P_1 + P_m = 20.0 + 6.0 = 26.0\,\text{kW}
-$$
-Total reactive power:
-$$
-Q_{\text{total}} = Q_1 + Q_m = 15.0 - 8.0 = 7.0\,\text{kVAr (lagging)}
-$$
-Overall apparent power:
-$$
-S_{\text{total}} = \sqrt{P_{\text{total}}^2 + Q_{\text{total}}^2} = \sqrt{26.0^2 + 7.0^2} \approx 26.93\,\text{kVA}
-$$
-Overall power factor:
-$$
-\text{pf}_{\text{total}} = \frac{P_{\text{total}}}{S_{\text{total}}} = \frac{26.0}{26.93} = 0.966 \quad (\text{lagging, because } Q_{\text{total}} > 0)
-$$
-
-> **Final answer:** (i) Overall power factor = 0.966 lagging; (ii) Net reactive power taken from supply = 7.0 kVAr lagging.
+> **Final answer:** (i) Overall pf = $0.966$ lagging; (ii) Net reactive power = $7.0\,\text{kVAR}$ lagging.
 
 
 ---
@@ -8440,63 +6206,28 @@ $$
 A factory has an average load of 300 kW at a power factor of 0.6 lagging. A synchronous motor is used to raise the combined power factor to 0.9 lagging and at the same time to supply a mechanical load of 60 kW. Calculate KVA rating and power factor of synchronous motor. Assume 88% as the efficiency of synchronous motor (03)
 
 ### Answer 130
-**Step 1: Original factory load**
+**Given:**
+Factory load: $P_1 = 300\,\text{kW}$, $\cos\phi_1 = 0.6$ lag $\Rightarrow \phi_1 = \cos^{-1}0.6 = 53.13^\circ$, $\tan\phi_1 = 1.333$.
+Reactive power: $Q_1 = P_1 \tan\phi_1 = 300 \times 1.333 = 400\,\text{kvar}$ (lag).
 
-Given:
-$$
-P_1 = 300\,\text{kW},\quad \cos\phi_1 = 0.6\ \text{(lagging)}
-$$
-$$
-\phi_1 = \cos^{-1} 0.6 = 53.13^\circ
-$$
-$$
-Q_1 = P_1 \tan\phi_1 = 300 \times \tan 53.13^\circ = 300 \times 1.333 = 400\,\text{kVAr (lagging)}
-$$
+Synchronous motor: mechanical load $60\,\text{kW}$, efficiency $88\%$, so electrical input
+$$P_{m,in} = \frac{60}{0.88} = 68.18\,\text{kW}.$$
 
-**Step 2: Synchronous motor input power**
+Combined system: $P = P_1 + P_{m,in} = 368.18\,\text{kW}$.
+Desired overall $\cos\phi = 0.9$ lag $\Rightarrow \phi = \cos^{-1}0.9 = 25.84^\circ$, $\tan\phi = 0.4843$.
+Required total reactive power: $Q = P \tan\phi = 368.18 \times 0.4843 \approx 178.4\,\text{kvar}$ (lag).
 
-The motor supplies a mechanical load of 60 kW with an efficiency of 88 %. Its electrical input power is
-$$
-P_m = \frac{60}{0.88} = 68.18\,\text{kW}
-$$
+Motor reactive power: $Q_m = Q - Q_1 = 178.4 - 400 = -221.6\,\text{kvar}$ (i.e. leading).
 
-**Step 3: Combined system requirements**
-
-Total real power after adding the motor:
+Motor kVA rating:
 $$
-P_{\text{total}} = P_1 + P_m = 300 + 68.18 = 368.18\,\text{kW}
+\begin{aligned}
+S_m &= \sqrt{P_{m,in}^2 + Q_m^2} = \sqrt{68.18^2 + (-221.6)^2} \\
+&\approx \sqrt{4649 + 49107} = \sqrt{53756} = 231.9\,\text{kVA} \approx 232\,\text{kVA}.
+\end{aligned}
 $$
 
-Desired overall power factor is 0.9 lagging:
-$$
-\phi_{\text{new}} = \cos^{-1} 0.9 = 25.84^\circ
-$$
-$$
-Q_{\text{total}} = P_{\text{total}} \tan\phi_{\text{new}} = 368.18 \times \tan 25.84^\circ = 368.18 \times 0.4843 \approx 178.4\,\text{kVAr}
-$$
-
-**Step 4: Motor reactive power**
-
-To achieve the overall 0.9 lagging pf, the motor must contribute a reactive power
-$$
-Q_m = Q_{\text{total}} - Q_1 = 178.4 - 400 = -221.6\,\text{kVAr}
-$$
-The negative sign indicates that the motor supplies 221.6 kVAr **leading** (i.e., it acts as a capacitive element, canceling part of the factory's lagging vars).
-
-**Step 5: KVA rating of the motor**
-
-$$
-S_m = \sqrt{P_m^2 + Q_m^2} = \sqrt{68.18^2 + (-221.6)^2} = \sqrt{4648.5 + 49106.6} \approx \sqrt{53755.1} = 231.9\,\text{kVA}
-$$
-
-Rounding up, the required kVA rating is approximately **232 kVA**.
-
-**Step 6: Motor power factor**
-
-$$
-\text{pf}_m = \frac{P_m}{S_m} = \frac{68.18}{231.9} \approx 0.294
-$$
-Since $Q_m$ is leading, the power factor is **0.294 leading**.
+Motor power factor: $\text{pf}_m = \dfrac{P_{m,in}}{S_m} = \dfrac{68.18}{231.9} \approx 0.294$ leading.
 
 > **Final answer:** KVA rating ≈ 232 kVA, power factor = 0.294 leading.
 
@@ -8509,78 +6240,51 @@ Since $Q_m$ is leading, the power factor is **0.294 leading**.
 A turbo alternator with synchronizing reactance of 10Ω, is delivering 200A at upf to an infinite bus at a voltage of 11kV. If the prime mover input is kept constant & excitation is increased by 20%, find the new current and power factor. Keeping the excitation at the increased level, find the maximum power output of the alternator and the corresponding current and power factor. (06)
 
 ### Answer 131
-**Initial operating state**
+**Given:** Turbo alternator, star-connected, $V_L = 11\,\text{kV}$, $V_{ph}=11\,000/\sqrt{3}=6351\,\text{V}$, $X_s = 10\,\Omega$ (per phase). Initial line current $I_a = 200\,\text{A}$ upf.
 
-Compute excitation emf:
-
+**Initial excitation:**
 $$
-E_f = V_{ph} + j X_s I_a = 6351 + j(10)(200) = 6351 + j2000\,\text{V}
-$$
-$$
-|E_f| = \sqrt{6351^2 + 2000^2} = 6.658\,\text{kV}
-$$
-Load angle $\delta = \tan^{-1}\frac{2000}{6351} = 17.48^\circ$.
-
-Real power output:
-$$
-P = \sqrt{3} V_L I_a \cos\phi = \sqrt{3}\times 11\,000 \times 200 \times 1 = 3.811\,\text{MW}.
+\begin{aligned}
+E_f &= V_{ph} + jX_s I_a = 6351 + j10\times200 = 6351 + j2000\,\text{V} \\
+|E_f| &= \sqrt{6351^2+2000^2} = 6.658\,\text{kV}, \quad \delta = \tan^{-1}\frac{2000}{6351}=17.48^\circ \\
+P &= \sqrt{3}\,V_L I_a \times 1 = \sqrt{3}\times 11\,000 \times 200 = 3.81\,\text{MW}.
+\end{aligned}
 $$
 
-![Phasor diagram showing effect of increased excitation on generator operation](./pyq-assets/textbook/108105131_p775_img-396_jpeg.png)
-<p align=\"center\"><em>Fig: Effect of increased excitation on generator phasor diagram (constant power)</em></p>
+**Increased excitation (+20%):** $E_f' = 1.2 \times 6.658 = 7.99\,\text{kV}$. Prime-mover input constant $\Rightarrow$ $P$ unchanged.
 
-**Effect of 20% increase in excitation**
-
-New excitation emf: $E_f' = 1.2 \times 6.658 = 7.990\,\text{kV}$.
-Since prime mover input (and thus output power) remains constant, the new load angle $\delta'$ satisfies:
+From $P = \dfrac{3 V_{ph} E_f'}{X_s}\sin\delta'$:
 $$
-P = \frac{3 V_{ph} E_f'}{X_s} \sin\delta' \;\Longrightarrow\; \sin\delta' = \frac{P X_s}{3 V_{ph} E_f'} = \frac{3.811\times10^6 \times 10}{3 \times 6351 \times 7990} = 0.2504
-$$
-$$
-\delta' = \sin^{-1}(0.2504) = 14.50^\circ.
+\sin\delta' = \frac{P X_s}{3 V_{ph} E_f'} = \frac{3.81\times10^6 \times 10}{3 \times 6351 \times 7990} = 0.2504 \;\Rightarrow\; \delta' = 14.50^\circ.
 $$
 
-New armature current (per phase):
+New current (phasor):
 $$
-\bar{I}_a' = \frac{\bar{E}_f' - \bar{V}_{ph}}{j X_s} = \frac{7990\angle 14.50^\circ - 6351\angle 0^\circ}{j10}
+\begin{aligned}
+I_a' &= \frac{E_f' - V_{ph}}{jX_s} = \frac{7990\angle14.50^\circ - 6351}{j10} \\
+     &= \frac{1384 + j2001}{j10} = 200.1 - j138.4 \,\text{A} \\
+|I_a'| &= \sqrt{200.1^2 + 138.4^2} = 243.3\,\text{A}.
+\end{aligned}
 $$
-Evaluating:
-$$
-7990(\cos14.50^\circ + j\sin14.50^\circ) = 7990(0.9681 + j0.2504) = 7735.1 + j2000.7
-$$
-Numerator: $7735.1 + j2000.7 - 6351 = 1384.1 + j2000.7$.
-Dividing by $j10$: $\frac{1384.1+j2000.7}{j10} = \frac{2000.7 - j1384.1}{10} = 200.07 - j138.41\,\text{A}$.
-Magnitude (line current): $|\bar{I}_a'| = \sqrt{200.07^2 + (-138.41)^2} = 243.3\,\text{A}$.
-
 Power factor:
-$$
-\cos\phi' = \frac{P}{\sqrt{3} V_L I_a'} = \frac{3.811\times10^6}{1.732 \times 11\,000 \times 243.3} = 0.822
-$$
-The current phasor has a negative imaginary part → it lags the phase voltage, hence **0.822 lagging**.
+$\cos\phi' = \dfrac{P}{\sqrt{3}\,V_L I_a'} = \dfrac{3.81\times10^6}{\sqrt{3}\times11\,000\times243.3} = 0.822$ (current lags, so lagging).
 
-**Maximum power at the increased excitation**
-
-Holding $E_f' = 7.990\,\text{kV}$, maximum output occurs at $\delta = 90^\circ$ (steady-state stability limit):
+**Maximum power (excitation fixed at $E_f'$):**
+At $\delta = 90^\circ$ (stability limit),
 $$
 P_{\max} = \frac{3 V_{ph} E_f'}{X_s} = \frac{3 \times 6351 \times 7990}{10} = 15.22\,\text{MW}.
 $$
-
 Corresponding current:
 $$
-\bar{E}_f' = 7990\angle 90^\circ = j7990\,\text{V}
+\begin{aligned}
+I_{a,\max} &= \frac{j7.99\times10^3 - 6351}{j10} = \frac{-6351 + j7990}{j10} = 799 + j635.1 \,\text{A} \\
+|I_{a,\max}| &= \sqrt{799^2 + 635.1^2} = 1020.7\,\text{A}.
+\end{aligned}
 $$
-$$
-\bar{I}_{a,\max} = \frac{j7990 - 6351}{j10} = \frac{-6351 + j7990}{j10} = \frac{7990 + j6351}{10} = 799 + j635.1\,\text{A}
-$$
-Magnitude: $|\bar{I}_{a,\max}| = \sqrt{799^2 + 635.1^2} = 1020.7\,\text{A}$.
-
 Power factor:
-$$
-\cos\phi_{\max} = \frac{P_{\max}}{\sqrt{3} V_L I_{a,\max}} = \frac{15.22\times10^6}{1.732 \times 11\,000 \times 1020.7} = 0.783
-$$
-The positive imaginary part indicates a leading current, so **0.783 leading**.
+$\cos\phi_{\max} = \dfrac{15.22\times10^6}{\sqrt{3}\times11\,000\times1020.7} = 0.783$ (current leads, so leading).
 
-> **Final answer:** New current = **243.3 A**, power factor = **0.822 lagging**; maximum power = **15.22 MW**, corresponding current = **1020.7 A**, power factor = **0.783 leading**.
+> **Final answer:** New current = 243.3 A, power factor = 0.822 lagging; maximum power = 15.22 MW, corresponding current = 1020.7 A, power factor = 0.783 leading.
 
 
 ---
@@ -8591,109 +6295,60 @@ The positive imaginary part indicates a leading current, so **0.783 leading**.
 The excitation of a 415 V, 3 phase star connected synchronous motor is such that the induced emf is 520 V. The impedance per phase is 0.5 + j4 Ω. The friction and iron losses are constant at 1,000 W. Calculate the horse power output, line current and efficiency for a) Maximum power output b) Maximum power input (06)
 
 ### Answer 132
-The motor is star connected, hence the phase voltage is
-$$V_{ph} = \frac{415}{\sqrt{3}} = 239.6\ \text{V}.$$
-The induced emf is given as 520 V; assuming this is the line value,
-$$E_{ph} = \frac{520}{\sqrt{3}} = 300.2\ \text{V}.$$
-The synchronous impedance per phase is $Z_s = 0.5 + j4\ \Omega$, therefore
-$$|Z_s| = \sqrt{0.5^2 + 4^2} = 4.031\ \Omega,\qquad \theta = \tan^{-1}\frac{4}{0.5} = 82.875^\circ.$$
-Friction and iron losses are fixed at $P_{\text{rot}} = 1000\ \text{W}$.
+**Given:** Star-connected synchronous motor, $V_L = 415\,\text{V}$, $V_{ph} = 415/\sqrt{3} = 239.6\,\text{V}$. Induced emf (line) $E_L = 520\,\text{V}$ $\Rightarrow$ $E_{ph} = 520/\sqrt{3} = 300.2\,\text{V}$. $Z_s = 0.5 + j4\,\Omega$, $|Z_s| = \sqrt{0.5^2+4^2} = 4.031\,\Omega$, $\theta = \tan^{-1}(4/0.5) = 82.875^\circ$, $\beta = \tan^{-1}(R/X) = \tan^{-1}(0.5/4) = 7.125^\circ$. Constant friction & iron losses $P_{\text{rot}} = 1000\,\text{W}$.
 
-The equivalent circuit of a synchronous motor and its phasor diagram are shown below.
+Motor equation: $V = E + I Z_s$ ($V$ reference, $E$ lags by $\delta$).
 
-![Phasor diagram of a synchronous motor.](./pyq-assets/textbook/108105131_p736_img-375_jpeg.png)
-
-Let the terminal voltage be the reference phasor $\vec{V} = V\angle 0$ and the excitation emf lag by the load angle $\delta$: $\vec{E} = E\angle -\delta$. The armature current is
-$$\vec{I} = \frac{\vec{V} - \vec{E}}{Z_s}.$$
-From the power balance, the active input power per phase can be written as
+Electromagnetic power per phase (general form):
 $$
-P_{\text{in,ph}} = \Re(\vec{V}\vec{I}^*) = \frac{V^2 R - V E R\cos\delta + V E X\sin\delta}{|Z_s|^2}. \tag{1}
-$$
-The electromagnetic (gross mechanical) power per phase is $P_{\text{em,ph}} = P_{\text{in,ph}} - I^2 R$, which simplifies to
-$$
-P_{\text{em,ph}} = \frac{V E (R\cos\delta + X\sin\delta) - R E^2}{|Z_s|^2}
-               = \frac{V E}{|Z_s|}\sin(\delta + \beta) - \frac{R E^2}{|Z_s|^2}, \tag{2}
-$$
-where $\beta = \tan^{-1}(R/X) = \tan^{-1}(0.5/4) = 7.125^\circ$.
-
----
-
-### (a) Maximum power output
-The shaft output is $P_{\text{out}} = 3P_{\text{em,ph}} - P_{\text{rot}}$. As $P_{\text{rot}}$ is constant, maximum $P_{\text{out}}$ occurs when $P_{\text{em}}$ is maximum. Equation (2) shows that $P_{\text{em,ph}}$ is maximised when $\sin(\delta + \beta) = 1$, i.e.
-
-$$
-\delta + \beta = 90^\circ \quad\Rightarrow\quad \delta = 90^\circ - 7.125^\circ = 82.875^\circ.
+P_{\text{em,ph}} = \frac{V_{ph}E_{ph}}{|Z_s|}\sin(\delta+\beta) - \frac{E_{ph}^2 R}{|Z_s|^2}.
 $$
 
-Substituting this $\delta$ into (2):
+**a) Maximum power output:**
+Max $P_{\text{em,ph}}$ when $\sin(\delta+\beta)=1 \;\Rightarrow\; \delta = 90^\circ - \beta = 82.875^\circ$.
 $$
-P_{\text{em,ph}} = \frac{V E}{|Z_s|} - \frac{R E^2}{|Z_s|^2}
-                = \frac{239.6 \times 300.2}{4.031} - \frac{0.5 \times (300.2)^2}{16.25}
-                \approx 15\,070\ \text{W}.
+\begin{aligned}
+P_{\text{em,ph,max}} &= \frac{239.6 \times 300.2}{4.031} - \frac{300.2^2 \times 0.5}{16.25} \\
+&\approx 17846 - 2773 = 15073 \,\text{W}.
+\end{aligned}
 $$
-Total gross mechanical power:
-$$P_{\text{em}} = 3 \times 15\,070 = 45\,210\ \text{W} = 45.21\ \text{kW}.$$
-Shaft output:
-$$P_{\text{out}} = 45.21 - 1.0 = 44.21\ \text{kW}.$$
-In horse power (1 HP = 0.746 kW):
-$$\text{HP} = \frac{44.21}{0.746} \approx 59.3\ \text{HP}.$$
+Total electromagnetic power $P_{\text{em}} = 3 \times 15073 = 45.22\,\text{kW}$.
+Shaft power $P_{\text{out}} = P_{\text{em}} - P_{\text{rot}} = 45.22 - 1.0 = 44.22\,\text{kW}$.
+Horsepower: $\text{HP} = 44.22 / 0.746 \approx 59.3\,\text{HP}$.
 
-The line current (equal to phase current) is obtained from
-$$|\vec{I}| = \frac{\sqrt{V^2 + E^2 - 2 V E \cos\delta}}{|Z_s|}.$$
-With $\cos 82.875^\circ \approx 0.1240$,
-$$|\vec{I}| = \frac{\sqrt{239.6^2 + 300.2^2 - 2(239.6)(300.2)(0.1240)}}{4.0311} \approx 89.34\ \text{A}.$$
+Line current (magnitude of phase current):
+$$
+\begin{aligned}
+|I_a| &= \frac{\sqrt{V_{ph}^2 + E_{ph}^2 - 2V_{ph}E_{ph}\cos\delta}}{|Z_s|} \\
+&= \frac{\sqrt{239.6^2 + 300.2^2 - 2\times239.6\times300.2\times\cos82.875^\circ}}{4.031} \approx 89.34\,\text{A}.
+\end{aligned}
+$$
+Copper loss $P_{\text{cu}} = 3 I_a^2 R = 3 \times (89.34)^2 \times 0.5 = 11.97\,\text{kW}$.
+Input power $P_{\text{in}} = P_{\text{em}} + P_{\text{cu}} = 45.22 + 11.97 = 57.19\,\text{kW}$.
+Power factor $\cos\phi = \dfrac{P_{\text{in}}}{\sqrt{3}\,V_L I_a} = \dfrac{57.19\times10^3}{\sqrt{3}\times415\times89.34} \approx 0.891$ (lag).
+Efficiency $\eta = \dfrac{P_{\text{out}}}{P_{\text{in}}} \times 100\% \approx 77.3\%$.
 
-The total copper loss is
-$$P_{\text{cu}} = 3\,|\vec{I}|^2 R = 3 \times (89.34)^2 \times 0.5 \approx 11.97\ \text{kW}.$$
-Hence the electrical input power is
-$$P_{\text{in}} = P_{\text{em}} + P_{\text{cu}} = 45.21 + 11.97 = 57.18\ \text{kW}.$$
-Power factor:
-$$\cos\phi = \frac{P_{\text{in}}}{\sqrt{3}\,V_L I_L} = \frac{57.18 \times 10^3}{\sqrt{3} \times 415 \times 89.34} \approx 0.891\ \text{(lagging)}.$$
-Efficiency:
-$$\eta = \frac{P_{\text{out}}}{P_{\text{in}}} \times 100 = \frac{44.21}{57.18} \times 100 \approx 77.3\%.$$
+**b) Maximum power input:**
+Input power per phase: $P_{\text{in,ph}} = \frac{V_{ph}^2 R}{|Z_s|^2} + \frac{V_{ph}E_{ph}}{|Z_s|}\sin(\delta-\beta)$.
+Max when $\sin(\delta-\beta)=1 \;\Rightarrow\; \delta = 90^\circ + \beta = 97.125^\circ$.
+$$
+\begin{aligned}
+P_{\text{in,ph,max}} &= \frac{239.6^2 \times 0.5}{16.25} + \frac{239.6 \times 300.2}{4.031} \\
+&\approx 1766 + 17846 = 19612 \,\text{W}.
+\end{aligned}
+$$
+Total input $P_{\text{in}} = 3 \times 19.612 = 58.84\,\text{kW}$.
 
----
-
-### (b) Maximum power input
-Returning to equation (1), the input power per phase can be rearranged as
+Current at this $\delta$:
 $$
-P_{\text{in,ph}} = \frac{V^2 R}{|Z_s|^2} + \frac{V E}{|Z_s|}\sin(\delta - \gamma), \qquad
-\gamma = \tan^{-1}(R/X) = \beta = 7.125^\circ.
+|I_a| = \frac{\sqrt{239.6^2 + 300.2^2 - 2\times239.6\times300.2\times\cos97.125^\circ}}{4.031} \approx 100.88\,\text{A}.
 $$
-This expression is maximum when $\sin(\delta - \gamma) = 1$, giving
-
-$$
-\delta = 90^\circ + \gamma = 90^\circ + 7.125^\circ = 97.125^\circ.
-$$
-
-At this load angle,
-$$
-P_{\text{in,ph,max}} = \frac{V^2 R}{|Z_s|^2} + \frac{V E}{|Z_s|}
-                    = \frac{(239.6)^2 \times 0.5}{16.25} + \frac{239.6 \times 300.2}{4.031}
-                    \approx 1\,766.4 + 17\,842.5 = 19\,608.9\ \text{W}.
-$$
-Total input:
-$$P_{\text{in}} = 3 \times 19\,608.9 = 58\,826.7\ \text{W} \approx 58.83\ \text{kW}.$$
-
-For the current, with $\delta = 97.125^\circ$, $\cos\delta = -0.1240$, $\sin\delta = 0.9923$,
-$$|\vec{I}| = \frac{\sqrt{239.6^2 + 300.2^2 - 2(239.6)(300.2)(-0.1240)}}{4.0311} \approx 100.88\ \text{A}.$$
-Power factor (again lagging):
-$$\cos\phi = \frac{58.83 \times 10^3}{\sqrt{3} \times 415 \times 100.88} \approx 0.811.$$
-
-The electromagnetic power per phase at this $\delta$ is
-$$
-P_{\text{em,ph}} = \frac{V E (R\cos\delta + X\sin\delta) - R E^2}{|Z_s|^2}
-                = \frac{239.6 \times 300.2\bigl(0.5(-0.1240) + 4(0.9923)\bigr) - 0.5(300.2)^2}{16.25}
-                \approx 14\,522\ \text{W}.
-$$
-Total gross mechanical power:
-$$P_{\text{em}} = 3 \times 14\,522 = 43\,566\ \text{W} = 43.57\ \text{kW}.$$
-Shaft output:
-$$P_{\text{out}} = 43.57 - 1.0 = 42.57\ \text{kW} \approx 42.56\ \text{kW}.$$
-In horse power:
-$$\text{HP} = \frac{42.56}{0.746} \approx 57.1\ \text{HP}.$$
-Efficiency:
-$$\eta = \frac{42.56}{58.83} \times 100 \approx 72.4\%.$$
+Copper loss $P_{\text{cu}} = 3 \times (100.88)^2 \times 0.5 = 15.26\,\text{kW}$.
+$P_{\text{em}} = P_{\text{in}} - P_{\text{cu}} = 58.84 - 15.26 = 43.58\,\text{kW}$.
+Shaft output $P_{\text{out}} = 43.58 - 1.0 = 42.58\,\text{kW}$.
+HP: $42.58 / 0.746 \approx 57.1\,\text{HP}$.
+Power factor $\cos\phi = \dfrac{58.84\times10^3}{\sqrt{3}\times415\times100.88} \approx 0.811$ (lag).
+Efficiency $\eta = \dfrac{42.58}{58.84} \times 100\% \approx 72.4\%$.
 
 > **Final answer:** (a) 59.3 HP, 89.34 A, 77.3% efficiency; (b) 57.1 HP, 100.88 A, 72.4% efficiency.
 
@@ -8706,46 +6361,48 @@ $$\eta = \frac{42.56}{58.83} \times 100 \approx 72.4\%.$$
 An industrial plant is supplied with 875 kVA of electrical power at 0.8 pf lagging from a three-phase, 50 Hz, 11 kV substation. A synchronous motor of rating 100 kVA operating at a leading power factor of 0.6 is added during the expansion. Calculate the new kVA supplied by the substation and the overall power factor of the plant. (03)
 
 ### Answer 133
-The industrial plant initially draws an apparent power of $S_1 = 875\text{ kVA}$ at a lagging power factor of 0.8. The corresponding real and reactive powers are:
+Given: initial plant load $S_1 = 875\text{ kVA}$ at $0.8$ lagging pf. Synchronous motor $S_m=100\text{ kVA}$ at $0.6$ leading pf.
+
+Real and reactive powers:
 
 $$
 \begin{aligned}
-P_1 &= S_1 \times \mathrm{pf}_1 = 875 \times 0.8 = 700\text{ kW},\\
-Q_1 &= S_1 \times \sin(\cos^{-1} 0.8) = 875 \times 0.6 = 525\text{ kVAr (lagging, positive)}.
+P_1 &= S_1 \times 0.8 = 700\text{ kW}, \\
+Q_1 &= S_1 \times \sin(\cos^{-1}0.8) = 875 \times 0.6 = 525\text{ kVAr (lagging)}.
 \end{aligned}
 $$
 
-A synchronous motor rated at $100\text{ kVA}$ is added, operating at a leading power factor of 0.6. Its real power input and reactive power (leading, hence negative) are:
+Synchronous motor input (leading, so reactive power negative):
 
 $$
 \begin{aligned}
-P_m &= 100 \times 0.6 = 60\text{ kW},\\
-Q_m &= -100 \times \sin(\cos^{-1} 0.6) = -100 \times 0.8 = -80\text{ kVAr (leading)}.
+P_m &= 100 \times 0.6 = 60\text{ kW}, \\
+Q_m &= -100 \times \sin(\cos^{-1}0.6) = -100 \times 0.8 = -80\text{ kVAr (leading)}.
 \end{aligned}
 $$
 
-After the expansion, the total real and reactive powers supplied by the substation become:
+After adding motor, total real and reactive powers drawn from substation:
 
 $$
 \begin{aligned}
-P_{\text{total}} &= P_1 + P_m = 700 + 60 = 760\text{ kW},\\
-Q_{\text{total}} &= Q_1 + Q_m = 525 - 80 = 445\text{ kVAr (lagging, since net positive)}.
+P_{\text{total}} &= P_1 + P_m = 700 + 60 = 760\text{ kW}, \\
+Q_{\text{total}} &= Q_1 + Q_m = 525 - 80 = 445\text{ kVAr (lagging)}.
 \end{aligned}
 $$
 
-The new apparent power is
+New apparent power:
 
 $$
-S_{\text{new}} = \sqrt{P_{\text{total}}^2 + Q_{\text{total}}^2} = \sqrt{760^2 + 445^2} \approx 880.8\text{ kVA}.
+S_{\text{new}} = \sqrt{P_{\text{total}}^2 + Q_{\text{total}}^2} = \sqrt{760^2 + 445^2} = 880.8\text{ kVA} \approx 881\text{ kVA}.
 $$
 
-The overall power factor is
+Overall plant power factor:
 
 $$
-\mathrm{pf}_{\text{overall}} = \frac{P_{\text{total}}}{S_{\text{new}}} = \frac{760}{880.8} \approx 0.863 \text{ (lagging, because } Q_{\text{total}} > 0).
+\text{pf}_{\text{overall}} = \frac{P_{\text{total}}}{S_{\text{new}}} = \frac{760}{880.8} = 0.863 \text{ (lagging, since } Q_{\text{total}}>0).
 $$
 
-> **Final answer:** The substation now supplies approximately 881 kVA, and the overall plant power factor is **0.863 lagging**.
+> **Final answer:** The substation now supplies approximately **881 kVA**, and the overall plant power factor is **0.863 lagging**.
 
 
 ---
@@ -8756,82 +6413,57 @@ $$
 A factory has an average load of 250 kW at a power factor of 0.7 lagging. In addition, a synchronous motor with an efficiency of 88 % supplies a mechanical load of 60 kW. Determine the kVA rating and power factor of synchronous motor if it is used to raise the combined power factor to 0.9 lag. 5M
 
 ### Answer 134
-**Given:**
-- Factory average load: $P_1 = 250\ \text{kW}$ at power factor $0.7$ lagging.
-- Synchronous motor supplies mechanical load $P_{\text{mech}} = 60\ \text{kW}$ with efficiency $\eta = 88\% = 0.88$.
-- Combined power factor to be raised to $0.9$ lagging.
+Factory load: $P_1 = 250\text{ kW}$, pf $0.7$ lagging. Synchronous motor mechanical load $60\text{ kW}$, $\eta = 88\%$, desired combined pf $0.9$ lagging.
 
----
+Factory reactive power:
 
-### Step 1 - Initial factory reactive power
-
-The power factor angle of the factory load:
 $$
-\phi_1 = \cos^{-1}(0.7) \approx 45.57^\circ
-$$
-The reactive power drawn by the factory:
-$$
-Q_1 = P_1 \tan\phi_1 = 250 \times \tan(45.57^\circ) = 250 \times 1.020 = 255.0\ \text{kVAr (lagging)}.
+\begin{aligned}
+\phi_1 &= \cos^{-1}0.7 \approx 45.57^\circ, \\
+Q_1 &= P_1 \tan\phi_1 = 250 \times 1.020 \approx 255\text{ kVAr (lagging)}.
+\end{aligned}
 $$
 
----
+Synchronous motor electrical input:
 
-### Step 2 - Synchronous motor input power
-
-The mechanical output is $60\ \text{kW}$ and the efficiency is $88\%$, so the electrical input power to the motor:
 $$
-P_m = \frac{P_{\text{mech}}}{\eta} = \frac{60}{0.88} \approx 68.18\ \text{kW}.
+P_m = \frac{60}{0.88} \approx 68.18\text{ kW}.
 $$
 
----
+Total real power after addition:
 
-### Step 3 - Total combined real power
-
-When the synchronous motor is added, the total real power drawn from the supply becomes:
 $$
-P_{\text{new}} = P_1 + P_m = 250 + 68.18 = 318.18\ \text{kW}.
+P_{\text{new}} = 250 + 68.18 = 318.18\text{ kW}.
 $$
 
----
+For combined pf $0.9$ lagging:
 
-### Step 4 - Required combined reactive power
-
-The desired power factor is $0.9$ lagging, so the total angle:
 $$
-\phi_{\text{new}} = \cos^{-1}(0.9) \approx 25.84^\circ.
-$$
-The total reactive power must then be:
-$$
-Q_{\text{new}} = P_{\text{new}} \tan\phi_{\text{new}} = 318.18 \times \tan(25.84^\circ) \approx 318.18 \times 0.4843 = 154.1\ \text{kVAr (lagging)}.
+\begin{aligned}
+\phi_{\text{new}} &= \cos^{-1}0.9 \approx 25.84^\circ, \\
+Q_{\text{new}} &= P_{\text{new}} \tan\phi_{\text{new}} \approx 318.18 \times 0.4843 = 154.1\text{ kVAr (lagging)}.
+\end{aligned}
 $$
 
----
+Reactive power that must be supplied by the synchronous motor:
 
-### Step 5 - Reactive power required from the synchronous motor
-
-The synchronous motor must supply the difference between the new total reactive power and the original factory reactive power:
 $$
-Q_m = Q_{\text{new}} - Q_1 = 154.1 - 255.0 = -100.9\ \text{kVAr}.
-$$
-The negative sign indicates that the motor is **supplying** reactive power (operating at a leading power factor). Thus, the motor delivers $100.9$ kVAr leading.
-
----
-
-### Step 6 - kVA rating and power factor of the synchronous motor
-
-The apparent power (kVA) rating of the motor:
-$$
-S_m = \sqrt{P_m^2 + Q_m^2} = \sqrt{(68.18)^2 + (100.9)^2} \approx \sqrt{4648 + 10180} = \sqrt{14828} \approx 121.8\ \text{kVA}.
+Q_m = Q_{\text{new}} - Q_1 = 154.1 - 255.0 = -100.9\text{ kVAr (leading)}.
 $$
 
-The power factor of the motor:
+Synchronous motor apparent power (kVA rating):
+
 $$
-\text{pf}_m = \frac{P_m}{S_m} = \frac{68.18}{121.8} \approx 0.560\quad (\text{leading, since it supplies reactive power}).
+S_m = \sqrt{P_m^2 + Q_m^2} = \sqrt{68.18^2 + 100.9^2} \approx 121.8\text{ kVA}.
 $$
 
----
+Motor power factor:
 
-> **Final answer:** The synchronous motor must be rated at approximately **122 kVA**, and its power factor is **0.56 leading**.
+$$
+\text{pf}_m = \frac{P_m}{S_m} = \frac{68.18}{121.8} \approx 0.56\text{ leading}.
+$$
+
+> **Final answer:** The synchronous motor must be rated approximately **122 kVA** and operates at a power factor of **0.56 leading**.
 
 
 ---
@@ -8842,28 +6474,27 @@ $$
 Draw and explain the significance of V curve in synchronous motors. (03)
 
 ### Answer 135
-A **V-curve** of a synchronous motor is a plot of armature (stator) current $I_a$ versus field current $I_f$ for a constant terminal voltage and constant mechanical load on the shaft. The corresponding **inverted V-curve** is a plot of power factor versus $I_f$.
+The **V-curves** of a synchronous motor are plots of armature current $I_a$ versus field current $I_f$, with constant terminal voltage and constant shaft load. For each load, $I_a$ traces a V-shaped curve. The corresponding **inverted V-curves** show power factor against $I_f$.
 
-**Explanation:**
-For a given mechanical load, the motor's real power input $P = \sqrt{3} V_L I_L \cos\phi$ remains constant. Changing $I_f$ changes the excitation emf $E_f$, which in turn alters the reactive power drawn or supplied by the motor.
+**Explanation:** For a fixed real power $P$, the in-phase component of $I_a$ is constant. Changing $I_f$ alters the excitation emf $E_f$ and the reactive power exchanged with the supply.
+- **Under-excitation** (low $I_f$): $E_f$ is small; motor draws lagging reactive power, $I_a$ is large, pf lagging.
+- **Increasing $I_f$:** $E_f$ rises, reducing the lagging component until at unity pf, $I_a$ becomes minimum (equal to the in-phase current).
+- **Over-excitation** (high $I_f$): $E_f$ exceeds the required value; motor supplies leading reactive power, $I_a$ increases with leading pf.
 
-- **Under-excitation** (low $I_f$): $E_f$ is small, so the motor draws a large lagging (inductive) current from the supply to meet its magnetization needs. $I_a$ is high and the power factor is lagging.
-- **Increasing $I_f$**: As $E_f$ grows, the required magnetizing current from the supply decreases, so $I_a$ drops. The power factor improves and reaches unity at a certain field current.
-- **Unity power factor point**: At this point, $I_a$ is minimum and equals the in-phase component $I_a \cos\phi = P/(\sqrt{3}V_L)$. This is the most efficient operating condition for that load.
-- **Over-excitation** (high $I_f$): $E_f$ becomes larger than necessary, and the motor starts supplying leading reactive power to the bus. $I_a$ increases again, but now with a leading power factor.
+The locus of minimum $I_a$ for each load gives the unity-pf line, forming the overall V-shape.
 
-The shape of the $I_a$ vs $I_f$ curve is a broad **V**, hence the name. The inverted V-curve shows the power factor switching from lagging to leading as $I_f$ increases.
-
-**Phasor implications**
-With constant $P$ and constant voltage $V$, the in-phase component of $I_a$ is fixed. As excitation changes, the reactive component $I_a \sin\phi$ varies linearly with $E_f$, tracing the V-shape.
+**Phasor picture:** With $V$ constant and $P$ constant, the reactive component of $I_a$ varies linearly with $E_f$, producing the V-curve.
 
 **Significance:**
-1. **Power-factor correction**: By over-exciting, a synchronous motor can supply leading kVAr to compensate for lagging loads elsewhere in the plant. The motor then acts as a **synchronous condenser**.
-2. **Voltage support**: The adjustable reactive power capability helps maintain bus voltage under varying load conditions.
-3. **Loss reduction**: Operation near unity power factor minimizes armature current and $I^2R$ losses.
-4. **Design and protection**: V-curves help in setting field current limits to avoid overheating or pull-out.
+1. **Power-factor correction:** By over-exciting, a synchronous motor supplies leading kVAr, compensating lagging loads (synchronous condenser operation).
+2. **Voltage control:** Adjustable reactive power supports bus voltage.
+3. **Efficiency:** Operation near unity pf minimises $I^2R$ losses.
+4. **Protection:** V-curves define safe field-current limits to prevent overheating or pull-out.
 
-> **Final answer:** V-curves illustrate how armature current varies with excitation, showing the unity-pf point and the motor's ability to provide controllable leading or lagging reactive power.
+![V-curves of synchronous motor](https://commons.wikimedia.org/wiki/Special:Redirect/file/V%20curve%20synchronous%20motor.svg)
+*Figure: V-curves of a synchronous motor. Source: Wikimedia Commons.*
+
+> **Final answer:** V-curves show how armature current varies with excitation, identifying the unity power factor point and the motor's ability to supply leading or lagging reactive power, which is essential for power-factor correction and system voltage support.
 
 
 ---
@@ -8874,59 +6505,39 @@ With constant $P$ and constant voltage $V$, the in-phase component of $I_a$ is f
 An industrial plant is supplied with 850kVA of electrical power at 0.7pf lagging from a 3-phase 50Hz, 11kV substation. A synchronous motor of rating 110kVA operating at a leading power factor of 0.5 is added during expansion. Calculate the new kVA supplied and overall power factor of the plant. (05)
 
 ### Answer 136
-**Original plant:**
-
-Given: Apparent power $S_1 = 850\,\text{kVA}$, power factor $\text{pf}_1 = 0.7$ lagging.
-
-Real power:  
+### Original plant
 $$
-P_1 = S_1 \times \text{pf}_1 = 850 \times 0.7 = 595\,\text{kW}
-$$
-
-Reactive power:  
-$$
-Q_1 = S_1 \times \sin(\cos^{-1} 0.7) = 850 \times 0.714 = 607.0\,\text{kVAr (lagging)}
+\begin{aligned}
+S_1 &= 850\ \text{kVA}, \quad \text{pf}_1 = 0.7\ \text{lagging} \\
+P_1 &= S_1 \, \text{pf}_1 = 850 \times 0.7 = 595\ \text{kW} \\
+\phi_1 &= \cos^{-1}(0.7) \approx 45.57^\circ, \quad \sin\phi_1 = 0.714 \\
+Q_1 &= S_1 \sin\phi_1 = 850 \times 0.714 \approx 607.0\ \text{kVAr (lagging)}
+\end{aligned}
 $$
 
-**Synchronous motor:**
-
-Rating $S_m = 110\,\text{kVA}$, power factor $\text{pf}_m = 0.5$ leading.
-
-Real power:  
+### Synchronous motor
 $$
-P_m = S_m \times \text{pf}_m = 110 \times 0.5 = 55\,\text{kW}
-$$
-
-Reactive power (leading, taken as negative):  
-$$
-Q_m = -S_m \times \sin(\cos^{-1} 0.5) = -110 \times 0.866 = -95.3\,\text{kVAr (leading)}
+\begin{aligned}
+S_m &= 110\ \text{kVA}, \quad \text{pf}_m = 0.5\ \text{leading} \\
+P_m &= 110 \times 0.5 = 55\ \text{kW} \\
+\phi_m &= \cos^{-1}(0.5) = 60^\circ, \quad \sin\phi_m = 0.866 \\
+Q_m &= -S_m \sin\phi_m = -110 \times 0.866 \approx -95.3\ \text{kVAr (leading)}
+\end{aligned}
 $$
 
-**After expansion:**
-
-Total real power:  
+### Combined load
 $$
-P_{\text{total}} = P_1 + P_m = 595 + 55 = 650\,\text{kW}
-$$
-
-Total reactive power:  
-$$
-Q_{\text{total}} = Q_1 + Q_m = 607.0 - 95.3 = 511.7\,\text{kVAr}
+\begin{aligned}
+P_{\text{total}} &= 595 + 55 = 650\ \text{kW} \\
+Q_{\text{total}} &= 607.0 - 95.3 = 511.7\ \text{kVAr} \\
+S_{\text{new}} &= \sqrt{P_{\text{total}}^2 + Q_{\text{total}}^2} = \sqrt{650^2 + 511.7^2} \approx 827.1\ \text{kVA} \\
+\text{pf}_{\text{new}} &= \frac{P_{\text{total}}}{S_{\text{new}}} = \frac{650}{827.1} \approx 0.786
+\end{aligned}
 $$
 
-New apparent power:  
-$$
-S_{\text{new}} = \sqrt{P_{\text{total}}^2 + Q_{\text{total}}^2} = \sqrt{650^2 + 511.7^2} \approx 827.1\,\text{kVA}
-$$
+Since $Q_{\text{total}} > 0$, the power factor remains lagging.
 
-Overall power factor:  
-$$
-\text{pf}_{\text{new}} = \frac{P_{\text{total}}}{S_{\text{new}}} = \frac{650}{827.1} \approx 0.786
-$$
-
-Since $Q_{\text{total}}$ is positive, the overall power factor is lagging.
-
-> **Final answer:** New substation kVA ≈ 827 kVA, overall pf = 0.786 lagging.
+> **Final answer:** The substation now supplies approximately **827 kVA**, and the overall power factor is **0.786 lagging**.
 
 
 ---
@@ -8937,44 +6548,40 @@ Since $Q_{\text{total}}$ is positive, the overall power factor is lagging.
 An industrial load of 200 kW is supplied at 11 kV, the power factor being 0.8 lagging. A synchronous motor is used to meet an additional load of 50 kW and at the same time, it is used to raise the overall power factor to 0.9 lagging. Find the kVA capacity of synchronous motor and the power factor at which it operates. (06)
 
 ### Answer 137
-**Original load:**
+### Original load
 $$
 \begin{aligned}
-P_1 &= 200\text{ kW}, \quad \text{pf}_1 = 0.8 \text{ (lag)} \\
-\cos\phi_1 &= 0.8 \implies \phi_1 = 36.87^\circ \\
-Q_1 &= P_1 \tan\phi_1 = 200 \times 0.75 = 150\text{ kVAr (lagging)}.
+P_1 &= 200\ \text{kW}, \quad \text{pf}_1 = 0.8\ \text{lagging} \\
+\phi_1 &= \cos^{-1}(0.8) \approx 36.87^\circ, \quad \tan\phi_1 = 0.75 \\
+Q_1 &= P_1 \tan\phi_1 = 200 \times 0.75 = 150\ \text{kVAr (lagging)}
 \end{aligned}
 $$
 
-**Additional load:** a synchronous motor supplies 50 kW mechanical. Assuming the electrical input power equals the mechanical output (losses neglected), $P_m = 50$ kW.
-
-**Total active power:** $P_{\text{total}} = 200 + 50 = 250$ kW.
-
-**Desired overall power factor:** 0.9 lagging.
+### Overall target
+The synchronous motor adds $P_m = 50\ \text{kW}$ (mechanical load; losses neglected).
+Desired overall pf = 0.9 lagging.
 $$
 \begin{aligned}
-\cos\phi_{\text{new}} &= 0.9 \implies \phi_{\text{new}} = \cos^{-1}0.9 \approx 25.84^\circ \\
-Q_{\text{total}} &= P_{\text{total}} \tan\phi_{\text{new}} = 250 \times 0.4843 \approx 121.1\text{ kVAr (lag)}.
+P_{\text{total}} &= 200 + 50 = 250\ \text{kW} \\
+\phi_{\text{new}} &= \cos^{-1}(0.9) \approx 25.84^\circ, \quad \tan\phi_{\text{new}} \approx 0.4843 \\
+Q_{\text{total}} &= P_{\text{total}} \tan\phi_{\text{new}} = 250 \times 0.4843 \approx 121.1\ \text{kVAr (lagging)}
 \end{aligned}
 $$
 
-**Synchronous motor reactive power:**
+### Synchronous motor rating and pf
+Motor reactive power:
 $$
-Q_m = Q_{\text{total}} - Q_1 = 121.1 - 150 = -28.9\text{ kVAr}.
+Q_m = Q_{\text{total}} - Q_1 = 121.1 - 150 = -28.9\ \text{kVAr}
 $$
-The negative sign indicates that the motor supplies leading reactive power (over-excited operation).
-
-**Motor kVA rating:**
+The negative sign indicates leading power factor (over-excited operation).
 $$
-S_m = \sqrt{P_m^2 + |Q_m|^2} = \sqrt{50^2 + 28.9^2} = \sqrt{2500 + 835.2} \approx 57.8\text{ kVA}.
-$$
-
-**Motor power factor:**
-$$
-\text{pf}_m = \frac{P_m}{S_m} = \frac{50}{57.8} \approx 0.865 \text{ (leading)}.
+\begin{aligned}
+S_m &= \sqrt{P_m^2 + |Q_m|^2} = \sqrt{50^2 + 28.9^2} \approx 57.8\ \text{kVA} \\
+\text{pf}_m &= \frac{P_m}{S_m} = \frac{50}{57.8} \approx 0.865 \quad (\text{leading})
+\end{aligned}
 $$
 
-> **Final answer:** Synchronous motor rating ≈ 57.8 kVA, operates at 0.865 leading.
+> **Final answer:** The synchronous motor must be rated at approximately **57.8 kVA** and operate at a power factor of **0.865 leading**.
 
 
 ---
@@ -8985,40 +6592,59 @@ $$
 A sugarcane industry is supplied with 92.5 kW of electrical power at 0.83 pf lagging from a three-phase, 50 Hz, 11 kV substation. A synchronous motor of rating 30 kVA operating at a leading power factor of 0.63 is added during the expansion. a) Calculate the real and reactive supplied by the substation, after expansion. b) Will the overall power factor of the industry improve after the addition of the synchronous motor? Justify your answer.
 
 ### Answer 138
-The total complex power drawn from the substation is the sum of the original load and the synchronous motor load. Power factor improvement is analyzed by separating the real and reactive power components.
+### Given data
+- Industrial load: $P_1 = 92.5\ \text{kW}$, $\text{pf}_1 = 0.83$ lagging
+- Synchronous motor: $S_m = 30\ \text{kVA}$, $\text{pf}_m = 0.63$ leading
 
-**Original load:**  
-Given $P_1 = 92.5$ kW, $\text{pf}_1 = 0.83$ lagging. The power factor angle is  
-$$\theta_1 = \cos^{-1}(0.83) \approx 33.9^\circ.$$  
-The reactive power is  
-$$Q_1 = P_1 \tan\theta_1 = 92.5 \times \tan(33.9^\circ) = 92.5 \times 0.672 = 62.1\text{ kVAr (lagging)}.$$
+### Part (a): Real and reactive power after expansion
 
-**Synchronous motor:**  
-Rated apparent power $S_m = 30$ kVA, operating at $\text{pf}_m = 0.63$ leading. The angle is  
-$$\theta_m = \cos^{-1}(0.63) \approx 50.95^\circ.$$  
-Real power:  
-$$P_m = S_m \cos\theta_m = 30 \times 0.63 = 18.9\text{ kW}.$$  
-Reactive power (negative for leading):  
-$$Q_m = -S_m \sin\theta_m = -30 \times 0.775 = -23.3\text{ kVAr (leading)}.$$  
-A leading power factor indicates that the synchronous motor is over-excited and behaves like a capacitor, supplying reactive power to the system.
+**Original load**
+$$
+\begin{aligned}
+\cos\phi_1 &= 0.83 \implies \phi_1 = \cos^{-1}(0.83) \approx 33.9^\circ \\
+\sin\phi_1 &\approx 0.5578, \quad \tan\phi_1 = \frac{0.5578}{0.83} \approx 0.672 \\
+Q_1 &= P_1 \tan\phi_1 = 92.5 \times 0.672 \approx 62.2\ \text{kVAr (lagging)}
+\end{aligned}
+$$
 
-![Synchronous motor phasor diagrams](./pyq-assets/textbook/108105131_p787_img-402_jpeg.png)
-<p align="center"><em>Figure: Phasor diagrams of a synchronous motor for different field excitation levels. Over-excited operation (E<sub>f</sub> > V) produces leading current, thereby injecting reactive power into the bus.</em></p>
+**Synchronous motor**
+$$
+\begin{aligned}
+\cos\phi_m &= 0.63 \implies \phi_m = \cos^{-1}(0.63) \approx 50.95^\circ \\
+\sin\phi_m &\approx 0.775 \\
+P_m &= S_m \cos\phi_m = 30 \times 0.63 = 18.9\ \text{kW} \\
+Q_m &= -S_m \sin\phi_m = -30 \times 0.775 \approx -23.3\ \text{kVAr (leading)}
+\end{aligned}
+$$
 
-**Combined load after expansion:**  
-$$\begin{aligned}
-P_{\text{total}} &= P_1 + P_m = 92.5 + 18.9 = 111.4\text{ kW}, \\\\[4pt]
-Q_{\text{total}} &= Q_1 + Q_m = 62.1 + (-23.3) = 38.8\text{ kVAr (lagging)}.
-\end{aligned}$$  
-The net reactive power is still positive (lagging), but its magnitude has decreased. The total apparent power supplied by the substation is  
-$$S_{\text{total}} = \sqrt{P_{\text{total}}^2 + Q_{\text{total}}^2} = \sqrt{111.4^2 + 38.8^2} \approx 118.0\text{ kVA}.$$  
-The new overall power factor is  
-$$\text{pf}_{\text{new}} = \frac{P_{\text{total}}}{S_{\text{total}}} = \frac{111.4}{118.0} \approx 0.944\text{ lagging}.$$
+**Totals after expansion**
+$$
+\begin{aligned}
+P_{\text{total}} &= P_1 + P_m = 92.5 + 18.9 = 111.4\ \text{kW} \\
+Q_{\text{total}} &= Q_1 + Q_m = 62.2 - 23.3 = 38.9\ \text{kVAr (lagging)} \\
+S_{\text{total}} &= \sqrt{P_{\text{total}}^2 + Q_{\text{total}}^2} = \sqrt{111.4^2 + 38.9^2} \approx 118.0\ \text{kVA}
+\end{aligned}
+$$
 
-**Improvement justification:**  
-The original power factor was 0.83 lagging; the new power factor is 0.944 lagging. Because the power factor magnitude increased from 0.83 to 0.944, it has **improved** (moved closer to unity). The over-excited synchronous motor supplies part of the reactive power required by the lagging load, hence reducing the net lagging reactive power drawn from the substation. This is a standard industrial method for power factor correction.
+Therefore, after expansion the substation supplies **111.4 kW real** and **38.9 kVAr reactive** (lagging).
 
-> **Final answer:** (a) $P = 111.4$ kW, $Q = 38.8$ kVAr; (b) Yes, the overall power factor improves to **0.944 lagging**.
+### Part (b): Power factor improvement
+
+**New overall power factor**
+$$
+\text{pf}_{\text{new}} = \frac{P_{\text{total}}}{S_{\text{total}}} = \frac{111.4}{118.0} \approx 0.944 \quad (\text{lagging})
+$$
+
+**Comparison:** The original power factor was 0.83 lagging; the new value is 0.944 lagging. The power factor has **improved** because it has moved closer to unity (from 0.83 to 0.944).
+
+**Justification:** The synchronous motor operates with a leading power factor (over-excited). This means it draws a leading current and therefore supplies reactive power to the system. That leading reactive power cancels a portion of the lagging reactive power required by the original industrial load. Consequently, the net lagging reactive power drawn from the substation decreases (from 62.2 kVAr to 38.9 kVAr), while the total active power increases only moderately. The reduction in net reactive demand raises the overall power factor.
+
+![V-curves of synchronous motor](https://commons.wikimedia.org/wiki/Special:Redirect/file/V%20curve%20synchronous%20motor.svg)
+*Figure: V-curves of a synchronous motor. Operation with over-excitation (region left of minimum) produces leading current, injecting reactive power into the system and improving plant power factor. Source: Wikimedia Commons: File:V curve synchronous motor.svg.*
+
+> **Final answer:**
+> (a) Real power supplied = **111.4 kW**, reactive power supplied = **38.9 kVAr lagging**.
+> (b) Yes, the overall power factor improves to **0.944 lagging** because the over-excited synchronous motor supplies leading reactive power, reducing the net lagging demand from the substation.
 
 
 ---
@@ -9029,54 +6655,50 @@ The original power factor was 0.83 lagging; the new power factor is 0.944 laggin
 An industrial load of 500 kW, 0.707 pf lagging is required to be improved to 600 kW, 0.95 pf lagging by connecting a synchronous motor in parallel. Determine the kVA rating and power factor at which it operates. 4
 
 ### Answer 139
-An industrial load of 500 kW at 0.707 lagging power factor is to be upgraded to a total combined load of 600 kW at 0.95 lagging by connecting a synchronous motor in parallel. The synchronous motor simultaneously supplies additional active power and provides the necessary reactive power to correct the overall power factor.
+**Given:** An industrial load of $500\text{ kW}$ at $0.707$ lagging pf is to be improved with a parallel synchronous motor, resulting in a total load of $600\text{ kW}$ at $0.95$ lagging pf.
 
-**Step 1 - Original load parameters:**
+**Step 1 - Original load reactive power:**
 $$
-P_1 = 500\ \text{kW}
-$$
-$$
-\cos\phi_1 = 0.707\ \text{lagging} \quad\Rightarrow\quad \phi_1 = \cos^{-1}(0.707) = 45^\circ
-$$
-$$
-Q_1 = P_1 \tan\phi_1 = 500 \tan 45^\circ = 500\ \text{kVAr (lagging)}
+\begin{aligned}
+\phi_1 &= \cos^{-1} 0.707 = 45^\circ, \\
+Q_1 &= P_1 \tan\phi_1 = 500 \times \tan 45^\circ = 500 \text{ kvar (lagging)}.
+\end{aligned}
 $$
 
-**Step 2 - Desired total load parameters:**
+**Step 2 - Desired total reactive power:**
 $$
-P_{\text{new}} = 600\ \text{kW}
-$$
-$$
-\cos\phi_{\text{new}} = 0.95\ \text{lagging} \quad\Rightarrow\quad \phi_{\text{new}} = \cos^{-1}(0.95) \approx 18.19^\circ
-$$
-$$
-Q_{\text{new}} = P_{\text{new}} \tan\phi_{\text{new}} = 600 \tan(18.19^\circ) \approx 600 \times 0.3287 = 197.2\ \text{kVAr (lagging)}
+\begin{aligned}
+\phi_{\text{new}} &= \cos^{-1} 0.95 \approx 18.19^\circ, \\
+Q_{\text{new}} &= 600 \times \tan 18.19^\circ \approx 197.2 \text{ kvar (lagging)}.
+\end{aligned}
 $$
 
-**Step 3 - Required motor contribution:**
-Since the motor is connected in parallel, the total load is the sum of the original load and the motor load. Therefore, for active power:
+**Step 3 - Motor active and reactive power:**
+Since the motor is connected in parallel, the total power is the sum of the original load and the motor contributions:
 $$
-P_m = P_{\text{new}} - P_1 = 600 - 500 = 100\ \text{kW}
+\begin{aligned}
+P_m &= P_{\text{new}} - P_1 = 600 - 500 = 100 \text{ kW}, \\
+Q_m &= Q_{\text{new}} - Q_1 = 197.2 - 500 = -302.8 \text{ kvar}.
+\end{aligned}
 $$
-For reactive power, the original lagging vars must be reduced. The motor must supply a leading reactive power to cancel part of the lagging vars:
-$$
-Q_m = Q_{\text{new}} - Q_1 = 197.2 - 500 = -302.8\ \text{kVAr}
-$$
-The negative sign indicates that the motor supplies 302.8 kVAr leading (i.e., it operates as a capacitive load).
+The negative sign indicates that the motor supplies $302.8\text{ kvar}$ **leading** (acting as a capacitive load, i.e., overexcited synchronous motor).
 
 **Step 4 - Motor kVA rating and power factor:**
-The apparent power rating of the synchronous motor is:
+The motor's apparent power is
 $$
-S_m = \sqrt{P_m^2 + Q_m^2} = \sqrt{(100)^2 + (302.8)^2} \approx \sqrt{10\,000 + 91\,688} = \sqrt{101\,688} \approx 318.9\ \text{kVA}
+\begin{aligned}
+S_m &= \sqrt{P_m^2 + Q_m^2} = \sqrt{(100)^2 + (302.8)^2} \approx \sqrt{10\,000 + 91\,688} \\
+&= \sqrt{101\,688} \approx 318.9 \text{ kVA}.
+\end{aligned}
 $$
-The motor operates at a leading power factor:
+Its power factor is
 $$
-\text{pf}_m = \frac{P_m}{S_m} = \frac{100}{318.9} \approx 0.314\ \text{leading}
+\text{pf}_m = \frac{P_m}{S_m} = \frac{100}{318.9} \approx 0.314 \quad (\text{leading}).
 $$
 
-Hence, the synchronous motor must be rated at approximately 319 kVA and operate at a power factor of 0.314 leading.
+Thus the synchronous motor must be rated at approximately $319\text{ kVA}$ and operate at a leading power factor of $0.314$.
 
-> **Final answer:** Synchronous motor rating ≈ 319 kVA, operating at 0.314 leading.
+> **Final answer:** Motor rating = **319 kVA**, power factor = **0.314 leading**.
 
 
 ---
@@ -9087,105 +6709,73 @@ Hence, the synchronous motor must be rated at approximately 319 kVA and operate 
 A 3 phase, 20 MVA, star connected alternator with an impedance of (0.5+j 6) Ω per phase is operating in parallel with constant voltage 11 kV bus bars. The field current is adjusted to give a line excitation voltage of 12 kV. With constant excitation, calculate (a) Maximum power output from the alternator (b) Armature current and power factor under maximum power condition. 4
 
 ### Answer 140
-**Given:**  
-- Line voltage, $V_L = 11\,\text{kV}$ (star connected) → Phase voltage, $V_{ph} = \frac{11}{\sqrt{3}} = 6.351\,\text{kV}$.  
-- Line excitation voltage, $E_L = 12\,\text{kV}$ → Phase excitation voltage, $E_{ph} = \frac{12}{\sqrt{3}} = 6.928\,\text{kV}$.  
-- Synchronous impedance, $Z = 0.5 + j6\,\Omega/\text{ph}$ → $|Z| = \sqrt{0.5^2 + 6^2} = 6.021\,\Omega$, $\theta = \tan^{-1}\left(\frac{6}{0.5}\right) = 85.24^\circ$.
+![Phasor diagram of synchronous generator](https://commons.wikimedia.org/wiki/Special:Redirect/file/Synchronous%20generator%20diagram.png)
+*Figure: Phasor diagram for the alternator. Source: Wikimedia Commons: File:Synchronous generator diagram.png.*
 
-The machine is connected to infinite bus bars with constant voltage $V$. The field excitation is held constant, so $E_f$ is fixed.
+**Given:** 3-phase, star-connected alternator: $S = 20\text{ MVA}$, line voltage $V_L = 11\text{ kV}$, synchronous impedance per phase $Z = (0.5 + j6)\,\Omega$, excitation line voltage $E_L = 12\text{ kV}$ (constant). The machine operates on infinite busbars.
 
----
-
-### (a) Maximum power output
-
-For a cylindrical rotor synchronous machine with armature resistance, the real power delivered per phase is
-
-$$
-P_{ph} = \frac{E_{ph}V_{ph}}{|Z|} \cos(\theta - \delta) - \frac{V_{ph}^2}{|Z|} \cos\theta,
-$$
-
-where $\delta$ is the power (load) angle between $E_{ph}$ and $V_{ph}$.  
-For constant excitation $(E_{ph})$, maximum power occurs when the cosine term is maximum, i.e., $\cos(\theta - \delta) = 1$, which gives
-
-$$
-\delta = \theta = 85.24^\circ.
-$$
-
-Therefore,
-
+**Step 1 - Phase quantities:**
 $$
 \begin{aligned}
-P_{\text{max,ph}} &= \frac{E_{ph}V_{ph}}{|Z|} - \frac{V_{ph}^2}{|Z|} \cos\theta \\[6pt]
-&= \frac{(6.928 \times 6.351)\times 10^6}{6.021} - \frac{(6.351)^2 \times 10^6}{6.021} \cos 85.24^\circ \\[6pt]
-&= \frac{44.01 \times 10^6}{6.021} - \frac{40.33 \times 10^6}{6.021} \times 0.08304 \\[6pt]
-&= 7.312 \times 10^6 - 0.557 \times 10^6 = 6.755 \times 10^6 \;\text{W}.
+V_{\text{ph}} &= \frac{11\,000}{\sqrt{3}} \approx 6351\text{ V}, \qquad
+E_{\text{ph}} = \frac{12\,000}{\sqrt{3}} \approx 6928\text{ V}, \\
+|Z| &= \sqrt{0.5^2 + 6^2} = 6.021\,\Omega, \qquad
+\theta = \tan^{-1}\frac{6}{0.5} \approx 85.24^\circ.
 \end{aligned}
 $$
 
-The total three-phase maximum power is
-
+**Step 2 - Power equation and maximum power condition:**
+With armature resistance included, the real power delivered per phase is
 $$
-P_{\text{max}} = 3 \times P_{\text{max,ph}} = 3 \times 6.755 \;\text{MW} \approx 20.26 \;\text{MW}.
+P_{\text{ph}} = \frac{E_{\text{ph}} V_{\text{ph}}}{|Z|}\cos(\theta - \delta) - \frac{V_{\text{ph}}^2}{|Z|}\cos\theta,
 $$
-
----
-
-### (b) Armature current and power factor under maximum power condition
-
-At $\delta = 85.24^\circ$, take $V_{ph}$ as reference, $V_{ph} = 6.351 \angle 0^\circ \;\text{kV}$, then
-
+where $\delta$ is the load angle ( $E_{\text{ph}}$ leads $V_{\text{ph}}$ by $\delta$ ). For fixed excitation, $P_{\text{ph}}$ is maximised when $\cos(\theta-\delta)=1$, i.e. when $\delta = \theta$. Hence
 $$
-E_{ph} = 6.928 \angle 85.24^\circ = 0.575 + j6.904 \;\text{kV}.
+P_{\max,\text{ph}} = \frac{E_{\text{ph}} V_{\text{ph}}}{|Z|} - \frac{V_{\text{ph}}^2}{|Z|}\cos\theta.
 $$
 
+**Step 3 - Maximum three-phase power:**
+Substituting the numbers ($\cos\theta \approx 0.0830$):
+$$
+\begin{aligned}
+P_{\max,\text{ph}} &\approx \frac{6351 \times 6928}{6.021} - \frac{6351^2}{6.021} \times 0.0830 \\
+&= \frac{44.01 \times 10^6}{6.021} - \frac{40.33 \times 10^6}{6.021} \times 0.0830 \\
+&= 7.312 \times 10^6 - 0.556 \times 10^6 = 6.756 \times 10^6 \text{ W}.
+\end{aligned}
+$$
+Total three-phase output:
+$$
+P_{\max} = 3 \times 6.756 \approx 20.27\text{ MW} \quad (\text{or } 20.26\text{ MW}).
+$$
+
+**Step 4 - Armature current and power factor at this condition:**
+At $\delta = \theta = 85.24^\circ$,
+$$
+E_{\text{ph}} = 6928\,\angle 85.24^\circ = 575.1 + j6903.5\text{ V},
+\qquad V_{\text{ph}} = 6351\,\angle 0^\circ.
+$$
 The armature current per phase is
-
+$$
+I_{\text{ph}} = \frac{E_{\text{ph}} - V_{\text{ph}}}{Z} = \frac{-5775.9 + j6903.5}{0.5 + j6}.
+$$
+Multiplying numerator and denominator by the conjugate $0.5 - j6$:
 $$
 \begin{aligned}
-I_{ph} &= \frac{E_{ph} - V_{ph}}{Z} = \frac{(0.575 + j6.904) - 6.351}{0.5 + j6} \\[6pt]
-&= \frac{-5.776 + j6.904}{0.5 + j6} \;\text{kA}.
+I_{\text{ph}} &= \frac{(-5775.9 + j6903.5)(0.5 - j6)}{0.5^2 + 6^2} \\
+&= \frac{38\,533 + j38\,107}{36.25} \approx 1063 + j1051\text{ A}.
 \end{aligned}
 $$
-
-Multiplying numerator and denominator by the conjugate of $Z$:
-
+Hence
 $$
-\begin{aligned}
-I_{ph} &= \frac{(-5.776 + j6.904)(0.5 - j6)}{0.5^2 + 6^2} \\[6pt]
-&= \frac{(-2.888 + 34.656) + j(3.452 + 34.656)}{36.25} \\[6pt]
-&= \frac{38.536 + j38.108}{36.25} \;\text{kA}.
-\end{aligned}
+|I_{\text{ph}}| = \sqrt{1063^2 + 1051^2} \approx 1495\text{ A}.
 $$
+The phase angle of $I_{\text{ph}}$ relative to $V_{\text{ph}}$ is
+$$
+\phi = \tan^{-1}\frac{1051}{1063} \approx 44.6^\circ,
+$$
+so the power factor is $\cos\phi \approx 0.711$ lagging. (Equivalently, using total quantities: $S = \sqrt{3}\,V_L I_L = \sqrt{3}\times 11\,000 \times 1495 = 28.48\text{ MVA}$, and $P/S = 20.26/28.48 = 0.711$.)
 
-Hence,
-
-$$
-|I_{ph}| = \sqrt{\left(\frac{38.536}{36.25}\right)^2 + \left(\frac{38.108}{36.25}\right)^2} = \sqrt{1.063^2 + 1.051^2} = 1.495 \;\text{kA} = 1495 \;\text{A}.
-$$
-
-The power factor angle $\phi$ is the phase difference between $V_{ph}$ and $I_{ph}$; since $I_{ph}$ lags $V_{ph}$,
-
-$$
-\phi = \tan^{-1}\left(\frac{1.051}{1.063}\right) \approx 44.6^\circ,
-$$
-
-so the power factor is
-
-$$
-\cos\phi = \cos 44.6^\circ = 0.711 \;\text{lagging}.
-$$
-
-Alternatively, using total quantities:
-
-$$
-S = \sqrt{3}\, V_L I_L = \sqrt{3} \times 11000 \times 1495 = 28.48 \;\text{MVA},
-$$
-
-$$
-\cos\phi = \frac{P_{\text{max}}}{S} = \frac{20.26}{28.48} = 0.711 \;\text{lagging}.
-$$
-
-> **Final answer:** Maximum power output = 20.26 MW; armature current = 1495 A; power factor = 0.711 lagging.
+> **Final answer:** (a) Maximum power output ≈ **20.26 MW**. (b) Armature current ≈ **1495 A** at a power factor of **0.711 lagging**.
 
 
 ---
@@ -9196,68 +6786,65 @@ $$
 A 1,000 kW, 3.3 kV, 24 poles, 50 Hz, 3-phase star-connected synchronous motor has a synchronous reactance of 3.4 Ω per phase and the resistance is negligible. The motor is fed from an infinite bus bar at 3.3 kV. Its field excitation is adjusted to result in unity power factor operation at rated load. At this excitation, estimate the maximum power and torque this motor can deliver. Explain with the help of power-angle characteristics. (04)
 
 ### Answer 141
-**Given data:**
-- Rated output power: $1000\ \text{kW}$
-- Line voltage: $V_L = 3.3\ \text{kV}$
-- Poles: $P = 24$, frequency: $f = 50\ \text{Hz}$
-- Synchronous reactance per phase: $X_s = 3.4\ \Omega$, star connection, $R_a \approx 0$
-- Operation at unity power factor at rated load.
+**Given:** Synchronous motor: rated $1000\text{ kW}$, $3.3\text{ kV}$ (line), $24$ poles, $50\text{ Hz}$, star-connected, $X_s = 3.4\,\Omega$/ph, $R_a \approx 0$. Operation at rated load with **unity power factor**.
 
-**Step 1: Rated current and excitation emf**
-At rated load and unity pf, the electrical input power approximately equals the mechanical output (losses negligible):
-$$P_{\text{in}} = \sqrt{3}\,V_L I_L \cos\phi = 1000\ \text{kW},\quad \cos\phi = 1.$$
-So,
-$$I_L = \frac{1000\times 10^3}{\sqrt{3}\times 3300} \approx 174.95\ \text{A}.$$
-For star connection, phase current $I_{\text{ph}} = I_L = 174.95\ \text{A}$, and phase voltage
-$$V_{\text{ph}} = \frac{V_L}{\sqrt{3}} = \frac{3300}{\sqrt{3}} \approx 1905.3\ \text{V}.$$
-
-For a synchronous motor with negligible resistance, the phasor equation is
-$$\vec{V}_{\text{ph}} = \vec{E} + j\vec{I}_{\text{ph}} X_s.$$
-At unity pf, $\vec{I}_{\text{ph}}$ is in phase with $\vec{V}_{\text{ph}}$, hence
-$$\vec{E} = \vec{V}_{\text{ph}} - j\vec{I}_{\text{ph}} X_s = 1905.3 - j\,(174.95 \times 3.4) = 1905.3 - j594.8.$$
+**Step 1 - Rated current and excitation emf:**
+At unity pf, $P_{\text{in}} = \sqrt{3}\,V_L I_L$, so
+$$
+I_L = I_{\text{ph}} = \frac{1000 \times 10^3}{\sqrt{3} \times 3300} \approx 174.95\text{ A}.
+$$
+Phase voltage:
+$$
+V_{\text{ph}} = \frac{3300}{\sqrt{3}} \approx 1905.3\text{ V}.
+$$
+For a synchronous motor ($R_a=0$), the excitation emf $E$ is obtained from the phasor relation $V_{\text{ph}} = E + j I_{\text{ph}} X_s$. With $I_{\text{ph}}$ in phase with $V_{\text{ph}}$,
+$$
+E = V_{\text{ph}} - j I_{\text{ph}} X_s = 1905.3 - j(174.95 \times 3.4) = 1905.3 - j594.8.
+$$
 Magnitude:
-$$E = \sqrt{1905.3^2 + 594.8^2} \approx 1996\ \text{V/phase}.$$
-Load angle $\delta$ (angle by which $E$ lags $V_{\text{ph}}$):
-$$\delta = \tan^{-1}\!\left(\frac{594.8}{1905.3}\right) \approx 17.34^\circ.$$
-
-**Step 2: Power-angle relation**
-For a cylindrical-rotor synchronous machine, the per-phase electromagnetic power is
-$$P_{\text{ph}} = \frac{V_{\text{ph}} E}{X_s}\sin\delta.$$
-Hence total three-phase power:
-$$P = 3\,\frac{V_{\text{ph}} E}{X_s}\sin\delta = P_{\max}\sin\delta,$$
-where the maximum power for fixed excitation (constant $E$) is
-$$P_{\max} = \frac{3 V_{\text{ph}} E}{X_s}.$$
-
-**Step 3: Maximum power at the given excitation**
-Substituting the values:
 $$
-\begin{aligned}
-P_{\max} &= \frac{3 \times 1905.3 \times 1996}{3.4}
-       \approx 3.356 \times 10^6\ \text{W}
-       = 3.36\ \text{MW}.
-\end{aligned}
+|E| = \sqrt{1905.3^2 + 594.8^2} \approx 1996\text{ V (phase)}.
+$$
+The load angle $\delta$ (by which $E$ lags $V_{\text{ph}}$) is
+$$
+\delta = \tan^{-1}\frac{594.8}{1905.3} \approx 17.34^\circ.
 $$
 
-**Step 4: Maximum torque**
+**Step 2 - Maximum power (pull-out power):**
+For a cylindrical-rotor machine with negligible resistance, the per-phase electromagnetic power is
+$$
+P_{\text{ph}} = \frac{V_{\text{ph}} E}{X_s}\sin\delta.
+$$
+With fixed field excitation ($E$ constant), maximum power occurs at $\delta = 90^\circ$:
+$$
+P_{\max} = 3\,\frac{V_{\text{ph}} E}{X_s}
+        = 3 \times \frac{1905.3 \times 1996}{3.4}
+        \approx 3.356 \times 10^6\text{ W}.
+$$
+Hence $P_{\max} \approx 3.36\text{ MW}$.
+
+**Step 3 - Maximum torque:**
 Synchronous speed:
-$$N_s = \frac{120 f}{P} = \frac{120 \times 50}{24} = 250\ \text{rpm}.$$
-Angular velocity:
-$$\omega_m = \frac{2\pi N_s}{60} = \frac{2\pi \times 250}{60} \approx 26.18\ \text{rad/s}.$$
-Thus, the pull-out (maximum) torque is
-$$T_{\max} = \frac{P_{\max}}{\omega_m} = \frac{3.356 \times 10^6}{26.18} \approx 128.2 \times 10^3\ \text{N·m} = 128\ \text{kN·m}.$$
+$$
+N_s = \frac{120 f}{P} = \frac{120 \times 50}{24} = 250\text{ rpm},
+\qquad
+\omega_m = \frac{2\pi N_s}{60} = \frac{2\pi \times 250}{60} \approx 26.18\text{ rad/s}.
+$$
+Pull-out torque:
+$$
+T_{\max} = \frac{P_{\max}}{\omega_m} = \frac{3.356 \times 10^6}{26.18} \approx 128.2 \times 10^3 \text{N}\cdot\text{m} \;\;(\approx 128 \text{kN}\cdot\text{m}).
+$$
 
-**Step 5: Power-angle characteristic (explanation)**
-The power output of the motor follows $P = P_{\max}\sin\delta$. This relationship is a sine wave:
-- At no load, $\delta \approx 0^\circ$, $P \approx 0$.
-- As the mechanical load increases, $\delta$ advances, and the power delivered rises.
-- Maximum power occurs at $\delta = 90^\circ$, where $\sin\delta = 1$. This is the steady-state stability limit.
-- If the load torque attempts to exceed $T_{\max}$, $\delta$ would increase beyond $90^\circ$, the power would decrease, and the motor would lose synchronism (pull out).
-- Stable operation is possible only for $0^\circ < \delta < 90^\circ$. The motor normally operates with a load angle well below $90^\circ$ (here $17.34^\circ$ at rated load).
+**Step 4 - Power-angle characteristic (explanation):**
+The motor's power-angle relation is $P = P_{\max}\sin\delta$.
+- At no load $\delta \approx 0^\circ$, $P \approx 0$.
+- As mechanical load increases, $\delta$ advances and the developed power rises.
+- Stable operation is possible only in the range $0^\circ < \delta < 90^\circ$.
+- The maximum power (steady-state stability limit) is reached at $\delta = 90^\circ$.
+- If the load torque exceeds $T_{\max}$, $\delta$ would exceed $90^\circ$, the electromagnetic power would *decrease*, and the motor would lose synchronism (pull-out).
+- In this machine, with the excitation set for unity pf at rated load ($\delta \approx 17.34^\circ$), the motor can deliver up to **3.36 MW**-about **3.36 times** the rated power-before pulling out. The corresponding maximum torque is **≈128 kN·m**.
 
-In this machine, with the field excitation adjusted for unity pf at rated $1000\ \text{kW}$, the maximum power the motor can deliver without losing synchronism is **3.36 MW**, and the corresponding maximum torque is approximately **128 kN·m**. This represents an overload capability of about 3.36 times the rated power.
-
-> **Final answer:** Maximum power = **3.36 MW**; maximum torque ≈ **128 kN·m**.
+> **Final answer:** Maximum power = **3.36 MW**; maximum torque = **128 kN m**.
 
 
 ---
-

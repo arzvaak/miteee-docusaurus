@@ -1,0 +1,98 @@
+[
+  {
+    "id": "induction_equivalent_circuit",
+    "title": "Induction motor equivalent circuit",
+    "file": "Induction-Motor-Equiv-Circuit.svg",
+    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Induction-Motor-Equiv-Circuit.svg",
+    "source": "Wikimedia Commons: File:Induction-Motor-Equiv-Circuit.svg",
+    "keywords": ["induction", "equivalent", "circuit", "rotor", "stator", "slip", "approximate", "blocked", "no-load"]
+  },
+  {
+    "id": "induction_circle_diagram",
+    "title": "Induction motor circle diagram",
+    "file": "Circle_diagram.jpg",
+    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Circle_diagram.jpg",
+    "source": "Wikimedia Commons: File:Circle diagram.jpg",
+    "keywords": ["circle", "diagram", "induction", "performance", "maximum", "power", "losses", "slip"]
+  },
+  {
+    "id": "circle_simplified_equivalent",
+    "title": "Simplified equivalent circuit for circle diagram",
+    "file": "IMEQCCTCircle.jpg",
+    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/IMEQCCTCircle.jpg",
+    "source": "Wikimedia Commons: File:IMEQCCTCircle.jpg",
+    "keywords": ["circle", "equivalent", "simplified", "induction", "current", "locus"]
+  },
+  {
+    "id": "rotating_magnetic_field",
+    "title": "Rotating three-phase magnetic field",
+    "file": "Rotating-3-phase-magnetic-field.svg",
+    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Rotating-3-phase-magnetic-field.svg",
+    "source": "Wikimedia Commons: File:Rotating-3-phase-magnetic-field.svg",
+    "keywords": ["rotating", "magnetic", "field", "three-phase", "rmf", "phase", "stator", "synchronous", "speed"]
+  },
+  {
+    "id": "single_phase_capacitor_motor",
+    "title": "Capacitor-start single-phase induction motor circuit",
+    "file": "Capasitor-start_single-phase_motor_circuit_diagram.svg",
+    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Capasitor-start%20single-phase%20motor%20circuit%20diagram.svg",
+    "source": "Wikimedia Commons: File:Capasitor-start single-phase motor circuit diagram.svg",
+    "keywords": ["single-phase", "capacitor", "start", "auxiliary", "winding", "split", "phase", "starting"]
+  },
+  {
+    "id": "single_phase_motor_schematic",
+    "title": "Single-phase induction motor schematic",
+    "file": "Condensatormotor.svg",
+    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Condensatormotor.svg",
+    "source": "Wikimedia Commons: File:Condensatormotor.svg",
+    "keywords": ["single-phase", "capacitor", "motor", "starting", "running", "winding", "auxiliary"]
+  },
+  {
+    "id": "synchronous_generator",
+    "title": "Synchronous generator and phase output diagram",
+    "file": "Synchronous_generator_diagram.png",
+    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Synchronous%20generator%20diagram.png",
+    "source": "Wikimedia Commons: File:Synchronous generator diagram.png",
+    "keywords": ["synchronous", "generator", "alternator", "phase", "emf", "waveform", "salient", "pole"]
+  },
+  {
+    "id": "salient_pole_generator",
+    "title": "Salient-pole generator",
+    "file": "Salient_pole_generator.png",
+    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Salient%20pole%20generator.png",
+    "source": "Wikimedia Commons: File:Salient pole generator.png",
+    "keywords": ["salient", "pole", "synchronous", "generator", "direct", "quadrature", "blondel", "two-reaction"]
+  },
+  {
+    "id": "synchronous_machine_diagram",
+    "title": "Synchronous machine diagram",
+    "file": "Synchronous_Machine_Diagram.png",
+    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Synchronous%20Machine%20Diagram.png",
+    "source": "Wikimedia Commons: File:Synchronous Machine Diagram.png",
+    "keywords": ["synchronous", "machine", "rotor", "stator", "alternator", "motor", "construction"]
+  },
+  {
+    "id": "synchronous_motor",
+    "title": "Synchronous motor rotating field",
+    "file": "Synchronous_Motor.svg",
+    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Synchronous%20Motor.svg",
+    "source": "Wikimedia Commons: File:Synchronous Motor.svg",
+    "keywords": ["synchronous", "motor", "rotating", "field", "power", "angle", "pull", "torque"]
+  },
+  {
+    "id": "synchronous_v_curve",
+    "title": "V-curves of synchronous motor",
+    "file": "V_curve_synchronous_motor.svg",
+    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/V%20curve%20synchronous%20motor.svg",
+    "source": "Wikimedia Commons: File:V curve synchronous motor.svg",
+    "keywords": ["v-curve", "v curves", "synchronous", "motor", "excitation", "field", "armature", "current", "power factor"]
+  },
+  {
+    "id": "alternator_basic",
+    "title": "Basic alternator operation",
+    "file": "Alternator_1.svg",
+    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Alternator%201.svg",
+    "source": "Wikimedia Commons: File:Alternator 1.svg",
+    "keywords": ["alternator", "emf", "generation", "coil", "rotor", "stator", "waveform"]
+  }
+]
