@@ -37,6 +37,9 @@
     "@types/react": "^19.0.0",
     "typescript": "~6.0.2"
   },
+  "overrides": {
+    "webpack": "5.101.3"
+  },
   "browserslist": {
     "production": [
       ">0.5%",
