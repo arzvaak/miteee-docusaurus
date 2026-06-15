@@ -6,6 +6,7 @@ const root = process.cwd();
 const files = [
   "docs/sem5/em2/pyq-answer-bank.md",
   "docs/sem5/em2/pyq-unique-question-bank.md",
+  "docs/sem5/em2/theory-question-bank.md",
 ];
 
 function scanMath(text) {
