@@ -403,8 +403,8 @@ A 115 V, 60 Hz, 3 phase star connected, 6 pole induction motor has stator impeda
 **Concept:** Approximate equivalent circuit with magnetising branch placed across supply.
 **Given:** 115 V (L), 60 Hz, 6-pole, star, $Z_1 = 0.07+j0.3\,\Omega$, $Z_2' = 0.08+j0.3\,\Omega$ (standstill), $G_0=0.022\,S$, $B_0=0.158\,S$, $s=2\%$.
 
-![Induction motor equivalent circuit](https://commons.wikimedia.org/wiki/Special:Redirect/file/Induction-Motor-Equiv-Circuit.svg)
-*Figure: Per-phase approximate equivalent circuit. Source: Wikimedia Commons.*
+![Induction motor equivalent circuit](https://www.electricaltechnology.org/wp-content/uploads/2022/03/Approximate-Equivalent-Circuit-of-Induction-Motor-768x357.png)
+*Figure: Per-phase approximate equivalent circuit of a three-phase induction motor. Source: [Electrical Technology](https://www.electricaltechnology.org/2022/04/equivalent-circuit-induction-motor.html).*
 
 **Solution:**
 $V_{ph} = 115/\sqrt{3} = 66.4\,V$.
@@ -491,8 +491,8 @@ P_{\text{in}} &= P_{\text{mech}} + P_{\text{rcu}} + P_{\text{stator loss}} \\
 \end{aligned}
 $$
 
-![Induction motor equivalent circuit](https://commons.wikimedia.org/wiki/Special:Redirect/file/Induction-Motor-Equiv-Circuit.svg)
-*Figure: Per-phase equivalent circuit of a three-phase induction motor. Source: Wikimedia Commons: File:Induction-Motor-Equiv-Circuit.svg.*
+![Induction motor equivalent circuit](https://www.electricaltechnology.org/wp-content/uploads/2022/03/Approximate-Equivalent-Circuit-of-Induction-Motor-768x357.png)
+*Figure: Per-phase approximate equivalent circuit of a three-phase induction motor. Source: [Electrical Technology](https://www.electricaltechnology.org/2022/04/equivalent-circuit-induction-motor.html).*
 
 > **Final answer:** (i) Rotor Cu loss $\approx 305\ \text{W}$, rotor frequency $= 0.75\ \text{Hz}$; (ii) total input power $\approx 22.1\ \text{kW}$.
 
@@ -509,8 +509,8 @@ The rotor of a 6-pole, 50 Hz, slip ring induction motor has a resistance of 0.2 
 **Concept:** For constant load torque, rotor current and $R_2/s$ remain essentially constant.
 **Given:** 6-pole, 50 Hz, $R_2=0.2\,\Omega/\text{phase}$, full-load speed 960 rpm, desired speed 800 rpm.
 
-![Induction motor equivalent circuit](https://commons.wikimedia.org/wiki/Special:Redirect/file/Induction-Motor-Equiv-Circuit.svg)
-*Figure: Equivalent circuit showing rotor resistance control. Source: Wikimedia Commons.*
+![Induction motor equivalent circuit](https://www.electricaltechnology.org/wp-content/uploads/2022/03/Approximate-Equivalent-Circuit-of-Induction-Motor-768x357.png)
+*Figure: Per-phase approximate equivalent circuit of a three-phase induction motor. Source: [Electrical Technology](https://www.electricaltechnology.org/2022/04/equivalent-circuit-induction-motor.html).*
 
 **Solution:**
 $N_s = \dfrac{120 \times 50}{6} = 1000$ rpm.
@@ -666,8 +666,8 @@ $$
 
 **Step 2: Power-flow relations**
 
-![Induction motor equivalent circuit](https://commons.wikimedia.org/wiki/Special:Redirect/file/Induction-Motor-Equiv-Circuit.svg)
-*Figure: Per-phase equivalent circuit of a three-phase induction motor. Source: Wikimedia Commons: File:Induction-Motor-Equiv-Circuit.svg.*
+![Induction motor equivalent circuit](https://www.electricaltechnology.org/wp-content/uploads/2022/03/Approximate-Equivalent-Circuit-of-Induction-Motor-768x357.png)
+*Figure: Per-phase approximate equivalent circuit of a three-phase induction motor. Source: [Electrical Technology](https://www.electricaltechnology.org/2022/04/equivalent-circuit-induction-motor.html).*
 
 From the equivalent circuit we have:
 
@@ -1111,8 +1111,8 @@ $\cos\phi_{\text{sc}} = \frac{4000}{\sqrt{3}\times 150\times 40} = 0.385$, $\phi
 4. The stator-current locus is a circle through $O'$ and $A$; its centre lies on the perpendicular bisector of $O'A$ and a line parallel to $OV$ at a distance $V_{\text{ph}}/(2X_{\text{eq}})$.
 5. Torque line: divide $AA'$ in ratio $R_1:R_2' = 1:1$; output line is $O'$ joined to this division point.
 
-![Circle diagram of induction motor](https://commons.wikimedia.org/wiki/Special:Redirect/file/Circle_diagram.jpg)
-*Figure: Circle diagram showing no-load point $O'$, standstill point $A$, and output/torque lines. Source: Wikimedia Commons.*
+![Circle diagram of induction motor](https://www.electrical4u.com/wp-content/uploads/parts-of-a-circle-diagram.png)
+*Figure: Circle diagram of a three-phase induction motor, indicating output line, torque line, and slip. Source: [Electrical4U](https://www.electrical4u.com/circle-diagram/).*
 
 **(a) Shaft power = 40 HP = 29.84 kW**
 Constant losses: $P_{\text{const}} \approx P_0 - 3I_0^2 R_1 = 1000 - 3\times 10^2 \times 0.4167 = 875\,\text{W}$.
@@ -1165,8 +1165,8 @@ The diagram also contains three important reference lines:
 - **Torque line**: a line such that the vertical distance from $P$ to this line is proportional to the air-gap power $P_{ag}$.
 - **Output line**: a line such that the vertical distance from $P$ to this line represents the mechanical power developed.
 
-![Circle diagram](https://commons.wikimedia.org/wiki/Special:Redirect/file/Circle_diagram.jpg)
-*Figure: Circle diagram of induction motor showing phasors, output line and torque line. Source: Wikimedia Commons.*
+![Circle diagram](https://www.electrical4u.com/wp-content/uploads/parts-of-a-circle-diagram.png)
+*Figure: Circle diagram of a three-phase induction motor, indicating output line, torque line, and slip. Source: [Electrical4U](https://www.electrical4u.com/circle-diagram/).*
 
 **Starting torque identification:**
 At starting $s=1$, the operating point coincides with the blocked-rotor point $B$.
@@ -1216,8 +1216,8 @@ $$
 Given $R_1 = 0.36\ \Omega$, referred rotor resistance $R_2' = R_{01} - R_1 = 9.87\ \Omega$. Assuming equal stator and rotor leakage reactances, $X_1 = X_2' = X_{01}/2 = 10.15\ \Omega$.
 
 **Equivalent circuit** (Figure below):
-![Induction motor equivalent circuit](https://commons.wikimedia.org/wiki/Special:Redirect/file/Induction-Motor-Equiv-Circuit.svg)
-*Figure: Per-phase exact equivalent circuit with parameters. Source: Wikimedia Commons.*
+![Induction motor equivalent circuit](https://www.electricaltechnology.org/wp-content/uploads/2022/03/Approximate-Equivalent-Circuit-of-Induction-Motor-768x357.png)
+*Figure: Per-phase approximate equivalent circuit of a three-phase induction motor. Source: [Electrical Technology](https://www.electricaltechnology.org/2022/04/equivalent-circuit-induction-motor.html).*
 
 > **Final answer:** Per-phase stator-referred parameters: magnetizing branch $R_c = 1206\ \Omega$, $X_m = 213\ \Omega$; stator series $R_1 = 0.36\ \Omega$, $X_1 = 10.15\ \Omega$; rotor referred $R_2' = 9.87\ \Omega$, $X_2' = 10.15\ \Omega$.
 
@@ -1271,8 +1271,8 @@ The phasor diagram (taking $V$ as reference) shows $I_m$ lagging by $\phi_m$ and
 
 Once the motor reaches about $70\!-\!80\%$ of synchronous speed, a centrifugal switch disconnects the auxiliary winding and capacitor; they are not needed for running.
 
-![Capacitor-start motor circuit](https://commons.wikimedia.org/wiki/Special:Redirect/file/Capasitor-start%20single-phase%20motor%20circuit%20diagram.svg)
-*Figure: Capacitor-start single-phase induction motor circuit. Source: Wikimedia Commons.*
+![Capacitor-start motor circuit](https://www.electricalvolt.com/wp-content/uploads/2023/02/cap1-1024x615.png)
+*Figure: Circuit diagram of a capacitor-start single-phase induction motor with main and auxiliary windings, capacitor, and centrifugal switch. Source: [Electrical Volt](https://www.electricalvolt.com/capacitor-start-induction-motor/).*
 
 > **Final answer:** The capacitor causes a time-phase displacement between the main and auxiliary winding currents. Together with the spatial displacement of the windings, this creates a rotating field that produces the necessary starting torque.
 
@@ -1396,8 +1396,8 @@ A synchronous machine is designed to run exactly at the synchronous speed ($s=0$
 
 **Construction and excitation**
 - *Synchronous machine*: Stator carries a three-phase winding producing a rotating field at $N_s = \frac{120 f}{P}$. The rotor houses a DC field winding fed via slip-rings or a brushless exciter (or uses permanent magnets).
-  ![Synchronous machine diagram](https://commons.wikimedia.org/wiki/Special:Redirect/file/Synchronous%20Machine%20Diagram.png)
-  *Figure: Cross-section of a salient-pole synchronous machine. The stator holds a three-phase winding; the rotor has a DC field winding supplied through slip rings. Source: Wikimedia Commons.*
+  ![Synchronous machine diagram](https://www.electricaltechnology.org/wp-content/uploads/2022/08/Construction-of-Synchronous-Motor-1024x513.png)
+  *Figure: Cutaway view of a synchronous machine illustrating the stator (armature) and salient-pole rotor (field) construction, including damper windings. Source: [ElectricalTechnology](https://www.electricaltechnology.org/2022/09/synchronous-motor.html).*
 - *Induction motor*: Stator is identical; rotor consists of short-circuited conductors (squirrel-cage or wound rotor). No external DC source is connected. Rotor currents are induced solely by the slip-dependent voltage.
 
 **Speed-slip relationship**
@@ -1408,9 +1408,8 @@ $$\begin{aligned} N_s &= \frac{120 f}{P}, \quad s = \frac{N_s - N_r}{N_s}. \end{
 **Torque production**
 - Synchronous machine: Torque is produced by the magnetic attraction between stator and rotor fields. It exists even at standstill (reluctance torque) and at zero slip. The electromagnetic torque is proportional to $\sin\delta$, where $\delta$ is the load angle.
 - Induction motor: Torque depends entirely on the slip-frequency rotor currents. The per-phase equivalent circuit (see Figure) shows that the rotor branch contains a resistance $R_2'/s$.
-  ![Induction motor equivalent circuit](https://commons.wikimedia.org/wiki/Special:Redirect/file/Induction-Motor-Equiv-Circuit.svg)
-  *Figure: Per-phase equivalent circuit of a three-phase induction motor. The rotor resistance $R_2'/s$ grows as slip decreases; at synchronism ($s=0$) the branch becomes open, giving zero rotor current and zero torque. Source: Wikimedia Commons.*
-At small slips, developed torque $T \propto s/R_2'$. At $s=0$ (synchronous speed), the rotor emf and current are zero; hence no torque is produced. Therefore, an induction machine cannot operate at synchronous speed under load.
+  ![Induction motor equivalent circuit](https://www.electricaltechnology.org/wp-content/uploads/2022/03/Approximate-Equivalent-Circuit-of-Induction-Motor-768x357.png)
+  *Figure: Per-phase approximate equivalent circuit of a three-phase induction motor. Source: [Electrical Technology](https://www.electricaltechnology.org/2022/04/equivalent-circuit-induction-motor.html).*
 
 **Additional differentiating features**
 - *Starting*: Synchronous machine is not self-starting - requires damper windings, a pony motor, or variable-frequency drive. Induction motor is self-starting when connected to the three-phase supply.
@@ -1454,8 +1453,8 @@ For a fixed real power $P$, the load angle $\delta$ is nearly constant. The exci
 
 These operating regions are summarised by the **V-curves** ($I_a$ vs $I_f$ at constant $P$), which have a distinct minimum at unity pf.
 
-![V-curves of a synchronous motor](https://commons.wikimedia.org/wiki/Special:Redirect/file/V%20curve%20synchronous%20motor.svg)
-*Figure: V-curves for a synchronous motor; a similar family of curves exists for generators. Source: Wikimedia Commons: File:V curve synchronous motor.svg.*
+![V-curves of a synchronous motor](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEilQK1NE7HmoMgXP_PKVh_Q-WnXZp13NLqmy7AGbNPtXiIHNKS-dW2QjSegPdF5YUJVJXES79SFSx_us0o8btdJh3s8oxodUcekhqcDPY9dxpHZKx6JrYjEOfjn3fba3ghU_xMllpH1I8NAMYSIN-KmfcA-ieOgrD068DPD4maETRk9ps0isSqv8w/w1600/Picture238.png)
+*Figure: V-curves of synchronous motor: Armature current versus field current for various mechanical loads, along with the inverted V-curves showing power factor variation. Source: [www.electricaldesks.com](https://www.electricaldesks.com/2023/01/v-curves-and-inverted-v-curves-of-synchronous-motor.html).*
 
 In contrast, an induction machine has a short-circuited rotor; its magnetic field can be established only by drawing lagging reactive current from the stator. Its power factor is inherently lagging and cannot be varied without external capacitors. Thus, the ability to independently control the rotor flux makes the synchronous machine uniquely capable of operating at different power factors.
 
@@ -1822,8 +1821,8 @@ For a given active power and terminal voltage, reducing excitation reduces $E$. 
 
 For a fixed real power output, the reactive power exchange is controlled by excitation. Varying the field current $I_f$ changes $E$ and therefore the phase of $I_a$ relative to $V$. This relationship is described by the V-curves ($I_a$ vs $I_f$) or the inverted V-curves (pf vs $I_f$).
 
-![V curves of synchronous motor](https://commons.wikimedia.org/wiki/Special:Redirect/file/V%20curve%20synchronous%20motor.svg)
-*Figure: Typical V-curves for a synchronous machine. At minimum armature current the power factor is unity; to the left the machine is under-excited and draws lagging reactive power, to the right it is over-excited and supplies leading reactive power.* Source: Wikimedia Commons: File:V curve synchronous motor.svg.
+![V curves of synchronous motor](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEilQK1NE7HmoMgXP_PKVh_Q-WnXZp13NLqmy7AGbNPtXiIHNKS-dW2QjSegPdF5YUJVJXES79SFSx_us0o8btdJh3s8oxodUcekhqcDPY9dxpHZKx6JrYjEOfjn3fba3ghU_xMllpH1I8NAMYSIN-KmfcA-ieOgrD068DPD4maETRk9ps0isSqv8w/w1600/Picture238.png)
+*Figure: V-curves of synchronous motor: Armature current versus field current for various mechanical loads, along with the inverted V-curves showing power factor variation. Source: [www.electricaldesks.com](https://www.electricaldesks.com/2023/01/v-curves-and-inverted-v-curves-of-synchronous-motor.html).*
 
 As excitation is increased from a low value, the power factor improves from lagging, passes through unity at the dip of the V-curve, and then becomes leading. The ability to shift the power factor makes the synchronous generator a vital tool for voltage control and power-factor correction in power systems.
 
@@ -2010,8 +2009,8 @@ When excitation is varied:
 
 Thus, at constant load the synchronous motor can control its reactive power exchange by changing field current. The variation of armature current and power factor with excitation is depicted by V-curves and inverted V-curves.
 
-![V curves of synchronous motor](https://commons.wikimedia.org/wiki/Special:Redirect/file/V%20curve%20synchronous%20motor.svg)
-*Figure: V-curves showing armature current vs field current at constant load. The minimum corresponds to unity power factor; left side lagging, right side leading.* Source: Wikimedia Commons: File:V curve synchronous motor.svg.
+![V curves of synchronous motor](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEilQK1NE7HmoMgXP_PKVh_Q-WnXZp13NLqmy7AGbNPtXiIHNKS-dW2QjSegPdF5YUJVJXES79SFSx_us0o8btdJh3s8oxodUcekhqcDPY9dxpHZKx6JrYjEOfjn3fba3ghU_xMllpH1I8NAMYSIN-KmfcA-ieOgrD068DPD4maETRk9ps0isSqv8w/w1600/Picture238.png)
+*Figure: V-curves of synchronous motor: Armature current versus field current for various mechanical loads, along with the inverted V-curves showing power factor variation. Source: [www.electricaldesks.com](https://www.electricaldesks.com/2023/01/v-curves-and-inverted-v-curves-of-synchronous-motor.html).*
 
 > **Final answer:** With constant load, varying field excitation changes only the reactive component of armature current while the active component stays fixed. This shifts the power factor from lagging (under-excitation) through unity to leading (over-excitation), allowing the motor to act as a variable reactive power compensator.
 

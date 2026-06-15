@@ -114,7 +114,8 @@ def safe_filename(name: str) -> str:
 def load_diagrams() -> list[dict[str, Any]]:
     diagrams = json.loads(MANIFEST.read_text(encoding="utf-8"))
     for item in diagrams:
-        item["file"] = safe_filename(item["file"])
+        if "file" in item:
+            item["file"] = safe_filename(item["file"])
         item["path"] = item["url"]
     return diagrams
 
@@ -146,6 +147,8 @@ def diagram_candidates(block: QuestionBlock, diagrams: list[dict[str, Any]], lim
             "title": item["title"],
             "path": item["path"],
             "source": item["source"],
+            "source_page": item.get("source_page", item["path"]),
+            "caption": item.get("caption", item["title"]),
         }
         for _, item in scored[:limit]
     ]
@@ -179,8 +182,8 @@ Diagram requirements:
 - Use at most one diagram only when it genuinely helps.
 - Use only the provided web_diagram_candidates.
 - If using a diagram, insert Markdown exactly like:
-  ![short alt text](https://commons.wikimedia.org/wiki/Special:Redirect/file/FILENAME)
-  *Figure: one short caption. Source: SOURCE.*
+  ![short alt text](DIRECT_IMAGE_URL)
+  *Figure: one short caption. Source: [SOURCE](SOURCE_PAGE_URL).*
 - Do not use textbook/OCR image paths and do not invent image paths.
 """
 
@@ -229,10 +232,8 @@ def local_validate_answer(answer: str, allowed_paths: set[str]) -> list[str]:
     if re.search(r"\b(TBD|TODO|placeholder|not available|OCR)\b", answer, flags=re.I):
         errors.append("contains placeholder/OCR wording")
     for path in re.findall(r"!\[[^\]]*]\(([^)]+)\)", answer):
-        if path.startswith("https://commons.wikimedia.org/wiki/Special:Redirect/file/") and path not in allowed_paths:
+        if path not in allowed_paths:
             errors.append(f"unknown diagram path {path}")
-        elif not path.startswith("https://commons.wikimedia.org/wiki/Special:Redirect/file/"):
-            errors.append(f"invalid image path {path}")
     for block in answer.split("$$")[1::2]:
         if re.search(r"(?<!\\)%", block):
             errors.append("unescaped percent inside display math")

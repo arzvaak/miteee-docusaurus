@@ -1,98 +1,155 @@
 [
   {
     "id": "induction_equivalent_circuit",
-    "title": "Induction motor equivalent circuit",
-    "file": "Induction-Motor-Equiv-Circuit.svg",
-    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Induction-Motor-Equiv-Circuit.svg",
-    "source": "Wikimedia Commons: File:Induction-Motor-Equiv-Circuit.svg",
-    "keywords": ["induction", "equivalent", "circuit", "rotor", "stator", "slip", "approximate", "blocked", "no-load"]
+    "title": "Approximate Equivalent Circuit of Induction Motor",
+    "url": "https://www.electricaltechnology.org/wp-content/uploads/2022/03/Approximate-Equivalent-Circuit-of-Induction-Motor-768x357.png",
+    "source": "Electrical Technology",
+    "source_page": "https://www.electricaltechnology.org/2022/04/equivalent-circuit-induction-motor.html",
+    "caption": "Per-phase approximate equivalent circuit of a three-phase induction motor",
+    "keywords": [
+      "induction motor",
+      "equivalent circuit",
+      "per-phase",
+      "approximate",
+      "stator",
+      "rotor",
+      "slip"
+    ],
+    "curation_note": "Clear educational diagram from a stable and authoritative source, specifically showing the equivalent circuit with labels, suitable for exam reference."
   },
   {
     "id": "induction_circle_diagram",
-    "title": "Induction motor circle diagram",
-    "file": "Circle_diagram.jpg",
-    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Circle_diagram.jpg",
-    "source": "Wikimedia Commons: File:Circle diagram.jpg",
-    "keywords": ["circle", "diagram", "induction", "performance", "maximum", "power", "losses", "slip"]
-  },
-  {
-    "id": "circle_simplified_equivalent",
-    "title": "Simplified equivalent circuit for circle diagram",
-    "file": "IMEQCCTCircle.jpg",
-    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/IMEQCCTCircle.jpg",
-    "source": "Wikimedia Commons: File:IMEQCCTCircle.jpg",
-    "keywords": ["circle", "equivalent", "simplified", "induction", "current", "locus"]
-  },
-  {
-    "id": "rotating_magnetic_field",
-    "title": "Rotating three-phase magnetic field",
-    "file": "Rotating-3-phase-magnetic-field.svg",
-    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Rotating-3-phase-magnetic-field.svg",
-    "source": "Wikimedia Commons: File:Rotating-3-phase-magnetic-field.svg",
-    "keywords": ["rotating", "magnetic", "field", "three-phase", "rmf", "phase", "stator", "synchronous", "speed"]
+    "title": "Parts of a Circle Diagram of Induction Motor",
+    "url": "https://www.electrical4u.com/wp-content/uploads/parts-of-a-circle-diagram.png",
+    "source": "Electrical4U",
+    "source_page": "https://www.electrical4u.com/circle-diagram/",
+    "caption": "Circle diagram of a three-phase induction motor, indicating output line, torque line, and slip",
+    "keywords": [
+      "circle diagram",
+      "induction motor",
+      "output line",
+      "torque line",
+      "slip"
+    ],
+    "curation_note": "Clear educational diagram from a reputable source, specifically illustrating the key parts of the circle diagram relevant to performance analysis."
   },
   {
     "id": "single_phase_capacitor_motor",
-    "title": "Capacitor-start single-phase induction motor circuit",
-    "file": "Capasitor-start_single-phase_motor_circuit_diagram.svg",
-    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Capasitor-start%20single-phase%20motor%20circuit%20diagram.svg",
-    "source": "Wikimedia Commons: File:Capasitor-start single-phase motor circuit diagram.svg",
-    "keywords": ["single-phase", "capacitor", "start", "auxiliary", "winding", "split", "phase", "starting"]
+    "title": "Capacitor Start Induction Motor",
+    "url": "https://www.electricalvolt.com/wp-content/uploads/2023/02/cap1-1024x615.png",
+    "source": "Electrical Volt",
+    "source_page": "https://www.electricalvolt.com/capacitor-start-induction-motor/",
+    "caption": "Circuit diagram of a capacitor-start single-phase induction motor with main and auxiliary windings, capacitor, and centrifugal switch",
+    "keywords": [
+      "single-phase induction motor",
+      "capacitor start",
+      "circuit diagram",
+      "auxiliary winding",
+      "centrifugal switch"
+    ],
+    "curation_note": "Dedicated article on capacitor-start motor with clear circuit and phasor diagrams from a reputable electrical engineering site."
   },
   {
-    "id": "single_phase_motor_schematic",
-    "title": "Single-phase induction motor schematic",
-    "file": "Condensatormotor.svg",
-    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Condensatormotor.svg",
-    "source": "Wikimedia Commons: File:Condensatormotor.svg",
-    "keywords": ["single-phase", "capacitor", "motor", "starting", "running", "winding", "auxiliary"]
-  },
-  {
-    "id": "synchronous_generator",
-    "title": "Synchronous generator and phase output diagram",
-    "file": "Synchronous_generator_diagram.png",
-    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Synchronous%20generator%20diagram.png",
-    "source": "Wikimedia Commons: File:Synchronous generator diagram.png",
-    "keywords": ["synchronous", "generator", "alternator", "phase", "emf", "waveform", "salient", "pole"]
-  },
-  {
-    "id": "salient_pole_generator",
-    "title": "Salient-pole generator",
-    "file": "Salient_pole_generator.png",
-    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Salient%20pole%20generator.png",
-    "source": "Wikimedia Commons: File:Salient pole generator.png",
-    "keywords": ["salient", "pole", "synchronous", "generator", "direct", "quadrature", "blondel", "two-reaction"]
-  },
-  {
-    "id": "synchronous_machine_diagram",
-    "title": "Synchronous machine diagram",
-    "file": "Synchronous_Machine_Diagram.png",
-    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Synchronous%20Machine%20Diagram.png",
-    "source": "Wikimedia Commons: File:Synchronous Machine Diagram.png",
-    "keywords": ["synchronous", "machine", "rotor", "stator", "alternator", "motor", "construction"]
-  },
-  {
-    "id": "synchronous_motor",
-    "title": "Synchronous motor rotating field",
-    "file": "Synchronous_Motor.svg",
-    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Synchronous%20Motor.svg",
-    "source": "Wikimedia Commons: File:Synchronous Motor.svg",
-    "keywords": ["synchronous", "motor", "rotating", "field", "power", "angle", "pull", "torque"]
+    "id": "synchronous_machine_construction",
+    "title": "Construction of Synchronous Motor",
+    "url": "https://www.electricaltechnology.org/wp-content/uploads/2022/08/Construction-of-Synchronous-Motor-1024x513.png",
+    "source": "ElectricalTechnology",
+    "source_page": "https://www.electricaltechnology.org/2022/09/synchronous-motor.html",
+    "caption": "Cutaway view of a synchronous machine illustrating the stator (armature) and salient-pole rotor (field) construction, including damper windings",
+    "keywords": [
+      "synchronous",
+      "machine",
+      "construction",
+      "stator",
+      "rotor",
+      "field",
+      "salient",
+      "pole",
+      "damper"
+    ],
+    "curation_note": "High-resolution PNG diagram from a stable educational site, clearly labels stator and rotor components, and directly matches the synchronous machine construction topic."
   },
   {
     "id": "synchronous_v_curve",
-    "title": "V-curves of synchronous motor",
-    "file": "V_curve_synchronous_motor.svg",
-    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/V%20curve%20synchronous%20motor.svg",
-    "source": "Wikimedia Commons: File:V curve synchronous motor.svg",
-    "keywords": ["v-curve", "v curves", "synchronous", "motor", "excitation", "field", "armature", "current", "power factor"]
+    "title": "V Curves and Inverted V Curves of Synchronous Motor",
+    "url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEilQK1NE7HmoMgXP_PKVh_Q-WnXZp13NLqmy7AGbNPtXiIHNKS-dW2QjSegPdF5YUJVJXES79SFSx_us0o8btdJh3s8oxodUcekhqcDPY9dxpHZKx6JrYjEOfjn3fba3ghU_xMllpH1I8NAMYSIN-KmfcA-ieOgrD068DPD4maETRk9ps0isSqv8w/w1600/Picture238.png",
+    "source": "www.electricaldesks.com",
+    "source_page": "https://www.electricaldesks.com/2023/01/v-curves-and-inverted-v-curves-of-synchronous-motor.html",
+    "caption": "V-curves of synchronous motor: Armature current versus field current for various mechanical loads, along with the inverted V-curves showing power factor variation",
+    "keywords": [
+      "v-curve",
+      "synchronous",
+      "motor",
+      "field",
+      "current",
+      "power factor"
+    ],
+    "curation_note": "High-resolution PNG (447 KB, 1600px width) from a dedicated electrical engineering blog, offering a clear and complete diagram of V-curves and inverted V-curves suitable for educational use."
   },
   {
-    "id": "alternator_basic",
-    "title": "Basic alternator operation",
-    "file": "Alternator_1.svg",
-    "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Alternator%201.svg",
-    "source": "Wikimedia Commons: File:Alternator 1.svg",
-    "keywords": ["alternator", "emf", "generation", "coil", "rotor", "stator", "waveform"]
+    "id": "alternator_phasor_lagging",
+    "title": "Synchronous generator phasor diagram at lagging power factor",
+    "url": "https://www.theengineeringknowledge.com/wp-content/uploads/2019/10/Phasor-Diagram-of-a-Synchronous-Generator-at-lagging-p.f.jpg",
+    "source": "The Engineering Knowledge",
+    "source_page": "https://www.theengineeringknowledge.com/phasor-diagram-of-a-synchronous-generator/",
+    "caption": "Phasor diagram of a synchronous generator on lagging power factor load",
+    "keywords": [
+      "alternator",
+      "synchronous generator",
+      "phasor",
+      "lagging power factor",
+      "voltage regulation"
+    ],
+    "curation_note": "Manual override after SearxNG targeted search; visually clearer and directly matches lagging power factor alternator phasor diagrams."
+  },
+  {
+    "id": "armature_reaction_phasor",
+    "title": "Phasor Diagram of a Loaded Alternator",
+    "url": "https://www.poriyaan.in/media/imgPori/images11/Mx5LHEt.png",
+    "source": "eee.poriyaan.in",
+    "source_page": "https://eee.poriyaan.in/topic/phasor-diagram-of-a-loaded-alternator-10170/",
+    "caption": "Phasor diagram of a loaded alternator illustrating armature reaction for lagging, leading, and unity power factor conditions",
+    "keywords": [
+      "armature reaction",
+      "phasor diagram",
+      "loaded alternator",
+      "lagging power factor",
+      "leading power factor",
+      "unity power factor"
+    ],
+    "curation_note": "Directly relevant phasor diagram from an electrical machines textbook page, covering the required power factor cases clearly and educationally."
+  },
+  {
+    "id": "salient_pole_generator",
+    "title": "Two Reaction Theory - Salient Pole Machine",
+    "url": "https://circuitglobe.com/wp-content/uploads/2016/01/two-reaction-theory-fig-1.jpg",
+    "source": "Circuit Globe",
+    "source_page": "https://circuitglobe.com/two-reaction-theory-salient-pole-synchronous-machine.html",
+    "caption": "Two-reaction model of salient-pole synchronous machine showing direct (d) and quadrature (q) axes",
+    "keywords": [
+      "salient pole",
+      "direct axis",
+      "quadrature axis",
+      "two reaction theory",
+      "synchronous generator"
+    ],
+    "curation_note": "Directly illustrates the d-axis and q-axis concept in a salient-pole rotor with clear labeling, from a reliable educational source."
+  },
+  {
+    "id": "salient_pole_phasor",
+    "title": "Blondel Two Reaction Phasor Diagram",
+    "url": "https://www.electricalengineeringinfo.com/wp-content/uploads/2016/12/New2BDoc2B1_2.png",
+    "source": "Electrical Engineering Info",
+    "source_page": "https://www.electricalengineeringinfo.com/2016/12/blondel-two-reaction-theory-salient-pole-alternators.html",
+    "caption": "Phasor diagram of salient-pole alternator illustrating Blondel two-reaction theory with direct (d) and quadrature (q) axis components",
+    "keywords": [
+      "salient",
+      "pole",
+      "phasor",
+      "Blondel",
+      "direct",
+      "quadrature"
+    ],
+    "curation_note": "Directly from a focused electrical engineering tutorial; shows the essential phasor relationships for salient-pole machines."
   }
 ]
