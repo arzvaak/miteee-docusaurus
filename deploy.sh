@@ -18,7 +18,7 @@ echo "==> Type-checking..."
 npm run typecheck
 
 echo "==> Building Docusaurus site..."
-NODE_OPTIONS="${NODE_OPTIONS:---max-old-space-size=8192}" npm run build
+NODE_OPTIONS="${NODE_OPTIONS:---max-old-space-size=4096}" npm run build
 
 echo "==> Backing up current webroot..."
 mkdir -p "$BACKUP_DIR" "$WEBROOT"
