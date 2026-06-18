@@ -6,12 +6,18 @@ APP_DIR="${APP_DIR:-/root/miteee-docusaurus}"
 WEBROOT="${WEBROOT:-/var/www/note.arzvak.com}"
 BACKUP_DIR="${BACKUP_DIR:-/root/note-arzvak-backups}"
 
+if [ -x /usr/bin/node ] && [ -x /usr/bin/npm ]; then
+  export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+fi
+
 cd "$APP_DIR"
 
 echo "==> Pulling latest source..."
 git pull --ff-only
 
 echo "==> Installing dependencies..."
+node -v
+npm -v
 npm ci
 
 echo "==> Type-checking..."

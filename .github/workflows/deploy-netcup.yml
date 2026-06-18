@@ -20,6 +20,23 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build site
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+        run: npm run build
+
       - name: Install deployment tools
         run: |
           sudo apt-get update
@@ -57,9 +74,8 @@ jobs:
             -e "ssh -i ~/.ssh/netcup_deploy_key" \
             ./ "$NETCUP_USER@$NETCUP_HOST:$NETCUP_APP_DIR/"
 
-      - name: Build and publish on Netcup
+      - name: Publish build to Netcup
         env:
-          NETCUP_APP_DIR: ${{ secrets.NETCUP_APP_DIR }}
           NETCUP_HOST: ${{ secrets.NETCUP_HOST }}
           NETCUP_USER: ${{ secrets.NETCUP_USER }}
           NETCUP_WEBROOT: ${{ secrets.NETCUP_WEBROOT }}
@@ -67,19 +83,19 @@ jobs:
           set -euo pipefail
           ssh -i ~/.ssh/netcup_deploy_key "$NETCUP_USER@$NETCUP_HOST" \
             "set -euo pipefail
-             test -n '$NETCUP_APP_DIR'
              test -n '$NETCUP_WEBROOT'
-             cd '$NETCUP_APP_DIR'
-             npm ci
-             npm run typecheck
-             NODE_OPTIONS='--max-old-space-size=4096' npm run build
              mkdir -p /root/note-arzvak-backups
              if [ -d '$NETCUP_WEBROOT' ]; then
                tar -C '$NETCUP_WEBROOT' -czf /root/note-arzvak-backups/note-arzvak-\$(date +%Y%m%d%H%M%S).tar.gz .
              else
                mkdir -p '$NETCUP_WEBROOT'
              fi
-             rsync -a --delete '$NETCUP_APP_DIR/build/' '$NETCUP_WEBROOT/'
+             mkdir -p '$NETCUP_WEBROOT'"
+          rsync -az --delete \
+            -e "ssh -i ~/.ssh/netcup_deploy_key" \
+            build/ "$NETCUP_USER@$NETCUP_HOST:$NETCUP_WEBROOT/"
+          ssh -i ~/.ssh/netcup_deploy_key "$NETCUP_USER@$NETCUP_HOST" \
+            "set -euo pipefail
              nginx -t
              nginx -s reload"
 

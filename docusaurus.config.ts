@@ -24,6 +24,19 @@ const config: Config = {
     locales: ['en'],
   },
 
+  future: {
+    faster: {
+      swcJsLoader: true,
+      swcJsMinimizer: true,
+      swcHtmlMinimizer: true,
+      lightningCssMinimizer: true,
+      mdxCrossCompilerCache: true,
+      rspackBundler: true,
+      rspackPersistentCache: true,
+      gitEagerVcs: true,
+    },
+  },
+
   markdown: {
     format: "md",
     mermaid: true,
