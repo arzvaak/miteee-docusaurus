@@ -1,658 +1,731 @@
-# ELE 3122 M&I — Tutorial 3 Solutions
-
-**Course:** ELE 3122 Measurements & Instrumentation
-**Tutorial Date:** 11.02.2025
-**Topics:** Bridge Circuits (Wheatstone, Kelvin Double, AC, Schering, Anderson), Transducers (Thermistor, Capacitive, Piezoelectric, Hall Effect, Strain Gauge)
-
+---
+id: tutorial-3
+title: Tutorial 3 - Bridges and Transducers
+sidebar_label: Tutorial 3
 ---
 
-## Exercise Questions
+Worked from the Tutorial 3 PDF. Each section keeps the given data, bridge/circuit relation, substitutions, and final answer visible.
 
----
+## Question 1
 
-### Q1 — Wheatstone Bridge with Thermistor (Temperature Measurement)
+The circuit in Figure (a) consists of temperature-sensitive resistor Rv. The R versus temperature plot is shown in Figure (b). Find bridge balance temperature and output at 60 °C.
 
-**Problem:** A bridge circuit has fixed arms of 5 kΩ each and a temperature-sensitive resistor $R_v$ as the fourth arm (supply = 6 V). The R vs Temperature graph shows $R_v = 5\ \text{k}\Omega$ at 80°C and $R_v = 4.5\ \text{k}\Omega$ at 60°C. Find:
-- (a) Temperature at which bridge is balanced
-- (b) Output voltage at 60°C
+### Learn the idea
 
-**Answer:** (a) $T = 80°C$; (b) $V_{out} = 0.158\ \text{V}$
+The Kelvin double bridge is used for very low resistance measurement. Equal ratio arms and negligible link resistance make the balance value straightforward; after a small resistance change, the galvanometer deflection is found from the small unbalance current.
 
-#### Circuit Diagram
+### Given and target
 
-```mermaid
-graph TD
-    VS["6V Supply"] --> A
-    A -->|"5 kΩ"| B
-    A -->|"5 kΩ"| C
-    B -->|"5 kΩ"| D
-    C -->|"Rv"| D
-    B <-->|"Output Signal"| C
-    D --> GND["GND"]
-```
+- Known values: bridge supply $V_s=6\,\mathrm{V}$; fixed arms are $5\,\mathrm{k}\Omega$; from the graph, $R_v=4.5\,\mathrm{k}\Omega$ at $60^\circ\mathrm{C}$ and $R_v=5\,\mathrm{k}\Omega$ at about $80^\circ\mathrm{C}$.
+- Target: find the bridge balance temperature and the bridge output at $60^\circ\mathrm{C}$.
 
-#### Solution
+### Annotated visual
 
-**Bridge balance condition:**
+![Temperature-sensitive Wheatstone bridge](assets/circuits/wheatstone_bridge_temperature.svg)
 
-For a Wheatstone bridge with arms $R_1, R_2, R_3, R_v$:
-$$\frac{R_1}{R_2} = \frac{R_3}{R_v}$$
+Marked circuit: the bridge is treated as two voltage dividers; output is the difference between the two midpoint voltages.
 
-With $R_1 = R_2 = R_3 = 5\ \text{k}\Omega$:
-$$\frac{5}{5} = \frac{5}{R_v} \Rightarrow R_v = 5\ \text{k}\Omega$$
+### Governing relation
 
-From the graph, $R_v = 5\ \text{k}\Omega$ at $T = \boxed{80°C}$ → bridge is balanced at 80°C.
+- $V_o=V_s[R_2/(R_1+R_2)-R_4/(R_v+R_4)]$
+- Balance requires the two midpoint voltages to be equal.
 
-**(b) Output voltage at 60°C** (where $R_v = 4.5\ \text{k}\Omega$ from graph):
+### Work it through
 
-The output voltage of an unbalanced bridge:
-$$V_{out} = V_s \left[\frac{R_v}{R_{top-right} + R_v} - \frac{R_{bottom-left}}{R_{top-left} + R_{bottom-left}}\right]$$
+Step 1: Write the left divider midpoint voltage.
 
-$$V_{out} = 6 \times \left[\frac{4.5}{5 + 4.5} - \frac{5}{5 + 5}\right] = 6 \times \left[\frac{4.5}{9.5} - \frac{5}{10}\right]$$
+$V_L=6\frac{5}{5+5}=3.000\,\mathrm{V}$
 
-$$V_{out} = 6 \times [0.4737 - 0.5000] = 6 \times (-0.0263)$$
+Step 2: Write the right divider midpoint voltage.
 
-$$\\lvert V_{out}\\rvert = \boxed{0.158\ \text{V}}$$
+$V_R=6\frac{R_v}{5+R_v}$
 
-:::tip[Wheatstone Bridge Balance]
-$$R_1 R_4 = R_2 R_3 \quad \text{(product of opposite arms)}$$
-At balance: no current through galvanometer, $V_{out} = 0$.
-:::
+Step 3: Find the balance condition.
 
+At balance, $V_L=V_R$:
 
----
+$3=6\frac{R_v}{5+R_v}$
 
-### Q2 — Kelvin Double Bridge
+$R_v=5\,\mathrm{k}\Omega$
 
-**Problem:** Kelvin Double Bridge with $P = Q = p = q = 1000\ \Omega$, battery EMF = 100 V, battery resistance $r_b = 5\ \Omega$, galvanometer resistance $R_G = 500\ \Omega$, link resistance ≈ 0.
-Bridge balanced at standard resistance $S = 0.001\ \Omega$.
+Step 4: Read the balance temperature from the supplied graph.
 
-- (a) Unknown resistance $R$
-- (b) Current through $R$ at balance
-- (c) Galvanometer deflection when $R$ changes by 0.1%
+The graph shows $R_v=5\,\mathrm{k}\Omega$ at about $80^\circ\mathrm{C}$.
 
-**Answer:** (a) $R = 0.001\ \Omega$; (b) $I = 20\ \text{A}$; (c) deflection = 1.34 mm
+Step 5: Read $R_v$ at $60^\circ\mathrm{C}$ from the graph.
 
-#### Circuit Diagram
+At $60^\circ\mathrm{C}$, the graph gives $R_v=4.5\,\mathrm{k}\Omega$.
 
-```mermaid
-graph LR
-    E["Battery\n100V"] --> a
-    a -->|"R (unknown)"| m
-    m -->|"link (≈0)"| n
-    n -->|"S = 0.001Ω"| b
-    b --> E
-    d -->|"P = 1000Ω"| a
-    d -->|"Q = 1000Ω"| b
-    d -->|"G (detector)"| G
-    G --> m_node["mid-link"]
-    c_node -->|"p = 1000Ω"| m_node
-    c_node -->|"q = 1000Ω"| n
-```
+Step 6: Calculate right divider voltage at $60^\circ\mathrm{C}$.
 
-#### Concept
+$V_R=6\frac{4.5}{5+4.5}=2.842\,\mathrm{V}$
 
-The Kelvin Double Bridge is designed specifically for measuring **very small resistances** (milliohm range). The second set of ratio arms ($p$, $q$) compensates for the error introduced by the finite resistance of the link connecting $R$ to $S$.
+Step 7: Calculate bridge output magnitude.
 
-**Balance condition** (when $P/Q = p/q$, link effect cancels):
-$$\frac{R}{S} = \frac{P}{Q}$$
+$V_o=V_L-V_R=3.000-2.842=0.158\,\mathrm{V}$
 
-#### Solution
+### Final answer
 
-**(a) Unknown resistance $R$:**
+Final answer from the figure data: **balance temperature $80^\circ\mathrm{C}$; output at $60^\circ\mathrm{C}$ is $0.158\,\mathrm{V}$**.
 
-$$\frac{R}{S} = \frac{P}{Q} = \frac{1000}{1000} = 1$$
+### Common trap
 
-$$R = S \cdot \frac{P}{Q} = 0.001 \times 1 = \boxed{0.001\ \Omega}$$
+Do not put detector resistance into the balance equation; at balance the detector current is zero.
 
-**(b) Current through $R$ at balance:**
+## Question 2
 
-At balance, the galvanometer draws no current, so the main circuit current is:
-$$I = \frac{E}{R + S + r_b} = \frac{100}{0.001 + 0.001 + 5} = \frac{100}{5.002} \approx \boxed{20\ \text{A}}$$
+Kelvin double bridge has P=Q=p=q=1000 Ω, battery 100 V with 5 Ω series resistance, galvanometer resistance 500 Ω, link resistance negligible. Balance at S=0.001 Ω. Find unknown R, current through R, and galvanometer deflection when R changes by 0.1%. Sensitivity is 200 mm/µA.
 
-**(c) Galvanometer deflection for $\delta R = 0.1\%$ change:**
+### Learn the idea
 
-Change in $R$: $\delta R = R \times 0.1\% = 0.001 \times 0.001 = 1 \times 10^{-6}\ \Omega$
+The Kelvin double bridge is used for very low resistance measurement. Equal ratio arms and negligible link resistance make the balance value straightforward; after a small resistance change, the galvanometer deflection is found from the small unbalance current.
 
-The open-circuit voltage unbalance (for $P = Q$):
-$$V_{oc} = I \cdot \delta R \cdot \frac{P}{P+Q} = 20 \times 10^{-6} \times \frac{1000}{2000} = 10\ \mu\text{V}$$
+### Given and target
 
-Thevenin resistance of the bridge (seen by galvanometer):
-$$R_{Th} \approx \frac{PQ}{P+Q} + \frac{pq}{p+q} = 500 + 500 = 1000\ \Omega$$
+- Known values: $P=Q=p=q=1000\,\Omega$; battery $100\,\mathrm{V}$; series resistance $5\,\Omega$; galvanometer resistance $500\,\Omega$; standard resistance at balance $S=0.001\,\Omega$; change in $R$ is $0.1\%$; galvanometer sensitivity $200\,\mathrm{mm}/\mu\mathrm{A}$.
+- Target: find unknown $R$, current through $R$, and galvanometer deflection when $R$ changes by $0.1\%$.
 
-Galvanometer current:
-$$I_G = \frac{V_{oc}}{R_{Th} + R_G} = \frac{10 \times 10^{-6}}{1000 + 500} = \frac{10 \times 10^{-6}}{1500} = 6.67\ \text{nA}$$
+### Annotated visual
 
-Deflection:
-$$d = S_g \times I_G = 200\ \text{mm/}\mu\text{A} \times 6.67 \times 10^{-3}\ \mu\text{A} = \boxed{1.34\ \text{mm}}$$
+![Kelvin double bridge balance circuit](assets/circuits/kelvin_double_bridge_marked.svg)
 
-:::tip[Kelvin Double Bridge]
-Used for **very low resistance** measurement (&lt; 1 Ω). The second pair of ratio arms ($p, q$) eliminates the effect of the connecting lead resistance. At balance: $R = S \cdot (P/Q)$ provided $P/Q = p/q$.
-:::
+Marked circuit: equal ratio arms make the balance condition reduce directly to $R=S$ when the link resistance is negligible.
 
+### Governing relation
 
----
+- $R=S=0.001\,\Omega$
+- $R+S+5=5.002\,\Omega$
+- $100/5.002\approx20\,\mathrm{A}$
+- Galvanometer deflection $=$ galvanometer current $\times$ sensitivity.
 
-### Q3 — AC Bridge for Unknown Inductance (Maxwell-Wien Variant)
+### Work it through
 
-**Problem:** AC bridge to measure $L_x$ (with inherent $R_x$). Parameters: $R_1 = 20\ \text{k}\Omega$, $R_2 = 50\ \text{k}\Omega$, $C_2 = 0.0037\ \mu\text{F}$, $\omega = 10^5\ \text{rad/s}$. $C_1$ adjustable (10 pF to 150 pF), $R_4$ adjustable (0 to 10 kΩ). Derive expressions for $R_x$ and $L_x$ and find maximum measurable values.
+Step 1: Apply the Kelvin bridge balance condition.
 
-**Answer:**
-$$R_x = \frac{R_2 R_4}{R_1} + \frac{R_4 C_1}{C_2}; \quad L_x = R_2 R_4 C_1 - \frac{R_4}{\omega^2 C_2 R_1}$$
-$R_x^{max} = 25.41\ \text{k}\Omega$; $L_x^{max} = 61.48\ \text{mH}$
+For equal ratio arms,
 
-#### Circuit Diagram
+$P=Q=p=q$
 
-```mermaid
-graph TD
-    subgraph Bridge Arms
-    Arm1["Arm 1: C2 (series R2)"]
-    Arm2["Arm 2: R1"]
-    Arm3["Arm 3: C1 (parallel with R1 at node)"]
-    Arm4["Arm 4: Rx + jωLx"]
-    end
-    Source["AC Source ω=10⁵ rad/s"] --> Bridge
-    Bridge --> Detector["Null Detector D"]
-```
+and the link resistance is negligible, so:
 
-#### Derivation of Balance Conditions
+$R=S$
 
-For AC bridge balance: $Z_1 \cdot Z_x = Z_2 \cdot Z_4$
+Step 2: Substitute the standard resistance at balance.
 
-The bridge arms are configured such that:
-- $Z_1$ includes $C_2$
-- $Z_2 = R_2$
-- $Z_4 = R_4$ and includes $C_1$ in one configuration
+$R=0.001\,\Omega$
 
-After applying the bridge balance condition $Z_1 Z_x = Z_2 Z_4$ and separating real and imaginary parts:
+Step 3: Calculate current through the low-resistance branch at balance.
 
-**Reactive balance** (independent of resistive balance):
-$$L_x = R_2 R_4 C_1 - \frac{R_4}{\omega^2 C_2 R_1}$$
+The external series resistance is $5\,\Omega$, and the low resistances are $R$ and $S$:
 
-**Resistive balance** (independent of reactive balance):
-$$R_x = \frac{R_2 R_4}{R_1} + \frac{R_4 C_1}{C_2}$$
+$R_{\text{total}}=5+0.001+0.001=5.002\,\Omega$
 
-:::note[Independence of Balance]
-The balance conditions for $R_x$ and $L_x$ are controlled by **independent** components ($C_1$ and $R_4$), so the bridge can be balanced for each quantity separately without interaction. This is a key advantage of this bridge design.
-:::
+$I=\frac{100}{5.002}=19.99\,\mathrm{A}\approx20\,\mathrm{A}$
 
+Step 4: Convert the $0.1\%$ change in $R$ into an unbalance.
 
-#### Maximum Measurable Values
+$\Delta R=0.001(0.1/100)=1.0\times10^{-6}\,\Omega$
 
-Using maximum values: $R_4 = 10\ \text{k}\Omega = 10^4\ \Omega$, $C_1 = 150\ \text{pF} = 150 \times 10^{-12}\ \text{F}$
+Step 5: Use the Kelvin bridge small-unbalance calculation with the given galvanometer resistance.
 
-**Maximum $R_x$:**
-$$R_x = \frac{50 \times 10^3 \times 10^4}{20 \times 10^3} + \frac{10^4 \times 150 \times 10^{-12}}{0.0037 \times 10^{-6}}$$
-$$= \frac{5 \times 10^8}{2 \times 10^4} + \frac{1.5 \times 10^{-6}}{3.7 \times 10^{-9}} = 25000 + 405.4 = \boxed{25.41\ \text{k}\Omega}$$
+Using the bridge network and $R_g=500\,\Omega$, the unbalance gives:
 
-**Maximum $L_x$:**
-$$L_x = 50 \times 10^3 \times 10^4 \times 150 \times 10^{-12} - \frac{10^4}{(10^5)^2 \times 0.0037 \times 10^{-6} \times 20 \times 10^3}$$
-$$= 5 \times 10^8 \times 150 \times 10^{-12} - \frac{10^4}{10^{10} \times 7.4 \times 10^{-2}}$$
-$$= 0.075 - 0.01351 = \boxed{61.48\ \text{mH}}$$
+$I_g\approx0.0067\,\mu\mathrm{A}$
 
----
+Step 6: Convert galvanometer current into deflection.
 
-### Q4 — Low-Voltage Schering Bridge (Permittivity Measurement)
+$d=(0.0067\,\mu\mathrm{A})(200\,\mathrm{mm}/\mu\mathrm{A})=1.34\,\mathrm{mm}$
 
-**Problem:** Schering bridge for permittivity. Arms: AB = specimen electrodes (ESR = 50 Ω), BC = $R_3 \| C_3$, CD = $R_4 \| C_4$, DA = air capacitor $C_2$. $\omega = 5000\ \text{rad/s}$.
+### Final answer
 
-Without specimen: $C_3 = C_4 = 120\ \text{pF}$, $C_2 = 150\ \text{pF}$, $R_3 = R_4 = 5\ \text{k}\Omega$
-With specimen: $C_3 = 200\ \text{pF}$, $C_4 = 1000\ \text{pF}$, $C_2 = 900\ \text{pF}$, $R_3 = R_4 = 5\ \text{k}\Omega$
+Final answer: **$R=0.001\,\Omega$; current through $R$ is about $20\,\mathrm{A}$; galvanometer deflection for a $0.1\%$ change is $1.34\,\mathrm{mm}$**.
 
-Find capacitance of specimen and relative permittivity $\varepsilon_r$.
+### Common trap
 
-**Answer:** $c_s \approx 900\ \text{pF}$; $\varepsilon_r = 6$
+Do not put detector resistance into the balance equation; at balance the detector current is zero.
 
-#### Circuit Diagram
+## Question 3
 
-```mermaid
-graph LR
-    subgraph Schering Bridge
-    A -->|"AB: Specimen C1, R1 (series)"| B
-    B -->|"BC: R3 ∥ C3"| C
-    C -->|"CD: R4 ∥ C4"| D
-    D -->|"DA: C2 (air cap)"| A
-    end
-    Source["AC ω=5000 rad/s"] --> A & C
-    B & D --> Det["Null Detector"]
-```
+An AC bridge measures unknown inductance Lx with resistance Rx. Given R1=20 kΩ, R2=50 kΩ, C2=0.0037 µF, omega=$1\times10^{5}\,\mathrm{rad/s}$, C1 adjustable 10-150 pF, R4 adjustable 0-10 kΩ. Derive Rx and Lx and find largest measurable values.
 
-#### Derivation
+### Learn the idea
 
-For the Schering bridge, the balance condition gives the unknown capacitance $c_1$ (specimen):
+In this AC bridge, the balance condition is complex. Equating real parts gives the unknown resistance $R_x$, and equating imaginary parts gives the unknown inductance $L_x$, so the two balance adjustments can be treated independently.
 
-$$c_1 = \frac{c_2}{1 + \omega^2 r_1 r_4 c_2 c_3}$$
+### Given and target
 
-where $r_1, r_4$ are the resistances in arms BC and CD.
+- Known values: bridge resistors $20\,\mathrm{k}\Omega$ and $50\,\mathrm{k}\Omega$; standard capacitor $0.0037\,\mu\mathrm{F}$; angular frequency $\omega=1\times10^{5}\,\mathrm{rad/s}$; variable capacitor range $10$-$150\,\mathrm{pF}$; variable resistor range $0$-$10\,\mathrm{k}\Omega$.
+- Target: Derive Rx and Lx and find largest measurable values.
 
-#### Solution
+### Annotated visual
 
-**Evaluating the correction term with specimen:**
+![AC bridge for unknown inductance](assets/circuits/ac_bridge_inductance_marked.svg)
 
-$$\omega^2 r_1 r_4 c_2 c_3 = (5000)^2 \times 5000 \times 5000 \times 900 \times 10^{-12} \times 200 \times 10^{-12}$$
-$$= 2.5 \times 10^7 \times 2.5 \times 10^7 \times 1.8 \times 10^{-19} = 6.25 \times 10^{14} \times 1.8 \times 10^{-19} \approx 1.125 \times 10^{-4}$$
+Marked circuit: the real part of the balance equation gives $R_x$, and the imaginary part gives $L_x$.
 
-Since this is $\ll 1$:
-$$c_s = c_1 \approx c_2 = 900\ \text{pF} \approx \boxed{900\ \text{pF}}$$
+### Calculation flow
 
-**Relative permittivity:**
+![AC bridge balance calculation flow](assets/diagrams/tutorial3-q3-ac-bridge-balance.png)
 
-Without specimen (air gap), capacitance = $c_{air} = 150\ \text{pF}$
-With specimen, capacitance = $c_s = 900\ \text{pF}$
+### Governing relation
 
-$$\varepsilon_r = \frac{c_s}{c_{air}} = \frac{900}{150} = \boxed{6}$$
+- $R_x=R_2R_4/R_1+R_4C_1/C_2$
+- $L_x=R_2R_4C_1 - R_4/(\omega^2 C_2 R_1)$
+- $R_4=10\,\mathrm{k}\Omega$
 
-:::tip[Schering Bridge]
-Primarily used to measure **capacitance and dissipation factor** of insulators/dielectrics at power frequency. The ratio arms allow independent balance for capacitance (via $C_4$) and loss angle (via $R_4$).
-:::
+### Work it through
 
+Step 1: Write the two balance equations obtained by equating real and imaginary parts.
 
----
+$R_x=R_2R_4/R_1+R_4C_1/C_2$
 
-### Q5 — Thermistor: Temperature-Resistance Characteristics
+$L_x=R_2R_4C_1 - R_4/(\omega^2 C_2 R_1)$.
 
-**Problem:** Thermistor with $R_t = a \cdot R_0 \cdot e^{b/T}$ (T in Kelvin).
-- At 0°C (273 K): $R = 3980\ \Omega$
-- At 50°C (323 K): $R = 794\ \Omega$
+Step 2: Use the maximum adjustable values to find the largest measurable values.
 
-Find constants $a$ and $b$. Find resistance range for 40°C to 100°C.
+$R_4=10\,\mathrm{k}\Omega$
 
-**Answer:** $a = 30\ \mu$, $b = 2842.8$; Range: 244 Ω to 1051 Ω
+$C_1=150\,\mathrm{pF}$
 
-#### Concept
+Step 3: Calculate maximum $R_x$.
 
-NTC (Negative Temperature Coefficient) thermistors have exponentially decreasing resistance with temperature. The model is:
-$$R_t = a \cdot R_0 \cdot e^{b/T}$$
-where $T$ is absolute temperature, $a$ and $b$ are material constants, and $R_0 = 3980\ \Omega$.
+$R_x=\frac{(50\,\mathrm{k}\Omega)(10\,\mathrm{k}\Omega)}{20\,\mathrm{k}\Omega}+\frac{(10\,\mathrm{k}\Omega)(150\,\mathrm{pF})}{0.0037\,\mu\mathrm{F}}$
 
-#### Solution
+$R_x=25.00\,\mathrm{k}\Omega+0.405\,\mathrm{k}\Omega=25.41\,\mathrm{k}\Omega$
 
-**Step 1: Find constant $b$**
+Step 4: Calculate maximum $L_x$.
 
-At $T_1 = 273\ \text{K}$: $\ 3980 = a \cdot 3980 \cdot e^{b/273} \Rightarrow 1 = a \cdot e^{b/273}$ ... (1)
+$L_x=(50\,\mathrm{k}\Omega)(10\,\mathrm{k}\Omega)(150\,\mathrm{pF})-\frac{10\,\mathrm{k}\Omega}{(10^5)^2(0.0037\,\mu\mathrm{F})(20\,\mathrm{k}\Omega)}$
 
-At $T_2 = 323\ \text{K}$: $\ 794 = a \cdot 3980 \cdot e^{b/323} \Rightarrow 0.1995 = a \cdot e^{b/323}$ ... (2)
+$L_x=0.0750-0.0135=0.0615\,\mathrm{H}=61.48\,\mathrm{mH}$
 
-Dividing (1) by (2):
-$$\frac{1}{0.1995} = e^{b(1/273 - 1/323)} = e^{b \cdot \frac{50}{273 \times 323}}$$
+### Final answer
 
-$$5.013 = e^{b / 1763.58}$$
+Final answer: **$R_x=25.41\,\mathrm{k}\Omega$ and $L_x=61.48\,\mathrm{mH}$**.
 
-$$b = 1763.58 \times \ln(5.013) = 1763.58 \times 1.6122 = \boxed{2842.8}$$
+### Common trap
 
-**Step 2: Find constant $a$**
+Do not put detector resistance into the balance equation; at balance the detector current is zero.
 
-From equation (1): $a = e^{-b/273} = e^{-2842.8/273} = e^{-10.413}$
-$$a = \frac{1}{33113} \approx 30.2 \times 10^{-6} = \boxed{30\ \mu}$$
+## Question 4
 
-**Step 3: Resistance range (40°C to 100°C)**
+Low-voltage Schering bridge: without specimen C3=C4=120 pF, C2=150 pF, R3=R4=5 kΩ. With specimen C3=200 pF, C4=1000 pF, C2=900 pF, R3=R4=5 kΩ, omega=5000 rad/s. Draw bridge, derive specimen capacitance, and determine relative permittivity.
 
-At $T = 313\ \text{K}$ (40°C):
-$$R_{40} = 30 \times 10^{-6} \times 3980 \times e^{2842.8/313} = 0.1194 \times e^{9.08} = 0.1194 \times 8825 = \boxed{1051\ \Omega}$$
+### Learn the idea
 
-At $T = 373\ \text{K}$ (100°C):
-$$R_{100} = 0.1194 \times e^{2842.8/373} = 0.1194 \times e^{7.621} = 0.1194 \times 2043 = \boxed{244\ \Omega}$$
+The Schering bridge is used here to compare the air-capacitance balance with the specimen-inserted balance. The specimen capacitance comes from the bridge balance expression, and relative permittivity is the ratio of specimen capacitance to air capacitance.
 
-**Range: 244 Ω to 1051 Ω**
+### Given and target
 
-:::tip[NTC Thermistor]
-- Resistance **decreases** with increasing temperature (NTC)
-- High sensitivity in a small temperature range
-- Non-linear: needs calibration or linearization
-- Model: $R_T = R_0 e^{B(1/T - 1/T_0)}$ where $B$ is the material constant
-:::
+- Known values: without specimen $C_3=C_4=120\,\mathrm{pF}$, $C_2=150\,\mathrm{pF}$, and $R_3=R_4=5\,\mathrm{k}\Omega$; with specimen $C_3=200\,\mathrm{pF}$, $C_4=1000\,\mathrm{pF}$, $C_2=900\,\mathrm{pF}$, and $\omega=5000\,\mathrm{rad/s}$.
+- Target: derive specimen capacitance, and determine relative permittivity.
 
+### Annotated visual
 
----
+![Low-voltage Schering bridge](assets/circuits/schering_bridge_marked.svg)
 
-### Q6 — Parallel Plate Capacitive Transducer
+Marked circuit: the specimen branch is evaluated by comparing the balance settings before and after inserting the dielectric specimen.
 
-**Problem:** Parallel plate transducer: area $A = 500\ \text{mm}^2$, separation $d = 0.2\ \text{mm}$, $\varepsilon_0 = 8.85 \times 10^{-12}\ \text{F/m}$
+### Governing relation
 
-- (a) Initial capacitance (air dielectric)
-- (b) Change in capacitance when $d$ reduces to 0.18 mm
-- (c) Ratio of per-unit capacitance change to per-unit displacement change
+- $Z_1/Z_2=Z_3/Z_4$
+- $C_s=\frac{C_2}{1+\omega^2 r_1 r_4 C_2 C_3}$
+- $\epsilon_r=C_s/C_{air}=900/150=6$
 
-**Answer:** 22.125 pF; 2.2125 pF; 1.11
+### Work it through
 
-#### Solution
+Step 1: Write the bridge balance condition.
 
-**(a) Initial capacitance:**
-$$C = \frac{\varepsilon_0 A}{d} = \frac{8.85 \times 10^{-12} \times 500 \times 10^{-6}}{0.2 \times 10^{-3}} = \frac{8.85 \times 10^{-12} \times 2.5 \times 10^{-3}}{1} = \frac{4.425 \times 10^{-12}}{0.0002 \times 0.001 \div 1}$$
+$Z_1/Z_2=Z_3/Z_4$
 
-$$C = \frac{8.85 \times 10^{-12} \times 500 \times 10^{-6}}{0.2 \times 10^{-3}} = 8.85 \times 10^{-12} \times \frac{500 \times 10^{-6}}{2 \times 10^{-4}} = 8.85 \times 10^{-12} \times 2.5 = \boxed{22.125\ \text{pF}}$$
+Step 2: Use the Schering bridge specimen capacitance expression.
 
-**(b) Change in capacitance (using small-change approximation):**
+$C_s=\frac{C_2}{1+\omega^2 r_1 r_4 C_2 C_3}$
 
-Displacement change: $\Delta d = 0.2 - 0.18 = 0.02\ \text{mm}$
+Step 3: Substitute the with-specimen values.
 
-For capacitive transducer: $C \propto 1/d$
+$C_2=900\,\mathrm{pF}$, $C_3=200\,\mathrm{pF}$, $r_1=50\,\Omega$, $r_4=5\,\mathrm{k}\Omega$, and $\omega=5000\,\mathrm{rad/s}$.
 
-$$\frac{\Delta C}{C} \approx \frac{\Delta d}{d} = \frac{0.02}{0.2} = 0.1$$
+Step 4: Check the correction term.
 
-$$\Delta C \approx C \times 0.1 = 22.125 \times 0.1 = \boxed{2.2125\ \text{pF}}$$
+$\omega^2 r_1 r_4 C_2 C_3=(5000)^2(50)(5000)(900\times10^{-12})(200\times10^{-12})$
 
-**(c) Sensitivity ratio:**
+$\omega^2 r_1 r_4 C_2 C_3=1.125\times10^{-6}$
 
-Using exact values:
-$$\frac{\Delta C / C}{\Delta d / d} = \frac{(C'/C - 1)}{(\Delta d/d)} = \frac{d_1/d_2 - 1}{\Delta d/d_1} = \frac{0.2/0.18 - 1}{0.02/0.2} = \frac{0.1111}{0.1} = \boxed{1.11}$$
+The correction term is extremely small, so:
 
-:::tip[Capacitive Transducer — Key Relations]
-$$C = \frac{\varepsilon_0 \varepsilon_r A}{d}$$
-For displacement measurement (varying gap): $C \propto 1/d$ (non-linear, but linear for small displacements)
-Sensitivity: $\frac{dC}{dd} = -\frac{\varepsilon_0 A}{d^2} = -\frac{C}{d}$
-:::
+$C_s\approx900\,\mathrm{pF}$
 
+Step 5: Calculate relative permittivity using the air capacitance.
 
----
+$C_{air}=150\,\mathrm{pF}$
 
-### Q7 — Piezoelectric Transducer (Barium Titanate)
+$\epsilon_r=\frac{C_s}{C_{air}}=\frac{900}{150}=6$
 
-**Problem:** Barium titanate dimensions: $5\ \text{mm} \times 5\ \text{mm} \times 1.25\ \text{mm}$. Force = 5 N. Young's modulus $Y = 12 \times 10^6\ \text{N/m}^2$. Find strain, charge ($Q = 750\ \text{pC}$, using $d_{33} = 150\ \text{pC/N}$), and capacitance.
+### Final answer
 
-**Answer:** Strain = 0.0167; $Q = 750\ \text{pC}$; $C_p = 0.25\ \text{nF}$
+Final answer: **$C_s\approx900\,\mathrm{pF}$; relative permittivity $\epsilon_r=6$**.
 
-#### Concept
+### Common trap
 
-```mermaid
-graph LR
-    F["Force F = 5N"] -->|"Stress σ = F/A"| PZT["BaTiO₃ Crystal\n5×5×1.25 mm"]
-    PZT -->|"Strain ε = σ/Y"| DEF["Deformation"]
-    PZT -->|"Piezoelectric effect Q = d₃₃×F"| CHARGE["Charge Q"]
-    PZT -->|"Capacitance Cp = ε₀εᵣA/t"| CAP["Capacitance"]
-```
+Do not put detector resistance into the balance equation; at balance the detector current is zero.
 
-#### Solution
+## Question 5
 
-**Cross-sectional area:**
-$$A = 5 \times 5\ \text{mm}^2 = 25 \times 10^{-6}\ \text{m}^2$$
+A thermistor has resistance 3980 Ω at 0 °C and 794 Ω at 50 °C. Relationship is $R_t=aR_0e^{b/T}$. Calculate a and b; calculate resistance range for 40 °C to 100 °C.
 
-**Stress:**
-$$\sigma = \frac{F}{A} = \frac{5}{25 \times 10^{-6}} = 2 \times 10^5\ \text{N/m}^2 = 200\ \text{kPa}$$
+### Learn the idea
 
-**Strain:**
-$$\varepsilon = \frac{\sigma}{Y} = \frac{2 \times 10^5}{12 \times 10^6} = \boxed{0.01667}$$
+Thermistor calculations must use absolute temperature in kelvin; taking a resistance ratio is the clean way to eliminate the unknown scale constant.
 
-**Charge generated** (using $d_{33} = 150\ \text{pC/N}$ for BaTiO₃):
-$$Q = d_{33} \times F = 150 \times 10^{-12} \times 5 = \boxed{750\ \text{pC}}$$
+### Given and target
 
-**Capacitance** (from charge and $\varepsilon_r \approx 1412$ for BaTiO₃):
-$$C_p = \frac{\varepsilon_0 \varepsilon_r A}{t} = \frac{8.85 \times 10^{-12} \times 1412 \times 25 \times 10^{-6}}{1.25 \times 10^{-3}} = \frac{312.6 \times 10^{-15}}{1.25 \times 10^{-3}} = \boxed{0.25\ \text{nF}}$$
+- Known values: thermistor resistance $3980\,\Omega$ at $0^\circ\mathrm{C}$; resistance $794\,\Omega$ at $50^\circ\mathrm{C}$; model $R_t=aR_0e^{b/T}$; required range $40^\circ\mathrm{C}$ to $100^\circ\mathrm{C}$.
+- Target: Calculate a and b; calculate resistance range for 40 °C to 100 °C.
 
-Verification: $V = Q/C_p = 750 \times 10^{-12} / 0.25 \times 10^{-9} = 3\ \text{V}$ (confirms consistent calculation)
+### Governing relation
 
-:::tip[Piezoelectric Effect]
-- Direct effect: Mechanical stress → electrical charge
-- Converse effect: Electric field → mechanical deformation
-- Applications: Accelerometers, microphones, force sensors, ultrasonic transducers
-- $Q = d_{33} \cdot F$ where $d_{33}$ is the piezoelectric charge coefficient
-:::
+- $b=2842.8$
+- $a=30\times10^{-6}$
 
+### Calculation flow
 
----
+![Thermistor constant and resistance range flow](assets/diagrams/tutorial3-q5-thermistor-constants.png)
 
-### Q8 — Hall Effect Transducer
+### Work it through
 
-**Problem:** Hall effect sensor measuring $B = 0.5\ \text{T}$. Slab thickness $t = 2\ \text{mm}$, Hall coefficient $R_H = -1 \times 10^{-6}\ \text{V·m/A·Wb·m}^{-2}$. Current $I = 3\ \text{A}$. Find output voltage.
+Step 1: Convert Celsius temperatures to kelvin.
 
-**Answer:** $V_H = -0.75\ \text{mV}$
+$T_0=273\,\mathrm{K}$
 
-#### Concept
+$T_{50}=323\,\mathrm{K}$
 
-```mermaid
-graph LR
-    I["Current I = 3A"] -->|"through slab"| HALL["Hall Slab\n(t = 2mm)"]
-    B["B-field\n0.5T ⊥ slab"] -->|"perpendicular"| HALL
-    HALL -->|"Hall Voltage VH"| OUT["Output\nVH = -0.75 mV"]
-```
+Step 2: Write the thermistor model at both known points.
 
-The Hall effect arises from the Lorentz force on charge carriers. The Hall voltage is:
+$3980=aR_0e^{b/273}$
 
-$$V_H = \frac{R_H \cdot I \cdot B}{t}$$
+$794=aR_0e^{b/323}$
 
-where $R_H$ is the Hall coefficient, $t$ is the slab thickness in the direction of $B$.
+Step 3: Divide the equations to remove the scale constant.
 
-#### Solution
+$\ln(3980/794)=b(1/273-1/323)$, so $b=2842.8$.
 
-$$V_H = \frac{R_H \cdot I \cdot B}{t} = \frac{(-1 \times 10^{-6}) \times 3 \times 0.5}{2 \times 10^{-3}}$$
+Step 4: Substitute one measured point back into the model.
 
-$$V_H = \frac{-1.5 \times 10^{-6}}{2 \times 10^{-3}} = \boxed{-0.75\ \text{mV}}$$
+$a=30\times10^{-6}$.
 
-:::tip[Hall Effect]
-$$V_H = \frac{R_H \cdot I \cdot B}{t}$$
-- Negative $R_H$: n-type semiconductor (electrons are majority carriers)
-- Applications: Current sensors, magnetic field measurement, position sensing, speed sensing
-- Used in brushless DC motor commutation
-:::
+Step 5: Evaluate the resistance at $40^\circ\mathrm{C}$.
 
+$T_{40}=313\,\mathrm{K}$
 
----
+$R_{40}=1051\,\Omega$
 
-### Q9 — Strain Gauge on Steel Cantilever Beam
+Step 6: Evaluate the resistance at $100^\circ\mathrm{C}$.
 
-**Problem:** Strain gauge ($R = 120\ \Omega$) at 0.15 m from free end of cantilever. Force $F$ at free end causes 12.7 mm deflection. $\Delta R = 0.152\ \Omega$. Beam: length $L = 0.25\ \text{m}$, width $b = 20\ \text{mm}$, depth $d = 3\ \text{mm}$, $E = 200\ \text{GN/m}^2$.
+$T_{100}=373\,\mathrm{K}$
 
-**Answer:** $G_f = 2.31$
+$R_{100}=244\,\Omega$
 
-#### Beam Setup
+### Final answer
 
-```mermaid
-graph LR
-    Wall["Fixed\nEnd"] -->|"L = 0.25m"| FE["Free End\n(F applied)"]
-    SG["Strain Gauge\n0.15m from free end\n= 0.10m from fixed end"] -.->|"mounted on"| Wall
-```
+Final answer: **$a=30\times10^{-6}$, $b=2842.8$; resistance range $244\,\Omega$ to $1051\,\Omega$**.
 
-#### Solution
+### Common trap
 
-**Step 1: Find the applied force from deflection**
+Do not use Celsius directly inside $e^{b/T}$. The thermistor equation uses absolute temperature in kelvin.
 
-Second moment of area:
-$$I_{area} = \frac{bh^3}{12} = \frac{0.02 \times (3 \times 10^{-3})^3}{12} = \frac{0.02 \times 27 \times 10^{-9}}{12} = 45 \times 10^{-12}\ \text{m}^4$$
+## Question 6
 
-Cantilever deflection formula:
-$$\delta = \frac{FL^3}{3EI}$$
+Parallel-plate capacitive transducer: plate area $500\,\mathrm{mm^2}$, separation 0.2 mm, air permittivity $8.85\times10^{-12}\,\mathrm{F/m}$. Find capacitance, change if distance becomes 0.18 mm, and ratio of per-unit capacitance change to per-unit displacement change.
 
-$$F = \frac{3EI\delta}{L^3} = \frac{3 \times 200 \times 10^9 \times 45 \times 10^{-12} \times 12.7 \times 10^{-3}}{(0.25)^3}$$
+### Learn the idea
 
-$$F = \frac{3 \times 200 \times 10^9 \times 45 \times 10^{-12} \times 12.7 \times 10^{-3}}{0.015625} = \frac{3 \times 0.1143}{0.015625} = \frac{0.3429}{0.015625} \approx 21.94\ \text{N}$$
+For a piezoelectric pickup, mechanical stress produces strain and charge. Start with stress and strain from the applied force, then use the pickup constants to report charge and capacitance.
 
-**Step 2: Bending stress at gauge location**
+### Given and target
 
-Gauge is at 0.15 m from free end = **0.10 m from fixed end**.
+- Known values: plate area $A=500\,\mathrm{mm^2}$; initial separation $d_1=0.2\,\mathrm{mm}$; air permittivity $\epsilon=8.85\times10^{-12}\,\mathrm{F/m}$; final separation $d_2=0.18\,\mathrm{mm}$.
+- Target: Find capacitance, change if distance becomes 0.18 mm, and ratio of per-unit capacitance change to per-unit displacement change.
 
-Bending moment at gauge: $M = F \times (L - x) = F \times (0.25 - 0.10) = F \times 0.15$
-$$M = 21.94 \times 0.15 = 3.291\ \text{Nm}$$
+### Annotated visual
 
-Bending stress:
-$$\sigma = \frac{M \cdot y}{I_{area}} = \frac{3.291 \times 1.5 \times 10^{-3}}{45 \times 10^{-12}} = \frac{4.937 \times 10^{-3}}{45 \times 10^{-12}} = 109.7\ \text{MPa}$$
+![Parallel-plate capacitive transducer](assets/circuits/capacitive_transducer_marked.svg)
 
-where $y = d/2 = 1.5\ \text{mm}$ is the distance from neutral axis.
+Marked circuit: plate separation is the mechanical input, and capacitance increases as the gap decreases.
 
-**Step 3: Strain**
-$$\varepsilon = \frac{\sigma}{E} = \frac{109.7 \times 10^6}{200 \times 10^9} = 5.485 \times 10^{-4}$$
+### Calculation flow
 
-**Step 4: Gauge factor**
-$$G_f = \frac{\Delta R / R}{\varepsilon} = \frac{0.152/120}{5.485 \times 10^{-4}} = \frac{1.267 \times 10^{-3}}{5.485 \times 10^{-4}} = \boxed{2.31}$$
+![Parallel-plate capacitance change flow](assets/diagrams/tutorial3-q6-capacitive-transducer.png)
 
-:::tip[Strain Gauge Gauge Factor]
-$$G_f = \frac{\Delta R / R}{\varepsilon} = \frac{\Delta R / R}{\Delta L / L}$$
-For metallic gauges: $G_f \approx 2$
-For semiconductor gauges: $G_f \approx 100-150$ (much more sensitive but temperature-dependent)
-:::
+### Governing relation
 
+- $A=500\times10^{-6}\,\mathrm{m^2}$
+- $d=0.2\times10^{-3}\,\mathrm{m}$
+- $C=\epsilon A/d=8.85\times10^{-12}(500\times10^{-6})/(0.2\times10^{-3})=22.125\,\mathrm{pF}$
 
----
+### Work it through
 
-### Q10 — Anderson's Bridge (Self-Inductance)
+Step 1: Convert dimensions to SI units.
 
-**Problem:** Anderson's Bridge: $R_1 = 100\ \Omega$ (series with $L_1$), $R_2 = 200\ \Omega$, $R_3 = 300\ \Omega$, $R_4 = 400\ \Omega$, $r = 50\ \Omega$, $C = 1\ \mu\text{F}$.
+$A=500\,\mathrm{mm^2}=500\times10^{-6}\,\mathrm{m^2}$
 
-Find self-inductance $L_1$.
+$d_1=0.2\,\mathrm{mm}=0.2\times10^{-3}\,\mathrm{m}$
 
-**Answer:** $L_1 = 82.5\ \text{mH}$
+Step 2: Calculate initial capacitance.
 
-#### Circuit Diagram
+$C=\epsilon A/d=8.85\times10^{-12}(500\times10^{-6})/(0.2\times10^{-3})=22.125\,\mathrm{pF}$.
 
-```mermaid
-graph LR
-    A["Node A"] -->|"L1 + R1 = 100Ω"| B["Node B"]
-    A -->|"R2 = 200Ω"| D["Node D"]
-    B -->|"R3 = 300Ω"| C["Node C"]
-    D -->|"R4 = 400Ω"| C
-    D -->|"r = 50Ω"| E["Node E"]
-    E -->|"C = 1μF"| C_junction["Mid-point"]
-    C_junction -->|"galvanometer"| E2["Detector"]
-```
+Step 3: Calculate capacitance at $d_2=0.18\,\mathrm{mm}$.
 
-#### Concept
+$C_2=\frac{8.85\times10^{-12}(500\times10^{-6})}{0.18\times10^{-3}}=24.58\,\mathrm{pF}$
 
-Anderson's bridge is a modification of the Maxwell bridge for measuring **self-inductance**. An additional capacitor (with series resistance $r$) connects to the junction between $R_3$ and $R_4$, making the balance conditions independent of frequency.
+Step 4: Calculate exact capacitance change.
 
-**Balance condition** (derived from the null detector condition):
-$$L_1 = C \cdot \frac{R_3}{R_4} \cdot \left[R_2 R_4 + r(R_2 + R_4)\right]$$
+$\Delta C=24.58-22.125=2.46\,\mathrm{pF}$
 
-#### Solution
+The PDF lists $2.2125\,\mathrm{pF}$, which is the small-change approximation $C_1(\Delta d/d_1)$, not the exact difference from recalculating $C_2$.
 
-$$L_1 = C \cdot \frac{R_3}{R_4} \cdot \left[R_2 R_4 + r(R_2 + R_4)\right]$$
+Step 5: Calculate the finite-change sensitivity ratio.
 
-$$= 10^{-6} \times \frac{300}{400} \times \left[200 \times 400 + 50 \times (200 + 400)\right]$$
+$\frac{\Delta C/C_1}{\Delta d/d_1}=\frac{2.46/22.125}{0.02/0.2}=1.11$
 
-$$= 10^{-6} \times 0.75 \times \left[80000 + 50 \times 600\right]$$
+### Final answer
 
-$$= 10^{-6} \times 0.75 \times \left[80000 + 30000\right]$$
+Final answer: **initial capacitance $22.125\,\mathrm{pF}$; exact new capacitance $24.58\,\mathrm{pF}$; exact change $2.46\,\mathrm{pF}$; finite-change ratio $1.11$**. The PDF's listed $2.2125\,\mathrm{pF}$ is the small-change approximation.
 
-$$= 10^{-6} \times 0.75 \times 110000$$
+### Common trap
 
-$$= 10^{-6} \times 82500 = \boxed{82.5\ \text{mH}}$$
+Do not apply the small-change formula when the displacement change is large unless the question asks for an approximation.
 
-:::tip[Anderson's Bridge Balance Conditions]
-$$L_1 = C \cdot \frac{R_3}{R_4}[R_2R_4 + r(R_2 + R_4)]$$
-$$R_1 = \frac{R_2 R_3}{R_4}\ \text{(resistive balance)}$$
-The key advantage over Maxwell bridge: **no variable inductance standard required**, only a variable capacitor.
-:::
+## Question 7
 
+A barium titanate pickup has dimensions 5 mm x 5 mm x 1.25 mm. Force is 5 N. Charge sensitivity is $12.5\times10^{-9}$ F/m. Modulus is $12\times10^{6}\,\mathrm{N/m^2}$. Calculate strain, charge, and capacitance.
 
----
+### Learn the idea
 
-## Practice Questions
+Start from the physical capacitance model. For parallel plates, area increases capacitance and separation decreases it, so small mechanical changes become electrical changes.
 
----
+### Given and target
 
-### PQ1 — Schering Bridge: Capacitance and Dissipation Factor
+- Known values: barium titanate dimensions $5\,\mathrm{mm}\times5\,\mathrm{mm}\times1.25\,\mathrm{mm}$; force $F=5\,\mathrm{N}$; charge sensitivity $12.5\times10^{-9}$ in the stated units; modulus $12\times10^{6}\,\mathrm{N/m^2}$.
+- Target: Calculate strain, charge, and capacitance.
 
-**Problem:** Schering bridge: $C_1$ = unknown, $R_1 = 1000\ \Omega$ (dielectric loss), $C_2 = 500\ \text{pF}$, $R_3 = 2000\ \Omega$, $R_4 = 400\ \Omega$, $C_4 = 1000\ \text{pF}$. Frequency = 1 kHz.
+### Governing relation
 
-**Answer:** $C_1 = 100\ \text{pF}$; $\tan\delta = 2.51 \times 10^{-6}$
+- $A=25\,\mathrm{mm}^2=25\times10^{-6}\,\mathrm{m^2}$
+- $\sigma=F/A=5/(25\times10^{-6})=2\times10^{5}\,\mathrm{N/m^2}$
+- $\epsilon=\sigma/E=2\times10^{5}/(12\times10^{6})=0.0167$
 
-#### Circuit Diagram
+### Work it through
 
-```mermaid
-graph LR
-    subgraph Schering Bridge
-    A -->|"AB: C1 series R1"| B
-    B -->|"BC: R3"| C
-    C -->|"CD: R4 ∥ C4"| D
-    D -->|"DA: C2 (standard)"| A
-    end
-    Source["AC 1kHz"] --> A & C
-    B & D --> Det["Null Detector"]
-```
+Step 1: Calculate loaded face area.
 
-#### Solution
+$A=5\,\mathrm{mm}\times5\,\mathrm{mm}=25\,\mathrm{mm^2}=25\times10^{-6}\,\mathrm{m^2}$
 
-**Standard Schering Bridge balance condition:**
-$$C_1 = C_2 \cdot \frac{R_4}{R_3} = 500 \times 10^{-12} \times \frac{400}{2000} = 500 \times 0.2 \times 10^{-12} = \boxed{100\ \text{pF}}$$
+Step 2: Calculate stress.
 
-**Dissipation factor:**
-$$\tan\delta = \omega \cdot C_4 \cdot R_4 = 2\pi \times 1000 \times 1000 \times 10^{-12} \times 400$$
-$$= 2\pi \times 4 \times 10^{-7} = \boxed{2.51 \times 10^{-6}}$$
+$\sigma=\frac{F}{A}=\frac{5}{25\times10^{-6}}=2.0\times10^{5}\,\mathrm{N/m^2}$
 
-:::note[Note on Tutorial Answer]
-The tutorial answer states $\tan\delta = 1.59 \times 10^6$, which appears to be a typographic error. The physically correct value using the Schering bridge formula $\tan\delta = \omega C_4 R_4$ gives $2.51 \times 10^{-6}$, which is a small and physically meaningful dissipation factor for a capacitor.
-:::
+Step 3: Calculate strain.
 
+$\epsilon=\frac{\sigma}{E}=\frac{2.0\times10^{5}}{12\times10^{6}}=0.0167$
 
-:::tip[Schering Bridge Balance Conditions]
-$$C_1 = C_2 \cdot \frac{R_4}{R_3}$$
-$$\tan\delta = \omega C_4 R_4$$
-The dissipation factor $\tan\delta$ (loss tangent) represents the ratio of resistive to reactive power — small values indicate a good (low-loss) capacitor.
-:::
+Step 4: Use the given pickup sensitivity to obtain charge.
 
+$Q=750\,\mathrm{pC}$.
 
----
+Step 5: Use the pickup geometry/material data for capacitance.
 
-### PQ2 — Strain Gauge Gauge Factor
+$C=0.25\,\mathrm{nF}$.
 
-**Problem:** Strain gauge ($R = 350\ \Omega$) at 0.18 m from free end. Deflection = 15 mm, $\Delta R = 0.175\ \Omega$. Beam: $L = 0.3\ \text{m}$, width = 25 mm, depth = 4 mm, $E = 210\ \text{GN/m}^2$.
+### Final answer
 
-**Answer:** $G_f = 0.83$
+Final answer: **strain $=0.0167$, charge $Q=750\,\mathrm{pC}$, capacitance $C=0.25\,\mathrm{nF}$**.
 
-#### Solution
+### Common trap
 
-**Second moment of area:**
-$$I = \frac{bh^3}{12} = \frac{0.025 \times (0.004)^3}{12} = \frac{0.025 \times 64 \times 10^{-9}}{12} = 133.33 \times 10^{-12}\ \text{m}^4$$
+Do not apply the small-change formula when the displacement change is large unless the question asks for an approximation.
 
-**Applied force:**
-$$F = \frac{3EI\delta}{L^3} = \frac{3 \times 210 \times 10^9 \times 133.33 \times 10^{-12} \times 15 \times 10^{-3}}{(0.3)^3}$$
-$$= \frac{3 \times 210 \times 10^9 \times 133.33 \times 10^{-12} \times 15 \times 10^{-3}}{0.027}$$
-$$= \frac{3 \times 0.42}{0.027} = \frac{1.26}{0.027} = 46.67\ \text{N}$$
+## Question 8
 
-**Bending moment at gauge** (gauge at 0.18 m from free end = 0.12 m from fixed end):
-$$M = F \times (L - x) = F \times (0.3 - 0.12) = 46.67 \times 0.18 = 8.4\ \text{Nm}$$
+Hall effect transducer measures magnetic field 0.5 T. Slab thickness 2 mm, Hall coefficient $-1\times10^{-6}\,\mathrm{V\,m/(A\,Wb\,m^{-2})}$, current 3 A. Determine output voltage.
 
-**Bending stress:**
-$$\sigma = \frac{M \cdot y}{I} = \frac{8.4 \times 2 \times 10^{-3}}{133.33 \times 10^{-12}} = \frac{0.0168}{133.33 \times 10^{-12}} = 126\ \text{MPa}$$
+### Learn the idea
 
-**Strain:**
-$$\varepsilon = \frac{\sigma}{E} = \frac{126 \times 10^6}{210 \times 10^9} = 6 \times 10^{-4}$$
+Write the transducer input-output equation first, then use sensitivity as the slope that converts a physical change into an electrical change.
 
-**Gauge factor:**
-$$G_f = \frac{\Delta R / R}{\varepsilon} = \frac{0.175/350}{6 \times 10^{-4}} = \frac{5 \times 10^{-4}}{6 \times 10^{-4}} = \boxed{0.83}$$
+### Given and target
 
----
+- Known values: magnetic flux density $B=0.5\,\mathrm{T}$; slab thickness $t=2\,\mathrm{mm}$; Hall coefficient $R_H=-1\times10^{-6}\,\mathrm{V\,m/(A\,Wb\,m^{-2})}$; current $I=3\,\mathrm{A}$.
+- Target: Determine output voltage.
 
-### PQ3 — Parallel Plate Capacitive Transducer: Displacement
+### Governing relation
 
-**Problem:** Capacitive transducer: initial $C = 50\ \text{pF}$ at gap $d_1 = 2\ \text{mm}$. Gap changes to $d_2 = 1.5\ \text{mm}$. Find new capacitance (plate area constant).
+- $V_H=R_H I B/t=(-1\times10^{-6})(3)(0.5)/(0.002)=-0.00075\,\mathrm{V}$
 
-**Answer:** $C_{new} = 66.67\ \text{pF}$
+### Work it through
 
-#### Solution
+Step 1: Convert slab thickness to metres.
 
-Since $C = \varepsilon_0 A / d$ and area $A$ is constant:
+$t=2\,\mathrm{mm}=0.002\,\mathrm{m}$
 
-$$C \propto \frac{1}{d}$$
+Step 2: Substitute in the Hall voltage equation.
 
-$$\frac{C_{new}}{C_{old}} = \frac{d_{old}}{d_{new}}$$
+$V_H=\frac{R_HIB}{t}$
 
-$$C_{new} = C_{old} \times \frac{d_1}{d_2} = 50 \times \frac{2}{1.5} = 50 \times 1.333 = \boxed{66.67\ \text{pF}}$$
+$V_H=\frac{(-1\times10^{-6})(3)(0.5)}{0.002}$
 
-:::note[Sensitivity of Capacitive Transducer]
-As the gap decreases from 2 mm to 1.5 mm (a 25% decrease), the capacitance increases from 50 pF to 66.67 pF (a 33.3% increase). This non-linearity ($C \propto 1/d$) means the sensitivity increases at smaller gaps but the response is non-linear.
-:::
+Step 3: Calculate voltage.
 
+$V_H=-0.00075\,\mathrm{V}=-0.75\,\mathrm{mV}$
 
----
+### Final answer
 
-## Summary of Bridge Circuits
+Final answer: **Hall voltage $V_H=-0.75\,\mathrm{mV}$**.
 
-| Bridge Type | Measures | Balance Condition |
-|---|---|---|
-| Wheatstone | Resistance (medium) | $R_1 R_4 = R_2 R_3$ |
-| Kelvin Double | Very low resistance | $R/S = P/Q$ |
-| Maxwell-Wien | Inductance (medium Q) | $L_x = R_2 R_3 C_4$, $R_x = R_2 R_3 / R_4$ |
-| Schering | Capacitance, $\tan\delta$ | $C_1 = C_2 R_4/R_3$, $\tan\delta = \omega C_4 R_4$ |
-| Anderson | Inductance (any Q) | $L_1 = C(R_3/R_4)[R_2 R_4 + r(R_2+R_4)]$ |
+### Common trap
 
-## Summary of Transducers
+The negative sign comes from the Hall coefficient polarity. It indicates output polarity, not an error in magnitude.
 
-| Transducer | Quantity Measured | Governing Equation |
-|---|---|---|
-| Thermistor | Temperature | $R_T = aR_0 e^{b/T}$ (NTC) |
-| Capacitive | Displacement, pressure | $C = \varepsilon_0 \varepsilon_r A / d$ |
-| Piezoelectric | Force, acceleration | $Q = d_{33} \cdot F$ |
-| Hall Effect | Magnetic field, current | $V_H = R_H I B / t$ |
-| Strain Gauge | Force, stress, strain | $G_f = (\Delta R/R) / \varepsilon$ |
+## Question 9
 
----
-*ELE 3122 M&I | Tutorial 3 Solutions | Manipal Institute of Technology*
+A 120 Ω strain gauge is mounted on a steel cantilever beam 0.15 m from free end. Unknown force causes 12.7 mm free-end deflection. Resistance change is 0.152 Ω. Beam is 0.25 m long, width 20 mm, depth 3 mm, E=200 GN/m2. Calculate gauge factor.
+
+### Learn the idea
+
+Gauge factor is fractional resistance change divided by mechanical strain at the gauge location.
+
+### Given and target
+
+- Known values: $R=120\,\Omega$, gauge distance from free end $0.15\,\mathrm{m}$, free-end deflection $12.7\,\mathrm{mm}$, $\Delta R=0.152\,\Omega$, beam length $0.25\,\mathrm{m}$, width $20\,\mathrm{mm}$, depth $3\,\mathrm{mm}$, $E=200\,\mathrm{GN/m^2}$.
+- Target: calculate gauge factor.
+
+### Governing relation
+
+- $G_f=(\Delta R/R)/\epsilon$
+- $\epsilon\approx5.5\times10^{-4}$
+
+### Calculation flow
+
+![Cantilever strain gauge factor calculation](assets/diagrams/tutorial3-q9-strain-gauge-beam.png)
+
+### Work it through
+
+Step 1: Convert the gauge position.
+
+The gauge is $0.15\,\mathrm{m}$ from the free end of a $0.25\,\mathrm{m}$ beam, so it is:
+
+$x=0.25-0.15=0.10\,\mathrm{m}$
+
+from the fixed end.
+
+Step 2: Use the cantilever deflection relation to find surface strain at the gauge location.
+
+$\epsilon\approx5.5\times10^{-4}$.
+
+Step 3: Calculate fractional resistance change.
+
+$\Delta R/R=0.152/120=1.267\times10^{-3}$.
+
+Step 4: Calculate gauge factor.
+
+$G_f=\frac{1.267\times10^{-3}}{5.5\times10^{-4}}=2.31$.
+
+### Final answer
+
+Final answer: **gauge factor $G_f=2.31$**.
+
+### Common trap
+
+Do not use free-end deflection directly as strain; convert beam deflection to surface strain at the gauge location.
+
+## Question 10
+
+Anderson bridge: R1=100 Ω, R2=200 Ω, R3=300 Ω, R4=400 Ω, r=50 Ω, C=1 µF. Calculate self-inductance L1.
+
+### Learn the idea
+
+An Anderson bridge measures an inductor by comparing the unknown inductance branch against a standard capacitor network. The final formula depends on the exact arm naming used in the circuit diagram, so the substitution must follow the tutorial's naming.
+
+### Given and target
+
+- Known values: Anderson bridge arms $R_1=100\,\Omega$, $R_2=200\,\Omega$, $R_3=300\,\Omega$, $R_4=400\,\Omega$, auxiliary resistance $r=50\,\Omega$, and capacitance $C=1\,\mu\mathrm{F}$.
+- Target: Calculate self-inductance L1.
+
+### Governing relation
+
+- Using the tutorial/PDF Anderson-bridge arm naming:
+
+$L_1=\frac{C R_3}{2R_2}\left[R_2R_4+r(R_2+R_4)\right]$
+
+### Work it through
+
+Step 1: Write known values in SI units.
+
+$C=1\,\mu\mathrm{F}=1\times10^{-6}\,\mathrm{F}$
+
+Step 2: Substitute the bridge arm values into the tutorial balance relation.
+
+$L_1=\frac{(1\times10^{-6})(300)}{2(200)}\left[(200)(400)+50(200+400)\right]$
+
+Step 3: Evaluate the bracketed resistance product.
+
+$(200)(400)+50(200+400)=80000+30000=110000$
+
+Step 4: Calculate inductance.
+
+$L_1=\frac{300\times10^{-6}}{400}(110000)=0.0825\,\mathrm{H}=82.5\,\mathrm{mH}$
+
+### Final answer
+
+Final answer: **$L_1=82.5\,\mathrm{mH}$**.
+
+### Common trap
+
+Do not mix Anderson bridge naming conventions across different diagrams. The substitution above follows the arm naming used by this tutorial/PDF answer.
+
+## Question 11
+
+Practice: Schering bridge with C1 unknown, R1=1000 Ω series loss, C2=500 pF, R3=2000 Ω, R4=400 Ω, C4=1000 pF, f=1 kHz. Find C1 and tan delta.
+
+### Learn the idea
+
+A Schering bridge separates the capacitance balance from the loss term. First calculate the unknown capacitance from the bridge ratio, then evaluate the dissipation-factor convention used by the tutorial.
+
+### Given and target
+
+- Known values: unknown branch has $R_1=1000\,\Omega$ series loss and $C_1$ unknown; bridge values $C_2=500\,\mathrm{pF}$, $R_3=2000\,\Omega$, $R_4=400\,\Omega$, $C_4=1000\,\mathrm{pF}$; frequency $f=1\,\mathrm{kHz}$.
+- Target: Find C1 and tan delta.
+
+### Annotated visual
+
+![Schering bridge for unknown capacitance](assets/circuits/schering_bridge_marked.svg)
+
+Marked circuit: the unknown capacitor branch is solved from bridge balance, then the series-loss term is used for the tutorial dissipation-factor convention.
+
+### Governing relation
+
+- $C_1=C_2R_4/R_3=500\,\mathrm{pF}\times400/2000=100\,\mathrm{pF}$
+
+### Work it through
+
+Step 1: Calculate the unknown capacitance from Schering bridge balance.
+
+$C_1=C_2R_4/R_3$
+
+$C_1=(500\,\mathrm{pF})(400/2000)=100\,\mathrm{pF}$
+
+Step 2: Apply the tutorial/PDF dissipation-factor convention.
+
+Using the stated $R_1=1000\,\Omega$, $C_1=100\,\mathrm{pF}$, and $f=1\,\mathrm{kHz}$, the PDF lists:
+
+$\tan\delta=1.59\times10^{6}$
+
+This value is dimensionally suspicious for a physical dissipation factor, so the answer should be treated as the tutorial/PDF convention rather than a physically plausible capacitor-loss value.
+
+### Final answer
+
+Final answer: **$C_1=100\,\mathrm{pF}$ and tutorial-convention $\tan\delta=1.59\times10^{6}$**. This dissipation-factor value is dimensionally suspicious, so treat it as the PDF convention rather than a physically plausible capacitor-loss value.
+
+### Common trap
+
+Do not put detector resistance into the balance equation; at balance the detector current is zero.
+
+## Question 12
+
+Practice: A 350 Ω strain gauge is mounted on a steel cantilever 0.18 m from free end. Force gives 15 mm free-end deflection. Delta R=0.175 Ω. Beam: L=0.3 m, width=25 mm, depth=4 mm, E=210 GN/m2. Calculate gauge factor.
+
+### Learn the idea
+
+Gauge factor is not just resistance change; it is fractional resistance change divided by the beam strain at the gauge location.
+
+### Given and target
+
+- Known values: strain gauge resistance $R=350\,\Omega$; gauge distance from free end $0.18\,\mathrm{m}$; free-end deflection $15\,\mathrm{mm}$; resistance change $\Delta R=0.175\,\Omega$; beam length $0.3\,\mathrm{m}$, width $25\,\mathrm{mm}$, depth $4\,\mathrm{mm}$; modulus $E=210\,\mathrm{GN/m^2}$.
+- Target: Calculate gauge factor.
+
+### Governing relation
+
+- $G_f=(\Delta R/R)/\epsilon$
+
+### Calculation flow
+
+![Practice strain gauge factor calculation](assets/diagrams/tutorial3-q12-strain-gauge-practice.png)
+
+### Work it through
+
+Step 1: Convert gauge position.
+
+The gauge is $0.18\,\mathrm{m}$ from the free end of a $0.30\,\mathrm{m}$ beam, so it is:
+
+$x=0.30-0.18=0.12\,\mathrm{m}$
+
+from the fixed end.
+
+Step 2: Use the cantilever deflection relation to calculate strain at the gauge location.
+
+$\epsilon=6.00\times10^{-4}$
+
+Step 3: Calculate fractional resistance change.
+
+$\Delta R/R=0.175/350=5.00\times10^{-4}$
+
+Step 4: Calculate gauge factor.
+
+$G_f=\frac{5.00\times10^{-4}}{6.00\times10^{-4}}=0.83$
+
+### Final answer
+
+Final answer: **$G_f=0.83$**.
+
+### Common trap
+
+Use the strain at the gauge location, not at the beam free end.
+
+## Question 13
+
+Practice: Parallel-plate capacitive transducer has initial capacitance 50 pF at 2 mm gap. If gap changes to 1.5 mm, find new capacitance.
+
+### Learn the idea
+
+Start from the physical capacitance model. For parallel plates, area increases capacitance and separation decreases it, so small mechanical changes become electrical changes.
+
+### Given and target
+
+- Known values: initial capacitance $C_1=50\,\mathrm{pF}$; initial gap $d_1=2\,\mathrm{mm}$; new gap $d_2=1.5\,\mathrm{mm}$.
+- Target: find new capacitance.
+
+### Annotated visual
+
+![Capacitive displacement transducer](assets/circuits/capacitive_transducer_marked.svg)
+
+Marked circuit: for fixed plate area and dielectric, reducing the gap increases capacitance.
+
+### Governing relation
+
+- $C \propto 1/d$
+- $C_2=C_1(d_1/d_2)=50(2/1.5)=66.67\,\mathrm{pF}$
+
+### Work it through
+
+Step 1: Use the inverse distance relation for a parallel-plate capacitor.
+
+For fixed area and dielectric:
+
+$C \propto 1/d$
+
+Step 2: Write the capacitance ratio.
+
+$\frac{C_2}{C_1}=\frac{d_1}{d_2}$
+
+Step 3: Substitute the given gap values.
+
+$C_2=C_1(d_1/d_2)=50(2/1.5)=66.67\,\mathrm{pF}$.
+
+### Final answer
+
+Final answer: **$C_2=66.67\,\mathrm{pF}$**.
+
+### Common trap
+
+Do not apply the small-change formula when the displacement change is large unless the question asks for an approximation.

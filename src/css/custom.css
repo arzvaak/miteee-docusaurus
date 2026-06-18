@@ -339,6 +339,267 @@
 [data-theme='dark'] hr { border-color: #313244; margin: 1.5em 0; }
 
 /* ═══════════════════════════════════════════════════════════
+   EM-II PYQ ANSWER BANK
+   ═══════════════════════════════════════════════════════════ */
+:is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown {
+  max-width: 980px;
+  margin: 0 auto;
+  font-size: 0.98rem;
+}
+
+:is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown > h1:first-child {
+  border: 1px solid rgba(203, 166, 247, 0.32);
+  border-radius: 14px;
+  padding: 1.35rem 1.6rem;
+  margin-bottom: 1rem;
+  background:
+    linear-gradient(135deg, rgba(203, 166, 247, 0.13), rgba(137, 220, 235, 0.08)),
+    rgba(24, 24, 37, 0.72);
+  box-shadow: 0 16px 46px rgba(0, 0, 0, 0.24);
+}
+
+:is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown > h1:first-child + p {
+  font-size: 1.02rem;
+  color: var(--ifm-font-color-secondary);
+  max-width: 760px;
+}
+
+:is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown > h1:first-child + p + ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  list-style: none;
+  margin: 1.25rem 0 1.4rem;
+  padding: 0;
+}
+
+:is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown > h1:first-child + p + ul li {
+  margin: 0;
+}
+
+:is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown > h1:first-child + p + ul a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.1rem;
+  border: 1px solid rgba(137, 180, 250, 0.28);
+  border-radius: 10px;
+  background: rgba(137, 180, 250, 0.07);
+  color: #b4befe;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+:is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown > h1:first-child + p + ul a:hover {
+  border-color: rgba(137, 180, 250, 0.52);
+  background: rgba(137, 180, 250, 0.12);
+  color: #cdd6f4;
+}
+
+:is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown h2[id^='question-'] {
+  position: relative;
+  border: 1px solid rgba(203, 166, 247, 0.32);
+  border-radius: 12px 12px 0 0;
+  padding: 0.72rem 1rem 0.72rem 1.2rem;
+  margin-top: 2.2rem;
+  margin-bottom: 0;
+  background:
+    linear-gradient(90deg, rgba(203, 166, 247, 0.16), rgba(137, 180, 250, 0.08)),
+    rgba(24, 24, 37, 0.92);
+  color: #f5c2e7;
+  letter-spacing: 0;
+}
+
+:is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown h2[id^='question-'] + p {
+  border-right: 1px solid rgba(203, 166, 247, 0.20);
+  border-left: 1px solid rgba(203, 166, 247, 0.20);
+  margin: 0;
+  padding: 0.8rem 1.2rem;
+  background: rgba(24, 24, 37, 0.54);
+  color: #a6adc8;
+  font-size: 0.86rem;
+}
+
+:is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown h2[id^='question-'] + p strong {
+  color: #f9e2af;
+}
+
+:is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown h2[id^='question-'] + p + p {
+  border: 1px solid rgba(203, 166, 247, 0.20);
+  border-top: 0;
+  border-radius: 0 0 12px 12px;
+  margin: 0 0 1.1rem;
+  padding: 1rem 1.2rem;
+  background: rgba(203, 166, 247, 0.045);
+  color: #cdd6f4;
+  font-weight: 520;
+}
+
+:is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown h3[id^='answer-'] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid rgba(137, 220, 235, 0.26);
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+  margin: 0.35rem 0 0.9rem;
+  background: rgba(137, 220, 235, 0.08);
+  color: #89dceb;
+  font-size: 0.88rem;
+}
+
+:is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown h3[id^='answer-']::before {
+  content: '';
+  width: 0.48rem;
+  height: 0.48rem;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 18px currentColor;
+}
+
+:is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown ol {
+  counter-reset: em2-step;
+  list-style: none;
+  padding-left: 0;
+}
+
+:is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown ol > li {
+  counter-increment: em2-step;
+  position: relative;
+  margin: 0.58rem 0;
+  padding: 0.72rem 0.9rem 0.72rem 3rem;
+  border: 1px solid rgba(49, 50, 68, 0.86);
+  border-radius: 10px;
+  background: rgba(24, 24, 37, 0.48);
+}
+
+:is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown ol > li::before {
+  content: counter(em2-step);
+  position: absolute;
+  left: 0.85rem;
+  top: 0.78rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 50%;
+  background: rgba(203, 166, 247, 0.18);
+  color: #cba6f7;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+:is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown blockquote {
+  border-left: 0;
+  border: 1px solid rgba(166, 227, 161, 0.30);
+  border-radius: 12px;
+  margin: 1.1rem 0 1.4rem;
+  padding: 0.9rem 1.1rem;
+  background:
+    linear-gradient(135deg, rgba(166, 227, 161, 0.09), rgba(148, 226, 213, 0.055)),
+    rgba(24, 24, 37, 0.68);
+  color: #cdd6f4;
+}
+
+:is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown blockquote p {
+  margin: 0;
+}
+
+:is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown blockquote strong:first-child {
+  color: #a6e3a1;
+}
+
+:is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown .katex-display {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  margin: 1rem auto;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(137, 180, 250, 0.24);
+  border-radius: 12px;
+  background: rgba(17, 17, 27, 0.58);
+}
+
+:is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown .katex-display > .katex {
+  text-align: center;
+  font-size: 1.08em;
+}
+
+:is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown img {
+  display: block;
+  max-width: min(760px, 100%);
+  margin: 1.2rem auto;
+  padding: 0.7rem;
+  border: 1px solid rgba(137, 180, 250, 0.20);
+  border-radius: 14px;
+  background: rgba(24, 24, 37, 0.72);
+  object-fit: contain;
+}
+
+:is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-toc-desktop {
+  max-height: calc(100vh - 6rem);
+  overflow: auto;
+}
+
+[data-theme='light'] :is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown > h1:first-child {
+  background:
+    linear-gradient(135deg, rgba(108, 61, 199, 0.08), rgba(8, 145, 178, 0.06)),
+    #ffffff;
+  border-color: rgba(108, 61, 199, 0.22);
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.08);
+}
+
+[data-theme='light'] :is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown h2[id^='question-'] {
+  background:
+    linear-gradient(90deg, rgba(108, 61, 199, 0.10), rgba(59, 130, 246, 0.06)),
+    #ffffff;
+  border-color: rgba(108, 61, 199, 0.18);
+  color: #6c3dc7;
+}
+
+[data-theme='light'] :is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown h2[id^='question-'] + p,
+[data-theme='light'] :is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown h2[id^='question-'] + p + p {
+  background: #ffffff;
+  border-color: #e2e8f0;
+}
+
+[data-theme='light'] :is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown ol > li,
+[data-theme='light'] :is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown .katex-display,
+[data-theme='light'] :is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown img {
+  background: #ffffff;
+  border-color: #e2e8f0;
+}
+
+[data-theme='light'] :is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown blockquote {
+  background: linear-gradient(135deg, rgba(22, 163, 74, 0.075), rgba(14, 165, 233, 0.045)), #ffffff;
+  border-color: rgba(22, 163, 74, 0.22);
+}
+
+@media (max-width: 680px) {
+  :is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown {
+    font-size: 0.92rem;
+  }
+
+  :is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown > h1:first-child + p + ul {
+    grid-template-columns: 1fr;
+  }
+
+  :is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown h2[id^='question-'] {
+    padding: 0.65rem 0.85rem;
+  }
+
+  :is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown h2[id^='question-'] + p,
+  :is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown h2[id^='question-'] + p + p {
+    padding: 0.8rem 0.85rem;
+  }
+
+  :is(.docs-doc-id-sem5\/em2\/pyq-answer-bank, .docs-doc-id-sem5\/em2\/pyq-unique-question-bank) .theme-doc-markdown ol > li {
+    padding-left: 2.65rem;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
    QUIZ BLOCKS
    ═══════════════════════════════════════════════════════════ */
 .quiz-block {

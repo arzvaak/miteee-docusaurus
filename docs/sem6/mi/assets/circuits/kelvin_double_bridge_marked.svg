@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1f2937" />
+    </marker>
+    <style>
+      .box{fill:#f8fafc;stroke:#1f2937;stroke-width:2;rx:8}
+      .wire{stroke:#1f2937;stroke-width:2;fill:none}
+      .arrow{stroke:#1f2937;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .mark{stroke:#d9480f;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .txt{font-family:Arial,Helvetica,sans-serif;font-size:17px;fill:#111827}
+      .small{font-family:Arial,Helvetica,sans-serif;font-size:14px;fill:#374151}
+      .title{font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700;fill:#111827}
+    </style>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <text x="24" y="34" class="title">Kelvin double bridge with balance and galvanometer marking</text>
+
+  <path class="wire" d="M120 90 L720 90 L720 270 L120 270 Z"/>
+  <rect x="170" y="72" width="72" height="34" class="box"/><text x="190" y="95" class="txt">P</text>
+  <rect x="590" y="72" width="72" height="34" class="box"/><text x="610" y="95" class="txt">Q</text>
+  <rect x="170" y="252" width="72" height="34" class="box"/><text x="190" y="275" class="txt">p</text>
+  <rect x="590" y="252" width="72" height="34" class="box"/><text x="610" y="275" class="txt">q</text>
+  <rect x="315" y="165" width="78" height="34" class="box"/><text x="337" y="188" class="txt">R</text>
+  <rect x="470" y="165" width="78" height="34" class="box"/><text x="492" y="188" class="txt">S</text>
+  <path class="wire" d="M242 90 L354 182 M662 90 L509 182 M242 270 L354 182 M662 270 L509 182"/>
+  <circle cx="432" cy="182" r="28" fill="#f8fafc" stroke="#1f2937" stroke-width="2"/><text x="423" y="188" class="txt">G</text>
+  <path class="arrow" d="M285 145 L335 170"/><text x="240" y="145" class="small">20 A through low R arm</text>
+  <text x="280" y="315" class="small">Balance when P/Q = p/q and R/S = P/Q; here R = S = 0.001 ohm.</text>
+
+</svg>

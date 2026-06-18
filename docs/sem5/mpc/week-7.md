@@ -1,317 +1,192 @@
-# Week 7 — Magnetics Design Examples + EMI
-
-> **NPTEL: Design of Modern Power Converters** | Prof. Shabari Nath, IIT Guwahati
+# Week 7 — EMI in Power Electronic Converters
 
 ---
 
-## Part A — Complete Inductor Design Example
+## 1. EMI Fundamentals
 
-### Buck Converter Inductor — Worked Through All 8 Steps
+### Types of EMI
 
-**Given specifications:**
-- $L = 100\,\mu H$, $I_L = 8\,A$ (average), $\Delta i_L = 0.625\,A$ (peak-to-peak ripple)
-- $f_s = 100\,kHz$
+| Type | Propagation | Frequency range | Measured in | Measured using |
+|---|---|---|---|---|
+| Conducted EMI | Through power lines/cables | 150 kHz – 30 MHz | dBµV | LISN |
+| Radiated EMI | Through space (electromagnetic waves) | 30 MHz – 1 GHz | dBµV/m | Antenna |
 
-**Design choices:**
-- $B_m = 0.25\,T$, $J_m = 5\,A/mm^2 = 5 \times 10^6\,A/m^2$, $K_u = 0.4$
-- Core material: Ferrite 3F3 (Ferroxcube) — low loss at 100 kHz
+> **FIB/MCQ**: Conducted = dBµV, Radiated = dBµV/m. LISN is for **conducted** EMI, antenna for **radiated**.
 
----
-
-#### Step 1 — Peak Current
-
-$$I_{L,pk} = I_L + \frac{\Delta i_L}{2} = 8 + \frac{0.625}{2} = 8.3125\,A$$
-
----
-
-#### Step 2 — Stored Energy
-
-$$W_m = \frac{1}{2} L I_{L,pk}^2 = \frac{1}{2} \times 100\times10^{-6} \times (8.3125)^2 = 3.453\,mJ$$
-
----
-
-#### Step 3 — Area Product
-
-$$A_p = \frac{L I_{L,pk}^2}{K_u B_m J_m} = \frac{100\times10^{-6} \times (8.3125)^2}{0.4 \times 0.25 \times 5\times10^6}$$
-
-$$A_p = \frac{6.91\times10^{-3}}{0.5\times10^6} = 13.8\times10^{-9}\,m^4 = 13800\,mm^4$$
-
----
-
-#### Step 4 — Core Selection
-
-Looking up Ferroxcube catalog for EE cores with $A_p \geq 13800\,mm^4$:
-
-**Selected core: EE 42×21×15**
-
-| Parameter | Value |
-|-----------|-------|
-| $A_c$ | $178\,mm^2$ |
-| $W_a$ | $178\,mm^2$ |
-| MPL ($l_c$) | $97\,mm$ |
-| MLT | $93\,mm$ |
-| $A_t$ | $48.91\,cm^2$ |
-| $\mu_{rc}$ | 2300 |
-| $A_p = W_a A_c$ | $31684\,mm^4 \geq 13800\,mm^4$ ✓ |
-
----
-
-#### Step 5 — RMS Current and Wire Selection
-
-$$I_{L,rms} = \sqrt{I_L^2 + \frac{(\Delta i_L)^2}{12}} = \sqrt{8^2 + \frac{0.625^2}{12}} = \sqrt{64 + 0.0326} \approx 8.002\,A \approx 8\,A$$
-
-The ripple contributes negligibly to RMS here (as expected when $\Delta i_L \ll I_L$).
-
-Required wire cross-section:
-$$A_w = \frac{I_{L,rms}}{J_m} = \frac{8}{5} = 1.6\,mm^2$$
-
-From AWG table, **12 AWG** has $A_w = 3.31\,mm^2$ (next standard value above 1.6 mm²). Select 12 AWG.
-
-> Why not use 1.6 mm² exactly? AWG sizes are discrete. You always round **up** to the next larger wire (lower AWG number = thicker wire).
-
----
-
-#### Step 6 — Number of Turns
-
-$$N = \frac{K_u \cdot W_a}{A_w} = \frac{0.4 \times 178}{3.31} = \frac{71.2}{3.31} = 21.5 \implies N = 21 \text{ turns (round down)}$$
-
----
-
-#### Step 7 — Air Gap Length
-
-$$l_g = \frac{\mu_0 A_c N^2}{L} - \frac{l_c}{\mu_{rc}}$$
-
-$$= \frac{4\pi\times10^{-7} \times 178\times10^{-6} \times 21^2}{100\times10^{-6}} - \frac{97\times10^{-3}}{2300}$$
-
-$$= \frac{4\pi\times10^{-7} \times 178\times10^{-6} \times 441}{10^{-4}} - 42.2\times10^{-6}$$
-
-$$\approx 0.985\,mm - 0.042\,mm \approx 0.94\,mm \approx 1\,mm$$
-
----
-
-#### Step 8 — Verification
-
-**Peak flux density:**
-$$B_{pk} = \frac{\mu_0 N I_{L,pk}}{l_g + l_c/\mu_{rc}} = \frac{4\pi\times10^{-7} \times 21 \times 8.3125}{1\times10^{-3} + 97\times10^{-3}/2300}$$
-
-Denominator: $1\times10^{-3} + 42.2\times10^{-6} = 1.042\times10^{-3}$
-
-$$B_{pk} = \frac{4\pi\times10^{-7} \times 21 \times 8.3125}{1.042\times10^{-3}} = \frac{2.19\times10^{-4}}{1.042\times10^{-3}} = 0.210\,T$$
-
-$0.210\,T < 0.25\,T$ (our design limit) ✓ — no saturation.
-
-**AC flux density (for core loss):**
-$$B_m = \frac{\mu_0 N (\Delta i_L/2)}{l_g + l_c/\mu_{rc}} = \frac{4\pi\times10^{-7} \times 21 \times 0.3125}{1.042\times10^{-3}} = 7.92\,mT$$
-
-**Core loss** (3F3 Steinmetz: $k = 5.983\times10^{-5}$, $m = 1.66$, $n = 2.68$; $f$ in Hz, $B_m$ in T):
-$$P_v = 5.983\times10^{-5} \times (10^5)^{1.66} \times (7.92\times10^{-3})^{2.68}$$
-
-$$P_c = P_v \times A_c \times l_c \approx \text{negligible} \quad (\ll 1\,W)$$
-
-**Copper loss:**
-
-$R_{DC/length}$ for 12 AWG copper ≈ 5.208 mΩ/m
-
-$$R_L = \text{MLT} \times N \times R_{DC/length} = 93\times10^{-3} \times 21 \times 5.208\times10^{-3} = 0.01017\,\Omega$$
-
-$$P_{winding} = I_{L,rms}^2 \cdot R_L = 8^2 \times 0.0102 = 0.653\,W$$
-
-**Temperature rise:**
-$$\psi = \frac{P_{core} + P_{winding}}{A_t} \approx \frac{0 + 0.653}{48.91} = 0.01335\,W/cm^2$$
-
-$$\Delta T = 450 \times (0.01335)^{0.826} = 450 \times 0.0282 = 12.7°C$$
-
-Assuming $\Delta T_{max} = 40°C$: $12.7°C \ll 40°C$ ✓ — well within limits.
-
-**Final design:** 21 turns of 12 AWG on EE 42×21×15 ferrite core, 1 mm air gap.
-
----
-
-## Part B — Transformer Design Summary
-
-For a transformer (forward or full-bridge converter), the procedure is similar but with key differences:
-
-| Step | Inductor | Transformer |
-|------|----------|-------------|
-| Area product | $A_p = \frac{L I_{pk}^2}{K_u B_m J_m}$ | $A_p = \frac{P_o}{K_u K_f B_m J_m f_s}$ |
-| Air gap | Required (stores energy) | **None** (energy should not be stored) |
-| Winding | Single winding | Primary + secondary (both must fit in $W_a$) |
-| Turns from | $L$ and gap formula | Faraday's law (volt-second balance) |
-| Current in wire | Inductor RMS | Transformer side RMS |
-
-**Primary turns from Faraday's law (square wave):**
-
-$$N_1 = \frac{V_1}{4 f_s B_m A_c}$$
-
-**Secondary turns from turns ratio:**
-
-$$N_2 = N_1 \cdot \frac{V_2}{V_1}$$
-
-**Window split:** If primary fraction is $\alpha_1 = N_1 I_{1,rms} / (N_1 I_{1,rms} + N_2 I_{2,rms})$, allocate proportionally.
-
-For equal loss in primary and secondary: $\alpha_1 = 0.5$ (each winding gets half the window).
-
----
-
-## Part C — EMI in Power Electronics
-
-### C.1 What Is EMI?
-
-**Electromagnetic Interference (EMI):** Unwanted electrical noise generated by the converter's switching action that:
-- Flows back into the supply grid via power cables (**conducted EMI**)
-- Radiates as electromagnetic waves from wires and PCB traces (**radiated EMI**)
-
-**Why power converters generate EMI:** Every switching transition (MOSFET turning ON/OFF) creates fast $dI/dt$ and $dV/dt$ transitions — these are rich in harmonic content extending to hundreds of MHz.
-
-**Regulatory standards:**
-
-| Standard | Region | Frequency range | What it limits |
-|----------|--------|-----------------|---------------|
-| CISPR 22 / EN 55022 | International/Europe | 150 kHz–30 MHz (conducted) | Conducted EMI at power port |
-| FCC Part 15 | USA | 150 kHz–30 MHz (conducted) | Same |
-| CISPR 22 (radiated) | — | 30 MHz–1 GHz | Radiated EMI |
-
-> **Exam key:** Conducted EMI is measured from **150 kHz to 30 MHz**. Below 150 kHz is generally not regulated. Above 30 MHz transitions to radiated EMI measurement.
-
----
-
-### C.2 LISN — Line Impedance Stabilization Network
-
-**Problem:** The impedance of the mains supply varies widely — you can't measure EMI in a reproducible way without a standardized source impedance.
-
-**LISN solution:**
-- Presents a standardized **50 Ω** impedance to the device under test (DUT) at EMI frequencies (150 kHz–30 MHz)
-- Blocks mains supply noise from contaminating the EMI measurement
-- Couples the conducted EMI noise to the spectrum analyzer (measurement receiver)
-
-**LISN circuit:** Series inductors (block mains noise from reaching measurement port) + shunt capacitors (provide 50 Ω path at EMI frequencies).
-
+### dBµV Conversion
 ```
-Mains ─ [Inductor] ─┬─ DUT
-                    ├─ [50 Ω to measurement receiver]
-                    └─ [Cap to GND]
+VdBµV = 20 · log10(VµV)          [linear → dB]
+VµV    = 10^(VdBµV / 20)         [dB → linear]
+```
+where `VµV` = voltage in microvolts.
+
+| Linear (µV) | dBµV |
+|---|---|
+| 1 µV | 0 dBµV |
+| 10 µV | 20 dBµV |
+| 100 µV | 40 dBµV |
+| 316 µV | ≈ 50 dBµV |
+| 1000 µV | 60 dBµV |
+| 10,000 µV | 80 dBµV |
+
+> Each 10× in voltage = +20 dB. Each 100× = +40 dB.
+
+### Insertion Loss
+```
+IL (dB) = 20 · log10(V_without_filter / V_with_filter)
+```
+- Higher IL = more attenuation = better filter
+- Unit is **dB** (not dBµV)
+- To find filtered noise: `Noise_filtered (dBµV) = Noise_unfiltered (dBµV) − IL (dB)`
+
+---
+
+## 2. Common Mode (CM) vs Differential Mode (DM) Noise
+
+### Definitions
+From line voltages v1, v2 (line-to-ground):
+```
+Vcm = (v1 + v2) / 2      [Common mode — same on both lines]
+Vdm = v1 − v2            [Differential mode — between lines]
 ```
 
-The spectrum analyzer measures the voltage across the 50 Ω resistor.
-
----
-
-### C.3 Common Mode (CM) and Differential Mode (DM) Noise
-
-Any conducted EMI signal on a two-wire power line can be decomposed into exactly two orthogonal components:
-
-$$V_{DM} = \frac{V_{Line} - V_{Neutral}}{2} \qquad V_{CM} = \frac{V_{Line} + V_{Neutral}}{2}$$
-
-| Property | Differential Mode (DM) | Common Mode (CM) |
-|----------|----------------------|-----------------|
-| Current direction | Opposite in Line and Neutral | Same direction in both conductors |
-| Return path | Neutral conductor | Earth/ground conductor |
-| Primary source in SMPS | Pulsed input current (inductor ripple, rectifier current) | $dV/dt$ at switching node via parasitic capacitance to chassis |
-| Typical frequency range | Lower (kHz range) | Higher (hundreds of kHz to MHz) |
-| Filter component | $C_X$ capacitor (L to N), DM choke | $C_Y$ capacitor (L to GND), CM choke |
-
-**Why CM noise returns through ground:**
-
-$$i_{CM} = C_{para} \cdot \frac{dV_{switch}}{dt}$$
-
-The switching node (drain of MOSFET in a buck) swings between 0 and $V_{in}$ at every switching event. Any capacitance between the switching node and the chassis (through heatsink, PCB ground plane, or transformer interwinding capacitance) drives a current into the ground. This current flows back via the earth conductor — it is common mode noise.
-
-**To reduce CM noise:** Slow down switching transitions (larger $R_g$) → reduce $dV/dt$ → reduce $i_{CM}$. Trade-off: slower switching → higher switching loss.
-
----
-
-### C.4 EMI Filter Design
-
-The EMI filter sits at the power input of the converter, between the LISN (or mains) and the converter.
-
-**Standard EMI filter structure (Pi-filter):**
-
+For currents:
 ```
-Line ─ [L_DM] ─┬─────────────────────────── Line out
-               │
-              [C_X]  [CM Choke]  [C_X]
-               │
-Neutral ───────┴─────────────────────────── Neutral out
-    │                                              │
-   [C_Y]                                         [C_Y]
-    │                                              │
-   GND ─────────────────────────────────────────GND
+Icm = i1 + i2    [CM: flow in same direction, return via earth]
+Idm = (i1 − i2) / 2
 ```
 
-**Component functions:**
+### Sources
+- **CM noise**: **parasitic capacitances** → fast dv/dt at switch node → displacement current flows to chassis via stray C (drain/collector-to-heatsink-to-chassis ground)
+- **DM noise**: switched current (di/dt) → voltage drop on parasitic inductances
 
-| Component | Type | Purpose |
-|-----------|------|---------|
-| $C_X$ | Line-to-Neutral capacitor | Attenuates DM noise; provides low-impedance path for DM currents |
-| $C_Y$ | Line/Neutral-to-Ground capacitor | Attenuates CM noise; diverts CM currents to ground before they reach the LISN |
-| **CM choke** | Bifilar wound inductor | High impedance for CM currents (both directions same → fluxes add); transparent to DM (fluxes cancel) |
+> **MCQ**: Main source of CM noise = **parasitic capacitance** (not wire resistance, not power level, not cable length)
 
-**$C_X$ vs $C_Y$ safety ratings:**
+### X and Y Capacitors
+- **X capacitors**: connected **line-to-line** → filter **DM** noise; rated for full line-to-line voltage (e.g., 275 V AC)
+- **Y capacitors**: connected **line-to-earth** → filter **CM** noise; **lower voltage rating** (e.g., 250 V AC max) — safety-critical (leakage current to earth is regulated by IEC/UL standards)
 
-| Type | Capacitance | Voltage rating | Safety limit |
-|------|-------------|---------------|-------------|
-| $C_X$ | 0.1–10 μF | Full AC line voltage | No leakage current limit (current returns via Neutral) |
-| $C_Y$ | 1–4.7 nF | Full AC line voltage | **Strictly limited** — leakage to earth ≤ 3.5 mA (safety regulation; electric shock risk) |
-
-> **Exam trap:** $C_Y$ capacitors are limited to a very small value (nF range) because the current through them flows directly to the earth conductor — if a person touches the chassis and the earth conductor is broken, this current flows through the person. Hence safety standards limit it strictly.
-
-**CM choke operation:**
-
-- Both wires wound on same core in same direction
-- DM current: flows opposite in the two wires → fluxes **cancel** → no inductance presented to DM current
-- CM current: flows same direction in both wires → fluxes **add** → high inductance → high impedance to CM
-
-This means the CM choke provides high impedance to CM noise without impeding DM (load) current — this is the key advantage.
+> **MCQ trap**: Y-caps have a LOWER voltage rating than X-caps — connecting a standard X-cap in the Y position is a safety violation.
 
 ---
 
-### C.5 EMI Filter Design Procedure
+## 3. LISN (Line Impedance Stabilisation Network)
 
-1. Measure conducted EMI at 150 kHz (worst-case, start of band) on an unfiltered converter
-2. Read the regulatory limit at 150 kHz from the applicable standard (e.g., CISPR Class B)
-3. Calculate required attenuation = measured level − limit (in dB)
-4. Choose filter order and calculate corner frequency:
-   - Each LC stage provides 40 dB/decade attenuation above corner frequency
-   - Single-stage LC at corner frequency $f_c$: attenuation at $f_{EMI}$ is $40\log_{10}(f_{EMI}/f_c)$ dB
-5. Select $C_X$, $C_Y$, CM choke to achieve required attenuation
-6. Verify with post-filter measurement
+- Standardises impedance presented to Equipment Under Test (EUT) at RF frequencies
+- Isolates the EUT from the mains at RF frequencies
+- Allows reproducible conducted EMI measurements
+- Connected to **chassis/earth ground** for CM filter reference
 
-**Corner frequency for single-stage LC filter:**
+### LISN Internal Structure (CISPR 16 / per line)
+- **50 µH** inductor in series with mains → blocks mains RF from polluting measurement
+- **5 Ω** resistor + 50 Ω measurement port in parallel → defines the 50 Ω standard impedance seen by EUT at RF
 
-$$f_c = \frac{1}{2\pi\sqrt{LC}}$$
+> **FIB/MCQ**: LISN contains a **50 µH** inductor. The standard measurement impedance is **50 Ω**.
 
 ---
 
-### C.6 Interaction: Gate Resistance and EMI
+## 4. EMI Filter Topologies — Impedance Mismatch Principle
 
-Increasing gate resistance $R_g$ slows switching:
-- **Pro:** Lower $dV/dt$ → less CM noise; lower $dI/dt$ → less DM noise and ringing
-- **Con:** Longer switching time → more switching loss $P_{sw} = \frac{1}{2}V I (t_{on}+t_{off}) f_s$
+**Rule**: The filter element should present impedance **opposite** to the source/load for maximum attenuation.
+- High Z source/load → shunt capacitor (low Z path to ground)
+- Low Z source/load → series inductor (high Z in series)
 
-> There is a fundamental trade-off: you cannot simultaneously minimize switching loss and minimize EMI.
+### Filter Topologies
+
+| Topology | Structure | Use when |
+|---|---|---|
+| LC filter | Series L → Shunt C | Source Z is LOW, Load Z is HIGH |
+| CL filter | Shunt C → Series L | Source Z is HIGH, Load Z is LOW |
+| T filter | L–C–L | Both source AND load Z are **LOW** |
+| Pi filter (π) | C–L–C | Both source AND load Z are **HIGH** |
+
+> **Memory aid**:
+> - T filter = two inductors (high Z in series) → blocks low-Z source and load
+> - Pi (π) filter = two capacitors (low Z to ground) → shunts high-Z source and load
+
+> **MCQ exact wording**: "CL filter is preferred when source has high and load has low impedance" ← TRUE
 
 ---
 
-## Formula Sheet — Week 7
+## 5. Common Mode Choke
 
-**Inductor design (complete sequence):**
+- Both conductors wound on the **same core**
+- CM currents (same direction) → fluxes **add** → high inductance → high impedance → attenuates CM noise
+- DM currents (opposite directions) → fluxes **cancel** → near-zero inductance → does NOT impede DM
+- **True**: CM choke reduces CM current; does NOT reduce DM current
+- In practice, imperfectly matched winding turns → small residual DM inductance (~1–2% of CM inductance) → slight DM attenuation as a side effect (but not relied upon for design)
 
-$$I_{L,pk} = I_L + \frac{\Delta i_L}{2}$$
+---
 
-$$A_p = \frac{L I_{L,pk}^2}{K_u B_m J_m}$$
+## 6. EMI Reduction Techniques
 
-$$I_{L,rms} = \sqrt{I_L^2 + \frac{(\Delta i_L)^2}{12}}, \qquad A_w = \frac{I_{L,rms}}{J_m}$$
+### Effective methods:
+- **Soft switching** (ZVS/ZCS): eliminates rapid dv/dt and di/dt → reduces EMI at source
+- **Shielded cables**: confine EM fields, prevent radiation
+- **Proper PCB layout**: minimize high di/dt loop area → less radiated EMI, less L·di/dt spikes
+- **Increasing gate resistance Rg**: slows switching → less high-frequency content → less EMI (but more switching loss)
+- **Snubbers**: damp parasitic oscillations (an EMI source)
+- **Random/spread-spectrum PWM**: spreads harmonic energy over wider bandwidth → lower peak emissions
 
-$$N = \frac{K_u W_a}{A_w}, \qquad l_g = \frac{\mu_0 A_c N^2}{L} - \frac{l_c}{\mu_{rc}}$$
+### NOT effective / counterproductive:
+- Removing filters → increases EMI
+- Increasing switching frequency → does NOT reduce EMI (may shift/increase it)
+- Hard switching → generates MORE EMI
 
-$$\Delta T = 450\,\psi^{0.826}, \qquad \psi = \frac{P_{core} + P_{winding}}{A_t}$$
+### Parasitic Voltage Spike from Loop Inductance
+```
+V = Lp · (di/dt)
+```
+e.g. Lp = 20 nH, di/dt = 50 A/µs → V = 20e-9 × 50e6 = 1.0 V spike
 
-**Transformer:**
+---
 
-$$N_1 = \frac{V_1}{4 f_s B_m A_c} \quad \text{(square wave)}$$
+## 7. Numeric Problem Approach
 
-**EMI:**
+### dBµV Conversion
+1. `VdBµV = 20·log10(VµV)`
+2. e.g. 316 µV: `20·log10(316) = 20×2.5 = 50 dBµV`
 
-$$i_{CM} = C_{para} \cdot \frac{dV_{switch}}{dt}$$
+### Insertion Loss
+1. `IL_ratio = 10^(IL_dB/20)` → noise reduced by this factor
+2. e.g. IL = 40 dB → ratio = 100 → noise reduced to 1/100
+3. `Filtered noise = 80 dBµV − 40 dB = 40 dBµV`
 
-$$V_{DM} = \frac{V_L - V_N}{2}, \qquad V_{CM} = \frac{V_L + V_N}{2}$$
+### Filter Topology Selection
+1. Identify source impedance (high or low)
+2. Identify load impedance (high or low)
+3. Apply: both low → T; both high → Pi; high source/low load → CL; low source/high load → LC
+
+---
+
+## 8. MCQ/MSQ Quick Reference
+
+- Conducted EMI: 150 kHz – 30 MHz; Radiated EMI: 30 MHz – 1 GHz
+- LISN → conducted EMI; Antenna → radiated EMI
+- dBµV = `20·log10(µV)`; unit for radiated = dBµV/m
+- X cap → DM noise; Y cap → CM noise (Y connects to earth)
+- CM choke: attenuates CM, does NOT attenuate DM
+- IL unit = **dB** (not dBµV)
+- T filter: source AND load both LOW Z
+- Pi filter: source AND load both HIGH Z
+- CL: source HIGH, load LOW (C first, then L)
+- LC: source LOW, load HIGH (L first, then C)
+- Increasing Rg → slower switching → less EMI but more switching loss
+- Soft switching most effective at reducing high-frequency radiated EMI
+- Main reasons for EMI: parasitic capacitances, switched voltage, switched current (NOT just "high power")
+- Spread spectrum PWM reduces peak spectral content (doesn't reduce total energy, just spreads it)
+
+---
+
+## 9. FIB Quick Answers
+
+- Conducted EMI range: **150 kHz – 30 MHz**
+- Radiated EMI range: **30 MHz – 1 GHz**
+- `Vcm = (v1+v2)/2`; `Vdm = v1−v2`
+- `VdBµV = 20·log10(VµV)`; inverse: `VµV = 10^(VdBµV/20)`
+- IL unit: **dB**
+- CM choke: high impedance to **CM** currents, low to **DM**
+- T filter: both source and load **low** impedance
+- Pi filter: both source and load **high** impedance
+- X capacitors filter **differential** mode; Y capacitors filter **common** mode
+- Impedance mismatch principle: filter element impedance should be **opposite** to source/load

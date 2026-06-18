@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1f2937" />
+    </marker>
+    <style>
+      .box{fill:#f8fafc;stroke:#1f2937;stroke-width:2;rx:8}
+      .wire{stroke:#1f2937;stroke-width:2;fill:none}
+      .arrow{stroke:#1f2937;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .mark{stroke:#d9480f;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .txt{font-family:Arial,Helvetica,sans-serif;font-size:17px;fill:#111827}
+      .small{font-family:Arial,Helvetica,sans-serif;font-size:14px;fill:#374151}
+      .title{font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700;fill:#111827}
+    </style>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <text x="24" y="34" class="title">Binary-weighted DAC with active-bit current markings</text>
+
+  <path class="wire" d="M110 90 L250 90 M110 140 L250 140 M110 190 L250 190 M110 240 L250 240"/>
+  <rect x="250" y="72" width="95" height="34" class="box"/><text x="268" y="95" class="txt">10k</text>
+  <rect x="250" y="122" width="95" height="34" class="box"/><text x="268" y="145" class="txt">20k</text>
+  <rect x="250" y="172" width="95" height="34" class="box"/><text x="268" y="195" class="txt">40k</text>
+  <rect x="250" y="222" width="95" height="34" class="box"/><text x="268" y="245" class="txt">80k</text>
+  <path class="wire" d="M345 90 L500 165 M345 140 L500 165 M345 190 L500 165 M345 240 L500 165"/>
+  <path class="wire" d="M500 125 L500 205 L610 165 Z"/><text x="520" y="150" class="txt">-</text><text x="520" y="195" class="txt">+</text>
+  <path class="wire" d="M610 165 L800 165"/><text x="812" y="170" class="txt">Vout</text>
+  <path class="wire" d="M530 125 L530 60 L665 60 L665 165"/>
+  <rect x="565" y="42" width="80" height="34" class="box"/><text x="585" y="65" class="txt">Rf</text>
+  <text x="52" y="95" class="small">b3=1</text><text x="52" y="145" class="small">b2=1</text><text x="52" y="195" class="small">b1=0</text><text x="52" y="245" class="small">b0=1</text>
+  <path class="mark" d="M370 90 L445 125"/><text x="385" y="88" class="small">MSB current</text>
+  <text x="250" y="318" class="small">For 1101, active branch currents sum at virtual ground; output is -Rf times total current.</text>
+
+</svg>

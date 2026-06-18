@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1f2937" />
+    </marker>
+    <style>
+      .box{fill:#f8fafc;stroke:#1f2937;stroke-width:2;rx:8}
+      .wire{stroke:#1f2937;stroke-width:2;fill:none}
+      .arrow{stroke:#1f2937;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .mark{stroke:#d9480f;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .txt{font-family:Arial,Helvetica,sans-serif;font-size:17px;fill:#111827}
+      .small{font-family:Arial,Helvetica,sans-serif;font-size:14px;fill:#374151}
+      .title{font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700;fill:#111827}
+    </style>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <text x="24" y="34" class="title">Temperature-sensitive Wheatstone bridge</text>
+
+  <circle cx="140" cy="90" r="4" fill="#111827"/><circle cx="140" cy="270" r="4" fill="#111827"/>
+  <circle cx="400" cy="90" r="4" fill="#111827"/><circle cx="400" cy="270" r="4" fill="#111827"/>
+  <path class="wire" d="M140 90 L400 90 L400 270 L140 270 Z"/>
+  <path class="wire" d="M140 90 L270 180 L140 270"/>
+  <path class="wire" d="M400 90 L270 180 L400 270"/>
+  <rect x="112" y="150" width="56" height="36" class="box"/><text x="121" y="173" class="txt">R1</text>
+  <rect x="372" y="150" width="56" height="36" class="box"/><text x="381" y="173" class="txt">R2</text>
+  <rect x="242" y="70" width="76" height="36" class="box"/><text x="252" y="94" class="txt">Rv(T)</text>
+  <rect x="242" y="250" width="76" height="36" class="box"/><text x="252" y="274" class="txt">R3</text>
+  <path class="arrow" d="M270 180 L520 180"/><text x="535" y="185" class="txt">Vout</text>
+  <text x="94" y="64" class="txt">+Vs</text><text x="102" y="304" class="txt">0 V</text>
+  <text x="455" y="116" class="small">Balance: Rv/R3 = R1/R2</text>
+  <path class="mark" d="M286 116 C335 120 350 140 370 160"/><text x="460" y="142" class="small">Rv changes with temperature</text>
+
+</svg>

@@ -11,6 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 TARGETS = [
     (ROOT / "docs" / "sem5" / "em2" / "pyq-answer-bank.md", 141),
+    (ROOT / "docs" / "sem5" / "em2" / "pyq-distinct-question-bank.md", 125),
     (ROOT / "docs" / "sem5" / "em2" / "pyq-unique-question-bank.md", 52),
 ]
 PLACEHOLDERS = re.compile(r"\b(TODO|TBD|insert diagram|placeholder|fix later|not available)\b", re.I)

@@ -125,19 +125,19 @@
   border-radius: 12px;
   font-size: 1rem;
   font-weight: 700;
-  background: #cba6f7;
-  color: #1e1e2e;
+  background: linear-gradient(135deg, #f5c2e7 0%, #89dceb 100%);
+  color: #11111b;
   text-decoration: none;
   transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
-  box-shadow: 0 0 28px rgba(203, 166, 247, 0.4);
+  box-shadow: 0 0 28px rgba(245, 194, 231, 0.32), 0 0 42px rgba(137, 220, 235, 0.18);
 }
 
 .ctaPrimary:hover {
-  background: #d6baf9;
-  color: #1e1e2e;
+  background: linear-gradient(135deg, #f7d1ee 0%, #9ae6f2 100%);
+  color: #11111b;
   text-decoration: none;
   transform: translateY(-2px);
-  box-shadow: 0 6px 32px rgba(203, 166, 247, 0.55);
+  box-shadow: 0 6px 32px rgba(245, 194, 231, 0.45), 0 0 48px rgba(137, 220, 235, 0.28);
 }
 
 .ctaSecondary {
@@ -172,12 +172,13 @@
   border-top: 1px solid #313244;
   border-bottom: 1px solid #313244;
   width: 100%;
-  max-width: 700px;
+  max-width: 760px;
   margin-bottom: 0;
 }
 
 .statItem {
   flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -266,6 +267,14 @@
   transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
 
+.cardFeatured {
+  background:
+    linear-gradient(145deg, rgba(245, 194, 231, 0.16), rgba(137, 220, 235, 0.08)),
+    #181825;
+  border-color: rgba(245, 194, 231, 0.72);
+  box-shadow: 0 18px 54px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(245, 194, 231, 0.22);
+}
+
 /* Accent glow on top edge */
 .card::before {
   content: '';
@@ -277,6 +286,13 @@
   background: linear-gradient(90deg, transparent, var(--accent), transparent);
   opacity: 0;
   transition: opacity 0.2s;
+}
+
+.cardFeatured::before {
+  left: 0;
+  right: 0;
+  height: 2px;
+  opacity: 1;
 }
 
 .card:hover {
@@ -304,6 +320,10 @@
   line-height: 1;
 }
 
+.cardFeatured .cardIcon {
+  filter: drop-shadow(0 0 18px rgba(245, 194, 231, 0.42));
+}
+
 .cardSem {
   font-size: 0.75rem;
   font-weight: 700;
@@ -313,6 +333,12 @@
   background: #313244;
   border-radius: 8px;
   padding: 0.25rem 0.65rem;
+}
+
+.cardFeatured .cardSem {
+  color: #f5c2e7;
+  background: rgba(245, 194, 231, 0.11);
+  border: 1px solid rgba(245, 194, 231, 0.24);
 }
 
 .cardCode {
@@ -348,6 +374,11 @@
   letter-spacing: 0.01em;
 }
 
+.cardFeatured .cardMeta {
+  color: #cdd6f4;
+  border-color: rgba(245, 194, 231, 0.22);
+}
+
 .cardArrow {
   position: absolute;
   bottom: 1.5rem;
@@ -357,6 +388,11 @@
   opacity: 0;
   transform: translateX(-6px);
   transition: opacity 0.2s, transform 0.2s;
+}
+
+.cardFeatured .cardArrow {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .card:hover .cardArrow {
@@ -391,15 +427,15 @@
 }
 
 [data-theme='light'] .ctaPrimary {
-  background: #6c3dc7;
+  background: linear-gradient(135deg, #be185d 0%, #2563eb 100%);
   color: #fff;
-  box-shadow: 0 0 20px rgba(108, 61, 199, 0.3);
+  box-shadow: 0 0 20px rgba(190, 24, 93, 0.22);
 }
 
 [data-theme='light'] .ctaPrimary:hover {
-  background: #7a45d0;
+  background: linear-gradient(135deg, #db2777 0%, #3b82f6 100%);
   color: #fff;
-  box-shadow: 0 4px 28px rgba(108, 61, 199, 0.45);
+  box-shadow: 0 4px 28px rgba(190, 24, 93, 0.32);
 }
 
 [data-theme='light'] .ctaSecondary {
@@ -432,6 +468,14 @@
   border-color: #e2e8f0;
 }
 
+[data-theme='light'] .cardFeatured {
+  background:
+    linear-gradient(145deg, rgba(190, 24, 93, 0.08), rgba(37, 99, 235, 0.06)),
+    #ffffff;
+  border-color: rgba(190, 24, 93, 0.42);
+  box-shadow: 0 12px 34px rgba(15, 23, 42, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
 [data-theme='light'] .card:hover {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 0 0 1px var(--accent);
 }
@@ -441,7 +485,18 @@
   color: #64748b;
 }
 
+[data-theme='light'] .cardFeatured .cardSem {
+  color: #be185d;
+  background: rgba(190, 24, 93, 0.08);
+  border-color: rgba(190, 24, 93, 0.18);
+}
+
 [data-theme='light'] .cardMeta {
   border-color: #e2e8f0;
   color: #94a3b8;
+}
+
+[data-theme='light'] .cardFeatured .cardMeta {
+  color: #475569;
+  border-color: rgba(190, 24, 93, 0.16);
 }

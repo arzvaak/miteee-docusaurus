@@ -7,6 +7,18 @@ import styles from './index.module.css';
 const courses = [
   {
     sem: 'Sem 5',
+    badge: 'Sem 5 · New',
+    code: 'EM-II',
+    title: 'Electrical Machines II',
+    description: 'Transformers, induction motors, circle diagrams, single-phase motors, alternators, synchronous motors, and exam-ready PYQ answers.',
+    meta: '12 weeks · 203 solved PYQs',
+    href: '/sem5/em2/overview',
+    accent: '#f5c2e7',
+    icon: '🧲',
+    featured: true,
+  },
+  {
+    sem: 'Sem 5',
     code: 'MPC',
     title: 'Design of Modern Power Converters',
     description: 'Converter topologies, semiconductor devices, gate drivers, snubbers, thermal design, magnetics, and EMI.',
@@ -14,6 +26,16 @@ const courses = [
     href: '/sem5/mpc/week-1',
     accent: '#cba6f7',
     icon: '⚡',
+  },
+  {
+    sem: 'Sem 5',
+    code: 'DSP',
+    title: 'Signal Processing Techniques',
+    description: 'Sampling, Z-transform, DFT/FFT, FIR & IIR filter design, spectral analysis, LPC/PARCOR, and multirate processing.',
+    meta: '12 weeks · NPTEL',
+    href: '/sem5/dsp/overview',
+    accent: '#89b4fa',
+    icon: '🏛️',
   },
   {
     sem: 'Sem 5',
@@ -68,10 +90,10 @@ const courses = [
 ];
 
 const stats = [
-  { value: '8', label: 'MPC Weeks' },
-  { value: '6', label: 'Courses' },
+  { value: '203', label: 'EM-II PYQs' },
+  { value: '12', label: 'EM-II Weeks' },
+  { value: '8', label: 'Courses' },
   { value: '2', label: 'Semesters' },
-  { value: '∞', label: 'Caffeine' },
 ];
 
 export default function Home(): ReactNode {
@@ -96,8 +118,11 @@ export default function Home(): ReactNode {
             worked examples, and concept breakdowns that actually make sense.
           </p>
           <div className={styles.heroCtas}>
-            <Link className={styles.ctaPrimary} to="/sem5/mpc/week-1">
-              Sem 5 Notes
+            <Link className={styles.ctaPrimary} to="/sem5/em2/overview">
+              Open EM-II Notes
+            </Link>
+            <Link className={styles.ctaSecondary} to="/sem5/em2/pyq-answer-bank">
+              PYQ Answer Bank
             </Link>
             <Link className={styles.ctaSecondary} to="/sem6/sgt/question-bank">
               Sem 6 Notes
@@ -120,15 +145,19 @@ export default function Home(): ReactNode {
       <main className={styles.main}>
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionTitle}>All Courses</h2>
-          <p className={styles.sectionSub}>Click any card to jump straight to the notes.</p>
+          <p className={styles.sectionSub}>EM-II is pinned first, with the full PYQ answer bank one click away.</p>
         </div>
 
         <div className={styles.grid}>
           {courses.map((c) => (
-            <Link key={c.code} to={c.href} className={styles.card} style={{ '--accent': c.accent } as React.CSSProperties}>
+            <Link
+              key={c.code}
+              to={c.href}
+              className={[styles.card, c.featured ? styles.cardFeatured : ''].filter(Boolean).join(' ')}
+              style={{ '--accent': c.accent } as React.CSSProperties}>
               <div className={styles.cardTop}>
                 <span className={styles.cardIcon}>{c.icon}</span>
-                <span className={styles.cardSem}>{c.sem}</span>
+                <span className={styles.cardSem}>{c.badge ?? c.sem}</span>
               </div>
               <div className={styles.cardCode} style={{ color: c.accent }}>{c.code}</div>
               <h3 className={styles.cardTitle}>{c.title}</h3>

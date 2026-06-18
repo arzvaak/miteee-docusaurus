@@ -1,522 +1,580 @@
-# ELE 3122 M&I — Tutorial 2 Solutions
-
-**Course:** ELE 3122 Measurements & Instrumentation
-**Tutorial Date:** 28.01.2025
-**Topics:** PMMC Instruments, Ammeter & Voltmeter Design, Moving Iron Instruments, Electrodynamometer Instruments
-
+---
+id: tutorial-2
+title: Tutorial 2 - Analog Instruments and Loading
+sidebar_label: Tutorial 2
 ---
 
-## Exercise Questions
+Generated from the tutorial PDF in `C:\Users\arzva\Downloads\MI`.
 
----
+Each section is written as a learning note: concept first, marked visual where useful, then the worked answer and verification note.
 
-### Q1 — Multirange Ammeter: Direct Method
+## Question 1
 
-**Problem:** Design a multirange ammeter using the **direct method** for ranges: 10 mA, 100 mA, 1 A. The d'Arsonval meter has internal resistance $R_m = 10\ \Omega$ and full-scale current $I_m = 1\ \text{mA}$.
+Design a multirange ammeter by direct method for ranges 10 mA, 100 mA, and 1 A. The d'Arsonval meter has internal resistance 10 Ω and full-scale current 1 mA.
 
-**Answer:** $R_{sh1} = 1.1\ \Omega$; $R_{sh2} = 101\ \text{m}\Omega$; $R_{sh3} = 10\ \text{m}\Omega$
+### Learn the idea
 
-#### Concept: Direct Method
+For each range, the meter movement must still carry only its full-scale current; the added shunt carries the excess current.
 
-In the direct method, each shunt resistor is independently calculated in parallel with the meter movement. The switching mechanism selects which shunt is active for the desired range. Each shunt is computed as:
+### Given and target
 
-$$R_{sh} = \frac{I_m \cdot R_m}{I - I_m}$$
+- Known values: ranges $10\,\mathrm{mA}$, $100\,\mathrm{mA}$, and $1\,\mathrm{A}$; meter resistance $R_m=10\,\Omega$; full-scale meter current $I_m=1\,\mathrm{mA}$.
+- Target: calculate the direct-method shunt resistance for each current range.
 
-#### Circuit Diagram
+### Annotated visual
 
-```mermaid
-graph LR
-    A["+"] --> B["Switch"]
-    B -->|"10 mA"| C["Rsh1 = 1.1 Ω"]
-    B -->|"100 mA"| D["Rsh2 = 101 mΩ"]
-    B -->|"1 A"| E["Rsh3 = 10 mΩ"]
-    C --> F["Meter<br/>Rm=10Ω, Im=1mA"]
-    D --> F
-    E --> F
-    F --> G["-"]
-```
+![Direct multirange ammeter shunt circuit](assets/circuits/multirange_ammeter_direct.svg)
 
-#### Solution
+Marked visual: the meter movement always carries $I_m$, while the selected shunt carries the remaining current for that range.
 
-Given: $R_m = 10\ \Omega$, $I_m = 1\ \text{mA} = 0.001\ \text{A}$
+### Governing relation
 
-**Range 1: $I_1 = 10\ \text{mA}$**
+- $R_{sh}=I_mR_m/(I-I_m)$
+- $I_m=1\,\mathrm{mA}$
+- $R_m=10\,\Omega$
 
-$$R_{sh1} = \frac{I_m \cdot R_m}{I_1 - I_m} = \frac{0.001 \times 10}{0.01 - 0.001} = \frac{0.01}{0.009} = \boxed{1.1\ \Omega}$$
+### Work it through
 
-**Range 2: $I_2 = 100\ \text{mA}$**
+Step 1: Calculate the meter full-scale voltage.
 
-$$R_{sh2} = \frac{I_m \cdot R_m}{I_2 - I_m} = \frac{0.001 \times 10}{0.1 - 0.001} = \frac{0.01}{0.099} = \boxed{101\ \text{m}\Omega}$$
+$V_m=I_mR_m=(0.001)(10)=0.010\,\mathrm{V}$
 
-**Range 3: $I_3 = 1\ \text{A}$**
+Step 2: For each current range, let the shunt carry the current not passing through the movement.
 
-$$R_{sh3} = \frac{I_m \cdot R_m}{I_3 - I_m} = \frac{0.001 \times 10}{1 - 0.001} = \frac{0.01}{0.999} = \boxed{10\ \text{m}\Omega}$$
+$I_{sh}=I-I_m$
 
-:::tip[Key Formula — Direct Method Shunt]
-$$R_{sh} = \frac{I_m \cdot R_m}{I - I_m}$$
-where $I_m$ is meter FSD current, $R_m$ is meter resistance, and $I$ is the desired range.
-:::
+Step 3: Calculate the shunt for the $10\,\mathrm{mA}$ range.
 
+$R_{sh,10mA}=\frac{0.010}{0.010-0.001}=\frac{0.010}{0.009}=1.11\,\Omega$
 
----
+Step 4: Calculate the shunt for the $100\,\mathrm{mA}$ range.
 
-### Q2 — Multirange Ammeter: Indirect Method (Ayrton/Ring Shunt)
+$R_{sh,100mA}=\frac{0.010}{0.100-0.001}=\frac{0.010}{0.099}=0.101\,\Omega$
 
-**Problem:** Design by **indirect method** for current ranges 1 A, 5 A, and 10 A. PMMC meter has $R_m = 50\ \Omega$ and $I_m = 1\ \text{mA}$.
+Step 5: Calculate the shunt for the $1\,\mathrm{A}$ range.
 
-**Answer:** $R_a = 0.04\ \Omega$; $R_b = 5\ \text{m}\Omega$; $R_c = 5\ \text{m}\Omega$
+$R_{sh,1A}=\frac{0.010}{1.000-0.001}=\frac{0.010}{0.999}=0.0100\,\Omega$
 
-#### Concept: Indirect (Ayrton/Ring) Shunt Method
+### Final answer
 
-In the Ayrton shunt, resistors $R_a$, $R_b$, $R_c$ are connected in series forming a ring. The switch taps select how much of this ring acts as the shunt. This avoids the problem of the meter being unprotected when the switch is between positions.
+Final answer: **direct-method shunts are $1.11\,\Omega$ for $10\,\mathrm{mA}$, $0.101\,\Omega$ for $100\,\mathrm{mA}$, and $0.0100\,\Omega$ for $1\,\mathrm{A}$**.
 
-The design proceeds by first computing individual equivalent shunts for each range, then finding the differences:
+### Common trap
 
-$$r_{sh_n} = \frac{I_m \cdot R_m}{I_n - I_m}$$
+Do not put the total range current through the PMMC movement. The movement current stays $1\,\mathrm{mA}$ at full scale.
 
-Then:
-- $R_a = r_{sh1} - r_{sh2}$
-- $R_b = r_{sh2} - r_{sh3}$
-- $R_c = r_{sh3}$
+## Question 2
 
-#### Circuit Diagram
+Design by indirect method an ammeter with current ranges 1 A, 5 A, and 10 A for a PMMC meter with internal resistance 50 Ω and full-scale current 1 mA.
 
-```mermaid
-graph LR
-    A["+"] --> S1["Switch Position 1A"]
-    A --> S2["Switch Position 5A"]
-    A --> S3["Switch Position 10A"]
-    S1 --> Ra["Ra = 0.04 Ω"]
-    Ra --> Rb["Rb = 5 mΩ"]
-    Rb --> Rc["Rc = 5 mΩ"]
-    S2 --> Rb
-    S3 --> Rc
-    Ra --> M["Meter Rm=50Ω"]
-    M --> N["-"]
-    Rc --> N
-```
+### Learn the idea
 
-#### Solution
+In an Ayrton shunt, the switch selects shunt sections while keeping the meter protected; first find each equivalent shunt, then split the values into sections.
 
-Given: $R_m = 50\ \Omega$, $I_m = 1\ \text{mA}$
+### Given and target
 
-**Step 1: Compute individual shunts**
+- Known values: ammeter ranges $1\,\mathrm{A}$, $5\,\mathrm{A}$, and $10\,\mathrm{A}$; PMMC resistance $R_m=50\,\Omega$; full-scale meter current $I_m=1\,\mathrm{mA}$.
+- Target: calculate the Ayrton shunt section values for the three ranges.
 
-$$r_{sh1} = \frac{0.001 \times 50}{1 - 0.001} = \frac{0.05}{0.999} \approx 50.05\ \text{m}\Omega$$
+### Annotated visual
 
-$$r_{sh2} = \frac{0.001 \times 50}{5 - 0.001} = \frac{0.05}{4.999} \approx 10.00\ \text{m}\Omega$$
+![Ayrton shunt section calculation](assets/diagrams/tutorial2-q2-ayrton-shunt.png)
 
-$$r_{sh3} = \frac{0.001 \times 50}{10 - 0.001} = \frac{0.05}{9.999} \approx 5.00\ \text{m}\Omega$$
+### Governing relation
 
-**Step 2: Find ring resistances**
+- $V_m=I_mR_m=0.001\times50=0.05\,\mathrm{V}$
+- Equivalent shunt for a selected range: $R_{eq}=V_m/(I-I_m)$
+- Ayrton section values are found by subtracting adjacent equivalent shunt totals.
 
-$$R_a = r_{sh1} - r_{sh2} = 50.05 - 10.00 = \boxed{40.05\ \text{m}\Omega \approx 0.04\ \Omega}$$
+### Work it through
 
-$$R_b = r_{sh2} - r_{sh3} = 10.00 - 5.00 = \boxed{5\ \text{m}\Omega}$$
+Step 1: Calculate meter full-scale voltage.
 
-$$R_c = r_{sh3} = \boxed{5\ \text{m}\Omega}$$
+$V_m=I_mR_m=(0.001)(50)=0.05\,\mathrm{V}$
 
-:::tip[Key Idea — Indirect vs Direct Method]
-The indirect (Ayrton) method ensures the meter is always protected — even when the range switch is being changed, there is always some shunt resistance in the circuit. This is superior to the direct method where briefly opening a switch could damage the meter.
-:::
+Step 2: Calculate the equivalent shunt needed for each full-scale range.
 
+$R_{eq,1A}=\frac{0.05}{1-0.001}=0.05005\,\Omega$
 
----
+$R_{eq,5A}=\frac{0.05}{5-0.001}=0.01000\,\Omega$
 
-### Q3 — Multirange DC Voltmeter: Indirect Method
+$R_{eq,10A}=\frac{0.05}{10-0.001}=0.00500\,\Omega$
 
-**Problem:** A d'Arsonval meter with $R_m = 100\ \Omega$ and half-scale deflection current of $0.5\ \text{mA}$ is converted to a multirange DC voltmeter with ranges 10 V, 50 V, 250 V, and 500 V. Design the circuit.
+Step 3: Split the Ayrton network into sections.
 
-**Answer:** $R_{s1} = 9.9\ \text{k}\Omega$; $R_{s2} = 40\ \text{k}\Omega$; $R_{s3} = 200\ \text{k}\Omega$; $R_{s4} = 250\ \text{k}\Omega$
+For the $1\,\mathrm{A}$ range, all three sections are in the selected shunt path:
 
-#### Concept
+$R_a+R_b+R_c=0.05005\,\Omega$
 
-"Half-scale deflection of 0.5 mA" means at half the scale the current is 0.5 mA, so **full-scale deflection current $I_m = 1\ \text{mA}$**.
+For the $5\,\mathrm{A}$ range:
 
-In the indirect (series chained) voltmeter design, multiplier resistors are cascaded. The total series resistance for each range is cumulative, and individual sections are the differences:
+$R_b+R_c=0.01000\,\Omega$
 
-$$R_{total\_n} = \frac{V_n}{I_m} - R_m$$
+For the $10\,\mathrm{A}$ range:
 
-Then each section:
-$$R_{s(n)} = R_{total\_n} - R_{total\_(n-1)}$$
+$R_c=0.00500\,\Omega$
 
-#### Circuit Diagram
+Step 4: Solve section values by subtraction.
 
-```mermaid
-graph LR
-    A["+"] --> Rs1["Rs1 = 9.9 kΩ"]
-    Rs1 --> T1["10V tap"]
-    Rs1 --> Rs2["Rs2 = 40 kΩ"]
-    Rs2 --> T2["50V tap"]
-    Rs2 --> Rs3["Rs3 = 200 kΩ"]
-    Rs3 --> T3["250V tap"]
-    Rs3 --> Rs4["Rs4 = 250 kΩ"]
-    Rs4 --> T4["500V tap"]
-    T1 & T2 & T3 & T4 --> M["Meter<br/>Rm=100Ω<br/>Im=1mA"]
-    M --> B["-"]
-```
+$R_b=0.01000-0.00500=0.00500\,\Omega$
 
-#### Solution
+$R_a=0.05005-0.01000=0.04005\,\Omega$
 
-Given: $R_m = 100\ \Omega$, $I_m = 1\ \text{mA}$
+### Final answer
 
-**Cumulative multiplier resistance for each range:**
+Final answer: **Ayrton shunt sections are approximately $R_a=0.040\,\Omega$, $R_b=0.005\,\Omega$, and $R_c=0.005\,\Omega$**.
 
-$$R_{total} = \frac{V}{I_m} - R_m$$
+### Common trap
 
-| Range | $V$ | $R_{total}$ | Section Resistor |
-|-------|-----|-------------|-----------------|
-| 10 V  | 10 V | $\frac{10}{0.001} - 100 = 9900\ \Omega$ | $R_{s1} = 9900\ \Omega = \mathbf{9.9\ k\Omega}$ |
-| 50 V  | 50 V | $\frac{50}{0.001} - 100 = 49900\ \Omega$ | $R_{s2} = 49900 - 9900 = \mathbf{40\ k\Omega}$ |
-| 250 V | 250 V | $\frac{250}{0.001} - 100 = 249900\ \Omega$ | $R_{s3} = 249900 - 49900 = \mathbf{200\ k\Omega}$ |
-| 500 V | 500 V | $\frac{500}{0.001} - 100 = 499900\ \Omega$ | $R_{s4} = 499900 - 249900 = \mathbf{250\ k\Omega}$ |
+Do not use the equivalent shunt values directly as the section values. In an Ayrton shunt, the physical sections are found by subtracting adjacent selected totals.
 
-:::tip[Key Formula — Series Multiplier]
-$$R_{multiplier} = \frac{V_{range}}{I_{FSD}} - R_m$$
-:::
+## Question 3
 
+A basic d'Arsonval meter with internal resistance 100 Ω and half-scale current 0.5 mA is converted by indirect method into a multirange DC voltmeter with 10 V, 50 V, 250 V, and 500 V ranges. Design and explain.
 
----
+### Learn the idea
 
-### Q4 — PMMC Ammeter and Voltmeter from FSD Spec
+A voltmeter range is made by adding enough series resistance that the range voltage produces exactly the meter full-scale current.
 
-**Problem:** PMMC coil FSD reading is 25 mA with 75 mV potential difference. Design for:
-- (a) Ammeter: 0–100 A
-- (b) Voltmeter: 0–750 V
+### Given and target
 
-**Answer:** (a) $R_{shunt} = 0.75\ \text{m}\Omega$; (b) $R_{series} = 29.997\ \text{k}\Omega$
+- Known values: meter resistance $R_m=100\,\Omega$; half-scale current $0.5\,\mathrm{mA}$ so $I_m=1\,\mathrm{mA}$ full-scale; voltage ranges $10$, $50$, $250$, and $500\,\mathrm{V}$.
+- Target: calculate the series multiplier sections for the four voltmeter ranges.
 
-#### Solution
+### Governing relation
 
-First, find the meter internal resistance:
-$$R_m = \frac{V_m}{I_m} = \frac{75\ \text{mV}}{25\ \text{mA}} = 3\ \Omega$$
+- $I_m=1\,\mathrm{mA}$
+- $R_T=V/I_m$
+- $10/0.001-100=9.9\,\mathrm{k}\Omega$
 
-**(a) Ammeter — Range 0 to 100 A:**
+### Work it through
 
-$$R_{shunt} = \frac{I_m \cdot R_m}{I - I_m} = \frac{0.025 \times 3}{100 - 0.025} = \frac{0.075}{99.975} \approx \boxed{0.75\ \text{m}\Omega}$$
+Step 1: Convert the half-scale current statement into full-scale current.
 
-**(b) Voltmeter — Range 0 to 750 V:**
+Half-scale current is $0.5\,\mathrm{mA}$, so full-scale current is:
 
-$$R_{series} = \frac{V}{I_m} - R_m = \frac{750}{0.025} - 3 = 30000 - 3 = \boxed{29997\ \Omega \approx 29.997\ \text{k}\Omega}$$
+$I_m=1.0\,\mathrm{mA}=0.001\,\mathrm{A}$
 
-#### Circuit Diagrams
+Step 2: Calculate total resistance required for each voltage range.
 
-```mermaid
-graph LR
-    subgraph Ammeter
-    A1["+"] --> SH["Rshunt = 0.75 mΩ"]
-    A1 --> M1["Meter 25mA, 3Ω"]
-    SH --> N1["-"]
-    M1 --> N1
-    end
-    subgraph Voltmeter
-    A2["+"] --> RS["Rseries = 29.997 kΩ"]
-    RS --> M2["Meter 25mA, 3Ω"]
-    M2 --> N2["-"]
-    end
-```
+$R_T=V/I_m$
 
----
+$R_{T,10V}=10/0.001=10\,\mathrm{k}\Omega$
 
-### Q5 — PMMC Deflection Torque Calculation
+$R_{T,50V}=50/0.001=50\,\mathrm{k}\Omega$
 
-**Problem:** Calculate the current to produce 100° deflection on a PMMC meter with:
-- Coil length $l = 25\ \text{mm}$, width $w = 18\ \text{mm}$, $N = 60$ turns
-- Magnetic flux density $B = 0.5\ \text{T}$
-- Spring constant $K = 1.5 \times 10^{-6}\ \text{Nm/degree}$
+$R_{T,250V}=250/0.001=250\,\mathrm{k}\Omega$
 
-**Answer:** $I = 11.11\ \text{mA}$
+$R_{T,500V}=500/0.001=500\,\mathrm{k}\Omega$
 
-#### Concept
+Step 3: Subtract the meter resistance for the first range.
 
-The PMMC operates on the principle of electromagnetic torque vs. spring restoring torque. At equilibrium:
+$R_1=10\,\mathrm{k}\Omega-100\,\Omega=9.9\,\mathrm{k}\Omega$
 
-$$T_{deflecting} = T_{controlling}$$
-$$N \cdot B \cdot A \cdot I = K \cdot \theta$$
+Step 4: Find the additional series sections by subtracting adjacent range totals.
 
-where $A = l \times w$ is the coil area.
+$R_2=50\,\mathrm{k}\Omega-10\,\mathrm{k}\Omega=40\,\mathrm{k}\Omega$
 
-#### Solution
+$R_3=250\,\mathrm{k}\Omega-50\,\mathrm{k}\Omega=200\,\mathrm{k}\Omega$
 
-**Coil area:**
-$$A = l \times w = 25 \times 10^{-3} \times 18 \times 10^{-3} = 450 \times 10^{-6}\ \text{m}^2$$
+$R_4=500\,\mathrm{k}\Omega-250\,\mathrm{k}\Omega=250\,\mathrm{k}\Omega$
 
-**At equilibrium (deflection $\theta = 100°$):**
-$$N \cdot B \cdot A \cdot I = K \cdot \theta$$
+### Final answer
 
-$$I = \frac{K \cdot \theta}{N \cdot B \cdot A} = \frac{1.5 \times 10^{-6} \times 100}{60 \times 0.5 \times 450 \times 10^{-6}}$$
+Final answer: **series multiplier sections are $9.9\,\mathrm{k}\Omega$, $40\,\mathrm{k}\Omega$, $200\,\mathrm{k}\Omega$, and $250\,\mathrm{k}\Omega$ for the 10 V, 50 V, 250 V, and 500 V ranges**.
 
-$$I = \frac{1.5 \times 10^{-4}}{1.35 \times 10^{-2}} = \boxed{11.11\ \text{mA}}$$
+### Common trap
 
-:::tip[PMMC Torque Equation]
-$$T_{deflecting} = NBIA$$
-$$T_{controlling} = K\theta$$
-At equilibrium: $NBIA = K\theta \Rightarrow I = \dfrac{K\theta}{NBA}$
-:::
+Do not make every range a separate standalone resistor. For an indirect multirange voltmeter, higher ranges add extra series sections to the lower-range total.
 
+## Question 4
 
----
+FSD reading of PMMC coil is 25 mA with potential difference 75 mV. Draw circuit and design as (a) 0-100 A ammeter and (b) 0-750 V voltmeter.
 
-### Q6 — Moving Iron Ammeter: Variable Inductance
+### Learn the idea
 
-**Problem:** A moving coil ammeter has FSD of 90° at 1.5 A. The inductance is:
-$$L = (200 + 40\theta - 4\theta^2 - \theta^3)\ \mu\text{H}$$
-where $\theta$ is in radians. Find the deflection for $I = 1\ \text{A}$.
+Use the PMMC full-scale voltage and current to find the meter resistance, then design the shunt for current range and multiplier for voltage range.
 
-**Answer:** $\theta = 1.007\ \text{rad}$
+### Given and target
 
-#### Concept
+- Known values: PMMC full-scale current $I_m=25\,\mathrm{mA}$; meter voltage $V_m=75\,\mathrm{mV}$; required ammeter range $0$-$100\,\mathrm{A}$; required voltmeter range $0$-$750\,\mathrm{V}$.
+- Target: design as (a) 0-100 A ammeter and (b) 0-750 V voltmeter.
 
-For a **moving iron** instrument, the deflecting torque is:
-$$T_d = \frac{I^2}{2} \cdot \frac{dL}{d\theta}$$
+### Governing relation
 
-At equilibrium: $T_d = T_c = K \cdot \theta$
+- $R_m=75\,\mathrm{mV}/25\,\mathrm{mA}=3\,\Omega$
+- $R_{sh}=I_mR_m/(I-I_m)=0.025(3)/(100-0.025)=0.000750\,\Omega=0.75\,\mathrm{m}\Omega$
+- $R_s=750/0.025-3=29997\,\Omega=29.997\,\mathrm{k}\Omega$
 
-The spring constant $K$ is found from the full-scale condition, then applied to find $\theta$ for $I = 1\ \text{A}$.
+### Work it through
 
-#### Solution
+Step 1: Calculate the PMMC movement resistance.
 
-**Step 1: Find $dL/d\theta$**
+$R_m=\frac{75\,\mathrm{mV}}{25\,\mathrm{mA}}=\frac{0.075}{0.025}=3\,\Omega$
 
-$$\frac{dL}{d\theta} = (40 - 8\theta - 3\theta^2)\ \mu\text{H/rad}$$
+Step 2: Design the $0$-$100\,\mathrm{A}$ ammeter shunt.
 
-**Step 2: Find spring constant $K$ from FSD ($\theta_{FSD} = 90° = \frac{\pi}{2}\ \text{rad}$, $I = 1.5\ \text{A}$)**
+The PMMC carries only $I_m=0.025\,\mathrm{A}$ at full scale, so the shunt carries:
 
-At $\theta = \pi/2 \approx 1.5708\ \text{rad}$:
-$$\frac{dL}{d\theta}\bigg|_{\theta=\pi/2} = 40 - 8(1.5708) - 3(1.5708)^2 = 40 - 12.566 - 7.402 = 20.032\ \mu\text{H/rad}$$
+$I_{sh}=100-0.025=99.975\,\mathrm{A}$
 
-$$K = \frac{I_{FSD}^2}{2} \cdot \frac{1}{\theta_{FSD}} \cdot \frac{dL}{d\theta}\bigg|_{FSD}$$
-$$K = \frac{(1.5)^2}{2} \cdot \frac{20.032 \times 10^{-6}}{1.5708} = \frac{1.125 \times 20.032 \times 10^{-6}}{1.5708} = 14.35 \times 10^{-6}\ \text{Nm/rad}$$
+$R_{sh}=\frac{I_mR_m}{I_{sh}}=\frac{0.025(3)}{99.975}=0.000750\,\Omega=0.75\,\mathrm{m}\Omega$
 
-**Step 3: For $I = 1\ \text{A}$, solve equilibrium**
+Step 3: Design the $0$-$750\,\mathrm{V}$ voltmeter multiplier.
 
-$$\frac{(1)^2}{2}(40 - 8\theta - 3\theta^2) \times 10^{-6} = 14.35 \times 10^{-6} \cdot \theta$$
+Total resistance needed at $25\,\mathrm{mA}$ full-scale current is:
 
-$$0.5(40 - 8\theta - 3\theta^2) = 14.35\theta$$
+$R_T=750/0.025=30000\,\Omega$
 
-$$20 - 4\theta - 1.5\theta^2 = 14.35\theta$$
+Subtract the movement resistance:
 
-$$1.5\theta^2 + 18.35\theta - 20 = 0$$
+$R_s=30000-3=29997\,\Omega=29.997\,\mathrm{k}\Omega$
 
-**Using the quadratic formula:**
-$$\theta = \frac{-18.35 + \sqrt{(18.35)^2 + 4 \times 1.5 \times 20}}{2 \times 1.5} = \frac{-18.35 + \sqrt{336.72 + 120}}{3} = \frac{-18.35 + \sqrt{456.72}}{3}$$
+The PDF appears to print mΩ for part (b), but the correct unit is **kΩ**.
 
-$$\theta = \frac{-18.35 + 21.37}{3} = \frac{3.02}{3} = \boxed{1.007\ \text{rad}}$$
+### Final answer
 
-:::tip[Moving Iron Torque Formula]
-$$T_d = \frac{I^2}{2} \cdot \frac{dL}{d\theta}$$
-Note: Moving iron instruments respond to RMS current because of the $I^2$ term — they work on both AC and DC.
-:::
+Final answer: **ammeter shunt $R_{sh}=0.75\,\mathrm{m}\Omega$; voltmeter multiplier $R_s=29.997\,\mathrm{k}\Omega$**. The PDF appears to print mΩ for part (b), but the correct unit is **kΩ**.
 
+### Common trap
 
----
+The ammeter part needs a milliohm shunt, but the voltmeter part needs a kilohm multiplier. Mixing those units changes the answer by a factor of one million.
 
-### Q7 — PMMC vs. Electrodynamometer: % Error Analysis
+## Question 5
 
-**Problem:** An electrical machine circuit has:
-- PMMC: $N = 100$ turns, $B = 0.2\ \text{Wb/m}^2$, coil area $A = 0.8\ \text{cm}^2$
-- Electrodynamometer table: $dM/d\theta = 0.0005\ \text{H/degree}$ (uniform, derived from data)
-- Same spring constant $K$ for both, same deflection $\theta$
+Calculate current required for 100° deflection in a PMMC meter with coil length 25 mm, width 18 mm, 60 turns, B = 0.5 T, spring constant $1.5\times10^{-6}\,\mathrm{N\,m/degree}$.
 
-Target design current: 3.5 A. Determine % error.
+### Learn the idea
 
-**Answer:** % error = −8.57%
+At steady deflection, magnetic deflecting torque equals spring controlling torque.
 
-#### Key Data Analysis
+### Given and target
 
-From the electrodynamometer table:
+- Known values: $\theta=100^\circ$, coil size $25\,\mathrm{mm}\times18\,\mathrm{mm}$, turns $N=60$, flux density $B=0.5\,\mathrm{T}$, spring constant $k=1.5\times10^{-6}\,\mathrm{N\,m/degree}$.
+- Target: find coil current for $100^\circ$ deflection.
 
-| Deflection (°) | 30 | 50 | 90 | 120 | 150 |
-|---|---|---|---|---|---|
-| M (H) | 0.015 | 0.025 | 0.045 | 0.060 | 0.075 |
+### Governing relation
 
-Computing $dM/d\theta$ at each interval:
-- 30° → 50°: $\frac{0.025 - 0.015}{20} = 0.0005\ \text{H/degree}$
-- 50° → 90°: $\frac{0.045 - 0.025}{40} = 0.0005\ \text{H/degree}$
-- 90° → 120°: $\frac{0.06 - 0.045}{30} = 0.0005\ \text{H/degree}$
-- 120° → 150°: $\frac{0.075 - 0.06}{30} = 0.0005\ \text{H/degree}$
+- $T_d=NBIA$
+- $T_c=k\theta$
+- $I=T_c/(NBA)$
 
-$\therefore dM/d\theta = 0.0005\ \text{H/degree}$ (constant — linear mutual inductance)
+### Work it through
 
-#### Torque Equilibrium for Both Instruments
+Step 1: Convert coil dimensions into area.
 
-Both instruments deflect to the same angle $\theta$ with the same spring constant $K$ carrying the same current $I$:
+$A=0.025\times0.018=4.5\times10^{-4}\,\mathrm{m^2}$.
 
-**PMMC torque balance:**
-$$K\theta = N \cdot B \cdot A \cdot I \quad \cdots (1)$$
+Step 2: Calculate controlling spring torque at $100^\circ$.
 
-**Electrodynamometer torque balance:**
-$$K\theta = I^2 \cdot \frac{dM}{d\theta} \quad \cdots (2)$$
+$T_c=k\theta=(1.5\times10^{-6})(100)=1.5\times10^{-4}\,\mathrm{N\,m}$.
 
-Setting (1) = (2):
-$$N \cdot B \cdot A \cdot I = I^2 \cdot \frac{dM}{d\theta}$$
+Step 3: Equate deflecting torque and controlling torque.
 
-$$I = \frac{N \cdot B \cdot A}{dM/d\theta}$$
+$T_d=T_c$
 
-#### Calculation
+$NBIA=T_c$
 
-$$N \cdot B \cdot A = 100 \times 0.2 \times 0.8 \times 10^{-4} = 1.6 \times 10^{-3}\ \text{(SI)}$$
+Step 4: Solve for current.
 
-$$I_{measured} = \frac{1.6 \times 10^{-3}}{0.0005} = \frac{1.6 \times 10^{-3}}{5 \times 10^{-4}} = \boxed{3.2\ \text{A}}$$
+$I=\frac{T_c}{NBA}=\frac{1.5\times10^{-4}}{60(0.5)(4.5\times10^{-4})}=0.01111\,\mathrm{A}=11.11\,\mathrm{mA}$.
 
-(Note: Using $dM/d\theta$ in H/degree and $K$ in consistent units throughout.)
+### Final answer
 
-#### % Error
+Final answer: **current required $I=11.11\,\mathrm{mA}$**.
 
-$$\%\ \text{error} = \frac{I_{measured} - I_{target}}{I_{target}} \times 100 = \frac{3.2 - 3.5}{3.5} \times 100 = \frac{-0.3}{3.5} \times 100 = \boxed{-8.57\%}$$
+### Common trap
 
-:::note[Interpretation]
-The **negative error** means the circuit delivers less current than designed. The existing circuit produces only 3.2 A instead of the target 3.5 A — indicating the circuit resistance is higher than designed, or another design flaw exists.
-:::
+Use the spring constant per degree exactly as stated; do not convert the angle to radians unless the spring constant is also converted.
 
+## Question 6
 
-:::tip[Electrodynamometer Torque]
-$$T_d = I_1 \cdot I_2 \cdot \frac{dM}{d\theta}$$
-For ammeter configuration (series, $I_1 = I_2 = I$): $T_d = I^2 \cdot dM/d\theta$
-Works on **both AC and DC** because of $I^2$ term.
-:::
+Inductance of moving-coil ammeter with full-scale 90° at 1.5 A is L=(200+40theta-4theta^2-theta^3) µH, theta in radians. Estimate pointer deflection for 1 A.
 
+### Learn the idea
 
----
+For moving-iron deflection, use the full-scale point to identify the spring constant, then solve the same torque balance at the new current.
 
-## Practice Questions
+### Given and target
 
----
+- Known values: full-scale angle $\theta_{fs}=90^\circ=\pi/2\,\mathrm{rad}$, full-scale current $I_{fs}=1.5\,\mathrm{A}$, inductance $L=(200+40\theta-4\theta^2-\theta^3)\,\mu\mathrm{H}$, target current $I=1\,\mathrm{A}$.
+- Target: estimate the moving-iron pointer deflection at $1\,\mathrm{A}$.
 
-### PQ1 — Voltmeter Loading Effect
+### Governing relation
 
-**Problem:** $R_1 = 140\ \text{k}\Omega$ and $R_2 = 100\ \text{k}\Omega$ in series across 12 V. A voltmeter (10 V range) measures voltage across $R_2$.
-- (i) Actual voltage across $R_2$
-- (ii) Measured with voltmeter sensitivity = 20 kΩ/V
-- (iii) Measured with voltmeter sensitivity = 200 kΩ/V
-- (iv) % error in both cases
+- $T_d=(1/2)I^2(dL/d\theta)$
+- $T_c=k\theta$
+- $\theta=\pi/2$
 
-**Answer:** (i) 5 V; (ii) 3.87 V; (iii) 4.86 V; (iv) −22.6%, −2.84%
+### Work it through
 
-#### Solution
+Step 1: Differentiate the inductance expression.
 
-**(i) Actual voltage (no meter loading):**
+$\frac{dL}{d\theta}=40-8\theta-3\theta^2$.
 
-By voltage divider:
-$$V_{R2(actual)} = 12 \times \frac{R_2}{R_1 + R_2} = 12 \times \frac{100}{140 + 100} = 12 \times \frac{100}{240} = \boxed{5\ \text{V}}$$
+Step 2: Use the full-scale point to find the spring constant.
 
-**(ii) Voltmeter with sensitivity 20 kΩ/V, on 10 V range:**
+At full scale:
 
-$$R_{meter} = \text{sensitivity} \times \text{range} = 20\ \text{k}\Omega/\text{V} \times 10\ \text{V} = 200\ \text{k}\Omega$$
+$\theta_{fs}=90^\circ=\pi/2=1.571\,\mathrm{rad}$
 
-$R_{meter}$ in parallel with $R_2 = 100\ \text{k}\Omega$:
-$$R_{parallel} = \frac{200 \times 100}{200 + 100} = \frac{20000}{300} = 66.67\ \text{k}\Omega$$
+$I_{fs}=1.5\,\mathrm{A}$
 
-$$V_{measured} = 12 \times \frac{66.67}{140 + 66.67} = 12 \times \frac{66.67}{206.67} = \boxed{3.87\ \text{V}}$$
+Evaluate the inductance slope at full scale:
 
-$$\%\ \text{error} = \frac{3.87 - 5}{5} \times 100 = -22.6\%$$
+$\left.\frac{dL}{d\theta}\right|_{\pi/2}=40-8(\pi/2)-3(\pi/2)^2=20.03$
 
-**(iii) Voltmeter with sensitivity 200 kΩ/V, on 10 V range:**
+Use torque balance:
 
-$$R_{meter} = 200 \times 10 = 2000\ \text{k}\Omega = 2\ \text{M}\Omega$$
+$k=\frac{(1/2)(1.5)^2(40-8(\pi/2)-3(\pi/2)^2)}{\pi/2}$.
 
-$$R_{parallel} = \frac{2000 \times 100}{2000 + 100} = \frac{200000}{2100} = 95.24\ \text{k}\Omega$$
+$k=14.35$ in the same scaled units used by the inductance expression.
 
-$$V_{measured} = 12 \times \frac{95.24}{140 + 95.24} = 12 \times \frac{95.24}{235.24} = \boxed{4.86\ \text{V}}$$
+Step 3: Set up the torque balance for $I=1\,\mathrm{A}$.
 
-$$\%\ \text{error} = \frac{4.86 - 5}{5} \times 100 = \boxed{-2.84\%}$$
+$k\theta=(1/2)(1)^2(40-8\theta-3\theta^2)$.
 
-:::note[Observation on Sensitivity]
-A **higher sensitivity voltmeter** (larger kΩ/V) has a higher internal resistance, draws less current from the circuit, and causes **less loading error**. The 200 kΩ/V meter has an error of only −2.84% vs. −22.6% for the 20 kΩ/V meter. Always use the highest sensitivity voltmeter available to minimize loading errors.
-:::
+Step 4: Rearrange into a quadratic.
 
+$14.35\theta=20-4\theta-1.5\theta^2$
 
----
+$1.5\theta^2+18.35\theta-20=0$
 
-### PQ2 — Ammeters with Shunts in Parallel
+Step 5: Take the positive root.
 
-**Problem:** Ammeters X (1.2 Ω, FSD = 150 mA) and Y (1.5 Ω, FSD = 250 mA) are given shunts so both give FSD at 15 A. They are then connected in parallel in a circuit with total current = 15 A. Find the current indicated in ammeter X.
+$\theta=1.007\,\mathrm{rad}$
 
-**Answer:** $I_X = 10.14\ \text{A}$
+Step 6: Convert to degrees.
 
-#### Solution
+$\theta=1.007(180/\pi)=57.7^\circ$
 
-**Step 1: Find shunt resistance for each ammeter**
+### Final answer
 
-For ammeter X ($R_{mX} = 1.2\ \Omega$, $I_{mX} = 150\ \text{mA}$, range = 15 A):
-$$R_{shX} = \frac{I_{mX} \cdot R_{mX}}{I - I_{mX}} = \frac{0.15 \times 1.2}{15 - 0.15} = \frac{0.18}{14.85} = 12.12\ \text{m}\Omega$$
+Final answer: **pointer deflection $\theta\approx1.007\,\mathrm{rad}=57.7^\circ$**.
 
-Total resistance of ammeter X with shunt:
-$$R_X = \frac{R_{mX} \cdot R_{shX}}{R_{mX} + R_{shX}} = \frac{1.2 \times 0.01212}{1.2 + 0.01212} = \frac{0.01454}{1.21212} = 12\ \text{m}\Omega$$
+### Common trap
 
-Alternatively: $R_X = \frac{V_{FSD}}{I_{range}} = \frac{I_{mX} \cdot R_{mX}}{I_{range}} = \frac{0.15 \times 1.2}{15} = 12\ \text{m}\Omega$
+The equation is nonlinear in $\theta$ because $dL/d\theta$ depends on $\theta$. Do not scale the $90^\circ$ deflection simply by the current ratio.
 
-For ammeter Y ($R_{mY} = 1.5\ \Omega$, $I_{mY} = 250\ \text{mA}$, range = 15 A):
-$$R_Y = \frac{I_{mY} \cdot R_{mY}}{I_{range}} = \frac{0.25 \times 1.5}{15} = 25\ \text{m}\Omega$$
+## Question 7
 
-**Step 2: Current divider (X and Y in parallel, total = 15 A)**
+A PMMC ammeter and electrodynamometer ammeter are used in a DC motor circuit. PMMC has 100 turns, B = 0.2 Wb/m2, coil area 0.8 cm2. Electrodynamometer mutual inductance table is given. Spring constants are same and deflections same. Target current is 3.5 A. Determine percent error.
 
-$$I_X = I_{total} \times \frac{R_Y}{R_X + R_Y} = 15 \times \frac{25}{12 + 25} = 15 \times \frac{25}{37} = \boxed{10.14\ \text{A}}$$
+### Learn the idea
 
-:::tip[Parallel Ammeter Current Division]
-$$I_X = I_{total} \cdot \frac{R_Y}{R_X + R_Y}$$
-Current divides inversely proportional to resistance — the lower-resistance path carries more current.
-:::
+The two instruments have the same spring control and the same deflection, so compare their torque equations at that deflection. The PMMC torque is proportional to current, while the electrodynamometer torque is proportional to $I^2(dM/d\theta)$.
 
+### Given and target
 
----
+- Known values: PMMC turns $N=100$; flux density $B=0.2\,\mathrm{Wb/m^2}$; coil area $A=0.8\,\mathrm{cm^2}$; target current $3.5\,\mathrm{A}$; electrodynamometer mutual-inductance table from the question.
+- Target: Determine percent error.
 
-### PQ3 — Electrodynamometer Wattmeter Deflection
+### Governing relation
 
-**Problem:** Electrodynamometer instrument: voltage coil circuit $R_{vc} = 8.2\ \text{k}\Omega$; mutual inductance changes from $-173\ \mu\text{H}$ at 0° to $+175\ \mu\text{H}$ at FSD 95°. Applied: $V = 100\ \text{V}$, current coil $I = 3\ \text{A}$ at PF = 0.75. Spring constant $K = 4.63 \times 10^{-6}\ \text{Nm/rad}$.
+- $T=N B A I$
+- $T=I^2 dM/d\theta$
+- $\%e=(I_{\text{indicated}}-I_{\text{true}})/I_{\text{true}}\times100$
 
-**Answer:** $\theta = 71.3°$ or $1.244\ \text{rad}$
+### Work it through
 
-#### Concept
+Step 1: Write the PMMC torque relation at the stated deflection.
 
-For an electrodynamometer **wattmeter**, the deflecting torque is:
-$$T_d = I_1 \cdot I_2 \cdot \frac{dM}{d\theta} \cdot \cos\phi$$
+$T_{\text{PMMC}}=NBAI$
 
-where $I_1$ is the current coil current, $I_2 = V/R_{vc}$ is the voltage coil current, and $\phi$ is the phase angle between them.
+Step 2: Write the electrodynamometer torque relation at the same deflection.
 
-#### Solution
+$T_{\text{dyn}}=I^2(dM/d\theta)$
 
-**Voltage coil current:**
-$$I_{vc} = \frac{V}{R_{vc}} = \frac{100}{8200} = 12.195\ \text{mA}$$
+Step 3: Use the supplied mutual-inductance table to evaluate $dM/d\theta$ at the same deflection.
 
-**Rate of change of mutual inductance:**
-$$\frac{dM}{d\theta} = \frac{175 - (-173)\ \mu\text{H}}{95°} = \frac{348 \times 10^{-6}}{95} = 3.663 \times 10^{-6}\ \text{H/degree}$$
+The tutorial/PDF table interpolation gives an electrodynamometer indicated current of about:
 
-Converting to H/rad: $\times (180/\pi) = 3.663 \times 10^{-6} \times 57.296 = 2.099 \times 10^{-4}\ \text{H/rad}$
+$I_{\text{indicated}}\approx3.2\,\mathrm{A}$
 
-**Phase angle from PF:**
-$$\cos\phi = 0.75 \Rightarrow \phi = 41.41°$$
+Step 4: Compare this with the true target current.
 
-**Deflecting torque:**
-$$T_d = I_{cc} \cdot I_{vc} \cdot \frac{dM}{d\theta} \cdot \cos\phi$$
-$$T_d = 3 \times 12.195 \times 10^{-3} \times 2.099 \times 10^{-4} \times 0.75$$
-$$T_d = 3 \times 12.195 \times 10^{-3} \times 1.574 \times 10^{-4} = 5.758 \times 10^{-6}\ \text{Nm}$$
+$I_{\text{true}}=3.5\,\mathrm{A}$
 
-**At equilibrium $T_d = K\theta$:**
-$$\theta = \frac{T_d}{K} = \frac{5.758 \times 10^{-6}}{4.63 \times 10^{-6}} = \boxed{1.244\ \text{rad} = 71.3°}$$
+Step 5: Calculate percent error.
 
-:::tip[Electrodynamometer as Wattmeter]
-$$T_d = I_1 \cdot I_2 \cdot \frac{dM}{d\theta} \cdot \cos\phi$$
-The $\cos\phi$ factor means the instrument reads **true power** — making it ideal for power measurement regardless of waveform.
-:::
+$\%e=\frac{3.2-3.5}{3.5}\times100=-8.57\%$
 
+### Final answer
 
----
+Final answer: **electrodynamometer reads about $3.2\,\mathrm{A}$, so percent error is $-8.57\%$**.
 
-## Summary of Key Formulas
+### Common trap
 
-| Instrument | Deflecting Torque | Use Case |
-|---|---|---|
-| PMMC | $T_d = NBIA$ | DC only; linear scale |
-| Moving Iron | $T_d = \frac{I^2}{2} \frac{dL}{d\theta}$ | AC/DC; RMS reading |
-| Electrodynamometer | $T_d = I_1 I_2 \frac{dM}{d\theta} \cos\phi$ | AC/DC; wattmeter/ammeter/voltmeter |
-| Controlling (Spring) | $T_c = K\theta$ | All instruments |
+The mutual-inductance table is needed to obtain the electrodynamometer indication. Once that indication is known, the percent error must be relative to the true $3.5\,\mathrm{A}$ current.
 
-| Design | Formula |
-|---|---|
-| Shunt (ammeter) | $R_{sh} = \frac{I_m R_m}{I - I_m}$ |
-| Multiplier (voltmeter) | $R_s = \frac{V}{I_m} - R_m$ |
-| Meter sensitivity | $S = \frac{1}{I_{FSD}}$ (Ω/V) |
+## Question 8
 
----
-*ELE 3122 M&I | Tutorial 2 Solutions | Manipal Institute of Technology*
+Practice: R1=140 kΩ and R2=100 kΩ are in series across 12 V. A voltmeter on 10 V range measures across R2. Find actual voltage, measured voltage for 20 kΩ/V and 200 kΩ/V meters, percent error, and comment.
+
+### Learn the idea
+
+Keep absolute error and percentage-of-reading error separate. Instruments with the same full-scale accuracy can behave very differently at a small reading.
+
+### Given and target
+
+- Known values: divider resistors $R_1=140\,\mathrm{k}\Omega$ and $R_2=100\,\mathrm{k}\Omega$; supply $12\,\mathrm{V}$; meter range $10\,\mathrm{V}$; meter sensitivities $20\,\mathrm{k}\Omega/\mathrm{V}$ and $200\,\mathrm{k}\Omega/\mathrm{V}$.
+- Target: Find actual voltage, measured voltage for 20 kΩ/V and 200 kΩ/V meters, percent error, and comment.
+
+### Annotated visual
+
+![Voltmeter loading comparison](assets/diagrams/tutorial2-q8-voltmeter-loading.png)
+
+### Governing relation
+
+- $V_{R2}=12(100)/(140+100)=5\,\mathrm{V}$
+- $R_L=R_2||R_m$
+- $V_{\text{read}}=12R_L/(R_1+R_L)$
+- $\%e=(V_{\text{read}}-V_{\text{actual}})/V_{\text{actual}}\times100$
+
+### Work it through
+
+Step 1: Calculate the unloaded divider voltage across $R_2$.
+
+$V_{R2}=12\frac{100}{140+100}=5.00\,\mathrm{V}$
+
+Step 2: Find meter resistance for the $20\,\mathrm{k}\Omega/\mathrm{V}$ meter.
+
+$R_m=(20\,\mathrm{k}\Omega/\mathrm{V})(10\,\mathrm{V})=200\,\mathrm{k}\Omega$
+
+Step 3: Calculate the loaded lower-arm resistance.
+
+$R_L=100||200=\frac{100(200)}{100+200}=66.67\,\mathrm{k}\Omega$
+
+Step 4: Calculate the loaded reading.
+
+$V_{20k/V}=12\frac{66.67}{140+66.67}=3.87\,\mathrm{V}$
+
+Step 5: Calculate percent error for the $20\,\mathrm{k}\Omega/\mathrm{V}$ meter.
+
+$\%e=\frac{3.87-5.00}{5.00}\times100=-22.6\%$
+
+Step 6: Repeat for the $200\,\mathrm{k}\Omega/\mathrm{V}$ meter.
+
+$R_m=(200\,\mathrm{k}\Omega/\mathrm{V})(10\,\mathrm{V})=2000\,\mathrm{k}\Omega=2\,\mathrm{M}\Omega$
+
+$R_L=100||2000=\frac{100(2000)}{100+2000}=95.24\,\mathrm{k}\Omega$
+
+$V_{200k/V}=12\frac{95.24}{140+95.24}=4.86\,\mathrm{V}$
+
+$\%e=\frac{4.86-5.00}{5.00}\times100=-2.8\%$
+
+The PDF percentage $-2.84\%$ corresponds to this high-sensitivity case.
+
+### Final answer
+
+Final answer: **actual voltage $5.00\,\mathrm{V}$; measured voltage is $3.87\,\mathrm{V}$ with error $-22.6\%$ for $20\,\mathrm{k}\Omega/\mathrm{V}$, and $4.86\,\mathrm{V}$ with error about $-2.8\%$ for $200\,\mathrm{k}\Omega/\mathrm{V}$**. The high-sensitivity meter has much lower loading error.
+
+### Common trap
+
+The meter resistance is not just a passive probe here; it goes in parallel with $R_2$ and changes the divider before the voltage is read.
+
+## Question 9
+
+Practice: Ammeter X has 1.2 Ω and 150 mA FSD; Y has 1.5 Ω and 250 mA FSD. Both ranges are extended to 15 A using shunts, then connected in parallel in a 15 A circuit. Determine current indicated in X.
+
+### Learn the idea
+
+After both ammeters are range-extended, their indications depend on current division between the two equivalent branch resistances.
+
+### Given and target
+
+- Known values: ammeter X has $R_X=1.2\,\Omega$ and $I_{X,fs}=150\,\mathrm{mA}$; ammeter Y has $R_Y=1.5\,\Omega$ and $I_{Y,fs}=250\,\mathrm{mA}$; both are extended to $15\,\mathrm{A}$ and then connected in parallel.
+- Target: Determine current indicated in X.
+
+### Annotated visual
+
+![Parallel extended ammeter current division](assets/diagrams/tutorial2-q9-parallel-ammeters.png)
+
+### Governing relation
+
+- Full-scale voltage of a movement: $V_{fs}=I_{fs}R$
+- Equivalent resistance of a $15\,\mathrm{A}$ extended ammeter branch: $R_{eq}=V_{fs}/15$
+- Current division: $I_X=I_T\frac{R_{eq,Y}}{R_{eq,X}+R_{eq,Y}}$
+
+### Work it through
+
+Step 1: Calculate full-scale voltage of ammeter X.
+
+$V_{X,fs}=I_{X,fs}R_X=(0.150)(1.2)=0.180\,\mathrm{V}$
+
+Step 2: Calculate full-scale voltage of ammeter Y.
+
+$V_{Y,fs}=I_{Y,fs}R_Y=(0.250)(1.5)=0.375\,\mathrm{V}$
+
+Step 3: Convert each extended ammeter into its equivalent $15\,\mathrm{A}$ branch resistance.
+
+$R_{eq,X}=0.180/15=0.012\,\Omega$
+
+$R_{eq,Y}=0.375/15=0.025\,\Omega$
+
+Step 4: Use current division after connecting the extended ammeters in parallel.
+
+$I_X=15\frac{R_{eq,Y}}{R_{eq,X}+R_{eq,Y}}$
+
+$I_X=15\frac{0.025}{0.012+0.025}=10.14\,\mathrm{A}$
+
+### Final answer
+
+Final answer: **current indicated in ammeter X is $I_X=10.14\,\mathrm{A}$**.
+
+### Common trap
+
+After range extension, divide current using the equivalent branch resistances of the extended ammeters, not the original movement resistances alone.
+
+## Question 10
+
+Practice: In an electrodynamometer instrument, voltage coil resistance is 8.2 kΩ and mutual inductance changes from -173 µH at zero to +175 µH at 95°. With 100 V on voltage coil, 3 A in current coil, power factor 0.75, spring constant $4.63\times10^{-6}\,\mathrm{N\,m/rad}$, find deflection.
+
+### Learn the idea
+
+Average electrodynamometer torque is proportional to current-coil current, voltage-coil current, power factor, and the mutual-inductance gradient.
+
+### Given and target
+
+- Known values: $R_v=8.2\,\mathrm{k}\Omega$, $M$ changes from $-173\,\mu\mathrm{H}$ to $+175\,\mu\mathrm{H}$ over $95^\circ$, voltage $100\,\mathrm{V}$, current $3\,\mathrm{A}$, power factor $0.75$, spring constant $4.63\times10^{-6}\,\mathrm{N\,m/rad}$.
+- Target: find steady deflection.
+
+### Annotated visual
+
+![Electrodynamometer torque balance](assets/diagrams/tutorial2-q10-electrodynamometer-torque.png)
+
+### Governing relation
+
+- $I_v=V/R_v$
+- $T=I I_v\cos\phi(dM/d\theta)$
+- $T=k\theta$
+
+### Work it through
+
+Step 1: Calculate voltage-coil current.
+
+$I_v=100/8200=0.0122\,\mathrm{A}$.
+
+Step 2: Convert the mutual-inductance span angle to radians.
+
+$95^\circ=95\pi/180=1.658\,\mathrm{rad}$
+
+Step 3: Calculate mutual-inductance slope, assuming linear variation.
+
+$\frac{dM}{d\theta}=\frac{175\,\mu\mathrm{H}-(-173\,\mu\mathrm{H})}{1.658}=2.10\times10^{-4}\,\mathrm{H/rad}$.
+
+Step 4: Calculate average deflecting torque.
+
+$T=3(0.0122)(0.75)(2.10\times10^{-4})=5.76\times10^{-6}\,\mathrm{N\,m}$.
+
+Step 5: Use spring balance.
+
+$\theta=T/k=5.76\times10^{-6}/(4.63\times10^{-6})=1.244\,\mathrm{rad}=71.3^\circ$.
+
+### Final answer
+
+Final answer: **deflection $\theta=1.244\,\mathrm{rad}=71.3^\circ$**.
+
+### Common trap
+
+Convert the 95° mutual-inductance span to radians before computing $dM/d\theta$, because the spring constant is in N m/rad.

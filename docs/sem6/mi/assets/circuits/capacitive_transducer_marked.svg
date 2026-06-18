@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1f2937" />
+    </marker>
+    <style>
+      .box{fill:#f8fafc;stroke:#1f2937;stroke-width:2;rx:8}
+      .wire{stroke:#1f2937;stroke-width:2;fill:none}
+      .arrow{stroke:#1f2937;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .mark{stroke:#d9480f;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .txt{font-family:Arial,Helvetica,sans-serif;font-size:17px;fill:#111827}
+      .small{font-family:Arial,Helvetica,sans-serif;font-size:14px;fill:#374151}
+      .title{font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700;fill:#111827}
+    </style>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <text x="24" y="34" class="title">Parallel-plate capacitive transducer with displacement marking</text>
+
+  <rect x="240" y="95" width="24" height="170" fill="#dbeafe" stroke="#1f2937" stroke-width="2"/>
+  <rect x="500" y="95" width="24" height="170" fill="#dbeafe" stroke="#1f2937" stroke-width="2"/>
+  <path class="wire" d="M240 135 L130 135 L130 70"/><text x="90" y="64" class="txt">Terminal 1</text>
+  <path class="wire" d="M524 225 L650 225 L650 285"/><text x="610" y="315" class="txt">Terminal 2</text>
+  <path class="arrow" d="M278 285 L488 285"/><text x="348" y="312" class="txt">gap d</text>
+  <path class="mark" d="M550 180 L610 180"/><text x="620" y="185" class="small">motion reduces d from 0.20 mm to 0.18 mm</text>
+  <text x="295" y="78" class="txt">A = 500 mm2</text>
+  <text x="284" y="150" class="small">C = epsilon A / d</text>
+  <text x="284" y="182" class="small">Smaller gap -> larger capacitance</text>
+
+</svg>

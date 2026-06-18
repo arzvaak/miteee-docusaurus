@@ -1,0 +1,11 @@
+* Tutorial 5/6 charge-mode piezo signal chain source
+* q = S_p P, Vcharge = -q/Cf
+Ipiezo in 0 AC 1
+Rf out in 10k
+Cf out in 27p
+Eop out 0 in 0 1e6
+Chpf out hpf 270n
+Rhpf hpf 0 10k
+Rlpf hpf lpf 10k
+Clpf lpf 0 50n
+.END

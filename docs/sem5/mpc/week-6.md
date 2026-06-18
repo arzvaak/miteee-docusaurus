@@ -1,374 +1,277 @@
-# Week 6 — Magnetics Design
-
-> **NPTEL: Design of Modern Power Converters** | Prof. Shabari Nath, IIT Guwahati
+# Week 6 — Magnetics & Inductor Design
 
 ---
 
-## 1. Why Magnetics Must Be Designed (Not Bought)
+## 1. Magnetic Fundamentals
 
-Power electronics inductors and transformers operate at switching frequencies (kHz to hundreds of kHz). Off-the-shelf 50 Hz components are completely unsuitable — a 50 Hz transformer run at 100 kHz would saturate instantly because its core was designed for a much lower $dB/dt$.
+### Core Relations
 
-**Where magnetics appear in a converter:**
+| Quantity | Symbol | Relation |
+|---|---|---|
+| Flux | φ | `φ = B·Ac` |
+| MMF | F = Ni | `F = H·lc = Ni` (Ampere's law) |
+| Reluctance | R | `R = lc/(μ·Ac)` |
+| Inductance | L | `L = N²/R_total = λ/i` |
 
-| Component | Location | Function |
-|-----------|----------|----------|
-| Buck/boost inductor | Power stage | Energy storage, current ripple filtering |
-| Flyback transformer | Isolation stage | Energy transfer + galvanic isolation |
-| Forward converter transformer | Isolation stage | Voltage scaling + isolation |
-| AC filter inductor | Inverter output | Attenuate switching harmonics |
-| EMI filter choke | Input stage | Attenuate conducted EMI |
+- **Higher permeability → more L for fewer turns**
+- Air gap reduces effective permeability but makes L more **linear and predictable** (less dependent on nonlinear core μ)
+- **Curie temperature (Tc)**: above Tc, ferromagnetic material loses all magnetic properties (µr drops to ~1) → catastrophic inductance collapse. High Tc is desirable. Ferrite Tc typically 200–400°C.
 
-**Core rule:** The higher the switching frequency, the smaller the magnetics can be — this is the main reason for going to high frequency. But core loss also increases with frequency, so there is an optimum.
+### Air Gap Dominance
+When `Rg >> Rc`:
+```
+L ≈ μ0·Ac·N² / lg
+```
 
----
-
-## 2. Magnetic Fundamentals — All Key Laws
-
-### 2.1 Ampere's Law — MMF
-
-$$\oint_C \mathbf{H} \cdot d\mathbf{l} = i_{enc} \implies \boxed{F = Hl = Ni} \quad \text{(Magnetomotive Force, MMF)}$$
-
-- $H$ = magnetic field intensity (A/m)
-- $l$ = magnetic path length (m)
-- $N$ = number of turns
-- $i$ = current (A)
-- $F$ = MMF in Ampere-turns (A·t)
-
-$$H = \frac{Ni}{l} \quad (A/m)$$
-
-### 2.2 Faraday's Law — Voltage
-
-$$\boxed{v(t) = \frac{d\lambda}{dt} = N\frac{d\phi}{dt} = L\frac{di}{dt}}$$
-
-- $\lambda = N\phi$ = flux linkage (Wb·turns)
-- This is the same equation that gives volt-second balance: integrating over a switching period in steady state gives zero average flux change.
-
-### 2.3 Flux and Flux Density
-
-$$\boxed{B = \frac{\phi}{A_c}} \quad (T,\text{ Tesla}) \qquad \phi = B \cdot A_c$$
-
-- $A_c$ = core cross-sectional area (m²)
-
-### 2.4 Permeability
-
-$$\boxed{B = \mu H = \mu_r \mu_0 H} \qquad \mu_0 = 4\pi \times 10^{-7}\,H/m$$
-
-- $\mu_r$ = relative permeability (dimensionless, from core material datasheet)
-- Ferrites: $\mu_r \approx 1000$–5000
-- Iron powder: $\mu_r \approx 50$–200
-
-### 2.5 Reluctance (Magnetic Resistance)
-
-$$\boxed{\mathcal{R} = \frac{l_c}{\mu A_c}} \quad (H^{-1} \text{ or A/Wb})$$
-
-For a **gapped core** (series path through core + air gap):
-
-$$\mathcal{R}_{total} = \mathcal{R}_c + \mathcal{R}_g = \frac{l_c}{\mu_r \mu_0 A_c} + \frac{l_g}{\mu_0 A_c}$$
-
-> **Exam trap:** Air gap $\mu_r = 1$, not the core's $\mu_r$. The gap dominates reluctance even if it's much shorter than the core path length (because $\mu_r \gg 1$ for the core material).
-
-### 2.6 Inductance
-
-$$\boxed{L = \frac{N^2}{\mathcal{R}_{total}} = \frac{N^2 \mu_0 A_c}{l_g + l_c/\mu_{rc}}}$$
-
-- Flux linkage: $\lambda = N\phi = \frac{N^2 i}{\mathcal{R}} = Li$
-
-### 2.7 BH Curve — Key Regions
-
-| Region | Behaviour | Practical significance |
-|--------|-----------|----------------------|
-| Linear | $B = \mu H$ (constant $\mu$) | Normal operating region — design here |
-| Saturation | $B$ flattens; $\mu$ drops sharply | Inductance collapses → dangerous current spike |
-| $B_r$ (residual flux) | $B$ when $H = 0$ | Present after removal of magnetizing current |
-| $H_c$ (coercive force) | $H$ needed to bring $B = 0$ | Wide $H_c$ = hard magnet; narrow = soft magnet |
-
-**Hard magnetic materials** (permanent magnets): wide BH loop, high $B_r$, high $H_c$ — retain magnetization.
-
-**Soft magnetic materials** (inductors/transformers): narrow BH loop, low hysteresis loss — preferred in power electronics.
-
-**BH loop area** = energy dissipated per cycle as heat = **hysteresis loss**.
+### B-H Curve
+- Area enclosed = energy lost per cycle per unit volume = **hysteresis loss**
+- Ferromagnets lose magnetic properties above **Curie temperature** (high Curie T is desirable)
+- `B ≤ Bmax` must be respected (core saturates above Bsat)
+  - Ferrite: Bsat ≈ 0.3–0.5 T; operating point: Bm = 0.2–0.3 T
 
 ---
 
-## 3. Magnetic Core Materials
+## 2. Core Materials
 
-| Material | $\mu_r$ | Frequency | Resistivity | Use |
-|----------|---------|-----------|-------------|-----|
-| Silicon steel (laminated) | 1000–10000 | 50 Hz–1 kHz | Low | Mains transformers, motors |
-| Ferrite (MnZn) | 1000–5000 | 1 kHz–1 MHz | Very high | SMPS inductors, transformers |
-| Ferrite (NiZn) | 10–1000 | 1 MHz–300 MHz | Extremely high | RF inductors, EMI chokes |
-| Iron powder | 10–200 | DC–200 kHz | High (distributed air gap) | Boost inductors with high DC bias |
-| Amorphous/Nanocrystalline | 10000–100000 | 1 kHz–200 kHz | Medium | High-efficiency PFC inductors |
+| Material | Freq range | Bsat | Resistivity | Best for |
+|---|---|---|---|---|
+| Silicon steel (CRGO) | < 1 kHz | 1.5–2 T | Low | Mains frequency transformers |
+| Ferrite | 10 kHz–10 MHz | 0.3–0.5 T | Very high | High-frequency power converters |
+| Powdered iron / Kool-Mµ / MPP | 10 kHz–1 MHz | ~1 T | Medium | Distributed air gap, soft saturation |
 
-**Why ferrites dominate at high frequency:** Very high electrical resistivity → virtually no eddy currents → low core loss at high $f$.
+> **Key**: Ferrite preferred at 100 kHz because very high resistivity → very low eddy current losses. Silicon steel would have unacceptable eddy current losses at 100 kHz.
 
-**Why laminations help:** Thin sheets interrupt eddy current paths → reduce eddy current loss at low-medium frequency (silicon steel).
+> **Powdered iron advantage**: distributed air gap → soft saturation (gradual, not abrupt) → better for biased inductors.
 
 ---
 
-## 4. Magnetic Losses
+## 3. Core Losses (Steinmetz Equation)
 
-**Total magnetic loss = core loss + copper (winding) loss**
+```
+Pc = k · f^m · Bm^n · Vc
+```
+- `Bm` = peak flux density (operating)
+- `f` = switching frequency
+- `k, m, n` = material constants
+- `Vc` = core volume
 
-$$P_{total} = P_{core} + P_{winding}$$
-
-### 4.1 Core Loss — Steinmetz Equation
-
-$$\boxed{P_v = k f^m B_m^n \quad (W/m^3 \text{ or } W/cm^3)}$$
-
-$$P_{core} = P_v \cdot V_c \qquad V_c = A_c \cdot l_c \text{ (core volume)}$$
-
-- $f$ = switching frequency
-- $B_m$ = **AC** flux density amplitude (not peak, not DC bias — only the ripple component)
-- $k$, $m$, $n$ = Steinmetz constants from **core material datasheet** (empirical fit)
-- Typical values for ferrite: $m \approx 1.3$–1.7, $n \approx 2.2$–3.0
-
-**3F3 ferrite example:**
-$$P_v = 47.434 \cdot f^{1.3} \cdot B_m^{2.5} \quad [\text{mW/cm}^3, \; f \text{ in kHz}, B_m \text{ in T}]$$
-
-| Loss component | Physical cause | Reduced by |
-|---------------|---------------|------------|
-| **Hysteresis loss** | Energy to cycle BH loop | Lower $f$, lower $B_m$, softer material |
-| **Eddy current loss** | $i^2R$ in conductive core material | High resistivity core, laminations, ferrites |
-
-> **Key distinction:** Hysteresis loss ∝ $f$; eddy current loss ∝ $f^2$. At very high frequency, eddy currents dominate for lossy materials — reason to use ferrite.
-
-### 4.2 Winding (Copper) Loss
-
-$$P_{winding} = I_{rms}^2 \cdot R_L$$
-
-At DC: $R_{DC} = \frac{\rho \cdot l_w}{A_w}$ where $l_w = N \times \text{MLT}$
-
-**At high frequency, $R_L$ increases above $R_{DC}$** due to two effects:
-
-#### Skin Effect
-
-$$\delta = \sqrt{\frac{2\rho}{\omega\mu_0}} = \sqrt{\frac{\rho}{\pi f \mu_0}}$$
-
-For copper at 100 kHz: $\delta \approx 0.21\,mm$. Current flows only in an outer shell of thickness $\delta$. If the wire diameter is much larger than $2\delta$, most of the cross-section is wasted.
-
-**Rule of thumb:** At 100 kHz, use wire with diameter $\leq 0.42\,mm$ (= $2\delta$).
-
-#### Proximity Effect
-
-Magnetic field from adjacent conductors induces eddy currents within a wire, further redistributing the current non-uniformly. In multi-layer windings, proximity effect can cause the effective AC resistance to be **many times** the DC resistance.
-
-**Solution — Litz wire:** Hundreds of individually insulated strands, each thinner than $\delta$, twisted together so each strand sees equal average field over the length. Litz wire significantly reduces $R_{AC}$ at high frequency.
-
-$$R_{AC} = F_R \cdot R_{DC} \qquad (F_R \geq 1, \text{ increases with frequency and layers})$$
+Core loss depends on: **frequency, flux density, material, volume** — all four.
 
 ---
 
-## 5. Core Geometry — Types and Parameters
+## 4. Winding Losses — Skin & Proximity Effect
 
-| Shape | Diagram | Advantages | Typical use |
-|-------|---------|------------|-------------|
-| **EE core** | Two E halves | Easy to wind; bobbin available | Transformers, large inductors |
-| **Toroidal** | Doughnut | Low leakage inductance, no air gap fringing | EMI chokes, AC filter inductors |
-| **UI core** | U + I halves | Simple construction | Mains transformers |
-| **Pot core** | Enclosed | Very low EMI radiation; mechanically robust | Signal transformers, low power |
-| **RM core** | Rectangular modular | PCB-mountable; small footprint | SMD power inductors |
+### Skin Effect
+- At high f, current concentrates near conductor surface
+- **Skin depth**: `δ = √(ρ / (π·f·μ))`
+- `δ ∝ 1/√f` → lower f → larger skin depth → more current cross-section used → lower AC resistance
+- At DC (f→0), current uniform across full cross-section
 
-**Critical core datasheet parameters:**
+### Proximity Effect
+- Adjacent conductors' fields redistribute current in multi-layer windings
+- Dramatically increases losses in multi-layer windings at high frequency
+- Worse than skin effect alone
 
-| Symbol | Name | Used in |
-|--------|------|---------|
-| $A_c$ | Core cross-sectional area | Flux density, turns calculation |
-| $W_a$ | Window area (winding space) | Number of turns, wire selection |
-| $l_c$ (MPL) | Magnetic path length | Reluctance, DC flux |
-| MLT | Mean length per turn | Winding resistance |
-| $A_t$ | Total surface area | Temperature rise calculation |
-| $A_p = W_a A_c$ | Area product | Core selection for given energy |
-| $\mu_{rc}$ | Relative permeability of core material | Air gap calculation |
+### FR Factor
+```
+Rwac = FR · Rwdc
+```
+FR > 1 accounts for skin + proximity effects.
+
+### AWG Rules
+| AWG number | Effect |
+|---|---|
+| Lower AWG (e.g., AWG 8) | **Larger** diameter, larger area, **lower resistance**, lower max usable frequency |
+| Higher AWG (e.g., AWG 28) | Thinner wire, higher resistance, better for high frequency |
+
+> **MSQ trap**: Lower AWG = larger wire = LOWER resistance, but WORSE skin effect penalty → lower max operating frequency.
+
+### Litz Wire
+- Multiple individually insulated strands, twisted/transposed
+- Each strand diameter < skin depth at operating frequency
+- Current distributes across all strands → reduces effective AC resistance
+- Used at high frequency where skin/proximity effects are severe
 
 ---
 
-## 6. Inductor Design — Area Product Method (Step-by-Step)
+## 5. Inductor Design — Area Product Method
 
-This is the **complete 8-step procedure** examined in NPTEL assignments.
+### Area Product Definition
+```
+Ap = Wa × Ac    [cm⁴ or m⁴]
+```
+- `Wa` = winding window area (for copper)
+- `Ac` = core cross-sectional area (for flux)
 
-**Inputs (given in problem):** $L$, $I_L$ (average/DC), $\Delta i_L$ (peak-to-peak ripple), $f_s$
+### Required Area Product
+```
+Ap = L · ILpk² / (Ku · Bm · Jm)
+```
+where:
+- `ILpk = IDC + ΔiL/2` (peak inductor current)
+- `Ku` = window utilization factor (typically 0.3–0.5)
+- `Bm` = operating flux density (e.g., 0.2–0.3 T for ferrite)
+- `Jm` = current density (e.g., 2–3 A/mm²)
 
-**Design choices:** $J_m$ (current density, 3–5 A/mm²), $B_m$ (0.2–0.3 T), $K_u$ (window utilization, 0.3–0.5), core material
+> **Key**: `Ap ∝ ILpk²` → doubling peak current → Ap increases by **4×**
+> **FIB**: The blank in `Ap = L·ILpk²/(___·Bm·Jm)` is **Ku** (window utilization factor)
+
+### Window Utilization Factor
+```
+Ku = N · Aw / Wa    (typically 0.3–0.5)
+```
+Ku < 1 because: bobbin occupies space, wire insulation, round wire packing inefficiency.
+
+| Winding style | Typical Ku |
+|---|---|
+| Single-layer | 0.40–0.45 |
+| Multi-layer | 0.30–0.40 |
+| Litz wire (multi-strand) | 0.25–0.35 (lower — more insulation) |
+
+> **MCQ trap**: Ku is NEVER 1.0. A question using Ku = 1 is wrong.
 
 ---
+
+## 6. Step-by-Step Inductor Design Procedure
+
+**Given**: L, IDC (= IL), ΔiL, Bm, Jm, Ku
 
 ### Step 1 — Peak Current
+```
+ILpk = IDC + ΔiL/2
+```
 
-$$\boxed{I_{L,pk} = I_L + \frac{\Delta i_L}{2}}$$
+### Step 2 — RMS Current
+```
+ILrms = √(IL² + ΔiL²/12)
+```
+For small ripple (ΔiL << IDC): `ILrms ≈ IDC`
 
-This is the maximum instantaneous current the inductor carries. The core must not saturate at this current.
+### Step 3 — Required Area Product
+```
+Ap = L · ILpk² / (Ku · Bm · Jm)
+```
+Convert units: L in H, Bm in T, Jm in A/m² (= A/mm² × 10⁶)
 
----
+### Step 4 — Select Core
+Choose EE core with `Ap = Wa × Ac ≥ Ap,required`
 
-### Step 2 — Maximum Stored Energy
+**EE Core Data (from exam slides — these are the actual exam cores)**:
 
-$$\boxed{W_m = \frac{1}{2} L I_{L,pk}^2}$$
+| Core | Ap (cm⁴) | Ac (cm²) | Wa (cm²) | MPL/lc (cm) | MLT (cm) |
+|---|---|---|---|---|---|
+| EE-187 | 0.114 | 0.226 | 0.506 | 4.01 | 3.8 |
+| EE-2425 | 0.314 | 0.395 | 0.794 | 4.85 | 4.9 |
+| EE-375 | 1.339 | 0.870 | 1.539 | 6.94 | 6.6 |
+| EE-21 | 2.448 | 1.490 | 1.643 | 7.75 | 8.1 |
+| EE-625 | 4.516 | 2.340 | 1.930 | 8.90 | 9.4 |
+| **EE-75** | **9.433** | **3.370** | **2.799** | **10.70** | **11.2** |
 
-All energy to be stored in the magnetic field.
+> **Exam example**: Ap,required = 8.28 cm⁴ → select **EE-75** (9.433 cm⁴). Always pick the smallest core that exceeds the requirement.
 
----
+Also note: ETD cores exist (ETD-29, ETD-34) but EE cores are the primary exam type.
 
-### Step 3 — Area Product
+### Step 5 — Wire Cross-Section
+```
+Aw = ILrms / Jm
+```
+(Uses RMS current, NOT peak current)
 
-$$\boxed{A_p = W_a A_c = \frac{2W_m}{K_u B_m J_m} = \frac{L I_{L,pk}^2}{K_u B_m J_m}}$$
+### Step 6 — Select AWG
+From AWG table: pick lowest AWG (largest wire) with `Aw,wire ≥ Aw,required`
+- AWG 8 ≈ 8.37 mm²
+- AWG 9 ≈ 6.63 mm²
 
-- $K_u$ accounts for: bobbin wall, wire insulation, dead space → typically 0.3–0.5
-- $B_m$ = maximum AC flux density (design margin below $B_{sat}$)
-- $J_m$ = current density in the wire
+### Step 7 — Number of Turns
+**Method A** (from window area):
+```
+N = Ku · Wa / Aw    (round DOWN to integer)
+```
+**Method B** (from flux):
+```
+N = L · ILpk / (Bpk · Ac)    (round to nearest integer)
+```
 
-> The area product packs both geometry requirements into one figure: $W_a$ must fit the wire cross-section, $A_c$ must carry the flux. Larger energy → larger core.
+### Step 8 — Air Gap
+```
+lg = μ0 · Ac · N² / L − lc / μrc
+```
+Units: all in SI (m, H, T, A/m)
 
----
-
-### Step 4 — Core Selection
-
-From manufacturer catalog, find core with $A_p \geq$ calculated value. Record: $A_c$, $W_a$, MPL, MLT, $A_t$, $\mu_{rc}$.
-
-**Standard core families:** EE, ETD, PQ, RM, toroid series from Ferroxcube, TDK, Magnetics Inc.
-
----
-
-### Step 5 — RMS Current and Wire Selection
-
-$$\boxed{I_{L,rms} = \sqrt{I_L^2 + \frac{(\Delta i_L)^2}{12}}}$$
-
-(For a DC current with triangular AC ripple.)
-
-Required wire area:
-$$A_w = \frac{I_{L,rms}}{J_m}$$
-
-From AWG table, select next larger standard wire with $A_w \geq$ calculated value. Record actual $A_w$.
-
----
-
-### Step 6 — Number of Turns
-
-$$\boxed{N = \frac{K_u \cdot W_a}{A_w}}$$
-
-Use actual (selected) $A_w$, not the minimum. Round **down** to nearest integer to ensure winding fits.
-
----
-
-### Step 7 — Air Gap Length
-
-From the required inductance and the chosen turns:
-
-$$\boxed{l_g = \frac{\mu_0 A_c N^2}{L} - \frac{l_c}{\mu_{rc}}}$$
-
-- First term: air gap needed if core had infinite permeability
-- Second term: correction for finite core permeability (usually small compared to first term)
-- If $l_g$ is negative, core permeability is too high for this design — choose a different core or material
-
-> **Physical meaning:** The air gap stores most of the magnetic energy in an inductor. It also prevents saturation by increasing reluctance (flattening the $L$ vs $I$ curve).
+### Step 9 — Verify Peak Flux Density
+```
+Bpk = L · ILpk / (N · Ac)    ≤ Bsat
+```
 
 ---
 
-### Step 8 — Verification Checks
+## 7. Temperature Rise (Optional/Advanced)
 
-#### Peak flux density (must be &lt; $B_{sat}$)
-
-$$\boxed{B_{pk} = \frac{\mu_0 N I_{L,pk}}{l_g + l_c/\mu_{rc}}}$$
-
-If $B_{pk} \geq B_{sat}$: increase gap, reduce turns, or select larger core.
-
-#### AC flux density (for core loss)
-
-$$\boxed{B_m = \frac{\mu_0 N (\Delta i_L/2)}{l_g + l_c/\mu_{rc}}}$$
-
-Only the ripple component $\Delta i_L/2$ drives AC flux. The DC bias does not cause core loss.
-
-#### Core loss
-
-$$P_{core} = P_v \cdot V_c = P_v \cdot A_c \cdot l_c$$
-
-where $P_v$ is from the Steinmetz equation using the actual $B_m$ and $f_s$.
-
-#### Copper (winding) loss
-
-$$P_{winding} = I_{L,rms}^2 \cdot R_L, \qquad R_L = \text{MLT} \times N \times R_{DC/length}$$
-
-where $R_{DC/length}$ is resistance per unit length of the selected wire (from AWG table, in Ω/m).
-
-#### Temperature rise
-
-$$\psi = \frac{P_{core} + P_{winding}}{A_t} \quad (W/cm^2)$$
-
-$$\boxed{\Delta T = 450 \cdot \psi^{0.826} \quad (°C)}$$
-
-If $\Delta T > \Delta T_{max}$: select a larger core with bigger $A_t$, repeat.
+```
+ΔT = 450 × (Pcw / At)^0.826
+```
+where `Pcw = Pc (core loss) + Pw (winding loss)` and `At` is surface area in cm².
 
 ---
 
-## 7. Why an Air Gap Is Used in an Inductor (Not a Transformer)
+## 8. Numeric Problem Approach
 
-| Inductor | Transformer |
-|----------|-------------|
-| Must **store** energy ($W = \frac{1}{2}LI^2$) | Must **transfer** energy (not store) |
-| **Air gap required** — stores energy, prevents saturation under DC bias | **No air gap** — gap would require a large magnetizing current |
-| DC bias present (large) | DC flux ideally zero |
+### Ap Calculation Example
+Given: L=60µH, ILpk=18.2A, Jm=3A/mm², Ku=0.4, Bm=0.2T
+```
+Ap = (60e-6 × 18.2²) / (0.4 × 0.2 × 3e6)
+   = (60e-6 × 331.24) / (240000)
+   = 0.019874 / 240000
+   = 8.28e-8 m⁴ = 8.28 cm⁴
+→ Select EE-75 (Ap ≈ 9.43 cm⁴ > 8.28 cm⁴)
+```
 
-> **Exam question:** "Why is an air gap used in inductor design but not transformer design?" — Air gap stores energy and prevents saturation under DC bias. A transformer should not store energy; a gap would add a large magnetizing current component unnecessarily.
+### Turns Calculation (window method)
+Given: Ku=0.4, Wa=2.80cm², Aw=6.63mm²
+```
+N = 0.4 × 2.80e-4 / 6.63e-6 = 16.89 → 16 turns (floor)
+```
 
----
+### Air Gap Calculation
+Given: Ac=3.37cm², lc=10.7cm, μrc=2300, N=17, L=60µH
+```
+lg = (4π×10⁻⁷ × 3.37×10⁻⁴ × 17²) / 60×10⁻⁶ − (10.7×10⁻²/2300)
+   = 2.044×10⁻³ − 0.465×10⁻³ = 1.58×10⁻³ m ≈ 1.58 mm
+```
 
-## 8. Transformer Design — Key Differences
-
-**Area product for transformer** (based on power rating rather than energy):
-
-$$\boxed{A_p = \frac{P_o}{K_u K_f B_m J_m f_s}}$$
-
-where $K_f$:
-- $K_f = 4.44$ for sinusoidal waveform
-- $K_f = 4.0$ for square wave
-
-**Turns ratio from Faraday's law (square wave, volt-second balance):**
-
-$$\boxed{N_1 = \frac{V_1}{4 f_s B_m A_c}} \qquad \frac{N_2}{N_1} = \frac{V_2}{V_1}$$
-
-**Window allocation:** With primary fraction $\alpha = N_1/(N_1+N_2)$:
-- Primary uses $\alpha \cdot K_u \cdot W_a$
-- Secondary uses $(1-\alpha) \cdot K_u \cdot W_a$
-
-**Interleaving:** Alternating primary and secondary winding layers reduces leakage inductance and proximity effect losses.
-
----
-
-## 9. Key Exam Recall Points
-
-- **Reluctance formula:** $\mathcal{R} = l/(\mu A_c)$ — same form as resistance ($R = l/(\sigma A)$)
-- **Air gap dominates reluctance** because $\mu_0 \ll \mu_{core}$
-- **Inductance formula:** $L = N^2/\mathcal{R}$ — more turns or less reluctance → more inductance
-- **Steinmetz:** core loss uses AC flux amplitude, NOT DC bias. DC bias → saturation risk, not core loss
-- **Skin depth** $\delta \propto 1/\sqrt{f}$ — halving frequency doubles skin depth
-- **Litz wire** reduces proximity effect and skin effect at high frequency
-- **Area product** combines window area and core area — single number to select a core
-- **Temperature rise formula** $\Delta T = 450\psi^{0.826}$ is empirical; $\psi$ in W/cm²
+### Skin Depth Scaling
+```
+δ(f1)/δ(f2) = √(f2/f1)
+```
+e.g. δ at 100 kHz vs 1 MHz: `δ(100k) = 0.066 × √(1M/100k) = 0.066 × √10 = 0.209 mm`
 
 ---
 
-## Formula Sheet — Week 6
+## 9. MCQ/MSQ Quick Reference
 
-$$F = Ni = Hl \quad \text{(MMF, Ampere-turns)}$$
+- Air gap → **decreases** inductance per turn but makes it more linear
+- Ferrite preferred at high frequency: **high resistivity** → low eddy current losses
+- Silicon steel: high Bsat but **low resistivity** → high eddy current losses at high f
+- Ap ∝ ILpk² → very sensitive to peak current
+- `Aw = ILrms/Jm` (RMS, not peak)
+- `N = L·ILpk/(Bpk·Ac)` (peak current, not RMS)
+- Lower AWG = larger wire = more current capacity but worse high-frequency behaviour
+- Litz wire reduces AC winding resistance at high frequency
+- Hysteresis loop area = energy loss per cycle per unit volume
+- Core loss depends on: f, Bm, material, volume (all four)
+- Ku typically 0.3–0.5 (never 1.0)
+- Low Curie temperature = **undesirable** in core material
 
-$$\mathcal{R} = \frac{l_c}{\mu A_c}, \qquad \mathcal{R}_{gapped} = \frac{l_c}{\mu_r \mu_0 A_c} + \frac{l_g}{\mu_0 A_c}$$
+---
 
-$$L = \frac{N^2}{\mathcal{R}}, \qquad \lambda = Li = N\phi$$
+## 10. FIB Quick Answers
 
-$$v = N\frac{d\phi}{dt} = L\frac{di}{dt}$$
-
-$$\delta = \sqrt{\frac{\rho}{\pi f \mu_0}} \quad \text{(skin depth)}$$
-
-$$P_v = k f^m B_m^n \quad \text{(Steinmetz core loss density)}$$
-
-$$A_p = W_a A_c = \frac{L I_{L,pk}^2}{K_u B_m J_m} \quad \text{(inductor area product)}$$
-
-$$A_p = \frac{P_o}{K_u K_f B_m J_m f_s} \quad \text{(transformer area product)}$$
-
-$$I_{L,rms} = \sqrt{I_L^2 + \frac{(\Delta i_L)^2}{12}}, \qquad N = \frac{K_u W_a}{A_w}$$
-
-$$l_g = \frac{\mu_0 A_c N^2}{L} - \frac{l_c}{\mu_{rc}}$$
-
-$$B_{pk} = \frac{\mu_0 N I_{L,pk}}{l_g + l_c/\mu_{rc}}, \qquad B_m = \frac{\mu_0 N (\Delta i_L/2)}{l_g + l_c/\mu_{rc}}$$
-
-$$\Delta T = 450 \cdot \psi^{0.826}, \quad \psi = \frac{P_{core} + P_{winding}}{A_t}$$
+- `Ap = L·ILpk² / (Ku·Bm·Jm)` — blank is **Ku**
+- `lg = μ0·Ac·N²/L − lc/μrc`
+- `N = Ku·Wa/Aw` (window method, round down)
+- `Aw = ILrms / Jm` (uses **RMS** current)
+- `ILpk = IDC + ΔiL/2`
+- `ILrms = √(IL² + ΔiL²/12)`
+- Temperature rise formula: `ΔT = 450 × (Pcw/At)^0.826`; `Pcw = Pc + Pw`
+- Skin depth: `δ ∝ 1/√f`
+- EE-65: Ac=2.58cm², Wa=2.97cm², lc=14.7cm; EE-75: Ac=3.37cm², Wa=2.80cm², lc=10.70cm

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1f2937" />
+    </marker>
+    <style>
+      .box{fill:#f8fafc;stroke:#1f2937;stroke-width:2;rx:8}
+      .wire{stroke:#1f2937;stroke-width:2;fill:none}
+      .arrow{stroke:#1f2937;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .mark{stroke:#d9480f;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .txt{font-family:Arial,Helvetica,sans-serif;font-size:17px;fill:#111827}
+      .small{font-family:Arial,Helvetica,sans-serif;font-size:14px;fill:#374151}
+      .title{font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700;fill:#111827}
+    </style>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <text x="24" y="34" class="title">Charge amplifier with HPF, LPF and ADC markings</text>
+
+  <rect x="50" y="130" width="110" height="80" class="box"/><text x="72" y="160" class="txt">Piezo</text><text x="65" y="185" class="small">q = S P</text>
+  <path class="wire" d="M160 170 L250 170"/>
+  <path class="wire" d="M250 130 L250 210 L360 170 Z"/><text x="270" y="153" class="txt">-</text><text x="270" y="198" class="txt">+</text>
+  <path class="wire" d="M360 170 L455 170"/>
+  <path class="wire" d="M295 130 L295 70 L405 70 L405 170"/>
+  <rect x="315" y="52" width="70" height="34" class="box"/><text x="332" y="75" class="txt">Cf</text>
+  <rect x="405" y="95" width="70" height="34" class="box"/><text x="422" y="118" class="txt">Rf</text>
+  <rect x="455" y="135" width="95" height="70" class="box"/><text x="480" y="164" class="txt">HPF</text><text x="477" y="186" class="small">59 Hz</text>
+  <rect x="590" y="135" width="95" height="70" class="box"/><text x="615" y="164" class="txt">LPF</text><text x="612" y="186" class="small">318 Hz</text>
+  <rect x="725" y="135" width="110" height="70" class="box"/><text x="755" y="164" class="txt">SAR</text><text x="748" y="186" class="small">4-bit ADC</text>
+  <path class="arrow" d="M550 170 L590 170 M685 170 L725 170 M835 170 L875 170"/>
+  <path class="mark" d="M345 45 L390 45"/><text x="440" y="50" class="small">Cf = qmax/5 V = 27 pF</text>
+  <text x="210" y="305" class="small">Voltage is scaled 0-5 V, then quantized by ADC. Arrows show signal flow.</text>
+
+</svg>

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1f2937" />
+    </marker>
+    <style>
+      .box{fill:#f8fafc;stroke:#1f2937;stroke-width:2;rx:8}
+      .wire{stroke:#1f2937;stroke-width:2;fill:none}
+      .arrow{stroke:#1f2937;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .mark{stroke:#d9480f;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .txt{font-family:Arial,Helvetica,sans-serif;font-size:17px;fill:#111827}
+      .small{font-family:Arial,Helvetica,sans-serif;font-size:14px;fill:#374151}
+      .title{font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700;fill:#111827}
+    </style>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <text x="24" y="34" class="title">4-bit R-2R ladder DAC with current directions</text>
+
+  <path class="wire" d="M90 140 L700 140"/>
+  <rect x="130" y="122" width="58" height="34" class="box"/><text x="151" y="145" class="txt">R</text>
+  <rect x="255" y="122" width="58" height="34" class="box"/><text x="276" y="145" class="txt">R</text>
+  <rect x="380" y="122" width="58" height="34" class="box"/><text x="401" y="145" class="txt">R</text>
+  <rect x="505" y="122" width="58" height="34" class="box"/><text x="526" y="145" class="txt">R</text>
+  <path class="wire" d="M190 140 L190 235 M315 140 L315 235 M440 140 L440 235 M565 140 L565 235 M690 140 L690 235"/>
+  <rect x="164" y="190" width="52" height="34" class="box"/><text x="176" y="213" class="txt">2R</text>
+  <rect x="289" y="190" width="52" height="34" class="box"/><text x="301" y="213" class="txt">2R</text>
+  <rect x="414" y="190" width="52" height="34" class="box"/><text x="426" y="213" class="txt">2R</text>
+  <rect x="539" y="190" width="52" height="34" class="box"/><text x="551" y="213" class="txt">2R</text>
+  <rect x="664" y="190" width="52" height="34" class="box"/><text x="676" y="213" class="txt">2R</text>
+  <text x="178" y="265" class="small">b3</text><text x="303" y="265" class="small">b2</text><text x="428" y="265" class="small">b1</text><text x="553" y="265" class="small">b0</text><text x="660" y="265" class="small">term.</text>
+  <path class="arrow" d="M720 140 L805 140"/><text x="810" y="146" class="txt">op-amp sum</text>
+  <path class="mark" d="M560 90 L560 125"/><text x="505" y="82" class="small">LSB current: Vs/16R</text>
+
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1f2937" />
+    </marker>
+    <style>
+      .box{fill:#f8fafc;stroke:#1f2937;stroke-width:2;rx:8}
+      .wire{stroke:#1f2937;stroke-width:2;fill:none}
+      .arrow{stroke:#1f2937;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .mark{stroke:#d9480f;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .txt{font-family:Arial,Helvetica,sans-serif;font-size:17px;fill:#111827}
+      .small{font-family:Arial,Helvetica,sans-serif;font-size:14px;fill:#374151}
+      .title{font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700;fill:#111827}
+    </style>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <text x="24" y="34" class="title">Dual op-amp instrumentation amplifier</text>
+
+  <text x="80" y="122" class="txt">V1</text><text x="80" y="242" class="txt">V2</text>
+  <path class="wire" d="M120 120 L250 120 M120 240 L250 240"/>
+  <path class="wire" d="M250 90 L250 150 L350 120 Z M250 210 L250 270 L350 240 Z"/>
+  <text x="270" y="108" class="txt">-</text><text x="270" y="142" class="txt">+</text>
+  <text x="270" y="228" class="txt">+</text><text x="270" y="262" class="txt">-</text>
+  <rect x="385" y="102" width="78" height="34" class="box"/><text x="402" y="125" class="txt">R2</text>
+  <rect x="385" y="222" width="78" height="34" class="box"/><text x="402" y="245" class="txt">R2</text>
+  <path class="wire" d="M350 120 L520 120 M350 240 L520 240"/>
+  <rect x="520" y="160" width="80" height="40" class="box"/><text x="544" y="185" class="txt">R1</text>
+  <path class="wire" d="M560 120 L560 160 M560 200 L560 240"/>
+  <path class="arrow" d="M620 180 L760 180"/><text x="770" y="185" class="txt">V0</text>
+  <text x="310" y="320" class="small">Marked gain path: V0 = (1 + R2/R1)(V2 - V1)</text>
+
+</svg>

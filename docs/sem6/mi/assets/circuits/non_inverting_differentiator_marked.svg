@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1f2937" />
+    </marker>
+    <style>
+      .box{fill:#f8fafc;stroke:#1f2937;stroke-width:2;rx:8}
+      .wire{stroke:#1f2937;stroke-width:2;fill:none}
+      .arrow{stroke:#1f2937;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .mark{stroke:#d9480f;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .txt{font-family:Arial,Helvetica,sans-serif;font-size:17px;fill:#111827}
+      .small{font-family:Arial,Helvetica,sans-serif;font-size:14px;fill:#374151}
+      .title{font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700;fill:#111827}
+    </style>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <text x="24" y="34" class="title">Non-inverting differentiator with unity-gain marking</text>
+
+  <path class="wire" d="M80 180 L190 180"/>
+  <rect x="190" y="162" width="70" height="34" class="box"/><text x="211" y="185" class="txt">C</text>
+  <rect x="290" y="162" width="70" height="34" class="box"/><text x="310" y="185" class="txt">R</text>
+  <path class="wire" d="M260 180 L290 180 M360 180 L455 180"/>
+  <path class="wire" d="M455 150 L455 210 L545 180 Z"/>
+  <text x="474" y="164" class="txt">+</text><text x="474" y="203" class="txt">-</text>
+  <path class="wire" d="M545 180 L720 180"/><text x="735" y="185" class="txt">Vout</text>
+  <path class="wire" d="M565 180 L565 90 L455 90 L455 150"/>
+  <rect x="480" y="72" width="70" height="34" class="box"/><text x="497" y="95" class="txt">R1</text>
+  <path class="wire" d="M455 210 L455 260"/><rect x="420" y="260" width="70" height="34" class="box"/><text x="437" y="283" class="txt">R1</text><path class="wire" d="M455 294 L455 320"/>
+  <text x="70" y="160" class="txt">Vin</text>
+  <path class="mark" d="M245 128 L300 158"/><text x="255" y="118" class="small">|2 omega RC| = 1 at 100 Hz</text>
+  <text x="270" y="335" class="small">Transfer function: Vout/Vin = 2sRC.</text>
+
+</svg>

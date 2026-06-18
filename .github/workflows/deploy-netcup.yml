@@ -1,0 +1,95 @@
+name: Deploy to Netcup
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: netcup-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Build and deploy note.arzvak.com
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type-check
+        run: npm run typecheck
+
+      - name: Build site
+        run: npm run build
+        env:
+          NODE_OPTIONS: --max-old-space-size=8192
+
+      - name: Install deployment tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y rsync
+
+      - name: Configure SSH
+        env:
+          NETCUP_HOST: ${{ secrets.NETCUP_HOST }}
+          NETCUP_SSH_KEY: ${{ secrets.NETCUP_SSH_KEY }}
+        run: |
+          set -euo pipefail
+          test -n "$NETCUP_HOST"
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          printf '%s\n' "$NETCUP_SSH_KEY" > ~/.ssh/netcup_deploy_key
+          chmod 600 ~/.ssh/netcup_deploy_key
+          ssh-keyscan -H "$NETCUP_HOST" >> ~/.ssh/known_hosts
+
+      - name: Upload build to Netcup staging
+        env:
+          NETCUP_HOST: ${{ secrets.NETCUP_HOST }}
+          NETCUP_USER: ${{ secrets.NETCUP_USER }}
+        run: |
+          set -euo pipefail
+          STAGING="/tmp/note-arzvak-build-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          ssh -i ~/.ssh/netcup_deploy_key "$NETCUP_USER@$NETCUP_HOST" "rm -rf '$STAGING' && mkdir -p '$STAGING'"
+          rsync -az --delete -e "ssh -i ~/.ssh/netcup_deploy_key" build/ "$NETCUP_USER@$NETCUP_HOST:$STAGING/"
+          echo "STAGING=$STAGING" >> "$GITHUB_ENV"
+
+      - name: Publish staged build
+        env:
+          NETCUP_HOST: ${{ secrets.NETCUP_HOST }}
+          NETCUP_USER: ${{ secrets.NETCUP_USER }}
+          NETCUP_WEBROOT: ${{ secrets.NETCUP_WEBROOT }}
+        run: |
+          set -euo pipefail
+          ssh -i ~/.ssh/netcup_deploy_key "$NETCUP_USER@$NETCUP_HOST" \
+            "set -euo pipefail
+             test -n '$NETCUP_WEBROOT'
+             test -d '$STAGING'
+             mkdir -p /root/note-arzvak-backups
+             if [ -d '$NETCUP_WEBROOT' ]; then
+               tar -C '$NETCUP_WEBROOT' -czf /root/note-arzvak-backups/note-arzvak-\$(date +%Y%m%d%H%M%S).tar.gz .
+             else
+               mkdir -p '$NETCUP_WEBROOT'
+             fi
+             rsync -a --delete '$STAGING/' '$NETCUP_WEBROOT/'
+             nginx -t
+             nginx -s reload
+             rm -rf '$STAGING'"
+
+      - name: Verify public site
+        run: |
+          set -euo pipefail
+          curl --fail --location --silent --show-error https://note.arzvak.com/ > /tmp/note-home.html
+          grep -q "MIT EEE" /tmp/note-home.html

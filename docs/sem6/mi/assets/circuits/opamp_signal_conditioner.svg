@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1f2937" />
+    </marker>
+    <style>
+      .box{fill:#f8fafc;stroke:#1f2937;stroke-width:2;rx:8}
+      .wire{stroke:#1f2937;stroke-width:2;fill:none}
+      .arrow{stroke:#1f2937;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .mark{stroke:#d9480f;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .txt{font-family:Arial,Helvetica,sans-serif;font-size:17px;fill:#111827}
+      .small{font-family:Arial,Helvetica,sans-serif;font-size:14px;fill:#374151}
+      .title{font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700;fill:#111827}
+    </style>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <text x="24" y="34" class="title">Offset plus gain signal conditioner</text>
+
+  <rect x="80" y="115" width="150" height="90" class="box"/><text x="112" y="154" class="txt">Sensor</text><text x="100" y="178" class="small">Vt = m x + b</text>
+  <rect x="330" y="105" width="175" height="110" class="box"/><text x="363" y="148" class="txt">Op-amp</text><text x="350" y="174" class="small">gain + offset</text>
+  <rect x="610" y="115" width="160" height="90" class="box"/><text x="633" y="154" class="txt">ADC input</text><text x="648" y="178" class="small">0 to full scale</text>
+  <path class="arrow" d="M230 160 L330 160"/><text x="255" y="146" class="small">raw mV</text>
+  <path class="arrow" d="M505 160 L610 160"/><text x="530" y="146" class="small">scaled V</text>
+  <path class="mark" d="M420 235 L420 285"/><text x="300" y="310" class="small">Choose gain and reference so endpoints map exactly.</text>
+
+</svg>

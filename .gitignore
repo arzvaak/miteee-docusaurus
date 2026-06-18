@@ -4,3 +4,10 @@ build/
 .cache-loader/
 *.local
 .env
+
+# Local generation and verification artifacts
+.em2-*-cache/
+output/
+__pycache__/
+*.pyc
+*.log

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1f2937" />
+    </marker>
+    <style>
+      .box{fill:#f8fafc;stroke:#1f2937;stroke-width:2;rx:8}
+      .wire{stroke:#1f2937;stroke-width:2;fill:none}
+      .arrow{stroke:#1f2937;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .mark{stroke:#d9480f;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .txt{font-family:Arial,Helvetica,sans-serif;font-size:17px;fill:#111827}
+      .small{font-family:Arial,Helvetica,sans-serif;font-size:14px;fill:#374151}
+      .title{font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700;fill:#111827}
+    </style>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <text x="24" y="34" class="title">Flash ADC ladder and comparator bank</text>
+
+  <path class="wire" d="M110 80 L110 285"/><text x="72" y="75" class="txt">Vref</text><text x="83" y="310" class="txt">0 V</text>
+  <rect x="87" y="100" width="46" height="24" class="box"/><rect x="87" y="135" width="46" height="24" class="box"/>
+  <rect x="87" y="170" width="46" height="24" class="box"/><rect x="87" y="205" width="46" height="24" class="box"/><rect x="87" y="240" width="46" height="24" class="box"/>
+  <text x="103" y="118" class="small">R</text><text x="103" y="153" class="small">R</text><text x="103" y="188" class="small">R</text><text x="103" y="223" class="small">R</text><text x="103" y="258" class="small">R</text>
+  <path class="wire" d="M133 112 L255 112 M133 147 L255 147 M133 182 L255 182 M133 217 L255 217 M133 252 L255 252"/>
+  <rect x="255" y="92" width="135" height="180" class="box"/><text x="282" y="133" class="txt">Comparator</text><text x="294" y="157" class="txt">bank</text><text x="283" y="205" class="small">thermometer</text><text x="308" y="225" class="small">code</text>
+  <rect x="490" y="128" width="150" height="105" class="box"/><text x="526" y="170" class="txt">Priority</text><text x="526" y="194" class="txt">encoder</text>
+  <path class="arrow" d="M390 182 L490 182"/><path class="arrow" d="M640 182 L785 182"/><text x="705" y="164" class="txt">binary</text>
+  <path class="arrow" d="M40 182 L255 182"/><text x="35" y="170" class="txt">Vin</text>
+
+</svg>

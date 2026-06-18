@@ -1,0 +1,7 @@
+* Tutorial 6 R-2R ladder DAC source netlist
+Vref vref 0 DC 1
+Rmsb vref n1 2k
+R2 n1 n2 1k
+Rterm n2 0 2k
+* educational source netlist; rendered annotation asset is in assets/circuits
+.END

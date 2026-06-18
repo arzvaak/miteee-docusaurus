@@ -1,250 +1,214 @@
-# Week 4 — Gate Drivers & Snubber Design
-
-> **NPTEL: Design of Modern Power Converters** | Prof. Shabari Nath, IIT Guwahati
+# Week 4 — Snubbers & Protection
 
 ---
 
-## 1. Additional Gate Driver Requirements
+## 1. Why Snubbers?
 
-Building on Week 3, the complete gate driver specification also includes:
+At switch turn-off, stored energy in parasitic inductance `Lpar` drives a resonant voltage spike:
+```
+Vpeak = Vin + I0 · Z0    (undamped)
+```
+where `Z0 = √(Lpar/Cs)` and `I0` = commutated current at turn-off.
 
-**Dead time / shoot-through prevention:** Hardware interlock that ensures both switches in a leg cannot be ON simultaneously. A fixed dead time is inserted between one switch turning OFF and the complementary switch turning ON. This is non-negotiable — shoot-through destroys the converter.
-
-**Under-voltage lockout (UVLO):** Forces gate output OFF if supply voltage drops below a threshold. Prevents partial enhancement (linear region operation) which would cause catastrophic power dissipation. Hysteresis prevents chatter at the threshold.
-
-**Negative gate voltage for turn-off:** Driving gate to $-5$ to $-8\,V$ at turn-off (rather than 0 V):
-- Speeds up turn-off (larger $V_{GS}$ swing)
-- Prevents false turn-on from Miller capacitance coupling
-
-**Gate drive output protection:** Some ICs include output short-circuit protection and over-temperature shutdown.
+Without snubber: full spike → overstress, EMI, possible device failure.
 
 ---
 
-## 2. Why Snubbers Are Needed
+## 2. RC Snubber (Turn-off / dv/dt Snubber)
 
-Every current-carrying conductor (PCB trace, wire, bus bar) has **parasitic inductance** $L_p$. In a real converter, this inductance cannot be reduced to zero — it is inherent in the geometry.
+### Key Quantities
 
-**What happens at turn-off without a snubber:**
+```
+Z0 = √(Lpar / Cs)          [characteristic impedance, Ω]
+ζ  = Rs / (2·Z0)           [damping ratio]
+f0 = 1 / (2π·√(Lpar·Cs))  [resonant frequency]
+ω0 = 1 / √(Lpar·Cs)       [angular resonant frequency]
+```
 
-When the switch turns OFF, the load current ($I_{sw}$) must transfer to the freewheeling diode. But the parasitic inductance opposes the current change:
+- **Critical damping**: `ζ = 1` → `Rs = 2·Z0`
+- Practical design: `ζ = 0.5–1` (slightly under- to critically-damped)
+  - `ζ = 0.5` → ~16% overshoot; `ζ = 0.7` → ~5% overshoot; `ζ = 1` → 0% overshoot (no ringing)
 
-$$V_{spike} = V_{in} + L_p \cdot \frac{dI}{dt}$$
+### Design Method 1 — dv/dt Limiting
+```
+Cs = Vin / (dv/dt_limit · Rs_initial)
+Rs = Vin / (dv/dt_limit · Cs)
+```
+Initial dv/dt (undamped): `(dv/dt)_init = Vin · ω0`
+→ Choose Cs large enough so `Vin · ω0 ≤ dv/dt_limit`
 
-This spike **exceeds $V_{in}$** and can destroy the switch if it exceeds the device's $V_{DS,max}$ or $V_{CES}$.
+### Design Method 2 — Peak Voltage Method
+```
+Cs = Lpar · (Irr / Vin)²     [for χ0 = 2 target]
+Rs = 2·ζ0·Z0 = 2·ζ0·√(Lpar/Cs)
+```
+where `Irr = 2·Qrr/trr` (peak reverse recovery current from diode — assumes triangular waveform).
 
-**Subsequent ringing:** $L_p$ and the device's output capacitance $C_{oss}$ form an LC tank:
+> **MCQ trap**: Irr and Qrr are **strongly temperature-dependent**. e.g. IRFB7545PbF body diode: Qrr = 340 nC at 25°C vs 36 nC at 125°C — nearly 10× lower at high temperature. Always use the correct temperature datasheet value.
 
-$$f_{ring} = \frac{1}{2\pi\sqrt{L_p C_{oss}}} \quad \text{(ringing frequency)}$$
+### Snubber Power Loss
+```
+Ps = ½ · Cs · Vs² · fs
+```
+- Energy stored each cycle: `E = ½·Cs·Vs²` → all dissipated in Rs at next turn-on
+- Increases with Cs and fs → trade-off: larger Cs = better voltage limiting but more loss
 
-This oscillation radiates EMI, causes extra loss, and can again push the device out of its SOA.
-
-**Four functions of snubbers (exam answer):**
-
-1. Limit peak voltage during turn-off
-2. Control $dV/dt$ and $dI/dt$ during switching
-3. Shape the switching trajectory to stay within the SOA
-4. Damp LC ringing
-
----
-
-## 3. Snubber Types Overview
-
-| Type | Components | Best for | Loss |
-|------|-----------|----------|------|
-| **RC** | $R_s$, $C_s$ in series across device | General voltage clamping and damping | $\frac{1}{2}C_s V^2 f_s$ per cycle |
-| **RCD** | $R_s$, $C_s$, $D_s$ | Lower loss than RC; separate charge/discharge paths | Less than RC |
-| **Zener/TVS** | Zener clamp | Hard voltage clamp | Only conducts during spikes |
-| **Ferrite bead** | Lossy inductor on PCB trace | High-frequency EMI suppression | Small |
-| **Turn-on snubber** | Series inductor in switch path | Limit $dI/dt$ at turn-on; protect diode from $I_{RR}$ | Separate |
-
----
-
-## 4. RC Snubber — Theory and Equations
-
-**Circuit:** $R_s$ and $C_s$ in series, placed **directly across the switch** (drain-source or collector-emitter).
-
-**At turn-off:** The inductor current commutates from the switch into the $C_s$-$R_s$ branch. This is an $L_p$-$C_s$-$R_s$ circuit with initial conditions:
-- $i_{L_p}(0) = I_{rr}$ (the reverse recovery current of the freewheeling diode, just before the switch turned off)
-- $v_{C_s}(0) = 0$ (initially uncharged)
-
-**Key normalised parameters:**
-
-$$\omega_0 = \frac{1}{\sqrt{L_p C_s}} \quad \text{(natural frequency)}$$
-
-$$\zeta = \frac{R_s}{2}\sqrt{\frac{C_s}{L_p}} \quad \text{(damping ratio)}$$
-
-$$\chi = \frac{R_s \cdot I_{rr}}{2E} \quad \text{(normalised initial condition; } E = V_{in}\text{)}$$
-
-**Damping cases:**
-
-| Condition | $\zeta$ | Voltage waveform |
-|-----------|---------|-----------------|
-| Underdamped | $\zeta < 1$ | Oscillates; peak $E_1 > E$ → dangerous |
-| Critically damped | $\zeta = 1$ | No overshoot; fastest non-oscillatory response |
-| Overdamped | $\zeta > 1$ | Exponential, no oscillation; settles slowly |
-
-**Design target:** Select $R_s$ and $C_s$ to keep peak voltage $E_1$ within the device's rated $V_{DS,max}$ with a safety margin.
+### Effect on EMI
+- RC snubber **reduces** EMI by damping the parasitic LC oscillation at the switch node
 
 ---
 
-## 5. RC Snubber Design — 3-Method Procedure
+## 3. RCD Snubber
 
-This is the core NPTEL design procedure. Given: $V_{in}$, $L_p$, $V_{DS,max}$ (device datasheet), $dV/dt$ limit (device datasheet), and compute $I_{rr}$ from diode datasheet.
+- Adds diode Ds in parallel with Rs
+- Cs charges through Ds (low-impedance path) at turn-off
+- Cs discharges through Rs at turn-on (diode blocks reverse current)
+- Advantage: Cs and Rs can be sized independently (no competing requirements)
+- Same power loss formula: `Ps = ½·Cs·Vs²·fs`
 
-### Preliminary: Compute $I_{rr}$
+### Comparison: RC vs RCD
 
-$$I_{rr} = \frac{2Q_{rr}}{t_{rr}}$$
-
----
-
-### Method 1 — Peak Voltage Constraint Only
-
-**Goal:** Limit $E_1/E \leq$ target (e.g., 2.0, meaning $E_1 \leq 2V_{in}$).
-
-1. Set $E_1/E = V_{DS,max}/V_{in}$ (or a chosen safety margin)
-2. From design curves (given in assignment), read off $\chi_o$ and $\zeta_o$ at the target $E_1/E$
-3. Compute:
-$$C_s = \frac{L_p I_{rr}^2}{4 \chi_o^2 E^2}$$
-$$R_s = 2\zeta_o \sqrt{\frac{L_p}{C_s}}$$
-
-**This method gives the smallest $C_s$ (only peak voltage considered) → minimum snubber loss.** In the NPTEL assignment, this is called the "small snubber."
+| | RC Snubber | RCD Snubber |
+|---|---|---|
+| Cs charges through | Rs (slower, limited by Rs) | Ds (fast, low impedance) |
+| Cs discharges through | Rs | Rs only (diode blocks reverse) |
+| Design flexibility | Lower (Rs has dual role) | Higher (Cs and Rs independent) |
 
 ---
 
-### Method 2 — dV/dt Constraint Only
+## 4. Turn-on Snubber (di/dt Snubber)
 
-**Goal:** Limit the average $dV/dt$ across the switch to the datasheet limit (with safety factor).
-
-1. Compute the normalised dV/dt:
-$$\frac{(dV/dt)_{av,max}}{E \cdot \omega_0}$$
-2. From design curves, read $\chi_o$ and $\zeta_o$ at this normalised value
-3. Often $C_s$ is given (e.g., $C_s = 2\,nF$) and only $R_s$ needs to be found:
-$$R_s = 2\zeta_o \sqrt{\frac{L_p}{C_s}}$$
+- Series inductor `Ls` in the switch branch
+- Limits `di/dt` at turn-on → protects diode from reverse recovery
+- Energy `½·Ls·I²` must be dissipated when Ls releases → added snubber loss
 
 ---
 
-### Method 3 — Compromise (Both Constraints)
+## 5. Snubber Loss Comparison
 
-**Goal:** Satisfy both peak voltage AND dV/dt simultaneously.
+Large snubber → most voltage spike energy absorbed in Rs (less switch stress)
+Small snubber → less absorption
+No snubber → full spike on switch, maximum switch stress
 
-1. Compute: $\frac{(dV/dt)_{av,max} \cdot L_p \cdot I_{rr}}{E^2}$
-2. From the compromise design curve, read $\chi_o$ and $\zeta_o$
-3. Solve for both $C_s$ and $R_s$ from the two equations
-
-> **Exam point:** Method 1 (peak voltage only) gives the **smallest $C_s$** → **lowest snubber loss** $= \frac{1}{2}C_s V_{in}^2 f_s$. The NPTEL assignment asks which snubber has the least power loss — answer: **small snubber (Method 1)**.
+> **MCQ trap**: Total switch stress is LOWEST with a large snubber (most energy diverted to Rs, away from the switch). But snubber itself adds loss to the converter.
 
 ---
 
-### Design Example — IRFI540NPbF
+## 6. DESAT (Desaturation) Protection
 
-**Given:** $V_{in} = 50\,V$, $L_p = 8\,nH$, $V_{DS,max} = 100\,V$, $dV/dt$ limit = 12 V/ns (use 6 V/ns with ×2 safety factor)
+Monitors VDS (or VCE) during on-state. If device exits saturation (overcurrent → VDS rises above threshold), gate driver performs **soft turn-off** to avoid destructive di/dt.
 
-**Preliminary:**
-$$E_1/E = \frac{100}{50} = 2 \quad \Rightarrow \text{no more than double the bus voltage}$$
+### Blanking Capacitor
+Prevents false trip at turn-on (VDS takes time to fall after gate signals):
+```
+tblank = Cblank · Vblank / Ichg
+```
+- `Cblank` = blanking capacitor (e.g., 100 pF)
+- `Vblank` = voltage threshold (e.g., 7 V)
+- `Ichg` = constant charging current (e.g., 250 µA)
 
-**Diode parameters (from RHRG30120 or similar):** $Q_{rr}$, $t_{rr}$ → compute $I_{rr}$.
-
-**Method 1 (peak voltage, $E_1/E = 2$):**
-- From curves: read $\chi_o \approx 0.9$, $\zeta_o \approx 0.15$
-- $C_s = L_p I_{rr}^2 / (4 \chi_o^2 E^2)$
-- $R_s = 2\zeta_o \sqrt{L_p/C_s}$
-
-**Method 2 (dV/dt = 6 V/ns = $6\times10^9$ V/s):**
-- Assign $C_s = 2\,nF$; compute $\omega_0 = 1/\sqrt{L_p C_s}$
-- Normalize $dV/dt$; read $\zeta_o$ from curves
-- $R_s = 2\zeta_o\sqrt{L_p/C_s}$
-
-**Method 3 (compromise):**
-- Combine both normalisations to find the operating point that satisfies both
-
-All three methods satisfy the specified constraints; they differ only in the resulting $C_s$ value (and hence snubber loss).
+### Soft Turn-off
+- DESAT triggers a slow/controlled turn-off (not abrupt)
+- Avoids high `di/dt` → reduces voltage spike from `Lpar·di/dt`
 
 ---
 
-## 6. RC Snubber Power Loss
+## 7. IRF540NPbF Datasheet Reference (exam snubber device)
 
-Energy stored in $C_s$ each cycle (when the switch turns ON, the capacitor has been charged to approximately $V_{in}$):
+| Parameter | Value | Notes |
+|---|---|---|
+| VDS(max) | 100 V | |
+| ID (TC=25°C) | 33 A | |
+| ID (TC=100°C) | 23 A | |
+| VGS(max) | ±20 V | |
+| PD (TC=25°C) | 130 W | |
+| RDS(on) typ | 44 mΩ | |
+| Body diode dv/dt | **7.0 V/ns** | Peak diode recovery dv/dt (max) |
+| Body diode trr | **115 ns** (typ), 170 ns (max) | |
+| Body diode Qrr | **505 nC** (typ), 760 nC (max) | |
+| Body diode VSD | 1.2 V (max) | |
+| toff = td(off)+tf | 39+35 = **74 ns** | |
 
-$$E_{cycle} = \frac{1}{2} C_s V_{in}^2$$
+```
+Irr = 2 × Qrr / trr = 2 × 505 / 115 = 8.78 A
+```
 
-This energy is dissipated in $R_s$ each switching cycle:
-
-$$\boxed{P_{snubber} = \frac{1}{2} C_s V_{in}^2 f_s}$$
-
-**Design trade-off:**
-- Larger $C_s$ → better voltage clamping (lower peak voltage) → **more snubber loss**
-- Smaller $C_s$ → less clamping → **less loss**, but peak voltage may exceed device rating
-
-> **Important:** The snubber adds to the total converter loss. In high-frequency designs, even a few nF of snubber capacitance can be significant at the switch voltage.
-
----
-
-## 7. RCD Snubber
-
-**Configuration:** $C_s$ is placed in parallel with the switch. $D_s$ (fast diode) is in series with $R_s$, and this $D_s$-$R_s$ branch is in parallel with $C_s$.
-
-**Diode orientation:** $D_s$ allows current flow **into** $C_s$ (charging path) but blocks the reverse (discharge path goes only through $R_s$).
-
-**Operation:**
-
-| Event | Path | Speed |
-|-------|------|-------|
-| Turn-OFF (voltage rising) | Current flows into $C_s$ through $D_s$ — $R_s$ is bypassed | **Fast** — diode shorts $R_s$; $C_s$ charges quickly |
-| Turn-ON (voltage falling) | $C_s$ discharges through $R_s$ (diode reverse biased) | **Controlled** — $R_s$ limits discharge rate |
-
-**Advantages over RC:**
-- At turn-off: no $R_s$ in charging path → $C_s$ clamps more effectively at lower peak voltage
-- Turn-ON: controlled discharge prevents the initial spike from $L_p \cdot di/dt$ from ringing with $C_s$
-- Overall lower peak voltage for same $C_s$ value compared to RC
-
-**When to use RCD vs RC:**
-- RCD: preferred in most DC-DC converters where separate charging/discharge control is needed
-- RC: simpler; adequate for lower-power or lower-frequency applications where snubber loss is not critical
+### RC Snubber Design Rules (from slides — directly tested)
+- **E1 = 2 × Vin** (peak voltage limit = 2× input) → E1/E = **2**
+- **(dv/dt)av = 0.5 × datasheet dv/dt** = 0.5 × 7.0 = **3.5 V/ns**
+- For peak-voltage design (χ₀=2, ζ₀=0.4):
+  ```
+  Cs = Lp × (Irr / (E × χ₀))²
+  Rs = 2 × ζ₀ × √(Lp/Cs)
+  ```
+- χ² = (½·Lp·Irr²) / (½·Cs·E²) = ratio of initial inductive energy to final capacitive energy
 
 ---
 
-## 8. Turn-ON Snubber — Concept
+## 9. IRF530NPbF Datasheet Reference
 
-A **turn-ON snubber** (series inductor $L_s$ in the switch current path) limits $dI/dt$ at turn-on. This is especially important when a freewheeling diode has large reverse recovery current $I_{RR}$:
+| Parameter | Value |
+|---|---|
+| RDS(on) at TJ=25°C | 90 mΩ (0.090 Ω) |
+| ton = td(on) + tr | 71 + 25 = 96 ns |
+| toff = td(off) + tf | 35 + 25 = 60 ns |
+| Tjmax | 175°C |
+| Rθjc | 2.15 °C/W |
+| Body diode Qrr | 320 nC |
+| Body diode trr | 95 ns |
+| Max dv/dt (body diode) | 5.5 V/ns |
 
-Without turn-ON snubber: Switch current rises to $I_{load} + I_{RR}$ almost instantly → high current spike through switch.
-
-With series $L_s$: $dI/dt = V_{in}/L_s$ — controlled rate. Diode has time to recover before full current is demanded.
-
-**Cost:** $L_s$ stores energy $\frac{1}{2}L_s I^2$ that must be dissipated each cycle — adds to loss.
-
-In modern designs, **SiC or fast recovery diodes with low $Q_{rr}$** eliminate the need for turn-on snubbers by eliminating the $I_{RR}$ problem.
-
----
-
-## 9. Switching Trajectory and SOA
-
-**Switching trajectory** = the path traced on the $V_{DS}$-$I_D$ plane during turn-on and turn-off.
-
-**Ideal trajectory (hard switching):**
-- Turn-off: $I_D$ falls while $V_{DS}$ rises (crossing through high-loss region where both are large simultaneously)
-- Turn-on: $V_{DS}$ falls while $I_D$ rises
-
-**SOA (Safe Operating Area):** The region of the $V_{DS}$-$I_D$ plane where the device is safe.
-
-**What snubbers do to the trajectory:**
-- Turn-off snubber ($C_s$): Slows down $V_{DS}$ rise → $I_D$ falls first → trajectory moves close to $I$ axis → lower turn-off loss
-- Turn-on snubber ($L_s$): Slows down $I_D$ rise → $V_{DS}$ falls first → trajectory moves close to $V$ axis → lower turn-on loss
-
-This is the concept behind **soft switching** (ZVS/ZCS) — arrange switching so the voltage OR current is near zero when the other transitions.
+`Irr = 2·Qrr/trr = 2×320/95 = 6.737 A`
 
 ---
 
-## Formula Sheet — Week 4
+## 10. Numeric Problem Approach
 
-$$V_{spike} = V_{in} + L_p \cdot \frac{di}{dt} \quad \text{(turn-off spike without snubber)}$$
+### RC Snubber — dv/dt Method
+1. Given: Lpar, Cs (or dv/dt limit), Vin
+2. `Z0 = √(Lpar/Cs)`
+3. `ω0 = 1/√(Lpar·Cs)` → check `Vin·ω0 ≤ dv/dt_limit`
+4. `Rs = Vin / (dv/dt_limit · Cs)` for limiting approach
+5. Check damping: `ζ = Rs / (2·Z0)` → aim for 0.5–1
 
-$$\omega_0 = \frac{1}{\sqrt{L_p C_s}}, \qquad \zeta = \frac{R_s}{2}\sqrt{\frac{C_s}{L_p}}, \qquad \chi = \frac{R_s I_{rr}}{2E}$$
+### RC Snubber — Peak Voltage Method
+1. `Irr = 2·Qrr/trr`
+2. `Cs = Lpar·(Irr/Vin)²`
+3. `Z0 = √(Lpar/Cs)`
+4. `Rs = 2·ζ0·Z0` (choose ζ0 ≈ 0.4–0.9)
 
-$$R_s = 2\zeta_o\sqrt{\frac{L_p}{C_s}} \quad \text{(from damping ratio and parameters)}$$
+### RCD Snubber Power Loss
+1. `Ps = 0.5 · Cs · Vs² · fs`
+2. Vs ≈ Vin (capacitor charges to bus voltage)
 
-$$I_{rr} = \frac{2Q_{rr}}{t_{rr}} \quad \text{(peak reverse recovery current)}$$
+### DESAT Blanking Time
+1. `tblank = Cblank · Vblank / Ichg`
 
-$$P_{snubber} = \frac{1}{2} C_s V_{in}^2 f_s \quad \text{(RC snubber loss)}$$
+### Peak Undamped Voltage
+1. `Vpeak = Vin + I0·Z0 = Vin + I0·√(Lpar/Cs)`
 
-$$f_{ring} = \frac{1}{2\pi\sqrt{L_p C_{oss}}} \quad \text{(ringing frequency without snubber)}$$
+---
+
+## 11. MCQ/MSQ Quick Reference
+
+- `ζ < 1` underdamped, `ζ = 1` critical, `ζ > 1` overdamped
+- Critical damping: `Rs = 2·Z0`
+- Snubber loss `∝ Cs·fs` → conflict: large Cs absorbs more energy but burns more power
+- RCD advantage: diode separates charge and discharge paths
+- DESAT monitors **VDS** not gate voltage
+- Soft turn-off = slow gate pull-down on overcurrent detection
+- RC snubber **reduces EMI** (damps oscillations that are an EMI source)
+- Turn-on snubber (di/dt): series **inductor** in switch path
+- Turn-off snubber (dv/dt): **capacitor** across switch
+
+---
+
+## 12. FIB Quick Answers
+
+- `ζ = Rs / (2·Z0)` where `Z0 = √(Lpar/Cs)`
+- Critical damping: `ζ = 1`
+- DESAT monitors **VDS** voltage of switch
+- `tblank = Cblank · Vblank / Ichg`
+- `Ps = ½·Cs·Vs²·fs`
+- IRF530NPbF max dv/dt body diode: **5.5 V/ns**
+- IRF530NPbF toff = 35 + 25 = **60 ns**

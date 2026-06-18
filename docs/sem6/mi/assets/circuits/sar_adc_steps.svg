@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1f2937" />
+    </marker>
+    <style>
+      .box{fill:#f8fafc;stroke:#1f2937;stroke-width:2;rx:8}
+      .wire{stroke:#1f2937;stroke-width:2;fill:none}
+      .arrow{stroke:#1f2937;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .mark{stroke:#d9480f;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .txt{font-family:Arial,Helvetica,sans-serif;font-size:17px;fill:#111827}
+      .small{font-family:Arial,Helvetica,sans-serif;font-size:14px;fill:#374151}
+      .title{font-family:Arial,Helvetica,sans-serif;font-size:22px;font-weight:700;fill:#111827}
+    </style>
+  </defs>
+  <rect width="100%" height="100%" fill="white"/>
+  <text x="24" y="34" class="title">SAR ADC decision sequence</text>
+
+  <rect x="75" y="125" width="120" height="64" class="box"/><text x="102" y="153" class="txt">1000</text><text x="100" y="174" class="small">5.000 V</text>
+  <rect x="245" y="125" width="120" height="64" class="box"/><text x="272" y="153" class="txt">1100</text><text x="270" y="174" class="small">7.500 V</text>
+  <rect x="415" y="125" width="120" height="64" class="box"/><text x="442" y="153" class="txt">1101</text><text x="440" y="174" class="small">8.125 V</text>
+  <rect x="585" y="125" width="120" height="64" class="box"/><text x="612" y="153" class="txt">1110</text><text x="610" y="174" class="small">8.750 V</text>
+  <path class="arrow" d="M195 157 L245 157"/><text x="203" y="135" class="small">keep</text>
+  <path class="arrow" d="M365 157 L415 157"/><text x="373" y="135" class="small">keep</text>
+  <path class="arrow" d="M535 157 L585 157"/><text x="543" y="135" class="small">reset</text>
+  <path class="mark" d="M75 235 L705 235"/><text x="315" y="260" class="txt">Compare Vin to trial DAC voltage at each clock</text>
+
+</svg>

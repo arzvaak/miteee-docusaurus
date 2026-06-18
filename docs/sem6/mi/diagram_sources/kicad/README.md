@@ -1,0 +1,1 @@
+KiCad MCP was invoked, but this machine has no discoverable KiCad symbol library installation. The first attempted schematic source is retained as tutorial_6_r2r.kicad_sch; LTspice and Excalidraw/Mermaid assets provide the rendered circuit diagrams.
