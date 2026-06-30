@@ -1,44 +1,47 @@
 {
-  "name": "miteee-docusaurus",
+  "name": "miteee-study-os",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "docusaurus": "docusaurus",
-    "start": "docusaurus start",
-    "build": "docusaurus build",
-    "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy",
-    "clear": "docusaurus clear",
-    "serve": "docusaurus serve",
-    "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc"
+    "dev": "next dev",
+    "prebuild": "node --import tsx scripts/build-content-data.ts && node --import tsx scripts/build-exam-data.ts",
+    "build": "next build",
+    "start": "node scripts/start-standalone.mjs",
+    "start:next": "next start",
+    "build:content": "node --import tsx scripts/build-content-data.ts && node --import tsx scripts/build-exam-data.ts",
+    "verify:ssc-render": "node --import tsx scripts/verify-ssc-rendered-output.ts",
+    "verify:ssc-browser": "node scripts/verify-ssc-browser-smoke.mjs",
+    "lint": "eslint .",
+    "test": "node scripts/run-tests.mjs",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@docusaurus/core": "3.10.0",
-    "@docusaurus/faster": "^3.10.0",
-    "@docusaurus/preset-classic": "3.10.0",
-    "@docusaurus/theme-mermaid": "^3.10.0",
-    "@easyops-cn/docusaurus-search-local": "^0.55.1",
-    "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
-    "docusaurus-plugin-image-zoom": "^3.0.1",
-    "prism-react-renderer": "^2.3.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "gray-matter": "^4.0.3",
+    "lucide-react": "^0.468.0",
+    "mermaid": "^11.15.0",
+    "next": "^16.2.9",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-markdown": "^10.1.0",
     "rehype-katex": "^7.0.1",
     "rehype-raw": "^7.0.0",
+    "remark-gfm": "^4.0.1",
     "remark-math": "^6.0.0"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.10.0",
-    "@docusaurus/tsconfig": "3.10.0",
-    "@docusaurus/types": "3.10.0",
-    "@types/react": "^19.0.0",
-    "typescript": "~6.0.2"
+    "@types/node": "^24.10.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "eslint": "^9.39.1",
+    "eslint-config-next": "^16.2.9",
+    "playwright": "^1.61.1",
+    "tsx": "^4.22.4",
+    "typescript": "^5.9.3"
   },
   "overrides": {
-    "webpack": "5.101.3"
+    "postcss": "^8.5.15"
   },
   "browserslist": {
     "production": [

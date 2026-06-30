@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-labelledby="title desc">
+  <title id="title">Akar modernitas dari Yunani sampai Renaissance</title>
+  <desc id="desc">Infografik tiga sumber awal pemikiran modern.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#111827"/><stop offset=".58" stop-color="#251a45"/><stop offset="1" stop-color="#0b3b49"/></linearGradient>
+    <linearGradient id="a" x1="0" x2="1"><stop offset="0" stop-color="#f6c177"/><stop offset=".5" stop-color="#c4a7e7"/><stop offset="1" stop-color="#67e8f9"/></linearGradient>
+    <filter id="sh"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-opacity=".30"/></filter>
+    <style>
+      .h{font:900 38px Inter,Arial,sans-serif;fill:#fff}.sub{font:600 17px Inter,Arial,sans-serif;fill:#cbd5e1}
+      .k{font:850 25px Inter,Arial,sans-serif;fill:#fff}.t{font:650 18px Inter,Arial,sans-serif;fill:#dbeafe}.sm{font:650 14px Inter,Arial,sans-serif;fill:#cbd5e1}
+      .card{fill:rgba(15,23,42,.80);stroke:rgba(255,255,255,.18);stroke-width:2}.pill{fill:rgba(255,255,255,.10);stroke:rgba(255,255,255,.18);stroke-width:2}
+    </style>
+  </defs>
+  <rect width="1280" height="760" rx="34" fill="url(#bg)"/>
+  <text x="58" y="72" class="h">Akar Modernitas: Tiga Pergeseran Awal</text>
+  <text x="60" y="108" class="sub">Pemikiran modern lahir ketika rasio, pengalaman, dan manusia kembali menjadi pusat pencarian kebenaran.</text>
+  <path d="M205 378H1075" stroke="url(#a)" stroke-width="10" stroke-linecap="round"/>
+  <polygon points="1042,350 1105,378 1042,406" fill="#67e8f9"/>
+  <g filter="url(#sh)">
+    <rect x="70" y="190" width="300" height="330" rx="28" class="card"/>
+    <text x="115" y="250" class="k">Yunani Kuno</text>
+    <text x="115" y="300" class="t">Plato: ide tetap</text>
+    <text x="115" y="336" class="t">Aristoteles: observasi</text>
+    <rect x="112" y="390" width="216" height="72" rx="18" class="pill"/>
+    <text x="135" y="419" class="sm">warisan: akal dan logika</text>
+    <text x="135" y="445" class="sm">menjadi alat memahami realitas</text>
+    <rect x="490" y="190" width="300" height="330" rx="28" class="card"/>
+    <text x="535" y="250" class="k">Abad Tengah</text>
+    <text x="535" y="300" class="t">teologi dan wahyu</text>
+    <text x="535" y="336" class="t">skolastisisme</text>
+    <rect x="532" y="390" width="216" height="72" rx="18" class="pill"/>
+    <text x="555" y="419" class="sm">warisan: sistem dan</text>
+    <text x="555" y="445" class="sm">argumentasi teratur</text>
+    <rect x="910" y="190" width="300" height="330" rx="28" class="card"/>
+    <text x="955" y="250" class="k">Renaissance</text>
+    <text x="955" y="300" class="t">humanisme</text>
+    <text x="955" y="336" class="t">studi alam dan manusia</text>
+    <rect x="952" y="390" width="216" height="72" rx="18" class="pill"/>
+    <text x="975" y="419" class="sm">warisan: keberanian</text>
+    <text x="975" y="445" class="sm">berpikir di luar otoritas</text>
+    <rect x="325" y="585" width="630" height="90" rx="24" fill="rgba(255,255,255,.10)" stroke="rgba(255,255,255,.22)" stroke-width="2"/>
+    <text x="380" y="638" class="t">Kalimat esai: modernitas muncul dari warisan klasik, disiplin skolastik, dan humanisme Renaissance.</text>
+  </g>
+</svg>

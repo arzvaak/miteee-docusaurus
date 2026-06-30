@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 700" role="img" aria-labelledby="title desc">
+  <title id="title">Tangga recall kronologis Sejarah Pemikiran Modern</title>
+  <desc id="desc">Tangga kronologis dari Yunani Kuno sampai pemikiran kontemporer untuk hafalan cepat.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#111827"/>
+      <stop offset="1" stop-color="#3b1f5f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="700" rx="34" fill="url(#bg)"/>
+  <g font-family="Inter,Segoe UI,Arial,sans-serif">
+    <text x="64" y="78" fill="#f8fafc" font-size="42" font-weight="850">Tangga Recall Kronologis</text>
+    <text x="64" y="120" fill="#ddd6fe" font-size="22">Naikkan satu anak tangga setiap kali menulis jawaban alur besar.</text>
+    <g font-size="20" font-weight="800">
+      <rect x="90" y="545" width="260" height="70" rx="18" fill="#fff7ed"/>
+      <text x="122" y="588" fill="#9a3412">1. Yunani</text>
+      <rect x="220" y="465" width="260" height="70" rx="18" fill="#fffbeb"/>
+      <text x="252" y="508" fill="#92400e">2. Abad Tengah</text>
+      <rect x="350" y="385" width="260" height="70" rx="18" fill="#ecfdf5"/>
+      <text x="382" y="428" fill="#166534">3. Renaissance</text>
+      <rect x="480" y="305" width="260" height="70" rx="18" fill="#eff6ff"/>
+      <text x="512" y="348" fill="#1d4ed8">4. Rasio Empiris</text>
+      <rect x="610" y="225" width="260" height="70" rx="18" fill="#f5f3ff"/>
+      <text x="642" y="268" fill="#6d28d9">5. Kant Hegel</text>
+      <rect x="740" y="305" width="260" height="70" rx="18" fill="#fee2e2"/>
+      <text x="772" y="348" fill="#b91c1c">6. Objektif</text>
+      <rect x="870" y="385" width="260" height="70" rx="18" fill="#e0f2fe"/>
+      <text x="902" y="428" fill="#0369a1">7. Subjektif</text>
+      <rect x="1000" y="465" width="260" height="70" rx="18" fill="#fce7f3"/>
+      <text x="1032" y="508" fill="#be185d">8. Kontemporer</text>
+    </g>
+    <g fill="#e5e7eb" font-size="18">
+      <text x="122" y="636">Ide vs observasi</text>
+      <text x="252" y="556">Wahyu dan otoritas</text>
+      <text x="382" y="476">Manusia dan alam</text>
+      <text x="512" y="396">Descartes, Bacon, Locke</text>
+      <text x="642" y="316">Sintesis dan dialektika</text>
+      <text x="772" y="396">Comte, Marx, Darwin, Freud</text>
+      <text x="902" y="476">Nietzsche, Husserl, Sartre</text>
+      <text x="1032" y="556">Bahasa, wacana, gender</text>
+    </g>
+    <path d="M350 580 C520 500 610 400 740 260 C875 400 1000 480 1260 500" fill="none" stroke="#fbbf24" stroke-width="7" stroke-linecap="round"/>
+  </g>
+</svg>

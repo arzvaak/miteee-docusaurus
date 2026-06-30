@@ -20,6 +20,23 @@ sidebar_position: 0
 
 ---
 
+## UPSC CSE
+
+### Political Science / Polity NCERT Mastery
+
+Build the NCERT base for UPSC CSE Prelims and Mains with chapter-wise Class 9-12 Political Science notes, PYQ-linked quiz blocks, and answer-writing prompts.
+
+| Start Here | What You Get |
+|------------|--------------|
+| [Political Science Overview](/upsc-cse/political-science/) | Full Class 9-12 study path |
+| [Class 10 Democratic Politics-II](/upsc-cse/political-science/class-10/democratic-politics-ii/) | Core polity, federalism, parties, democracy outcomes |
+| [Class 11 Indian Constitution at Work](/upsc-cse/political-science/class-11/indian-constitution-at-work/) | Constitution, institutions, rights, federalism |
+| [Class 12 Politics in India since Independence](/upsc-cse/political-science/class-12/politics-in-india-since-independence/) | Post-independence politics, movements, regional aspirations |
+
+Each chapter includes NCERT-derived notes, UPSC Prelims MCQ practice, and Mains prompts with concise AI-generated outline hints.
+
+---
+
 ## 🗂️ Semester 5
 
 ### 📘 EM-1: Electrical Machinery-1

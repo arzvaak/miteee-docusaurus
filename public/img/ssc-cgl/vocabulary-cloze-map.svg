@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">893-question SSC CGL vocabulary and cloze decision map</title>
+  <desc id="desc">A compact map showing the 45-second passage scan, first 5-second classifier, 2:30 cloze target, and repair loop.</desc>
+  <rect width="960" height="540" fill="#101820"/>
+  <rect x="28" y="28" width="904" height="484" rx="20" fill="#172235" stroke="#c4b5fd" stroke-width="2"/>
+  <text x="480" y="70" text-anchor="middle" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">893-Question Vocabulary + Cloze Map</text>
+  <text x="480" y="102" text-anchor="middle" fill="#d1d5db" font-family="Inter, Arial, sans-serif" font-size="15">45-second scan, first 5-second classifier, 2:30 cloze target, then repair every miss.</text>
+
+  <g font-family="Inter, Arial, sans-serif" font-size="15">
+    <rect x="60" y="135" width="250" height="120" rx="14" fill="#ede9fe"/>
+    <text x="185" y="163" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">45-Second Scan</text>
+    <text x="82" y="195" fill="#0f172a">Topic, purpose, tone</text>
+    <text x="82" y="220" fill="#0f172a">Tense and pronoun chain</text>
+    <text x="82" y="245" fill="#0f172a">Positive or negative flow</text>
+
+    <rect x="355" y="135" width="250" height="120" rx="14" fill="#ecfeff"/>
+    <text x="480" y="163" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">5-Second Classifier</text>
+    <text x="377" y="195" fill="#0f172a">Grammar or preposition</text>
+    <text x="377" y="220" fill="#0f172a">Connector or pronoun</text>
+    <text x="377" y="245" fill="#0f172a">Meaning, tone, collocation</text>
+
+    <rect x="650" y="135" width="250" height="120" rx="14" fill="#dcfce7"/>
+    <text x="775" y="163" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">Option Filter</text>
+    <text x="672" y="195" fill="#0f172a">Part of speech</text>
+    <text x="672" y="220" fill="#0f172a">Local sentence fit</text>
+    <text x="672" y="245" fill="#0f172a">Global passage fit</text>
+
+    <rect x="60" y="320" width="250" height="115" rx="14" fill="#fef3c7"/>
+    <text x="185" y="348" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">Vocabulary</text>
+    <text x="82" y="380" fill="#0f172a">Root, prefix, suffix</text>
+    <text x="82" y="405" fill="#0f172a">Synonym or antonym clue</text>
+    <text x="82" y="430" fill="#0f172a">Intensity and register</text>
+
+    <rect x="355" y="320" width="250" height="115" rx="14" fill="#fee2e2"/>
+    <text x="480" y="348" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">2:30 Cloze Target</text>
+    <text x="377" y="380" fill="#0f172a">Near synonym</text>
+    <text x="377" y="405" fill="#0f172a">Wrong collocation</text>
+    <text x="377" y="430" fill="#0f172a">Connector reversal</text>
+
+    <rect x="650" y="320" width="250" height="115" rx="14" fill="#fce7f3"/>
+    <text x="775" y="348" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">893-Q Repair</text>
+    <text x="672" y="380" fill="#0f172a">Write why 3 options fail</text>
+    <text x="672" y="405" fill="#0f172a">Save collocation/error card</text>
+    <text x="672" y="430" fill="#0f172a">Retest Day 1, 3, 7</text>
+  </g>
+
+  <g stroke="#c4b5fd" stroke-width="3" fill="none" marker-end="url(#arrow)">
+    <path d="M310 195 H355"/>
+    <path d="M605 195 H650"/>
+    <path d="M775 255 V320"/>
+    <path d="M650 377 H605"/>
+    <path d="M355 377 H310"/>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#c4b5fd"/>
+    </marker>
+  </defs>
+</svg>

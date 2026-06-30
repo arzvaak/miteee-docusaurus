@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Seating Arrangement 138-Q Placement Map</title>
+  <desc id="desc">A study map for classifying SSC CGL seating arrangement clues, drawing the placement skeleton, controlling branches, and finishing inside a 36-second target.</desc>
+  <rect width="960" height="540" fill="#0f172a"/>
+  <rect x="36" y="34" width="888" height="472" rx="22" fill="#111827" stroke="#334155" stroke-width="2"/>
+  <text x="72" y="82" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Seating Arrangement: 138-Q Placement Map</text>
+  <text x="72" y="114" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="16">Classify first, draw once, place fixed clues, then verify every clue before choosing.</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="72" y="154" width="230" height="104" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="96" y="186" fill="#e0f2fe" font-size="19" font-weight="700">1. Type Lock</text>
+    <text x="96" y="215" fill="#cbd5e1" font-size="14">Linear, circular, two-row,</text>
+    <text x="96" y="236" fill="#cbd5e1" font-size="14">floor, stack, or rank line.</text>
+
+    <rect x="365" y="154" width="230" height="104" rx="12" fill="#1e293b" stroke="#a78bfa" stroke-width="2"/>
+    <text x="389" y="186" fill="#ede9fe" font-size="19" font-weight="700">2. Direction Compass</text>
+    <text x="389" y="215" fill="#cbd5e1" font-size="14">North/south and centre/outside</text>
+    <text x="389" y="236" fill="#cbd5e1" font-size="14">decide all left-right movement.</text>
+
+    <rect x="658" y="154" width="230" height="104" rx="12" fill="#1e293b" stroke="#22c55e" stroke-width="2"/>
+    <text x="682" y="186" fill="#dcfce7" font-size="19" font-weight="700">3. Fixed Clues</text>
+    <text x="682" y="215" fill="#cbd5e1" font-size="14">Ends, exact ranks, opposite seats,</text>
+    <text x="682" y="236" fill="#cbd5e1" font-size="14">top/bottom floors go in first.</text>
+
+    <rect x="72" y="318" width="230" height="104" rx="12" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+    <text x="96" y="350" fill="#ffedd5" font-size="19" font-weight="700">4. Branch Control</text>
+    <text x="96" y="379" fill="#cbd5e1" font-size="14">Use ranges for vague clues.</text>
+    <text x="96" y="400" fill="#cbd5e1" font-size="14">Branch only when forced.</text>
+
+    <rect x="365" y="318" width="230" height="104" rx="12" fill="#1e293b" stroke="#ef4444" stroke-width="2"/>
+    <text x="389" y="350" fill="#fee2e2" font-size="19" font-weight="700">5. 36-Second Check</text>
+    <text x="389" y="379" fill="#cbd5e1" font-size="14">12s diagram, 18s placement,</text>
+    <text x="389" y="400" fill="#cbd5e1" font-size="14">6s clue verification.</text>
+
+    <rect x="658" y="318" width="230" height="104" rx="12" fill="#1e293b" stroke="#14b8a6" stroke-width="2"/>
+    <text x="682" y="350" fill="#ccfbf1" font-size="19" font-weight="700">6. Repair Loop</text>
+    <text x="682" y="379" fill="#cbd5e1" font-size="14">Every mistake maps to direction,</text>
+    <text x="682" y="400" fill="#cbd5e1" font-size="14">gap count, branch, or missed clue.</text>
+  </g>
+
+  <g stroke="#64748b" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M302 206 H365"/>
+    <path d="M595 206 H658"/>
+    <path d="M773 258 V318"/>
+    <path d="M658 370 H595"/>
+    <path d="M365 370 H302"/>
+    <path d="M187 318 V258"/>
+  </g>
+  <g fill="#94a3b8">
+    <path d="M356 198 L368 206 L356 214 Z"/>
+    <path d="M649 198 L661 206 L649 214 Z"/>
+    <path d="M765 309 L773 321 L781 309 Z"/>
+    <path d="M604 362 L592 370 L604 378 Z"/>
+    <path d="M311 362 L299 370 L311 378 Z"/>
+    <path d="M179 267 L187 255 L195 267 Z"/>
+  </g>
+
+  <text x="72" y="466" fill="#e2e8f0" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600">200/200 rule:</text>
+  <text x="174" y="466" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="15">No unclassified clue enters the diagram. No diagram is submitted without a clue-by-clue check.</text>
+</svg>

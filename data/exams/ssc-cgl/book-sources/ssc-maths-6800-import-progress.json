@@ -1,0 +1,428 @@
+{
+  "sourceId": "ssc-maths-6800-mcq",
+  "updatedAt": "2026-06-26T09:16:57.431694Z",
+  "status": "full_maths_book_review_only_import_in_progress",
+  "activeChunks": [
+    {
+      "slug": "number-system-p013-p022",
+      "chapterSlug": "number-system",
+      "title": "Number System",
+      "candidateCount": 271,
+      "agentAnswerItems": 10,
+      "agentAnswerConsensus": 6,
+      "agentReviewItems": 6,
+      "agentReviewAccepted": 12,
+      "rankedEligible": true,
+      "promotedQuestions": 6
+    },
+    {
+      "slug": "hcf-and-lcm-p037-p040",
+      "chapterSlug": "hcf-and-lcm",
+      "title": "HCF and LCM",
+      "candidateCount": 100,
+      "agentAnswerItems": 5,
+      "agentAnswerConsensus": 3,
+      "agentReviewItems": 3,
+      "agentReviewAccepted": 6,
+      "rankedEligible": true,
+      "promotedQuestions": 3
+    },
+    {
+      "slug": "simplification-p046-p051",
+      "chapterSlug": "simplification",
+      "title": "Simplification",
+      "candidateCount": 139,
+      "agentAnswerItems": 5,
+      "agentAnswerConsensus": 3,
+      "agentReviewItems": 3,
+      "agentReviewAccepted": 6,
+      "rankedEligible": true,
+      "promotedQuestions": 2
+    },
+    {
+      "slug": "trigonometry-p060-p076",
+      "chapterSlug": "trigonometry",
+      "title": "Trigonometry",
+      "candidateCount": 296,
+      "agentAnswerItems": 10,
+      "agentAnswerConsensus": 1,
+      "agentReviewItems": 1,
+      "agentReviewAccepted": 2,
+      "rankedEligible": true,
+      "promotedQuestions": 1
+    },
+    {
+      "slug": "height-and-distance-p107-p110",
+      "chapterSlug": "height-and-distance",
+      "title": "Height and Distance",
+      "candidateCount": 56,
+      "agentAnswerItems": 5,
+      "agentAnswerConsensus": 1,
+      "agentReviewItems": 1,
+      "agentReviewAccepted": 2,
+      "rankedEligible": true,
+      "promotedQuestions": 1
+    },
+    {
+      "slug": "mensuration-p119-p147",
+      "chapterSlug": "mensuration",
+      "title": "Mensuration",
+      "candidateCount": 680,
+      "agentAnswerItems": 10,
+      "agentAnswerConsensus": 3,
+      "agentReviewItems": 3,
+      "agentReviewAccepted": 6,
+      "rankedEligible": true,
+      "promotedQuestions": 3
+    },
+    {
+      "slug": "geometry-p187-p210",
+      "chapterSlug": "geometry",
+      "title": "Geometry",
+      "candidateCount": 564,
+      "agentAnswerItems": 10,
+      "agentAnswerConsensus": 6,
+      "agentReviewItems": 6,
+      "agentReviewAccepted": 12,
+      "rankedEligible": true,
+      "promotedQuestions": 6
+    },
+    {
+      "slug": "algebra-p252-p269",
+      "chapterSlug": "algebra",
+      "title": "Algebra",
+      "candidateCount": 432,
+      "agentAnswerItems": 10,
+      "agentAnswerConsensus": 3,
+      "agentReviewItems": 3,
+      "agentReviewAccepted": 6,
+      "rankedEligible": true,
+      "promotedQuestions": 3
+    },
+    {
+      "slug": "ratio-and-proportion-p301-p311",
+      "chapterSlug": "ratio-and-proportion",
+      "title": "Ratio and Proportion",
+      "candidateCount": 235,
+      "agentAnswerItems": 5,
+      "agentAnswerConsensus": 3,
+      "agentReviewItems": 3,
+      "agentReviewAccepted": 5,
+      "rankedEligible": true,
+      "promotedQuestions": 3
+    },
+    {
+      "slug": "partnership-p325-p329",
+      "chapterSlug": "partnership",
+      "title": "Partnership",
+      "candidateCount": 48,
+      "agentAnswerItems": 5,
+      "agentAnswerConsensus": 3,
+      "agentReviewItems": 3,
+      "agentReviewAccepted": 6,
+      "rankedEligible": true,
+      "promotedQuestions": 3
+    },
+    {
+      "slug": "mixture-and-alligation-p334-p338",
+      "chapterSlug": "mixture-and-alligation",
+      "title": "Mixture and Alligation",
+      "candidateCount": 48,
+      "agentAnswerItems": 5,
+      "agentAnswerConsensus": 2,
+      "agentReviewItems": 2,
+      "agentReviewAccepted": 4,
+      "rankedEligible": true,
+      "promotedQuestions": 2
+    },
+    {
+      "slug": "work-and-time-p345-p357",
+      "chapterSlug": "work-and-time",
+      "title": "Work and Time",
+      "candidateCount": 222,
+      "agentAnswerItems": 10,
+      "agentAnswerConsensus": 3,
+      "agentReviewItems": 3,
+      "agentReviewAccepted": 6,
+      "rankedEligible": true,
+      "promotedQuestions": 3
+    },
+    {
+      "slug": "pipe-and-cistern-p380-p383",
+      "chapterSlug": "pipe-and-cistern",
+      "title": "Pipe and Cistern",
+      "candidateCount": 67,
+      "agentAnswerItems": 5,
+      "agentAnswerConsensus": 2,
+      "agentReviewItems": 2,
+      "agentReviewAccepted": 3,
+      "rankedEligible": true,
+      "promotedQuestions": 2
+    },
+    {
+      "slug": "time-speed-and-distance-p389-p406",
+      "chapterSlug": "time-speed-and-distance",
+      "title": "Time, Speed and Distance",
+      "candidateCount": 356,
+      "agentAnswerItems": 5,
+      "agentAnswerConsensus": 4,
+      "agentReviewItems": 4,
+      "agentReviewAccepted": 8,
+      "rankedEligible": true,
+      "promotedQuestions": 4
+    },
+    {
+      "slug": "linear-circular-race-p426-p429",
+      "chapterSlug": "linear-circular-race",
+      "title": "Linear/Circular Race",
+      "candidateCount": 65,
+      "agentAnswerItems": 5,
+      "agentAnswerConsensus": 1,
+      "agentReviewItems": 1,
+      "agentReviewAccepted": 2,
+      "rankedEligible": true,
+      "promotedQuestions": 1
+    },
+    {
+      "slug": "boat-and-stream-p435-p439",
+      "chapterSlug": "boat-and-stream",
+      "title": "Boat and Stream",
+      "candidateCount": 73,
+      "agentAnswerItems": 5,
+      "agentAnswerConsensus": 4,
+      "agentReviewItems": 4,
+      "agentReviewAccepted": 8,
+      "rankedEligible": true,
+      "promotedQuestions": 4
+    },
+    {
+      "slug": "percentage-p444-p461",
+      "chapterSlug": "percentage",
+      "title": "Percentage",
+      "candidateCount": 375,
+      "agentAnswerItems": 10,
+      "agentAnswerConsensus": 7,
+      "agentReviewItems": 7,
+      "agentReviewAccepted": 14,
+      "rankedEligible": true,
+      "promotedQuestions": 7
+    },
+    {
+      "slug": "profit-and-loss-p482-p498",
+      "chapterSlug": "profit-and-loss",
+      "title": "Profit and Loss",
+      "candidateCount": 378,
+      "agentAnswerItems": 10,
+      "agentAnswerConsensus": 6,
+      "agentReviewItems": 6,
+      "agentReviewAccepted": 12,
+      "rankedEligible": true,
+      "promotedQuestions": 6
+    },
+    {
+      "slug": "discount-p518-p530",
+      "chapterSlug": "discount",
+      "title": "Discount",
+      "candidateCount": 260,
+      "agentAnswerItems": 5,
+      "agentAnswerConsensus": 5,
+      "agentReviewItems": 5,
+      "agentReviewAccepted": 10,
+      "rankedEligible": true,
+      "promotedQuestions": 5
+    },
+    {
+      "slug": "simple-interest-p542-p550",
+      "chapterSlug": "simple-interest",
+      "title": "Simple Interest",
+      "candidateCount": 188,
+      "agentAnswerItems": 5,
+      "agentAnswerConsensus": 3,
+      "agentReviewItems": 3,
+      "agentReviewAccepted": 6,
+      "rankedEligible": true,
+      "promotedQuestions": 3
+    },
+    {
+      "slug": "compound-interest-p560-p567",
+      "chapterSlug": "compound-interest",
+      "title": "Compound Interest",
+      "candidateCount": 162,
+      "agentAnswerItems": 5,
+      "agentAnswerConsensus": 4,
+      "agentReviewItems": 4,
+      "agentReviewAccepted": 8,
+      "rankedEligible": true,
+      "promotedQuestions": 4
+    },
+    {
+      "slug": "installment-p576-p578",
+      "chapterSlug": "installment",
+      "title": "Installment",
+      "candidateCount": 40,
+      "agentAnswerItems": 5,
+      "agentAnswerConsensus": 3,
+      "agentReviewItems": 3,
+      "agentReviewAccepted": 6,
+      "rankedEligible": true,
+      "promotedQuestions": 3
+    },
+    {
+      "slug": "average-p582-p595",
+      "chapterSlug": "average",
+      "title": "Average",
+      "candidateCount": 325,
+      "agentAnswerItems": 10,
+      "agentAnswerConsensus": 1,
+      "agentReviewItems": 1,
+      "agentReviewAccepted": 2,
+      "rankedEligible": false,
+      "promotedQuestions": 0
+    },
+    {
+      "slug": "data-interpretation-p612-p616",
+      "chapterSlug": "data-interpretation",
+      "title": "Data Interpretation",
+      "candidateCount": 43,
+      "agentAnswerItems": 5,
+      "agentAnswerConsensus": 3,
+      "agentReviewItems": 3,
+      "agentReviewAccepted": 6,
+      "rankedEligible": true,
+      "promotedQuestions": 3
+    },
+    {
+      "slug": "mean-median-mode-p620-p623",
+      "chapterSlug": "mean-median-mode",
+      "title": "Mean, Median and Mode",
+      "candidateCount": 52,
+      "agentAnswerItems": 5,
+      "agentAnswerConsensus": 2,
+      "agentReviewItems": 2,
+      "agentReviewAccepted": 3,
+      "rankedEligible": true,
+      "promotedQuestions": 2
+    },
+    {
+      "slug": "coordinate-geometry-p627-p630",
+      "chapterSlug": "coordinate-geometry",
+      "title": "Coordinate Geometry",
+      "candidateCount": 81,
+      "agentAnswerItems": 5,
+      "agentAnswerConsensus": 5,
+      "agentReviewItems": 5,
+      "agentReviewAccepted": 10,
+      "rankedEligible": true,
+      "promotedQuestions": 5
+    },
+    {
+      "slug": "probability-p636-p640",
+      "chapterSlug": "probability",
+      "title": "Probability",
+      "candidateCount": 7,
+      "agentAnswerItems": 5,
+      "agentAnswerConsensus": 1,
+      "agentReviewItems": 1,
+      "agentReviewAccepted": 2,
+      "rankedEligible": true,
+      "promotedQuestions": 1
+    }
+  ],
+  "supersededChunks": [
+    {
+      "slug": "number-system-p011-p035",
+      "ignoreForActiveScans": true,
+      "reason": "Broad first pass overlapped concepts, answer keys, and solutions. Use number-system-p013-p022 as the active question-page chunk."
+    },
+    {
+      "slug": "pipe-and-cistern-p377-p380",
+      "ignoreForActiveScans": true,
+      "reason": "Fixed-offset first pass landed on Work/Pipe boundary pages. Use pipe-and-cistern-p380-p383."
+    },
+    {
+      "slug": "time-speed-and-distance-p387-p403",
+      "ignoreForActiveScans": true,
+      "reason": "Fixed-offset first pass included Pipe solutions and missed later TSD questions. Use time-speed-and-distance-p389-p406."
+    },
+    {
+      "slug": "linear-circular-race-p422-p425",
+      "ignoreForActiveScans": true,
+      "reason": "Fixed-offset first pass landed on TSD solutions. Use linear-circular-race-p426-p429."
+    },
+    {
+      "slug": "boat-and-stream-p431-p434",
+      "ignoreForActiveScans": true,
+      "reason": "Fixed-offset first pass landed on Race solutions. Use boat-and-stream-p435-p439."
+    },
+    {
+      "slug": "percentage-p440-p457",
+      "ignoreForActiveScans": true,
+      "reason": "Fixed-offset first pass included Boat solutions and missed later Percentage questions. Use percentage-p444-p461."
+    },
+    {
+      "slug": "profit-and-loss-p477-p493",
+      "ignoreForActiveScans": true,
+      "reason": "Fixed-offset first pass included Percentage solutions and missed later Profit/Loss questions. Use profit-and-loss-p482-p498."
+    },
+    {
+      "slug": "discount-p513-p525",
+      "ignoreForActiveScans": true,
+      "reason": "Fixed-offset first pass included Profit/Loss solutions and missed later Discount questions. Use discount-p518-p530."
+    },
+    {
+      "slug": "simple-interest-p537-p545",
+      "ignoreForActiveScans": true,
+      "reason": "Fixed-offset first pass included Discount solutions and missed later Simple Interest questions. Use simple-interest-p542-p550."
+    },
+    {
+      "slug": "compound-interest-p555-p562",
+      "ignoreForActiveScans": true,
+      "reason": "Fixed-offset first pass included Simple Interest solutions and missed later Compound Interest questions. Use compound-interest-p560-p567."
+    },
+    {
+      "slug": "installment-p571-p573",
+      "ignoreForActiveScans": true,
+      "reason": "Fixed-offset first pass landed on Compound Interest solutions. Use installment-p576-p578."
+    },
+    {
+      "slug": "average-p577-p590",
+      "ignoreForActiveScans": true,
+      "reason": "Fixed-offset first pass included Installment pages. Use average-p582-p595."
+    },
+    {
+      "slug": "data-interpretation-p607-p611",
+      "ignoreForActiveScans": true,
+      "reason": "Fixed-offset first pass landed on Average solutions. Use data-interpretation-p612-p616."
+    },
+    {
+      "slug": "mean-median-mode-p615-p618",
+      "ignoreForActiveScans": true,
+      "reason": "Fixed-offset first pass included Data Interpretation pages. Use mean-median-mode-p620-p623."
+    },
+    {
+      "slug": "coordinate-geometry-p622-p625",
+      "ignoreForActiveScans": true,
+      "reason": "Fixed-offset first pass landed on Mean/Median/Mode pages. Use coordinate-geometry-p627-p630."
+    },
+    {
+      "slug": "probability-p632-p635",
+      "ignoreForActiveScans": true,
+      "reason": "Fixed-offset first pass landed on Coordinate Geometry solutions. Use probability-p636-p640."
+    }
+  ],
+  "totals": {
+    "activeChunks": 27,
+    "activeCandidates": 5563,
+    "agentAnswerItems": 180,
+    "agentAnswerConsensus": 88,
+    "agentReviewItems": 88,
+    "agentReviewAccepted": 173,
+    "rankedEligibleQuestions": 86
+  },
+  "knownGaps": [
+    "All 27 printed Maths chapters now have active review-only segment files, and the second resumable agent pass seeded the previously zero-coverage Race, Boat/Stream, Installment, and Average chapters.",
+    "DeepSeek/Mistral answer and curation review has promoted 86 ranked Quant questions from the uploaded Maths book; the remaining candidates still need iterative agent answer consensus and curation review.",
+    "Large chapters such as Mensuration, Geometry, Algebra, Trigonometry, Percentage, Profit/Loss, and Number System still need repeated skip-existing passes before they can support dense full-section mocks.",
+    "The QR Code supplemental 368 questions remain metadata-only until the QR target is extracted."
+  ]
+}

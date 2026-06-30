@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">SSC CGL science everyday decision map</title>
+  <desc id="desc">A visual map for classifying SSC CGL general science questions into physics, chemistry, biology, environment, and everyday application recall routes.</desc>
+  <rect width="1200" height="760" fill="#f8fafc"/>
+  <rect x="42" y="36" width="1116" height="688" rx="18" fill="#ffffff" stroke="#0f172a" stroke-width="3"/>
+  <text x="74" y="88" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800" fill="#0f172a">Science Everyday: Fact Pair to Principle</text>
+  <text x="76" y="122" font-family="Inter, Arial, sans-serif" font-size="18" fill="#475569">SSC usually asks direct recognition. Classify the domain first, then recall the paired fact or application principle.</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="78" y="160" width="210" height="120" rx="10" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+    <text x="104" y="198" font-size="22" font-weight="800" fill="#1e3a8a">Physics</text>
+    <text x="104" y="230" font-size="16" fill="#1d4ed8">unit, law, instrument</text>
+    <text x="104" y="254" font-size="16" fill="#1d4ed8">light, sound, heat, current</text>
+
+    <rect x="354" y="160" width="210" height="120" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+    <text x="380" y="198" font-size="22" font-weight="800" fill="#14532d">Chemistry</text>
+    <text x="380" y="230" font-size="16" fill="#166534">acid, base, salt, gas</text>
+    <text x="380" y="254" font-size="16" fill="#166534">pH, alloy, polymer</text>
+
+    <rect x="630" y="160" width="210" height="120" rx="10" fill="#fce7f3" stroke="#be185d" stroke-width="2"/>
+    <text x="656" y="198" font-size="22" font-weight="800" fill="#831843">Biology</text>
+    <text x="656" y="230" font-size="16" fill="#9d174d">vitamin, disease, organ</text>
+    <text x="656" y="254" font-size="16" fill="#9d174d">hormone, blood group</text>
+
+    <rect x="906" y="160" width="210" height="120" rx="10" fill="#fef3c7" stroke="#b45309" stroke-width="2"/>
+    <text x="932" y="198" font-size="22" font-weight="800" fill="#92400e">Application</text>
+    <text x="932" y="230" font-size="16" fill="#b45309">pressure cooker, fuse</text>
+    <text x="932" y="254" font-size="16" fill="#b45309">soap, battery, mirror</text>
+
+    <path d="M183 280 L183 340" stroke="#0f172a" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M459 280 L459 340" stroke="#0f172a" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M735 280 L735 340" stroke="#0f172a" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M1011 280 L1011 340" stroke="#0f172a" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <rect x="78" y="340" width="210" height="142" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+    <text x="104" y="376" font-size="19" font-weight="800" fill="#1e40af">Recall Pair</text>
+    <text x="104" y="408" font-size="15" fill="#1d4ed8">force = newton</text>
+    <text x="104" y="432" font-size="15" fill="#1d4ed8">pressure = pascal</text>
+    <text x="104" y="456" font-size="15" fill="#1d4ed8">current = ampere</text>
+
+    <rect x="354" y="340" width="210" height="142" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+    <text x="380" y="376" font-size="19" font-weight="800" fill="#166534">Reaction Clue</text>
+    <text x="380" y="408" font-size="15" fill="#15803d">acid + carbonate = CO2</text>
+    <text x="380" y="432" font-size="15" fill="#15803d">pH below 7 = acid</text>
+    <text x="380" y="456" font-size="15" fill="#15803d">alloy = mixture of metals</text>
+
+    <rect x="630" y="340" width="210" height="142" rx="10" fill="#fdf2f8" stroke="#db2777" stroke-width="2"/>
+    <text x="656" y="376" font-size="19" font-weight="800" fill="#9d174d">Body Pair</text>
+    <text x="656" y="408" font-size="15" fill="#be185d">A = night blindness</text>
+    <text x="656" y="432" font-size="15" fill="#be185d">D = rickets</text>
+    <text x="656" y="456" font-size="15" fill="#be185d">pancreas = insulin</text>
+
+    <rect x="906" y="340" width="210" height="142" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+    <text x="932" y="376" font-size="19" font-weight="800" fill="#92400e">Principle Pair</text>
+    <text x="932" y="408" font-size="15" fill="#b45309">fuse = low melting point</text>
+    <text x="932" y="432" font-size="15" fill="#b45309">convex mirror = wide view</text>
+    <text x="932" y="456" font-size="15" fill="#b45309">soap = micelle</text>
+
+    <rect x="116" y="560" width="970" height="82" rx="12" fill="#f1f5f9" stroke="#334155" stroke-width="2"/>
+    <text x="150" y="596" font-size="22" font-weight="800" fill="#0f172a">Final Elimination Rule</text>
+    <text x="150" y="627" font-size="17" fill="#334155">If an option swaps unit, organ, gas, disease, or mirror/lens type, reject it even when the sentence feels familiar.</text>
+  </g>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a"/>
+    </marker>
+  </defs>
+</svg>

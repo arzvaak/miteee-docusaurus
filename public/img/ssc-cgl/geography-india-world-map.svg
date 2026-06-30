@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">SSC CGL geography recall map</title>
+  <desc id="desc">Visual memory map for India and world geography buckets used in SSC CGL preparation.</desc>
+  <rect width="1200" height="760" fill="#08111f"/>
+  <rect x="42" y="38" width="1116" height="684" rx="18" fill="#0f1b2e" stroke="#5dd6c4" stroke-width="3"/>
+  <text x="600" y="86" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#f7fbff">Geography India + World: 5-Second Recall Map</text>
+  <text x="600" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#b9c7d8">358 promoted questions: classify first, recall cluster second, verify trap last</text>
+
+  <g font-family="Arial, sans-serif">
+    <rect x="82" y="160" width="300" height="170" rx="14" fill="#132a3f" stroke="#62d6ff" stroke-width="2"/>
+    <text x="232" y="192" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">Location + Time</text>
+    <text x="105" y="226" font-size="17" fill="#dcecff">India extent: 8 deg 4 min N</text>
+    <text x="105" y="254" font-size="17" fill="#dcecff">to 37 deg 6 min N</text>
+    <text x="105" y="282" font-size="17" fill="#dcecff">68 deg 7 min E to 97 deg 25 min E</text>
+    <text x="105" y="310" font-size="17" fill="#dcecff">IST: 82 deg 30 min E = GMT +5:30</text>
+
+    <rect x="450" y="160" width="300" height="170" rx="14" fill="#132a3f" stroke="#ffd166" stroke-width="2"/>
+    <text x="600" y="192" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">Rivers + Dams</text>
+    <text x="473" y="226" font-size="17" fill="#fff0cf">Himalayan: perennial, plains</text>
+    <text x="473" y="254" font-size="17" fill="#fff0cf">Peninsular: seasonal, plateau</text>
+    <text x="473" y="282" font-size="17" fill="#fff0cf">East: Mahanadi, Godavari, Krishna, Kaveri</text>
+    <text x="473" y="310" font-size="17" fill="#fff0cf">West: Narmada, Tapi; Mahi crosses ToC twice</text>
+
+    <rect x="818" y="160" width="300" height="170" rx="14" fill="#132a3f" stroke="#94e27e" stroke-width="2"/>
+    <text x="968" y="192" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">Climate + Monsoon</text>
+    <text x="841" y="226" font-size="17" fill="#e7ffdf">SW monsoon: June-Sept, major rain</text>
+    <text x="841" y="254" font-size="17" fill="#e7ffdf">NE/retreating: Tamil Nadu coast</text>
+    <text x="841" y="282" font-size="17" fill="#e7ffdf">Rain shadow: leeward Western Ghats</text>
+    <text x="841" y="310" font-size="17" fill="#e7ffdf">El Nino can weaken monsoon</text>
+
+    <rect x="82" y="382" width="300" height="170" rx="14" fill="#132a3f" stroke="#ff9f7a" stroke-width="2"/>
+    <text x="232" y="414" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">Soil + Crop</text>
+    <text x="105" y="448" font-size="17" fill="#ffe5da">Alluvial: plains, rice/wheat</text>
+    <text x="105" y="476" font-size="17" fill="#ffe5da">Black: Deccan, cotton</text>
+    <text x="105" y="504" font-size="17" fill="#ffe5da">Laterite: leached, high rainfall</text>
+    <text x="105" y="532" font-size="17" fill="#ffe5da">Red: peninsular, iron-rich</text>
+
+    <rect x="450" y="382" width="300" height="170" rx="14" fill="#132a3f" stroke="#c6a8ff" stroke-width="2"/>
+    <text x="600" y="414" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">Resources + Parks</text>
+    <text x="473" y="448" font-size="17" fill="#efe8ff">Coal: Jharia, Raniganj</text>
+    <text x="473" y="476" font-size="17" fill="#efe8ff">Iron: Odisha, Chhattisgarh</text>
+    <text x="473" y="504" font-size="17" fill="#efe8ff">Bauxite: Odisha high-frequency</text>
+    <text x="473" y="532" font-size="17" fill="#efe8ff">Kaziranga: Assam, one-horned rhino</text>
+
+    <rect x="818" y="382" width="300" height="170" rx="14" fill="#132a3f" stroke="#ffdf6f" stroke-width="2"/>
+    <text x="968" y="414" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">World Features</text>
+    <text x="841" y="448" font-size="17" fill="#fff7d8">Sahara: largest hot desert</text>
+    <text x="841" y="476" font-size="17" fill="#fff7d8">Suez: Mediterranean to Red Sea</text>
+    <text x="841" y="504" font-size="17" fill="#fff7d8">Malacca: Malay Peninsula-Sumatra</text>
+    <text x="841" y="532" font-size="17" fill="#fff7d8">Pacific largest ocean; Asia largest continent</text>
+
+    <rect x="194" y="610" width="812" height="62" rx="31" fill="#5dd6c4"/>
+    <text x="600" y="649" text-anchor="middle" font-size="22" font-weight="700" fill="#06101c">Exam loop: cue bucket -> recall map cluster -> eliminate trap -> move within 45 seconds</text>
+  </g>
+</svg>

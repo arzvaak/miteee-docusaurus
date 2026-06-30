@@ -15,6 +15,7 @@ const config: Config = {
 
   organizationName: 'arzvaak',
   projectName: 'miteee-docusaurus',
+  staticDirectories: [],
 
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
@@ -107,6 +108,8 @@ const config: Config = {
 
   scripts: [
     { src: '/js/quiz.js', defer: true },
+    { src: '/js/reader-controls.js', defer: true },
+      { src: '/js/spm-polish.js?v=20260618-malam-terakhir-latepass', defer: true },
   ],
 
   themeConfig: {
@@ -133,6 +136,12 @@ const config: Config = {
           sidebarId: 'sem6Sidebar',
           position: 'left',
           label: 'Sem 6',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'upscSidebar',
+          position: 'left',
+          label: 'UPSC CSE',
         },
       ],
     },

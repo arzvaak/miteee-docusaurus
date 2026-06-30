@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">SSC CGL para-jumbles ordering map</title>
+  <desc id="desc">A para-jumbles map for opener detection, mandatory pairs, connector logic, chronology and final boundary checks.</desc>
+  <rect width="960" height="540" fill="#101820"/>
+  <rect x="28" y="28" width="904" height="484" rx="18" fill="#172235" stroke="#f9a8d4" stroke-width="2"/>
+  <text x="480" y="68" text-anchor="middle" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Para-Jumbles 187-Q Ordering Map</text>
+  <text x="480" y="100" text-anchor="middle" fill="#fce7f3" font-family="Inter, Arial, sans-serif" font-size="15">5-second opener scan, mandatory pair lock, option elimination, then final sequence check.</text>
+
+  <g font-family="Inter, Arial, sans-serif" font-size="15">
+    <rect x="58" y="132" width="250" height="118" rx="12" fill="#fce7f3"/>
+    <text x="183" y="160" text-anchor="middle" fill="#0f172a" font-size="19" font-weight="700">Opener Scan</text>
+    <text x="80" y="192" fill="#0f172a">general subject or definition</text>
+    <text x="80" y="217" fill="#0f172a">no backward pronoun</text>
+    <text x="80" y="242" fill="#0f172a">reject connector openings</text>
+
+    <rect x="355" y="132" width="250" height="118" rx="12" fill="#dcfce7"/>
+    <text x="480" y="160" text-anchor="middle" fill="#0f172a" font-size="19" font-weight="700">Mandatory Pair</text>
+    <text x="377" y="192" fill="#0f172a">pronoun to antecedent</text>
+    <text x="377" y="217" fill="#0f172a">example after general idea</text>
+    <text x="377" y="242" fill="#0f172a">cause before effect</text>
+
+    <rect x="652" y="132" width="250" height="118" rx="12" fill="#dbeafe"/>
+    <text x="777" y="160" text-anchor="middle" fill="#0f172a" font-size="19" font-weight="700">Connector Logic</text>
+    <text x="674" y="192" fill="#0f172a">however = contrast</text>
+    <text x="674" y="217" fill="#0f172a">therefore = result</text>
+    <text x="674" y="242" fill="#0f172a">finally = late position</text>
+
+    <rect x="58" y="315" width="250" height="118" rx="12" fill="#fef3c7"/>
+    <text x="183" y="343" text-anchor="middle" fill="#0f172a" font-size="19" font-weight="700">Timeline Check</text>
+    <text x="80" y="375" fill="#0f172a">before, after, later</text>
+    <text x="80" y="400" fill="#0f172a">cause-to-effect chain</text>
+    <text x="80" y="425" fill="#0f172a">process order</text>
+
+    <rect x="355" y="315" width="250" height="118" rx="12" fill="#ede9fe"/>
+    <text x="480" y="343" text-anchor="middle" fill="#0f172a" font-size="19" font-weight="700">Option Elimination</text>
+    <text x="377" y="375" fill="#0f172a">remove bad S1 options</text>
+    <text x="377" y="400" fill="#0f172a">keep pair order intact</text>
+    <text x="377" y="425" fill="#0f172a">compare only survivors</text>
+
+    <rect x="652" y="315" width="250" height="118" rx="12" fill="#cffafe"/>
+    <text x="777" y="343" text-anchor="middle" fill="#0f172a" font-size="19" font-weight="700">Boundary Check</text>
+    <text x="674" y="375" fill="#0f172a">read final sequence once</text>
+    <text x="674" y="400" fill="#0f172a">verify each sentence link</text>
+    <text x="674" y="425" fill="#0f172a">target 25-30 seconds</text>
+  </g>
+
+  <g stroke="#f9a8d4" stroke-width="3" fill="none" marker-end="url(#arrow)">
+    <path d="M308 190 H355"/>
+    <path d="M605 190 H652"/>
+    <path d="M777 250 V315"/>
+    <path d="M652 374 H605"/>
+    <path d="M355 374 H308"/>
+    <path d="M183 315 V250"/>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#f9a8d4"/>
+    </marker>
+  </defs>
+</svg>

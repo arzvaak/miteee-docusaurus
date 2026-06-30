@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 560" role="img" aria-labelledby="title desc">
+  <title id="title">Lensa ujian Minggu 7 pemikiran subjektif</title>
+  <desc id="desc">Infografik reaksi subjektif: kehendak, fenomenologi, eksistensialisme.</desc>
+  <rect width="1400" height="560" rx="30" fill="#172554"/>
+  <text x="64" y="74" fill="#eff6ff" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="40" font-weight="800">Minggu 7 - Pemikiran Subjektif</text>
+  <text x="64" y="116" fill="#bfdbfe" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="22">Pusat jawaban: manusia bukan cuma objek ilmu, tetapi kehendak, kesadaran, pilihan, dan tanggung jawab.</text>
+  <g font-family="Inter,Segoe UI,Arial,sans-serif">
+    <rect x="82" y="175" width="350" height="140" rx="24" fill="#fef3c7"/>
+    <text x="118" y="222" fill="#92400e" font-size="28" font-weight="800">Kehendak</text>
+    <text x="118" y="262" fill="#78350f" font-size="21">Schopenhauer: penderitaan.</text>
+    <text x="118" y="294" fill="#78350f" font-size="21">Nietzsche: cipta nilai.</text>
+    <rect x="525" y="175" width="350" height="140" rx="24" fill="#e0f2fe"/>
+    <text x="561" y="222" fill="#0369a1" font-size="28" font-weight="800">Fenomenologi</text>
+    <text x="561" y="262" fill="#0c4a6e" font-size="21">Epoche: tunda asumsi.</text>
+    <text x="561" y="294" fill="#0c4a6e" font-size="21">Lihat struktur pengalaman.</text>
+    <rect x="968" y="175" width="350" height="140" rx="24" fill="#ede9fe"/>
+    <text x="1004" y="222" fill="#6d28d9" font-size="28" font-weight="800">Eksistensi</text>
+    <text x="1004" y="262" fill="#4c1d95" font-size="21">Kebebasan, cemas,</text>
+    <text x="1004" y="294" fill="#4c1d95" font-size="21">pilihan, tanggung jawab.</text>
+    <path d="M443 245 H512M886 245 H955" stroke="#93c5fd" stroke-width="6" stroke-linecap="round"/>
+    <rect x="82" y="395" width="1236" height="84" rx="22" fill="#0f172a" stroke="#93c5fd"/>
+    <text x="118" y="430" fill="#bfdbfe" font-size="24" font-weight="800">Kalimat Sartre untuk ujian</text>
+    <text x="118" y="463" fill="#eff6ff" font-size="21">Manusia tidak punya esensi jadi; ia membentuk diri melalui pilihan, sehingga bebas sekaligus bertanggung jawab.</text>
+  </g>
+</svg>

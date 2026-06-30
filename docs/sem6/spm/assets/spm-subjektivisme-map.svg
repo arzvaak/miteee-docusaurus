@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-labelledby="title desc">
+  <title id="title">Pemikiran subjektif pembentuk modernitas</title>
+  <desc id="desc">Infografik kehendak, kesadaran, eksistensi, dan kebebasan.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#160f2e"/><stop offset=".55" stop-color="#2d1b54"/><stop offset="1" stop-color="#0e3b46"/></linearGradient>
+    <filter id="sh"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-opacity=".32"/></filter>
+    <style>
+      .h{font:900 38px Inter,Arial,sans-serif;fill:#fff}
+      .sub{font:600 17px Inter,Arial,sans-serif;fill:#cbd5e1}
+      .k{font:850 24px Inter,Arial,sans-serif;fill:#fff}
+      .t{font:650 17px Inter,Arial,sans-serif;fill:#e5e7eb}
+      .sm{font:650 14px Inter,Arial,sans-serif;fill:#cbd5e1}
+      .card{fill:rgba(15,23,42,.80);stroke:rgba(255,255,255,.18);stroke-width:2}
+    </style>
+  </defs>
+  <rect width="1280" height="760" rx="34" fill="url(#bg)"/>
+  <text x="58" y="72" class="h">Subjektivisme Modern: Manusia dari Dalam Pengalaman</text>
+  <text x="60" y="108" class="sub">Fokus berpindah dari sistem total ke kehendak, kesadaran, pilihan, kecemasan, dan makna hidup.</text>
+  <path d="M150 365H1130" stroke="#c4a7e7" stroke-width="9" stroke-linecap="round"/>
+  <g filter="url(#sh)">
+    <rect x="70" y="210" width="240" height="260" rx="26" class="card"/>
+    <text x="108" y="265" class="k">Schopenhauer</text>
+    <text x="108" y="315" class="t">kehendak</text>
+    <text x="108" y="348" class="t">penderitaan</text>
+    <text x="108" y="400" class="sm">hidup digerakkan dorongan</text>
+    <rect x="365" y="210" width="240" height="260" rx="26" class="card"/>
+    <text x="405" y="265" class="k">Nietzsche</text>
+    <text x="405" y="315" class="t">kehendak</text>
+    <text x="405" y="348" class="t">untuk berkuasa</text>
+    <text x="405" y="400" class="sm">kritik nilai dan nihilisme</text>
+    <rect x="660" y="210" width="240" height="260" rx="26" class="card"/>
+    <text x="700" y="265" class="k">Husserl</text>
+    <text x="700" y="315" class="t">kesadaran</text>
+    <text x="700" y="348" class="t">intensional</text>
+    <text x="700" y="400" class="sm">epoche membuka esensi</text>
+    <rect x="955" y="210" width="240" height="260" rx="26" class="card"/>
+    <text x="995" y="265" class="k">Eksistensialisme</text>
+    <text x="995" y="315" class="t">pilihan</text>
+    <text x="995" y="348" class="t">tanggung jawab</text>
+    <text x="995" y="400" class="sm">eksistensi mendahului esensi</text>
+    <rect x="330" y="545" width="620" height="104" rx="24" fill="rgba(255,255,255,.10)" stroke="rgba(255,255,255,.22)" stroke-width="2"/>
+    <text x="390" y="588" class="k">Kalimat kunci ujian</text>
+    <text x="390" y="628" class="t">Subjek modern tidak hanya berpikir; ia menghendaki, sadar, memilih, dan menanggung makna.</text>
+  </g>
+</svg>

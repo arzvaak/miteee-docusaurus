@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="620" viewBox="0 0 1100 620" role="img" aria-labelledby="title desc">
+  <title id="title">SSC CGL Profit Loss Discount multiplier map</title>
+  <desc id="desc">A visual decision map for cost price, selling price, marked price, discount, profit, loss, false weight, overheads, and two article problems.</desc>
+  <rect width="1100" height="620" fill="#0f172a"/>
+  <rect x="42" y="38" width="1016" height="544" rx="18" fill="#111827" stroke="#22c55e" stroke-width="3"/>
+  <text x="550" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#f0fdf4">Profit, Loss, Discount: 36-second Multiplier Map</text>
+  <text x="550" y="113" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#bbf7d0">Identify the base first: CP for profit/loss, MP for discount, weight given for false weight</text>
+
+  <g font-family="Arial, sans-serif" fill="#f8fafc">
+    <rect x="82" y="155" width="230" height="86" rx="12" fill="#14532d" stroke="#86efac"/>
+    <text x="197" y="190" text-anchor="middle" font-size="20" font-weight="700">CP Base</text>
+    <text x="197" y="216" text-anchor="middle" font-size="14">profit/loss percent</text>
+
+    <rect x="435" y="155" width="230" height="86" rx="12" fill="#164e63" stroke="#67e8f9"/>
+    <text x="550" y="190" text-anchor="middle" font-size="20" font-weight="700">MP Base</text>
+    <text x="550" y="216" text-anchor="middle" font-size="14">discount percent</text>
+
+    <rect x="788" y="155" width="230" height="86" rx="12" fill="#7c2d12" stroke="#fdba74"/>
+    <text x="903" y="190" text-anchor="middle" font-size="20" font-weight="700">SP Output</text>
+    <text x="903" y="216" text-anchor="middle" font-size="14">compare final cash</text>
+
+    <rect x="82" y="305" width="230" height="86" rx="12" fill="#581c87" stroke="#d8b4fe"/>
+    <text x="197" y="340" text-anchor="middle" font-size="20" font-weight="700">Markup</text>
+    <text x="197" y="366" text-anchor="middle" font-size="14">CP -> MP multiplier</text>
+
+    <rect x="435" y="305" width="230" height="86" rx="12" fill="#713f12" stroke="#fde68a"/>
+    <text x="550" y="340" text-anchor="middle" font-size="20" font-weight="700">Successive Change</text>
+    <text x="550" y="366" text-anchor="middle" font-size="14">multiply, never add</text>
+
+    <rect x="788" y="305" width="230" height="86" rx="12" fill="#831843" stroke="#f9a8d4"/>
+    <text x="903" y="340" text-anchor="middle" font-size="20" font-weight="700">False Weight</text>
+    <text x="903" y="366" text-anchor="middle" font-size="14">claim/given multiplier</text>
+
+    <rect x="260" y="460" width="250" height="86" rx="12" fill="#1e3a8a" stroke="#93c5fd"/>
+    <text x="385" y="495" text-anchor="middle" font-size="20" font-weight="700">Overheads</text>
+    <text x="385" y="521" text-anchor="middle" font-size="14">add to effective CP</text>
+
+    <rect x="590" y="460" width="250" height="86" rx="12" fill="#3f3f46" stroke="#d4d4d8"/>
+    <text x="715" y="495" text-anchor="middle" font-size="20" font-weight="700">Two Articles</text>
+    <text x="715" y="521" text-anchor="middle" font-size="14">total CP vs total SP</text>
+  </g>
+
+  <g stroke="#cbd5e1" stroke-width="3" fill="none" marker-end="url(#arrow)">
+    <path d="M312 198 H435"/>
+    <path d="M665 198 H788"/>
+    <path d="M197 241 V305"/>
+    <path d="M550 241 V305"/>
+    <path d="M903 241 V305"/>
+    <path d="M312 391 L385 460"/>
+    <path d="M665 391 L715 460"/>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#cbd5e1"/>
+    </marker>
+  </defs>
+</svg>

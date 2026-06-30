@@ -1,0 +1,282 @@
+{
+  "generatedAt": "2026-06-28T15:27:19.174081+00:00",
+  "policy": {
+    "target": "Recover every indexed uploaded-book MCQ unless it is an exact 1:1 duplicate.",
+    "review": "Use agent review for answer recovery; no human review gate is required.",
+    "storage": "Large OCR artifacts stay outside the repo or in ignored local artifact folders."
+  },
+  "totals": {
+    "sources": 6,
+    "queuedSources": 5,
+    "missingFromExpected": 650,
+    "ocrAnswerMissing": 972,
+    "ocrAnswerMismatched": 5,
+    "promotionDropAfterAnswerEvidence": 259
+  },
+  "sources": [
+    {
+      "sourceId": "pinnacle-ssc-english",
+      "title": "Pinnacle English Book for SSC Exams",
+      "section": "english-comprehension",
+      "file": "G:\\SSC BOOKS\\751426926-Pinnacle-English-Book-for-Ssc-Exams.pdf",
+      "role": "mcq_corpus",
+      "pageCount": 569,
+      "expectedQuestionCount": 6125,
+      "segmentedCandidates": 5767,
+      "answerEvidenceRows": 5758,
+      "ocrAnswerMissing": 9,
+      "ocrAnswerMismatched": 0,
+      "promotedQuestions": 5688,
+      "missingFromExpected": 437,
+      "notSegmentedOrNotAligned": 358,
+      "promotionDropAfterAnswerEvidence": 70,
+      "priorityScore": 5620,
+      "nextActions": [
+        "rerun Mistral OCR/segmentation on weak page ranges and compare against index counts",
+        "recover answer evidence from answer-key and solution pages",
+        "inspect promoted-drop rows for malformed options, exact duplicates, or topic-review quarantine"
+      ],
+      "queued": true
+    },
+    {
+      "sourceId": "pinnacle-ssc-reasoning",
+      "title": "Pinnacle SSC Reasoning English Medium",
+      "section": "reasoning",
+      "file": "G:\\SSC BOOKS\\PINNACLE SSC REASONING.htm",
+      "role": "mcq_corpus",
+      "pageCount": 548,
+      "expectedQuestionCount": 3200,
+      "segmentedCandidates": 4108,
+      "answerEvidenceRows": 3307,
+      "ocrAnswerMissing": 801,
+      "ocrAnswerMismatched": 0,
+      "promotedQuestions": 3200,
+      "missingFromExpected": 0,
+      "notSegmentedOrNotAligned": 0,
+      "promotionDropAfterAnswerEvidence": 107,
+      "priorityScore": 3418,
+      "nextActions": [
+        "recover answer evidence from answer-key and solution pages",
+        "inspect promoted-drop rows for malformed options, exact duplicates, or topic-review quarantine"
+      ],
+      "queued": true
+    },
+    {
+      "sourceId": "ssc-maths-6800-mcq",
+      "title": "SSC Maths 6800 MCQ Book 2026 Eduquity Based New Pattern Chapterwise",
+      "section": "quantitative-aptitude",
+      "file": "G:\\SSC BOOKS\\1000747369-SSC-Maths-6800-MCQ-Book-2026-Eduquity-Based-New-Pattern-Chapterwise.pdf",
+      "role": "mcq_corpus",
+      "pageCount": 643,
+      "expectedQuestionCount": 6472,
+      "segmentedCandidates": 6458,
+      "answerEvidenceRows": 6373,
+      "ocrAnswerMissing": 82,
+      "ocrAnswerMismatched": 3,
+      "promotedQuestions": 6372,
+      "missingFromExpected": 100,
+      "notSegmentedOrNotAligned": 14,
+      "promotionDropAfterAnswerEvidence": 1,
+      "priorityScore": 1372,
+      "nextActions": [
+        "rerun Mistral OCR/segmentation on weak page ranges and compare against index counts",
+        "recover answer evidence from answer-key and solution pages",
+        "send answer mismatches through DeepSeek/Mistral/GPT consensus",
+        "inspect promoted-drop rows for malformed options, exact duplicates, or topic-review quarantine"
+      ],
+      "queued": true
+    },
+    {
+      "sourceId": "pinnacle-ssc-general-studies",
+      "title": "Pinnacle SSC General Studies GS 8th Edition English Medium",
+      "section": "general-awareness",
+      "file": "G:\\SSC BOOKS\\1024586786-Pinnacle-SSC-General-Studies-GS-8th-Edition-English-Medium.pdf",
+      "role": "mcq_corpus",
+      "pageCount": 605,
+      "expectedQuestionCount": 6658,
+      "segmentedCandidates": 6615,
+      "answerEvidenceRows": 6615,
+      "ocrAnswerMissing": 73,
+      "ocrAnswerMismatched": 0,
+      "promotedQuestions": 6585,
+      "missingFromExpected": 73,
+      "notSegmentedOrNotAligned": 43,
+      "promotionDropAfterAnswerEvidence": 30,
+      "priorityScore": 1211,
+      "nextActions": [
+        "rerun Mistral OCR/segmentation on weak page ranges and compare against index counts",
+        "recover answer evidence from answer-key and solution pages",
+        "inspect promoted-drop rows for malformed options, exact duplicates, or topic-review quarantine"
+      ],
+      "queued": true
+    },
+    {
+      "sourceId": "pinnacle-maths-6800-di-qr-english",
+      "title": "Pinnacle Maths 6800 Data Interpretation QR Supplement English Medium",
+      "section": "quantitative-aptitude",
+      "file": "G:\\MITEEE\\data\\exams\\ssc-cgl\\downloads\\book-supplements\\pinnacle-maths-6800-data-interpretation-qr-english.pdf",
+      "role": "mcq_corpus_supplement",
+      "pageCount": 74,
+      "expectedQuestionCount": 368,
+      "segmentedCandidates": 388,
+      "answerEvidenceRows": 379,
+      "ocrAnswerMissing": 7,
+      "ocrAnswerMismatched": 2,
+      "promotedQuestions": 328,
+      "missingFromExpected": 40,
+      "notSegmentedOrNotAligned": 0,
+      "promotionDropAfterAnswerEvidence": 51,
+      "priorityScore": 530,
+      "nextActions": [
+        "recover answer evidence from answer-key and solution pages",
+        "send answer mismatches through DeepSeek/Mistral/GPT consensus",
+        "inspect promoted-drop rows for malformed options, exact duplicates, or topic-review quarantine"
+      ],
+      "queued": true
+    },
+    {
+      "sourceId": "lucent-gk-english",
+      "title": "Lucent General Knowledge English",
+      "section": "general-awareness",
+      "file": "G:\\SSC BOOKS\\374612740-Lucent-GK-English-Sscpot-com.pdf",
+      "role": "static_gk_reference",
+      "pageCount": 672,
+      "expectedQuestionCount": 0,
+      "segmentedCandidates": 0,
+      "answerEvidenceRows": 0,
+      "ocrAnswerMissing": 0,
+      "ocrAnswerMismatched": 0,
+      "promotedQuestions": 0,
+      "missingFromExpected": 0,
+      "notSegmentedOrNotAligned": 0,
+      "promotionDropAfterAnswerEvidence": 0,
+      "priorityScore": 0,
+      "nextActions": [
+        "verify expected count and exact-duplicate policy before changing promoted corpus"
+      ],
+      "queued": false
+    }
+  ],
+  "queue": [
+    {
+      "sourceId": "pinnacle-ssc-english",
+      "title": "Pinnacle English Book for SSC Exams",
+      "section": "english-comprehension",
+      "file": "G:\\SSC BOOKS\\751426926-Pinnacle-English-Book-for-Ssc-Exams.pdf",
+      "role": "mcq_corpus",
+      "pageCount": 569,
+      "expectedQuestionCount": 6125,
+      "segmentedCandidates": 5767,
+      "answerEvidenceRows": 5758,
+      "ocrAnswerMissing": 9,
+      "ocrAnswerMismatched": 0,
+      "promotedQuestions": 5688,
+      "missingFromExpected": 437,
+      "notSegmentedOrNotAligned": 358,
+      "promotionDropAfterAnswerEvidence": 70,
+      "priorityScore": 5620,
+      "nextActions": [
+        "rerun Mistral OCR/segmentation on weak page ranges and compare against index counts",
+        "recover answer evidence from answer-key and solution pages",
+        "inspect promoted-drop rows for malformed options, exact duplicates, or topic-review quarantine"
+      ],
+      "queued": true
+    },
+    {
+      "sourceId": "pinnacle-ssc-reasoning",
+      "title": "Pinnacle SSC Reasoning English Medium",
+      "section": "reasoning",
+      "file": "G:\\SSC BOOKS\\PINNACLE SSC REASONING.htm",
+      "role": "mcq_corpus",
+      "pageCount": 548,
+      "expectedQuestionCount": 3200,
+      "segmentedCandidates": 4108,
+      "answerEvidenceRows": 3307,
+      "ocrAnswerMissing": 801,
+      "ocrAnswerMismatched": 0,
+      "promotedQuestions": 3200,
+      "missingFromExpected": 0,
+      "notSegmentedOrNotAligned": 0,
+      "promotionDropAfterAnswerEvidence": 107,
+      "priorityScore": 3418,
+      "nextActions": [
+        "recover answer evidence from answer-key and solution pages",
+        "inspect promoted-drop rows for malformed options, exact duplicates, or topic-review quarantine"
+      ],
+      "queued": true
+    },
+    {
+      "sourceId": "ssc-maths-6800-mcq",
+      "title": "SSC Maths 6800 MCQ Book 2026 Eduquity Based New Pattern Chapterwise",
+      "section": "quantitative-aptitude",
+      "file": "G:\\SSC BOOKS\\1000747369-SSC-Maths-6800-MCQ-Book-2026-Eduquity-Based-New-Pattern-Chapterwise.pdf",
+      "role": "mcq_corpus",
+      "pageCount": 643,
+      "expectedQuestionCount": 6472,
+      "segmentedCandidates": 6458,
+      "answerEvidenceRows": 6373,
+      "ocrAnswerMissing": 82,
+      "ocrAnswerMismatched": 3,
+      "promotedQuestions": 6372,
+      "missingFromExpected": 100,
+      "notSegmentedOrNotAligned": 14,
+      "promotionDropAfterAnswerEvidence": 1,
+      "priorityScore": 1372,
+      "nextActions": [
+        "rerun Mistral OCR/segmentation on weak page ranges and compare against index counts",
+        "recover answer evidence from answer-key and solution pages",
+        "send answer mismatches through DeepSeek/Mistral/GPT consensus",
+        "inspect promoted-drop rows for malformed options, exact duplicates, or topic-review quarantine"
+      ],
+      "queued": true
+    },
+    {
+      "sourceId": "pinnacle-ssc-general-studies",
+      "title": "Pinnacle SSC General Studies GS 8th Edition English Medium",
+      "section": "general-awareness",
+      "file": "G:\\SSC BOOKS\\1024586786-Pinnacle-SSC-General-Studies-GS-8th-Edition-English-Medium.pdf",
+      "role": "mcq_corpus",
+      "pageCount": 605,
+      "expectedQuestionCount": 6658,
+      "segmentedCandidates": 6615,
+      "answerEvidenceRows": 6615,
+      "ocrAnswerMissing": 73,
+      "ocrAnswerMismatched": 0,
+      "promotedQuestions": 6585,
+      "missingFromExpected": 73,
+      "notSegmentedOrNotAligned": 43,
+      "promotionDropAfterAnswerEvidence": 30,
+      "priorityScore": 1211,
+      "nextActions": [
+        "rerun Mistral OCR/segmentation on weak page ranges and compare against index counts",
+        "recover answer evidence from answer-key and solution pages",
+        "inspect promoted-drop rows for malformed options, exact duplicates, or topic-review quarantine"
+      ],
+      "queued": true
+    },
+    {
+      "sourceId": "pinnacle-maths-6800-di-qr-english",
+      "title": "Pinnacle Maths 6800 Data Interpretation QR Supplement English Medium",
+      "section": "quantitative-aptitude",
+      "file": "G:\\MITEEE\\data\\exams\\ssc-cgl\\downloads\\book-supplements\\pinnacle-maths-6800-data-interpretation-qr-english.pdf",
+      "role": "mcq_corpus_supplement",
+      "pageCount": 74,
+      "expectedQuestionCount": 368,
+      "segmentedCandidates": 388,
+      "answerEvidenceRows": 379,
+      "ocrAnswerMissing": 7,
+      "ocrAnswerMismatched": 2,
+      "promotedQuestions": 328,
+      "missingFromExpected": 40,
+      "notSegmentedOrNotAligned": 0,
+      "promotionDropAfterAnswerEvidence": 51,
+      "priorityScore": 530,
+      "nextActions": [
+        "recover answer evidence from answer-key and solution pages",
+        "send answer mismatches through DeepSeek/Mistral/GPT consensus",
+        "inspect promoted-drop rows for malformed options, exact duplicates, or topic-review quarantine"
+      ],
+      "queued": true
+    }
+  ]
+}

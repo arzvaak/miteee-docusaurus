@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">SSC CGL history and freedom movement timeline map</title>
+  <desc id="desc">A compact study map for Indian history, freedom movement chronology, act-year pairs, leaders, and trap repair.</desc>
+  <rect width="1200" height="675" fill="#111827"/>
+  <rect x="46" y="42" width="1108" height="591" rx="28" fill="#0f172a" stroke="#22c55e" stroke-width="3"/>
+  <text x="78" y="103" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="800">History and Freedom Movement: Timeline Spine</text>
+  <text x="80" y="142" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="21">Anchor centuries first, then attach rulers, acts, sessions, centres, and movements.</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="82" y="188" width="180" height="102" rx="16" fill="#713f12"/>
+    <text x="108" y="228" fill="#fef3c7" font-size="24" font-weight="750">Ancient</text>
+    <text x="108" y="260" fill="#fde68a" font-size="19">IVC to Gupta</text>
+
+    <rect x="306" y="188" width="180" height="102" rx="16" fill="#7c2d12"/>
+    <text x="332" y="228" fill="#fff7ed" font-size="24" font-weight="750">Medieval</text>
+    <text x="332" y="260" fill="#ffedd5" font-size="19">1206 to 1707</text>
+
+    <rect x="530" y="188" width="180" height="102" rx="16" fill="#164e63"/>
+    <text x="556" y="228" fill="#ecfeff" font-size="24" font-weight="750">Company</text>
+    <text x="556" y="260" fill="#cffafe" font-size="19">1757 to 1858</text>
+
+    <rect x="754" y="188" width="180" height="102" rx="16" fill="#166534"/>
+    <text x="780" y="228" fill="#f0fdf4" font-size="24" font-weight="750">Congress</text>
+    <text x="780" y="260" fill="#dcfce7" font-size="19">1885 to 1942</text>
+
+    <rect x="978" y="188" width="136" height="102" rx="16" fill="#581c87"/>
+    <text x="1002" y="228" fill="#faf5ff" font-size="24" font-weight="750">Final</text>
+    <text x="1002" y="260" fill="#f3e8ff" font-size="19">1946-47</text>
+
+    <path d="M265 239h36" stroke="#e2e8f0" stroke-width="5" stroke-linecap="round"/>
+    <path d="M489 239h36" stroke="#e2e8f0" stroke-width="5" stroke-linecap="round"/>
+    <path d="M713 239h36" stroke="#e2e8f0" stroke-width="5" stroke-linecap="round"/>
+    <path d="M937 239h36" stroke="#e2e8f0" stroke-width="5" stroke-linecap="round"/>
+    <path d="M292 229l13 10-13 10" fill="none" stroke="#e2e8f0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M516 229l13 10-13 10" fill="none" stroke="#e2e8f0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M740 229l13 10-13 10" fill="none" stroke="#e2e8f0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M964 229l13 10-13 10" fill="none" stroke="#e2e8f0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <rect x="82" y="358" width="318" height="178" rx="18" fill="#1f2937" stroke="#64748b" stroke-width="2"/>
+    <text x="112" y="402" fill="#f8fafc" font-size="25" font-weight="750">High-Yield Hooks</text>
+    <text x="112" y="440" fill="#bbf7d0" font-size="20">Act-year pairs</text>
+    <text x="112" y="470" fill="#bbf7d0" font-size="20">Governor-General ladder</text>
+    <text x="112" y="500" fill="#bbf7d0" font-size="20">Congress sessions</text>
+
+    <rect x="442" y="358" width="318" height="178" rx="18" fill="#1f2937" stroke="#64748b" stroke-width="2"/>
+    <text x="472" y="402" fill="#f8fafc" font-size="25" font-weight="750">Freedom Core</text>
+    <text x="472" y="440" fill="#bfdbfe" font-size="20">1857 revolt centre-leader</text>
+    <text x="472" y="470" fill="#bfdbfe" font-size="20">Gandhian movement objective</text>
+    <text x="472" y="500" fill="#bfdbfe" font-size="20">Missions and plans</text>
+
+    <rect x="802" y="358" width="316" height="178" rx="18" fill="#1f2937" stroke="#64748b" stroke-width="2"/>
+    <text x="832" y="402" fill="#f8fafc" font-size="25" font-weight="750">Trap Repair</text>
+    <text x="832" y="440" fill="#fecaca" font-size="20">Adjacent years</text>
+    <text x="832" y="470" fill="#fecaca" font-size="20">Similar acts</text>
+    <text x="832" y="500" fill="#fecaca" font-size="20">Leader-place swaps</text>
+  </g>
+</svg>

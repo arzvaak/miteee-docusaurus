@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="620" viewBox="0 0 1100 620" role="img" aria-labelledby="title desc">
+  <title id="title">SSC CGL Spelling and One Word Substitution map</title>
+  <desc id="desc">A visual recall map for spelling traps, double letters, silent letters, suffixes, roots, phobias, sciences, and one word substitution categories.</desc>
+  <rect width="1100" height="620" fill="#0f172a"/>
+  <rect x="42" y="38" width="1016" height="544" rx="18" fill="#111827" stroke="#38bdf8" stroke-width="3"/>
+  <text x="550" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#eff6ff">Spelling and One-Word Substitution: Recall Map</text>
+  <text x="550" y="113" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#bae6fd">Spot the trap family first, then choose the exact spelling or root-matched word</text>
+
+  <g font-family="Arial, sans-serif" fill="#f8fafc">
+    <rect x="80" y="155" width="230" height="86" rx="12" fill="#164e63" stroke="#67e8f9"/>
+    <text x="195" y="190" text-anchor="middle" font-size="20" font-weight="700">Double Letters</text>
+    <text x="195" y="216" text-anchor="middle" font-size="14">accommodation, occurrence</text>
+
+    <rect x="435" y="155" width="230" height="86" rx="12" fill="#581c87" stroke="#d8b4fe"/>
+    <text x="550" y="190" text-anchor="middle" font-size="20" font-weight="700">Silent Letters</text>
+    <text x="550" y="216" text-anchor="middle" font-size="14">debt, receipt, doubt</text>
+
+    <rect x="790" y="155" width="230" height="86" rx="12" fill="#7c2d12" stroke="#fdba74"/>
+    <text x="905" y="190" text-anchor="middle" font-size="20" font-weight="700">ie / ei / Suffix</text>
+    <text x="905" y="216" text-anchor="middle" font-size="14">receive, weird, -able</text>
+
+    <rect x="80" y="305" width="230" height="86" rx="12" fill="#14532d" stroke="#86efac"/>
+    <text x="195" y="340" text-anchor="middle" font-size="20" font-weight="700">Person OWS</text>
+    <text x="195" y="366" text-anchor="middle" font-size="14">misanthrope, altruist</text>
+
+    <rect x="435" y="305" width="230" height="86" rx="12" fill="#713f12" stroke="#fde68a"/>
+    <text x="550" y="340" text-anchor="middle" font-size="20" font-weight="700">Phobia / Science</text>
+    <text x="550" y="366" text-anchor="middle" font-size="14">hydro, xeno, entomo</text>
+
+    <rect x="790" y="305" width="230" height="86" rx="12" fill="#831843" stroke="#f9a8d4"/>
+    <text x="905" y="340" text-anchor="middle" font-size="20" font-weight="700">Speech / Practice</text>
+    <text x="905" y="366" text-anchor="middle" font-size="14">eulogy, monogamy</text>
+
+    <rect x="265" y="460" width="250" height="86" rx="12" fill="#1e3a8a" stroke="#93c5fd"/>
+    <text x="390" y="495" text-anchor="middle" font-size="20" font-weight="700">Meaning Pairs</text>
+    <text x="390" y="521" text-anchor="middle" font-size="14">stationary vs stationery</text>
+
+    <rect x="585" y="460" width="250" height="86" rx="12" fill="#3f3f46" stroke="#d4d4d8"/>
+    <text x="710" y="495" text-anchor="middle" font-size="20" font-weight="700">British Standard</text>
+    <text x="710" y="521" text-anchor="middle" font-size="14">centre, colour, programme</text>
+  </g>
+
+  <g stroke="#cbd5e1" stroke-width="3" fill="none" marker-end="url(#arrow)">
+    <path d="M310 198 H435"/>
+    <path d="M665 198 H790"/>
+    <path d="M195 241 V305"/>
+    <path d="M550 241 V305"/>
+    <path d="M905 241 V305"/>
+    <path d="M310 391 L390 460"/>
+    <path d="M665 391 L710 460"/>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#cbd5e1"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,297 @@
+{
+  "sourceId": "ssc-maths-6800-mcq",
+  "sourceTitle": "SSC Maths 6800 MCQ Book 2026 Eduquity Based New Pattern Chapterwise",
+  "generatedFrom": "Uploaded book index pages 2-8",
+  "printedToPdfPageOffset": 10,
+  "totalQuestionsListed": 6840,
+  "supplementalQuestionSources": [
+    {
+      "title": "QR Code",
+      "questionCount": 368,
+      "printedPage": 604,
+      "pdfPage": 619,
+      "sourceId": "pinnacle-maths-6800-di-qr-english",
+      "qrDecodedUrl": "https://ssccglpinnacle.com/blog/qr-codes",
+      "apiUrl": "https://auth.ssccglpinnacle.com/blogs/qr-codes",
+      "driveUrl": "https://drive.google.com/file/d/1cYO7JCjVtM42YhoqjNmm-xrnzhA4wo4y/view?usp=sharing",
+      "downloadPath": "G:\\MITEEE\\data\\exams\\ssc-cgl\\downloads\\book-supplements\\pinnacle-maths-6800-data-interpretation-qr-english.pdf",
+      "sha256": "834e290118ce7c9973dffeadef4f870eb0a97c9d6b11c79e64e27ab6b681d4af",
+      "pageCount": 74,
+      "questionPdfPages": [3, 54],
+      "solutionPdfPages": [54, 74],
+      "status": "downloaded_text_extractable_pending_segmentation"
+    }
+  ],
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "slug": "number-system",
+      "title": "Number System",
+      "questionCount": 286,
+      "conceptPrintedPages": [1, 3],
+      "questionPrintedPages": [3, 12],
+      "answerKeyPrintedPages": [12, 13],
+      "solutionPrintedPages": [13, 25]
+    },
+    {
+      "chapterNumber": 2,
+      "slug": "hcf-and-lcm",
+      "title": "HCF and LCM",
+      "questionCount": 104,
+      "conceptPrintedPages": [26, 27],
+      "questionPrintedPages": [27, 30],
+      "answerKeyPrintedPages": [30, 30],
+      "solutionPrintedPages": [30, 34]
+    },
+    {
+      "chapterNumber": 3,
+      "slug": "simplification",
+      "title": "Simplification",
+      "questionCount": 185,
+      "conceptPrintedPages": [35, 36],
+      "questionPrintedPages": [36, 41],
+      "answerKeyPrintedPages": [41, 41],
+      "solutionPrintedPages": [41, 48]
+    },
+    {
+      "chapterNumber": 4,
+      "slug": "trigonometry",
+      "title": "Trigonometry",
+      "questionCount": 557,
+      "conceptPrintedPages": [49, 50],
+      "questionPrintedPages": [50, 66],
+      "answerKeyPrintedPages": [66, 67],
+      "solutionPrintedPages": [67, 96]
+    },
+    {
+      "chapterNumber": 5,
+      "slug": "height-and-distance",
+      "title": "Height and Distance",
+      "questionCount": 60,
+      "conceptPrintedPages": [97, 97],
+      "questionPrintedPages": [97, 100],
+      "answerKeyPrintedPages": [100, 101],
+      "solutionPrintedPages": [101, 105]
+    },
+    {
+      "chapterNumber": 6,
+      "slug": "mensuration",
+      "title": "Mensuration",
+      "questionCount": 715,
+      "conceptPrintedPages": [106, 109],
+      "questionPrintedPages": [109, 137],
+      "answerKeyPrintedPages": [137, 138],
+      "solutionPrintedPages": [138, 172]
+    },
+    {
+      "chapterNumber": 7,
+      "slug": "geometry",
+      "title": "Geometry",
+      "questionCount": 635,
+      "conceptPrintedPages": [173, 177],
+      "questionPrintedPages": [177, 200],
+      "answerKeyPrintedPages": [200, 202],
+      "solutionPrintedPages": [202, 240]
+    },
+    {
+      "chapterNumber": 8,
+      "slug": "algebra",
+      "title": "Algebra",
+      "questionCount": 601,
+      "conceptPrintedPages": [241, 242],
+      "questionPrintedPages": [242, 259],
+      "answerKeyPrintedPages": [260, 261],
+      "solutionPrintedPages": [261, 289]
+    },
+    {
+      "chapterNumber": 9,
+      "slug": "ratio-and-proportion",
+      "title": "Ratio and Proportion",
+      "questionCount": 282,
+      "conceptPrintedPages": [290, 291],
+      "questionPrintedPages": [291, 301],
+      "answerKeyPrintedPages": [301, 301],
+      "solutionPrintedPages": [301, 314]
+    },
+    {
+      "chapterNumber": 10,
+      "slug": "partnership",
+      "title": "Partnership",
+      "questionCount": 80,
+      "conceptPrintedPages": [315, 315],
+      "questionPrintedPages": [315, 319],
+      "answerKeyPrintedPages": [319, 319],
+      "solutionPrintedPages": [319, 323]
+    },
+    {
+      "chapterNumber": 11,
+      "slug": "mixture-and-alligation",
+      "title": "Mixture and Alligation",
+      "questionCount": 88,
+      "conceptPrintedPages": [324, 324],
+      "questionPrintedPages": [324, 328],
+      "answerKeyPrintedPages": [328, 328],
+      "solutionPrintedPages": [328, 333]
+    },
+    {
+      "chapterNumber": 12,
+      "slug": "work-and-time",
+      "title": "Work and Time",
+      "questionCount": 299,
+      "conceptPrintedPages": [334, 335],
+      "questionPrintedPages": [335, 347],
+      "answerKeyPrintedPages": [347, 348],
+      "solutionPrintedPages": [348, 366]
+    },
+    {
+      "chapterNumber": 13,
+      "slug": "pipe-and-cistern",
+      "title": "Pipe and Cistern",
+      "questionCount": 70,
+      "conceptPrintedPages": [367, 367],
+      "questionPrintedPages": [367, 370],
+      "answerKeyPrintedPages": [370, 371],
+      "solutionPrintedPages": [371, 375]
+    },
+    {
+      "chapterNumber": 14,
+      "slug": "time-speed-and-distance",
+      "title": "Time, Speed and Distance",
+      "questionCount": 360,
+      "conceptPrintedPages": [376, 377],
+      "questionPrintedPages": [377, 393],
+      "answerKeyPrintedPages": [393, 394],
+      "solutionPrintedPages": [394, 411]
+    },
+    {
+      "chapterNumber": 15,
+      "slug": "linear-circular-race",
+      "title": "Linear/Circular Race",
+      "questionCount": 67,
+      "conceptPrintedPages": [412, 412],
+      "questionPrintedPages": [412, 415],
+      "answerKeyPrintedPages": [415, 416],
+      "solutionPrintedPages": [416, 420]
+    },
+    {
+      "chapterNumber": 16,
+      "slug": "boat-and-stream",
+      "title": "Boat and Stream",
+      "questionCount": 77,
+      "conceptPrintedPages": [421, 421],
+      "questionPrintedPages": [421, 424],
+      "answerKeyPrintedPages": [424, 425],
+      "solutionPrintedPages": [425, 429]
+    },
+    {
+      "chapterNumber": 17,
+      "slug": "percentage",
+      "title": "Percentage",
+      "questionCount": 387,
+      "conceptPrintedPages": [430, 430],
+      "questionPrintedPages": [430, 447],
+      "answerKeyPrintedPages": [447, 448],
+      "solutionPrintedPages": [448, 466]
+    },
+    {
+      "chapterNumber": 18,
+      "slug": "profit-and-loss",
+      "title": "Profit and Loss",
+      "questionCount": 388,
+      "conceptPrintedPages": [467, 467],
+      "questionPrintedPages": [467, 483],
+      "answerKeyPrintedPages": [483, 483],
+      "solutionPrintedPages": [483, 502]
+    },
+    {
+      "chapterNumber": 19,
+      "slug": "discount",
+      "title": "Discount",
+      "questionCount": 261,
+      "conceptPrintedPages": [503, 503],
+      "questionPrintedPages": [503, 515],
+      "answerKeyPrintedPages": [515, 515],
+      "solutionPrintedPages": [515, 526]
+    },
+    {
+      "chapterNumber": 20,
+      "slug": "simple-interest",
+      "title": "Simple Interest",
+      "questionCount": 190,
+      "conceptPrintedPages": [527, 527],
+      "questionPrintedPages": [527, 535],
+      "answerKeyPrintedPages": [535, 535],
+      "solutionPrintedPages": [535, 544]
+    },
+    {
+      "chapterNumber": 21,
+      "slug": "compound-interest",
+      "title": "Compound Interest",
+      "questionCount": 162,
+      "conceptPrintedPages": [545, 545],
+      "questionPrintedPages": [545, 552],
+      "answerKeyPrintedPages": [552, 552],
+      "solutionPrintedPages": [552, 560]
+    },
+    {
+      "chapterNumber": 22,
+      "slug": "installment",
+      "title": "Installment",
+      "questionCount": 40,
+      "conceptPrintedPages": [561, 561],
+      "questionPrintedPages": [561, 563],
+      "answerKeyPrintedPages": [563, 563],
+      "solutionPrintedPages": [563, 566]
+    },
+    {
+      "chapterNumber": 23,
+      "slug": "average",
+      "title": "Average",
+      "questionCount": 328,
+      "conceptPrintedPages": [567, 567],
+      "questionPrintedPages": [572, 585],
+      "answerKeyPrintedPages": [586, 586],
+      "solutionPrintedPages": [586, 601]
+    },
+    {
+      "chapterNumber": 24,
+      "slug": "data-interpretation",
+      "title": "Data Interpretation",
+      "questionCount": 43,
+      "conceptPrintedPages": [597, 597],
+      "questionPrintedPages": [597, 601],
+      "answerKeyPrintedPages": [601, 601],
+      "solutionPrintedPages": [601, 603]
+    },
+    {
+      "chapterNumber": 25,
+      "slug": "mean-median-mode",
+      "title": "Mean, Median and Mode",
+      "questionCount": 55,
+      "conceptPrintedPages": [605, 605],
+      "questionPrintedPages": [605, 608],
+      "answerKeyPrintedPages": [608, 608],
+      "solutionPrintedPages": [608, 611]
+    },
+    {
+      "chapterNumber": 26,
+      "slug": "coordinate-geometry",
+      "title": "Coordinate Geometry",
+      "questionCount": 90,
+      "conceptPrintedPages": [612, 612],
+      "questionPrintedPages": [612, 615],
+      "answerKeyPrintedPages": [615, 615],
+      "solutionPrintedPages": [615, 620]
+    },
+    {
+      "chapterNumber": 27,
+      "slug": "probability",
+      "title": "Probability",
+      "questionCount": 62,
+      "conceptPrintedPages": [621, 622],
+      "questionPrintedPages": [622, 625],
+      "answerKeyPrintedPages": [625, 625],
+      "solutionPrintedPages": [625, 628]
+    }
+  ]
+}

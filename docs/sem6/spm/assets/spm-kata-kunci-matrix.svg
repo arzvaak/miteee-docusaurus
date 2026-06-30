@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 760" role="img" aria-labelledby="title desc">
+  <title id="title">Matriks kata kunci dan gerak jawaban SPM</title>
+  <desc id="desc">Infografik kata kunci yang harus diubah menjadi gerak jawaban esai.</desc>
+  <rect width="1500" height="760" rx="34" fill="#111827"/>
+  <g font-family="Inter,Segoe UI,Arial,sans-serif">
+    <text x="64" y="78" fill="#f8fafc" font-size="42" font-weight="850">Kata Kunci -> Gerak Jawaban</text>
+    <text x="64" y="120" fill="#d1d5db" font-size="22">Saat kata ini muncul di soal, langsung ubah menjadi struktur jawaban berikut.</text>
+    <g font-size="21">
+      <rect x="82" y="178" width="405" height="120" rx="24" fill="#eff6ff"/><text x="118" y="220" fill="#1d4ed8" font-size="25" font-weight="850">Cogito / Rasio</text><text x="118" y="258" fill="#1e3a8a">Gerak: indera diragukan -></text><text x="118" y="288" fill="#1e3a8a">akal mencari dasar pasti.</text>
+      <rect x="548" y="178" width="405" height="120" rx="24" fill="#ecfeff"/><text x="584" y="220" fill="#0e7490" font-size="25" font-weight="850">Pengalaman / Idola</text><text x="584" y="258" fill="#164e63">Gerak: data inderawi -></text><text x="584" y="288" fill="#164e63">bias dibersihkan metode.</text>
+      <rect x="1014" y="178" width="405" height="120" rx="24" fill="#fef3c7"/><text x="1050" y="220" fill="#92400e" font-size="25" font-weight="850">Fenomena / Noumena</text><text x="1050" y="258" fill="#78350f">Gerak: pengalaman + rasio -></text><text x="1050" y="288" fill="#78350f">batas pengetahuan manusia.</text>
+      <rect x="82" y="350" width="405" height="120" rx="24" fill="#f5f3ff"/><text x="118" y="392" fill="#6d28d9" font-size="25" font-weight="850">Dialektika</text><text x="118" y="430" fill="#4c1d95">Gerak: tesis, antitesis,</text><text x="118" y="460" fill="#4c1d95">sintesis, sejarah.</text>
+      <rect x="548" y="350" width="405" height="120" rx="24" fill="#fee2e2"/><text x="584" y="392" fill="#b91c1c" font-size="25" font-weight="850">Materialisme</text><text x="584" y="430" fill="#7f1d1d">Gerak: ide dibalik menjadi</text><text x="584" y="460" fill="#7f1d1d">ekonomi dan konflik kelas.</text>
+      <rect x="1014" y="350" width="405" height="120" rx="24" fill="#dcfce7"/><text x="1050" y="392" fill="#15803d" font-size="25" font-weight="850">Eksistensi</text><text x="1050" y="430" fill="#14532d">Gerak: manusia bebas -></text><text x="1050" y="460" fill="#14532d">pilihan -> tanggung jawab.</text>
+      <rect x="82" y="522" width="405" height="120" rx="24" fill="#e0f2fe"/><text x="118" y="564" fill="#0369a1" font-size="25" font-weight="850">Struktur / Tanda</text><text x="118" y="602" fill="#0c4a6e">Gerak: makna muncul dari</text><text x="118" y="632" fill="#0c4a6e">sistem bahasa.</text>
+      <rect x="548" y="522" width="405" height="120" rx="24" fill="#fce7f3"/><text x="584" y="564" fill="#be185d" font-size="25" font-weight="850">Wacana / Kuasa</text><text x="584" y="602" fill="#831843">Gerak: pengetahuan tidak</text><text x="584" y="632" fill="#831843">netral, ada relasi kuasa.</text>
+      <rect x="1014" y="522" width="405" height="120" rx="24" fill="#fffbeb"/><text x="1050" y="564" fill="#a16207" font-size="25" font-weight="850">Gender</text><text x="1050" y="602" fill="#713f12">Gerak: biologis dibedakan</text><text x="1050" y="632" fill="#713f12">dari konstruksi sosial.</text>
+    </g>
+  </g>
+</svg>

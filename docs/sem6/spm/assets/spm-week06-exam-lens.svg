@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 560" role="img" aria-labelledby="title desc">
+  <title id="title">Lensa ujian Minggu 6 pemikiran objektif</title>
+  <desc id="desc">Infografik reaksi objektif terhadap Hegel: positivisme, materialisme, naturalisme.</desc>
+  <rect width="1400" height="560" rx="30" fill="#0f172a"/>
+  <text x="64" y="74" fill="#f8fafc" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="40" font-weight="800">Minggu 6 - Pemikiran Objektif</text>
+  <text x="64" y="116" fill="#bfdbfe" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="22">Jika Hegel pusatnya ide, reaksi objektif memindahkan pusat ke fakta, materi, alam, dan psike.</text>
+  <g font-family="Inter,Segoe UI,Arial,sans-serif">
+    <rect x="90" y="170" width="310" height="150" rx="24" fill="#dbeafe"/>
+    <text x="124" y="218" fill="#1d4ed8" font-size="28" font-weight="800">Comte</text>
+    <text x="124" y="258" fill="#1e3a8a" font-size="21">Tahap positif:</text>
+    <text x="124" y="290" fill="#1e3a8a" font-size="21">ilmu sebagai standar.</text>
+    <rect x="545" y="170" width="310" height="150" rx="24" fill="#fee2e2"/>
+    <text x="579" y="218" fill="#b91c1c" font-size="28" font-weight="800">Marx</text>
+    <text x="579" y="258" fill="#7f1d1d" font-size="21">Dialektika material:</text>
+    <text x="579" y="290" fill="#7f1d1d" font-size="21">ekonomi dan kelas.</text>
+    <rect x="1000" y="170" width="310" height="150" rx="24" fill="#dcfce7"/>
+    <text x="1034" y="218" fill="#15803d" font-size="28" font-weight="800">Darwin/Freud</text>
+    <text x="1034" y="258" fill="#14532d" font-size="21">Manusia bagian dari</text>
+    <text x="1034" y="290" fill="#14532d" font-size="21">alam dan psike.</text>
+    <path d="M424 245 H522M879 245 H977" stroke="#60a5fa" stroke-width="6" stroke-linecap="round"/>
+    <rect x="90" y="400" width="1220" height="82" rx="22" fill="#020617" stroke="#38bdf8"/>
+    <text x="124" y="434" fill="#7dd3fc" font-size="24" font-weight="800">Cara membedakan</text>
+    <text x="124" y="466" fill="#e0f2fe" font-size="21">Comte = fakta ilmiah; Marx = materi sosial; Darwin = evolusi; Freud = ketidaksadaran.</text>
+  </g>
+</svg>

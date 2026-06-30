@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 780" role="img" aria-labelledby="title desc">
+  <title id="title">Decision tree memilih jawaban esai SPM</title>
+  <desc id="desc">Diagram keputusan untuk memilih struktur jawaban Sejarah Pemikiran Modern.</desc>
+  <rect width="1500" height="780" rx="34" fill="#111827"/>
+  <g font-family="Inter,Segoe UI,Arial,sans-serif">
+    <text x="64" y="78" fill="#f8fafc" font-size="42" font-weight="850">Pilih Struktur Jawaban</text>
+    <text x="64" y="120" fill="#d1d5db" font-size="22">Soal berbeda butuh gerak jawaban berbeda. Ikuti pohon ini sebelum mulai menulis.</text>
+    <rect x="550" y="165" width="400" height="90" rx="24" fill="#eff6ff"/>
+    <text x="615" y="220" fill="#1d4ed8" font-size="28" font-weight="850">Apa kata kerja soal?</text>
+    <g font-size="21">
+      <rect x="90" y="355" width="310" height="120" rx="22" fill="#ecfeff"/>
+      <text x="124" y="397" fill="#0e7490" font-size="25" font-weight="850">Jelaskan</text>
+      <text x="124" y="435" fill="#164e63">Definisi -> konteks -></text>
+      <text x="124" y="465" fill="#164e63">contoh tokoh.</text>
+      <rect x="430" y="355" width="310" height="120" rx="22" fill="#f5f3ff"/>
+      <text x="464" y="397" fill="#6d28d9" font-size="25" font-weight="850">Bandingkan</text>
+      <text x="464" y="435" fill="#4c1d95">Titik awal -> konsep -></text>
+      <text x="464" y="465" fill="#4c1d95">akibat.</text>
+      <rect x="770" y="355" width="310" height="120" rx="22" fill="#fef3c7"/>
+      <text x="804" y="397" fill="#92400e" font-size="25" font-weight="850">Mengapa</text>
+      <text x="804" y="435" fill="#78350f">Sebab historis -> reaksi -></text>
+      <text x="804" y="465" fill="#78350f">dampak modernitas.</text>
+      <rect x="1110" y="355" width="310" height="120" rx="22" fill="#dcfce7"/>
+      <text x="1144" y="397" fill="#15803d" font-size="25" font-weight="850">Nilai posisi</text>
+      <text x="1144" y="435" fill="#14532d">Tesis -> alasan -> batas -></text>
+      <text x="1144" y="465" fill="#14532d">simpulan.</text>
+      <rect x="210" y="590" width="1080" height="90" rx="24" fill="#020617" stroke="#38bdf8"/>
+      <text x="250" y="627" fill="#7dd3fc" font-size="25" font-weight="850">Kalimat penutup wajib</text>
+      <text x="250" y="660" fill="#e0f2fe">Tutup dengan makna konsep itu bagi lahirnya pemikiran modern atau kritik atas modernitas.</text>
+    </g>
+    <g fill="none" stroke="#fbbf24" stroke-width="6" stroke-linecap="round">
+      <path d="M750 258 C600 290 360 310 245 350"/>
+      <path d="M750 258 C680 300 620 318 585 350"/>
+      <path d="M750 258 C830 300 890 318 925 350"/>
+      <path d="M750 258 C980 290 1200 310 1265 350"/>
+      <path d="M245 475 C360 540 490 570 750 588"/>
+      <path d="M585 475 C625 535 690 570 750 588"/>
+      <path d="M925 475 C875 535 815 570 750 588"/>
+      <path d="M1265 475 C1140 540 1010 570 750 588"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">SSC CGL Series and Coding Decision Map</title>
+  <desc id="desc">Decision map for number series, letter series, coding, mixed alpha numeric patterns, and traps.</desc>
+  <rect width="1280" height="720" fill="#f8fbff"/>
+  <rect x="56" y="52" width="1168" height="616" rx="24" fill="#ffffff" stroke="#cbd9e8" stroke-width="3"/>
+  <text x="94" y="116" fill="#17324d" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="800">Series + Coding 30-Second Route</text>
+  <text x="94" y="154" fill="#53687d" font-family="Inter, Arial, sans-serif" font-size="22">Do not search randomly. Classify the pattern, test it on all terms, then mark.</text>
+
+  <g font-family="Inter, Arial, sans-serif" font-size="20">
+    <rect x="94" y="214" width="210" height="84" rx="16" fill="#eaf4ff" stroke="#9bc5ef" stroke-width="2"/>
+    <text x="199" y="248" text-anchor="middle" fill="#17466f" font-weight="800">Number</text>
+    <text x="199" y="276" text-anchor="middle" fill="#425d74">diff, square, cube</text>
+
+    <rect x="386" y="214" width="210" height="84" rx="16" fill="#fff2df" stroke="#e4b56d" stroke-width="2"/>
+    <text x="491" y="248" text-anchor="middle" fill="#765016" font-weight="800">Letter</text>
+    <text x="491" y="276" text-anchor="middle" fill="#6c5b40">A=1, gap, mirror</text>
+
+    <rect x="678" y="214" width="210" height="84" rx="16" fill="#f0edff" stroke="#b8a6ee" stroke-width="2"/>
+    <text x="783" y="248" text-anchor="middle" fill="#50377f" font-weight="800">Coding</text>
+    <text x="783" y="276" text-anchor="middle" fill="#5c5272">shift, reverse, swap</text>
+
+    <rect x="970" y="214" width="210" height="84" rx="16" fill="#eaf8f1" stroke="#90c9a7" stroke-width="2"/>
+    <text x="1075" y="248" text-anchor="middle" fill="#28613e" font-weight="800">Mixed</text>
+    <text x="1075" y="276" text-anchor="middle" fill="#43644f">split streams</text>
+
+    <path d="M199 300v58M491 300v58M783 300v58M1075 300v58" stroke="#8195a8" stroke-width="3" stroke-linecap="round"/>
+
+    <rect x="118" y="358" width="1044" height="106" rx="18" fill="#f6f8fb" stroke="#d9e2ec" stroke-width="2"/>
+    <text x="640" y="396" text-anchor="middle" fill="#17324d" font-size="26" font-weight="800">Test the rule on every given term</text>
+    <text x="640" y="430" text-anchor="middle" fill="#52677c">False patterns are the main reason marks are lost in this chapter.</text>
+
+    <rect x="180" y="520" width="920" height="72" rx="36" fill="#17324d"/>
+    <text x="640" y="565" text-anchor="middle" fill="#ffffff" font-size="24" font-weight="800">Classify -> compute -> verify -> option match -> move on</text>
+  </g>
+</svg>

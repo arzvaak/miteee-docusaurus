@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">SSC CGL geometry and mensuration formula map</title>
+  <desc id="desc">A compact map linking geometry theorems, 2D mensuration, 3D mensuration, and 36-second exam decisions.</desc>
+  <rect width="960" height="540" fill="#101820"/>
+  <rect x="28" y="28" width="904" height="484" rx="20" fill="#16232f" stroke="#7dd3fc" stroke-width="2"/>
+  <text x="480" y="70" text-anchor="middle" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Geometry + Mensuration Quant 50/50 Map</text>
+  <text x="480" y="102" text-anchor="middle" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="15">1207 promoted questions: classify in 5 seconds, solve inside the 36-second bar</text>
+
+  <g font-family="Inter, Arial, sans-serif" font-size="15">
+    <rect x="62" y="135" width="250" height="145" rx="14" fill="#f8fafc"/>
+    <text x="187" y="162" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">Triangle Core</text>
+    <text x="82" y="195" fill="#0f172a">Angle sum = 180 deg</text>
+    <text x="82" y="220" fill="#0f172a">Right triangle: a^2+b^2=c^2</text>
+    <text x="82" y="245" fill="#0f172a">Area = 1/2 x base x height</text>
+    <text x="82" y="270" fill="#0f172a">Similar area ratio = side ratio^2</text>
+
+    <rect x="355" y="135" width="250" height="145" rx="14" fill="#ecfeff"/>
+    <text x="480" y="162" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">Circle Core</text>
+    <text x="375" y="195" fill="#0f172a">C = 2*pi*r, A = pi*r^2</text>
+    <text x="375" y="220" fill="#0f172a">Arc = theta/360 x 2*pi*r</text>
+    <text x="375" y="245" fill="#0f172a">Sector = theta/360 x pi*r^2</text>
+    <text x="375" y="270" fill="#0f172a">Radius perpendicular to tangent</text>
+
+    <rect x="648" y="135" width="250" height="145" rx="14" fill="#fef3c7"/>
+    <text x="773" y="162" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">3D Core</text>
+    <text x="668" y="195" fill="#0f172a">Cylinder V = pi*r^2*h</text>
+    <text x="668" y="220" fill="#0f172a">Cone V = 1/3*pi*r^2*h</text>
+    <text x="668" y="245" fill="#0f172a">Sphere V = 4/3*pi*r^3</text>
+    <text x="668" y="270" fill="#0f172a">Melting/recasting: volume same</text>
+
+    <rect x="62" y="328" width="250" height="118" rx="14" fill="#dcfce7"/>
+    <text x="187" y="356" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">2D Area</text>
+    <text x="82" y="389" fill="#0f172a">Square a^2; Rectangle l x b</text>
+    <text x="82" y="414" fill="#0f172a">Rhombus/Kite = 1/2*d1*d2</text>
+    <text x="82" y="439" fill="#0f172a">Trapezium = 1/2*(a+b)*h</text>
+
+    <rect x="355" y="328" width="250" height="118" rx="14" fill="#fae8ff"/>
+    <text x="480" y="356" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">5-Second Classifier</text>
+    <text x="375" y="389" fill="#0f172a">Angle -> theorem trigger</text>
+    <text x="375" y="414" fill="#0f172a">Sheet/paint -> surface area</text>
+    <text x="375" y="439" fill="#0f172a">Tank/recast -> volume lock</text>
+
+    <rect x="648" y="328" width="250" height="118" rx="14" fill="#fee2e2"/>
+    <text x="773" y="356" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">Error Check</text>
+    <text x="668" y="389" fill="#0f172a">Radius vs diameter</text>
+    <text x="668" y="414" fill="#0f172a">CSA vs TSA vs volume</text>
+    <text x="668" y="439" fill="#0f172a">cm, cm^2, cm^3 must match</text>
+  </g>
+
+  <g stroke="#7dd3fc" stroke-width="3" fill="none" marker-end="url(#arrow)">
+    <path d="M312 205 H355"/>
+    <path d="M605 205 H648"/>
+    <path d="M187 280 V328"/>
+    <path d="M480 280 V328"/>
+    <path d="M773 280 V328"/>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#7dd3fc"/>
+    </marker>
+  </defs>
+</svg>

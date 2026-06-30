@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">SSC CGL reading comprehension evidence map</title>
+  <desc id="desc">A visual map showing how to handle SSC CGL reading comprehension questions through passage mapping, question classification, evidence matching, and option elimination.</desc>
+  <rect width="1200" height="760" fill="#f8fafc"/>
+  <rect x="42" y="36" width="1116" height="688" rx="18" fill="#ffffff" stroke="#0f172a" stroke-width="3"/>
+  <text x="74" y="88" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800" fill="#0f172a">Reading Comprehension: Evidence First</text>
+  <text x="76" y="122" font-family="Inter, Arial, sans-serif" font-size="18" fill="#475569">The correct answer must be supported by passage text. Familiar, broad, or outside-knowledge options are traps.</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="82" y="160" width="238" height="122" rx="10" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+    <text x="106" y="198" font-size="22" font-weight="800" fill="#1e3a8a">Map Passage</text>
+    <text x="106" y="230" font-size="16" fill="#1d4ed8">topic sentence, contrast</text>
+    <text x="106" y="254" font-size="16" fill="#1d4ed8">tone words, conclusion</text>
+
+    <rect x="348" y="160" width="238" height="122" rx="10" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+    <text x="372" y="198" font-size="22" font-weight="800" fill="#14532d">Classify Question</text>
+    <text x="372" y="230" font-size="16" fill="#166534">fact, inference, title</text>
+    <text x="372" y="254" font-size="16" fill="#166534">tone, word, except</text>
+
+    <rect x="614" y="160" width="238" height="122" rx="10" fill="#fce7f3" stroke="#be185d" stroke-width="2"/>
+    <text x="638" y="198" font-size="22" font-weight="800" fill="#831843">Find Evidence</text>
+    <text x="638" y="230" font-size="16" fill="#9d174d">line, phrase, contrast</text>
+    <text x="638" y="254" font-size="16" fill="#9d174d">paraphrase, clue word</text>
+
+    <rect x="880" y="160" width="238" height="122" rx="10" fill="#fef3c7" stroke="#b45309" stroke-width="2"/>
+    <text x="904" y="198" font-size="22" font-weight="800" fill="#92400e">Eliminate</text>
+    <text x="904" y="230" font-size="16" fill="#b45309">extreme, half-true</text>
+    <text x="904" y="254" font-size="16" fill="#b45309">outside, reversed</text>
+
+    <path d="M320 221 L348 221" stroke="#0f172a" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M586 221 L614 221" stroke="#0f172a" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M852 221 L880 221" stroke="#0f172a" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <rect x="138" y="356" width="924" height="156" rx="12" fill="#f1f5f9" stroke="#334155" stroke-width="2"/>
+    <text x="174" y="396" font-size="24" font-weight="800" fill="#0f172a">Evidence Ladder</text>
+    <text x="174" y="432" font-size="17" fill="#334155">1. Direct line support is strongest.</text>
+    <text x="174" y="462" font-size="17" fill="#334155">2. Paraphrase is valid only when every clause maps to passage evidence.</text>
+    <text x="174" y="492" font-size="17" fill="#334155">3. Inference must be forced by the text, not merely possible or familiar.</text>
+
+    <rect x="116" y="590" width="970" height="74" rx="12" fill="#fff7ed" stroke="#c2410c" stroke-width="2"/>
+    <text x="150" y="623" font-size="21" font-weight="800" fill="#9a3412">Final Rule</text>
+    <text x="150" y="652" font-size="17" fill="#9a3412">If an option has one unsupported word, one reversed relationship, or one outside claim, reject it.</text>
+  </g>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a"/>
+    </marker>
+  </defs>
+</svg>

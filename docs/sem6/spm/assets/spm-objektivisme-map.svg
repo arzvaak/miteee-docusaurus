@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-labelledby="title desc">
+  <title id="title">Pemikiran objektif pembentuk modernitas</title>
+  <desc id="desc">Infografik positivisme, materialisme, evolusi, dan ketidaksadaran.</desc>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="44%" r="70%"><stop offset="0" stop-color="#19324f"/><stop offset="1" stop-color="#0f172a"/></radialGradient>
+    <filter id="sh"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-opacity=".32"/></filter>
+    <style>
+      .h{font:900 38px Inter,Arial,sans-serif;fill:#fff}
+      .sub{font:600 17px Inter,Arial,sans-serif;fill:#cbd5e1}
+      .k{font:850 24px Inter,Arial,sans-serif;fill:#fff}
+      .t{font:650 17px Inter,Arial,sans-serif;fill:#e5e7eb}
+      .sm{font:650 14px Inter,Arial,sans-serif;fill:#cbd5e1}
+      .card{fill:rgba(15,23,42,.80);stroke:rgba(255,255,255,.18);stroke-width:2}
+    </style>
+  </defs>
+  <rect width="1280" height="760" rx="34" fill="url(#bg)"/>
+  <text x="58" y="72" class="h">Objektivisme Modern: Manusia Dijelaskan dari Luar Diri</text>
+  <text x="60" y="108" class="sub">Setelah Hegel, modernitas dibaca lewat fakta, materi, evolusi, dan struktur psikis.</text>
+  <g stroke-width="7" stroke-linecap="round" fill="none">
+    <path d="M640 360C470 250 340 225 205 250" stroke="#f6c177"/>
+    <path d="M640 360C820 250 945 225 1080 250" stroke="#67e8f9"/>
+    <path d="M640 360C470 490 330 555 200 545" stroke="#c4a7e7"/>
+    <path d="M640 360C810 500 940 555 1080 545" stroke="#2dd4bf"/>
+  </g>
+  <g filter="url(#sh)">
+    <circle cx="640" cy="360" r="120" fill="rgba(255,255,255,.10)" stroke="#c4a7e7" stroke-width="4"/>
+    <text x="576" y="346" class="k">Realitas</text>
+    <text x="552" y="384" class="t">bukan terutama</text>
+    <text x="570" y="416" class="t">kesadaran</text>
+    <rect x="70" y="190" width="340" height="140" rx="24" class="card"/>
+    <text x="105" y="236" class="k">Comte</text>
+    <text x="105" y="276" class="t">tahap positif dan ilmu</text>
+    <text x="105" y="306" class="sm">tolak spekulasi metafisis</text>
+    <rect x="870" y="190" width="340" height="140" rx="24" class="card"/>
+    <text x="905" y="236" class="k">Marx</text>
+    <text x="905" y="276" class="t">kelas, ekonomi, produksi</text>
+    <text x="905" y="306" class="sm">dialektika menjadi material</text>
+    <rect x="70" y="490" width="340" height="140" rx="24" class="card"/>
+    <text x="105" y="536" class="k">Darwin</text>
+    <text x="105" y="576" class="t">evolusi dan seleksi alam</text>
+    <text x="105" y="606" class="sm">manusia bagian dari alam</text>
+    <rect x="870" y="490" width="340" height="140" rx="24" class="card"/>
+    <text x="905" y="536" class="k">Freud</text>
+    <text x="905" y="576" class="t">ketidaksadaran psikis</text>
+    <text x="905" y="606" class="sm">rasio bukan penguasa penuh</text>
+  </g>
+</svg>

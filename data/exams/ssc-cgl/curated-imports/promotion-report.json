@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-06-26T09:15:33.730352+00:00",
+  "scannedAlignedCandidates": 5563,
+  "candidatesWithAnswerConsensus": 88,
+  "candidatesWithAgentReview": 88,
+  "promotedQuestions": 86,
+  "rejected": {
+    "missing_answer_consensus": 5475,
+    "missing_agent_review": 0,
+    "weak_agent_review": 2,
+    "invalid_projection": 0,
+    "duplicate_stem": 0
+  },
+  "outputPath": "G:\\MITEEE\\data\\exams\\ssc-cgl\\curated-imports\\questions.json",
+  "rankedEligible": true,
+  "warnings": [
+    "Promoted rows are a curated projection; raw alignment and review artifacts remain the audit trail.",
+    "Promotion requires agent answer consensus, final curation decision, topic normalization, source provenance, and duplicate filtering."
+  ]
+}

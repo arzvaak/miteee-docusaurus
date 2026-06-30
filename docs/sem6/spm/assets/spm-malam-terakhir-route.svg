@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-labelledby="title desc">
+  <title id="title">Rute malam terakhir Sejarah Pemikiran Modern</title>
+  <desc id="desc">Infografik rute belajar malam terakhir dari peta kronologis menuju jawaban latihan.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff8ed"/>
+      <stop offset=".55" stop-color="#edf8f5"/>
+      <stop offset="1" stop-color="#eef3ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-8%" y="-8%" width="116%" height="116%">
+      <feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#21323a" flood-opacity=".15"/>
+    </filter>
+    <style>
+      .title{font:800 42px Arial,Helvetica,sans-serif;fill:#17262e}
+      .sub{font:500 21px Arial,Helvetica,sans-serif;fill:#485a62}
+      .card{fill:#fffef9;stroke:#d9e4de;stroke-width:2;rx:24;filter:url(#shadow)}
+      .h{font:800 26px Arial,Helvetica,sans-serif;fill:#17262e}
+      .p{font:500 18px Arial,Helvetica,sans-serif;fill:#41535a}
+      .time{font:800 28px Arial,Helvetica,sans-serif;fill:#fff}
+      .small{font:700 15px Arial,Helvetica,sans-serif;fill:#704513}
+      .line{stroke:#2c6b64;stroke-width:8;stroke-linecap:round;fill:none}
+      .dash{stroke:#d99a32;stroke-width:4;stroke-linecap:round;stroke-dasharray:8 10;fill:none}
+      .dot{fill:#2c6b64}
+      .amber{fill:#d99a32}
+      .red{fill:#b8543c}
+      .blue{fill:#425f89}
+    </style>
+  </defs>
+  <rect width="1280" height="760" fill="url(#bg)"/>
+  <circle cx="1145" cy="96" r="88" fill="#b8543c" opacity=".08"/>
+  <circle cx="112" cy="654" r="112" fill="#2c6b64" opacity=".08"/>
+  <text x="70" y="76" class="title">Rute Malam Terakhir</text>
+  <text x="72" y="114" class="sub">Belajar terakhir harus mengunci alur, bukan membuka materi baru.</text>
+
+  <path class="line" d="M142 382H1138"/>
+  <path class="dash" d="M142 486H1138"/>
+
+  <g transform="translate(82 176)">
+    <rect width="246" height="388" class="card"/>
+    <rect x="26" y="28" width="104" height="54" rx="18" class="dot"/>
+    <text x="43" y="64" class="time">30m</text>
+    <text x="28" y="122" class="h">Kronologi</text>
+    <text x="28" y="160" class="p">Tulis peta besar</text>
+    <text x="28" y="188" class="p">tanpa membuka catatan.</text>
+    <text x="28" y="238" class="small">Output:</text>
+    <text x="28" y="270" class="p">Yunani -> Renaissance</text>
+    <text x="28" y="298" class="p">-> rasio -> empiris</text>
+    <text x="28" y="326" class="p">-> Kant -> Hegel</text>
+  </g>
+  <g transform="translate(376 176)">
+    <rect width="246" height="388" class="card"/>
+    <rect x="26" y="28" width="104" height="54" rx="18" class="amber"/>
+    <text x="43" y="64" class="time">35m</text>
+    <text x="28" y="122" class="h">Pembeda</text>
+    <text x="28" y="160" class="p">Pisahkan konsep</text>
+    <text x="28" y="188" class="p">yang paling rawan.</text>
+    <text x="28" y="238" class="small">Output:</text>
+    <text x="28" y="270" class="p">Descartes, Spinoza,</text>
+    <text x="28" y="298" class="p">Leibniz, Kant, Marx,</text>
+    <text x="28" y="326" class="p">strukturalisme.</text>
+  </g>
+  <g transform="translate(670 176)">
+    <rect width="246" height="388" class="card"/>
+    <rect x="26" y="28" width="104" height="54" rx="18" class="red"/>
+    <text x="43" y="64" class="time">45m</text>
+    <text x="28" y="122" class="h">Esai</text>
+    <text x="28" y="160" class="p">Kerjakan dua jawaban</text>
+    <text x="28" y="188" class="p">dengan batas waktu.</text>
+    <text x="28" y="238" class="small">Output:</text>
+    <text x="28" y="270" class="p">1 soal kronologi</text>
+    <text x="28" y="298" class="p">1 soal perbandingan</text>
+    <text x="28" y="326" class="p">skor pakai rubrik.</text>
+  </g>
+  <g transform="translate(964 176)">
+    <rect width="246" height="388" class="card"/>
+    <rect x="26" y="28" width="104" height="54" rx="18" class="blue"/>
+    <text x="43" y="64" class="time">20m</text>
+    <text x="28" y="122" class="h">Tutup</text>
+    <text x="28" y="160" class="p">Baca kesalahan,</text>
+    <text x="28" y="188" class="p">bukan materi baru.</text>
+    <text x="28" y="238" class="small">Output:</text>
+    <text x="28" y="270" class="p">5 rumus pembeda</text>
+    <text x="28" y="298" class="p">3 pembuka aman</text>
+    <text x="28" y="326" class="p">tidur tepat waktu.</text>
+  </g>
+  <text x="86" y="690" class="p">Aturan: kalau satu konsep belum rapi, perbaiki konsep itu. Jangan membuka bab baru.</text>
+</svg>

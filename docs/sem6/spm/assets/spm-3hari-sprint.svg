@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760" role="img" aria-labelledby="title desc">
+  <title id="title">Rencana sprint tiga hari Sejarah Pemikiran Modern</title>
+  <desc id="desc">Infografik jadwal belajar tiga hari sebelum ujian.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset=".55" stop-color="#27184f"/>
+      <stop offset="1" stop-color="#083344"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" x2="1">
+      <stop offset="0" stop-color="#f6c177"/>
+      <stop offset=".5" stop-color="#c4a7e7"/>
+      <stop offset="1" stop-color="#67e8f9"/>
+    </linearGradient>
+    <filter id="sh"><feDropShadow dx="0" dy="12" stdDeviation="13" flood-color="#000" flood-opacity=".30"/></filter>
+    <style>
+      .h{font:900 44px Inter,Arial,sans-serif;fill:#fff}
+      .sub{font:600 20px Inter,Arial,sans-serif;fill:#cbd5e1}
+      .day{font:900 32px Inter,Arial,sans-serif;fill:#111827}
+      .k{font:850 27px Inter,Arial,sans-serif;fill:#fff}
+      .t{font:650 19px Inter,Arial,sans-serif;fill:#dbeafe}
+      .sm{font:650 16px Inter,Arial,sans-serif;fill:#cbd5e1}
+      .card{fill:rgba(15,23,42,.80);stroke:rgba(255,255,255,.18);stroke-width:2}
+      .pill{fill:rgba(255,255,255,.10);stroke:rgba(255,255,255,.18);stroke-width:2}
+    </style>
+  </defs>
+  <rect width="1400" height="760" rx="36" fill="url(#bg)"/>
+  <circle cx="165" cy="625" r="210" fill="#67e8f9" opacity=".08"/>
+  <circle cx="1180" cy="135" r="190" fill="#f6c177" opacity=".09"/>
+  <text x="70" y="85" class="h">Sprint 3 Hari Menuju Ujian</text>
+  <text x="72" y="125" class="sub">Tujuannya bukan membaca semuanya ulang, tetapi membangun alur, perbandingan, dan jawaban siap tulis.</text>
+  <path d="M145 210H1255" stroke="url(#bar)" stroke-width="12" stroke-linecap="round"/>
+  <g filter="url(#sh)">
+    <g transform="translate(70 180)">
+      <rect width="370" height="420" rx="28" class="card"/>
+      <circle cx="70" cy="70" r="36" fill="#f6c177"/><text x="48" y="82" class="day">1</text>
+      <text x="126" y="61" class="k">Fondasi</text>
+      <text x="126" y="96" class="sm">Minggu 1-3</text>
+      <rect x="36" y="135" width="298" height="58" rx="16" class="pill"/><text x="58" y="171" class="t">Yunani, Abad Tengah, Renaissance</text>
+      <rect x="36" y="211" width="298" height="58" rx="16" class="pill"/><text x="58" y="247" class="t">Rasionalisme: Descartes-Spinoza-Leibniz</text>
+      <rect x="36" y="287" width="298" height="58" rx="16" class="pill"/><text x="58" y="323" class="t">Empirisme: Bacon-Hobbes-Locke</text>
+      <text x="42" y="384" class="sm">Target akhir: bisa menjawab sumber</text>
+      <text x="42" y="408" class="sm">pengetahuan dan akar modernitas.</text>
+    </g>
+    <g transform="translate(515 180)">
+      <rect width="370" height="420" rx="28" class="card"/>
+      <circle cx="70" cy="70" r="36" fill="#c4a7e7"/><text x="48" y="82" class="day">2</text>
+      <text x="126" y="61" class="k">Sintesis</text>
+      <text x="126" y="96" class="sm">Minggu 4-6</text>
+      <rect x="36" y="135" width="298" height="58" rx="16" class="pill"/><text x="58" y="171" class="t">Pencerahan Inggris-Perancis-Jerman</text>
+      <rect x="36" y="211" width="298" height="58" rx="16" class="pill"/><text x="58" y="247" class="t">Kant: pengalaman isi, rasio bentuk</text>
+      <rect x="36" y="287" width="298" height="58" rx="16" class="pill"/><text x="58" y="323" class="t">Hegel lalu reaksi objektif modern</text>
+      <text x="42" y="384" class="sm">Target akhir: bisa membandingkan</text>
+      <text x="42" y="408" class="sm">Pencerahan, Kant, Hegel, Marx.</text>
+    </g>
+    <g transform="translate(960 180)">
+      <rect width="370" height="420" rx="28" class="card"/>
+      <circle cx="70" cy="70" r="36" fill="#67e8f9"/><text x="48" y="82" class="day">3</text>
+      <text x="126" y="61" class="k">Jawaban</text>
+      <text x="126" y="96" class="sm">Minggu 7-8 dan latihan</text>
+      <rect x="36" y="135" width="298" height="58" rx="16" class="pill"/><text x="58" y="171" class="t">Subjektif: kehendak, sadar, eksistensi</text>
+      <rect x="36" y="211" width="298" height="58" rx="16" class="pill"/><text x="58" y="247" class="t">Kontemporer: bahasa, struktur, wacana</text>
+      <rect x="36" y="287" width="298" height="58" rx="16" class="pill"/><text x="58" y="323" class="t">Latihan: tesis, konteks, konsep, banding</text>
+      <text x="42" y="384" class="sm">Target akhir: 18-20 jawaban model</text>
+      <text x="42" y="408" class="sm">bisa ditulis ulang tanpa panik.</text>
+    </g>
+  </g>
+</svg>

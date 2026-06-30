@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">SSC CGL Economics Budget Banking map</title>
+  <desc id="desc">A visual map connecting national income, inflation, RBI tools, budget deficits, banking institutions, and external sector classification.</desc>
+  <rect width="1200" height="760" fill="#101820"/>
+  <rect x="54" y="46" width="1092" height="668" rx="28" fill="#16232f" stroke="#5fb3b3" stroke-width="3"/>
+  <text x="600" y="94" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#f7f7f2">Economics, Budget, and Banking</text>
+  <text x="600" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#d5e6e6">Read cue words first, then classify inside the 36-second SSC window</text>
+
+  <g font-family="Arial, sans-serif" font-size="18" fill="#f7f7f2">
+    <rect x="100" y="180" width="290" height="150" rx="16" fill="#1f3a48" stroke="#7bd389" stroke-width="2"/>
+    <text x="245" y="214" text-anchor="middle" font-size="24" font-weight="700">National Income</text>
+    <text x="124" y="250">GDP = territory</text>
+    <text x="124" y="278">GNP = GDP + NFIA</text>
+    <text x="124" y="306">NNP = GNP - depreciation</text>
+
+    <rect x="455" y="180" width="290" height="150" rx="16" fill="#263b63" stroke="#f2c14e" stroke-width="2"/>
+    <text x="600" y="214" text-anchor="middle" font-size="24" font-weight="700">Inflation</text>
+    <text x="479" y="250">CPI = retail consumer prices</text>
+    <text x="479" y="278">WPI = wholesale prices</text>
+    <text x="479" y="306">Cost-push vs demand-pull</text>
+
+    <rect x="810" y="180" width="290" height="150" rx="16" fill="#47334e" stroke="#ff9f80" stroke-width="2"/>
+    <text x="955" y="214" text-anchor="middle" font-size="24" font-weight="700">RBI Tools</text>
+    <text x="834" y="250">Repo = RBI lends</text>
+    <text x="834" y="278">Reverse repo = RBI borrows</text>
+    <text x="834" y="306">CRR cash, SLR liquid assets</text>
+
+    <rect x="100" y="415" width="290" height="165" rx="16" fill="#4a2f36" stroke="#ff6b6b" stroke-width="2"/>
+    <text x="245" y="449" text-anchor="middle" font-size="24" font-weight="700">Budget</text>
+    <text x="124" y="486">Revenue vs capital</text>
+    <text x="124" y="514">Fiscal = borrowing gap</text>
+    <text x="124" y="542">Primary = fiscal - interest</text>
+
+    <rect x="455" y="415" width="290" height="165" rx="16" fill="#25423d" stroke="#7bdff2" stroke-width="2"/>
+    <text x="600" y="449" text-anchor="middle" font-size="24" font-weight="700">Institutions</text>
+    <text x="479" y="486">RBI = central bank</text>
+    <text x="479" y="514">NABARD = rural credit</text>
+    <text x="479" y="542">SEBI = securities market</text>
+
+    <rect x="810" y="415" width="290" height="165" rx="16" fill="#39404f" stroke="#b8f2e6" stroke-width="2"/>
+    <text x="955" y="449" text-anchor="middle" font-size="24" font-weight="700">External Sector</text>
+    <text x="834" y="486">BOT = goods trade</text>
+    <text x="834" y="514">Current = income and transfers</text>
+    <text x="834" y="542">Capital = assets and liabilities</text>
+  </g>
+
+  <g stroke="#d5e6e6" stroke-width="4" fill="none" stroke-linecap="round">
+    <path d="M390 255 H455"/>
+    <path d="M745 255 H810"/>
+    <path d="M245 330 V415"/>
+    <path d="M600 330 V415"/>
+    <path d="M955 330 V415"/>
+    <path d="M390 498 H455"/>
+    <path d="M745 498 H810"/>
+  </g>
+
+  <rect x="280" y="630" width="640" height="46" rx="23" fill="#f2c14e"/>
+  <text x="600" y="660" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#101820">Goal: classify cue word first, then answer inside 15 to 36 seconds</text>
+</svg>

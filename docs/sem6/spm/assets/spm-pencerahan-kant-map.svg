@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-labelledby="title desc">
+  <title id="title">Pencerahan dan sintesis Kant</title>
+  <desc id="desc">Infografik alur Pencerahan Inggris, Perancis, Jerman, dan Kant.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#101827"/><stop offset=".52" stop-color="#2d214d"/><stop offset="1" stop-color="#143b4b"/></linearGradient>
+    <linearGradient id="a" x1="0" x2="1"><stop offset="0" stop-color="#f6c177"/><stop offset=".5" stop-color="#c4a7e7"/><stop offset="1" stop-color="#67e8f9"/></linearGradient>
+    <filter id="sh"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-opacity=".32"/></filter>
+    <style>
+      .h{font:900 38px Inter,Arial,sans-serif;fill:#fff}
+      .sub{font:600 17px Inter,Arial,sans-serif;fill:#cbd5e1}
+      .k{font:850 25px Inter,Arial,sans-serif;fill:#fff}
+      .t{font:650 17px Inter,Arial,sans-serif;fill:#dbeafe}
+      .sm{font:650 14px Inter,Arial,sans-serif;fill:#cbd5e1}
+      .card{fill:rgba(15,23,42,.80);stroke:rgba(255,255,255,.18);stroke-width:2}
+    </style>
+  </defs>
+  <rect width="1280" height="760" rx="34" fill="url(#bg)"/>
+  <text x="58" y="72" class="h">Pencerahan sampai Kant</text>
+  <text x="60" y="108" class="sub">Pencerahan menggeser akal dari teori pengetahuan menuju kritik sosial, politik, dan batas pengetahuan.</text>
+  <path d="M210 360H1070" stroke="url(#a)" stroke-width="10" stroke-linecap="round"/>
+  <polygon points="1040,336 1100,360 1040,384" fill="#67e8f9"/>
+  <g filter="url(#sh)">
+    <rect x="70" y="190" width="300" height="220" rx="26" class="card"/>
+    <text x="115" y="244" class="k">Inggris</text>
+    <text x="115" y="292" class="t">Berkeley dan Hume</text>
+    <text x="115" y="330" class="sm">empirisme, persepsi, sebab-akibat</text>
+    <text x="115" y="356" class="sm">masalah: batas pengalaman</text>
+    <rect x="490" y="190" width="300" height="220" rx="26" class="card"/>
+    <text x="535" y="244" class="k">Perancis</text>
+    <text x="535" y="292" class="t">Montesquieu, Voltaire, Rousseau</text>
+    <text x="535" y="330" class="sm">kritik absolutisme dan agama dogmatis</text>
+    <text x="535" y="356" class="sm">masalah: tatanan politik modern</text>
+    <rect x="910" y="190" width="300" height="220" rx="26" class="card"/>
+    <text x="955" y="244" class="k">Jerman</text>
+    <text x="955" y="292" class="t">Kant sebagai titik sintesis</text>
+    <text x="955" y="330" class="sm">pengalaman memberi isi</text>
+    <text x="955" y="356" class="sm">rasio memberi bentuk</text>
+    <rect x="350" y="505" width="580" height="150" rx="28" fill="rgba(255,255,255,.10)" stroke="rgba(255,255,255,.22)" stroke-width="2"/>
+    <text x="425" y="565" class="k">Rumus Kant untuk Esai</text>
+    <text x="425" y="610" class="t">Tanpa pengalaman: kosong. Tanpa rasio: kacau.</text>
+    <text x="425" y="642" class="sm">Hasil pengetahuan manusia adalah fenomena, bukan noumena.</text>
+  </g>
+</svg>

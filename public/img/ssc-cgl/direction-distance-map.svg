@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Direction Distance 38-Q Axis Map</title>
+  <desc id="desc">A study map for SSC CGL direction and distance questions: classify the cue, lock the axis, cancel movement, choose distance or direction, and answer inside the Reasoning timer.</desc>
+  <rect width="960" height="540" fill="#111827"/>
+  <rect x="36" y="34" width="888" height="472" rx="22" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+  <text x="72" y="82" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Direction Distance: 38-Q Axis Map</text>
+  <text x="72" y="114" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="16">Last sentence first, axis signs second, Pythagoras only after cancellation.</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="72" y="152" width="226" height="102" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="96" y="184" fill="#e0f2fe" font-size="19" font-weight="700">1. Ask Lock</text>
+    <text x="96" y="212" fill="#cbd5e1" font-size="14">Distance, direction, facing,</text>
+    <text x="96" y="233" fill="#cbd5e1" font-size="14">shadow, or total path?</text>
+
+    <rect x="367" y="152" width="226" height="102" rx="12" fill="#1e293b" stroke="#a78bfa" stroke-width="2"/>
+    <text x="391" y="184" fill="#ede9fe" font-size="19" font-weight="700">2. Axis Lock</text>
+    <text x="391" y="212" fill="#cbd5e1" font-size="14">N = +y, S = -y.</text>
+    <text x="391" y="233" fill="#cbd5e1" font-size="14">E = +x, W = -x.</text>
+
+    <rect x="662" y="152" width="226" height="102" rx="12" fill="#1e293b" stroke="#22c55e" stroke-width="2"/>
+    <text x="686" y="184" fill="#dcfce7" font-size="19" font-weight="700">3. Turn Lock</text>
+    <text x="686" y="212" fill="#cbd5e1" font-size="14">Left = anticlockwise.</text>
+    <text x="686" y="233" fill="#cbd5e1" font-size="14">Right = clockwise.</text>
+
+    <rect x="72" y="318" width="226" height="102" rx="12" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+    <text x="96" y="350" fill="#ffedd5" font-size="19" font-weight="700">4. Cancel</text>
+    <text x="96" y="378" fill="#cbd5e1" font-size="14">Sum x and y separately.</text>
+    <text x="96" y="399" fill="#cbd5e1" font-size="14">Never use raw walked total.</text>
+
+    <rect x="367" y="318" width="226" height="102" rx="12" fill="#1e293b" stroke="#ef4444" stroke-width="2"/>
+    <text x="391" y="350" fill="#fee2e2" font-size="19" font-weight="700">5. Output</text>
+    <text x="391" y="378" fill="#cbd5e1" font-size="14">Direction = signs.</text>
+    <text x="391" y="399" fill="#cbd5e1" font-size="14">Distance = net triangle.</text>
+
+    <rect x="662" y="318" width="226" height="102" rx="12" fill="#1e293b" stroke="#14b8a6" stroke-width="2"/>
+    <text x="686" y="350" fill="#ccfbf1" font-size="19" font-weight="700">6. 36-Second Answer</text>
+    <text x="686" y="378" fill="#cbd5e1" font-size="14">20s direct, 30s turns.</text>
+    <text x="686" y="399" fill="#cbd5e1" font-size="14">50s only for dense relative cues.</text>
+  </g>
+
+  <g stroke="#64748b" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M298 203 H367"/>
+    <path d="M593 203 H662"/>
+    <path d="M775 254 V318"/>
+    <path d="M662 369 H593"/>
+    <path d="M367 369 H298"/>
+    <path d="M185 318 V254"/>
+  </g>
+  <g fill="#94a3b8">
+    <path d="M358 195 L370 203 L358 211 Z"/>
+    <path d="M653 195 L665 203 L653 211 Z"/>
+    <path d="M767 309 L775 321 L783 309 Z"/>
+    <path d="M602 361 L590 369 L602 377 Z"/>
+    <path d="M307 361 L295 369 L307 377 Z"/>
+    <path d="M177 263 L185 251 L193 263 Z"/>
+  </g>
+
+  <text x="72" y="466" fill="#e2e8f0" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600">200/200 rule:</text>
+  <text x="174" y="466" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="15">No Pythagoras before cancellation; no facing answer when the question asks position from start.</text>
+</svg>

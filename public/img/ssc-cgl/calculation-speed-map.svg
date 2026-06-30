@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="640" viewBox="0 0 1120 640" role="img" aria-labelledby="title desc">
+  <title id="title">SSC CGL calculation speed map</title>
+  <desc id="desc">A visual map connecting 36-second question timing with option-gap arithmetic, fractions, cancellation, base method, unit digit, digital sum, and Quant 50 out of 50 practice.</desc>
+  <rect width="1120" height="640" fill="#0b1020"/>
+  <rect x="42" y="38" width="1036" height="564" rx="18" fill="#111827" stroke="#334155" stroke-width="2"/>
+  <text x="560" y="82" text-anchor="middle" fill="#f8fafc" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">Calculation Speed for Quant 50/50</text>
+  <text x="560" y="116" text-anchor="middle" fill="#cbd5e1" font-family="Arial, Helvetica, sans-serif" font-size="18">Read options first, choose the method, finish or mark inside the 36-second bar.</text>
+
+  <rect x="438" y="166" width="244" height="110" rx="14" fill="#f8fafc" stroke="#38bdf8" stroke-width="4"/>
+  <text x="560" y="204" text-anchor="middle" fill="#0f172a" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">36-Second Control</text>
+  <text x="560" y="234" text-anchor="middle" fill="#334155" font-family="Arial, Helvetica, sans-serif" font-size="15">0-5 scan, 6-25 solve,</text>
+  <text x="560" y="256" text-anchor="middle" fill="#334155" font-family="Arial, Helvetica, sans-serif" font-size="15">26-36 check or mark</text>
+
+  <rect x="92" y="164" width="248" height="104" rx="12" fill="#ecfeff" stroke="#06b6d4" stroke-width="3"/>
+  <text x="216" y="200" text-anchor="middle" fill="#164e63" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700">Option Gap</text>
+  <text x="216" y="229" text-anchor="middle" fill="#155e75" font-family="Arial, Helvetica, sans-serif" font-size="15">Approximate only when</text>
+  <text x="216" y="250" text-anchor="middle" fill="#155e75" font-family="Arial, Helvetica, sans-serif" font-size="15">error stays inside the gap</text>
+
+  <rect x="780" y="164" width="248" height="104" rx="12" fill="#fefce8" stroke="#eab308" stroke-width="3"/>
+  <text x="904" y="200" text-anchor="middle" fill="#713f12" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700">Fractions</text>
+  <text x="904" y="229" text-anchor="middle" fill="#854d0e" font-family="Arial, Helvetica, sans-serif" font-size="15">12.5 = 1/8, 37.5 = 3/8</text>
+  <text x="904" y="250" text-anchor="middle" fill="#854d0e" font-family="Arial, Helvetica, sans-serif" font-size="15">cancel before multiplying</text>
+
+  <rect x="92" y="338" width="248" height="104" rx="12" fill="#f0fdf4" stroke="#22c55e" stroke-width="3"/>
+  <text x="216" y="374" text-anchor="middle" fill="#14532d" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700">Base Method</text>
+  <text x="216" y="403" text-anchor="middle" fill="#166534" font-family="Arial, Helvetica, sans-serif" font-size="15">near 100, 1000, square</text>
+  <text x="216" y="424" text-anchor="middle" fill="#166534" font-family="Arial, Helvetica, sans-serif" font-size="15">right-side digit width locked</text>
+
+  <rect x="438" y="366" width="244" height="104" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="3"/>
+  <text x="560" y="402" text-anchor="middle" fill="#1e3a8a" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700">Unit Digit + Digital Sum</text>
+  <text x="560" y="431" text-anchor="middle" fill="#1d4ed8" font-family="Arial, Helvetica, sans-serif" font-size="15">eliminate before exact work</text>
+  <text x="560" y="452" text-anchor="middle" fill="#1d4ed8" font-family="Arial, Helvetica, sans-serif" font-size="15">confirm sign, digit, magnitude</text>
+
+  <rect x="780" y="338" width="248" height="104" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="3"/>
+  <text x="904" y="374" text-anchor="middle" fill="#881337" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700">Cancellation</text>
+  <text x="904" y="403" text-anchor="middle" fill="#9f1239" font-family="Arial, Helvetica, sans-serif" font-size="15">factor first, multiply later</text>
+  <text x="904" y="424" text-anchor="middle" fill="#9f1239" font-family="Arial, Helvetica, sans-serif" font-size="15">protects time and accuracy</text>
+
+  <rect x="330" y="520" width="460" height="54" rx="14" fill="#f8fafc" stroke="#a78bfa" stroke-width="3"/>
+  <text x="560" y="554" text-anchor="middle" fill="#312e81" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700">Book-PYQ repair loop: tag mistake, drill method, retest under timer</text>
+
+  <line x1="438" y1="220" x2="340" y2="216" stroke="#94a3b8" stroke-width="3"/>
+  <line x1="682" y1="220" x2="780" y2="216" stroke="#94a3b8" stroke-width="3"/>
+  <line x1="482" y1="276" x2="300" y2="338" stroke="#94a3b8" stroke-width="3"/>
+  <line x1="560" y1="276" x2="560" y2="366" stroke="#94a3b8" stroke-width="3"/>
+  <line x1="638" y1="276" x2="820" y2="338" stroke="#94a3b8" stroke-width="3"/>
+  <line x1="216" y1="442" x2="460" y2="520" stroke="#94a3b8" stroke-width="3"/>
+  <line x1="560" y1="470" x2="560" y2="520" stroke="#94a3b8" stroke-width="3"/>
+  <line x1="904" y1="442" x2="660" y2="520" stroke="#94a3b8" stroke-width="3"/>
+</svg>

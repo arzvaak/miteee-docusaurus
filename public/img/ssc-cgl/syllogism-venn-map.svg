@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">SSC CGL Syllogism and Venn map</title>
+  <desc id="desc">A visual map for classifying all, no, some, some not, only, only a few, possibility, and either-or syllogism questions.</desc>
+  <rect width="1200" height="760" fill="#0f1720"/>
+  <rect x="54" y="46" width="1092" height="668" rx="28" fill="#172331" stroke="#8fd6ff" stroke-width="3"/>
+  <text x="600" y="92" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#f8fbff">Syllogism and Venn Diagrams</text>
+  <text x="600" y="128" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#c8d7e3">Formal set logic for 36-second SSC reasoning decisions</text>
+
+  <g opacity="0.92">
+    <circle cx="265" cy="270" r="88" fill="#276fbf" fill-opacity="0.42" stroke="#8fd6ff" stroke-width="4"/>
+    <circle cx="340" cy="270" r="88" fill="#f4d35e" fill-opacity="0.45" stroke="#ffe082" stroke-width="4"/>
+    <text x="240" y="273" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#f8fbff">A</text>
+    <text x="362" y="273" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#101820">B</text>
+    <text x="302" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#f8fbff">Some A are B</text>
+
+    <circle cx="592" cy="270" r="92" fill="none" stroke="#8fd6ff" stroke-width="4"/>
+    <circle cx="592" cy="270" r="48" fill="#7bd389" fill-opacity="0.45" stroke="#7bd389" stroke-width="4"/>
+    <text x="592" y="269" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#f8fbff">A</text>
+    <text x="592" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#f8fbff">All A are B</text>
+
+    <circle cx="875" cy="270" r="72" fill="#ff6b6b" fill-opacity="0.34" stroke="#ff9f9f" stroke-width="4"/>
+    <circle cx="1030" cy="270" r="72" fill="#7bdff2" fill-opacity="0.34" stroke="#b8f2e6" stroke-width="4"/>
+    <line x1="948" y1="210" x2="957" y2="330" stroke="#ff9f9f" stroke-width="5"/>
+    <text x="952" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#f8fbff">No A is B</text>
+  </g>
+
+  <g font-family="Arial, sans-serif" fill="#f8fbff">
+    <rect x="112" y="435" width="220" height="130" rx="16" fill="#23384a" stroke="#8fd6ff" stroke-width="2"/>
+    <text x="222" y="468" text-anchor="middle" font-size="22" font-weight="700">Conversion</text>
+    <text x="136" y="503" font-size="17">All A-B -> Some B-A</text>
+    <text x="136" y="530" font-size="17">No A-B -> No B-A</text>
+    <text x="136" y="557" font-size="17">Some-not: no reverse</text>
+
+    <rect x="374" y="435" width="220" height="130" rx="16" fill="#2c3f35" stroke="#7bd389" stroke-width="2"/>
+    <text x="484" y="468" text-anchor="middle" font-size="22" font-weight="700">Only Few</text>
+    <text x="398" y="503" font-size="17">Some A are B</text>
+    <text x="398" y="530" font-size="17">Some A are not B</text>
+    <text x="398" y="557" font-size="17">No extra assumption</text>
+
+    <rect x="636" y="435" width="220" height="130" rx="16" fill="#46364a" stroke="#f4d35e" stroke-width="2"/>
+    <text x="746" y="468" text-anchor="middle" font-size="22" font-weight="700">Possibility</text>
+    <text x="660" y="503" font-size="17">Allowed in one diagram</text>
+    <text x="660" y="530" font-size="17">Blocked by No</text>
+    <text x="660" y="557" font-size="17">Not same as definite</text>
+
+    <rect x="898" y="435" width="220" height="130" rx="16" fill="#4a3030" stroke="#ff9f9f" stroke-width="2"/>
+    <text x="1008" y="468" text-anchor="middle" font-size="22" font-weight="700">Either-Or</text>
+    <text x="922" y="503" font-size="17">Same terms</text>
+    <text x="922" y="530" font-size="17">Both alone fail</text>
+    <text x="922" y="557" font-size="17">Pair covers all cases</text>
+  </g>
+
+  <rect x="278" y="630" width="644" height="46" rx="23" fill="#8fd6ff"/>
+  <text x="600" y="660" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#0f1720">Rule: draw the most general diagram, then test every conclusion separately</text>
+</svg>

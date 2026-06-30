@@ -1,0 +1,581 @@
+{
+  "generatedAt": "2026-06-30T06:40:08.563071+00:00",
+  "target": {
+    "score": "200/200",
+    "years": 50,
+    "minimumBookCorpusQuestions": 22000,
+    "acceptedIndexedBookGap": 650,
+    "reviewedQuestionsPerTopic": 500,
+    "minimumBookEvidencePerTopic": 1,
+    "noteCharsPerTopic": 14000,
+    "workedExamplesPerTopic": 20
+  },
+  "readyFor200": true,
+  "gates": [
+    {
+      "id": "book-corpus-completeness",
+      "label": "Uploaded-book corpus is sufficient for ranked practice",
+      "status": "pass",
+      "evidence": "22139/22823 indexed book questions promoted into ranked practice; missing 650; threshold is at least 22000 book-backed questions with at most 650 accepted import-tail gaps.",
+      "nextAction": "Keep the 650-row import tail visible, but do not block practice readiness unless the promoted book corpus falls below the accepted threshold."
+    },
+    {
+      "id": "fifty-year-ranked-corpus",
+      "label": "50-year ranked practice coverage exists",
+      "status": "pass",
+      "evidence": "50/50 years have ranked-eligible curated imports.",
+      "nextAction": "Keep year distribution visible and add official/right-cleared source evidence where possible."
+    },
+    {
+      "id": "book-pyq-provenance",
+      "label": "Uploaded book questions are treated as the PYQ-backed ranked corpus",
+      "status": "pass",
+      "evidence": "22139 reviewed questions carry book_user_provided PYQ provenance.",
+      "nextAction": "Keep every promoted book question provenance-visible and remove only exact duplicates."
+    },
+    {
+      "id": "topic-mastery",
+      "label": "Every topic has deep study material and enough total app practice",
+      "status": "pass",
+      "evidence": "46/46 topics pass total app-practice and note-depth gates.",
+      "nextAction": "Book questions remain the PYQ-backed base; supplemental drills only fill thin normalized topics for repeated practice."
+    },
+    {
+      "id": "type-system-coverage",
+      "label": "Every topic note explicitly covers corpus-derived micro-types",
+      "status": "pass",
+      "evidence": "46/46 topics cover their top corpus micro-types.",
+      "nextAction": "Use the imported questions to add missing type ladders, speed methods, traps, and examples to each note."
+    },
+    {
+      "id": "visual-study-material",
+      "label": "Every topic note has a valid visual map or image asset",
+      "status": "pass",
+      "evidence": "46/46 topic notes include valid visual assets.",
+      "nextAction": "Add or repair the topic map/image before calling the study material presentation-ready."
+    },
+    {
+      "id": "practice-explanations",
+      "label": "Every reviewed practice question has a structured method explanation",
+      "status": "pass",
+      "evidence": "29378/29378 reviewed questions carry Correct answer, Method, Why it fits, and Trap to avoid; weak=0; generic=0.",
+      "nextAction": "Regenerate or agent-review any row that falls back to an answer-only key or a generic explanation shell."
+    },
+    {
+      "id": "source-manifest",
+      "label": "Resource discovery manifest covers official, web PDF, Scribd/reference, and book lanes",
+      "status": "pass",
+      "evidence": "188 source/resource candidates recorded; lanes official=13, webPdf=112, scribdReference=7, bookReference=11.",
+      "nextAction": "Refresh with Scrapling, SearXNG/Firecrawl metadata, and uploaded-book reference lanes until no source lane is missing."
+    },
+    {
+      "id": "current-affairs",
+      "label": "Current-affairs daily brief is running",
+      "status": "pass",
+      "evidence": "lastSuccessfulDate=2026-06-30; latest=2026-06-30; summaries=18.",
+      "nextAction": "Run the Docker verifier and keep the daily server cron healthy."
+    }
+  ],
+  "corpus": {
+    "reviewedQuestions": 22139,
+    "expectedIndexedQuestions": 22823,
+    "promotedIndexedQuestions": 22139,
+    "rawPromotedIndexedQuestions": 22173,
+    "missingIndexedQuestions": 650,
+    "segmentedCandidates": 23336,
+    "answerEvidenceRows": 22432,
+    "missingAnswerEvidence": 972,
+    "stageEvidence": {
+      "source": "/app/data/exams/ssc-cgl/book-sources/mistral-ocr-import-progress.json",
+      "ocrProvider": "mistral",
+      "ocrModel": "mistral-ocr-latest",
+      "generatedAt": "2026-06-27T07:27:54.510641+00:00",
+      "totals": {
+        "sourceCount": 6,
+        "ocrJobs": 131,
+        "ocrPages": 2509,
+        "ocrMarkdownChars": 11434896,
+        "ocrQuestionSignals": 124250,
+        "segmentReports": 109,
+        "segmentPages": 2454,
+        "segmentedCandidates": 23336,
+        "ocrAnswerCandidates": 23336,
+        "ocrAnswersExtracted": 22334,
+        "ocrAnswerMatched": 22432,
+        "ocrAnswerMismatched": 5,
+        "ocrAnswerMissing": 899,
+        "topicReviewReports": 81,
+        "topicSuggestions": 9225,
+        "duplicateSuggestions": 215,
+        "agentReviewRequired": 12587,
+        "topicReviewQuarantined": 5106,
+        "agentReviewReports": 81,
+        "agentReviewItems": 385,
+        "agentProviderCalls": 770,
+        "agentDecisionsAccepted": 759,
+        "agentDecisionsRejected": 11,
+        "promotedQuestions": 22173
+      }
+    },
+    "sections": {
+      "english-comprehension": 5686,
+      "general-awareness": 6585,
+      "quantitative-aptitude": 6678,
+      "reasoning": 3190
+    },
+    "sources": {
+      "pinnacle-ssc-general-studies": 6585,
+      "ssc-maths-6800-mcq": 6372,
+      "pinnacle-ssc-english": 5686,
+      "pinnacle-ssc-reasoning": 3190,
+      "pinnacle-maths-6800-di-qr-english": 306
+    },
+    "sourceTypes": {
+      "book_user_provided": 22139
+    },
+    "yearSpan": {
+      "first": 1970,
+      "last": 2029,
+      "years": 58
+    }
+  },
+  "learnerPractice": {
+    "source": "/app/data/generated/exams/ssc-cgl/index.json",
+    "usesGeneratedExamData": true,
+    "reviewedQuestions": 29378,
+    "gapRepairQuestions": 7239,
+    "sections": {
+      "english-comprehension": 6132,
+      "general-awareness": 7902,
+      "quantitative-aptitude": 9233,
+      "reasoning": 6111
+    },
+    "sourceTypes": {
+      "book_user_provided": 22139,
+      "original_practice": 7239
+    },
+    "minimumReviewedPerTopic": 500
+  },
+  "explanations": {
+    "reviewedQuestions": 29378,
+    "structuredQuestions": 29378,
+    "weakExplanations": 0,
+    "unstructuredExplanations": 0,
+    "genericShellExplanations": 0,
+    "sampleWeakIds": [],
+    "sampleUnstructuredIds": [],
+    "sampleGenericIds": []
+  },
+  "topics": {
+    "total": 46,
+    "ready": 46,
+    "notReady": 0,
+    "microTypeCoverage": {
+      "targetMicroTypesPerTopic": 1,
+      "maxAuditedMicroTypesPerTopic": 12,
+      "topicsReady": 46,
+      "topicsWithGaps": 0
+    },
+    "visualAssetCoverage": {
+      "topicsWithVisuals": 46,
+      "topicsMissingVisuals": 0,
+      "missing": []
+    },
+    "weakest": [
+      {
+        "slug": "calculation-speed",
+        "section": "quantitative-aptitude",
+        "reviewedQuestions": 500,
+        "bookBackedQuestions": 0,
+        "gapRepairQuestions": 500,
+        "metaPracticeTopic": true,
+        "microTypes": {
+          "total": 1,
+          "covered": 1,
+          "missing": [],
+          "top": [
+            "calculation speed and option gap arithmetic"
+          ]
+        },
+        "path": "/app/docs/ssc-cgl/quant/calculation-speed.md",
+        "bodyChars": 26798,
+        "examples": 30,
+        "hasFlowchart": true,
+        "hasTrapTable": true,
+        "hasDrill": true,
+        "hasVisualAsset": true,
+        "visualAssets": [
+          "/img/ssc-cgl/calculation-speed-map.svg"
+        ],
+        "missingVisualAssets": [],
+        "ready": true,
+        "gaps": []
+      },
+      {
+        "slug": "calendar-clock",
+        "section": "reasoning",
+        "reviewedQuestions": 500,
+        "bookBackedQuestions": 13,
+        "gapRepairQuestions": 487,
+        "metaPracticeTopic": false,
+        "microTypes": {
+          "total": 1,
+          "covered": 1,
+          "missing": [],
+          "top": [
+            "calendar day and odd days"
+          ]
+        },
+        "path": "/app/docs/ssc-cgl/reasoning/calendar-clock.md",
+        "bodyChars": 22357,
+        "examples": 25,
+        "hasFlowchart": true,
+        "hasTrapTable": true,
+        "hasDrill": true,
+        "hasVisualAsset": true,
+        "visualAssets": [
+          "/img/ssc-cgl/calendar-clock-map.svg"
+        ],
+        "missingVisualAssets": [],
+        "ready": true,
+        "gaps": []
+      },
+      {
+        "slug": "statement-conclusion",
+        "section": "reasoning",
+        "reviewedQuestions": 500,
+        "bookBackedQuestions": 14,
+        "gapRepairQuestions": 488,
+        "metaPracticeTopic": false,
+        "microTypes": {
+          "total": 2,
+          "covered": 2,
+          "missing": [],
+          "top": [
+            "statement conclusion logic",
+            "argument assumption and cause effect"
+          ]
+        },
+        "path": "/app/docs/ssc-cgl/reasoning/statement-conclusion.md",
+        "bodyChars": 28305,
+        "examples": 25,
+        "hasFlowchart": true,
+        "hasTrapTable": true,
+        "hasDrill": true,
+        "hasVisualAsset": true,
+        "visualAssets": [
+          "/img/ssc-cgl/statement-conclusion-map.svg"
+        ],
+        "missingVisualAssets": [],
+        "ready": true,
+        "gaps": []
+      },
+      {
+        "slug": "direction-distance",
+        "section": "reasoning",
+        "reviewedQuestions": 500,
+        "bookBackedQuestions": 38,
+        "gapRepairQuestions": 462,
+        "metaPracticeTopic": false,
+        "microTypes": {
+          "total": 2,
+          "covered": 2,
+          "missing": [],
+          "top": [
+            "route tracing and shortest distance",
+            "facing direction turns"
+          ]
+        },
+        "path": "/app/docs/ssc-cgl/reasoning/direction-distance.md",
+        "bodyChars": 32194,
+        "examples": 25,
+        "hasFlowchart": true,
+        "hasTrapTable": true,
+        "hasDrill": true,
+        "hasVisualAsset": true,
+        "visualAssets": [
+          "/img/ssc-cgl/direction-distance-map.svg"
+        ],
+        "missingVisualAssets": [],
+        "ready": true,
+        "gaps": []
+      },
+      {
+        "slug": "probability",
+        "section": "quantitative-aptitude",
+        "reviewedQuestions": 500,
+        "bookBackedQuestions": 63,
+        "gapRepairQuestions": 437,
+        "metaPracticeTopic": false,
+        "microTypes": {
+          "total": 4,
+          "covered": 4,
+          "missing": [],
+          "top": [
+            "favorable outcomes and sample space",
+            "replacement and ball draw probability",
+            "compound and conditional probability",
+            "dice coin and card probability"
+          ]
+        },
+        "path": "/app/docs/ssc-cgl/quant/probability.md",
+        "bodyChars": 27258,
+        "examples": 25,
+        "hasFlowchart": true,
+        "hasTrapTable": true,
+        "hasDrill": true,
+        "hasVisualAsset": true,
+        "visualAssets": [
+          "/img/ssc-cgl/probability-map.svg"
+        ],
+        "missingVisualAssets": [],
+        "ready": true,
+        "gaps": []
+      },
+      {
+        "slug": "environment-ecology",
+        "section": "general-awareness",
+        "reviewedQuestions": 500,
+        "bookBackedQuestions": 68,
+        "gapRepairQuestions": 432,
+        "metaPracticeTopic": false,
+        "microTypes": {
+          "total": 2,
+          "covered": 2,
+          "missing": [],
+          "top": [
+            "environment days protocols and conservation",
+            "parks reserves and state mapping"
+          ]
+        },
+        "path": "/app/docs/ssc-cgl/ga/environment-ecology.md",
+        "bodyChars": 28926,
+        "examples": 25,
+        "hasFlowchart": true,
+        "hasTrapTable": true,
+        "hasDrill": true,
+        "hasVisualAsset": true,
+        "visualAssets": [
+          "/img/ssc-cgl/environment-ecology-map.svg"
+        ],
+        "missingVisualAssets": [],
+        "ready": true,
+        "gaps": []
+      },
+      {
+        "slug": "hcf-and-lcm",
+        "section": "quantitative-aptitude",
+        "reviewedQuestions": 500,
+        "bookBackedQuestions": 87,
+        "gapRepairQuestions": 413,
+        "metaPracticeTopic": false,
+        "microTypes": {
+          "total": 1,
+          "covered": 1,
+          "missing": [],
+          "top": [
+            "hcf and lcm"
+          ]
+        },
+        "path": "/app/docs/ssc-cgl/quant/hcf-and-lcm.md",
+        "bodyChars": 27296,
+        "examples": 20,
+        "hasFlowchart": true,
+        "hasTrapTable": true,
+        "hasDrill": true,
+        "hasVisualAsset": true,
+        "visualAssets": [
+          "/img/ssc-cgl/hcf-and-lcm-map.svg"
+        ],
+        "missingVisualAssets": [],
+        "ready": true,
+        "gaps": []
+      },
+      {
+        "slug": "computer-awareness",
+        "section": "general-awareness",
+        "reviewedQuestions": 500,
+        "bookBackedQuestions": 113,
+        "gapRepairQuestions": 387,
+        "metaPracticeTopic": false,
+        "microTypes": {
+          "total": 1,
+          "covered": 1,
+          "missing": [],
+          "top": [
+            "computer fundamentals and networking"
+          ]
+        },
+        "path": "/app/docs/ssc-cgl/ga/computer-awareness.md",
+        "bodyChars": 26517,
+        "examples": 25,
+        "hasFlowchart": true,
+        "hasTrapTable": true,
+        "hasDrill": true,
+        "hasVisualAsset": true,
+        "visualAssets": [
+          "/img/ssc-cgl/computer-awareness-map.svg"
+        ],
+        "missingVisualAssets": [],
+        "ready": true,
+        "gaps": []
+      },
+      {
+        "slug": "blood-relation",
+        "section": "reasoning",
+        "reviewedQuestions": 500,
+        "bookBackedQuestions": 118,
+        "gapRepairQuestions": 383,
+        "metaPracticeTopic": false,
+        "microTypes": {
+          "total": 2,
+          "covered": 2,
+          "missing": [],
+          "top": [
+            "family tree relation mapping",
+            "multi generation family puzzle"
+          ]
+        },
+        "path": "/app/docs/ssc-cgl/reasoning/blood-relation.md",
+        "bodyChars": 28496,
+        "examples": 25,
+        "hasFlowchart": true,
+        "hasTrapTable": true,
+        "hasDrill": true,
+        "hasVisualAsset": true,
+        "visualAssets": [
+          "/img/ssc-cgl/blood-relation-map.svg"
+        ],
+        "missingVisualAssets": [],
+        "ready": true,
+        "gaps": []
+      },
+      {
+        "slug": "simplification",
+        "section": "quantitative-aptitude",
+        "reviewedQuestions": 500,
+        "bookBackedQuestions": 126,
+        "gapRepairQuestions": 374,
+        "metaPracticeTopic": false,
+        "microTypes": {
+          "total": 1,
+          "covered": 1,
+          "missing": [],
+          "top": [
+            "simplification"
+          ]
+        },
+        "path": "/app/docs/ssc-cgl/quant/simplification.md",
+        "bodyChars": 30288,
+        "examples": 20,
+        "hasFlowchart": true,
+        "hasTrapTable": true,
+        "hasDrill": true,
+        "hasVisualAsset": true,
+        "visualAssets": [
+          "/img/ssc-cgl/simplification-map.svg"
+        ],
+        "missingVisualAssets": [],
+        "ready": true,
+        "gaps": []
+      },
+      {
+        "slug": "seating-arrangement",
+        "section": "reasoning",
+        "reviewedQuestions": 500,
+        "bookBackedQuestions": 144,
+        "gapRepairQuestions": 356,
+        "metaPracticeTopic": false,
+        "microTypes": {
+          "total": 3,
+          "covered": 3,
+          "missing": [],
+          "top": [
+            "linear row arrangement",
+            "circular seating",
+            "vertical ordering stack"
+          ]
+        },
+        "path": "/app/docs/ssc-cgl/reasoning/seating-arrangement.md",
+        "bodyChars": 27242,
+        "examples": 25,
+        "hasFlowchart": true,
+        "hasTrapTable": true,
+        "hasDrill": true,
+        "hasVisualAsset": true,
+        "visualAssets": [
+          "/img/ssc-cgl/seating-arrangement-map.svg"
+        ],
+        "missingVisualAssets": [],
+        "ready": true,
+        "gaps": []
+      },
+      {
+        "slug": "mathematical-operations",
+        "section": "reasoning",
+        "reviewedQuestions": 500,
+        "bookBackedQuestions": 157,
+        "gapRepairQuestions": 343,
+        "metaPracticeTopic": false,
+        "microTypes": {
+          "total": 3,
+          "covered": 3,
+          "missing": [],
+          "top": [
+            "bodmas equation repair",
+            "sign interchange equation repair",
+            "number interchange equation repair"
+          ]
+        },
+        "path": "/app/docs/ssc-cgl/reasoning/mathematical-operations.md",
+        "bodyChars": 24709,
+        "examples": 25,
+        "hasFlowchart": true,
+        "hasTrapTable": true,
+        "hasDrill": true,
+        "hasVisualAsset": true,
+        "visualAssets": [
+          "/img/ssc-cgl/mathematical-operations-map.svg"
+        ],
+        "missingVisualAssets": [],
+        "ready": true,
+        "gaps": []
+      }
+    ]
+  },
+  "resources": {
+    "candidates": 188,
+    "backlogYears": 50,
+    "rankedEligibleYears": 50,
+    "officialPaperYears": 0,
+    "bookPyqQuestionCount": 22139,
+    "sourceTypeCounts": {
+      "copyright_risk_reference": 4,
+      "official_login_personal": 1,
+      "official_notice_metadata": 10,
+      "official_open": 2,
+      "original_practice": 59,
+      "web_pdf_unverified": 112
+    },
+    "sourceLaneCounts": {
+      "bookReference": 11,
+      "official": 13,
+      "scribdReference": 7,
+      "webPdf": 112
+    },
+    "sourceLanes": {
+      "official": true,
+      "webPdf": true,
+      "scribdReference": true,
+      "bookReference": true
+    },
+    "missingSourceLanes": []
+  },
+  "currentAffairs": {
+    "lastSuccessfulDate": "2026-06-30",
+    "latestDailyDate": "2026-06-30",
+    "latestSummaryItems": 18,
+    "totalRuns": 5,
+    "successfulRuns": 5
+  }
+}

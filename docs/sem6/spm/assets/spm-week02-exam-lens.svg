@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 560" role="img" aria-labelledby="title desc">
+  <title id="title">Lensa ujian Minggu 2 rasionalisme</title>
+  <desc id="desc">Infografik metode rasionalisme dari keraguan metodis menuju tiga struktur realitas.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#18122b"/><stop offset="1" stop-color="#312e81"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#000" flood-opacity=".28"/></filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 10 5 0 10z" fill="#a78bfa"/></marker>
+  </defs>
+  <rect width="1400" height="560" rx="30" fill="url(#bg)"/>
+  <text x="64" y="74" fill="#fff" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="40" font-weight="800">Minggu 2 - Rasionalisme</text>
+  <text x="64" y="116" fill="#ddd6fe" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="22">Rumus ujian: indera diragukan, rasio mencari dasar pasti, realitas disusun secara sistematis.</text>
+  <g font-family="Inter,Segoe UI,Arial,sans-serif" filter="url(#shadow)">
+    <rect x="80" y="180" width="310" height="130" rx="22" fill="#faf5ff"/>
+    <text x="115" y="225" fill="#6b21a8" font-size="28" font-weight="800">Masalah</text>
+    <text x="115" y="263" fill="#3b0764" font-size="21">Indera bisa keliru,</text>
+    <text x="115" y="294" fill="#3b0764" font-size="21">maka perlu kepastian.</text>
+    <rect x="545" y="180" width="310" height="130" rx="22" fill="#eef2ff"/>
+    <text x="580" y="225" fill="#4338ca" font-size="28" font-weight="800">Metode</text>
+    <text x="580" y="263" fill="#312e81" font-size="21">Keraguan metodis</text>
+    <text x="580" y="294" fill="#312e81" font-size="21">dan ide yang jelas.</text>
+    <rect x="1010" y="180" width="310" height="130" rx="22" fill="#ecfeff"/>
+    <text x="1045" y="225" fill="#0e7490" font-size="28" font-weight="800">Hasil</text>
+    <text x="1045" y="263" fill="#164e63" font-size="21">Pengetahuan pasti,</text>
+    <text x="1045" y="294" fill="#164e63" font-size="21">universal, sistematis.</text>
+  </g>
+  <g stroke="#a78bfa" stroke-width="5" marker-end="url(#arrow)"><path d="M400 246 H535"/><path d="M865 246 H1000"/></g>
+  <g font-family="Inter,Segoe UI,Arial,sans-serif">
+    <rect x="80" y="380" width="380" height="90" rx="22" fill="#1e1b4b" stroke="#c4b5fd"/>
+    <text x="112" y="416" fill="#c4b5fd" font-size="24" font-weight="800">Descartes</text>
+    <text x="112" y="452" fill="#f5f3ff" font-size="21">Dualisme: pikiran dan materi.</text>
+    <rect x="510" y="380" width="380" height="90" rx="22" fill="#1e1b4b" stroke="#c4b5fd"/>
+    <text x="542" y="416" fill="#c4b5fd" font-size="24" font-weight="800">Spinoza</text>
+    <text x="542" y="452" fill="#f5f3ff" font-size="21">Monisme: satu substansi.</text>
+    <rect x="940" y="380" width="380" height="90" rx="22" fill="#1e1b4b" stroke="#c4b5fd"/>
+    <text x="972" y="416" fill="#c4b5fd" font-size="24" font-weight="800">Leibniz</text>
+    <text x="972" y="452" fill="#f5f3ff" font-size="21">Pluralisme: banyak monade.</text>
+  </g>
+</svg>

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-labelledby="title desc">
+  <title id="title">SSC CGL analogy and classification relation map</title>
+  <desc id="desc">A compact reasoning map showing relation families for analogy and odd-one-out classification.</desc>
+  <rect width="960" height="520" fill="#111827"/>
+  <rect x="28" y="28" width="904" height="464" rx="20" fill="#172033" stroke="#a7f3d0" stroke-width="2"/>
+  <text x="480" y="70" text-anchor="middle" fill="#f9fafb" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">1285-Question Analogy + Classification Map</text>
+  <text x="480" y="100" text-anchor="middle" fill="#d1d5db" font-family="Inter, Arial, sans-serif" font-size="15">Scribd book-PYQ stream: classify in 5 seconds, solve in 20-25 seconds, protect the 15-minute Reasoning section.</text>
+
+  <g font-family="Inter, Arial, sans-serif" font-size="15">
+    <rect x="62" y="135" width="250" height="120" rx="14" fill="#ecfdf5"/>
+    <text x="187" y="162" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">Word Relations</text>
+    <text x="82" y="193" fill="#0f172a">Tool -> action</text>
+    <text x="82" y="218" fill="#0f172a">Part -> whole; class -> member</text>
+    <text x="82" y="243" fill="#0f172a">Cause -> effect; synonym/antonym</text>
+
+    <rect x="355" y="135" width="250" height="120" rx="14" fill="#eff6ff"/>
+    <text x="480" y="162" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">Number Relations</text>
+    <text x="375" y="193" fill="#0f172a">Square, cube, double, half</text>
+    <text x="375" y="218" fill="#0f172a">+n, -n, x n, divide n</text>
+    <text x="375" y="243" fill="#0f172a">Digit sum, product, reverse</text>
+
+    <rect x="648" y="135" width="250" height="120" rx="14" fill="#fef3c7"/>
+    <text x="773" y="162" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">Letter Relations</text>
+    <text x="668" y="193" fill="#0f172a">A=1 positions</text>
+    <text x="668" y="218" fill="#0f172a">Forward/backward shifts</text>
+    <text x="668" y="243" fill="#0f172a">Alternate letters, reverse, gaps</text>
+
+    <rect x="62" y="310" width="250" height="115" rx="14" fill="#fce7f3"/>
+    <text x="187" y="337" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">Classification</text>
+    <text x="82" y="369" fill="#0f172a">Find property shared by 3</text>
+    <text x="82" y="394" fill="#0f172a">Reject broad labels</text>
+    <text x="82" y="419" fill="#0f172a">Odd one breaks the exact rule</text>
+
+    <rect x="355" y="310" width="250" height="115" rx="14" fill="#f5f3ff"/>
+    <text x="480" y="337" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">5-Second Classifier</text>
+    <text x="375" y="369" fill="#0f172a">1. Analogy or odd one out</text>
+    <text x="375" y="394" fill="#0f172a">2. Word, number, or letter</text>
+    <text x="375" y="419" fill="#0f172a">3. Exact relation phrase</text>
+
+    <rect x="648" y="310" width="250" height="115" rx="14" fill="#fee2e2"/>
+    <text x="773" y="337" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">Trap Filter</text>
+    <text x="668" y="369" fill="#0f172a">Direction reversed?</text>
+    <text x="668" y="394" fill="#0f172a">Partial relation only?</text>
+    <text x="668" y="419" fill="#0f172a">Two operations hidden?</text>
+  </g>
+
+  <g stroke="#a7f3d0" stroke-width="3" fill="none" marker-end="url(#arrow)">
+    <path d="M312 195 H355"/>
+    <path d="M605 195 H648"/>
+    <path d="M187 255 V310"/>
+    <path d="M480 255 V310"/>
+    <path d="M773 255 V310"/>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#a7f3d0"/>
+    </marker>
+  </defs>
+</svg>

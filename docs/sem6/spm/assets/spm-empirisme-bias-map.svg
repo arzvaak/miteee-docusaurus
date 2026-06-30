@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-labelledby="title desc">
+  <title id="title">Empirisme dan pembersihan pengalaman</title>
+  <desc id="desc">Infografik Bacon, Hobbes, Locke, dan masalah pengalaman.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#082f49"/><stop offset=".52" stop-color="#172554"/><stop offset="1" stop-color="#261444"/></linearGradient>
+    <filter id="sh"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-opacity=".32"/></filter>
+    <style>
+      .h{font:900 38px Inter,Arial,sans-serif;fill:#fff}.sub{font:600 17px Inter,Arial,sans-serif;fill:#cbd5e1}
+      .k{font:850 24px Inter,Arial,sans-serif;fill:#fff}.t{font:650 17px Inter,Arial,sans-serif;fill:#e5e7eb}.sm{font:650 14px Inter,Arial,sans-serif;fill:#cbd5e1}
+      .card{fill:rgba(15,23,42,.80);stroke:rgba(255,255,255,.18);stroke-width:2}
+    </style>
+  </defs>
+  <rect width="1280" height="760" rx="34" fill="url(#bg)"/>
+  <text x="58" y="72" class="h">Empirisme: Pengalaman Perlu Dibersihkan</text>
+  <text x="60" y="108" class="sub">Empirisme tidak berarti asal melihat; pengalaman harus diuji dari bias, bahasa, dan kepentingan.</text>
+  <g filter="url(#sh)">
+    <rect x="70" y="170" width="330" height="410" rx="28" class="card"/>
+    <text x="112" y="225" class="k">Bacon</text>
+    <text x="112" y="272" class="t">metode induktif</text>
+    <text x="112" y="312" class="t">empat idola</text>
+    <text x="112" y="374" class="sm">tribus: bias manusia umum</text>
+    <text x="112" y="404" class="sm">specus: bias pribadi</text>
+    <text x="112" y="434" class="sm">fori: bahasa menyesatkan</text>
+    <text x="112" y="464" class="sm">theatri: sistem lama</text>
+    <rect x="475" y="170" width="330" height="410" rx="28" class="card"/>
+    <text x="517" y="225" class="k">Hobbes</text>
+    <text x="517" y="272" class="t">manusia material</text>
+    <text x="517" y="312" class="t">negara kuat</text>
+    <text x="517" y="374" class="sm">pengalaman tentang konflik</text>
+    <text x="517" y="404" class="sm">mendorong kontrak sosial</text>
+    <text x="517" y="434" class="sm">keamanan lebih utama</text>
+    <rect x="880" y="170" width="330" height="410" rx="28" class="card"/>
+    <text x="922" y="225" class="k">Locke</text>
+    <text x="922" y="272" class="t">tabula rasa</text>
+    <text x="922" y="312" class="t">hak alamiah</text>
+    <text x="922" y="374" class="sm">pengetahuan dari pengalaman</text>
+    <text x="922" y="404" class="sm">negara melindungi hak</text>
+    <text x="922" y="434" class="sm">lebih moderat dari Hobbes</text>
+    <path d="M400 375H470M805 375H875" stroke="#67e8f9" stroke-width="8" stroke-linecap="round"/>
+    <polygon points="460,354 500,375 460,396" fill="#67e8f9"/><polygon points="865,354 905,375 865,396" fill="#67e8f9"/>
+    <rect x="255" y="635" width="770" height="70" rx="22" fill="rgba(255,255,255,.10)" stroke="rgba(255,255,255,.22)" stroke-width="2"/>
+    <text x="310" y="679" class="t">Kalimat kunci: pengalaman adalah awal, tetapi metode menentukan apakah pengalaman menjadi ilmu.</text>
+  </g>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 640" role="img" aria-labelledby="title desc">
+  <title id="title">Sistem kartu kilat tiga hari SPM</title>
+  <desc id="desc">Infografik tiga hari terakhir belajar Sejarah Pemikiran Modern dengan siklus recall aktif.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#1f3b5f"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#000" flood-opacity=".28"/>
+    </filter>
+  </defs>
+  <rect width="1400" height="640" rx="34" fill="url(#bg)"/>
+  <g font-family="Inter,Segoe UI,Arial,sans-serif">
+    <text x="64" y="78" fill="#f8fafc" font-size="42" font-weight="850">Kartu Kilat 3 Hari</text>
+    <text x="64" y="120" fill="#bfdbfe" font-size="22">Gunakan kartu ini untuk recall aktif: tutup catatan, jawab, cek, ulang.</text>
+    <g filter="url(#shadow)">
+      <rect x="72" y="180" width="370" height="230" rx="26" fill="#eff6ff"/>
+      <text x="112" y="232" fill="#1d4ed8" font-size="32" font-weight="850">Hari 1</text>
+      <text x="112" y="276" fill="#1e3a8a" font-size="22">Fondasi kronologis</text>
+      <text x="112" y="314" fill="#1e3a8a" font-size="20">Yunani, Abad Tengah,</text>
+      <text x="112" y="346" fill="#1e3a8a" font-size="20">Renaissance, rasionalisme,</text>
+      <text x="112" y="378" fill="#1e3a8a" font-size="20">empirisme, Kant.</text>
+      <rect x="515" y="180" width="370" height="230" rx="26" fill="#f5f3ff"/>
+      <text x="555" y="232" fill="#6d28d9" font-size="32" font-weight="850">Hari 2</text>
+      <text x="555" y="276" fill="#4c1d95" font-size="22">Reaksi setelah Hegel</text>
+      <text x="555" y="314" fill="#4c1d95" font-size="20">Idealisme, objektivisme,</text>
+      <text x="555" y="346" fill="#4c1d95" font-size="20">subjektivisme, dan pola</text>
+      <text x="555" y="378" fill="#4c1d95" font-size="20">menerima atau menolak Hegel.</text>
+      <rect x="958" y="180" width="370" height="230" rx="26" fill="#ecfdf5"/>
+      <text x="998" y="232" fill="#15803d" font-size="32" font-weight="850">Hari 3</text>
+      <text x="998" y="276" fill="#14532d" font-size="22">Latihan esai penuh</text>
+      <text x="998" y="314" fill="#14532d" font-size="20">Kontemporer, feminisme,</text>
+      <text x="998" y="346" fill="#14532d" font-size="20">pascastrukturalisme, dan</text>
+      <text x="998" y="378" fill="#14532d" font-size="20">jawaban model 5 paragraf.</text>
+    </g>
+    <path d="M448 294 H502M891 294 H945" stroke="#fbbf24" stroke-width="7" stroke-linecap="round"/>
+    <rect x="145" y="480" width="1110" height="92" rx="26" fill="#020617" stroke="#38bdf8"/>
+    <text x="184" y="518" fill="#7dd3fc" font-size="25" font-weight="850">Satu siklus kartu</text>
+    <text x="184" y="553" fill="#e0f2fe" font-size="22">Lihat kata kunci 10 detik -> tutup halaman -> jawab 60 detik -> cek konsep yang hilang.</text>
+  </g>
+</svg>

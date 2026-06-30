@@ -1,0 +1,23 @@
+{
+  "generatedAt": "2026-06-27T07:17:24.776435+00:00",
+  "scannedAlignedCandidates": 23336,
+  "candidatesWithAnswerConsensus": 22432,
+  "candidatesWithAgentReview": 0,
+  "candidatesWithTrustedBookGate": 22432,
+  "promotedQuestions": 22173,
+  "rejected": {
+    "inactive_book_source": 0,
+    "missing_answer_consensus": 904,
+    "missing_agent_review": 0,
+    "weak_agent_review": 0,
+    "invalid_projection": 243,
+    "duplicate_stem": 16
+  },
+  "outputPath": "G:\\MITEEE\\data\\exams\\ssc-cgl\\book-imports\\questions.json",
+  "rankedEligible": true,
+  "warnings": [
+    "Promoted rows are a curated projection; raw alignment and review artifacts remain the audit trail.",
+    "Promotion requires answer evidence, topic normalization, source provenance, valid four-option format, and duplicate filtering.",
+    "Trusted uploaded-book rows can bypass model-agent review only with --trust-book-format-dedupe; untrusted web sources still require agent review."
+  ]
+}

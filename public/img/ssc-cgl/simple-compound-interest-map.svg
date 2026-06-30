@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">SSC CGL Simple and Compound Interest decision map</title>
+  <desc id="desc">A compact map for classifying simple interest, compound interest, difference, reverse, installment, effective rate, growth, and depreciation questions.</desc>
+  <rect width="1200" height="720" fill="#f8fafc"/>
+  <rect x="48" y="40" width="1104" height="92" rx="18" fill="#111827"/>
+  <text x="82" y="88" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#ffffff">Simple and Compound Interest 36-Second Map</text>
+  <text x="82" y="118" font-family="Arial, sans-serif" font-size="18" fill="#cbd5e1">Classify first, choose multiplier/formula, then calculate with cancellation or option testing.</text>
+
+  <g font-family="Arial, sans-serif">
+    <rect x="60" y="170" width="330" height="182" rx="14" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+    <text x="88" y="208" font-size="24" font-weight="700" fill="#0f172a">Simple Interest</text>
+    <text x="88" y="246" font-size="18" fill="#1e293b">SI = P x R x T / 100</text>
+    <text x="88" y="276" font-size="18" fill="#1e293b">Amount = P + SI</text>
+    <text x="88" y="306" font-size="18" fill="#1e293b">Convert months to years</text>
+
+    <rect x="435" y="170" width="330" height="182" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/>
+    <text x="463" y="208" font-size="24" font-weight="700" fill="#0f172a">Compound Interest</text>
+    <text x="463" y="246" font-size="18" fill="#1e293b">A = P(1+R/100)^T</text>
+    <text x="463" y="276" font-size="18" fill="#1e293b">CI = A - P</text>
+    <text x="463" y="306" font-size="18" fill="#1e293b">Half-yearly: R/2 and 2T</text>
+
+    <rect x="810" y="170" width="330" height="182" rx="14" fill="#fef3c7" stroke="#d97706" stroke-width="3"/>
+    <text x="838" y="208" font-size="24" font-weight="700" fill="#0f172a">Difference</text>
+    <text x="838" y="246" font-size="18" fill="#1e293b">2 years: P(R/100)^2</text>
+    <text x="838" y="276" font-size="18" fill="#1e293b">3 years: P(R/100)^2(R/100+3)</text>
+    <text x="838" y="306" font-size="18" fill="#1e293b">Use fractions for 12.5%, 25%</text>
+
+    <rect x="60" y="420" width="330" height="182" rx="14" fill="#ede9fe" stroke="#7c3aed" stroke-width="3"/>
+    <text x="88" y="458" font-size="24" font-weight="700" fill="#0f172a">Reverse</text>
+    <text x="88" y="496" font-size="18" fill="#1e293b">P = A / multiplier</text>
+    <text x="88" y="526" font-size="18" fill="#1e293b">Rate: match multiplier or options</text>
+    <text x="88" y="556" font-size="18" fill="#1e293b">Time: compare powers</text>
+
+    <rect x="435" y="420" width="330" height="182" rx="14" fill="#fee2e2" stroke="#dc2626" stroke-width="3"/>
+    <text x="463" y="458" font-size="24" font-weight="700" fill="#0f172a">Growth / Depreciation</text>
+    <text x="463" y="496" font-size="18" fill="#1e293b">Growth: P(1+r/100)^t</text>
+    <text x="463" y="526" font-size="18" fill="#1e293b">Depreciation: P(1-r/100)^t</text>
+    <text x="463" y="556" font-size="18" fill="#1e293b">Mixed rate: multiply factors</text>
+
+    <rect x="810" y="420" width="330" height="182" rx="14" fill="#f1f5f9" stroke="#475569" stroke-width="3"/>
+    <text x="838" y="458" font-size="24" font-weight="700" fill="#0f172a">Installment / Effective</text>
+    <text x="838" y="496" font-size="18" fill="#1e293b">Installment: present value</text>
+    <text x="838" y="526" font-size="18" fill="#1e293b">Use option testing first</text>
+    <text x="838" y="556" font-size="18" fill="#1e293b">Effective: successive percentage</text>
+  </g>
+
+  <path d="M390 261 C412 261 412 261 435 261" fill="none" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
+  <path d="M765 261 C788 261 788 261 810 261" fill="none" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
+  <path d="M225 352 C225 384 225 384 225 420" fill="none" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
+  <path d="M600 352 C600 384 600 384 600 420" fill="none" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
+  <path d="M975 352 C975 384 975 384 975 420" fill="none" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,16 @@
+services:
+  ssc-cgl-news:
+    build:
+      context: .
+      dockerfile: docker/ssc-cgl-news.Dockerfile
+    container_name: miteee-ssc-cgl-news
+    restart: unless-stopped
+    working_dir: /app
+    environment:
+      TZ: Asia/Kolkata
+      MISTRAL_MODEL: ${MISTRAL_MODEL:-mistral-small-latest}
+      MISTRAL_API_KEY: ${MISTRAL_API_KEY:-}
+      CURRENT_AFFAIRS_DATA_ROOT: /app/data/current-affairs
+    volumes:
+      - ./:/app:Z
+    command: ["cron", "-f"]

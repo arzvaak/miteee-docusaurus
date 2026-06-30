@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-labelledby="title desc">
+  <title id="title">Detektor kesalahan jawaban esai Sejarah Pemikiran Modern</title>
+  <desc id="desc">Infografik jebakan umum dalam jawaban esai dan cara memperbaikinya sebelum ujian.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff8ef"/>
+      <stop offset=".5" stop-color="#f2f9f6"/>
+      <stop offset="1" stop-color="#eef4ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-8%" y="-8%" width="116%" height="116%">
+      <feDropShadow dx="0" dy="12" stdDeviation="13" flood-color="#22313a" flood-opacity=".16"/>
+    </filter>
+    <style>
+      .title{font:800 40px Arial,Helvetica,sans-serif;fill:#16242c}
+      .sub{font:500 21px Arial,Helvetica,sans-serif;fill:#43545b}
+      .card{fill:#fffef9;stroke:#dce3db;stroke-width:2;rx:24;filter:url(#shadow)}
+      .bad{fill:#fff0ed;stroke:#d9968b;stroke-width:2;rx:18}
+      .good{fill:#eef9f4;stroke:#88bba3;stroke-width:2;rx:18}
+      .h{font:800 24px Arial,Helvetica,sans-serif;fill:#17262d}
+      .p{font:500 18px Arial,Helvetica,sans-serif;fill:#405158}
+      .label{font:800 18px Arial,Helvetica,sans-serif;fill:#ffffff}
+      .arrow{stroke:#2c6b64;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;fill:none}
+      .x{stroke:#b8543c;stroke-width:7;stroke-linecap:round}
+      .check{stroke:#2c6b64;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;fill:none}
+    </style>
+  </defs>
+  <rect width="1280" height="760" fill="url(#bg)"/>
+  <text x="70" y="76" class="title">Detektor Kesalahan Esai</text>
+  <text x="72" y="114" class="sub">Sebelum mengumpulkan jawaban, cek lima jebakan ini dalam 90 detik.</text>
+  <g transform="translate(70 160)">
+    <rect width="1140" height="506" class="card"/>
+    <g transform="translate(44 48)">
+      <rect width="430" height="76" class="bad"/>
+      <circle cx="38" cy="38" r="22" fill="#b8543c"/><path class="x" d="M30 30l16 16M46 30L30 46"/>
+      <text x="78" y="32" class="h">Jebakan 1: definisi saja</text>
+      <text x="78" y="58" class="p">Tidak ada alur sebab-akibat historis.</text>
+      <path class="arrow" d="M486 38h82"/>
+      <rect x="584" width="430" height="76" class="good"/>
+      <circle cx="622" cy="38" r="22" fill="#2c6b64"/><path class="check" d="M612 39l8 8 15-19"/>
+      <text x="662" y="32" class="h">Perbaiki: tambah kronologi</text>
+      <text x="662" y="58" class="p">Tulis posisi tokoh dalam urutan reaksi.</text>
+    </g>
+    <g transform="translate(44 144)">
+      <rect width="430" height="76" class="bad"/>
+      <circle cx="38" cy="38" r="22" fill="#b8543c"/><path class="x" d="M30 30l16 16M46 30L30 46"/>
+      <text x="78" y="32" class="h">Jebakan 2: tokoh tertukar</text>
+      <text x="78" y="58" class="p">Spinoza, Leibniz, atau Descartes bercampur.</text>
+      <path class="arrow" d="M486 38h82"/>
+      <rect x="584" width="430" height="76" class="good"/>
+      <circle cx="622" cy="38" r="22" fill="#2c6b64"/><path class="check" d="M612 39l8 8 15-19"/>
+      <text x="662" y="32" class="h">Perbaiki: rumus pembeda</text>
+      <text x="662" y="58" class="p">Dualisme, monisme, pluralisme.</text>
+    </g>
+    <g transform="translate(44 240)">
+      <rect width="430" height="76" class="bad"/>
+      <circle cx="38" cy="38" r="22" fill="#b8543c"/><path class="x" d="M30 30l16 16M46 30L30 46"/>
+      <text x="78" y="32" class="h">Jebakan 3: Kant jadi campuran</text>
+      <text x="78" y="58" class="p">Jawaban berhenti pada rasio plus pengalaman.</text>
+      <path class="arrow" d="M486 38h82"/>
+      <rect x="584" width="430" height="76" class="good"/>
+      <circle cx="622" cy="38" r="22" fill="#2c6b64"/><path class="check" d="M612 39l8 8 15-19"/>
+      <text x="662" y="32" class="h">Perbaiki: syarat pengetahuan</text>
+      <text x="662" y="58" class="p">Isi dari pengalaman, bentuk dari rasio.</text>
+    </g>
+    <g transform="translate(44 336)">
+      <rect width="430" height="76" class="bad"/>
+      <circle cx="38" cy="38" r="22" fill="#b8543c"/><path class="x" d="M30 30l16 16M46 30L30 46"/>
+      <text x="78" y="32" class="h">Jebakan 4: Marx tanpa material</text>
+      <text x="78" y="58" class="p">Dialektika disebut, kelas sosial hilang.</text>
+      <path class="arrow" d="M486 38h82"/>
+      <rect x="584" width="430" height="76" class="good"/>
+      <circle cx="622" cy="38" r="22" fill="#2c6b64"/><path class="check" d="M612 39l8 8 15-19"/>
+      <text x="662" y="32" class="h">Perbaiki: balik Hegel</text>
+      <text x="662" y="58" class="p">Ide menjadi kondisi material dan konflik kelas.</text>
+    </g>
+  </g>
+  <rect x="205" y="698" width="870" height="42" rx="21" fill="#253841"/>
+  <text x="282" y="725" class="label">Prinsip cepat: setiap jawaban harus menjawab siapa, kapan, konsep apa, lawannya siapa, dan mengapa penting.</text>
+</svg>

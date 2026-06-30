@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-labelledby="title desc">
+  <title id="title">Idealisme Jerman dan dialektika</title>
+  <desc id="desc">Infografik Fichte, Schelling, Hegel, dan dialektika.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#17102e"/><stop offset=".55" stop-color="#2f235d"/><stop offset="1" stop-color="#0b3a48"/></linearGradient>
+    <filter id="sh"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-opacity=".32"/></filter>
+    <style>
+      .h{font:900 38px Inter,Arial,sans-serif;fill:#fff}.sub{font:600 17px Inter,Arial,sans-serif;fill:#cbd5e1}
+      .k{font:850 24px Inter,Arial,sans-serif;fill:#fff}.t{font:650 17px Inter,Arial,sans-serif;fill:#e5e7eb}.sm{font:650 14px Inter,Arial,sans-serif;fill:#cbd5e1}
+      .card{fill:rgba(15,23,42,.80);stroke:rgba(255,255,255,.18);stroke-width:2}
+    </style>
+  </defs>
+  <rect width="1280" height="760" rx="34" fill="url(#bg)"/>
+  <text x="58" y="72" class="h">Idealisme Jerman: Dari Aku ke Sejarah</text>
+  <text x="60" y="108" class="sub">Fichte, Schelling, dan Hegel sama-sama menolak realitas sebagai benda pasif yang berdiri lepas dari subjek.</text>
+  <g filter="url(#sh)">
+    <rect x="70" y="185" width="300" height="245" rx="28" class="card"/>
+    <text x="115" y="245" class="k">Fichte</text>
+    <text x="115" y="294" class="t">Aku absolut</text>
+    <text x="115" y="334" class="t">melahirkan bukan-aku</text>
+    <text x="115" y="388" class="sm">subjek aktif menjadi pusat</text>
+    <rect x="490" y="185" width="300" height="245" rx="28" class="card"/>
+    <text x="535" y="245" class="k">Schelling</text>
+    <text x="535" y="294" class="t">identitas absolut</text>
+    <text x="535" y="334" class="t">alam dan roh satu asal</text>
+    <text x="535" y="388" class="sm">menjembatani subjek-objek</text>
+    <rect x="910" y="185" width="300" height="245" rx="28" class="card"/>
+    <text x="955" y="245" class="k">Hegel</text>
+    <text x="955" y="294" class="t">roh bergerak historis</text>
+    <text x="955" y="334" class="t">melalui dialektika</text>
+    <text x="955" y="388" class="sm">puncak sistem idealisme</text>
+    <path d="M370 308H480M790 308H900" stroke="#67e8f9" stroke-width="8" stroke-linecap="round"/>
+    <polygon points="470,287 510,308 470,329" fill="#67e8f9"/><polygon points="890,287 930,308 890,329" fill="#67e8f9"/>
+    <rect x="280" y="525" width="720" height="120" rx="28" fill="rgba(255,255,255,.10)" stroke="rgba(255,255,255,.22)" stroke-width="2"/>
+    <text x="365" y="575" class="k">Dialektika untuk jawaban esai</text>
+    <text x="365" y="620" class="t">Pertentangan bukan akhir; ia mendorong perkembangan menuju bentuk baru.</text>
+  </g>
+</svg>

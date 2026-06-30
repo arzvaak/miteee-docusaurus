@@ -1,0 +1,245 @@
+{
+  "generatedAt": "2026-06-25T00:00:00.000Z",
+  "policy": "Heuristic topic hints for review triage only. Human/provenance review is still required before ranked use.",
+  "topics": [
+    {
+      "id": "indian-polity-basics",
+      "topic": "indian-polity-basics",
+      "subtopic": "Constitution, articles, bodies, rights",
+      "section": "general-awareness",
+      "difficulty": "medium",
+      "keywords": ["constitution", "article", "fundamental right", "directive principle", "parliament", "president", "supreme court", "equality before law"]
+    },
+    {
+      "id": "history-freedom-movement",
+      "topic": "history-freedom-movement",
+      "subtopic": "Modern Indian history and freedom movement",
+      "section": "general-awareness",
+      "difficulty": "medium",
+      "keywords": ["movement", "congress session", "viceroy", "act of", "revolt", "freedom", "gandhi", "moderates", "extremists"]
+    },
+    {
+      "id": "geography-india-world",
+      "topic": "geography-india-world",
+      "subtopic": "Physical and Indian geography",
+      "section": "general-awareness",
+      "difficulty": "medium",
+      "keywords": ["river", "mountain", "soil", "climate", "monsoon", "state", "crop", "mineral", "plateau", "coast"]
+    },
+    {
+      "id": "economics-budget-banking",
+      "topic": "economics-budget-banking",
+      "subtopic": "Economy, banking, budget, RBI",
+      "section": "general-awareness",
+      "difficulty": "medium",
+      "keywords": ["rbi", "repo", "inflation", "budget", "fiscal", "bank", "gdp", "tax", "deficit", "monetary policy"]
+    },
+    {
+      "id": "science-everyday",
+      "topic": "science-everyday",
+      "subtopic": "General science and applications",
+      "section": "general-awareness",
+      "difficulty": "medium",
+      "keywords": ["vitamin", "disease", "unit", "force", "acid", "base", "metal", "cell", "organ", "electric"]
+    },
+    {
+      "id": "percentages",
+      "topic": "percentages",
+      "subtopic": "Percentage and successive change",
+      "section": "quantitative-aptitude",
+      "difficulty": "easy",
+      "chapterSlugs": ["percentage"],
+      "keywords": ["percent", "percentage", "%", "successive", "increase", "decrease"]
+    },
+    {
+      "id": "number-system",
+      "topic": "number-system",
+      "subtopic": "Number system, divisibility, remainders, roots, indices",
+      "section": "quantitative-aptitude",
+      "difficulty": "medium",
+      "chapterSlugs": ["number-system"],
+      "keywords": ["prime", "composite", "divisible", "divisibility", "remainder", "binary", "integer", "rational", "irrational", "perfect square", "unit digit", "square root", "natural numbers", "whole numbers"]
+    },
+    {
+      "id": "hcf-and-lcm",
+      "topic": "hcf-and-lcm",
+      "subtopic": "HCF, LCM, factors, multiples and divisibility applications",
+      "section": "quantitative-aptitude",
+      "difficulty": "medium",
+      "chapterSlugs": ["hcf-and-lcm"],
+      "keywords": ["hcf", "lcm", "highest common factor", "least common multiple", "common factor", "common multiple", "coprime", "divisor", "multiple", "factor"]
+    },
+    {
+      "id": "algebra",
+      "topic": "algebra",
+      "subtopic": "Algebraic identities, equations, factors, roots and expressions",
+      "section": "quantitative-aptitude",
+      "difficulty": "medium",
+      "chapterSlugs": ["algebra"],
+      "keywords": ["algebra", "equation", "identity", "factor", "factorisation", "polynomial", "quadratic", "cubic", "root", "x +", "x -"]
+    },
+    {
+      "id": "simplification",
+      "topic": "simplification",
+      "subtopic": "BODMAS, surds, indices, approximation and arithmetic simplification",
+      "section": "quantitative-aptitude",
+      "difficulty": "medium",
+      "chapterSlugs": ["simplification"],
+      "keywords": ["simplify", "simplification", "bodmas", "surds", "indices", "approximate", "value of", "square root", "cube root", "fraction", "decimal"]
+    },
+    {
+      "id": "trigonometry",
+      "topic": "trigonometry",
+      "subtopic": "Trigonometric ratios, identities, values and equations",
+      "section": "quantitative-aptitude",
+      "difficulty": "medium",
+      "chapterSlugs": ["trigonometry", "height-and-distance"],
+      "keywords": ["sin", "cos", "tan", "cot", "sec", "cosec", "trigonometric", "theta", "identity", "angle"]
+    },
+    {
+      "id": "ratio-proportion",
+      "topic": "ratio-proportion",
+      "subtopic": "Ratio, proportion, partnership",
+      "section": "quantitative-aptitude",
+      "difficulty": "medium",
+      "chapterSlugs": ["ratio-and-proportion", "partnership"],
+      "keywords": ["ratio", "proportion", "partnership", "share", "divided in"]
+    },
+    {
+      "id": "averages-mixtures-alligation",
+      "topic": "averages-mixtures-alligation",
+      "subtopic": "Average, mixture, alligation, weighted mean and central tendency",
+      "section": "quantitative-aptitude",
+      "difficulty": "medium",
+      "chapterSlugs": ["mixture-and-alligation", "average", "mean-median-mode"],
+      "keywords": ["average", "mean", "median", "mode", "mixture", "alligation", "weighted"]
+    },
+    {
+      "id": "profit-loss-discount",
+      "topic": "profit-loss-discount",
+      "subtopic": "Profit, loss, markup, discount and selling price",
+      "section": "quantitative-aptitude",
+      "difficulty": "medium",
+      "chapterSlugs": ["profit-and-loss", "discount"],
+      "keywords": ["profit", "loss", "discount", "marked price", "selling price", "cost price"]
+    },
+    {
+      "id": "simple-compound-interest",
+      "topic": "simple-compound-interest",
+      "subtopic": "Simple interest, compound interest and installments",
+      "section": "quantitative-aptitude",
+      "difficulty": "medium",
+      "chapterSlugs": ["simple-interest", "compound-interest", "installment"],
+      "keywords": ["simple interest", "compound interest", "installment", "principal", "amount", "rate of interest"]
+    },
+    {
+      "id": "time-work-pipes",
+      "topic": "time-work-pipes",
+      "subtopic": "Work, wages, pipes and cisterns",
+      "section": "quantitative-aptitude",
+      "difficulty": "medium",
+      "chapterSlugs": ["work-and-time", "pipe-and-cistern"],
+      "keywords": ["work", "pipe", "cistern", "fill", "empty", "efficiency", "days"]
+    },
+    {
+      "id": "time-speed-distance",
+      "topic": "time-speed-distance",
+      "subtopic": "Speed, trains, boats, races",
+      "section": "quantitative-aptitude",
+      "difficulty": "medium",
+      "chapterSlugs": ["time-speed-and-distance", "linear-circular-race", "boat-and-stream"],
+      "keywords": ["speed", "distance", "train", "boat", "stream", "km h", "m s", "relative speed"]
+    },
+    {
+      "id": "geometry-mensuration",
+      "topic": "geometry-mensuration",
+      "subtopic": "Geometry and mensuration",
+      "section": "quantitative-aptitude",
+      "difficulty": "medium",
+      "chapterSlugs": ["mensuration", "geometry", "coordinate-geometry"],
+      "keywords": ["triangle", "circle", "area", "volume", "surface area", "cylinder", "cone", "sphere", "angle"]
+    },
+    {
+      "id": "data-interpretation",
+      "topic": "data-interpretation",
+      "subtopic": "Tables, charts, data sets, percentage comparison and arithmetic interpretation",
+      "section": "quantitative-aptitude",
+      "difficulty": "medium",
+      "chapterSlugs": ["data-interpretation"],
+      "keywords": ["table", "chart", "bar graph", "pie chart", "data", "appeared candidates", "qualified candidates"]
+    },
+    {
+      "id": "probability",
+      "topic": "probability",
+      "subtopic": "Probability, events, cards, dice, balls, arrangements and favourable outcomes",
+      "section": "quantitative-aptitude",
+      "difficulty": "medium",
+      "chapterSlugs": ["probability"],
+      "keywords": ["probability", "event", "favourable", "favorable", "dice", "card", "bag", "balls", "marble"]
+    },
+    {
+      "id": "analogy-classification",
+      "topic": "analogy-classification",
+      "subtopic": "Analogy, classification, odd one out",
+      "section": "reasoning",
+      "difficulty": "easy",
+      "keywords": ["analogy", "classification", "odd", "similar relation", "belongs to"]
+    },
+    {
+      "id": "series-coding",
+      "topic": "series-coding",
+      "subtopic": "Series and coding-decoding",
+      "section": "reasoning",
+      "difficulty": "medium",
+      "keywords": ["series", "coding", "coded", "letter", "alphabet", "number series"]
+    },
+    {
+      "id": "blood-relation",
+      "topic": "blood-relation",
+      "subtopic": "Blood relation and family tree",
+      "section": "reasoning",
+      "difficulty": "medium",
+      "keywords": ["father", "mother", "sister", "brother", "daughter", "son", "family", "blood relation"]
+    },
+    {
+      "id": "direction-distance",
+      "topic": "direction-distance",
+      "subtopic": "Direction and distance",
+      "section": "reasoning",
+      "difficulty": "easy",
+      "keywords": ["north", "south", "east", "west", "left", "right", "direction", "distance"]
+    },
+    {
+      "id": "grammar-error-spotting",
+      "topic": "grammar-error-spotting",
+      "subtopic": "Grammar and error spotting",
+      "section": "english-comprehension",
+      "difficulty": "medium",
+      "keywords": ["error", "grammatically", "sentence", "verb", "tense", "preposition", "article", "subject"]
+    },
+    {
+      "id": "synonyms-antonyms",
+      "topic": "synonyms-antonyms",
+      "subtopic": "Synonyms and antonyms",
+      "section": "english-comprehension",
+      "difficulty": "easy",
+      "keywords": ["synonym", "antonym", "opposite", "similar meaning", "word meaning"]
+    },
+    {
+      "id": "idioms-phrases",
+      "topic": "idioms-phrases",
+      "subtopic": "Idioms and phrases",
+      "section": "english-comprehension",
+      "difficulty": "medium",
+      "keywords": ["idiom", "phrase", "meaning of", "one word", "substitution"]
+    },
+    {
+      "id": "reading-comprehension",
+      "topic": "reading-comprehension",
+      "subtopic": "Reading comprehension and passage",
+      "section": "english-comprehension",
+      "difficulty": "medium",
+      "keywords": ["passage", "according to the passage", "author", "main idea", "inference", "comprehension"]
+    }
+  ]
+}

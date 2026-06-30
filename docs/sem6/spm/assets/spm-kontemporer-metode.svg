@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-labelledby="title desc">
+  <title id="title">Metode membaca pemikiran kontemporer</title>
+  <desc id="desc">Infografik urutan bahasa, interpretasi, wacana, dan identitas.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#0f172a"/><stop offset=".5" stop-color="#172554"/><stop offset="1" stop-color="#321642"/></linearGradient>
+    <filter id="sh"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-opacity=".32"/></filter>
+    <style>
+      .h{font:900 38px Inter,Arial,sans-serif;fill:#fff}.sub{font:600 17px Inter,Arial,sans-serif;fill:#cbd5e1}
+      .k{font:850 24px Inter,Arial,sans-serif;fill:#fff}.t{font:650 17px Inter,Arial,sans-serif;fill:#e5e7eb}.sm{font:650 14px Inter,Arial,sans-serif;fill:#cbd5e1}
+      .card{fill:rgba(15,23,42,.80);stroke:rgba(255,255,255,.18);stroke-width:2}
+    </style>
+  </defs>
+  <rect width="1280" height="760" rx="34" fill="url(#bg)"/>
+  <text x="58" y="72" class="h">Kontemporer: Cara Cepat Membaca Aliran</text>
+  <text x="60" y="108" class="sub">Jika bingung, tanyakan empat hal: bahasa apa, makna siapa, kuasa mana, identitas siapa.</text>
+  <path d="M175 360H1105" stroke="#67e8f9" stroke-width="9" stroke-linecap="round"/>
+  <g filter="url(#sh)">
+    <rect x="70" y="220" width="250" height="250" rx="28" class="card"/>
+    <text x="110" y="278" class="k">Bahasa</text>
+    <text x="110" y="328" class="t">Saussure</text>
+    <text x="110" y="366" class="t">tanda dan struktur</text>
+    <text x="110" y="420" class="sm">makna lahir dari relasi</text>
+    <rect x="370" y="220" width="250" height="250" rx="28" class="card"/>
+    <text x="410" y="278" class="k">Interpretasi</text>
+    <text x="410" y="328" class="t">hermeneutika</text>
+    <text x="410" y="366" class="t">konteks dan tradisi</text>
+    <text x="410" y="420" class="sm">makna perlu dibaca</text>
+    <rect x="670" y="220" width="250" height="250" rx="28" class="card"/>
+    <text x="710" y="278" class="k">Wacana</text>
+    <text x="710" y="328" class="t">kuasa dan kritik</text>
+    <text x="710" y="366" class="t">narasi besar runtuh</text>
+    <text x="710" y="420" class="sm">makna tidak netral</text>
+    <rect x="970" y="220" width="250" height="250" rx="28" class="card"/>
+    <text x="1010" y="278" class="k">Identitas</text>
+    <text x="1010" y="328" class="t">gender dan subjek</text>
+    <text x="1010" y="366" class="t">dibentuk sosial</text>
+    <text x="1010" y="420" class="sm">yang personal juga politis</text>
+    <rect x="245" y="570" width="790" height="82" rx="24" fill="rgba(255,255,255,.10)" stroke="rgba(255,255,255,.22)" stroke-width="2"/>
+    <text x="305" y="622" class="t">Rumus hafalan: dari struktur bahasa menuju kritik kekuasaan dan konstruksi identitas.</text>
+  </g>
+</svg>

@@ -1,0 +1,366 @@
+{
+  "generatedAt": "2026-06-26T14:24:59.532736+00:00",
+  "booksRoot": "G:\\SSC BOOKS",
+  "corpusPolicy": {
+    "replaceExistingMcqs": true,
+    "oldCorpusStatus": "disabled",
+    "activeQuestionSourceType": "book_user_provided",
+    "notesProvider": "deepseek",
+    "ocrProvider": "mistral",
+    "ocrModel": "mistral-ocr-latest",
+    "includeImages": true
+  },
+  "sources": [
+    {
+      "id": "ssc-maths-6800-mcq",
+      "title": "SSC Maths 6800 MCQ Book 2026 Eduquity Based New Pattern Chapterwise",
+      "fileName": "1000747369-SSC-Maths-6800-MCQ-Book-2026-Eduquity-Based-New-Pattern-Chapterwise.pdf",
+      "file": "G:\\SSC BOOKS\\1000747369-SSC-Maths-6800-MCQ-Book-2026-Eduquity-Based-New-Pattern-Chapterwise.pdf",
+      "sourceType": "book_user_provided",
+      "role": "mcq_corpus",
+      "section": "quantitative-aptitude",
+      "purpose": "mcq_extraction",
+      "sourceFormat": "pdf",
+      "priority": 1,
+      "pageCount": 643,
+      "sha256": "c05034c9cd105eb88c5aa6e76bc684879d8ce61ac9589a523009f199fe482ada",
+      "textExtractablePagesSampled": 8,
+      "sampledPages": 10,
+      "hasOutline": false,
+      "ocrModel": "mistral-ocr-latest",
+      "includeImages": true,
+      "deepseekUse": "Use as grounded reference for exhaustive SSC CGL notes; cite page/chapter provenance in local metadata.",
+      "samples": [
+        {
+          "page": 1,
+          "charCount": 0,
+          "sample": ""
+        },
+        {
+          "page": 2,
+          "charCount": 1638,
+          "sample": "Index S.N. Chapter Name - Name and Exam conducted year No. of Questions Day-wise schedule Page No. 1. Number System Concepts - - 1 01 - 03 Varieties Questions - 60 03 - 05 eduquity-based pattern Questions SSC CGL 2025 Tier 1 ( 12.09.2025 to 14.10.2025 ) 35 2 - 3 05 - 06 SSC Selection Post (XIII) ( 24.07.2025 to 29.08.2025 ) 58 06 - 08 eduquity-based pattern (ebp) Questions 133 4 - 5 08 - 12 Answer key - - - 12 - 13 Solutions - - - 13 - 25 2. HCF and LCM Concepts - - 6 26 - 27 Varieties Questions"
+        },
+        {
+          "page": 3,
+          "charCount": 1674,
+          "sample": "Solutions - - - 67 - 96 5. Height and Distance Concepts - - 18 97 Varieties Questions - 11 97 - 98 eduquity-based pattern Questions SSC CGL 2025 Tier 1 ( 12.09.2025 to 14.10.2025 ) 21 98 - 99 SSC Selection Post (XIII) ( 24.07.2025 to 29.08.2025 ) 17 99 - 100 eduquity-based pattern (ebp) Questions 11 100 Answer key - - - 100 - 101 Solutions - - - 101 - 105 6. Mensuration Concepts - - 19 106 - 109 Varieties Questions - 109 20 - 21 109 - 113 eduquity-based pattern Questions SSC CGL 2025 Tier 1 ( 12"
+        },
+        {
+          "page": 4,
+          "charCount": 1671,
+          "sample": "9. Ratio and Proportion Concepts - - 48 290 - 291 Varieties Questions - 51 291 - 293 eduquity-based pattern Questions SSC CGL 2025 Tier 1 ( 12.09.2025 to 14.10.2025 ) 39 49 293 - 294 SSC Selection Post (XIII) ( 24.07.2025 to 29.08.2025 ) 20 294 - 295 eduquity-based pattern (ebp) Questions 172 50 - 51 295 - 301 Answer key - - - 301 Solutions - - - 301 - 314 10. Partnership Concepts - - 52 315 Varieties Questions - 12 315 - 316 eduquity-based pattern Questions SSC CGL 2025 Tier 1 ( 12.09.2025 to 1"
+        },
+        {
+          "page": 5,
+          "charCount": 1704,
+          "sample": "58 eduquity-based pattern Questions SSC CGL 2025 Tier 1 ( 12.09.2025 to 14.10.2025 ) 7 368 - 369 SSC Selection Post (XIII) ( 24.07.2025 to 29.08.2025 ) 4 369 eduquity-based pattern (ebp) Questions 29 369 - 370 Answer key - - - 370 - 371 Solutions - - - 371 - 375 14. Time, Speed and Distance Concepts - - 59 376 - 377 Varieties Questions - 58 377 - 380 eduquity-based pattern Questions SSC CGL 2025 Tier 1 ( 12.09.2025 to 14.10.2025 ) 43 60 380 - 382 SSC Selection Post (XIII) ( 24.07.2025 to 29.08.2"
+        },
+        {
+          "page": 6,
+          "charCount": 1647,
+          "sample": "eduquity-based pattern (ebp) Questions 241 67 - 69 437 - 447 Answer key - - - 447 - 448 Solutions - - - 448 - 466 18. Profit and Loss Concepts - - 70 467 Varieties Questions - 72 467 - 470 eduquity-based pattern Questions SSC CGL 2025 Tier 1 ( 12.09.2025 to 14.10.2025 ) 38 71 470 - 472 SSC Selection Post (XIII) ( 24.07.2025 to 29.08.2025 ) 38 472 - 473 eduquity-based pattern (ebp) Questions 240 72 - 74 473 - 483 Answer key - - - 483 Solutions - - - 483 - 502 19. Discount Concepts - - 75 503 Vari"
+        },
+        {
+          "page": 7,
+          "charCount": 1526,
+          "sample": "Answer key - - - 552 Solutions - - - 552 - 560 22. Installment Concepts - - 83 561 Varieties Questions - - - eduquity-based pattern Questions SSC CGL 2025 Tier 1 ( 12.09.2025 to 14.10.2025 ) 01 561 eduquity-based pattern (ebp) Questions 39 561 - 563 Answer key - - - 563 Solutions - - - 563 - 566 23. Average Concepts - - 84 567 Varieties Questions - 72 567 - 570 eduquity-based pattern Questions SSC CGL 2025 Tier 1 ( 12.09.2025 to 14.10.2025 ) 56 85 570 - 573 SSC Selection Post (XIII) ( 24.07.2025"
+        },
+        {
+          "page": 8,
+          "charCount": 670,
+          "sample": "89 Varieties Questions - 13 612 eduquity-based pattern Questions SSC CGL 2025 Tier 1 ( 12.09.2025 to 14.10.2025 ) 34 613 - 614 SSC Selection Post (XIII) ( 24.07.2025 to 29.08.2025 ) 15 614 eduquity-based pattern (ebp) Questions 28 614 - 615 Answer key - - - 615 Solutions - - - 615 - 620 27. Probability Concepts - - 90 621 - 622 Varieties Questions - - - eduquity-based pattern Questions SSC Selection Post (XIII) ( 24.07.2025 to 29.08.2025 ) 07 622 - 623 eduquity-based pattern (ebp) Questions 55 6"
+        },
+        {
+          "page": 9,
+          "charCount": 156,
+          "sample": "Quantitative Aptitude Chapter-wise Weightage in various examinations eduquity-based pattern (ebp) SSC CGL 2025 Tier 1 ( 12.09.2025 to 14.10.2025 )"
+        },
+        {
+          "page": 10,
+          "charCount": 59,
+          "sample": "SSC Selection Post (XIII) ( 24.07.2025 to 29.08.2025 )"
+        }
+      ]
+    },
+    {
+      "id": "pinnacle-maths-6800-di-qr-english",
+      "title": "Pinnacle Maths 6800 Data Interpretation QR Supplement English Medium",
+      "fileName": "pinnacle-maths-6800-data-interpretation-qr-english.pdf",
+      "file": "G:\\MITEEE\\data\\exams\\ssc-cgl\\downloads\\book-supplements\\pinnacle-maths-6800-data-interpretation-qr-english.pdf",
+      "sourceUrl": "https://drive.google.com/file/d/1cYO7JCjVtM42YhoqjNmm-xrnzhA4wo4y/view?usp=sharing",
+      "qrDecodedUrl": "https://ssccglpinnacle.com/blog/qr-codes",
+      "sourceType": "book_user_provided",
+      "role": "mcq_corpus_supplement",
+      "section": "quantitative-aptitude",
+      "purpose": "mcq_extraction",
+      "sourceFormat": "pdf",
+      "priority": 1,
+      "pageCount": 74,
+      "sha256": "834e290118ce7c9973dffeadef4f870eb0a97c9d6b11c79e64e27ab6b681d4af",
+      "textExtractablePagesSampled": 2,
+      "sampledPages": 2,
+      "hasOutline": false,
+      "ocrModel": "mistral-ocr-latest",
+      "includeImages": true,
+      "deepseekUse": "Use as grounded Data Interpretation practice and note context for 36-second Quant execution. Extract pages 3-54 as questions and pages 54-74 as solutions.",
+      "samples": [
+        {
+          "page": 1,
+          "charCount": 386,
+          "sample": "Index: Data Interpretation eduquity-based pattern (ebp) Questions, 368 questions, pages 03-54; Solutions pages 54-74."
+        },
+        {
+          "page": 2,
+          "charCount": 4720,
+          "sample": "Data Interpretation concepts: tabular DI, bar graph DI, pie chart DI, percentage increase/decrease, ratio, average, and conversion to degrees."
+        }
+      ]
+    },
+    {
+      "id": "pinnacle-ssc-reasoning",
+      "title": "Pinnacle SSC Reasoning English Medium",
+      "fileName": "PINNACLE SSC REASONING.htm",
+      "file": "G:\\SSC BOOKS\\PINNACLE SSC REASONING.htm",
+      "sourceType": "book_user_provided",
+      "role": "mcq_corpus",
+      "section": "reasoning",
+      "purpose": "html_asset_extraction",
+      "sourceFormat": "scribd_html",
+      "priority": 2,
+      "pageCount": 548,
+      "sha256": "f52ceb1f913e94d1dd59f169f25079ed0af57dd0348b2fee10a3fcbd09ba35db",
+      "textExtractablePagesSampled": 0,
+      "sampledPages": 10,
+      "hasOutline": false,
+      "ocrModel": "mistral-ocr-latest",
+      "includeImages": true,
+      "deepseekUse": "Use as grounded reference for exhaustive SSC CGL notes; cite page/chapter provenance in local metadata.",
+      "samples": [
+        {
+          "page": 1,
+          "charCount": 616424,
+          "sample": "window.Scribd = window.Scribd || {}; window.Scribd.config = {\"js_logging_enabled\":false,\"raise_js_callback_errors\":false,\"session_domain\":\".scribd.com\",\"csrf_token_url\":\"https://www.scribd.com/csrf_token\",\"facebook\":{\"app_id\":\"136494494209\",\"permissions\":\"email,public_profile\",\"namespace\":\"scribd-com\",\"link_url\":\"/facebook_link\"}}; window.Scribd.webpack_public_path = \"https://s-f.scribdassets.com/webpack/monolith/\"; window.Scribd.AssetPath = \"https://s-f.scribdassets.com/\"; .outer_page,.outer_pa"
+        }
+      ],
+      "htmlPageAssetCount": 548,
+      "questionSignalsInShell": 0
+    },
+    {
+      "id": "pinnacle-ssc-english",
+      "title": "Pinnacle English Book for SSC Exams",
+      "fileName": "751426926-Pinnacle-English-Book-for-Ssc-Exams.pdf",
+      "file": "G:\\SSC BOOKS\\751426926-Pinnacle-English-Book-for-Ssc-Exams.pdf",
+      "sourceType": "book_user_provided",
+      "role": "mcq_corpus",
+      "section": "english-comprehension",
+      "purpose": "mcq_extraction",
+      "sourceFormat": "pdf",
+      "priority": 3,
+      "pageCount": 569,
+      "sha256": "8105b5a92e7efd114e85f17b83c47c2d458937a9e213b0790a113f31a59c56a7",
+      "textExtractablePagesSampled": 10,
+      "sampledPages": 10,
+      "hasOutline": false,
+      "ocrModel": "mistral-ocr-latest",
+      "includeImages": true,
+      "deepseekUse": "Use as grounded reference for exhaustive SSC CGL notes; cite page/chapter provenance in local metadata.",
+      "samples": [
+        {
+          "page": 1,
+          "charCount": 293,
+          "sample": "All TCS Questions asked in SSC Exams Till March 2021 PINNACLE PUBLICATION SSC CGL TIER-1, SSC CGL TIER-2 SSC CPO, SSC CHSL, SSC MTS Neeru Madam Sr Faculty, Author, Motivator, Director 6000 TCS MCQ SSC ENGLISH SSC ENGLISH 1st Edition Topic wise coverage eBook http://t.me/yoursmahboob_classes"
+        },
+        {
+          "page": 2,
+          "charCount": 945,
+          "sample": "ABOUT THE BOOK Dear Students, English is the most important subject and plays a vital role in SSC exams. This book is a collection of all 6125 previous years' TCS questions with their detailed solution. This includes: (a) All questions asked by TCS in SSC exams such as ( CGL Tier-I, Tier-II, CHSL, CPO Tier-I, Tier-II, MTS) till date. (b) Chapterwise questions with their solutions including Hindi solutions which are very helpful for time-bound exams. (c) The index has a number of questions asked "
+        },
+        {
+          "page": 3,
+          "charCount": 1897,
+          "sample": "INDEX SPOT THE ERROR SENTENCE IMPROVEMENT S.N. Chapter No. of Questions Page Number 1 Spot the Error 582 1-59 2 Sentence Improvement 596 60-119 3 Narration 266 120-161 4 Active passive 266 162-197 5 Para jumble 340 198-242 6. Fill in the blanks 520 243-283 7 Cloze Test 995 284-347 8 Comprehension 330 348-401 9 One Word Substitution 487 402-443 10 Idioms 471 444-475 11 Synonyms 424 476-506 12 Antonyms 424 507-539 13 Spelling check 424 540-561 TOTAL 6125 561 S. No. Name of exam Page no. Question n"
+        },
+        {
+          "page": 4,
+          "charCount": 2097,
+          "sample": "NARRATION VOICE PARA JUMBLE FILL IN THE BLANKS S. No. Name of exam Page no. Question no. No. of question 1. SSC CGL 2018 TIER I - 0 0 2. SSC CGL 2019 TIER I 120-122 1-18 18 3 . SSC CGL 2018 TIER II 122-135 19-99 81 4. SSC CGL 2019 TIER II 135-148 100-180 81 5. SSC CPO 2018 TIER I - 0 0 6. SSC CPO 2019 TIER I - 0 0 7. SSC CPO 2020 TIER I - 0 0 8. SSC CPO 2018 TIER II 148-152 181-205 25 9. SSC CHSL 2018 TIER I 152-155 206-230 25 10. SSC CHSL 2019 TIER I 155-161 231-266 36 11. SSC MTS 2019 TIER I -"
+        },
+        {
+          "page": 5,
+          "charCount": 2282,
+          "sample": "CLOZE TEST COMPREHENSION ONE WORD SUBSTITUTION 2. SSC CGL 2019 TIER I 246-249 43-78 36 3 . SSC CGL 2018 TIER II 249-250 79-93 15 4. SSC CGL 2019 TIER II 250-251 94-108 15 5. SSC CPO 2018 TIER I 251-255 109-163 55 6. SSC CPO 2019 TIER I 256-258 164-203 40 7. SSC CPO 2020 TIER I 258-261 204-233 30 8. SSC CPO 2018 TIER II 261-262 234-242 9 9. SSC CHSL 2018 TIER I 262-266 243-292 50 10. SSC CHSL 2019 TIER I 266-272 293-364 72 11. SSC MTS 2019 TIER I 272-283 365-520 156 S. No. Name of exam Page no. Q"
+        },
+        {
+          "page": 6,
+          "charCount": 2180,
+          "sample": "IDIOMS SYNONYMS ANTONYMS 6. SSC CPO 2019 TIER I 419-422 208-247 40 7. SSC CPO 2020 TIER I 422-425 248-277 30 8. SSC CPO 2018 TIER II 425-426 278-287 10 9. SSC CHSL 2018 TIER I 426-430 288-337 50 10. SSC CHSL 2019 TIER I 430-436 338-409 72 11. SSC MTS 2019 TIER I 436-443 410-487 78 S. No. Name of exam Page no. Question no. No. of question 1. SSC CGL 2018 TIER I 444-446 1-42 42 2. SSC CGL 2019 TIER I 446-449 42-78 36 3 . SSC CGL 2018 TIER II 449-451 79-108 30 4. SSC CGL 2019 TIER II 451-453 109-13"
+        },
+        {
+          "page": 7,
+          "charCount": 2225,
+          "sample": "SPELLING CHECK NUMBER OF QUESTIONS WITH EXAM AND TOPIC WISE 8. SSC CPO 2018 TIER II 524-524 222-224 3 9. SSC CHSL 2018 TIER I 524-527 225-274 50 10. SSC CHSL 2019 TIER I 527-533 275-346 72 11. SSC MTS 2019 TIER I 533-539 347-424 78 S. No. Name of exam Page no. Question no. No. of question 1. SSC CGL 2018 TIER I 540-541 1-42 42 2. SSC CGL 2019 TIER I 541-543 43-78 36 3 . SSC CGL 2018 TIER II 543-544 79-87 9 4. SSC CGL 2019 TIER II 544-544 88-96 9 5. SSC CPO 2018 TIER I 544-548 97-151 55 6. SSC CP"
+        },
+        {
+          "page": 8,
+          "charCount": 6788,
+          "sample": "Spot the error CGL 2018 Tier I Q1. We had to decline several orders in case that the production was held up due to labour strike. CGL- 04/6/2019(Morning) (a) in case that (b) the production was held up (c) due to labour strike (d) We had to decline Q2. Cyclone ldai killed at least 157 people in Zimbabwe and Mozambique although it tore across Southern Africa. CGL- 04/6/2019(Morning) (a) Cyclone Ldai killed (b) it tore across (c) although (d) at least 157 people Q3. She got two quick promotions in"
+        },
+        {
+          "page": 9,
+          "charCount": 7085,
+          "sample": "Pinnacle SSC English (c) on his toe (d) by a poisonous snake Q25. There isn’t many rice left in the house so we must replenish our stock soon. CGL- 11/6/2019(Morning) (a) our stock soon (b) so we must replenish (c) There isn’t many rice (d) left in the house Q26 .Ten kilometers are a long distance to cover on foot for a child. CGL- 11/6/2019(Morning) (a) Ten kilometers are (b) to cover on foot (c) a long distance (d) for a child Q27. The length of a male swallow’s tail reveal his attractiveness "
+        },
+        {
+          "page": 10,
+          "charCount": 9517,
+          "sample": "Spot the error Sol.6 .(a)The phrase ‘in case of’ should be replaced by conjunction(which shows reason) to make the sentence contextually correct. Because as a conjunction means ‘for the reason that’. Hence, ‘because’ will be answer../ in case of का \u0000योग गलत ह ै , in case of एक का\u0000िनक situation क े िलए होता ह ै यहा ं पर इस वा\u0000 म \u0000 आड \u0000 र खो जान े का कारण बताना ह ै इसिलए because श\u0000 का \u0000योग सही होगा । Sol.7 .(d) According to the “ Subject-Verb Agreement rule ”, a singular subject takes a singular v"
+        }
+      ]
+    },
+    {
+      "id": "pinnacle-ssc-general-studies",
+      "title": "Pinnacle SSC General Studies GS 8th Edition English Medium",
+      "fileName": "1024586786-Pinnacle-SSC-General-Studies-GS-8th-Edition-English-Medium.pdf",
+      "file": "G:\\SSC BOOKS\\1024586786-Pinnacle-SSC-General-Studies-GS-8th-Edition-English-Medium.pdf",
+      "sourceType": "book_user_provided",
+      "role": "mcq_corpus",
+      "section": "general-awareness",
+      "purpose": "mcq_extraction",
+      "sourceFormat": "pdf",
+      "priority": 4,
+      "pageCount": 605,
+      "sha256": "3db49de375a7b5b4a7c1602884c835017e0423f24ceed7d5d84bfe3b31eb9c8d",
+      "textExtractablePagesSampled": 9,
+      "sampledPages": 10,
+      "hasOutline": false,
+      "ocrModel": "mistral-ocr-latest",
+      "includeImages": true,
+      "deepseekUse": "Use as grounded reference for exhaustive SSC CGL notes; cite page/chapter provenance in local metadata.",
+      "samples": [
+        {
+          "page": 1,
+          "charCount": 0,
+          "sample": ""
+        },
+        {
+          "page": 2,
+          "charCount": 1285,
+          "sample": "INDEX S. No. Subject Name Page no. Number of Questions 1. Static G.K. 01 - 162 2000 2. History 163 - 245 930 3. Polity 246 - 301 518 4. Geography 302 - 385 925 5. Economics 386 - 431 465 6. Physics 432 - 460 264 7. Chemistry 461 - 503 491 8. Biology 504 - 555 565 9. Current Affairs 01 - 41 500 TOTAL - 6658 STATIC G.K . S. No. Chapter Name Page no. Question no. No. of questions 1. Dance 01 - 13 01 - 151 151 2. Arts Personality 13 - 30 152 - 356 205 3. Arts Awards 30 - 32 357 - 373 17 4. Musical I"
+        },
+        {
+          "page": 3,
+          "charCount": 1379,
+          "sample": "19. Religious Places 136 - 140 1682 - 1727 46 20. Awards 140 - 144 1728 - 1774 47 21. Important events 144 - 146 1775 - 1810 36 22. Founder 146 - 147 1811 - 1819 09 23. Schemes 147 - 156 1820 - 1914 95 24. Miscellaneous 156 - 162 1915 - 2000 86 HISTORY Ancient History S. No. Chapter Name Page no. Question no. No. of questions 1. Prehistoric And Indus Valley 163 - 165 01 - 25 25 2. Vedic Age 165 - 167 26 - 44 19 3. Jainism 167 45 - 46 2 4. Buddhism 167 - 169 47 - 68 22 5. Mahajanapadas 169 69 - 7"
+        },
+        {
+          "page": 4,
+          "charCount": 1512,
+          "sample": "11. Akbar 196 - 198 376 - 399 24 12. Jahangir 198 400 - 405 06 13. Shah Jahan 198 - 199 406 - 413 08 14. Aurangzeb 199 414 - 420 07 15. Sikh Guru 199 - 200 421 - 424 04 16. Maratha Empire 200 425 - 428 04 17. Vijaynagar Empire 200 - 202 429 - 448 20 18. Wars and Treaties 202 - 204 449 - 473 25 19. Miscellaneous 204 - 210 474 - 543 70 Modern History S. No. Chapter Name Page no. Question no. No. of questions 1. The Revolt of 1857 210 544 - 552 09 2. Governors and Viceroys 210 - 213 553 - 582 30 3."
+        },
+        {
+          "page": 5,
+          "charCount": 1559,
+          "sample": "6. Committee Reports 276 - 277 281 - 291 11 7. Parliament 278 - 282 292 - 329 38 8. President, Vice President and Prime Minister 282 - 286 330 - 375 46 9. Judiciary 286 - 290 376 - 407 32 10. Government Bodies 290 - 294 408 - 445 38 11. Polity of neighbouring countries 294 446 - 450 05 12. Miscellaneous 294 - 301 451 - 518 68 GEOGRAPHY S. No. Chapter Name Page no. Question no. No. of questions 1. Solar system and its planets 302 - 306 01 - 48 48 2. Longitudes and latitudes 306 - 307 49 - 64 16 3"
+        },
+        {
+          "page": 6,
+          "charCount": 1556,
+          "sample": "ECONOMICS S. No. Chapter Name Page no. Question no. No. of questions 1. Basics of Economy 386 - 389 1 - 35 35 2. Concepts of Demand and Supply 389 - 390 36 - 47 12 3. Cost, Production, Consumption and Market 390 - 392 48 - 61 14 4. National Income, Inflation, Budget, Taxation and GDP 392 - 399 62 - 139 78 5. Money Banking and Financial Institutions 399 - 410 140 - 250 111 6. Navratna / Maharatna / PSUs 410 251 - 259 9 7. International Organisations 410 - 411 260 - 264 5 8. Government Schemes 411"
+        },
+        {
+          "page": 7,
+          "charCount": 1548,
+          "sample": "13. Miscellaneous 456 - 460 237 - 264 28 CHEMISTRY S. No. Chapter Name Page no. Question no. No. of questions 1. Structure of Atom 461 - 463 01 - 25 25 2. Metals, Non-metals and Alloys 463 - 466 26 - 54 29 3. Acid, Bases and Salt 466 - 469 55 - 84 30 4. Metallurgy 469 - 470 85 - 94 10 5. Organic Chemistry 470 - 476 95 - 159 65 6. Periodic table 476 - 481 160 - 222 63 7. Ideal Gas Law 481 - 482 223 - 232 10 8. Chemical Properties 482 - 487 233 - 281 49 9. Solutions 487 - 488 282 - 293 12 10. Chem"
+        },
+        {
+          "page": 8,
+          "charCount": 1142,
+          "sample": "15. Skeleton system 533 - 534 318 - 325 08 16. Plant Kingdom 534 - 539 326 - 379 54 17. Animal Kingdom 539 - 544 380 - 442 63 18. Micro organism 544 - 546 443 - 463 21 19. Enzymes and Hormones 546 - 548 464 - 480 17 20. Discoveries and Vaccines 548 - 550 481 - 506 26 21. Scientific Study 550 - 551 507 - 514 08 22. Miscellaneous 551 - 555 515 - 565 51 CURRENT AFFAIRS [ QR Code ] S. No Chapter name Page no. Question No. No. of Questions 1. Schemes 01 - 05 01 - 50 50 2. Sports 05 - 09 51 - 103 53 3"
+        },
+        {
+          "page": 9,
+          "charCount": 9639,
+          "sample": "P i n n a c l e S t a t i c G K S t a t i c G K Dance Q.1. Which of the following is r ecogniz ed as a classical dance of India ? SSC Stenogr apher 6/08/2025 (Shift 1) (a) Bhar atnaty am (b) Garba (c) La v ani (d) Bhangr a Sol.1.(a) Bhar atnaty am of T amil Nadu is one of the eight classical dances o ﬃ cially r ecogniz ed in India. The other classical dances ar e Kathak (Uttar Pr adesh), Kathakali (K er ala), Mohiniy attam (K er ala), K uchipudi (Andhr a Pr adesh), Odissi (Odisha), Manipuri (Man"
+        },
+        {
+          "page": 10,
+          "charCount": 9400,
+          "sample": "T G @ Exams _ Pdfss P i n n a c l e S t a t i c G K 15th–16th centur y . It was de v eloped in Sattr as ( V aishna vite monasteries) t o pr opagate the teachings of the Neo-V aishna vite mo v ement. The dance is highly de v otional, per formed as an off ering t o Lor d Krishna ( Vishnu), combining st or ytelling, music, and bhakti (de v otion). Q.11. Which of the below statements is/ar e corr ect? Statement 1: The folk dance Kamala is per formed b y the ﬁ sher folk of the Mithila r egion in Biha"
+        }
+      ]
+    },
+    {
+      "id": "lucent-gk-english",
+      "title": "Lucent General Knowledge English",
+      "fileName": "374612740-Lucent-GK-English-Sscpot-com.pdf",
+      "file": "G:\\SSC BOOKS\\374612740-Lucent-GK-English-Sscpot-com.pdf",
+      "sourceType": "book_user_provided",
+      "role": "static_gk_reference",
+      "section": "general-awareness",
+      "purpose": "deepseek_static_gk_reference",
+      "sourceFormat": "pdf",
+      "priority": 5,
+      "pageCount": 672,
+      "sha256": "227b4356f5ac7d4dc5a65bbdbcd36f164a9307f76f540a5f8b4e9a449a8291fa",
+      "textExtractablePagesSampled": 0,
+      "sampledPages": 10,
+      "hasOutline": false,
+      "ocrModel": "mistral-ocr-latest",
+      "includeImages": true,
+      "deepseekUse": "Use as grounded reference for exhaustive SSC CGL notes; cite page/chapter provenance in local metadata.",
+      "samples": [
+        {
+          "page": 1,
+          "charCount": 0,
+          "sample": ""
+        },
+        {
+          "page": 2,
+          "charCount": 0,
+          "sample": ""
+        },
+        {
+          "page": 3,
+          "charCount": 0,
+          "sample": ""
+        },
+        {
+          "page": 4,
+          "charCount": 0,
+          "sample": ""
+        },
+        {
+          "page": 5,
+          "charCount": 0,
+          "sample": ""
+        },
+        {
+          "page": 6,
+          "charCount": 0,
+          "sample": ""
+        },
+        {
+          "page": 7,
+          "charCount": 0,
+          "sample": ""
+        },
+        {
+          "page": 8,
+          "charCount": 0,
+          "sample": ""
+        },
+        {
+          "page": 9,
+          "charCount": 0,
+          "sample": ""
+        },
+        {
+          "page": 10,
+          "charCount": 0,
+          "sample": ""
+        }
+      ]
+    }
+  ]
+}

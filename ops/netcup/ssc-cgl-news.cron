@@ -1,0 +1,5 @@
+SHELL=/bin/bash
+PATH=/usr/local/bin:/usr/bin:/bin
+TZ=Asia/Kolkata
+
+0 7 * * * cd /app && /bin/bash scripts/run_ssc_cgl_daily_news_once.sh >> /app/data/current-affairs/logs/cron.log 2>&1

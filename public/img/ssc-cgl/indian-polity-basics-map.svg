@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">SSC CGL Indian Polity recall map</title>
+  <desc id="desc">A compact map connecting article ranges, constitutional bodies, writs, schedules, amendments, and parliament procedure for SSC CGL General Awareness revision.</desc>
+  <rect width="1200" height="720" fill="#f8fafc"/>
+  <rect x="48" y="42" width="1104" height="92" rx="18" fill="#111827"/>
+  <text x="82" y="92" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#ffffff">Indian Polity 200/200 Recall Map</text>
+  <text x="82" y="120" font-family="Arial, sans-serif" font-size="18" fill="#cbd5e1">Classify in 5 seconds, recall in 20 seconds, trap-check before 45 seconds.</text>
+
+  <g font-family="Arial, sans-serif">
+    <rect x="62" y="176" width="320" height="196" rx="14" fill="#e0f2fe" stroke="#0284c7" stroke-width="3"/>
+    <text x="88" y="214" font-size="24" font-weight="700" fill="#0f172a">Article Range</text>
+    <text x="88" y="250" font-size="18" fill="#1e293b">12-35: Fundamental Rights</text>
+    <text x="88" y="280" font-size="18" fill="#1e293b">36-51: DPSP</text>
+    <text x="88" y="310" font-size="18" fill="#1e293b">52-151: Union</text>
+    <text x="88" y="340" font-size="18" fill="#1e293b">352-360: Emergency</text>
+
+    <rect x="440" y="176" width="320" height="196" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/>
+    <text x="466" y="214" font-size="24" font-weight="700" fill="#0f172a">Bodies</text>
+    <text x="466" y="250" font-size="18" fill="#1e293b">CAG: 148</text>
+    <text x="466" y="280" font-size="18" fill="#1e293b">Finance Commission: 280</text>
+    <text x="466" y="310" font-size="18" fill="#1e293b">UPSC/SPSC: 315</text>
+    <text x="466" y="340" font-size="18" fill="#1e293b">Election Commission: 324</text>
+
+    <rect x="818" y="176" width="320" height="196" rx="14" fill="#fef3c7" stroke="#d97706" stroke-width="3"/>
+    <text x="844" y="214" font-size="24" font-weight="700" fill="#0f172a">Schedules</text>
+    <text x="844" y="250" font-size="18" fill="#1e293b">4th: Rajya Sabha seats</text>
+    <text x="844" y="280" font-size="18" fill="#1e293b">7th: Union-State-Concurrent</text>
+    <text x="844" y="310" font-size="18" fill="#1e293b">8th: Languages</text>
+    <text x="844" y="340" font-size="18" fill="#1e293b">10th-12th: Defection, local bodies</text>
+
+    <rect x="62" y="426" width="320" height="196" rx="14" fill="#ede9fe" stroke="#7c3aed" stroke-width="3"/>
+    <text x="88" y="464" font-size="24" font-weight="700" fill="#0f172a">Writs</text>
+    <text x="88" y="500" font-size="18" fill="#1e293b">Habeas Corpus: detention</text>
+    <text x="88" y="530" font-size="18" fill="#1e293b">Mandamus: command duty</text>
+    <text x="88" y="560" font-size="18" fill="#1e293b">Certiorari: quash order</text>
+    <text x="88" y="590" font-size="18" fill="#1e293b">Quo Warranto: office authority</text>
+
+    <rect x="440" y="426" width="320" height="196" rx="14" fill="#fee2e2" stroke="#dc2626" stroke-width="3"/>
+    <text x="466" y="464" font-size="24" font-weight="700" fill="#0f172a">Amendments</text>
+    <text x="466" y="500" font-size="18" fill="#1e293b">42nd: duties, preamble words</text>
+    <text x="466" y="530" font-size="18" fill="#1e293b">44th: property removed, 20/21 safe</text>
+    <text x="466" y="560" font-size="18" fill="#1e293b">52nd: anti-defection</text>
+    <text x="466" y="590" font-size="18" fill="#1e293b">73rd/74th: panchayat/municipality</text>
+
+    <rect x="818" y="426" width="320" height="196" rx="14" fill="#f1f5f9" stroke="#475569" stroke-width="3"/>
+    <text x="844" y="464" font-size="24" font-weight="700" fill="#0f172a">Parliament</text>
+    <text x="844" y="500" font-size="18" fill="#1e293b">Money Bill: Lok Sabha only</text>
+    <text x="844" y="530" font-size="18" fill="#1e293b">Speaker certifies Money Bill</text>
+    <text x="844" y="560" font-size="18" fill="#1e293b">Rajya Sabha: 14 days only</text>
+    <text x="844" y="590" font-size="18" fill="#1e293b">No-confidence: Lok Sabha</text>
+  </g>
+
+  <path d="M382 274 C410 274 412 274 440 274" fill="none" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
+  <path d="M760 274 C790 274 790 274 818 274" fill="none" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
+  <path d="M222 372 C222 402 222 402 222 426" fill="none" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
+  <path d="M600 372 C600 402 600 402 600 426" fill="none" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
+  <path d="M978 372 C978 402 978 402 978 426" fill="none" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
+</svg>

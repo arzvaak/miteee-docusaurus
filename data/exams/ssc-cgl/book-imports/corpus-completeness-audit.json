@@ -1,0 +1,75 @@
+{
+  "generatedAt": "2026-06-30T05:24:36.302801+00:00",
+  "policy": {
+    "target": "Include every indexed uploaded-book MCQ in the personal SSC CGL corpus.",
+    "dedupe": "Remove only exact 1:1 copies with same normalized stem, options, and answer.",
+    "strictness": "Any gap from indexed totals is a recovery backlog item, not a quality-filter success."
+  },
+  "totals": {
+    "expectedQuestionCount": 22823,
+    "segmentedCandidates": 0,
+    "answerEvidenceRows": 0,
+    "promotedQuestions": 22173,
+    "missingFromExpected": 650,
+    "notSegmentedOrNotAligned": 22823,
+    "missingAnswerEvidence": 650,
+    "promotionDropAfterAnswerEvidence": 0
+  },
+  "sources": [
+    {
+      "sourceId": "pinnacle-maths-6800-di-qr-english",
+      "expectedQuestionCount": 368,
+      "segmentedCandidates": 0,
+      "answerEvidenceRows": 0,
+      "promotedQuestions": 328,
+      "missingFromExpected": 40,
+      "notSegmentedOrNotAligned": 368,
+      "missingAnswerEvidence": 40,
+      "promotionDropAfterAnswerEvidence": 0
+    },
+    {
+      "sourceId": "pinnacle-ssc-english",
+      "expectedQuestionCount": 6125,
+      "segmentedCandidates": 0,
+      "answerEvidenceRows": 0,
+      "promotedQuestions": 5688,
+      "missingFromExpected": 437,
+      "notSegmentedOrNotAligned": 6125,
+      "missingAnswerEvidence": 437,
+      "promotionDropAfterAnswerEvidence": 0
+    },
+    {
+      "sourceId": "pinnacle-ssc-general-studies",
+      "expectedQuestionCount": 6658,
+      "segmentedCandidates": 0,
+      "answerEvidenceRows": 0,
+      "promotedQuestions": 6585,
+      "missingFromExpected": 73,
+      "notSegmentedOrNotAligned": 6658,
+      "missingAnswerEvidence": 73,
+      "promotionDropAfterAnswerEvidence": 0
+    },
+    {
+      "sourceId": "pinnacle-ssc-reasoning",
+      "expectedQuestionCount": 3200,
+      "segmentedCandidates": 0,
+      "answerEvidenceRows": 0,
+      "promotedQuestions": 3200,
+      "missingFromExpected": 0,
+      "notSegmentedOrNotAligned": 3200,
+      "missingAnswerEvidence": 0,
+      "promotionDropAfterAnswerEvidence": 0
+    },
+    {
+      "sourceId": "ssc-maths-6800-mcq",
+      "expectedQuestionCount": 6472,
+      "segmentedCandidates": 0,
+      "answerEvidenceRows": 0,
+      "promotedQuestions": 6372,
+      "missingFromExpected": 100,
+      "notSegmentedOrNotAligned": 6472,
+      "missingAnswerEvidence": 100,
+      "promotionDropAfterAnswerEvidence": 0
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">SSC CGL ratio proportion decision map</title>
+  <desc id="desc">A 36-second decision map for ratio, proportion, partnership, inverse proportion, ages, and mixture questions.</desc>
+  <rect width="1200" height="760" fill="#08111f"/>
+  <rect x="42" y="38" width="1116" height="684" rx="18" fill="#101c2b" stroke="#8bdb81" stroke-width="3"/>
+  <text x="600" y="84" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#f8fbff">Ratio and Proportion: 36-Second Parts Engine</text>
+  <text x="600" y="118" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#c5d4e8">287 promoted questions: reduce, classify, choose parts/product/equalization, check order</text>
+
+  <g font-family="Arial, sans-serif">
+    <rect x="76" y="158" width="310" height="158" rx="14" fill="#162a3f" stroke="#60a5fa" stroke-width="2"/>
+    <text x="231" y="190" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">Simple Parts</text>
+    <text x="102" y="225" font-size="17" fill="#e5f1ff">Total: divide by sum</text>
+    <text x="102" y="253" font-size="17" fill="#e5f1ff">Difference: divide by gap</text>
+    <text x="102" y="281" font-size="17" fill="#e5f1ff">One value: divide by its part</text>
+
+    <rect x="445" y="158" width="310" height="158" rx="14" fill="#162a3f" stroke="#facc15" stroke-width="2"/>
+    <text x="600" y="190" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">Proportion</text>
+    <text x="471" y="225" font-size="17" fill="#fff7d6">Scale if clean</text>
+    <text x="471" y="253" font-size="17" fill="#fff7d6">Cross multiply if needed</text>
+    <text x="471" y="281" font-size="17" fill="#fff7d6">Third, fourth, mean proportional</text>
+
+    <rect x="814" y="158" width="310" height="158" rx="14" fill="#162a3f" stroke="#34d399" stroke-width="2"/>
+    <text x="969" y="190" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">Compound Ratio</text>
+    <text x="840" y="225" font-size="17" fill="#dcfce7">Equalize common term</text>
+    <text x="840" y="253" font-size="17" fill="#dcfce7">Join only after matching</text>
+    <text x="840" y="281" font-size="17" fill="#dcfce7">Check asked order</text>
+
+    <rect x="76" y="366" width="310" height="158" rx="14" fill="#162a3f" stroke="#fb7185" stroke-width="2"/>
+    <text x="231" y="398" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">Direct / Inverse</text>
+    <text x="102" y="433" font-size="17" fill="#ffe4e6">Direct: same direction</text>
+    <text x="102" y="461" font-size="17" fill="#ffe4e6">Inverse: product constant</text>
+    <text x="102" y="489" font-size="17" fill="#ffe4e6">Speed-time and work-days invert</text>
+
+    <rect x="445" y="366" width="310" height="158" rx="14" fill="#162a3f" stroke="#c084fc" stroke-width="2"/>
+    <text x="600" y="398" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">Partnership</text>
+    <text x="471" y="433" font-size="17" fill="#f3e8ff">Profit share = capital x time</text>
+    <text x="471" y="461" font-size="17" fill="#f3e8ff">Delayed entry changes months</text>
+    <text x="471" y="489" font-size="17" fill="#f3e8ff">Equal profit can mean inverse capital</text>
+
+    <rect x="814" y="366" width="310" height="158" rx="14" fill="#162a3f" stroke="#fb923c" stroke-width="2"/>
+    <text x="969" y="398" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">Change Equations</text>
+    <text x="840" y="433" font-size="17" fill="#ffedd5">Ages: add years to ax, bx</text>
+    <text x="840" y="461" font-size="17" fill="#ffedd5">Mixture: add/remove actual litres</text>
+    <text x="840" y="489" font-size="17" fill="#ffedd5">Saving: income - expense</text>
+
+    <rect x="198" y="596" width="804" height="66" rx="33" fill="#8bdb81"/>
+    <text x="600" y="637" text-anchor="middle" font-size="22" font-weight="700" fill="#07111e">Exam loop: units -> reduce -> classify -> one-part/product/common-term -> order check</text>
+  </g>
+</svg>

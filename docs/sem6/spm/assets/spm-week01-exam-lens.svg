@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 560" role="img" aria-labelledby="title desc">
+  <title id="title">Lensa ujian Minggu 1 akar modernitas</title>
+  <desc id="desc">Infografik alur Yunani, Abad Tengah, Renaissance, dan modernitas untuk jawaban ujian.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#111827"/>
+      <stop offset="1" stop-color="#26304f"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#000" flood-opacity=".28"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#f59e0b"/>
+    </marker>
+  </defs>
+  <rect width="1400" height="560" rx="30" fill="url(#bg)"/>
+  <text x="64" y="74" fill="#f8fafc" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="40" font-weight="800">Minggu 1 - Akar Modernitas</text>
+  <text x="64" y="116" fill="#c7d2fe" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="22">Jawaban ujian harus bergerak kronologis: ide, observasi, otoritas, lalu kebebasan berpikir.</text>
+  <g filter="url(#shadow)" font-family="Inter,Segoe UI,Arial,sans-serif">
+    <rect x="70" y="180" width="250" height="160" rx="22" fill="#fff7ed"/>
+    <text x="100" y="228" fill="#9a3412" font-size="28" font-weight="800">Plato</text>
+    <text x="100" y="268" fill="#431407" font-size="20">Ide/forms lebih tetap</text>
+    <text x="100" y="300" fill="#431407" font-size="20">daripada indera.</text>
+    <text x="100" y="332" fill="#9a3412" font-size="18" font-weight="700">Akar idealisme</text>
+    <rect x="390" y="180" width="250" height="160" rx="22" fill="#ecfeff"/>
+    <text x="420" y="228" fill="#155e75" font-size="28" font-weight="800">Aristoteles</text>
+    <text x="420" y="268" fill="#164e63" font-size="20">Mulai dari benda</text>
+    <text x="420" y="300" fill="#164e63" font-size="20">konkret dan sebab.</text>
+    <text x="420" y="332" fill="#155e75" font-size="18" font-weight="700">Akar empirisme</text>
+    <rect x="710" y="180" width="250" height="160" rx="22" fill="#f5f3ff"/>
+    <text x="740" y="228" fill="#5b21b6" font-size="28" font-weight="800">Abad Tengah</text>
+    <text x="740" y="268" fill="#2e1065" font-size="20">Filsafat diikat oleh</text>
+    <text x="740" y="300" fill="#2e1065" font-size="20">wahyu dan otoritas.</text>
+    <text x="740" y="332" fill="#5b21b6" font-size="18" font-weight="700">Skolastisisme</text>
+    <rect x="1030" y="180" width="250" height="160" rx="22" fill="#ecfdf5"/>
+    <text x="1060" y="228" fill="#166534" font-size="28" font-weight="800">Renaissance</text>
+    <text x="1060" y="268" fill="#14532d" font-size="20">Manusia dan alam</text>
+    <text x="1060" y="300" fill="#14532d" font-size="20">jadi pusat kajian.</text>
+    <text x="1060" y="332" fill="#166534" font-size="18" font-weight="700">Pintu modernitas</text>
+  </g>
+  <g stroke="#f59e0b" stroke-width="5" fill="none" marker-end="url(#arrow)">
+    <path d="M322 260 H382"/>
+    <path d="M642 260 H702"/>
+    <path d="M962 260 H1022"/>
+  </g>
+  <g font-family="Inter,Segoe UI,Arial,sans-serif">
+    <rect x="70" y="400" width="1210" height="86" rx="22" fill="#0f172a" stroke="#38bdf8" stroke-opacity=".45"/>
+    <text x="100" y="435" fill="#7dd3fc" font-size="24" font-weight="800">Template 4 kalimat</text>
+    <text x="100" y="470" fill="#e0f2fe" font-size="21">Plato memberi ide; Aristoteles memberi observasi; Abad Tengah memberi otoritas; Renaissance membuka humanisme dan metode.</text>
+  </g>
+</svg>

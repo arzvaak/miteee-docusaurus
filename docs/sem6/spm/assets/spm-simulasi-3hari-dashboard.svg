@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-labelledby="title desc">
+  <title id="title">Dashboard simulasi tiga hari sebelum ujian Sejarah Pemikiran Modern</title>
+  <desc id="desc">Infografik rencana tiga hari sebelum ujian: fondasi kronologi, latihan perbandingan, simulasi esai, dan pagi ujian.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fbff"/>
+      <stop offset=".58" stop-color="#f3f7ed"/>
+      <stop offset="1" stop-color="#fff3e5"/>
+    </linearGradient>
+    <filter id="shadow" x="-8%" y="-8%" width="116%" height="116%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#23313a" flood-opacity=".14"/>
+    </filter>
+    <style>
+      .title{font:800 41px Arial,Helvetica,sans-serif;fill:#15222b}
+      .sub{font:500 21px Arial,Helvetica,sans-serif;fill:#43535b}
+      .panel{fill:#fffef9;stroke:#d8e0d4;stroke-width:2;rx:24;filter:url(#shadow)}
+      .day{font:800 28px Arial,Helvetica,sans-serif;fill:#ffffff}
+      .h{font:800 25px Arial,Helvetica,sans-serif;fill:#18272f}
+      .p{font:500 18px Arial,Helvetica,sans-serif;fill:#3f5057}
+      .small{font:700 16px Arial,Helvetica,sans-serif;fill:#6c441b}
+      .bar{fill:#2c6b64}
+      .bar2{fill:#b8543c}
+      .bar3{fill:#d99a32}
+      .bar4{fill:#425f89}
+      .line{stroke:#263b43;stroke-width:4;stroke-linecap:round;opacity:.35}
+      .tick{stroke:#fff;stroke-width:4;stroke-linecap:round;fill:none}
+    </style>
+  </defs>
+  <rect width="1280" height="760" fill="url(#bg)"/>
+  <text x="72" y="76" class="title">Dashboard Simulasi 3 Hari</text>
+  <text x="74" y="114" class="sub">Urutan belajar harus bergerak dari peta besar ke jawaban model, bukan sebaliknya.</text>
+  <path class="line" d="M142 414H1138"/>
+  <g transform="translate(82 170)">
+    <rect width="258" height="438" class="panel"/>
+    <rect x="26" y="28" width="88" height="54" rx="18" class="bar"/><text x="42" y="64" class="day">H-3</text>
+    <text x="28" y="124" class="h">Fondasi</text>
+    <text x="28" y="160" class="p">Buat ulang kronologi</text>
+    <text x="28" y="188" class="p">dari awal sampai akhir.</text>
+    <rect x="28" y="230" width="198" height="20" rx="10" fill="#dceae7"/>
+    <rect x="28" y="230" width="148" height="20" rx="10" class="bar"/>
+    <text x="28" y="286" class="small">Target:</text>
+    <text x="28" y="316" class="p">1 timeline kosong</text>
+    <text x="28" y="344" class="p">20 kartu tokoh</text>
+    <text x="28" y="372" class="p">4 mini-esai konsep</text>
+  </g>
+  <g transform="translate(376 170)">
+    <rect width="258" height="438" class="panel"/>
+    <rect x="26" y="28" width="88" height="54" rx="18" class="bar2"/><text x="42" y="64" class="day">H-2</text>
+    <text x="28" y="124" class="h">Bandingkan</text>
+    <text x="28" y="160" class="p">Pisahkan konsep yang</text>
+    <text x="28" y="188" class="p">paling rawan tertukar.</text>
+    <rect x="28" y="230" width="198" height="20" rx="10" fill="#f0dcd6"/>
+    <rect x="28" y="230" width="166" height="20" rx="10" class="bar2"/>
+    <text x="28" y="286" class="small">Target:</text>
+    <text x="28" y="316" class="p">6 tabel pembeda</text>
+    <text x="28" y="344" class="p">6 jawaban 8 menit</text>
+    <text x="28" y="372" class="p">cek istilah wajib</text>
+  </g>
+  <g transform="translate(670 170)">
+    <rect width="258" height="438" class="panel"/>
+    <rect x="26" y="28" width="88" height="54" rx="18" class="bar3"/><text x="42" y="64" class="day">H-1</text>
+    <text x="28" y="124" class="h">Simulasi</text>
+    <text x="28" y="160" class="p">Tulis esai penuh lalu</text>
+    <text x="28" y="188" class="p">nilai dengan rubrik.</text>
+    <rect x="28" y="230" width="198" height="20" rx="10" fill="#f3e5c6"/>
+    <rect x="28" y="230" width="186" height="20" rx="10" class="bar3"/>
+    <text x="28" y="286" class="small">Target:</text>
+    <text x="28" y="316" class="p">2 esai panjang</text>
+    <text x="28" y="344" class="p">2 esai pendek</text>
+    <text x="28" y="372" class="p">1 daftar kesalahan</text>
+  </g>
+  <g transform="translate(964 170)">
+    <rect width="258" height="438" class="panel"/>
+    <rect x="26" y="28" width="88" height="54" rx="18" class="bar4"/><text x="44" y="64" class="day">UJ</text>
+    <text x="28" y="124" class="h">Pagi Ujian</text>
+    <text x="28" y="160" class="p">Baca peta, bukan</text>
+    <text x="28" y="188" class="p">menghafal ulang buku.</text>
+    <rect x="28" y="230" width="198" height="20" rx="10" fill="#dbe2ef"/>
+    <rect x="28" y="230" width="112" height="20" rx="10" class="bar4"/>
+    <text x="28" y="286" class="small">Target:</text>
+    <text x="28" y="316" class="p">15 menit kronologi</text>
+    <text x="28" y="344" class="p">10 menit pembeda</text>
+    <text x="28" y="372" class="p">5 menit template</text>
+  </g>
+  <g transform="translate(130 642)">
+    <circle cx="0" cy="0" r="23" fill="#2c6b64"/><path class="tick" d="M-9 0l7 8 14-18"/>
+    <text x="42" y="7" class="p">Aturan inti: setiap sesi harus menghasilkan tulisan, bukan hanya bacaan.</text>
+  </g>
+</svg>

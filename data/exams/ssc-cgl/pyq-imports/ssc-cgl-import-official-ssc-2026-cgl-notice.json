@@ -1,0 +1,16 @@
+{
+  "source_id": "ssc-cgl-import-official-ssc-2026-cgl-notice",
+  "source_type": "official_open",
+  "source_file": "G:\\MITEEE\\data\\exams\\ssc-cgl\\downloads\\files\\official-ssc-2026-cgl-notice.pdf",
+  "source_url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Notice_of_adv_cgl_2026.pdf",
+  "imported_at": "2026-06-25T14:15:59.224605+00:00",
+  "sha256": "54a01dda220cb8836f19983908e1f3fd14ddba8286781765a02765728a89e070",
+  "review_status": "needs_review",
+  "ocr_status": "pending",
+  "question_count": 0,
+  "warnings": [
+    "OCR extraction is not trusted until manually reviewed.",
+    "Answer-key alignment must be checked separately from OCR confidence.",
+    "web_pdf_unverified items must not enter ranked tests."
+  ]
+}

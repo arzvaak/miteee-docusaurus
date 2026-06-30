@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">SSC CGL fill in the blanks decision map</title>
+  <desc id="desc">A study visual for classifying SSC CGL fill in the blanks questions by grammar, collocation, context, and option pairing.</desc>
+  <rect width="1200" height="760" fill="#f8fafc"/>
+  <rect x="42" y="36" width="1116" height="688" rx="18" fill="#ffffff" stroke="#0f172a" stroke-width="3"/>
+  <text x="74" y="88" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800" fill="#0f172a">Fill in the Blanks: 5-Second Filter</text>
+  <text x="76" y="122" font-family="Inter, Arial, sans-serif" font-size="18" fill="#475569">Do not choose what only sounds familiar. The correct option must pass grammar, meaning, and natural usage.</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="78" y="162" width="260" height="116" rx="10" fill="#e0f2fe" stroke="#0369a1" stroke-width="2"/>
+    <text x="102" y="198" font-size="22" font-weight="800" fill="#0c4a6e">Grammar Gate</text>
+    <text x="102" y="230" font-size="16" fill="#075985">article, tense, verb form</text>
+    <text x="102" y="254" font-size="16" fill="#075985">agreement, pronoun, modifier</text>
+
+    <rect x="470" y="162" width="260" height="116" rx="10" fill="#ecfccb" stroke="#4d7c0f" stroke-width="2"/>
+    <text x="494" y="198" font-size="22" font-weight="800" fill="#365314">Collocation Gate</text>
+    <text x="494" y="230" font-size="16" fill="#3f6212">verb + noun, adjective + prep</text>
+    <text x="494" y="254" font-size="16" fill="#3f6212">fixed phrase, phrasal verb</text>
+
+    <rect x="862" y="162" width="260" height="116" rx="10" fill="#fae8ff" stroke="#86198f" stroke-width="2"/>
+    <text x="886" y="198" font-size="22" font-weight="800" fill="#701a75">Context Gate</text>
+    <text x="886" y="230" font-size="16" fill="#86198f">contrast, cause, tone</text>
+    <text x="886" y="254" font-size="16" fill="#86198f">positive/negative direction</text>
+
+    <path d="M208 278 L208 336" stroke="#0f172a" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M600 278 L600 336" stroke="#0f172a" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M992 278 L992 336" stroke="#0f172a" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <rect x="78" y="336" width="260" height="128" rx="10" fill="#f0f9ff" stroke="#0284c7" stroke-width="2"/>
+    <text x="102" y="371" font-size="20" font-weight="800" fill="#075985">Reject Rule Breaks</text>
+    <text x="102" y="403" font-size="16" fill="#0c4a6e">wrong number or tense</text>
+    <text x="102" y="427" font-size="16" fill="#0c4a6e">wrong article sound</text>
+    <text x="102" y="451" font-size="16" fill="#0c4a6e">wrong preposition pattern</text>
+
+    <rect x="470" y="336" width="260" height="128" rx="10" fill="#f7fee7" stroke="#65a30d" stroke-width="2"/>
+    <text x="494" y="371" font-size="20" font-weight="800" fill="#3f6212">Choose Natural Pair</text>
+    <text x="494" y="403" font-size="16" fill="#365314">make/take/do/give</text>
+    <text x="494" y="427" font-size="16" fill="#365314">depend on, interested in</text>
+    <text x="494" y="451" font-size="16" fill="#365314">call off, look into</text>
+
+    <rect x="862" y="336" width="260" height="128" rx="10" fill="#fdf4ff" stroke="#a21caf" stroke-width="2"/>
+    <text x="886" y="371" font-size="20" font-weight="800" fill="#86198f">Read Signal Words</text>
+    <text x="886" y="403" font-size="16" fill="#701a75">although, but, however</text>
+    <text x="886" y="427" font-size="16" fill="#701a75">therefore, because, since</text>
+    <text x="886" y="451" font-size="16" fill="#701a75">formal vs casual tone</text>
+
+    <rect x="116" y="548" width="970" height="82" rx="12" fill="#fff7ed" stroke="#c2410c" stroke-width="2"/>
+    <text x="150" y="584" font-size="22" font-weight="800" fill="#9a3412">Final Answer Rule</text>
+    <text x="150" y="615" font-size="17" fill="#9a3412">One wrong gate is enough to eliminate an option. The correct answer must satisfy all three gates at once.</text>
+  </g>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a"/>
+    </marker>
+  </defs>
+</svg>

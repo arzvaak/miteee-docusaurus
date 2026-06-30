@@ -1,0 +1,7 @@
+{
+  "sourceId": "official-ssc-2026-cgl-notice-sample-answer-key",
+  "sourceUrl": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Notice_of_adv_cgl_2026.pdf",
+  "status": "sample_for_pipeline_validation_only",
+  "note": "The SSC CGL notice is not a question paper. This answer key intentionally covers no segmented candidates so the alignment stage produces a quarantine report.",
+  "answers": []
+}

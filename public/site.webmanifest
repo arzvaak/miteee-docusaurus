@@ -1,0 +1,121 @@
+{
+  "id": "/",
+  "name": "MITEEE Personal Study Desk",
+  "short_name": "MITEEE Desk",
+  "description": "A private MITEEE and UPSC CSE study desk for notes, formulas, diagrams, question banks, learner memory, and exam revision paths.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "browser"],
+  "orientation": "any",
+  "background_color": "#080b10",
+  "theme_color": "#26c7b8",
+  "categories": ["education", "productivity", "utilities"],
+  "icons": [
+    {
+      "src": "/img/icons/icon-16.png",
+      "sizes": "16x16",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/icons/icon-32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/icons/icon-48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/icons/icon-64.png",
+      "sizes": "64x64",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/icons/icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/icons/icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/icons/icon-256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/icons/icon-384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/app-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Revision Queue",
+      "short_name": "Revision",
+      "description": "Open due recall cards, mistakes, and study momentum.",
+      "url": "/revision",
+      "icons": [{ "src": "/img/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Subject Library",
+      "short_name": "Subjects",
+      "description": "Open the MITEEE and UPSC CSE subject folders.",
+      "url": "/courses",
+      "icons": [{ "src": "/img/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Recent Notes",
+      "short_name": "Notes",
+      "description": "Jump back into the indexed note list.",
+      "url": "/#recent-notes",
+      "icons": [{ "src": "/img/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/img/miteee-social-card.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "MITEEE desk with notes, circuits, and revision paths"
+    },
+    {
+      "src": "/img/miteee-splash-portrait.jpg",
+      "sizes": "1080x1920",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Portrait study desk artwork for mobile install surfaces"
+    }
+  ]
+}

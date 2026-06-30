@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="620" viewBox="0 0 1100 620" role="img" aria-labelledby="title desc">
+  <title id="title">SSC CGL Idioms and Phrases recall map</title>
+  <desc id="desc">A visual recall map grouping idioms by body, animal, colour, number, action, preposition, tone, and context.</desc>
+  <rect width="1100" height="620" fill="#111827"/>
+  <rect x="42" y="38" width="1016" height="544" rx="18" fill="#0f172a" stroke="#f59e0b" stroke-width="3"/>
+  <text x="550" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#fff7ed">Idioms and Phrases: 15-second Recall Map</text>
+  <text x="550" y="113" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#fed7aa">Reject literal meaning first, then match figurative meaning, tone, and fixed wording</text>
+
+  <g font-family="Arial, sans-serif" fill="#f8fafc">
+    <rect x="95" y="155" width="220" height="86" rx="12" fill="#7c2d12" stroke="#fdba74"/>
+    <text x="205" y="190" text-anchor="middle" font-size="20" font-weight="700">Body</text>
+    <text x="205" y="216" text-anchor="middle" font-size="14">head, hand, eye, foot</text>
+
+    <rect x="440" y="155" width="220" height="86" rx="12" fill="#14532d" stroke="#86efac"/>
+    <text x="550" y="190" text-anchor="middle" font-size="20" font-weight="700">Animals</text>
+    <text x="550" y="216" text-anchor="middle" font-size="14">cat, dog, horse, fish</text>
+
+    <rect x="785" y="155" width="220" height="86" rx="12" fill="#1e3a8a" stroke="#93c5fd"/>
+    <text x="895" y="190" text-anchor="middle" font-size="20" font-weight="700">Colour / Number</text>
+    <text x="895" y="216" text-anchor="middle" font-size="14">red, blue, green, sixes</text>
+
+    <rect x="95" y="300" width="220" height="86" rx="12" fill="#581c87" stroke="#d8b4fe"/>
+    <text x="205" y="335" text-anchor="middle" font-size="20" font-weight="700">Action Verbs</text>
+    <text x="205" y="361" text-anchor="middle" font-size="14">bite, kick, pull, hit</text>
+
+    <rect x="440" y="300" width="220" height="86" rx="12" fill="#164e63" stroke="#67e8f9"/>
+    <text x="550" y="335" text-anchor="middle" font-size="20" font-weight="700">Fixed Phrases</text>
+    <text x="550" y="361" text-anchor="middle" font-size="14">in, on, at, out of</text>
+
+    <rect x="785" y="300" width="220" height="86" rx="12" fill="#831843" stroke="#f9a8d4"/>
+    <text x="895" y="335" text-anchor="middle" font-size="20" font-weight="700">Tone</text>
+    <text x="895" y="361" text-anchor="middle" font-size="14">positive, negative, neutral</text>
+
+    <rect x="265" y="455" width="250" height="86" rx="12" fill="#3f3f46" stroke="#d4d4d8"/>
+    <text x="390" y="490" text-anchor="middle" font-size="20" font-weight="700">Direct Meaning</text>
+    <text x="390" y="516" text-anchor="middle" font-size="14">know it, reject literal trap</text>
+
+    <rect x="585" y="455" width="250" height="86" rx="12" fill="#713f12" stroke="#fde68a"/>
+    <text x="710" y="490" text-anchor="middle" font-size="20" font-weight="700">Context Usage</text>
+    <text x="710" y="516" text-anchor="middle" font-size="14">predict meaning before options</text>
+  </g>
+
+  <g stroke="#cbd5e1" stroke-width="3" fill="none" marker-end="url(#arrow)">
+    <path d="M315 198 H440"/>
+    <path d="M660 198 H785"/>
+    <path d="M205 241 V300"/>
+    <path d="M550 241 V300"/>
+    <path d="M895 241 V300"/>
+    <path d="M315 386 L390 455"/>
+    <path d="M660 386 L710 455"/>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#cbd5e1"/>
+    </marker>
+  </defs>
+</svg>

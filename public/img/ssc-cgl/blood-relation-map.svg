@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Blood Relation 118-Q Chain Map</title>
+  <desc id="desc">A study map for SSC CGL blood relation questions: classify the stem, decode relation chains, control only-word traps, and answer inside the Reasoning timer.</desc>
+  <rect width="960" height="540" fill="#111827"/>
+  <rect x="36" y="34" width="888" height="472" rx="22" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+  <text x="72" y="82" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Blood Relation: 118-Q Chain Map</text>
+  <text x="72" y="114" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="16">Base person first, relation words second, generation count last.</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="72" y="152" width="226" height="102" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="96" y="184" fill="#e0f2fe" font-size="19" font-weight="700">1. Base Lock</text>
+    <text x="96" y="212" fill="#cbd5e1" font-size="14">Pointing stem: speaker is base.</text>
+    <text x="96" y="233" fill="#cbd5e1" font-size="14">Possessive stem: "my" is base.</text>
+
+    <rect x="367" y="152" width="226" height="102" rx="12" fill="#1e293b" stroke="#a78bfa" stroke-width="2"/>
+    <text x="391" y="184" fill="#ede9fe" font-size="19" font-weight="700">2. Chain Walk</text>
+    <text x="391" y="212" fill="#cbd5e1" font-size="14">Move one relation word at a time.</text>
+    <text x="391" y="233" fill="#cbd5e1" font-size="14">Do not jump to answer choices.</text>
+
+    <rect x="662" y="152" width="226" height="102" rx="12" fill="#1e293b" stroke="#22c55e" stroke-width="2"/>
+    <text x="686" y="184" fill="#dcfce7" font-size="19" font-weight="700">3. Only-Word Gate</text>
+    <text x="686" y="212" fill="#cbd5e1" font-size="14">Only son excludes brothers.</text>
+    <text x="686" y="233" fill="#cbd5e1" font-size="14">Only child excludes all siblings.</text>
+
+    <rect x="72" y="318" width="226" height="102" rx="12" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+    <text x="96" y="350" fill="#ffedd5" font-size="19" font-weight="700">4. Code Decode</text>
+    <text x="96" y="378" fill="#cbd5e1" font-size="14">Replace +, -, x, / with relations.</text>
+    <text x="96" y="399" fill="#cbd5e1" font-size="14">Then draw the family tree.</text>
+
+    <rect x="367" y="318" width="226" height="102" rx="12" fill="#1e293b" stroke="#ef4444" stroke-width="2"/>
+    <text x="391" y="350" fill="#fee2e2" font-size="19" font-weight="700">5. Generation Filter</text>
+    <text x="391" y="378" fill="#cbd5e1" font-size="14">+2 grand, +1 parent side,</text>
+    <text x="391" y="399" fill="#cbd5e1" font-size="14">0 sibling/cousin, -1 child line.</text>
+
+    <rect x="662" y="318" width="226" height="102" rx="12" fill="#1e293b" stroke="#14b8a6" stroke-width="2"/>
+    <text x="686" y="350" fill="#ccfbf1" font-size="19" font-weight="700">6. 36-Second Answer</text>
+    <text x="686" y="378" fill="#cbd5e1" font-size="14">25s for direct chains.</text>
+    <text x="686" y="399" fill="#cbd5e1" font-size="14">45s max for coded sets.</text>
+  </g>
+
+  <g stroke="#64748b" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M298 203 H367"/>
+    <path d="M593 203 H662"/>
+    <path d="M775 254 V318"/>
+    <path d="M662 369 H593"/>
+    <path d="M367 369 H298"/>
+    <path d="M185 318 V254"/>
+  </g>
+  <g fill="#94a3b8">
+    <path d="M358 195 L370 203 L358 211 Z"/>
+    <path d="M653 195 L665 203 L653 211 Z"/>
+    <path d="M767 309 L775 321 L783 309 Z"/>
+    <path d="M602 361 L590 369 L602 377 Z"/>
+    <path d="M307 361 L295 369 L307 377 Z"/>
+    <path d="M177 263 L185 251 L193 263 Z"/>
+  </g>
+
+  <text x="72" y="466" fill="#e2e8f0" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600">200/200 rule:</text>
+  <text x="174" y="466" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="15">No relation answer is chosen before base, chain, only-word cue, and generation have all been checked.</text>
+</svg>

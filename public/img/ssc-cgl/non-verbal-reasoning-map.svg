@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">SSC CGL Non-verbal reasoning map</title>
+  <desc id="desc">A visual map for mirror image, water image, figure series, embedded figure, paper folding, dice, cube, and counting shapes.</desc>
+  <rect width="1200" height="760" fill="#101820"/>
+  <rect x="54" y="46" width="1092" height="668" rx="28" fill="#182536" stroke="#78dcca" stroke-width="3"/>
+  <text x="600" y="92" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#f8fbff">Non-Verbal Reasoning</text>
+  <text x="600" y="128" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#d7e6ee">Classify the visual command in 5 seconds, then apply the correct transformation</text>
+
+  <g font-family="Arial, sans-serif" fill="#f8fbff">
+    <rect x="92" y="178" width="230" height="136" rx="16" fill="#21384a" stroke="#8fd6ff" stroke-width="2"/>
+    <text x="207" y="211" text-anchor="middle" font-size="22" font-weight="700">Mirror</text>
+    <line x1="207" y1="226" x2="207" y2="292" stroke="#8fd6ff" stroke-width="4" stroke-dasharray="8 7"/>
+    <path d="M152 260 h38 l-14 -14 m14 14 l-14 14" stroke="#f4d35e" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M262 260 h-38 l14 -14 m-14 14 l14 14" stroke="#f4d35e" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <text x="207" y="303" text-anchor="middle" font-size="15">left-right swap</text>
+
+    <rect x="352" y="178" width="230" height="136" rx="16" fill="#263b35" stroke="#7bd389" stroke-width="2"/>
+    <text x="467" y="211" text-anchor="middle" font-size="22" font-weight="700">Water</text>
+    <line x1="397" y1="257" x2="537" y2="257" stroke="#7bd389" stroke-width="4" stroke-dasharray="8 7"/>
+    <path d="M467 222 v28 l-12 -12 m12 12 l12 -12" stroke="#f4d35e" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M467 292 v-28 l-12 12 m12 -12 l12 12" stroke="#f4d35e" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <text x="467" y="303" text-anchor="middle" font-size="15">top-bottom swap</text>
+
+    <rect x="612" y="178" width="230" height="136" rx="16" fill="#44364c" stroke="#f4d35e" stroke-width="2"/>
+    <text x="727" y="211" text-anchor="middle" font-size="22" font-weight="700">Series</text>
+    <circle cx="682" cy="258" r="16" fill="#8fd6ff"/>
+    <rect x="718" y="242" width="32" height="32" fill="#ff9f80"/>
+    <polygon points="787,242 807,276 767,276" fill="#7bd389"/>
+    <path d="M690 300 C730 330 760 330 800 300" stroke="#d7e6ee" stroke-width="3" fill="none"/>
+    <text x="727" y="303" text-anchor="middle" font-size="15">movement, count, shade</text>
+
+    <rect x="872" y="178" width="230" height="136" rx="16" fill="#4a3030" stroke="#ff9f9f" stroke-width="2"/>
+    <text x="987" y="211" text-anchor="middle" font-size="22" font-weight="700">Embedded</text>
+    <rect x="929" y="235" width="92" height="58" fill="none" stroke="#8fd6ff" stroke-width="4"/>
+    <path d="M929 293 L1021 235" stroke="#f4d35e" stroke-width="4"/>
+    <path d="M950 280 L995 252" stroke="#7bd389" stroke-width="5"/>
+    <text x="987" y="303" text-anchor="middle" font-size="15">exact outline inside</text>
+
+    <rect x="164" y="404" width="230" height="136" rx="16" fill="#333f56" stroke="#b8f2e6" stroke-width="2"/>
+    <text x="279" y="437" text-anchor="middle" font-size="22" font-weight="700">Folding</text>
+    <rect x="232" y="456" width="94" height="58" fill="none" stroke="#d7e6ee" stroke-width="4"/>
+    <line x1="279" y1="456" x2="279" y2="514" stroke="#f4d35e" stroke-width="4" stroke-dasharray="8 6"/>
+    <circle cx="260" cy="485" r="6" fill="#ff9f80"/>
+    <circle cx="298" cy="485" r="6" fill="#ff9f80"/>
+    <text x="279" y="530" text-anchor="middle" font-size="15">unfold in reverse</text>
+
+    <rect x="486" y="404" width="230" height="136" rx="16" fill="#2b4450" stroke="#8fd6ff" stroke-width="2"/>
+    <text x="601" y="437" text-anchor="middle" font-size="22" font-weight="700">Dice/Cube</text>
+    <polygon points="570,472 610,452 650,472 610,494" fill="#7bd389" stroke="#d7e6ee" stroke-width="3"/>
+    <polygon points="570,472 610,494 610,536 570,514" fill="#276fbf" stroke="#d7e6ee" stroke-width="3"/>
+    <polygon points="650,472 610,494 610,536 650,514" fill="#ff9f80" stroke="#d7e6ee" stroke-width="3"/>
+    <text x="601" y="530" text-anchor="middle" font-size="15">adjacent is not opposite</text>
+
+    <rect x="808" y="404" width="230" height="136" rx="16" fill="#3c3347" stroke="#f4d35e" stroke-width="2"/>
+    <text x="923" y="437" text-anchor="middle" font-size="22" font-weight="700">Counting</text>
+    <path d="M876 510 L923 452 L970 510 Z" fill="none" stroke="#8fd6ff" stroke-width="4"/>
+    <path d="M923 452 L923 510 M876 510 L923 482 L970 510" stroke="#7bd389" stroke-width="3"/>
+    <text x="923" y="530" text-anchor="middle" font-size="15">small, medium, large</text>
+  </g>
+
+  <rect x="284" y="630" width="632" height="46" rx="23" fill="#78dcca"/>
+  <text x="600" y="660" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#101820">Goal: identify axis, movement, fold, adjacency, or count before reading options</text>
+</svg>

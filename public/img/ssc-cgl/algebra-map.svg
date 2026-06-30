@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">SSC CGL Algebra 36-second decision map</title>
+  <desc id="desc">A compact visual showing how to classify algebra questions into identity, x plus reciprocal, factorisation, equation solving, symmetric expression, and substitution routes.</desc>
+  <rect width="1200" height="760" fill="#f8fafc"/>
+  <rect x="42" y="36" width="1116" height="688" rx="18" fill="#ffffff" stroke="#0f172a" stroke-width="3"/>
+  <text x="74" y="88" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800" fill="#0f172a">Algebra: 5-Second Recognition, 36-Second Execution</text>
+  <text x="76" y="122" font-family="Inter, Arial, sans-serif" font-size="18" fill="#475569">For SSC CGL Tier-I, most algebra marks come from recognizing the expression family before expanding anything.</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="78" y="164" width="270" height="110" rx="10" fill="#e0f2fe" stroke="#0369a1" stroke-width="2"/>
+    <text x="102" y="199" font-size="22" font-weight="800" fill="#0c4a6e">Identity Trigger</text>
+    <text x="102" y="230" font-size="17" fill="#075985">(a+b)^2, (a-b)^2</text>
+    <text x="102" y="254" font-size="17" fill="#075985">cube, difference of squares</text>
+
+    <rect x="466" y="164" width="270" height="110" rx="10" fill="#ecfccb" stroke="#4d7c0f" stroke-width="2"/>
+    <text x="490" y="199" font-size="22" font-weight="800" fill="#365314">Reciprocal Trigger</text>
+    <text x="490" y="230" font-size="17" fill="#3f6212">x + 1/x or x - 1/x</text>
+    <text x="490" y="254" font-size="17" fill="#3f6212">square, cube, fourth power</text>
+
+    <rect x="854" y="164" width="270" height="110" rx="10" fill="#fae8ff" stroke="#86198f" stroke-width="2"/>
+    <text x="878" y="199" font-size="22" font-weight="800" fill="#701a75">Equation Trigger</text>
+    <text x="878" y="230" font-size="17" fill="#86198f">linear, quadratic, roots</text>
+    <text x="878" y="254" font-size="17" fill="#86198f">option test if numbers are small</text>
+
+    <path d="M214 274 L214 332" stroke="#0f172a" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M602 274 L602 332" stroke="#0f172a" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M990 274 L990 332" stroke="#0f172a" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <rect x="78" y="332" width="270" height="132" rx="10" fill="#f0f9ff" stroke="#0284c7" stroke-width="2"/>
+    <text x="102" y="367" font-size="21" font-weight="800" fill="#075985">Write Formula First</text>
+    <text x="102" y="399" font-size="16" fill="#0c4a6e">Sum-square: S^2 - 2P</text>
+    <text x="102" y="423" font-size="16" fill="#0c4a6e">Diff-square: D^2 + 2P</text>
+    <text x="102" y="447" font-size="16" fill="#0c4a6e">Cube: S^3 - 3PS</text>
+
+    <rect x="466" y="332" width="270" height="132" rx="10" fill="#f7fee7" stroke="#65a30d" stroke-width="2"/>
+    <text x="490" y="367" font-size="21" font-weight="800" fill="#3f6212">Use +/-2 Rule</text>
+    <text x="490" y="399" font-size="16" fill="#365314">Given x+1/x=p: p^2 - 2</text>
+    <text x="490" y="423" font-size="16" fill="#365314">Given x-1/x=q: q^2 + 2</text>
+    <text x="490" y="447" font-size="16" fill="#365314">Cube: p^3 - 3p</text>
+
+    <rect x="854" y="332" width="270" height="132" rx="10" fill="#fdf4ff" stroke="#a21caf" stroke-width="2"/>
+    <text x="878" y="367" font-size="21" font-weight="800" fill="#86198f">Solve or Factor</text>
+    <text x="878" y="399" font-size="16" fill="#701a75">Linear: isolate, then check</text>
+    <text x="878" y="423" font-size="16" fill="#701a75">Quadratic: split middle term</text>
+    <text x="878" y="447" font-size="16" fill="#701a75">Roots: sum = -b/a, product = c/a</text>
+
+    <rect x="116" y="548" width="970" height="82" rx="12" fill="#fff7ed" stroke="#c2410c" stroke-width="2"/>
+    <text x="150" y="584" font-size="22" font-weight="800" fill="#9a3412">Final 10-Second Check</text>
+    <text x="150" y="615" font-size="17" fill="#9a3412">Sign, coefficient 2ab/3ab, non-zero restriction, and whether options ask value, roots, sum, product, or factor form.</text>
+  </g>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a"/>
+    </marker>
+  </defs>
+</svg>

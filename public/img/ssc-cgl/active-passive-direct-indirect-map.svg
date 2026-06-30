@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">SSC CGL voice and narration attack map</title>
+  <desc id="desc">A study map for active-passive voice, direct-indirect narration, pronoun ownership, tense shifts, and option elimination.</desc>
+  <rect width="1200" height="675" fill="#111827"/>
+  <rect x="44" y="42" width="1112" height="591" rx="28" fill="#0f172a" stroke="#f59e0b" stroke-width="3"/>
+  <text x="78" y="103" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="800">Voice and Narration: 5-Second Classification</text>
+  <text x="80" y="142" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="21">Lock the transformation type first. Then check tense, pronoun owner, order, and option traps.</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="80" y="185" width="245" height="130" rx="18" fill="#7c2d12"/>
+    <text x="108" y="229" fill="#fff7ed" font-size="25" font-weight="750">Voice Ladder</text>
+    <text x="108" y="262" fill="#ffedd5" font-size="20">SVO lock</text>
+    <text x="108" y="289" fill="#ffedd5" font-size="20">be + V3</text>
+
+    <rect x="360" y="185" width="245" height="130" rx="18" fill="#1d4ed8"/>
+    <text x="388" y="229" fill="#eff6ff" font-size="25" font-weight="750">Narration Ladder</text>
+    <text x="388" y="262" fill="#dbeafe" font-size="20">Reporting verb lock</text>
+    <text x="388" y="289" fill="#dbeafe" font-size="20">Pronoun owner</text>
+
+    <rect x="640" y="185" width="245" height="130" rx="18" fill="#166534"/>
+    <text x="668" y="229" fill="#f0fdf4" font-size="25" font-weight="750">Question Forms</text>
+    <text x="668" y="262" fill="#dcfce7" font-size="20">if / whether</text>
+    <text x="668" y="289" fill="#dcfce7" font-size="20">statement order</text>
+
+    <rect x="920" y="185" width="198" height="130" rx="18" fill="#581c87"/>
+    <text x="946" y="229" fill="#faf5ff" font-size="25" font-weight="750">Final Check</text>
+    <text x="946" y="262" fill="#f3e8ff" font-size="20">by-phrase</text>
+    <text x="946" y="289" fill="#f3e8ff" font-size="20">time words</text>
+
+    <path d="M328 250h28" stroke="#e2e8f0" stroke-width="5" stroke-linecap="round"/>
+    <path d="M608 250h28" stroke="#e2e8f0" stroke-width="5" stroke-linecap="round"/>
+    <path d="M888 250h28" stroke="#e2e8f0" stroke-width="5" stroke-linecap="round"/>
+    <path d="M348 240l13 10-13 10" fill="none" stroke="#e2e8f0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M628 240l13 10-13 10" fill="none" stroke="#e2e8f0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M908 240l13 10-13 10" fill="none" stroke="#e2e8f0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <rect x="82" y="366" width="320" height="180" rx="18" fill="#1f2937" stroke="#64748b" stroke-width="2"/>
+    <text x="112" y="410" fill="#f8fafc" font-size="25" font-weight="750">Voice Checks</text>
+    <text x="112" y="448" fill="#fed7aa" font-size="20">Object available?</text>
+    <text x="112" y="478" fill="#fed7aa" font-size="20">Tense auxiliary correct?</text>
+    <text x="112" y="508" fill="#fed7aa" font-size="20">being / been required?</text>
+
+    <rect x="442" y="366" width="320" height="180" rx="18" fill="#1f2937" stroke="#64748b" stroke-width="2"/>
+    <text x="472" y="410" fill="#f8fafc" font-size="25" font-weight="750">Narration Checks</text>
+    <text x="472" y="448" fill="#bfdbfe" font-size="20">said to -> told / asked</text>
+    <text x="472" y="478" fill="#bfdbfe" font-size="20">I = speaker, you = listener</text>
+    <text x="472" y="508" fill="#bfdbfe" font-size="20">universal truth unchanged</text>
+
+    <rect x="802" y="366" width="316" height="180" rx="18" fill="#1f2937" stroke="#64748b" stroke-width="2"/>
+    <text x="832" y="410" fill="#f8fafc" font-size="25" font-weight="750">Option Elimination</text>
+    <text x="832" y="448" fill="#ddd6fe" font-size="20">Reject wrong question order</text>
+    <text x="832" y="478" fill="#ddd6fe" font-size="20">Reject wrong pronoun owner</text>
+    <text x="832" y="508" fill="#ddd6fe" font-size="20">Reject wrong by-phrase</text>
+  </g>
+</svg>

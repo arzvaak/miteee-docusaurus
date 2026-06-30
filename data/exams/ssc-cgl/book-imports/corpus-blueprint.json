@@ -1,0 +1,1419 @@
+{
+  "generatedAt": "2026-06-27T07:23:17.012625+00:00",
+  "sourceType": "book_pyq_corpus",
+  "policy": {
+    "practiceLabel": "Treat uploaded book questions as PYQ for this personal SSC CGL system.",
+    "noteAuthoring": "Use the book-PYQ corpus distribution to decide concept depth, examples, traps, and repair drills.",
+    "officialSourceSearch": "Official-source hunting is not an active milestone for this build.",
+    "completenessRule": "The indexed book MCQ count is the target. Missing promoted rows are corpus-recovery failures/backlog, not acceptable shrinkage. Remove only exact 1:1 duplicate copies."
+  },
+  "totalQuestions": 22173,
+  "expectedQuestionCount": 22823,
+  "promotedDeficit": 650,
+  "sources": [
+    {
+      "sourceId": "pinnacle-ssc-general-studies",
+      "questionCount": 6585,
+      "expectedQuestionCount": 6658,
+      "promotedDeficit": 73,
+      "sections": [
+        {
+          "section": "general-awareness",
+          "questionCount": 6585
+        }
+      ]
+    },
+    {
+      "sourceId": "ssc-maths-6800-mcq",
+      "questionCount": 6372,
+      "expectedQuestionCount": 6472,
+      "promotedDeficit": 100,
+      "sections": [
+        {
+          "section": "quantitative-aptitude",
+          "questionCount": 6372
+        }
+      ]
+    },
+    {
+      "sourceId": "pinnacle-ssc-english",
+      "questionCount": 5688,
+      "expectedQuestionCount": 6125,
+      "promotedDeficit": 437,
+      "sections": [
+        {
+          "section": "english-comprehension",
+          "questionCount": 5688
+        }
+      ]
+    },
+    {
+      "sourceId": "pinnacle-ssc-reasoning",
+      "questionCount": 3200,
+      "expectedQuestionCount": 3200,
+      "promotedDeficit": 0,
+      "sections": [
+        {
+          "section": "reasoning",
+          "questionCount": 3200
+        }
+      ]
+    },
+    {
+      "sourceId": "pinnacle-maths-6800-di-qr-english",
+      "questionCount": 328,
+      "expectedQuestionCount": 368,
+      "promotedDeficit": 40,
+      "sections": [
+        {
+          "section": "quantitative-aptitude",
+          "questionCount": 328
+        }
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "section": "english-comprehension",
+      "title": "English Comprehension",
+      "questionCount": 5688,
+      "topicCount": 10,
+      "fullSectionSets": 227
+    },
+    {
+      "section": "general-awareness",
+      "title": "General Awareness",
+      "questionCount": 6585,
+      "topicCount": 10,
+      "fullSectionSets": 263
+    },
+    {
+      "section": "quantitative-aptitude",
+      "title": "Quantitative Aptitude",
+      "questionCount": 6700,
+      "topicCount": 14,
+      "fullSectionSets": 268
+    },
+    {
+      "section": "reasoning",
+      "title": "General Intelligence and Reasoning",
+      "questionCount": 3200,
+      "topicCount": 10,
+      "fullSectionSets": 128
+    }
+  ],
+  "topics": [
+    {
+      "slug": "current-affairs-static-gk",
+      "section": "general-awareness",
+      "questionCount": 2810,
+      "notePriority": "200-200-dominant-repeat-area",
+      "topSubtopics": [
+        {
+          "name": "pinnacle-ssc-general-studies-p0176-p0200",
+          "questionCount": 204
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0201-p0225",
+          "questionCount": 194
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0101-p0125",
+          "questionCount": 188
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0151-p0175",
+          "questionCount": 182
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0076-p0100",
+          "questionCount": 152
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0476-p0500",
+          "questionCount": 147
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0576-p0600",
+          "questionCount": 146
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0351-p0375",
+          "questionCount": 145
+        }
+      ]
+    },
+    {
+      "slug": "analogy-classification",
+      "section": "reasoning",
+      "questionCount": 1285,
+      "notePriority": "200-200-dominant-repeat-area",
+      "topSubtopics": [
+        {
+          "name": "Scribd HTML Pages",
+          "questionCount": 1285
+        }
+      ]
+    },
+    {
+      "slug": "geometry-mensuration",
+      "section": "quantitative-aptitude",
+      "questionCount": 1207,
+      "notePriority": "200-200-dominant-repeat-area",
+      "topSubtopics": [
+        {
+          "name": "Mensuration",
+          "questionCount": 603
+        },
+        {
+          "name": "Geometry",
+          "questionCount": 531
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0101-p0120",
+          "questionCount": 27
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0621-p0640",
+          "questionCount": 21
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0201-p0220",
+          "questionCount": 17
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0301-p0320",
+          "questionCount": 2
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0441-p0460",
+          "questionCount": 2
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0021-p0040",
+          "questionCount": 1
+        }
+      ]
+    },
+    {
+      "slug": "vocabulary-cloze",
+      "section": "english-comprehension",
+      "questionCount": 893,
+      "notePriority": "200-200-dominant-repeat-area",
+      "topSubtopics": [
+        {
+          "name": "pinnacle-ssc-english-p0326-p0350",
+          "questionCount": 365
+        },
+        {
+          "name": "pinnacle-ssc-english-p0301-p0325",
+          "questionCount": 333
+        },
+        {
+          "name": "pinnacle-ssc-english-p0276-p0300",
+          "questionCount": 195
+        }
+      ]
+    },
+    {
+      "slug": "art-culture",
+      "section": "general-awareness",
+      "questionCount": 870,
+      "notePriority": "200-200-dominant-repeat-area",
+      "topSubtopics": [
+        {
+          "name": "pinnacle-ssc-general-studies-p0026-p0050",
+          "questionCount": 203
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0001-p0025",
+          "questionCount": 159
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0051-p0075",
+          "questionCount": 120
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0151-p0175",
+          "questionCount": 32
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0076-p0100",
+          "questionCount": 31
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0576-p0600",
+          "questionCount": 29
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0101-p0125",
+          "questionCount": 28
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0126-p0150",
+          "questionCount": 27
+        }
+      ]
+    },
+    {
+      "slug": "series-coding",
+      "section": "reasoning",
+      "questionCount": 836,
+      "notePriority": "200-200-dominant-repeat-area",
+      "topSubtopics": [
+        {
+          "name": "Scribd HTML Pages",
+          "questionCount": 836
+        }
+      ]
+    },
+    {
+      "slug": "active-passive-direct-indirect",
+      "section": "english-comprehension",
+      "questionCount": 785,
+      "notePriority": "200-200-dominant-repeat-area",
+      "topSubtopics": [
+        {
+          "name": "pinnacle-ssc-english-p0201-p0225",
+          "questionCount": 199
+        },
+        {
+          "name": "pinnacle-ssc-english-p0176-p0200",
+          "questionCount": 188
+        },
+        {
+          "name": "pinnacle-ssc-english-p0126-p0150",
+          "questionCount": 179
+        },
+        {
+          "name": "pinnacle-ssc-english-p0151-p0175",
+          "questionCount": 145
+        },
+        {
+          "name": "pinnacle-ssc-english-p0551-p0569",
+          "questionCount": 18
+        },
+        {
+          "name": "pinnacle-ssc-english-p0526-p0550",
+          "questionCount": 9
+        },
+        {
+          "name": "pinnacle-ssc-english-p0451-p0475",
+          "questionCount": 6
+        },
+        {
+          "name": "pinnacle-ssc-english-p0501-p0525",
+          "questionCount": 6
+        }
+      ]
+    },
+    {
+      "slug": "number-system",
+      "section": "quantitative-aptitude",
+      "questionCount": 764,
+      "notePriority": "200-200-dominant-repeat-area",
+      "topSubtopics": [
+        {
+          "name": "Number System",
+          "questionCount": 177
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0021-p0040",
+          "questionCount": 143
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0041-p0060",
+          "questionCount": 104
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0261-p0280",
+          "questionCount": 67
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0441-p0460",
+          "questionCount": 57
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0621-p0640",
+          "questionCount": 54
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0101-p0120",
+          "questionCount": 36
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0301-p0320",
+          "questionCount": 35
+        }
+      ]
+    },
+    {
+      "slug": "idioms-phrases",
+      "section": "english-comprehension",
+      "questionCount": 690,
+      "notePriority": "200-200-dominant-repeat-area",
+      "topSubtopics": [
+        {
+          "name": "pinnacle-ssc-english-p0451-p0475",
+          "questionCount": 385
+        },
+        {
+          "name": "pinnacle-ssc-english-p0476-p0500",
+          "questionCount": 303
+        },
+        {
+          "name": "pinnacle-ssc-english-p0351-p0375",
+          "questionCount": 1
+        },
+        {
+          "name": "pinnacle-ssc-english-p0401-p0425",
+          "questionCount": 1
+        }
+      ]
+    },
+    {
+      "slug": "history-freedom-movement",
+      "section": "general-awareness",
+      "questionCount": 683,
+      "notePriority": "200-200-dominant-repeat-area",
+      "topSubtopics": [
+        {
+          "name": "pinnacle-ssc-general-studies-p0226-p0250",
+          "questionCount": 84
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0476-p0500",
+          "questionCount": 58
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0426-p0450",
+          "questionCount": 45
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0501-p0525",
+          "questionCount": 43
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0526-p0550",
+          "questionCount": 43
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0551-p0575",
+          "questionCount": 39
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0201-p0225",
+          "questionCount": 37
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0401-p0425",
+          "questionCount": 36
+        }
+      ]
+    },
+    {
+      "slug": "profit-loss-discount",
+      "section": "quantitative-aptitude",
+      "questionCount": 664,
+      "notePriority": "200-200-dominant-repeat-area",
+      "topSubtopics": [
+        {
+          "name": "Profit and Loss",
+          "questionCount": 223
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0521-p0540",
+          "questionCount": 202
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0481-p0500",
+          "questionCount": 113
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0321-p0340",
+          "questionCount": 70
+        },
+        {
+          "name": "Discount",
+          "questionCount": 33
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0501-p0520",
+          "questionCount": 10
+        },
+        {
+          "name": "Percentage",
+          "questionCount": 4
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0301-p0320",
+          "questionCount": 3
+        }
+      ]
+    },
+    {
+      "slug": "spelling-one-word",
+      "section": "english-comprehension",
+      "questionCount": 594,
+      "notePriority": "200-200-dominant-repeat-area",
+      "topSubtopics": [
+        {
+          "name": "pinnacle-ssc-english-p0551-p0569",
+          "questionCount": 318
+        },
+        {
+          "name": "pinnacle-ssc-english-p0426-p0450",
+          "questionCount": 270
+        },
+        {
+          "name": "pinnacle-ssc-english-p0351-p0375",
+          "questionCount": 2
+        },
+        {
+          "name": "pinnacle-ssc-english-p0401-p0425",
+          "questionCount": 2
+        },
+        {
+          "name": "pinnacle-ssc-english-p0101-p0125",
+          "questionCount": 1
+        },
+        {
+          "name": "pinnacle-ssc-english-p0526-p0550",
+          "questionCount": 1
+        }
+      ]
+    },
+    {
+      "slug": "sentence-improvement",
+      "section": "english-comprehension",
+      "questionCount": 590,
+      "notePriority": "200-200-dominant-repeat-area",
+      "topSubtopics": [
+        {
+          "name": "pinnacle-ssc-english-p0101-p0125",
+          "questionCount": 258
+        },
+        {
+          "name": "pinnacle-ssc-english-p0076-p0100",
+          "questionCount": 230
+        },
+        {
+          "name": "pinnacle-ssc-english-p0051-p0075",
+          "questionCount": 97
+        },
+        {
+          "name": "pinnacle-ssc-english-p0401-p0425",
+          "questionCount": 2
+        },
+        {
+          "name": "pinnacle-ssc-english-p0226-p0250",
+          "questionCount": 1
+        },
+        {
+          "name": "pinnacle-ssc-english-p0276-p0300",
+          "questionCount": 1
+        },
+        {
+          "name": "pinnacle-ssc-english-p0376-p0400",
+          "questionCount": 1
+        }
+      ]
+    },
+    {
+      "slug": "grammar-error-spotting",
+      "section": "english-comprehension",
+      "questionCount": 581,
+      "notePriority": "200-200-dominant-repeat-area",
+      "topSubtopics": [
+        {
+          "name": "pinnacle-ssc-english-p0026-p0050",
+          "questionCount": 235
+        },
+        {
+          "name": "pinnacle-ssc-english-p0001-p0025",
+          "questionCount": 196
+        },
+        {
+          "name": "pinnacle-ssc-english-p0051-p0075",
+          "questionCount": 148
+        },
+        {
+          "name": "pinnacle-ssc-english-p0251-p0275",
+          "questionCount": 2
+        }
+      ]
+    },
+    {
+      "slug": "trigonometry",
+      "section": "quantitative-aptitude",
+      "questionCount": 561,
+      "notePriority": "200-200-dominant-repeat-area",
+      "topSubtopics": [
+        {
+          "name": "Trigonometry",
+          "questionCount": 487
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0061-p0080",
+          "questionCount": 22
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0041-p0060",
+          "questionCount": 17
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0421-p0440",
+          "questionCount": 16
+        },
+        {
+          "name": "Geometry",
+          "questionCount": 6
+        },
+        {
+          "name": "Time, Speed and Distance",
+          "questionCount": 5
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0101-p0120",
+          "questionCount": 2
+        },
+        {
+          "name": "Algebra",
+          "questionCount": 2
+        }
+      ]
+    },
+    {
+      "slug": "averages-mixtures-alligation",
+      "section": "quantitative-aptitude",
+      "questionCount": 542,
+      "notePriority": "200-200-dominant-repeat-area",
+      "topSubtopics": [
+        {
+          "name": "Average",
+          "questionCount": 248
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0581-p0600",
+          "questionCount": 79
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0321-p0340",
+          "questionCount": 54
+        },
+        {
+          "name": "Time, Speed and Distance",
+          "questionCount": 48
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0621-p0640",
+          "questionCount": 21
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0381-p0400",
+          "questionCount": 20
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0301-p0320",
+          "questionCount": 15
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0401-p0420",
+          "questionCount": 13
+        }
+      ]
+    },
+    {
+      "slug": "indian-polity-basics",
+      "section": "general-awareness",
+      "questionCount": 539,
+      "notePriority": "200-200-dominant-repeat-area",
+      "topSubtopics": [
+        {
+          "name": "pinnacle-ssc-general-studies-p0251-p0275",
+          "questionCount": 190
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0276-p0300",
+          "questionCount": 180
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0301-p0325",
+          "questionCount": 30
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0201-p0225",
+          "questionCount": 22
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0226-p0250",
+          "questionCount": 19
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0451-p0475",
+          "questionCount": 14
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0576-p0600",
+          "questionCount": 13
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0101-p0125",
+          "questionCount": 11
+        }
+      ]
+    },
+    {
+      "slug": "algebra",
+      "section": "quantitative-aptitude",
+      "questionCount": 501,
+      "notePriority": "200-200-dominant-repeat-area",
+      "topSubtopics": [
+        {
+          "name": "Algebra",
+          "questionCount": 477
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0621-p0640",
+          "questionCount": 13
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0041-p0060",
+          "questionCount": 6
+        },
+        {
+          "name": "Number System",
+          "questionCount": 2
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0261-p0280",
+          "questionCount": 2
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0021-p0040",
+          "questionCount": 1
+        }
+      ]
+    },
+    {
+      "slug": "fill-in-the-blanks",
+      "section": "english-comprehension",
+      "questionCount": 491,
+      "notePriority": "200-200-high-yield",
+      "topSubtopics": [
+        {
+          "name": "pinnacle-ssc-english-p0251-p0275",
+          "questionCount": 326
+        },
+        {
+          "name": "pinnacle-ssc-english-p0276-p0300",
+          "questionCount": 154
+        },
+        {
+          "name": "pinnacle-ssc-english-p0376-p0400",
+          "questionCount": 7
+        },
+        {
+          "name": "pinnacle-ssc-english-p0351-p0375",
+          "questionCount": 2
+        },
+        {
+          "name": "pinnacle-ssc-english-p0401-p0425",
+          "questionCount": 2
+        }
+      ]
+    },
+    {
+      "slug": "science-everyday",
+      "section": "general-awareness",
+      "questionCount": 489,
+      "notePriority": "200-200-high-yield",
+      "topSubtopics": [
+        {
+          "name": "pinnacle-ssc-general-studies-p0526-p0550",
+          "questionCount": 92
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0501-p0525",
+          "questionCount": 85
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0476-p0500",
+          "questionCount": 51
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0451-p0475",
+          "questionCount": 49
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0551-p0575",
+          "questionCount": 48
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0426-p0450",
+          "questionCount": 23
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0576-p0600",
+          "questionCount": 23
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0051-p0075",
+          "questionCount": 14
+        }
+      ]
+    },
+    {
+      "slug": "reading-comprehension",
+      "section": "english-comprehension",
+      "questionCount": 450,
+      "notePriority": "200-200-high-yield",
+      "topSubtopics": [
+        {
+          "name": "pinnacle-ssc-english-p0401-p0425",
+          "questionCount": 232
+        },
+        {
+          "name": "pinnacle-ssc-english-p0351-p0375",
+          "questionCount": 130
+        },
+        {
+          "name": "pinnacle-ssc-english-p0376-p0400",
+          "questionCount": 88
+        }
+      ]
+    },
+    {
+      "slug": "synonyms-antonyms",
+      "section": "english-comprehension",
+      "questionCount": 427,
+      "notePriority": "200-200-high-yield",
+      "topSubtopics": [
+        {
+          "name": "pinnacle-ssc-english-p0526-p0550",
+          "questionCount": 245
+        },
+        {
+          "name": "pinnacle-ssc-english-p0501-p0525",
+          "questionCount": 180
+        },
+        {
+          "name": "pinnacle-ssc-english-p0401-p0425",
+          "questionCount": 1
+        },
+        {
+          "name": "pinnacle-ssc-english-p0476-p0500",
+          "questionCount": 1
+        }
+      ]
+    },
+    {
+      "slug": "data-interpretation",
+      "section": "quantitative-aptitude",
+      "questionCount": 419,
+      "notePriority": "200-200-high-yield",
+      "topSubtopics": [
+        {
+          "name": "Data Interpretation QR Supplement",
+          "questionCount": 328
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0601-p0620",
+          "questionCount": 35
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0621-p0640",
+          "questionCount": 28
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0481-p0500",
+          "questionCount": 7
+        },
+        {
+          "name": "Profit and Loss",
+          "questionCount": 7
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0521-p0540",
+          "questionCount": 3
+        },
+        {
+          "name": "Discount",
+          "questionCount": 2
+        },
+        {
+          "name": "Number System",
+          "questionCount": 1
+        }
+      ]
+    },
+    {
+      "slug": "time-speed-distance",
+      "section": "quantitative-aptitude",
+      "questionCount": 415,
+      "notePriority": "200-200-high-yield",
+      "topSubtopics": [
+        {
+          "name": "Time, Speed and Distance",
+          "questionCount": 138
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0421-p0440",
+          "questionCount": 109
+        },
+        {
+          "name": "Geometry",
+          "questionCount": 61
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0381-p0400",
+          "questionCount": 49
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0101-p0120",
+          "questionCount": 23
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0401-p0420",
+          "questionCount": 16
+        },
+        {
+          "name": "Mensuration",
+          "questionCount": 11
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0201-p0220",
+          "questionCount": 3
+        }
+      ]
+    },
+    {
+      "slug": "percentages",
+      "section": "quantitative-aptitude",
+      "questionCount": 381,
+      "notePriority": "200-200-high-yield",
+      "topSubtopics": [
+        {
+          "name": "Percentage",
+          "questionCount": 255
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0441-p0460",
+          "questionCount": 38
+        },
+        {
+          "name": "Mensuration",
+          "questionCount": 28
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0561-p0580",
+          "questionCount": 15
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0541-p0560",
+          "questionCount": 8
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0301-p0320",
+          "questionCount": 7
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0341-p0360",
+          "questionCount": 6
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0461-p0480",
+          "questionCount": 6
+        }
+      ]
+    },
+    {
+      "slug": "simple-compound-interest",
+      "section": "quantitative-aptitude",
+      "questionCount": 363,
+      "notePriority": "200-200-high-yield",
+      "topSubtopics": [
+        {
+          "name": "ssc-maths-6800-mcq-p0541-p0560",
+          "questionCount": 184
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0561-p0580",
+          "questionCount": 177
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0301-p0320",
+          "questionCount": 1
+        },
+        {
+          "name": "Ratio and Proportion",
+          "questionCount": 1
+        }
+      ]
+    },
+    {
+      "slug": "geography-india-world",
+      "section": "general-awareness",
+      "questionCount": 358,
+      "notePriority": "200-200-high-yield",
+      "topSubtopics": [
+        {
+          "name": "pinnacle-ssc-general-studies-p0326-p0350",
+          "questionCount": 127
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0301-p0325",
+          "questionCount": 56
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0351-p0375",
+          "questionCount": 52
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0376-p0400",
+          "questionCount": 47
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0051-p0075",
+          "questionCount": 10
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0151-p0175",
+          "questionCount": 10
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0126-p0150",
+          "questionCount": 7
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0101-p0125",
+          "questionCount": 6
+        }
+      ]
+    },
+    {
+      "slug": "sports-awards",
+      "section": "general-awareness",
+      "questionCount": 353,
+      "notePriority": "200-200-high-yield",
+      "topSubtopics": [
+        {
+          "name": "pinnacle-ssc-general-studies-p0076-p0100",
+          "questionCount": 106
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0101-p0125",
+          "questionCount": 78
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0576-p0600",
+          "questionCount": 32
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0051-p0075",
+          "questionCount": 27
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0126-p0150",
+          "questionCount": 22
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0551-p0575",
+          "questionCount": 15
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0001-p0025",
+          "questionCount": 14
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0026-p0050",
+          "questionCount": 13
+        }
+      ]
+    },
+    {
+      "slug": "time-work-pipes",
+      "section": "quantitative-aptitude",
+      "questionCount": 324,
+      "notePriority": "200-200-high-yield",
+      "topSubtopics": [
+        {
+          "name": "Work and Time",
+          "questionCount": 139
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0341-p0360",
+          "questionCount": 112
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0381-p0400",
+          "questionCount": 47
+        },
+        {
+          "name": "Mensuration",
+          "questionCount": 12
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0361-p0380",
+          "questionCount": 6
+        },
+        {
+          "name": "Pipe and Cistern",
+          "questionCount": 5
+        },
+        {
+          "name": "Number System",
+          "questionCount": 1
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0101-p0120",
+          "questionCount": 1
+        }
+      ]
+    },
+    {
+      "slug": "economics-budget-banking",
+      "section": "general-awareness",
+      "questionCount": 302,
+      "notePriority": "200-200-high-yield",
+      "topSubtopics": [
+        {
+          "name": "pinnacle-ssc-general-studies-p0401-p0425",
+          "questionCount": 123
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0426-p0450",
+          "questionCount": 24
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0376-p0400",
+          "questionCount": 19
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0576-p0600",
+          "questionCount": 18
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0126-p0150",
+          "questionCount": 17
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0301-p0325",
+          "questionCount": 14
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0151-p0175",
+          "questionCount": 11
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0451-p0475",
+          "questionCount": 9
+        }
+      ]
+    },
+    {
+      "slug": "syllogism-venn",
+      "section": "reasoning",
+      "questionCount": 301,
+      "notePriority": "200-200-high-yield",
+      "topSubtopics": [
+        {
+          "name": "Scribd HTML Pages",
+          "questionCount": 301
+        }
+      ]
+    },
+    {
+      "slug": "non-verbal-reasoning",
+      "section": "reasoning",
+      "questionCount": 300,
+      "notePriority": "200-200-high-yield",
+      "topSubtopics": [
+        {
+          "name": "Scribd HTML Pages",
+          "questionCount": 300
+        }
+      ]
+    },
+    {
+      "slug": "ratio-proportion",
+      "section": "quantitative-aptitude",
+      "questionCount": 287,
+      "notePriority": "200-200-high-yield",
+      "topSubtopics": [
+        {
+          "name": "ssc-maths-6800-mcq-p0301-p0320",
+          "questionCount": 124
+        },
+        {
+          "name": "Ratio and Proportion",
+          "questionCount": 77
+        },
+        {
+          "name": "Number System",
+          "questionCount": 37
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0321-p0340",
+          "questionCount": 20
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0021-p0040",
+          "questionCount": 13
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0441-p0460",
+          "questionCount": 9
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0341-p0360",
+          "questionCount": 2
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0601-p0620",
+          "questionCount": 2
+        }
+      ]
+    },
+    {
+      "slug": "calculation-speed",
+      "section": "quantitative-aptitude",
+      "questionCount": 208,
+      "notePriority": "200-200-high-yield",
+      "topSubtopics": [
+        {
+          "name": "ssc-maths-6800-mcq-p0041-p0060",
+          "questionCount": 79
+        },
+        {
+          "name": "Algebra",
+          "questionCount": 50
+        },
+        {
+          "name": "Trigonometry",
+          "questionCount": 21
+        },
+        {
+          "name": "Mensuration",
+          "questionCount": 18
+        },
+        {
+          "name": "Number System",
+          "questionCount": 5
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0101-p0120",
+          "questionCount": 5
+        },
+        {
+          "name": "Profit and Loss",
+          "questionCount": 5
+        },
+        {
+          "name": "Geometry",
+          "questionCount": 4
+        }
+      ]
+    },
+    {
+      "slug": "para-jumbles",
+      "section": "english-comprehension",
+      "questionCount": 187,
+      "notePriority": "200-200-standard",
+      "topSubtopics": [
+        {
+          "name": "pinnacle-ssc-english-p0226-p0250",
+          "questionCount": 176
+        },
+        {
+          "name": "pinnacle-ssc-english-p0376-p0400",
+          "questionCount": 4
+        },
+        {
+          "name": "pinnacle-ssc-english-p0401-p0425",
+          "questionCount": 4
+        },
+        {
+          "name": "pinnacle-ssc-english-p0251-p0275",
+          "questionCount": 2
+        },
+        {
+          "name": "pinnacle-ssc-english-p0351-p0375",
+          "questionCount": 1
+        }
+      ]
+    },
+    {
+      "slug": "mathematical-operations",
+      "section": "reasoning",
+      "questionCount": 157,
+      "notePriority": "200-200-standard",
+      "topSubtopics": [
+        {
+          "name": "Scribd HTML Pages",
+          "questionCount": 157
+        }
+      ]
+    },
+    {
+      "slug": "seating-arrangement",
+      "section": "reasoning",
+      "questionCount": 138,
+      "notePriority": "200-200-standard",
+      "topSubtopics": [
+        {
+          "name": "Scribd HTML Pages",
+          "questionCount": 138
+        }
+      ]
+    },
+    {
+      "slug": "blood-relation",
+      "section": "reasoning",
+      "questionCount": 118,
+      "notePriority": "200-200-standard",
+      "topSubtopics": [
+        {
+          "name": "Scribd HTML Pages",
+          "questionCount": 118
+        }
+      ]
+    },
+    {
+      "slug": "computer-awareness",
+      "section": "general-awareness",
+      "questionCount": 113,
+      "notePriority": "200-200-standard",
+      "topSubtopics": [
+        {
+          "name": "pinnacle-ssc-general-studies-p0126-p0150",
+          "questionCount": 93
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0576-p0600",
+          "questionCount": 7
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0151-p0175",
+          "questionCount": 4
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0026-p0050",
+          "questionCount": 2
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0001-p0025",
+          "questionCount": 1
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0076-p0100",
+          "questionCount": 1
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0101-p0125",
+          "questionCount": 1
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0276-p0300",
+          "questionCount": 1
+        }
+      ]
+    },
+    {
+      "slug": "environment-ecology",
+      "section": "general-awareness",
+      "questionCount": 68,
+      "notePriority": "200-200-standard",
+      "topSubtopics": [
+        {
+          "name": "pinnacle-ssc-general-studies-p0351-p0375",
+          "questionCount": 24
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0376-p0400",
+          "questionCount": 12
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0101-p0125",
+          "questionCount": 4
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0426-p0450",
+          "questionCount": 4
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0451-p0475",
+          "questionCount": 3
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0476-p0500",
+          "questionCount": 3
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0126-p0150",
+          "questionCount": 2
+        },
+        {
+          "name": "pinnacle-ssc-general-studies-p0151-p0175",
+          "questionCount": 2
+        }
+      ]
+    },
+    {
+      "slug": "probability",
+      "section": "quantitative-aptitude",
+      "questionCount": 64,
+      "notePriority": "200-200-coverage-gap",
+      "topSubtopics": [
+        {
+          "name": "ssc-maths-6800-mcq-p0621-p0640",
+          "questionCount": 61
+        },
+        {
+          "name": "Mensuration",
+          "questionCount": 2
+        },
+        {
+          "name": "ssc-maths-6800-mcq-p0021-p0040",
+          "questionCount": 1
+        }
+      ]
+    },
+    {
+      "slug": "direction-distance",
+      "section": "reasoning",
+      "questionCount": 38,
+      "notePriority": "200-200-coverage-gap",
+      "topSubtopics": [
+        {
+          "name": "Scribd HTML Pages",
+          "questionCount": 38
+        }
+      ]
+    },
+    {
+      "slug": "statement-conclusion",
+      "section": "reasoning",
+      "questionCount": 14,
+      "notePriority": "200-200-coverage-gap",
+      "topSubtopics": [
+        {
+          "name": "Scribd HTML Pages",
+          "questionCount": 14
+        }
+      ]
+    },
+    {
+      "slug": "calendar-clock",
+      "section": "reasoning",
+      "questionCount": 13,
+      "notePriority": "200-200-coverage-gap",
+      "topSubtopics": [
+        {
+          "name": "Scribd HTML Pages",
+          "questionCount": 13
+        }
+      ]
+    }
+  ]
+}

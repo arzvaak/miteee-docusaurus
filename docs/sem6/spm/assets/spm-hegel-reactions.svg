@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-labelledby="title desc">
+  <title id="title">Infografik Hegel dan reaksi filsafat sesudahnya</title>
+  <desc id="desc">Peta Hegel sebagai pusat reaksi objektif dan subjektif.</desc>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="70%"><stop offset="0" stop-color="#43306f"/><stop offset="1" stop-color="#111827"/></radialGradient>
+    <filter id="d"><feDropShadow dx="0" dy="10" stdDeviation="13" flood-opacity=".33"/></filter>
+    <style>
+      .h{font:900 38px Inter,Arial,sans-serif;fill:#fff}
+      .sub{font:600 17px Inter,Arial,sans-serif;fill:#cbd5e1}
+      .k{font:800 24px Inter,Arial,sans-serif;fill:#fff}
+      .t{font:600 17px Inter,Arial,sans-serif;fill:#e5e7eb}
+      .sm{font:600 14px Inter,Arial,sans-serif;fill:#cbd5e1}
+      .box{fill:rgba(15,23,42,.80);stroke:rgba(255,255,255,.2);stroke-width:2}
+    </style>
+  </defs>
+  <rect width="1280" height="760" rx="34" fill="url(#bg)"/>
+  <text x="58" y="72" class="h">Hegel sebagai Titik Simpul</text>
+  <text x="60" y="108" class="sub">Setelah Hegel, banyak aliran lahir sebagai penerimaan, pembalikan, atau penolakan.</text>
+  <g filter="url(#d)">
+    <circle cx="640" cy="365" r="128" fill="rgba(196,167,231,.22)" stroke="#c4a7e7" stroke-width="4"/>
+    <text x="595" y="344" class="k">Hegel</text>
+    <text x="554" y="384" class="t">ide / roh</text>
+    <text x="528" y="421" class="t">dialektika sejarah</text>
+  </g>
+  <path d="M525 310C370 225 245 218 132 255" fill="none" stroke="#f6c177" stroke-width="7" stroke-linecap="round"/>
+  <path d="M755 310C910 225 1035 218 1148 255" fill="none" stroke="#67e8f9" stroke-width="7" stroke-linecap="round"/>
+  <path d="M520 425C380 555 265 615 142 590" fill="none" stroke="#f6c177" stroke-width="7" stroke-linecap="round"/>
+  <path d="M760 425C900 555 1015 615 1138 590" fill="none" stroke="#67e8f9" stroke-width="7" stroke-linecap="round"/>
+  <g filter="url(#d)">
+    <rect x="70" y="205" width="350" height="140" rx="24" class="box"/>
+    <text x="105" y="252" class="k">Objektif: fakta</text>
+    <text x="105" y="292" class="t">Comte - positivisme</text>
+    <text x="105" y="322" class="sm">ilmu, tahap positif, anti spekulasi</text>
+    <rect x="860" y="205" width="350" height="140" rx="24" class="box"/>
+    <text x="895" y="252" class="k">Objektif: materi</text>
+    <text x="895" y="292" class="t">Feuerbach dan Marx</text>
+    <text x="895" y="322" class="sm">agama, ekonomi, kelas, dialektika material</text>
+    <rect x="70" y="520" width="350" height="140" rx="24" class="box"/>
+    <text x="105" y="568" class="k">Naturalisme</text>
+    <text x="105" y="608" class="t">Darwin dan Freud</text>
+    <text x="105" y="638" class="sm">evolusi, ketidaksadaran, manusia alamiah</text>
+    <rect x="860" y="520" width="350" height="140" rx="24" class="box"/>
+    <text x="895" y="568" class="k">Subjektif</text>
+    <text x="895" y="608" class="t">Nietzsche, Husserl, Sartre</text>
+    <text x="895" y="638" class="sm">kehendak, kesadaran, eksistensi</text>
+  </g>
+</svg>

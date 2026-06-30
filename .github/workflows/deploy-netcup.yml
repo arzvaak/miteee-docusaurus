@@ -35,7 +35,10 @@ jobs:
       - name: Build site
         env:
           NODE_OPTIONS: --max-old-space-size=4096
-        run: npm run build
+        run: |
+          npm run build
+          npm run verify:ssc-render
+          node scripts/standalone-assets.mjs
 
       - name: Install deployment tools
         run: |
@@ -70,37 +73,60 @@ jobs:
             --exclude '.env.*' \
             --exclude '.git/' \
             --exclude 'build/' \
+            --exclude '.next/cache/' \
             --exclude 'node_modules/' \
             -e "ssh -i ~/.ssh/netcup_deploy_key" \
             ./ "$NETCUP_USER@$NETCUP_HOST:$NETCUP_APP_DIR/"
 
-      - name: Publish build to Netcup
+      - name: Publish Next standalone app on Netcup
         env:
           NETCUP_HOST: ${{ secrets.NETCUP_HOST }}
           NETCUP_USER: ${{ secrets.NETCUP_USER }}
-          NETCUP_WEBROOT: ${{ secrets.NETCUP_WEBROOT }}
+          NETCUP_APP_DIR: ${{ secrets.NETCUP_APP_DIR }}
         run: |
           set -euo pipefail
           ssh -i ~/.ssh/netcup_deploy_key "$NETCUP_USER@$NETCUP_HOST" \
             "set -euo pipefail
-             test -n '$NETCUP_WEBROOT'
+             test -n '$NETCUP_APP_DIR'
              mkdir -p /root/note-arzvak-backups
-             if [ -d '$NETCUP_WEBROOT' ]; then
-               tar -C '$NETCUP_WEBROOT' -czf /root/note-arzvak-backups/note-arzvak-\$(date +%Y%m%d%H%M%S).tar.gz .
+             if [ -d '$NETCUP_APP_DIR/.next/standalone' ]; then
+               tar -C '$NETCUP_APP_DIR' -czf /root/note-arzvak-backups/note-arzvak-next-\$(date +%Y%m%d%H%M%S).tar.gz .next public data/current-affairs 2>/dev/null || true
              else
-               mkdir -p '$NETCUP_WEBROOT'
+               mkdir -p '$NETCUP_APP_DIR'
              fi
-             mkdir -p '$NETCUP_WEBROOT'"
-          rsync -az --delete \
-            -e "ssh -i ~/.ssh/netcup_deploy_key" \
-            build/ "$NETCUP_USER@$NETCUP_HOST:$NETCUP_WEBROOT/"
-          ssh -i ~/.ssh/netcup_deploy_key "$NETCUP_USER@$NETCUP_HOST" \
-            "set -euo pipefail
+             test -f '$NETCUP_APP_DIR/.next/standalone/server.js'
+             if command -v systemctl >/dev/null 2>&1 && systemctl list-unit-files | grep -q '^note-arzvak-next\\.service'; then
+               systemctl restart note-arzvak-next
+             elif command -v pm2 >/dev/null 2>&1; then
+               cd '$NETCUP_APP_DIR' && pm2 restart note-arzvak-next || pm2 start npm --name note-arzvak-next -- start -- --port 3025 --hostname 127.0.0.1
+             else
+               echo 'warning: no known note-arzvak-next process manager found; synced standalone app but did not restart service' >&2
+             fi
              nginx -t
              nginx -s reload"
+
+      - name: Install SSC CGL news cron container
+        env:
+          NETCUP_HOST: ${{ secrets.NETCUP_HOST }}
+          NETCUP_USER: ${{ secrets.NETCUP_USER }}
+          NETCUP_APP_DIR: ${{ secrets.NETCUP_APP_DIR }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          MISTRAL_MODEL: mistral-small-latest
+        run: |
+          set -euo pipefail
+          test -n "$MISTRAL_API_KEY"
+          ssh -i ~/.ssh/netcup_deploy_key "$NETCUP_USER@$NETCUP_HOST" \
+            "set -euo pipefail
+             cd '$NETCUP_APP_DIR'
+             chmod +x ops/netcup/install-ssc-cgl-news.sh
+             MISTRAL_API_KEY='$MISTRAL_API_KEY' MISTRAL_MODEL='$MISTRAL_MODEL' RUN_DATE=\$(TZ=Asia/Kolkata date +%F) ops/netcup/install-ssc-cgl-news.sh '$NETCUP_APP_DIR'"
 
       - name: Verify public site
         run: |
           set -euo pipefail
           curl --fail --location --silent --show-error https://note.arzvak.com/ > /tmp/note-home.html
-          grep -q "MIT EEE" /tmp/note-home.html
+          grep -q "/exams/ssc-cgl" /tmp/note-home.html
+          curl --fail --location --silent --show-error https://note.arzvak.com/exams/ssc-cgl > /tmp/ssc-cgl.html
+          grep -q "SSC CGL" /tmp/ssc-cgl.html
+          npx playwright install --with-deps chromium
+          SSC_BROWSER_BASE_URL=https://note.arzvak.com npm run verify:ssc-browser

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-labelledby="title desc">
+  <title id="title">Simplification 36-second decision map</title>
+  <desc id="desc">A study map for BODMAS, cancellation, indices, surds, approximation, and option-gap judgement in SSC CGL Quant.</desc>
+  <rect width="960" height="520" fill="#fbfaf5"/>
+  <rect x="44" y="38" width="872" height="84" rx="18" fill="#243a63"/>
+  <text x="480" y="76" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#ffffff">Simplification and Surds/Indices</text>
+  <text x="480" y="104" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#dbe7ff">Choose cancellation and order of operation before doing arithmetic</text>
+  <g font-family="Arial, sans-serif" font-size="16" fill="#20242b">
+    <rect x="80" y="160" width="230" height="88" rx="14" fill="#eef4ff" stroke="#9db2d8"/>
+    <text x="195" y="192" text-anchor="middle" font-weight="700">Brackets or powers?</text>
+    <text x="195" y="220" text-anchor="middle">Resolve BODMAS first</text>
+    <rect x="365" y="160" width="230" height="88" rx="14" fill="#edf7ef" stroke="#92b89b"/>
+    <text x="480" y="192" text-anchor="middle" font-weight="700">Fractions present?</text>
+    <text x="480" y="220" text-anchor="middle">Cancel before adding</text>
+    <rect x="650" y="160" width="230" height="88" rx="14" fill="#fff2dc" stroke="#d4a85a"/>
+    <text x="765" y="192" text-anchor="middle" font-weight="700">Options wide?</text>
+    <text x="765" y="220" text-anchor="middle">Approximate and stop</text>
+    <rect x="195" y="330" width="230" height="92" rx="14" fill="#f5edff" stroke="#ae94d6"/>
+    <text x="310" y="362" text-anchor="middle" font-weight="700">Surd/index law</text>
+    <text x="310" y="390" text-anchor="middle">Simplify square powers</text>
+    <rect x="535" y="330" width="230" height="92" rx="14" fill="#fdeeee" stroke="#d6a0a0"/>
+    <text x="650" y="362" text-anchor="middle" font-weight="700">Final check</text>
+    <text x="650" y="390" text-anchor="middle">Sign, unit digit, option gap</text>
+  </g>
+  <g stroke="#637085" stroke-width="3" fill="none">
+    <path d="M195 248 C205 292 245 314 310 330"/>
+    <path d="M480 248 C458 300 390 312 310 330"/>
+    <path d="M480 248 C503 300 570 314 650 330"/>
+    <path d="M765 248 C760 292 715 314 650 330"/>
+  </g>
+  <text x="480" y="475" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#243a63">36-second rule: never start long arithmetic before scanning for cancellation.</text>
+</svg>

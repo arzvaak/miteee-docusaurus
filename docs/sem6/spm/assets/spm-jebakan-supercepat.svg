@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-labelledby="title desc">
+  <title id="title">Jebakan supercepat Sejarah Pemikiran Modern</title>
+  <desc id="desc">Infografik lima jebakan ujian Sejarah Pemikiran Modern dan koreksi cepatnya.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff7ee"/>
+      <stop offset=".55" stop-color="#f0f8f5"/>
+      <stop offset="1" stop-color="#f4f6ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-8%" y="-8%" width="116%" height="116%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#21323a" flood-opacity=".14"/>
+    </filter>
+    <style>
+      .title{font:800 40px Arial,Helvetica,sans-serif;fill:#17262e}
+      .sub{font:500 21px Arial,Helvetica,sans-serif;fill:#485a62}
+      .card{fill:#fffef9;stroke:#dae4df;stroke-width:2;rx:22;filter:url(#shadow)}
+      .bad{fill:#fff0ed;stroke:#d99a8b;stroke-width:2;rx:18}
+      .good{fill:#eef9f4;stroke:#86bda5;stroke-width:2;rx:18}
+      .h{font:800 23px Arial,Helvetica,sans-serif;fill:#17262e}
+      .p{font:500 18px Arial,Helvetica,sans-serif;fill:#40525a}
+      .label{font:800 17px Arial,Helvetica,sans-serif;fill:#fff}
+      .arrow{stroke:#2c6b64;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;fill:none}
+      .x{stroke:#b8543c;stroke-width:7;stroke-linecap:round}
+      .check{stroke:#2c6b64;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;fill:none}
+    </style>
+  </defs>
+  <rect width="1280" height="760" fill="url(#bg)"/>
+  <text x="70" y="76" class="title">Jebakan Supercepat</text>
+  <text x="72" y="114" class="sub">Kalau jawaban terasa benar tetapi nilai turun, biasanya salah satu jebakan ini terjadi.</text>
+  <rect x="72" y="154" width="1136" height="516" class="card"/>
+
+  <g transform="translate(112 202)">
+    <rect width="420" height="70" class="bad"/>
+    <circle cx="36" cy="35" r="20" fill="#b8543c"/><path class="x" d="M28 27l16 16M44 27L28 43"/>
+    <text x="72" y="31" class="h">Renaissance jadi hiasan</text>
+    <text x="72" y="56" class="p">Tidak dikaitkan ke modernitas.</text>
+    <path class="arrow" d="M454 35h78"/>
+    <rect x="556" width="420" height="70" class="good"/>
+    <circle cx="592" cy="35" r="20" fill="#2c6b64"/><path class="check" d="M583 36l7 8 15-18"/>
+    <text x="628" y="31" class="h">Kaitkan ke humanisme</text>
+    <text x="628" y="56" class="p">manusia, rasio, alam konkret.</text>
+  </g>
+  <g transform="translate(112 292)">
+    <rect width="420" height="70" class="bad"/>
+    <circle cx="36" cy="35" r="20" fill="#b8543c"/><path class="x" d="M28 27l16 16M44 27L28 43"/>
+    <text x="72" y="31" class="h">Kant cuma campuran</text>
+    <text x="72" y="56" class="p">Jawaban berhenti di rasio plus empiris.</text>
+    <path class="arrow" d="M454 35h78"/>
+    <rect x="556" width="420" height="70" class="good"/>
+    <circle cx="592" cy="35" r="20" fill="#2c6b64"/><path class="check" d="M583 36l7 8 15-18"/>
+    <text x="628" y="31" class="h">Tulis syarat pengetahuan</text>
+    <text x="628" y="56" class="p">isi dari pengalaman, bentuk dari rasio.</text>
+  </g>
+  <g transform="translate(112 382)">
+    <rect width="420" height="70" class="bad"/>
+    <circle cx="36" cy="35" r="20" fill="#b8543c"/><path class="x" d="M28 27l16 16M44 27L28 43"/>
+    <text x="72" y="31" class="h">Hegel tanpa dialektika</text>
+    <text x="72" y="56" class="p">Hanya disebut idealisme.</text>
+    <path class="arrow" d="M454 35h78"/>
+    <rect x="556" width="420" height="70" class="good"/>
+    <circle cx="592" cy="35" r="20" fill="#2c6b64"/><path class="check" d="M583 36l7 8 15-18"/>
+    <text x="628" y="31" class="h">Tulis gerak sejarah</text>
+    <text x="628" y="56" class="p">roh atau ide bergerak secara dialektis.</text>
+  </g>
+  <g transform="translate(112 472)">
+    <rect width="420" height="70" class="bad"/>
+    <circle cx="36" cy="35" r="20" fill="#b8543c"/><path class="x" d="M28 27l16 16M44 27L28 43"/>
+    <text x="72" y="31" class="h">Marx tanpa kelas</text>
+    <text x="72" y="56" class="p">Dialektika disebut tanpa materi.</text>
+    <path class="arrow" d="M454 35h78"/>
+    <rect x="556" width="420" height="70" class="good"/>
+    <circle cx="592" cy="35" r="20" fill="#2c6b64"/><path class="check" d="M583 36l7 8 15-18"/>
+    <text x="628" y="31" class="h">Balik Hegel</text>
+    <text x="628" y="56" class="p">sejarah digerakkan ekonomi dan konflik kelas.</text>
+  </g>
+  <g transform="translate(112 562)">
+    <rect width="420" height="70" class="bad"/>
+    <circle cx="36" cy="35" r="20" fill="#b8543c"/><path class="x" d="M28 27l16 16M44 27L28 43"/>
+    <text x="72" y="31" class="h">Kontemporer jadi daftar</text>
+    <text x="72" y="56" class="p">Nama aliran tidak diberi masalah.</text>
+    <path class="arrow" d="M454 35h78"/>
+    <rect x="556" width="420" height="70" class="good"/>
+    <circle cx="592" cy="35" r="20" fill="#2c6b64"/><path class="check" d="M583 36l7 8 15-18"/>
+    <text x="628" y="31" class="h">Tulis pusat masalah</text>
+    <text x="628" y="56" class="p">bahasa, tafsir, wacana, identitas.</text>
+  </g>
+</svg>

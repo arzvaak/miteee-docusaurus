@@ -1,0 +1,105 @@
+{
+  "exam": "SSC-CGL",
+  "targetCycle": 2026,
+  "officialNoticeUrl": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Notice_of_adv_cgl_2026.pdf",
+  "sources": [
+    {
+      "id": "ssc-cgl-2026-notice",
+      "type": "official_open",
+      "title": "Combined Graduate Level Examination, 2026 notice",
+      "url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Notice_of_adv_cgl_2026.pdf",
+      "use": "pattern, syllabus, schedule baseline"
+    },
+    {
+      "id": "ssc-previous-year-question-paper-page",
+      "type": "official_open",
+      "title": "SSC previous year question paper page",
+      "url": "https://ssc.gov.in/for-candidates/previous-year-question-paper",
+      "use": "official/open PYQ discovery when downloadable without login"
+    },
+    {
+      "id": "ssc-answer-key-page",
+      "type": "official_login_personal",
+      "title": "SSC answer key page",
+      "url": "https://ssc.gov.in/home/answer-key",
+      "use": "answer key discovery only; candidate response sheets stay private"
+    },
+    {
+      "id": "scribd-ssc-cgl-reference-class",
+      "type": "copyright_risk_reference",
+      "title": "Scribd SSC CGL books, papers, and study documents",
+      "url": "https://www.scribd.com/search?query=SSC%20CGL",
+      "use": "resource discovery, bibliography, and manual review only",
+      "acquisition": "link and metadata only unless the user supplies a rights-cleared PDF or explicit permission",
+      "publishPolicy": "do not copy paid, login-gated, or copyright-risk document text into the public corpus"
+    },
+    {
+      "id": "third-party-web-pdf-reference-class",
+      "type": "copyright_risk_reference",
+      "title": "Third-party SSC CGL web PDF collections",
+      "url": "https://www.google.com/search?q=SSC+CGL+previous+year+question+paper+PDF",
+      "use": "candidate discovery for OCR/import review queue",
+      "acquisition": "link, title, source page, and provenance metadata first; file import only after rights and answer-key review",
+      "publishPolicy": "do not copy unverified book or coaching-bank text; only reviewed metadata and original explanations may be published"
+    },
+    {
+      "id": "third-party-pyq-collection-lanes",
+      "type": "web_pdf_unverified",
+      "title": "Third-party SSC CGL PYQ collection lanes",
+      "url": "https://cracku.in/ssc-cgl-previous-papers",
+      "mirrors": [
+        "https://www.oliveboard.in/blog/ssc-cgl-tier-1-pyps/",
+        "https://www.adda247.com/jobs/ssc-cgl-previous-year-question-paper/",
+        "https://www.careerpower.in/ssc-cgl-previous-year-question-paper.html",
+        "https://testbook.com/ssc-cgl-exam/previous-year-papers",
+        "https://store.pw.live/blogs/ssc-exams/ssc-cgl-previous-year-question-papers-pdfs"
+      ],
+      "use": "wide PYQ lead discovery for missing years and shifts",
+      "acquisition": "Scrapling collects public link metadata; direct PDFs or solved-paper pages stay quarantined unless rights, provenance, OCR, answer-key, topic, duplicate, and agent-review gates pass",
+      "publishPolicy": "do not copy coaching-site or book text into public notes; use links as provenance-visible leads and generate only original explanations"
+    },
+    {
+      "id": "original-practice-lanes",
+      "type": "original_practice",
+      "title": "Original practice/topic coverage lanes",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions",
+      "mirrors": [
+        "https://aptidude.in/practice"
+      ],
+      "use": "coverage-gap discovery for topic drills and original practice generation",
+      "acquisition": "Scrapling collects topic/link metadata only; copied question text remains out of ranked PYQ tests",
+      "publishPolicy": "use as inspiration and coverage map only; produce original practice items and original explanations"
+    },
+    {
+      "id": "book-reference-lanes",
+      "type": "copyright_risk_reference",
+      "title": "High-signal SSC CGL books and chapterwise solved-paper references",
+      "url": "https://books.ssccglpinnacle.com/",
+      "mirrors": [
+        "https://www.kiranprepare.com/CGL/books/sp/kiranprepare/91263/3",
+        "https://www.amazon.in/stores/DISHAPUBLICATION/page/7F03F563-8F37-40E0-BC76-AA6CF6E090F4",
+        "https://freedownloads.dishapublication.com/category/ssc/ssc-cgl/"
+      ],
+      "use": "coverage taxonomy, topic ordering, difficulty calibration, and gap detection against purchased/user-provided books or public samples",
+      "acquisition": "metadata and purchased/user-provided page references only; do not OCR or copy copyrighted books unless the user supplies rights-cleared files",
+      "publishPolicy": "book text and solved questions are not copied into public notes or ranked tests; use DeepSeek/Mistral/GPT agents to generate original SSC-style practice from topic patterns and then review answers, duplicates, and provenance"
+    },
+    {
+      "id": "local-search-crawl-tooling",
+      "type": "tooling_metadata",
+      "title": "Local Docker SearXNG and Firecrawl source discovery",
+      "url": "http://127.0.0.1:8888",
+      "mirrors": [
+        "http://127.0.0.1:3002"
+      ],
+      "use": "SearXNG finds candidate source leads; Firecrawl captures source metadata and short excerpts for review",
+      "acquisition": "metadata and short excerpts only; keep raw full article/book/PDF bodies out of rendered app content",
+      "publishPolicy": "local crawler output is provenance context, not a license to copy source text"
+    }
+  ],
+  "reviewPolicy": {
+    "rankedPractice": "Only reviewed official_open, user_provided, or original_practice items enter ranked tests.",
+    "webPdf": "web_pdf_unverified imports remain in review queue until OCR, answer key, and provenance are checked.",
+    "copyright": "Paid books and third-party coaching banks are not copied into public content."
+  }
+}
