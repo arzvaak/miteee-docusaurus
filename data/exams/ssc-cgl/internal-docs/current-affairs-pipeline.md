@@ -1,6 +1,6 @@
 # SSC CGL Current Affairs Pipeline
 
-This pipeline builds a daily SSC CGL + UPSC CSE brief from official, RSS, and robots-respecting parsed sources. It stores source metadata and bounded informative excerpts only, then asks Mistral to summarize the supplied facts into SSC recall cards, UPSC prelims facts, mains angles, static background, memory hooks, and MCQ seeds. If Mistral returns invalid JSON or no API key is present, the local fallback still writes a grounded brief from the fetched metadata.
+This pipeline builds a daily SSC CGL + UPSC CSE brief from official, RSS, and robots-respecting parsed sources. It stores source metadata and bounded informative excerpts only, filters out non-exam-priority stories before study-card generation, then asks DeepSeek to summarize the supplied facts into SSC recall cards, UPSC prelims facts, mains angles, static background, memory hooks, and MCQ seeds. If DeepSeek is unavailable, Mistral can act as fallback; if no model key is present, the local fallback still writes a grounded brief from the fetched metadata.
 
 App route: `/exams/ssc-cgl/current-affairs`
 
@@ -20,7 +20,9 @@ Scrapling and parsed article enrichment obey `robots.txt` checks in the script. 
 
 Set `CURRENT_AFFAIRS_ENRICH_ARTICLES=0` for fast local/container smoke checks that should validate shape without crawling article pages. Leave it enabled on the Netcup cron job for richer daily summaries.
 
-The Mistral context receives source-diverse items and bounded article excerpts, not only RSS headlines. The current limits allow up to 18 selected items and up to 1200 characters of each already-capped excerpt, so daily summaries can include background context, prelims facts, and mains angles without storing or rendering full article bodies.
+The DeepSeek/Mistral context receives source-diverse high/medium relevance items and bounded article excerpts, not only RSS headlines. The current limits allow up to 18 selected items and up to 1200 characters of each already-capped excerpt, so daily summaries can include background context, prelims facts, and mains angles without storing or rendering full article bodies.
+
+The study-card gate keeps PIB schemes, RBI/economy, SSC notices, PRS/bills, polity/governance, IR, environment, science-tech, reports, indices, awards, durable sports facts, appointments, defence, and culture. It drops routine cricket commentary, random foreign accidents, local crime without policy relevance, and company-hosting or AI-business access stories from recall cards and the main study feed. Low-value raw items may remain in the raw ledger for audit, but they cannot enter the daily recall queue.
 
 ## Manual Run
 
@@ -76,9 +78,9 @@ The container runs cron with `TZ=Asia/Kolkata` and executes `scripts/run_ssc_cgl
 
 The runner uses a file lock at `data/current-affairs/logs/.ssc-cgl-news.lock`, so a slow fetch or model call cannot overlap the next cron invocation. It also prunes `*.log` files older than `CURRENT_AFFAIRS_LOG_RETENTION_DAYS` days; the default retention window is 45 days.
 
-Set `MISTRAL_API_KEY` and optionally `MISTRAL_MODEL=mistral-small-latest` in the Netcup server environment or `.env` file before starting the service. Without the key, the local fallback still creates a brief from official metadata.
+Set `DEEPSEEK_API_KEY` and optionally `DEEPSEEK_MODEL=deepseek-v4-pro` in the Netcup server environment or `.env` file before starting the service. `MISTRAL_API_KEY` and `MISTRAL_MODEL=mistral-small-latest` remain supported only as fallback. Without either key, the local fallback still creates a brief from official metadata.
 
-After each run, the runner validates the raw JSONL and daily JSON before it logs success. The gate rejects empty raw excerpts, full article body fields such as `raw_body`, non-ready daily briefs, missing summary items, missing SSC/UPSC relevance fields, missing background/prelims/mains fields, overlong generated fields, invalid relevance labels, and MCQ seeds without question, answer, or trap text. Check `state.json` for `firstRunDate`, `lastSuccessfulDate`, `totalRuns`, `successfulRuns`, and per-source counts when auditing whether the Netcup job has been running every day.
+After each run, the runner validates the raw JSONL and daily JSON before it logs success. The gate rejects empty raw excerpts, full article body fields such as `raw_body`, non-ready daily briefs, missing summary items, missing SSC/UPSC relevance fields, missing background/prelims/mains fields, overlong generated fields, invalid relevance labels, and MCQ seeds without question, answer, or trap text. It also rejects source-name recall cards such as "Which source reported..." because those are not SSC/UPSC questions. Check `state.json` for `firstRunDate`, `lastSuccessfulDate`, `totalRuns`, `successfulRuns`, and per-source counts when auditing whether the Netcup job has been running every day.
 
 The daily JSON also carries a rolling calendar memory block:
 

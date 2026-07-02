@@ -48,8 +48,12 @@ else
   echo "warning: CURRENT_AFFAIRS_LOG_RETENTION_DAYS must be a positive integer; keeping all logs." >> "$LOG_FILE"
 fi
 
-if [[ -z "${MISTRAL_API_KEY:-}" ]]; then
-  echo "MISTRAL_API_KEY is not set; daily_news_pipeline.py will use grounded local fallback." >> "$LOG_FILE"
+if [[ -z "${DEEPSEEK_API_KEY:-}" ]]; then
+  if [[ -n "${MISTRAL_API_KEY:-}" ]]; then
+    echo "DEEPSEEK_API_KEY is not set; daily_news_pipeline.py will try Mistral fallback." >> "$LOG_FILE"
+  else
+    echo "DEEPSEEK_API_KEY and MISTRAL_API_KEY are not set; daily_news_pipeline.py will use grounded local fallback." >> "$LOG_FILE"
+  fi
 fi
 
 echo "ssc-cgl-news run started date=$RUN_DATE at=$(date --iso-8601=seconds)" >> "$LOG_FILE"

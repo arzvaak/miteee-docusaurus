@@ -53,7 +53,7 @@ test("local production verification uses the Dockerized Next standalone app", ()
   assert.match(dockerignore, /\.next/);
 });
 
-test("README documents Docker production verification and Mistral env setup", () => {
+test("README documents Docker production verification and LLM env setup", () => {
   const readme = fs.readFileSync(path.join(root, "README.md"), "utf8");
 
   assert.match(readme, /docker compose -f docker-compose\.next\.yml up -d --build/);
@@ -61,6 +61,8 @@ test("README documents Docker production verification and Mistral env setup", ()
   assert.match(readme, /http:\/\/127\.0\.0\.1:3000\/robots\.txt/);
   assert.match(readme, /http:\/\/127\.0\.0\.1:3000\/site\.webmanifest/);
   assert.match(readme, /docker compose -f docker-compose\.next\.yml down/);
+  assert.match(readme, /DEEPSEEK_API_KEY/);
+  assert.match(readme, /DEEPSEEK_MODEL=deepseek-v4-pro/);
   assert.match(readme, /MISTRAL_API_KEY/);
   assert.match(readme, /MISTRAL_MODEL=mistral-small-latest/);
   assert.match(readme, /MISTRAK_API_KEY/);

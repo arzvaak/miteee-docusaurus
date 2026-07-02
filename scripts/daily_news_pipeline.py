@@ -35,6 +35,8 @@ MISTRAL_SUMMARY_ITEM_LIMIT = 18
 MIN_DAILY_SUMMARY_ITEMS = 12
 MISTRAL_CONTEXT_EXCERPT_CHARS = 1200
 MISTRAL_MAX_TOKENS = 12000
+DEEPSEEK_ENDPOINT = "https://api.deepseek.com/chat/completions"
+MISTRAL_ENDPOINT = "https://api.mistral.ai/v1/chat/completions"
 MAX_RAW_EXCERPT_CHARS = 2400
 MAX_SUMMARY_FIELD_CHARS = 360
 MAX_DEEP_DIVE_FIELD_CHARS = 760
@@ -393,7 +395,83 @@ def discover_items() -> list[RawItem]:
     return filter_valid_raw_items(candidates)
 
 
-def select_items_for_mistral(items: list[RawItem], limit: int = MISTRAL_SUMMARY_ITEM_LIMIT) -> list[RawItem]:
+def item_text(item: RawItem) -> str:
+    return clean_text(" ".join([item.title, item.raw_excerpt, item.source, *item.tags])).lower()
+
+
+def is_routine_sports_or_trivia(item: RawItem, text: str) -> bool:
+    if "sports" not in item.tags and "sport" not in text:
+        return False
+    durable_terms = {
+        "award", "awards", "medal", "winner", "wins", "won", "championship", "tournament",
+        "world cup", "olympic", "asian games", "commonwealth", "grand slam", "wimbledon",
+        "fifa", "icc", "host", "venue", "rankings", "record"
+    }
+    routine_terms = {
+        "says", "privilege", "series loss", "lineup", "squad", "debut delayed", "captaincy",
+        "injury", "practice", "selection", "wait", "return after long absences"
+    }
+    return not any(term in text for term in durable_terms) or any(term in text for term in routine_terms)
+
+
+def is_low_value_current_affairs(item: RawItem) -> bool:
+    text = item_text(item)
+    low_value_patterns = [
+        r"\banthropic\b.*\b(host|access|curbs?)\b",
+        r"\b(openai|chatgpt|google|meta|microsoft|amazon)\b.*\b(host|data center|market access|curbs?)\b",
+        r"\bplane crash\b|\baircraft crash\b|\bcrash kills\b",
+        r"\bseries loss\b|\bleading england\b|\btest captaincy\b",
+        r"\brumours?\b",
+    ]
+    if any(re.search(pattern, text) for pattern in low_value_patterns):
+        keep_context = {
+            "government", "parliament", "bill", "act", "court", "constitution",
+            "policy", "regulation", "disaster management", "public health", "environment",
+            "rbi", "gst", "scheme", "ministry", "un ", "united nations", "treaty"
+        }
+        if not any(term in text for term in keep_context):
+            return True
+        if re.search(r"\banthropic\b.*\b(host|access|curbs?)\b", text):
+            return True
+    if is_routine_sports_or_trivia(item, text):
+        return True
+    local_crime_terms = {"murder", "robbery", "embezzlement", "probe ordered", "negligence", "arrested"}
+    policy_context = {"supreme court", "high court", "constitutional", "digital evidence", "public health", "governance", "rights"}
+    if any(term in text for term in local_crime_terms) and not any(term in text for term in policy_context):
+        return True
+    return False
+
+
+def study_relevance(item: RawItem) -> str:
+    text = item_text(item)
+    if is_low_value_current_affairs(item):
+        return "low"
+    high_tags = {
+        "ssc", "exam-notice", "rbi", "banking", "notifications", "schemes", "government",
+        "parliament", "bills", "governance", "upsc", "prelims", "mains", "explained",
+        "upsc-gs1", "upsc-gs2", "upsc-gs3", "environment"
+    }
+    high_terms = {
+        "rbi", "gst", "compensation cess", "budget", "monetary policy", "repo", "scheme",
+        "bill", "act", "parliament", "supreme court", "constitution", "united nations",
+        " un ", "deep-sea mining", "ocean floor", "climate", "biodiversity", "report",
+        "index", "appointment", "commissioned", "defence", "medical devices rules",
+        "digital public infrastructure", "education policy"
+    }
+    if any(tag in high_tags for tag in item.tags) or any(term in f" {text} " for term in high_terms):
+        return "high"
+    medium_tags = {"polity", "economy", "science", "technology", "international", "national", "culture", "awards"}
+    if any(tag in medium_tags for tag in item.tags):
+        return "medium"
+    return "low"
+
+
+def filter_study_relevant_items(items: list[RawItem]) -> list[RawItem]:
+    return [item for item in items if study_relevance(item) != "low"]
+
+
+def select_items_for_llm(items: list[RawItem], limit: int = MISTRAL_SUMMARY_ITEM_LIMIT) -> list[RawItem]:
+    items = filter_study_relevant_items(items)
     priority_tags = {
         "ssc": 0,
         "exam-notice": 0,
@@ -450,8 +528,12 @@ def select_items_for_mistral(items: list[RawItem], limit: int = MISTRAL_SUMMARY_
     return selected
 
 
+def select_items_for_mistral(items: list[RawItem], limit: int = MISTRAL_SUMMARY_ITEM_LIMIT) -> list[RawItem]:
+    return select_items_for_llm(items, limit)
+
+
 def minimum_summary_items(items: list[RawItem]) -> int:
-    return min(MIN_DAILY_SUMMARY_ITEMS, len(select_items_for_mistral(items)))
+    return min(MIN_DAILY_SUMMARY_ITEMS, len(select_items_for_llm(items)))
 
 
 def write_jsonl(date: str, items: list[RawItem], root: Path | None = None) -> None:
@@ -490,7 +572,7 @@ def fallback_brief(date: str, items: list[RawItem]) -> dict:
         "culture",
     }
     ranked = [item for item in items if any(tag in exam_relevant_tags for tag in item.tags)]
-    ranked = select_items_for_mistral(ranked, limit=MISTRAL_SUMMARY_ITEM_LIMIT)
+    ranked = select_items_for_llm(ranked, limit=MISTRAL_SUMMARY_ITEM_LIMIT)
     return {
         "date": date,
         "status": "failed" if items and not ranked else "ready",
@@ -499,8 +581,8 @@ def fallback_brief(date: str, items: list[RawItem]) -> dict:
     }
 
 
-def build_mistral_prompt(date: str, items: list[RawItem]) -> str:
-    selected_items = select_items_for_mistral(items)
+def build_current_affairs_llm_prompt(date: str, items: list[RawItem], provider_name: str = "DeepSeek") -> str:
+    selected_items = select_items_for_llm(items)
     supplied = [
         {
             "title": item.title,
@@ -513,11 +595,13 @@ def build_mistral_prompt(date: str, items: list[RawItem]) -> str:
         for item in selected_items
     ]
     return "\n".join([
-        "You are creating a daily SSC CGL + UPSC CSE current-affairs deep-dive from supplied source metadata and short excerpts only.",
+        f"You are creating a daily SSC CGL + UPSC CSE current-affairs deep-dive with {provider_name} from supplied source metadata and short excerpts only.",
         f"Return JSON only, with 12 to {MISTRAL_SUMMARY_ITEM_LIMIT} items when enough supplied items are available. Prefer source-diverse stronger items over filler, but do not stop at a tiny brief.",
         "Use this shape: {\"date\":\"YYYY-MM-DD\",\"items\":[{\"title\":\"short factual title\",\"source\":\"source\",\"url\":\"https://...\",\"published_at\":\"ISO date\",\"source_excerpt\":\"bounded source excerpt in your own compressed wording from supplied raw_excerpt\",\"ssc_relevance\":\"high|medium|low\",\"upsc_cse_relevance\":\"high|medium|low\",\"exam_areas\":[\"area\"],\"key_points\":[\"grounded fact\"],\"why_it_matters_for_ssc_cgl\":\"SSC angle\",\"why_it_matters_for_upsc_cse\":\"UPSC angle\",\"static_context\":\"background link\",\"prelims_facts\":[\"fact\"],\"mains_angles\":[\"angle\"],\"memory_hook\":\"one recall cue\",\"mcq_seed\":{\"question\":\"question\",\"answer\":\"answer\",\"trap\":\"trap\"}}]}.",
         "For every item, copy the exact source url, source name, and published_at from one supplied item. Keep the title close to the supplied title and use at least two exact important words from the supplied title or excerpt.",
         "Do not invent facts. Do not quote article bodies. Do not use outside knowledge except to name a standard exam bucket such as GS2, GS3, polity, economy, science, geography, environment, IR, sports, awards, or schemes.",
+        "Hard relevance rule: do not include routine cricket commentary, random accidents, local crime, company-hosting or AI-business access stories, or source-identification trivia unless the excerpt clearly ties the item to Indian governance, policy, environment, economy, science, constitutional issues, exam notices, or durable static GK.",
+        "MCQ rule: the mcq_seed.question must test the actual fact, institution, term, scheme, report, place, date, constitutional link, static GK bridge, or UPSC angle. Never ask 'Which source reported/published...' and never make a news outlet name the answer unless the outlet itself is the exam-relevant institution.",
         "Deep-dive requirements: key_points must have 3-5 informative grounded facts when the excerpt supports them; prelims_facts must be atomic and memorisable; mains_angles must be issue-framing bullets, not invented claims.",
         "Background requirements: static_context should explain the institution, term, scheme background, constitutional link, geography/environment/science concept, or IR context a serious SSC+UPSC learner may miss. Keep it grounded in the excerpt or a standard exam bucket, not speculative.",
         "Calendar/use-now requirements: write each item so it can be read as it arrives today and later revised inside yesterday, running-week, and running-month views.",
@@ -527,6 +611,11 @@ def build_mistral_prompt(date: str, items: list[RawItem]) -> str:
         "Supplied items:",
         json.dumps(supplied, ensure_ascii=False),
     ])
+
+
+def build_mistral_prompt(date: str, items: list[RawItem]) -> str:
+    selected_items = select_items_for_mistral(items)
+    return build_current_affairs_llm_prompt(date, selected_items, "Mistral")
 
 
 def excerpt_points(item: RawItem, limit: int) -> list[str]:
@@ -564,15 +653,68 @@ def mains_angle_fallback(item: RawItem) -> str:
     return f"Frame the update through {tags}: objective, implementation, stakeholders, federalism, economy, environment, science, IR, or governance impact."[:MAX_DEEP_DIVE_FIELD_CHARS]
 
 
+def content_mcq_seed(item: RawItem) -> dict:
+    text = item_text(item)
+    title = item.title[:120].strip()
+    if "gst compensation cess" in text or ("gst" in text and "cess" in text):
+        return {
+            "question": "Which GST-linked term should be revised from this tobacco and pan masala levy update?",
+            "answer": "GST compensation cess",
+            "trap": "Confusing it with ordinary customs duty or income tax surcharge.",
+        }
+    if "rbi" in item.tags or item.source == "RBI" or "rbi" in text:
+        return {
+            "question": "Which institution is linked to this banking or monetary-policy update?",
+            "answer": "RBI",
+            "trap": "Confusing RBI's banking role with SEBI or the Finance Commission.",
+        }
+    if "ssc" in item.tags or item.source == "SSC":
+        return {
+            "question": "Which exam body or portal is linked to this notice?",
+            "answer": "SSC",
+            "trap": "Treating an official SSC notice as a coaching-site update.",
+        }
+    if "prs" in item.tags or item.source == "PRS" or "bill" in text or "parliament" in text:
+        return {
+            "question": "Which governance area should be revised from this Parliament or bill update?",
+            "answer": "Bills, Parliament, and legislative scrutiny",
+            "trap": "Reading it only as a headline without linking it to polity.",
+        }
+    if "un " in f" {text} " or "united nations" in text or "ocean floor" in text or "deep-sea mining" in text:
+        return {
+            "question": "Which exam theme is tied to this ocean-floor or UN-linked update?",
+            "answer": "Deep-sea mining and marine environment governance",
+            "trap": "Treating it as a random foreign event instead of environment and IR.",
+        }
+    if "scheme" in text or "ministry" in text or "government" in item.tags:
+        return {
+            "question": "What should be identified first while revising this government update?",
+            "answer": "The scheme or ministry, target group, objective, and launch context",
+            "trap": "Memorising only the headline without the implementing institution.",
+        }
+    if "report" in text or "index" in text:
+        return {
+            "question": "What static-GK detail should be revised from this report or index update?",
+            "answer": "The releasing body, theme, rank or finding, and India's position where supplied",
+            "trap": "Confusing the report publisher with a news outlet.",
+        }
+    return {
+        "question": f"What exam-relevant fact should be revised from this update: {title}?",
+        "answer": excerpt_points(item, 1)[0],
+        "trap": "Stopping at the headline instead of extracting the durable fact.",
+    }
+
+
 def fallback_summary_item(item: RawItem) -> dict:
+    relevance = study_relevance(item)
     return {
         "title": item.title[:160],
         "source": item.source,
         "url": item.url,
         "published_at": item.published_at,
         "source_excerpt": source_excerpt_for_item(item),
-        "ssc_relevance": "high" if "ssc" in item.tags else "medium",
-        "upsc_cse_relevance": "high" if any(tag in item.tags for tag in ["upsc", "prelims", "mains", "explained", "upsc-gs1", "upsc-gs2", "upsc-gs3"]) else "medium",
+        "ssc_relevance": "high" if relevance == "high" else "medium",
+        "upsc_cse_relevance": "high" if any(tag in item.tags for tag in ["upsc", "prelims", "mains", "explained", "upsc-gs1", "upsc-gs2", "upsc-gs3"]) or relevance == "high" else "medium",
         "exam_areas": item.tags[:4] or [item.source],
         "key_points": excerpt_points(item, 3),
         "why_it_matters_for_ssc_cgl": "Convert the source-grounded fact into SSC recall: institution, date, place, report, award, appointment, scheme, or exam notice.",
@@ -581,11 +723,7 @@ def fallback_summary_item(item: RawItem) -> dict:
         "prelims_facts": excerpt_points(item, 2),
         "mains_angles": [mains_angle_fallback(item)],
         "memory_hook": item.title[:90],
-        "mcq_seed": {
-            "question": f"Which source reported: {item.title[:100]}?",
-            "answer": item.source,
-            "trap": "Do not memorize unsourced social-media summaries.",
-        },
+        "mcq_seed": content_mcq_seed(item),
     }
 
 
@@ -611,6 +749,21 @@ def trim_generated_summary_item(item: dict) -> dict:
             if isinstance(mcq_seed.get(field), str):
                 mcq_seed[field] = clean_text(str(mcq_seed[field]))[:MAX_SUMMARY_FIELD_CHARS]
     return item
+
+
+SOURCE_NAME_RECALL_PATTERN = re.compile(
+    r"\b(which\s+(?:source|outlet|newspaper|publication|website|media)|"
+    r"(?:reported|published|carried|covered)\s+by|"
+    r"source\s+reported)\b",
+    re.IGNORECASE,
+)
+
+
+def is_source_name_recall_card(mcq_seed: object) -> bool:
+    if not isinstance(mcq_seed, dict):
+        return False
+    question = str(mcq_seed.get("question", "")).strip()
+    return bool(SOURCE_NAME_RECALL_PATTERN.search(question))
 
 
 def repair_generated_summary_item(item: dict, raw_item: RawItem | None) -> dict:
@@ -650,12 +803,14 @@ def repair_generated_summary_item(item: dict, raw_item: RawItem | None) -> dict:
     if not isinstance(item.get("mcq_seed"), dict):
         item["mcq_seed"] = {}
     mcq_seed = item["mcq_seed"]
-    if not isinstance(mcq_seed.get("question"), str) or not mcq_seed["question"].strip():
-        mcq_seed["question"] = f"Which source reported: {raw_item.title[:100]}?"
-    if not isinstance(mcq_seed.get("answer"), str) or not mcq_seed["answer"].strip():
-        mcq_seed["answer"] = raw_item.source
-    if not isinstance(mcq_seed.get("trap"), str) or not mcq_seed["trap"].strip():
-        mcq_seed["trap"] = "Do not memorize unsourced social-media summaries."
+    fallback_seed = content_mcq_seed(raw_item)
+    needs_mcq_fallback = is_source_name_recall_card(mcq_seed)
+    if not isinstance(mcq_seed.get("question"), str) or not mcq_seed["question"].strip() or needs_mcq_fallback:
+        mcq_seed["question"] = fallback_seed["question"]
+    if not isinstance(mcq_seed.get("answer"), str) or not mcq_seed["answer"].strip() or needs_mcq_fallback:
+        mcq_seed["answer"] = fallback_seed["answer"]
+    if not isinstance(mcq_seed.get("trap"), str) or not mcq_seed["trap"].strip() or needs_mcq_fallback:
+        mcq_seed["trap"] = fallback_seed["trap"]
     return trim_generated_summary_item(item)
 
 
@@ -694,20 +849,27 @@ def complete_generated_summary(payload: dict, raw_items: list[RawItem]) -> dict:
     return payload
 
 
-def call_mistral(date: str, items: list[RawItem]) -> dict | None:
-    api_key = os.environ.get("MISTRAL_API_KEY") or os.environ.get("MISTRAK_API_KEY")
+def call_current_affairs_llm(
+    *,
+    date: str,
+    items: list[RawItem],
+    provider_name: str,
+    api_key: str | None,
+    model: str,
+    endpoint: str,
+    prompt: str,
+) -> dict | None:
     if not api_key or not items:
         return None
-    model = os.environ.get("MISTRAL_MODEL", "mistral-small-latest")
     payload = {
         "model": model,
         "temperature": 0.2,
         "max_tokens": MISTRAL_MAX_TOKENS,
         "response_format": {"type": "json_object"},
-        "messages": [{"role": "user", "content": build_mistral_prompt(date, items)}],
+        "messages": [{"role": "user", "content": prompt}],
     }
     request = urllib.request.Request(
-        "https://api.mistral.ai/v1/chat/completions",
+        endpoint,
         data=json.dumps(payload).encode("utf-8"),
         headers={
             "Authorization": f"Bearer {api_key}",
@@ -732,19 +894,53 @@ def call_mistral(date: str, items: list[RawItem]) -> dict | None:
         candidate = complete_generated_summary(candidate, items)
         accepted, reason = validate_generated_brief(candidate, items, allow_print=False)
         if not accepted:
-            print(f"warning: Mistral summary rejected: {reason}", file=sys.stderr)
+            print(f"warning: {provider_name} summary rejected: {reason}", file=sys.stderr)
             return None
         min_items = minimum_summary_items(items)
         if len(candidate["items"]) < min_items:
-            print(
-                f"warning: Mistral summary too thin: {len(candidate['items'])}/{min_items}; using fallback",
-                file=sys.stderr,
-            )
+            if provider_name == "Mistral":
+                print(
+                    f"warning: Mistral summary too thin: {len(candidate['items'])}/{min_items}; using fallback",
+                    file=sys.stderr,
+                )
+            else:
+                print(
+                    f"warning: {provider_name} summary too thin: {len(candidate['items'])}/{min_items}; using fallback",
+                    file=sys.stderr,
+                )
             return None
         return candidate
     except Exception as exc:
-        print(f"warning: Mistral summary failed: {exc}", file=sys.stderr)
+        print(f"warning: {provider_name} summary failed: {exc}", file=sys.stderr)
         return None
+
+
+def call_deepseek_current_affairs(date: str, items: list[RawItem]) -> dict | None:
+    api_key = os.environ.get("DEEPSEEK_API_KEY")
+    model = os.environ.get("DEEPSEEK_MODEL", "deepseek-v4-pro")
+    return call_current_affairs_llm(
+        date=date,
+        items=items,
+        provider_name="DeepSeek",
+        api_key=api_key,
+        model=model,
+        endpoint=DEEPSEEK_ENDPOINT,
+        prompt=build_current_affairs_llm_prompt(date, items, "DeepSeek"),
+    )
+
+
+def call_mistral(date: str, items: list[RawItem]) -> dict | None:
+    api_key = os.environ.get("MISTRAL_API_KEY") or os.environ.get("MISTRAK_API_KEY")
+    model = os.environ.get("MISTRAL_MODEL", "mistral-small-latest")
+    return call_current_affairs_llm(
+        date=date,
+        items=items,
+        provider_name="Mistral",
+        api_key=api_key,
+        model=model,
+        endpoint=MISTRAL_ENDPOINT,
+        prompt=build_mistral_prompt(date, items),
+    )
 
 
 def write_daily(date: str, payload: dict, root: Path | None = None) -> None:
@@ -966,6 +1162,10 @@ def validate_generated_brief(payload: dict, raw_items: list[RawItem], allow_prin
     for index, item in enumerate(items, start=1):
         if not validate_summary_item(item, index, daily_path_for(str(payload.get("date", "unknown")))):
             return False, f"summary item {index} has invalid shape"
+        if is_source_name_recall_card(item.get("mcq_seed")):
+            if allow_print:
+                print(f"validation failed: summary item {index} has source-name recall card", file=sys.stderr)
+            return False, f"summary item {index} has source-name recall card"
         if not generated_item_has_grounding(item, source_lookup):
             if allow_print:
                 print(f"validation failed: summary item {index} is not grounded in raw source excerpts", file=sys.stderr)
@@ -1167,7 +1367,8 @@ def main() -> int:
     if not items:
         print("error: no valid current-affairs raw items discovered; refusing to write empty artifacts", file=sys.stderr)
         return 1
-    brief = call_mistral(args.date, items) or fallback_brief(args.date, items)
+    study_items = filter_study_relevant_items(items)
+    brief = call_deepseek_current_affairs(args.date, study_items) or call_mistral(args.date, study_items) or fallback_brief(args.date, study_items)
     brief["calendar"] = build_calendar_context(args.date, brief, output_root)
     if args.dry_run:
       print(json.dumps(brief, indent=2, ensure_ascii=False))

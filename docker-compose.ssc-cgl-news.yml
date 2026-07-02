@@ -8,6 +8,8 @@ services:
     working_dir: /app
     environment:
       TZ: Asia/Kolkata
+      DEEPSEEK_MODEL: ${DEEPSEEK_MODEL:-deepseek-v4-pro}
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
       MISTRAL_MODEL: ${MISTRAL_MODEL:-mistral-small-latest}
       MISTRAL_API_KEY: ${MISTRAL_API_KEY:-}
       CURRENT_AFFAIRS_DATA_ROOT: /app/data/current-affairs

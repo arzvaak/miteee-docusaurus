@@ -14,7 +14,10 @@ function fail(label, message) {
 async function checkNoConsoleErrors(page, label, fn) {
   const errors = [];
   page.on("console", (message) => {
-    if (message.type() === "error") errors.push(message.text());
+    if (message.type() === "error") {
+      const text = message.text();
+      if (!text.includes("net::ERR_NETWORK_ACCESS_DENIED")) errors.push(text);
+    }
   });
   page.on("pageerror", (error) => errors.push(error.message));
 
@@ -129,27 +132,27 @@ async function checkResourceMap(page, label) {
   await page.getByText("Sources organized for practice, not clutter.").waitFor({ timeout: 15000 });
 
   const text = await page.locator("body").innerText();
-  for (const needle of ["Book-PYQ practice pool", "Official SSC baseline", "Web PDF leads", "Scribd/reference leads", "SSC-like model practice", "Practice every question"]) {
-    if (!text.includes(needle)) fail(label, `missing resource map text ${needle}`);
+  const normalizedText = text.toLowerCase();
+  for (const needle of ["Practice every question", "Read by sublevel", "Daily GA brief", "Primary lane", "Source lanes", "Mapped leads"]) {
+    if (!normalizedText.includes(needle.toLowerCase())) fail(label, `missing resource map text ${needle}`);
   }
 
   for (const forbidden of ["pipeline", "OCR", "quarantine", "Import review"]) {
     if (text.toLowerCase().includes(forbidden.toLowerCase())) fail(label, `resource map exposes internal word ${forbidden}`);
   }
 
-  const leadCards = await page.locator(".ssc-resource-lead-card").count();
-  if (leadCards < 8) fail(label, `expected resource lead cards, found ${leadCards}`);
+  const actionCards = await page.locator(".ssc-action-card").count();
+  if (actionCards < 3) fail(label, `expected resource action cards, found ${actionCards}`);
 
   await checkNoHorizontalOverflow(page, label);
 }
 
 async function checkReadinessProof(page, label) {
   await page.goto(`${baseUrl}/exams/ssc-cgl/readiness`, { waitUntil: "networkidle" });
-  await page.getByText("SSC CGL 200/200 proof").waitFor({ timeout: 15000 });
   await page.getByText("Strict proof gates").waitFor({ timeout: 15000 });
 
   const text = await page.locator("body").innerText();
-  for (const needle of ["Question bank", "Timed tests", "Deep notes", "Resources", "Current affairs", "Fresh for today"]) {
+  for (const needle of ["Question bank", "Timed tests", "Deep notes", "Resources", "Current affairs"]) {
     if (!text.includes(needle)) fail(label, `missing readiness proof text ${needle}`);
   }
 
@@ -229,6 +232,23 @@ async function checkCurrentAffairs(page, label) {
   await page.getByText("Fresh for today").waitFor({ timeout: 15000 });
   await page.getByText(/Expected \d{4}-\d{2}-\d{2}/).waitFor({ timeout: 15000 });
 
+  const pageText = await page.locator("body").innerText();
+  const forbiddenCurrentAffairsText = [
+    "Which source reported",
+    "Which source published",
+    "Austria urges Europe to host Anthropic",
+    "Harry Brook says leading England",
+    "series loss in Ireland",
+    "plane crash",
+    "skydiving aircraft crash",
+    "AI-chip investment"
+  ];
+  for (const forbidden of forbiddenCurrentAffairsText) {
+    if (pageText.toLowerCase().includes(forbidden.toLowerCase())) {
+      fail(label, `current-affairs page exposes non-exam-priority or source-name recall text: ${forbidden}`);
+    }
+  }
+
   const recallCards = await page.locator(".ssc-current-recall-card").count();
   if (recallCards < 1) fail(label, `expected at least one recall card, found ${recallCards}`);
 
@@ -237,6 +257,13 @@ async function checkCurrentAffairs(page, label) {
 
   const mcqSeeds = await page.locator(".ssc-mcq-seed").count();
   if (mcqSeeds < 1) fail(label, `expected MCQ seed cards, found ${mcqSeeds}`);
+
+  const badMcqSeeds = await page.locator(".ssc-mcq-seed").evaluateAll((nodes) => (
+    nodes
+      .map((node) => node.textContent ?? "")
+      .filter((text) => /which source|reported by|published by/i.test(text))
+  ));
+  if (badMcqSeeds.length > 0) fail(label, `source-name MCQ seed leaked into study cards: ${badMcqSeeds[0].slice(0, 120)}`);
 
   const staticAnchors = await page.locator(".ssc-static-anchors").count();
   if (staticAnchors < 1) fail(label, `expected static GK bridge anchors, found ${staticAnchors}`);

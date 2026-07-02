@@ -1,14 +1,16 @@
 import Link from "next/link";
 import { Archive, ArrowRight, BookOpenCheck, Brain, CalendarDays, CircleGauge, Newspaper, RefreshCcw, Sparkles, Target } from "lucide-react";
 import { CurrentAffairsRecallClient } from "@/components/CurrentAffairsRecallClient";
+import { isCurrentAffairsStudyPriority } from "@/lib/current-affairs";
 import type { CurrentAffairsArchiveDay, CurrentAffairsStudyBrief } from "@/lib/exam-types";
 
 export function CurrentAffairsFeed({ brief, archiveDays = [] }: { brief: CurrentAffairsStudyBrief; archiveDays?: CurrentAffairsArchiveDay[] }) {
+  const studyItems = brief.items.filter(isCurrentAffairsStudyPriority);
   const packetByUrl = new Map(brief.revisionPackets.map((packet) => [packet.url, packet]));
   const staticBridgeCount = new Set(brief.revisionPackets.flatMap((packet) => packet.staticAnchors.map((anchor) => anchor.topicSlug))).size
     || brief.sourceQuality.staticAnchorCount;
   const examAreas = brief.sourceQuality.examAreas.slice(0, 3).join(" · ") || "Current affairs static GK";
-  const arrivalItems = brief.calendar?.as_they_come ?? brief.calendar?.today?.events ?? [];
+  const arrivalItems = (brief.calendar?.as_they_come ?? brief.calendar?.today?.events ?? []).filter(isCurrentAffairsStudyPriority);
   const weeklyDays = brief.calendar?.weekly_by_day ?? brief.calendar?.weekly_calendar ?? brief.calendar?.last_7_days ?? [];
   const monthlyDays = brief.calendar?.monthly_by_day ?? brief.calendar?.monthly_calendar ?? brief.calendar?.last_30_days ?? [];
   const weekItems = brief.calendar?.week_total_items ?? weeklyDays.reduce((sum, day) => sum + day.items, 0);
@@ -47,7 +49,7 @@ export function CurrentAffairsFeed({ brief, archiveDays = [] }: { brief: Current
             <Newspaper size={18} aria-hidden="true" />
             <span>1</span>
             <div>
-              <strong>Capture {brief.sourceQuality.totalItems} facts</strong>
+              <strong>Capture {studyItems.length} facts</strong>
               <p>Read the exam-facing point, prelims fact, and one background link.</p>
             </div>
           </div>
@@ -195,13 +197,13 @@ export function CurrentAffairsFeed({ brief, archiveDays = [] }: { brief: Current
       </section>
 
       <div className="ssc-current-list">
-        {brief.items.length === 0 ? (
+        {studyItems.length === 0 ? (
           <article className="panel ssc-empty-state">
             <Newspaper size={22} aria-hidden="true" />
             <h2>No brief for this date yet</h2>
             <p>Check the latest date or wait for the next official-first daily brief.</p>
           </article>
-        ) : brief.items.map((item) => (
+        ) : studyItems.map((item) => (
           <article className="panel ssc-current-card" key={`${item.source}-${item.url}`}>
             <div className="ssc-panel-heading">
               <Sparkles size={18} aria-hidden="true" />

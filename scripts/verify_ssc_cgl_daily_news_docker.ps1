@@ -22,6 +22,8 @@ try {
   docker run --rm `
     -e "TZ=Asia/Kolkata" `
     -e "CURRENT_AFFAIRS_DATA_ROOT=/tmp/current-affairs" `
+    -e "DEEPSEEK_API_KEY=$env:DEEPSEEK_API_KEY" `
+    -e "DEEPSEEK_MODEL=$(if ($env:DEEPSEEK_MODEL) { $env:DEEPSEEK_MODEL } else { 'deepseek-v4-pro' })" `
     -e "MISTRAL_API_KEY=$env:MISTRAL_API_KEY" `
     -e "MISTRAL_MODEL=$(if ($env:MISTRAL_MODEL) { $env:MISTRAL_MODEL } else { 'mistral-small-latest' })" `
     -v "${PWD}:/app" `

@@ -15,6 +15,7 @@ test("SSC CGL daily news scheduler is a Netcup Docker cron service, not a Window
   assert.equal(fs.existsSync(path.join(root, "scripts", "run_ssc_cgl_daily_news_task.ps1")), false);
   assert.match(compose, /ssc-cgl-news/);
   assert.match(compose, /TZ:\s*Asia\/Kolkata/);
+  assert.match(compose, /DEEPSEEK_API_KEY/);
   assert.match(compose, /MISTRAL_API_KEY/);
   assert.match(compose, /data\/current-affairs/);
   assert.doesNotMatch(compose, /schtasks|powershell\.exe/i);
@@ -25,6 +26,7 @@ test("SSC CGL daily news scheduler is a Netcup Docker cron service, not a Window
   assert.match(runner, /TZ=Asia\/Kolkata date \+%F/);
   assert.match(runner, /--validate-date "\$RUN_DATE"/);
   assert.match(runner, /data\/current-affairs\/logs/);
+  assert.match(runner, /DEEPSEEK_API_KEY/);
   assert.match(runner, /MISTRAL_API_KEY/);
 });
 
@@ -55,6 +57,7 @@ test("SSC CGL local news verifier runs only through Docker and validates throwaw
   assert.match(verifier, /docker build -f docker\/ssc-cgl-news\.Dockerfile/);
   assert.match(verifier, /docker volume create "\$VOLUME_NAME"/);
   assert.match(verifier, /CURRENT_AFFAIRS_DATA_ROOT=\/tmp\/current-affairs/);
+  assert.match(verifier, /DEEPSEEK_API_KEY/);
   assert.match(verifier, /python scripts\/daily_news_pipeline\.py --date/);
   assert.match(verifier, /python scripts\/daily_news_pipeline\.py --validate-date/);
   assert.match(verifier, /docker volume rm "\$VOLUME_NAME"/);
@@ -64,6 +67,7 @@ test("SSC CGL local news verifier runs only through Docker and validates throwaw
   assert.match(windowsVerifier, /India Standard Time/);
   assert.match(windowsVerifier, /docker volume create \$VolumeName/);
   assert.match(windowsVerifier, /CURRENT_AFFAIRS_DATA_ROOT=\/tmp\/current-affairs/);
+  assert.match(windowsVerifier, /DEEPSEEK_API_KEY/);
   assert.match(windowsVerifier, /python scripts\/daily_news_pipeline\.py --date/);
   assert.match(windowsVerifier, /python scripts\/daily_news_pipeline\.py --validate-date/);
   assert.match(windowsVerifier, /docker volume rm \$VolumeName/);

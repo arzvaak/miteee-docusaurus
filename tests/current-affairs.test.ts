@@ -13,6 +13,7 @@ import {
   getLatestCurrentAffairsDate,
   getCurrentAffairsIstDate,
   getCurrentAffairsRunState,
+  isCurrentAffairsStudyPriority,
   normalizeCurrentAffairsItem,
   parseMistralCurrentAffairsSummary
 } from "@/lib/current-affairs";
@@ -143,7 +144,10 @@ test("current affairs loader picks the latest local brief for the SSC page", () 
 
   assert.equal(brief.date, latest ?? new Date().toISOString().slice(0, 10));
   assert.ok(brief.sourceQuality.totalItems >= brief.items.length);
-  assert.equal(brief.recallCards.length, brief.items.length);
+  assert.equal(
+    brief.recallCards.length,
+    brief.items.filter(isCurrentAffairsStudyPriority).length
+  );
 });
 
 test("current affairs recall cards are deterministic MCQ repair cards", () => {
@@ -176,6 +180,138 @@ test("current affairs recall cards are deterministic MCQ repair cards", () => {
   assert.equal(cards[0]?.prompt, "Which institution conducts VRR auctions?");
   assert.equal(brief.sourceQuality.officialSourceItems, 1);
   assert.deepEqual(brief.sourceQuality.examAreas, ["Banking", "Economy"]);
+});
+
+test("current affairs recall cards exclude low-relevance news trivia", () => {
+  const brief = buildCurrentAffairsStudyBrief({
+    date: "2026-07-02",
+    status: "ready",
+    generatedAt: "2026-07-02T01:00:00.000Z",
+    items: [
+      {
+        title: "RBI releases liquidity framework update",
+        source: "RBI",
+        url: "https://rbi.example/liquidity",
+        published_at: "2026-07-02T00:00:00.000Z",
+        ssc_relevance: "high",
+        upsc_cse_relevance: "high",
+        exam_areas: ["Economy", "Banking"],
+        key_points: ["RBI released a liquidity framework update."],
+        why_it_matters_for_ssc_cgl: "RBI tools are high-yield for SSC banking and economy recall.",
+        why_it_matters_for_upsc_cse: "Links to GS3 monetary policy and financial stability.",
+        static_context: "Revise RBI, repo operations, liquidity, CRR, SLR, and monetary policy tools.",
+        prelims_facts: ["RBI released the liquidity update."],
+        mains_angles: ["Liquidity management affects inflation, credit, growth, and financial stability."],
+        memory_hook: "RBI liquidity",
+        mcq_seed: {
+          question: "Which institution released the liquidity framework update?",
+          answer: "RBI",
+          trap: "SEBI"
+        }
+      },
+      {
+        title: "Routine cricket lineup speculation before a bilateral series",
+        source: "Indian Express Sports",
+        url: "https://sports.example/lineup",
+        published_at: "2026-07-02T00:00:00.000Z",
+        ssc_relevance: "low",
+        upsc_cse_relevance: "low",
+        exam_areas: ["Sports"],
+        key_points: ["A player may or may not play in a bilateral series."],
+        why_it_matters_for_ssc_cgl: "Not exam-priority.",
+        why_it_matters_for_upsc_cse: "Not exam-priority.",
+        static_context: "No durable static GK anchor.",
+        prelims_facts: ["A player may or may not play."],
+        mains_angles: ["No mains angle."],
+        memory_hook: "lineup speculation",
+        mcq_seed: {
+          question: "Which player may return?",
+          answer: "A player",
+          trap: "Another player"
+        }
+      }
+    ]
+  });
+
+  assert.deepEqual(brief.recallCards.map((card) => card.title), ["RBI releases liquidity framework update"]);
+  assert.equal(brief.sourceQuality.totalItems, 2);
+  assert.equal(brief.sourceQuality.highRelevanceItems, 1);
+});
+
+test("current affairs study brief hides stale source-name and low-value medium cards", () => {
+  const brief = buildCurrentAffairsStudyBrief({
+    date: "2026-06-30",
+    status: "ready",
+    generatedAt: "2026-06-30T01:00:00.000Z",
+    items: [
+      {
+        title: "RBI issues directions for rural co-operative banks",
+        source: "RBI",
+        url: "https://rbi.example/directions",
+        published_at: "2026-06-30T00:00:00.000Z",
+        ssc_relevance: "high",
+        upsc_cse_relevance: "high",
+        exam_areas: ["Economy", "Banking"],
+        key_points: ["RBI issued directions for rural co-operative banks."],
+        why_it_matters_for_ssc_cgl: "RBI directions matter for banking and economy recall.",
+        why_it_matters_for_upsc_cse: "Links to GS3 banking regulation.",
+        static_context: "Revise RBI and co-operative bank regulation.",
+        prelims_facts: ["RBI issued directions."],
+        mains_angles: ["Banking regulation affects consumer protection."],
+        memory_hook: "RBI co-operative banks",
+        mcq_seed: {
+          question: "Which institution issued the rural co-operative bank directions?",
+          answer: "RBI",
+          trap: "SEBI"
+        }
+      },
+      {
+        title: "A German school and the untold history of Berlin ties with Bombay",
+        source: "Indian Express Research",
+        url: "https://example.com/german-school",
+        published_at: "2026-06-30T00:00:00.000Z",
+        ssc_relevance: "medium",
+        upsc_cse_relevance: "medium",
+        exam_areas: ["Culture"],
+        key_points: ["A historical feature described school links."],
+        why_it_matters_for_ssc_cgl: "Thin trivia.",
+        why_it_matters_for_upsc_cse: "Thin trivia.",
+        static_context: "No durable exam anchor.",
+        prelims_facts: ["A school existed."],
+        mains_angles: ["No usable mains angle."],
+        memory_hook: "school feature",
+        mcq_seed: {
+          question: "Which source reported: A German school and Berlin ties with Bombay?",
+          answer: "Indian Express Research",
+          trap: "PIB"
+        }
+      },
+      {
+        title: "France skydiving plane crash kills 11; investigation underway",
+        source: "Indian Express World",
+        url: "https://example.com/crash",
+        published_at: "2026-06-30T00:00:00.000Z",
+        ssc_relevance: "medium",
+        upsc_cse_relevance: "medium",
+        exam_areas: ["International"],
+        key_points: ["A skydiving aircraft crashed in France."],
+        why_it_matters_for_ssc_cgl: "Not exam-priority.",
+        why_it_matters_for_upsc_cse: "Not exam-priority.",
+        static_context: "No durable static GK anchor.",
+        prelims_facts: ["A crash happened."],
+        mains_angles: ["No mains angle."],
+        memory_hook: "plane crash",
+        mcq_seed: {
+          question: "Which country recently experienced a skydiving aircraft crash killing 11 people?",
+          answer: "France",
+          trap: "Germany"
+        }
+      }
+    ]
+  });
+
+  assert.deepEqual(brief.recallCards.map((card) => card.title), ["RBI issues directions for rural co-operative banks"]);
+  assert.deepEqual(brief.revisionPackets.map((packet) => packet.title), ["RBI issues directions for rural co-operative banks"]);
 });
 
 test("current affairs study brief builds SSC static-GK revision packets", () => {
@@ -308,7 +444,7 @@ test("current affairs archive lists recent daily briefs newest first with SSC st
           why_it_matters_for_ssc_cgl: "Can be converted into a static GK recall prompt.",
           memory_hook: `${source} ${date}`,
           mcq_seed: {
-            question: `Which source published the ${date} update?`,
+            question: `Which institution released the ${date} update?`,
             answer: source,
             trap: "A non-official source"
           }
@@ -553,6 +689,272 @@ test("daily news pipeline keeps Mistral summaries compact enough for valid JSON"
   assert.match(script, /item\.raw_excerpt\[:MISTRAL_CONTEXT_EXCERPT_CHARS\]/);
   assert.match(script, /parsed\["items"\]\[:MISTRAL_SUMMARY_ITEM_LIMIT\]/);
   assert.match(script, /Mistral summary too thin/);
+});
+
+test("daily news pipeline calls DeepSeek first with JSON chat completions", () => {
+  const result = runPipelineSnippet(String.raw`
+import importlib.util
+import json
+import os
+import sys
+import urllib.request
+from pathlib import Path
+
+script_path = Path("scripts/daily_news_pipeline.py").resolve()
+spec = importlib.util.spec_from_file_location("daily_news_pipeline", script_path)
+module = importlib.util.module_from_spec(spec)
+sys.modules[spec.name] = module
+spec.loader.exec_module(module)
+
+item = module.RawItem(
+    title="RBI releases liquidity framework update",
+    source="RBI",
+    url="https://rbi.example/liquidity",
+    published_at="2026-07-02T07:00:00+05:30",
+    fetched_at="2026-07-02T07:00:01+05:30",
+    raw_excerpt="RBI releases liquidity framework update for bank liquidity, repo operations, and monetary policy revision.",
+    tags=["economy", "banking", "rbi"],
+)
+
+summary = {
+    "date": "2026-07-02",
+    "items": [{
+        "title": item.title,
+        "source": item.source,
+        "url": item.url,
+        "published_at": item.published_at,
+        "source_excerpt": item.raw_excerpt,
+        "ssc_relevance": "high",
+        "upsc_cse_relevance": "high",
+        "exam_areas": ["economy", "banking", "rbi"],
+        "key_points": ["RBI releases liquidity framework update for bank liquidity and repo operations."],
+        "why_it_matters_for_ssc_cgl": "RBI liquidity framework is useful for SSC banking and economy terms.",
+        "why_it_matters_for_upsc_cse": "RBI liquidity framework links to GS3 monetary policy and financial stability.",
+        "static_context": "Revise RBI, repo operations, bank liquidity, monetary policy, CRR, and SLR.",
+        "prelims_facts": ["RBI released the liquidity framework update."],
+        "mains_angles": ["Liquidity policy affects credit growth, inflation control, and financial stability."],
+        "memory_hook": "RBI liquidity framework",
+        "mcq_seed": {
+            "question": "Which institution released the liquidity framework update?",
+            "answer": "RBI",
+            "trap": "SEBI"
+        }
+    }]
+}
+
+captured = {}
+class FakeResponse:
+    def __enter__(self):
+        return self
+    def __exit__(self, exc_type, exc, tb):
+        return False
+    def read(self):
+        return json.dumps({"choices": [{"message": {"content": json.dumps(summary)}}]}).encode("utf-8")
+
+def fake_urlopen(request, timeout=45):
+    captured["url"] = request.full_url
+    captured["headers"] = dict(request.header_items())
+    captured["body"] = json.loads(request.data.decode("utf-8"))
+    return FakeResponse()
+
+urllib.request.urlopen = fake_urlopen
+os.environ["DEEPSEEK_API_KEY"] = "fake-deepseek-key"
+os.environ["DEEPSEEK_MODEL"] = "deepseek-v4-pro"
+brief = module.call_deepseek_current_affairs("2026-07-02", [item])
+print(json.dumps({
+    "url": captured.get("url"),
+    "authorization": captured.get("headers", {}).get("Authorization"),
+    "model": captured.get("body", {}).get("model"),
+    "responseFormat": captured.get("body", {}).get("response_format"),
+    "question": brief["items"][0]["mcq_seed"]["question"] if brief else None,
+}))
+`);
+
+  assert.equal(result.status, 0, result.stderr);
+  assert.deepEqual(JSON.parse(result.stdout), {
+    url: "https://api.deepseek.com/chat/completions",
+    authorization: "Bearer fake-deepseek-key",
+    model: "deepseek-v4-pro",
+    responseFormat: { type: "json_object" },
+    question: "Which institution released the liquidity framework update?"
+  });
+});
+
+test("daily news pipeline filters irrelevant business and routine trivia before study cards", () => {
+  const result = runPipelineSnippet(String.raw`
+import importlib.util
+import json
+import sys
+from pathlib import Path
+
+script_path = Path("scripts/daily_news_pipeline.py").resolve()
+spec = importlib.util.spec_from_file_location("daily_news_pipeline", script_path)
+module = importlib.util.module_from_spec(spec)
+sys.modules[spec.name] = module
+spec.loader.exec_module(module)
+
+def raw(title, source, url, excerpt, tags):
+    return module.RawItem(
+        title=title,
+        source=source,
+        url=url,
+        published_at="2026-07-02T07:00:00+05:30",
+        fetched_at="2026-07-02T07:00:01+05:30",
+        raw_excerpt=excerpt,
+        tags=tags,
+    )
+
+items = [
+    raw(
+        "Austria urges Europe to host Anthropic following U.S. curbs on AI access",
+        "Indian Express World",
+        "https://example.com/anthropic",
+        "Austria urged Europe to host Anthropic after U.S. curbs on AI access.",
+        ["international", "technology"],
+    ),
+    raw(
+        "France skydiving plane crash kills 11; investigation underway",
+        "Indian Express World",
+        "https://example.com/crash",
+        "A skydiving aircraft crash in France killed 11 people.",
+        ["international"],
+    ),
+    raw(
+        "Harry Brook says leading England in tests would be a privilege",
+        "Indian Express Sports",
+        "https://example.com/cricket",
+        "Harry Brook discussed captaincy before a bilateral cricket series.",
+        ["sports"],
+    ),
+    raw(
+        "Centre plans new levies on tobacco, pan masala as GST compensation cess lapses",
+        "Indian Express Economy",
+        "https://example.com/gst-cess",
+        "Centre plans new levies on tobacco and pan masala as GST compensation cess lapses, raising fiscal and GST Council questions.",
+        ["economy", "polity", "upsc-gs3"],
+    ),
+    raw(
+        "RBI issues Responsible Business Conduct directions for rural co-operative banks",
+        "RBI",
+        "https://example.com/rbi",
+        "RBI issued Responsible Business Conduct directions for rural co-operative banks, useful for banking regulation revision.",
+        ["economy", "banking", "rbi", "notifications"],
+    ),
+    raw(
+        "UN ocean floor body prepares election amid deep-sea mining debate",
+        "The Hindu Environment",
+        "https://example.com/un-seabed",
+        "The UN-linked ocean floor regulator prepared an election amid debate over deep-sea mining and marine environment governance.",
+        ["environment", "international", "upsc-gs3"],
+    ),
+]
+
+selected = module.filter_study_relevant_items(items)
+print(json.dumps([item.title for item in selected]))
+`);
+
+  assert.equal(result.status, 0, result.stderr);
+  assert.deepEqual(JSON.parse(result.stdout), [
+    "Centre plans new levies on tobacco, pan masala as GST compensation cess lapses",
+    "RBI issues Responsible Business Conduct directions for rural co-operative banks",
+    "UN ocean floor body prepares election amid deep-sea mining debate"
+  ]);
+});
+
+test("daily news pipeline rejects source-name recall cards", () => {
+  const result = runPipelineSnippet(String.raw`
+import importlib.util
+import json
+import sys
+from pathlib import Path
+
+script_path = Path("scripts/daily_news_pipeline.py").resolve()
+spec = importlib.util.spec_from_file_location("daily_news_pipeline", script_path)
+module = importlib.util.module_from_spec(spec)
+sys.modules[spec.name] = module
+spec.loader.exec_module(module)
+
+raw_items = [module.RawItem(
+    title="RBI releases repo policy update",
+    source="RBI",
+    url="https://rbi.example/repo",
+    published_at="2026-07-02T07:00:00+05:30",
+    fetched_at="2026-07-02T07:00:01+05:30",
+    raw_excerpt="RBI released a repo policy update for banking revision.",
+    tags=["economy", "banking", "rbi"],
+)]
+
+payload = {
+    "date": "2026-07-02",
+    "status": "ready",
+    "generatedAt": "2026-07-02T07:05:00+05:30",
+    "items": [{
+        "title": "RBI releases repo policy update",
+        "source": "RBI",
+        "url": "https://rbi.example/repo",
+        "published_at": "2026-07-02T07:00:00+05:30",
+        "source_excerpt": "RBI released a repo policy update for banking revision.",
+        "ssc_relevance": "high",
+        "upsc_cse_relevance": "high",
+        "exam_areas": ["economy", "banking"],
+        "key_points": ["RBI released a repo policy update."],
+        "why_it_matters_for_ssc_cgl": "RBI repo policy update matters for banking revision.",
+        "why_it_matters_for_upsc_cse": "RBI repo policy update links to monetary policy and GS3 economy revision.",
+        "static_context": "Revise RBI monetary policy tools, repo rate, liquidity operations, and banking regulation.",
+        "prelims_facts": ["RBI released the repo policy update."],
+        "mains_angles": ["Monetary policy affects liquidity, credit growth, inflation management, and financial stability."],
+        "memory_hook": "RBI repo policy update",
+        "mcq_seed": {
+            "question": "Which source reported: RBI releases repo policy update?",
+            "answer": "RBI",
+            "trap": "Do not memorize unsourced summaries."
+        }
+    }]
+}
+
+accepted, reason = module.validate_generated_brief(payload, raw_items, allow_print=False)
+print(json.dumps({"accepted": accepted, "reason": reason}))
+`);
+
+  assert.equal(result.status, 0, result.stderr);
+  const parsed = JSON.parse(result.stdout);
+  assert.equal(parsed.accepted, false);
+  assert.match(parsed.reason, /source-name recall/i);
+});
+
+test("daily news pipeline fallback creates content-based recall cards", () => {
+  const result = runPipelineSnippet(String.raw`
+import importlib.util
+import json
+import sys
+from pathlib import Path
+
+script_path = Path("scripts/daily_news_pipeline.py").resolve()
+spec = importlib.util.spec_from_file_location("daily_news_pipeline", script_path)
+module = importlib.util.module_from_spec(spec)
+sys.modules[spec.name] = module
+spec.loader.exec_module(module)
+
+items = [module.RawItem(
+    title="Centre plans new levies on tobacco, pan masala as GST compensation cess lapses",
+    source="Indian Express Economy",
+    url="https://example.com/gst-cess",
+    published_at="2026-07-02T07:00:00+05:30",
+    fetched_at="2026-07-02T07:00:01+05:30",
+    raw_excerpt="Centre plans new levies on tobacco and pan masala as GST compensation cess lapses, raising GST Council and fiscal federalism questions.",
+    tags=["economy", "polity", "upsc-gs3"],
+)]
+
+brief = module.fallback_brief("2026-07-02", items)
+seed = brief["items"][0]["mcq_seed"]
+print(json.dumps(seed))
+`);
+
+  assert.equal(result.status, 0, result.stderr);
+  const seed = JSON.parse(result.stdout);
+  assert.doesNotMatch(seed.question, /which source|reported|published by/i);
+  assert.notEqual(seed.answer, "Indian Express Economy");
+  assert.match(`${seed.question} ${seed.answer}`, /GST|cess|levies|tobacco|pan masala/i);
 });
 
 test("daily news pipeline can enrich RSS entries with bounded article excerpts", () => {

@@ -19,6 +19,8 @@ docker volume create "$VOLUME_NAME" >/dev/null
 docker run --rm \
   -e TZ=Asia/Kolkata \
   -e CURRENT_AFFAIRS_DATA_ROOT=/tmp/current-affairs \
+  -e DEEPSEEK_API_KEY="${DEEPSEEK_API_KEY:-}" \
+  -e DEEPSEEK_MODEL="${DEEPSEEK_MODEL:-deepseek-v4-pro}" \
   -e MISTRAL_API_KEY="${MISTRAL_API_KEY:-}" \
   -e MISTRAL_MODEL="${MISTRAL_MODEL:-mistral-small-latest}" \
   -v "$PWD:/app" \

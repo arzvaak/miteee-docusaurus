@@ -87,39 +87,54 @@ jobs:
           set -euo pipefail
           ssh -i ~/.ssh/netcup_deploy_key "$NETCUP_USER@$NETCUP_HOST" \
             "set -euo pipefail
-             test -n '$NETCUP_APP_DIR'
-             mkdir -p /root/note-arzvak-backups
-             if [ -d '$NETCUP_APP_DIR/.next/standalone' ]; then
-               tar -C '$NETCUP_APP_DIR' -czf /root/note-arzvak-backups/note-arzvak-next-\$(date +%Y%m%d%H%M%S).tar.gz .next public data/current-affairs 2>/dev/null || true
-             else
-               mkdir -p '$NETCUP_APP_DIR'
-             fi
-             test -f '$NETCUP_APP_DIR/.next/standalone/server.js'
-             if command -v systemctl >/dev/null 2>&1 && systemctl list-unit-files | grep -q '^note-arzvak-next\\.service'; then
-               systemctl restart note-arzvak-next
-             elif command -v pm2 >/dev/null 2>&1; then
-               cd '$NETCUP_APP_DIR' && pm2 restart note-arzvak-next || pm2 start npm --name note-arzvak-next -- start -- --port 3025 --hostname 127.0.0.1
-             else
-               echo 'warning: no known note-arzvak-next process manager found; synced standalone app but did not restart service' >&2
-             fi
-             nginx -t
-             nginx -s reload"
+             cd '$NETCUP_APP_DIR'
+             chmod +x ops/netcup/publish-next-app.sh
+             ops/netcup/publish-next-app.sh '$NETCUP_APP_DIR'"
 
       - name: Install SSC CGL news cron container
         env:
           NETCUP_HOST: ${{ secrets.NETCUP_HOST }}
           NETCUP_USER: ${{ secrets.NETCUP_USER }}
           NETCUP_APP_DIR: ${{ secrets.NETCUP_APP_DIR }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          DEEPSEEK_MODEL: deepseek-v4-pro
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
           MISTRAL_MODEL: mistral-small-latest
         run: |
           set -euo pipefail
-          test -n "$MISTRAL_API_KEY"
           ssh -i ~/.ssh/netcup_deploy_key "$NETCUP_USER@$NETCUP_HOST" \
             "set -euo pipefail
              cd '$NETCUP_APP_DIR'
              chmod +x ops/netcup/install-ssc-cgl-news.sh
-             MISTRAL_API_KEY='$MISTRAL_API_KEY' MISTRAL_MODEL='$MISTRAL_MODEL' RUN_DATE=\$(TZ=Asia/Kolkata date +%F) ops/netcup/install-ssc-cgl-news.sh '$NETCUP_APP_DIR'"
+             DEEPSEEK_API_KEY='$DEEPSEEK_API_KEY' DEEPSEEK_MODEL='$DEEPSEEK_MODEL' MISTRAL_API_KEY='$MISTRAL_API_KEY' MISTRAL_MODEL='$MISTRAL_MODEL' RUN_DATE=\$(TZ=Asia/Kolkata date +%F) ops/netcup/install-ssc-cgl-news.sh '$NETCUP_APP_DIR'"
+
+      - name: Refresh Next app after current-affairs artifacts
+        env:
+          NETCUP_HOST: ${{ secrets.NETCUP_HOST }}
+          NETCUP_USER: ${{ secrets.NETCUP_USER }}
+          NETCUP_APP_DIR: ${{ secrets.NETCUP_APP_DIR }}
+        run: |
+          set -euo pipefail
+          ssh -i ~/.ssh/netcup_deploy_key "$NETCUP_USER@$NETCUP_HOST" \
+            "set -euo pipefail
+             cd '$NETCUP_APP_DIR'
+             RUN_DATE=\$(TZ=Asia/Kolkata date +%F)
+             test -s data/current-affairs/daily/\$RUN_DATE.json
+             chmod -R a+rX data/current-affairs
+             printf '%s\n' 'services:' '  miteee-next:' '    ports:' '      - \"3025:3000\"' > /tmp/miteee-next-netcup-ports.yml
+             docker compose -f docker-compose.next.yml -f /tmp/miteee-next-netcup-ports.yml up -d --no-build --force-recreate
+             docker cp data/current-affairs/. miteee-next-app:/app/data/current-affairs/
+             docker compose -f docker-compose.next.yml -f /tmp/miteee-next-netcup-ports.yml restart miteee-next
+             docker compose -f docker-compose.next.yml -f /tmp/miteee-next-netcup-ports.yml exec -T miteee-next sh -lc \"ls -lah /app/data/current-affairs/daily && test -s /app/data/current-affairs/daily/\$RUN_DATE.json\"
+             for attempt in \$(seq 1 30); do
+               if curl --fail --silent --show-error http://127.0.0.1:3025/exams/ssc-cgl/current-affairs | grep -q 'Recall queue'; then
+                 exit 0
+               fi
+               sleep 2
+             done
+             docker compose -f docker-compose.next.yml -f /tmp/miteee-next-netcup-ports.yml ps || true
+             docker compose -f docker-compose.next.yml -f /tmp/miteee-next-netcup-ports.yml logs --tail 80 miteee-next || true
+             exit 1"
 
       - name: Verify public site
         run: |

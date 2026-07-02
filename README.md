@@ -80,7 +80,7 @@ python scripts/daily_news_pipeline.py --date 2026-06-25
 docker compose -f docker-compose.ssc-cgl-news.yml up -d --build
 ```
 
-It writes raw metadata to `data/current-affairs/raw/`, SSC recall briefs to `data/current-affairs/daily/`, and a continuity ledger to `data/current-affairs/state.json`. The Netcup Docker cron service and source policy live in `docs/ssc-cgl/current-affairs-pipeline.md`.
+It writes raw metadata to `data/current-affairs/raw/`, SSC recall briefs to `data/current-affairs/daily/`, and a continuity ledger to `data/current-affairs/state.json`. DeepSeek is the primary summary provider through `DEEPSEEK_API_KEY` and `DEEPSEEK_MODEL=deepseek-v4-pro`; `MISTRAL_API_KEY` remains a fallback only. The Netcup Docker cron service and source policy live in `data/exams/ssc-cgl/internal-docs/current-affairs-pipeline.md`.
 
 Keep the raw SSC CGL book-PYQ corpus outside the repository. The default local location is:
 

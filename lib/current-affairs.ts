@@ -335,8 +335,27 @@ function cardId(date: string, item: CurrentAffairsSummaryItem) {
   return `ca:${date}:${Math.abs(hash).toString(36)}`;
 }
 
+const sourceNameRecallPattern = /\b(which\s+(source|outlet|newspaper|publication|website|media)|(?:reported|published|carried|covered)\s+by|source\s+reported)\b/i;
+const staleLowValueCurrentAffairsPattern = /\b(anthropic\b.*\b(host|access|curbs?)|(?:openai|chatgpt|google|meta|microsoft|amazon)\b.*\b(host|data center|market access|curbs?)|plane crash|aircraft crash|crash kills|skydiving aircraft crash|series loss|leading england|test captaincy|debut delayed|know your english|ai-chip investment)\b/i;
+
+export function isCurrentAffairsStudyPriority(item: {
+  title: string;
+  source?: string;
+  ssc_relevance?: string;
+  upsc_cse_relevance?: string | null;
+  exam_areas?: string[];
+  mcq_seed?: { question?: string };
+}) {
+  if (item.ssc_relevance === "low" && item.upsc_cse_relevance === "low") return false;
+  if (sourceNameRecallPattern.test(item.mcq_seed?.question ?? "")) return false;
+  const text = [item.title, item.source ?? "", ...(item.exam_areas ?? [])].join(" ");
+  if (staleLowValueCurrentAffairsPattern.test(text)) return false;
+  return true;
+}
+
 export function buildCurrentAffairsRecallCards(brief: CurrentAffairsBrief): CurrentAffairsRecallCard[] {
   return brief.items
+    .filter(isCurrentAffairsStudyPriority)
     .filter((item) => item.mcq_seed.question && item.mcq_seed.answer)
     .map((item) => ({
       id: cardId(brief.date, item),
@@ -364,6 +383,7 @@ function staticAnchorsForItem(item: CurrentAffairsSummaryItem): CurrentAffairsSt
 
 export function buildCurrentAffairsRevisionPackets(brief: CurrentAffairsBrief): CurrentAffairsRevisionPacket[] {
   return brief.items
+    .filter(isCurrentAffairsStudyPriority)
     .filter((item) => item.mcq_seed.question && item.mcq_seed.answer)
     .map((item) => {
       const anchors = staticAnchorsForItem(item);

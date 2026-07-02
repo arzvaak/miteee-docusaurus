@@ -3,6 +3,8 @@ set -euo pipefail
 
 APP_DIR="${1:-$(pwd)}"
 RUN_DATE="${RUN_DATE:-$(TZ=Asia/Kolkata date +%F)}"
+DEEPSEEK_MODEL="${DEEPSEEK_MODEL:-deepseek-v4-pro}"
+DEEPSEEK_API_KEY="${DEEPSEEK_API_KEY:-}"
 MISTRAL_MODEL="${MISTRAL_MODEL:-mistral-small-latest}"
 MISTRAL_API_KEY="${MISTRAL_API_KEY:-}"
 COMPOSE_PROJECT_NAME="${COMPOSE_PROJECT_NAME:-miteee}"
@@ -21,12 +23,18 @@ if [[ -f .env ]]; then
   set +a
 fi
 
+export DEEPSEEK_API_KEY
+export DEEPSEEK_MODEL
 export MISTRAL_API_KEY
 export MISTRAL_MODEL
 export COMPOSE_PROJECT_NAME
 
-if [[ -z "$MISTRAL_API_KEY" ]]; then
-  echo "warning: MISTRAL_API_KEY is not set; installer will use the grounded local fallback." >&2
+if [[ -z "$DEEPSEEK_API_KEY" ]]; then
+  if [[ -n "$MISTRAL_API_KEY" ]]; then
+    echo "warning: DEEPSEEK_API_KEY is not set; installer will use Mistral fallback." >&2
+  else
+    echo "warning: DEEPSEEK_API_KEY and MISTRAL_API_KEY are not set; installer will use the grounded local fallback." >&2
+  fi
 fi
 
 docker compose -f docker-compose.ssc-cgl-news.yml up -d --build
