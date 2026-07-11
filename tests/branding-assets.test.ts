@@ -18,8 +18,8 @@ function publicPath(src: string) {
 test("web app manifest exposes the generated brand assets and study shortcuts", () => {
   const manifest = JSON.parse(fs.readFileSync(path.join(process.cwd(), "public", "site.webmanifest"), "utf8")) as WebManifest;
 
-  assert.equal(manifest.name, "MITEEE Personal Study Desk");
-  assert.equal(manifest.short_name, "MITEEE Desk");
+  assert.equal(manifest.name, "MITEEE Study");
+  assert.equal(manifest.short_name, "MITEEE Study");
   assert.ok(manifest.icons.some((icon) => icon.src === "/img/icons/icon-192.png" && icon.sizes === "192x192"));
   assert.ok(manifest.icons.some((icon) => icon.src === "/img/app-icon.png" && icon.purpose?.includes("maskable")));
   assert.ok(manifest.shortcuts?.some((shortcut) => shortcut.name === "Revision Queue" && shortcut.url === "/revision"));
@@ -43,32 +43,21 @@ test("public image directory does not ship legacy Docusaurus marketing assets", 
   assert.deepEqual(legacyNames, []);
 });
 
-test("homepage hero uses the generated desk artwork as the outer visual surface", () => {
-  const css = fs.readFileSync(path.join(process.cwd(), "app", "globals.css"), "utf8");
-  const homeHeroRule = css.match(/\.home-hero\s*\{(?<body>[^}]*)\}/)?.groups?.body ?? "";
-  const homeHeroCopyRule = css.match(/\.home-hero-copy\s*\{(?<body>[^}]*)\}/)?.groups?.body ?? "";
+test("homepage uses the calm study-library canvas instead of decorative desk art", () => {
+  const dashboard = fs.readFileSync(path.join(process.cwd(), "components", "StudyDashboard.tsx"), "utf8");
+  const css = fs.readFileSync(path.join(process.cwd(), "app", "study-minimal.css"), "utf8");
 
-  assert.match(homeHeroRule, /url\("\/img\/miteee-hero-bg\.jpg"\)/);
-  assert.doesNotMatch(homeHeroCopyRule, /url\("\/img\/miteee-hero-bg\.jpg"\)/);
+  assert.match(dashboard, /What would you like to study\?/);
+  assert.match(dashboard, /className="study-subject-columns"/);
+  assert.doesNotMatch(dashboard, /home-hero|study desk/i);
+  assert.match(css, /\.main-content:has\(\.public-home-page\)[\s\S]*?background:\s*var\(--bg\)/);
+  assert.doesNotMatch(css, /miteee-hero-bg/);
 });
 
-test("homepage uses a dark-safe default palette and scopes white surfaces to light mode", () => {
-  const css = fs.readFileSync(path.join(process.cwd(), "app", "globals.css"), "utf8");
-  const homePageRule = Array.from(css.matchAll(/\.public-home-page\s*\{(?<body>[^}]*)\}/g)).map((match) => match.groups?.body ?? "").find((body) => body.includes("--bg:")) ?? "";
-  const lightHomePageRule = Array.from(css.matchAll(/:root\[data-theme="light"\]\s+\.public-home-page\s*\{(?<body>[^}]*)\}/g)).map((match) => match.groups?.body ?? "").find((body) => body.includes("--bg:")) ?? "";
-  const homeMainRule = css.match(/\.main-content:has\(\.public-home-page\)\s*\{(?<body>[^}]*)\}/)?.groups?.body ?? "";
-  const lightHomeMainRule = css.match(/:root\[data-theme="light"\]\s+\.main-content:has\(\.public-home-page\)\s*\{(?<body>[^}]*)\}/)?.groups?.body ?? "";
-  const homeDeskRule = css.match(/\.home-desk\s*\{(?<body>[^}]*)\}/)?.groups?.body ?? "";
-  const lightHomeDeskRule = css.match(/:root\[data-theme="light"\]\s+\.home-desk\s*\{(?<body>[^}]*)\}/)?.groups?.body ?? "";
-
-  assert.match(homePageRule, /--bg:\s*#0c0d10/);
-  assert.match(homePageRule, /--surface:\s*#191b21/);
-  assert.doesNotMatch(homePageRule, /--surface:\s*#fbfcfa/);
-  assert.match(lightHomePageRule, /--surface:\s*#fbfcfa/);
-  assert.match(homeMainRule, /var\(--bg\)/);
-  assert.doesNotMatch(homeMainRule, /#fafbf9|#f6f8f5/);
-  assert.match(lightHomeMainRule, /#fafbf9/);
-  assert.match(homeDeskRule, /rgba\(25,\s*27,\s*33,\s*0\.92\)/);
-  assert.doesNotMatch(homeDeskRule, /rgba\(255,\s*255,\s*255,\s*0\.88\)/);
-  assert.match(lightHomeDeskRule, /rgba\(255,\s*255,\s*255,\s*0\.88\)/);
+test("homepage uses a dark-safe palette with an explicit light alternative", () => {
+  const css = fs.readFileSync(path.join(process.cwd(), "app", "study-minimal.css"), "utf8");
+  assert.match(css, /:root,[\s\S]*?--bg:\s*#090c11/);
+  assert.match(css, /--surface:\s*#10151d/);
+  assert.match(css, /:root\[data-theme="light"\][\s\S]*?--bg:\s*#f7f8fa/);
+  assert.match(css, /\.study-global-search[\s\S]*?background:\s*transparent/);
 });

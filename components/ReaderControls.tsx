@@ -149,11 +149,11 @@ function applyReaderToolsState(collapsed: boolean) {
 }
 
 function readReaderGuideSnapshot() {
-  if (typeof window === "undefined") return false;
+  if (typeof window === "undefined") return true;
   const stored = window.localStorage.getItem(readerGuideStorageKey);
   if (stored === "true") return true;
   if (stored === "false") return false;
-  return window.matchMedia(readerGuideCompactQuery).matches;
+  return true;
 }
 
 function subscribeReaderGuideState(callback: () => void) {
@@ -170,7 +170,7 @@ function subscribeReaderGuideState(callback: () => void) {
 }
 
 export function ReaderGuideRail({ children }: { children: React.ReactNode }) {
-  const collapsed = useSyncExternalStore(subscribeReaderGuideState, readReaderGuideSnapshot, () => false);
+  const collapsed = useSyncExternalStore(subscribeReaderGuideState, readReaderGuideSnapshot, () => true);
   const Icon = collapsed ? PanelLeftOpen : PanelLeftClose;
 
   useEffect(() => {

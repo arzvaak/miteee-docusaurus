@@ -4,7 +4,7 @@ import { getNotesIndex } from "@/lib/content";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
-  title: "Answer Practice - MITEEE Study OS",
+  title: "Answer Practice - MITEEE Study",
   description: "Write closed-book answers from indexed MITEEE and UPSC notes, then diagnose weaknesses with the study coach.",
   pathname: "/practice"
 });

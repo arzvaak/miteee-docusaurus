@@ -1,8 +1,8 @@
 {
   "id": "/",
-  "name": "MITEEE Personal Study Desk",
-  "short_name": "MITEEE Desk",
-  "description": "A private MITEEE and UPSC CSE study desk for notes, formulas, diagrams, question banks, learner memory, and exam revision paths.",
+  "name": "MITEEE Study",
+  "short_name": "MITEEE Study",
+  "description": "A calm MITEEE, SSC CGL, and UPSC study library for notes, formulas, question banks, practice, and revision.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
@@ -108,14 +108,14 @@
       "sizes": "1200x630",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "MITEEE desk with notes, circuits, and revision paths"
+      "label": "MITEEE Study library with notes, subjects, and revision paths"
     },
     {
       "src": "/img/miteee-splash-portrait.jpg",
       "sizes": "1080x1920",
       "type": "image/jpeg",
       "form_factor": "narrow",
-      "label": "Portrait study desk artwork for mobile install surfaces"
+      "label": "MITEEE Study artwork for mobile install surfaces"
     }
   ]
 }

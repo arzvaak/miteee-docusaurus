@@ -1,4 +1,4 @@
-# MITEEE Personal Study Desk
+# MITEEE Study
 
 Local-first study site for MIT EEE notes, UPSC CSE Political Science NCERT notes, revision memory, active recall, and practice workflows.
 

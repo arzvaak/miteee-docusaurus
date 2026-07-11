@@ -14,7 +14,7 @@ const courseResumePanel = fs.existsSync("components/CourseResumePanel.tsx") ? fs
 const notePage = fs.readFileSync("app/notes/[slug]/page.tsx", "utf8");
 const previewLink = fs.readFileSync("components/PreviewLink.tsx", "utf8");
 const readerControls = fs.readFileSync("components/ReaderControls.tsx", "utf8");
-const css = fs.readFileSync("app/globals.css", "utf8");
+const css = `${fs.readFileSync("app/globals.css", "utf8")}\n${fs.readFileSync("app/study-minimal.css", "utf8")}`;
 
 function ruleBodies(selector: string) {
   const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -27,7 +27,7 @@ function hasRule(selector: string, pattern: RegExp) {
 
 test("dense note lists do not prefetch every heavyweight note page", () => {
   assert.match(courseOutline, /<Link\s+prefetch=\{false\}\s+className="course-outline-note"/);
-  assert.match(studyDashboard, /<Link\s+prefetch=\{false\}\s+className="home-note-row"/);
+  assert.match(studyDashboard, /<Link\s+prefetch=\{false\}\s+href=\{`\/notes\/\$\{note\.slug\}`\}/);
   assert.match(coursePracticeSection, /<Link\s+prefetch=\{false\}\s+href=\{`\/notes\/\$\{drill\.slug\}`\}/);
   assert.match(readerControls, /<Link\s+prefetch=\{false\}\s+aria-current=\{item\.current/);
   assert.match(previewLink, /<Link\s+prefetch=\{false\}\s+href=\{`\/notes\/\$\{preview\.slug\}`\}/);
@@ -165,51 +165,26 @@ test("personal briefing body copy stays fully readable on mobile", () => {
   assert.equal(hasRule(".memory-briefing-main p", /overflow:\s*hidden;/), false);
 });
 
-test("homepage keeps the first screen calm while preserving readiness access", () => {
-  assert.match(studyDashboard, /className="home-hero home-desk"/);
-  assert.match(studyDashboard, /const activeNote = filteredNotes\[0\] \?\? notes\[0\] \?\? null;/);
-  assert.match(studyDashboard, /className="home-desk-rail"/);
-  assert.match(studyDashboard, /className="home-focus-strip"/);
-  assert.match(studyDashboard, /const primaryCourse = filteredCourses\[0\] \?\? courses\[0\] \?\? null;/);
-  assert.match(studyDashboard, /<HomePrimaryCourseEntry course=\{primaryCourse\} \/>/);
-  assert.match(studyDashboard, /className="home-primary-entry"/);
-  assert.doesNotMatch(studyDashboard, /className="home-desk-course-strip"/);
-  assert.match(studyDashboard, /<HomeReaderPreview note=\{activeNote\} totals=\{totals\} \/>/);
-  assert.match(studyDashboard, /className="home-reader-preview"/);
-  assert.match(studyDashboard, /className="home-action-row primary"/);
-  assert.doesNotMatch(studyDashboard, /className="home-action-row"\s+href=\{readiness\.priority\.href\}/);
-  assert.match(studyDashboard, /<StudyToday plan=\{studyPlan\} \/>/);
-  assert.match(studyDashboard, /<details className="readiness-map readiness-disclosure home-secondary-disclosure">/);
-  assert.match(studyDashboard, /<details className="home-secondary-disclosure memory-briefing-disclosure">/);
-  assert.match(studyDashboard, /<details className="panel home-path-panel home-resource-disclosure" id="question-banks">/);
-  assert.match(studyDashboard, /<details className="panel home-note-panel home-resource-disclosure" id="recent-notes">/);
-  assert.match(studyDashboard, /className="home-course-list"/);
-  assert.match(studyDashboard, /className=\{`home-course-row accent-\$\{courseAccent\(course\)\}`\}/);
-  assert.match(studyDashboard, /<summary className="section-header">/);
-  assert.doesNotMatch(studyDashboard, /className="home-hero-panel"/);
-  assert.equal(hasRule(".home-hero", /grid-template-columns:\s*minmax\(0,\s*1fr\);/), true);
-  assert.equal(hasRule(".home-desk", /grid-template-columns:\s*minmax\(420px,\s*0\.92fr\)\s+minmax\(420px,\s*1\.08fr\);/), true);
-  assert.equal(hasRule(".home-action-row", /grid-template-columns:\s*auto minmax\(0,\s*1fr\) auto;/), true);
-  assert.equal(hasRule(".home-primary-entry", /grid-template-columns:\s*auto minmax\(0,\s*1fr\) auto;/), true);
-  assert.equal(hasRule(".home-reader-preview", /grid-template-rows:\s*auto auto minmax\(0,\s*1fr\) auto;/), true);
-  assert.equal(hasRule(".home-reader-preview", /background:\s*color-mix\(in srgb,\s*var\(--surface\) 94%,\s*var\(--bg\)\);/), true);
-  assert.equal(hasRule(".home-focus-strip", /display:\s*flex;/), true);
-  assert.equal(hasRule(".home-course-row", /grid-template-columns:\s*minmax\(78px,\s*auto\)\s+minmax\(0,\s*1fr\)\s+minmax\(180px,\s*auto\)\s+auto;/), true);
-  assert.equal(hasRule(".readiness-disclosure > summary", /cursor:\s*pointer;/), true);
-  assert.equal(hasRule(".memory-briefing-disclosure", /border-block:\s*1px solid var\(--border\);/), true);
-  assert.equal(hasRule(".home-resource-disclosure > summary", /cursor:\s*pointer;/), true);
+test("homepage is a calm library that preserves free exploration and optional continuation", () => {
+  assert.match(studyDashboard, /What would you like to study\?/);
+  assert.match(studyDashboard, /className="study-global-search"/);
+  assert.match(studyDashboard, /className="study-continue"/);
+  assert.match(studyDashboard, /Continue where you left off/);
+  assert.match(studyDashboard, /className="study-subject-columns"/);
+  assert.match(studyDashboard, /className="study-discovery-grid"/);
+  assert.match(studyDashboard, /Fresh to explore/);
+  assert.doesNotMatch(studyDashboard, /Study Today|hard loop|memory pressure/i);
+  assert.equal(hasRule(".study-subject-columns", /grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\);/), true);
+  assert.equal(hasRule(".study-subject-group a", /grid-template-columns:\s*76px minmax\(0,\s*1fr\) auto;/), true);
+  assert.equal(hasRule(".study-discovery-grid", /grid-template-columns:\s*minmax\(0,\s*1fr\) minmax\(0,\s*1fr\);/), true);
 });
 
-test("homepage has a real dark-mode surface instead of forcing a white desk", () => {
-  assert.match(css, /\.main-content:has\(\.public-home-page\)\s*\{[\s\S]*?var\(--bg\)/);
-  assert.match(css, /\.public-home-page\s*\{[\s\S]*?--bg:\s*#0c0d10;/);
-  assert.match(css, /\.home-desk\s*\{[\s\S]*?rgba\(25,\s*27,\s*33,\s*0\.92\)/);
-  assert.match(css, /\.home-reader-preview\s*\{[\s\S]*?background:\s*color-mix\(in srgb,\s*var\(--surface\) 94%,\s*var\(--bg\)\);/);
-  assert.match(css, /\.home-reader-toolbar\s*\{[\s\S]*?background:\s*color-mix\(in srgb,\s*var\(--surface-strong\) 90%,\s*var\(--bg\)\);/);
-  assert.match(css, /\.home-reader-footer\s*\{[\s\S]*?background:\s*color-mix\(in srgb,\s*var\(--surface-strong\) 90%,\s*var\(--bg\)\);/);
-  assert.match(css, /:root\[data-theme="light"\] \.main-content:has\(\.public-home-page\)/);
-  assert.match(css, /:root\[data-theme="light"\] \.public-home-page\s*\{[\s\S]*?--bg:\s*#f5f7f4;/);
-  assert.match(css, /:root\[data-theme="light"\] \.home-desk\s*\{[\s\S]*?rgba\(255,\s*255,\s*255,\s*0\.88\)/);
+test("homepage has a real dark-mode canvas instead of a card dashboard", () => {
+  assert.match(css, /--bg:\s*#090c11/);
+  assert.match(css, /\.main-content:has\(\.public-home-page\)[\s\S]*?background:\s*var\(--bg\)/);
+  assert.match(css, /\.study-global-search[\s\S]*?background:\s*transparent/);
+  assert.match(css, /\.study-subject-map[\s\S]*?border-top:\s*1px solid var\(--border\)/);
+  assert.doesNotMatch(studyDashboard, /home-hero|home-reader-preview/);
 });
 
 test("homepage note search does not serialize the full search index", () => {

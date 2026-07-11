@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { cleanInlineMarkdown, type Course, type Note } from "@/lib/content";
 import { truncateText } from "@/lib/text";
 
-export const SITE_NAME = "MITEEE Personal Study Desk";
+export const SITE_NAME = "MITEEE Study";
 export const SITE_URL = "https://note.arzvak.com";
 export const DEFAULT_SITE_DESCRIPTION =
-  "A private MITEEE and UPSC CSE study desk for notes, formulas, diagrams, question banks, learner memory, and exam revision paths.";
+  "A calm MITEEE, SSC CGL, and UPSC study library for notes, formulas, question banks, practice, and revision.";
 
 const DEFAULT_IMAGE = "/img/miteee-social-card.png";
 

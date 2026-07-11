@@ -4,6 +4,7 @@ import { AppShell } from "@/components/AppShell";
 import { JsonLd } from "@/components/JsonLd";
 import { buildWebSiteJsonLd, DEFAULT_SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
 import "./globals.css";
+import "./study-minimal.css";
 import "katex/dist/katex.min.css";
 
 const shellInitScript = `
@@ -14,12 +15,6 @@ const shellInitScript = `
   } catch {
     document.documentElement.dataset.theme = "dark";
   }
-
-  try {
-    if (window.localStorage.getItem("miteee-shell-sidebar-collapsed") === "true") {
-      document.documentElement.dataset.sidebarCollapsed = "true";
-    }
-  } catch {}
 })();
 `;
 
@@ -36,7 +31,7 @@ export const metadata: Metadata = {
   publisher: SITE_NAME,
   appleWebApp: {
     capable: true,
-    title: "MITEEE Desk",
+    title: "MITEEE Study",
     statusBarStyle: "black-translucent"
   },
   formatDetection: {

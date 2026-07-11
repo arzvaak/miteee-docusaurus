@@ -125,9 +125,9 @@ export default async function NotePage({ params }: NotePageProps) {
 function ReaderBreadcrumbs({ courseCode, courseName, week }: { courseCode: string | null; courseName: string | null; week: number | null }) {
   return (
     <nav className="reader-breadcrumbs" aria-label="Breadcrumb">
-      <Link href="/">Desk</Link>
+      <Link href="/">Home</Link>
       <span>/</span>
-      <Link href="/courses">Subjects</Link>
+      <Link href="/courses">Library</Link>
       {courseCode && (
         <>
           <span>/</span>
