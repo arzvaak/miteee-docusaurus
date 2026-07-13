@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Activity, ArrowRight, Clock3, Compass, FileText, Search } from "lucide-react";
+import { Activity, ArrowRight, Clock3, Compass, FileText, FlaskConical, Search } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import type { Course, NotePreview } from "@/lib/content";
 
@@ -131,6 +131,20 @@ export function StudyDashboard({ totals, courses, notes }: { totals: Totals; cou
               <small>{continueNote.week ? `Next: Week ${continueNote.week}` : "Pick up from your last reading position"}</small>
             </span>
             <span className="study-text-action">Continue <ArrowRight size={17} aria-hidden="true" /></span>
+          </Link>
+        </section>
+      )}
+
+      {!needle && (
+        <section className="study-research-feature" aria-labelledby="research-feature-title">
+          <div className="study-research-icon"><FlaskConical size={22} strokeWidth={1.6} aria-hidden="true" /></div>
+          <div className="study-research-copy">
+            <span>Research · Preliminary exploratory findings</span>
+            <h2 id="research-feature-title">Can agent composition predict a professional VALORANT map?</h2>
+            <p>Early results from 1,684 maps across regional and global VCT events, with team strength, patches, chronology and calibration kept in view.</p>
+          </div>
+          <Link className="study-text-action" href="/research/valorant-preliminary-findings">
+            Read findings <ArrowRight size={17} aria-hidden="true" />
           </Link>
         </section>
       )}

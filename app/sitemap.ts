@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: `${SITE_URL}/`, lastModified: now },
     { url: `${SITE_URL}/courses`, lastModified: now },
+    { url: `${SITE_URL}/research/valorant-preliminary-findings`, lastModified: now },
     ...getAllCourses().map((course) => ({ url: `${SITE_URL}/courses/${course.code}`, lastModified: now })),
     ...getNotesIndex().map((note) => ({ url: `${SITE_URL}/notes/${note.slug}`, lastModified: now }))
   ];
