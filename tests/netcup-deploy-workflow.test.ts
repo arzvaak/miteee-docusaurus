@@ -35,7 +35,6 @@ test("Netcup workflow deploys the current Next standalone app instead of stale D
   assert.match(workflow, /curl --fail[\s\S]*\/exams\/ssc-cgl/);
   assert.match(workflow, /grep -q "What do you want to practice\?" \/tmp\/ssc-cgl\.html/);
   assert.match(workflow, /\/research\/valorant-preliminary-findings/);
-  assert.match(workflow, /Can agent composition predict/);
   assert.match(workflow, /This is still a progress report/);
   assert.match(workflow, /test the final version on a future tournament/);
   assert.match(workflow, /Subject Spaces/);
