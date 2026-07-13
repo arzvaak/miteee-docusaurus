@@ -33,6 +33,10 @@ test("Netcup workflow deploys the current Next standalone app instead of stale D
   assert.doesNotMatch(workflow, /build\/\s*"\$NETCUP_USER@\$NETCUP_HOST:/);
   assert.doesNotMatch(workflow, /grep -q "MIT EEE"/);
   assert.match(workflow, /curl --fail[\s\S]*\/exams\/ssc-cgl/);
+  assert.match(workflow, /\/research\/valorant-preliminary-findings/);
+  assert.match(workflow, /Can agent composition predict/);
+  assert.match(workflow, /a separate future tournament is still needed/);
+  assert.match(workflow, /composition-map-feature-audit\.png/);
   assert.match(workflow, /npx playwright install --with-deps chromium/);
   assert.match(workflow, /SSC_BROWSER_BASE_URL=https:\/\/note\.arzvak\.com npm run verify:ssc-browser/);
 });
