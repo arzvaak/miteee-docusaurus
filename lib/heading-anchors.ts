@@ -32,24 +32,34 @@ export function buildHeadingAnchors(headings: HeadingAnchorInput[], limit = 18):
   const seen = new Map<string, number>();
   const anchors: HeadingAnchor[] = [];
   for (const heading of headings) {
-    if (heading.level < 2 || heading.level > 3) continue;
+    if (heading.level < 2 || heading.level > 4) continue;
     const text = heading.text.trim();
     if (!text) continue;
-    anchors.push({ ...heading, text, id: uniqueHeadingAnchorId(text, seen) });
+    const id = uniqueHeadingAnchorId(text, seen);
+    if (heading.level === 4) continue;
+    anchors.push({ ...heading, text, id });
     if (anchors.length >= limit) break;
   }
   return anchors;
 }
 
-export function buildQuestionAnchors(headings: HeadingAnchorInput[], limit = 220): HeadingAnchor[] {
+export function isQuestionHeading(value: string) {
+  const normalized = value
+    .replace(/^[^a-z0-9]+/i, "")
+    .replace(/[`*_~]/g, "")
+    .trim();
+  return /^(?:question|ques(?:tion)?|q)\s*(?:(?:no|number)\.?\s*)?(?:[#.:/-]\s*)?\d+\b/i.test(normalized);
+}
+
+export function buildQuestionAnchors(headings: HeadingAnchorInput[], limit = 400): HeadingAnchor[] {
   const seen = new Map<string, number>();
   const anchors: HeadingAnchor[] = [];
   for (const heading of headings) {
-    if (heading.level < 2 || heading.level > 3) continue;
+    if (heading.level < 2 || heading.level > 4) continue;
     const text = heading.text.trim();
     if (!text) continue;
     const id = uniqueHeadingAnchorId(text, seen);
-    if (heading.level === 2 && /^question\s+\d+\b/i.test(text)) {
+    if ((heading.level === 2 || heading.level === 3) && isQuestionHeading(text)) {
       anchors.push({ ...heading, text, id });
       if (anchors.length >= limit) break;
     }

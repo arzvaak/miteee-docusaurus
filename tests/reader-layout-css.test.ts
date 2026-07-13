@@ -3,6 +3,7 @@ import fs from "node:fs";
 import test from "node:test";
 
 const css = fs.readFileSync("app/globals.css", "utf8");
+const readerCss = fs.readFileSync("app/study-minimal.css", "utf8");
 const readerControlsSource = fs.readFileSync("components/ReaderControls.tsx", "utf8");
 
 function ruleBodies(selector: string) {
@@ -18,6 +19,11 @@ function baseRuleBody(selector: string) {
   return ruleBodies(selector)[0] ?? "";
 }
 
+function readerRuleBody(selector: string) {
+  const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return Array.from(readerCss.matchAll(new RegExp(`(?:^|\\n)\\s*${escaped}\\s*\\{([^}]*)\\}`, "gm")))[0]?.[1] ?? "";
+}
+
 test("mobile note reader keeps recall and practice controls before the article", () => {
   assert.equal(hasRule(".reader-layout .reader-rail:not(.left)", /order:\s*2;/), true);
   assert.equal(hasRule(".reader-layout .article", /order:\s*3;/), true);
@@ -30,8 +36,8 @@ test("mobile note reader signal stats stay compact", () => {
 
 test("mobile reader keeps navigation reachable without desktop shortcut overlap", () => {
   assert.equal(hasRule(".bottom-nav", /position:\s*fixed;/), true);
-  assert.equal(hasRule(".bottom-nav", /inset:\s*auto 10px 10px;/), true);
-  assert.equal(hasRule(".main-content", /padding:\s*14px 12px 92px;/), true);
+  assert.equal(hasRule(".bottom-nav", /inset:\s*auto 0 0;/), true);
+  assert.equal(hasRule(".main-content", /padding:\s*14px 12px 112px;/), true);
   assert.equal(hasRule(".keyboard-shortcut-hint", /display:\s*none;/), true);
   assert.equal(hasRule(".course-map-jump", /flex-wrap:\s*wrap;/), true);
   assert.equal(hasRule(".course-map-jump", /overflow-x:\s*visible;/), true);
@@ -51,11 +57,27 @@ test("mobile shell clips page-level horizontal overflow", () => {
   assert.match(css, /@media \(max-width:\s*820px\)\s*\{[\s\S]*?\.app-shell\s*\{[^}]*max-width:\s*100vw;[^}]*overflow-x:\s*clip;/s);
 });
 
-test("desktop note reader keeps a wide content canvas", () => {
-  assert.match(css, /--content-max:\s*1720px;/);
-  assert.equal(hasRule(".reader-layout", /grid-template-columns:\s*minmax\(220px,\s*260px\)\s+minmax\(0,\s*1fr\)\s+minmax\(220px,\s*260px\);/), true);
-  assert.equal(hasRule(".article :where(p, ul, ol, blockquote)", /max-width:\s*1060px;/), true);
-  assert.equal(hasRule(".article :where(table, .katex-display, .code-block-shell, .mermaid-shell, img)", /max-width:\s*100%;/), true);
+test("desktop note reader uses one centered prose measure inside a wider canvas", () => {
+  assert.match(readerRuleBody(".note-page"), /--content-max:\s*1688px;/);
+  assert.match(readerRuleBody(".reader-layout"), /--reader-canvas-width:\s*1120px;/);
+  assert.match(readerRuleBody(".reader-layout"), /--reader-prose-width:\s*820px;/);
+  assert.match(readerRuleBody(".reader-layout"), /grid-template-columns:\s*minmax\(220px,\s*260px\) minmax\(0,\s*var\(--reader-canvas-width\)\) minmax\(220px,\s*260px\);/);
+  assert.match(readerRuleBody(".article"), /max-width:\s*var\(--reader-canvas-width\);/);
+  assert.match(readerRuleBody(".article-header"), /max-width:\s*var\(--reader-prose-width\);/);
+  assert.match(readerRuleBody(".article :where(p, ul, ol, blockquote)"), /max-width:\s*var\(--reader-prose-width\);/);
+  assert.match(readerRuleBody(".article :where(h2, h3, h4)"), /max-width:\s*var\(--reader-prose-width\);/);
+  assert.match(readerRuleBody(".article :where(table, .katex-display, .code-block-shell, .mermaid-shell)"), /max-width:\s*var\(--reader-canvas-width\);/);
+});
+
+test("research publication aligns prose while allowing figures to use the wide canvas", () => {
+  assert.match(readerRuleBody(".research-publication"), /--reader-canvas-width:\s*1120px;/);
+  assert.match(readerRuleBody(".research-publication"), /--reader-prose-width:\s*820px;/);
+  assert.match(readerRuleBody(".research-publication-header"), /width:\s*min\(100%,\s*var\(--reader-prose-width\)\);/);
+  assert.match(readerRuleBody(".research-status-note"), /width:\s*min\(100%,\s*var\(--reader-prose-width\)\);/);
+  assert.match(readerRuleBody(".research-publication .research-report-body"), /max-width:\s*var\(--reader-canvas-width\);/);
+  assert.match(readerRuleBody(".research-report-body > :where(p, ul, ol, blockquote, h2, h3, h4)"), /max-width:\s*var\(--reader-prose-width\);/);
+  assert.match(readerRuleBody(".research-report-body > p:has(> img)"), /max-width:\s*var\(--reader-canvas-width\);/);
+  assert.match(readerCss, /\.research-report-body > p:has\(> img\) \+ p,[\s\S]*?max-width:\s*var\(--reader-canvas-width\);/);
 });
 
 test("desktop course map jump buttons wrap inside the reader rail", () => {
@@ -88,8 +110,10 @@ test("reader course navigator labels wrap instead of clipping long lesson names"
   }
 });
 
-test("collapsed reader tools width reclaim is limited to desktop layouts", () => {
-  assert.match(css, /@media \(min-width:\s*1181px\)\s*\{[\s\S]*?\[data-reader-tools-collapsed="true"\]\s+\.reader-layout\s*\{[^}]*grid-template-columns:\s*minmax\(220px,\s*260px\) minmax\(0,\s*1fr\) 56px;/s);
+test("collapsed reader rails reclaim their desktop grid tracks", () => {
+  assert.match(readerRuleBody('[data-reader-guide-collapsed="true"] .reader-layout'), /grid-template-columns:\s*48px minmax\(0,\s*var\(--reader-canvas-width\)\) minmax\(220px,\s*260px\);/);
+  assert.match(readerRuleBody('[data-reader-tools-collapsed="true"] .reader-layout'), /grid-template-columns:\s*minmax\(220px,\s*260px\) minmax\(0,\s*var\(--reader-canvas-width\)\) 56px;/);
+  assert.match(readerRuleBody('[data-reader-guide-collapsed="true"][data-reader-tools-collapsed="true"] .reader-layout'), /grid-template-columns:\s*48px minmax\(0,\s*var\(--reader-canvas-width\)\) 56px;/);
 });
 
 test("mobile collapsed reader controls keep text labels visible", () => {

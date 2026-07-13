@@ -43,6 +43,23 @@ test("MermaidDiagram keeps learner-facing fallback instead of exposing raw parse
 
   assert.match(source, /renderFlowchartFallback/);
   assert.match(source, /diagram-fallback/);
-  assert.match(source, /Diagram source preserved/);
+  assert.match(source, /Diagram as ordered text/);
   assert.doesNotMatch(source, /<span>\{state\.error\}<\/span>/);
+});
+
+test("MermaidDiagram provides an accessible interactive lightbox", () => {
+  const source = fs.readFileSync(path.join(process.cwd(), "components", "MermaidDiagram.tsx"), "utf8");
+
+  assert.match(source, /aria-modal="true"/);
+  assert.match(source, /role="dialog"/);
+  assert.match(source, /createPortal/);
+  assert.match(source, /Close diagram viewer/);
+  assert.match(source, /event\.key === "Escape"/);
+  assert.match(source, /event\.key === "Tab"/);
+  assert.match(source, /restoreFocusRef/);
+  assert.match(source, /addEventListener\("wheel", handleWheel, \{ passive: false \}\)/);
+  assert.match(source, /onPointerMove=\{handlePointerMove\}/);
+  assert.match(source, /Set zoom to 100%/);
+  assert.match(source, />Fit</);
+  assert.match(source, />Reset</);
 });

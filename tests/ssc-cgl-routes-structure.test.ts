@@ -9,6 +9,8 @@ test("SSC CGL exam routes are mounted as first-class study surfaces", () => {
   const expectedFiles = [
     "app/exams/page.tsx",
     "app/exams/ssc-cgl/page.tsx",
+    "app/exams/ssc-cgl/session/page.tsx",
+    "app/api/exams/ssc-cgl/session/route.ts",
     "app/exams/ssc-cgl/tests/page.tsx",
     "app/exams/ssc-cgl/tests/[testId]/page.tsx",
     "app/exams/ssc-cgl/results/[attemptId]/page.tsx",
@@ -51,7 +53,7 @@ test("timed test runner exposes section timer, local attempts, and result routin
   assert.match(source, /mergeSscAttemptHistory/);
   assert.match(source, /section\.timerSeconds/);
   assert.match(source, /scoreSscAttempt/);
-  assert.match(source, /ssc-test-option/);
+  assert.match(source, /styles\.option/);
   assert.match(source, /\/exams\/ssc-cgl\/results\//);
 });
 
@@ -63,7 +65,7 @@ test("SSC CGL topic practice exposes one-by-one corpus practice", () => {
   const explanationPanel = fs.readFileSync(path.join(root, "components", "SscExplanationPanel.tsx"), "utf8");
   const topicPracticeMemory = fs.readFileSync(path.join(root, "lib", "ssc-cgl-topic-practice-memory.ts"), "utf8");
   const topicDetail = fs.readFileSync(path.join(root, "app", "exams", "ssc-cgl", "topics", "[slug]", "page.tsx"), "utf8");
-  const landing = fs.readFileSync(path.join(root, "app", "exams", "ssc-cgl", "page.tsx"), "utf8");
+  const setup = fs.readFileSync(path.join(root, "components", "SscExamSetup.tsx"), "utf8");
   const css = fs.readFileSync(path.join(root, "app", "globals.css"), "utf8");
 
   assert.match(practiceIndex, /getSscCglPracticeTopics/);
@@ -122,14 +124,11 @@ test("SSC CGL topic practice exposes one-by-one corpus practice", () => {
   assert.match(practiceClient, /elapsedSeconds > targetSecondsPerQuestion/);
   assert.match(explanationPanel, /parseSscExplanationBlocks/);
   assert.match(topicDetail, /\/exams\/ssc-cgl\/practice\/\$\{topic\.slug\}/);
-  assert.match(landing, /href="\/exams\/ssc-cgl\/practice"/);
-  assert.match(landing, /href:\s*"\/exams\/ssc-cgl\/reasoning-50"/);
-  assert.match(landing, /href:\s*"\/exams\/ssc-cgl\/ga-50"/);
-  assert.match(landing, /href="\/exams\/ssc-cgl\/quant-50"/);
-  assert.match(landing, /href:\s*"\/exams\/ssc-cgl\/english-50"/);
-  assert.match(landing, /href="\/exams\/ssc-cgl\/resources"/);
-  assert.match(landing, /href="\/exams\/ssc-cgl\/readiness"/);
-  assert.match(landing, /All usable questions grouped topic-wise/);
+  assert.match(setup, /href: "\/exams\/ssc-cgl\/practice"/);
+  assert.match(setup, /href: "\/exams\/ssc-cgl\/topics"/);
+  assert.match(setup, /href: "\/exams\/ssc-cgl\/current-affairs"/);
+  assert.match(setup, /Open question bank/);
+  assert.match(setup, /Section question-bank readiness/);
   assert.match(css, /\.ssc-topic-practice-shell/);
   assert.match(css, /\.ssc-topic-practice-filters/);
   assert.match(css, /\.ssc-topic-practice-filter/);
@@ -312,74 +311,35 @@ test("SSC CGL topic index is grouped into the four Tier-I subject levels", () =>
   assert.match(css, /\.ssc-topic-gaps/);
 });
 
-test("SSC CGL landing page exposes 200/200 readiness and pressure queues", () => {
+test("SSC CGL landing page exposes a complete exam setup flow", () => {
   const page = fs.readFileSync(path.join(root, "app", "exams", "ssc-cgl", "page.tsx"), "utf8");
-  const dailyCommand = fs.readFileSync(path.join(root, "components", "SscDailyCommand.tsx"), "utf8");
-  const dailyCommandLib = fs.readFileSync(path.join(root, "lib", "ssc-cgl-daily-command.ts"), "utf8");
-  const css = fs.readFileSync(path.join(root, "app", "globals.css"), "utf8");
+  const setup = fs.readFileSync(path.join(root, "components", "SscExamSetup.tsx"), "utf8");
+  const css = fs.readFileSync(path.join(root, "components", "SscExamSetup.module.css"), "utf8");
 
-  assert.match(page, /200\/200 readiness/);
+  assert.match(page, /SscExamSetup/);
   assert.match(page, /sectionReadiness/);
   assert.match(page, /readinessPercent/);
-  assert.match(page, /Mock and drill inventory/);
-  assert.match(page, /Today 200\/200 loop/);
-  assert.match(page, /dailyLoop/);
-  assert.match(page, /dailyLoopMinutes/);
-  assert.match(page, /ssc-daily-loop/);
-  assert.match(page, /ssc-daily-loop-card/);
-  assert.match(page, /No passive reading before timed work/);
-  assert.match(page, /200\/200 repair plan/);
-  assert.match(page, /repairPlan/);
-  assert.match(page, /item\.title/);
-  assert.match(page, /item\.target/);
-  assert.match(page, /Study-depth audit/);
-  assert.match(page, /studyDepth/);
-  assert.match(page, /notesWithPractice/);
-  assert.match(page, /weakestNotes/);
-  assert.match(page, /Strict 200\/200 gates/);
-  assert.match(page, /strictAudit/);
-  assert.match(page, /gate\.status/);
-  assert.match(page, /gate\.evidence/);
-  assert.match(page, /ssc-strict-gate-grid/);
-  assert.match(page, /current-affairs/);
-  assert.match(page, /Pressure queue/);
-  assert.match(page, /pressureQueue/);
-  assert.match(page, /SscDailyCommand/);
-  assert.match(page, /getSscCglPracticeTopics/);
-  assert.match(page, /practiceTopics/);
-  assert.match(page, /<SscDailyCommand practiceTopics=\{practiceTopics\}/);
-  assert.match(page, /SscMistakeNotebook/);
-  assert.doesNotMatch(page, /pipeline|OCR|Import review/i);
-  assert.match(dailyCommand, /buildSscDailyCommand/);
-  assert.match(dailyCommand, /sscAttemptHistoryStorageKey/);
-  assert.match(dailyCommand, /sscMistakeBankStorageKey/);
-  assert.match(dailyCommand, /sscTopicPracticeStoragePrefix/);
-  assert.match(dailyCommand, /parseSscTopicPracticeMemory/);
-  assert.match(dailyCommand, /practiceTopics/);
-  assert.match(dailyCommand, /speed repairs/);
-  assert.match(dailyCommand, /openSpeedRepairs/);
-  assert.match(dailyCommand, /200\/200 command/);
-  assert.match(dailyCommandLib, /Repair first/);
-  assert.match(page, /ssc-study-os-strip/);
-  assert.match(page, /Level 1/);
-  assert.match(page, /Level 4/);
-  assert.match(page, /section\.topics/);
-  assert.match(css, /\.ssc-readiness-grid/);
-  assert.match(css, /\.ssc-readiness-card/);
-  assert.match(css, /\.ssc-daily-loop/);
-  assert.match(css, /\.ssc-daily-command/);
-  assert.match(css, /\.ssc-daily-command-primary/);
-  assert.match(css, /\.ssc-daily-loop-card/);
-  assert.match(css, /\.ssc-daily-loop-total/);
-  assert.match(css, /\.ssc-study-os-strip/);
-  assert.match(css, /\.ssc-study-os-node/);
-  assert.match(css, /\.ssc-repair-plan/);
-  assert.match(css, /\.ssc-repair-item/);
-  assert.match(css, /\.ssc-depth-grid/);
-  assert.match(css, /\.ssc-depth-list/);
-  assert.match(css, /\.ssc-strict-gate-grid/);
-  assert.match(css, /\.ssc-strict-gate-card/);
-  assert.match(css, /\.ssc-pressure-list/);
+  assert.match(setup, /Quick 10/);
+  assert.match(setup, /Section Test/);
+  assert.match(setup, /Full Mock/);
+  assert.match(setup, /Endless Practice/);
+  assert.match(setup, /Book \/ PYQ Practice/);
+  assert.match(setup, /Weakness Repair/);
+  assert.match(setup, /All four sections/);
+  assert.match(setup, /10 Q/);
+  assert.match(setup, /25 Q/);
+  assert.match(setup, /50 Q/);
+  assert.match(setup, /100 Q/);
+  assert.match(setup, /Exam clock/);
+  assert.match(setup, /Relaxed/);
+  assert.match(setup, /No timer/);
+  assert.match(setup, /\/exams\/ssc-cgl\/session/);
+  assert.match(setup, /sscAttemptHistoryStorageKey/);
+  assert.match(setup, /sscMistakeBankStorageKey/);
+  assert.doesNotMatch(setup, /pipeline|OCR|Import review/i);
+  assert.match(css, /\.modeGrid/);
+  assert.match(css, /\.configPanel/);
+  assert.match(css, /\.sectionProgress/);
 });
 
 test("SSC CGL section 50/50 cockpits expose four section workflows", () => {
@@ -388,7 +348,7 @@ test("SSC CGL section 50/50 cockpits expose four section workflows", () => {
   const ga = fs.readFileSync(path.join(root, "app", "exams", "ssc-cgl", "ga-50", "page.tsx"), "utf8");
   const quant = fs.readFileSync(path.join(root, "app", "exams", "ssc-cgl", "quant-50", "page.tsx"), "utf8");
   const english = fs.readFileSync(path.join(root, "app", "exams", "ssc-cgl", "english-50", "page.tsx"), "utf8");
-  const landing = fs.readFileSync(path.join(root, "app", "exams", "ssc-cgl", "page.tsx"), "utf8");
+  const setup = fs.readFileSync(path.join(root, "components", "SscExamSetup.tsx"), "utf8");
   const css = fs.readFileSync(path.join(root, "app", "globals.css"), "utf8");
 
   assert.match(shared, /getSscCglDashboard/);
@@ -417,15 +377,11 @@ test("SSC CGL section 50/50 cockpits expose four section workflows", () => {
   for (const source of [shared, reasoning, ga, quant, english]) {
     assert.doesNotMatch(source, /pipeline|OCR|Import review|quarantine/i);
   }
-  assert.match(landing, /Four 50-mark section cockpits/);
-  assert.match(landing, /Reasoning 50\/50/);
-  assert.match(landing, /GA 50\/50/);
-  assert.match(landing, /Quant 50\/50/);
-  assert.match(landing, /English 50\/50/);
-  assert.match(landing, /href:\s*"\/exams\/ssc-cgl\/reasoning-50"/);
-  assert.match(landing, /href:\s*"\/exams\/ssc-cgl\/ga-50"/);
-  assert.match(landing, /href:\s*"\/exams\/ssc-cgl\/quant-50"/);
-  assert.match(landing, /href:\s*"\/exams\/ssc-cgl\/english-50"/);
+  assert.match(setup, /value: "reasoning"/);
+  assert.match(setup, /value: "general-awareness"/);
+  assert.match(setup, /value: "quantitative-aptitude"/);
+  assert.match(setup, /value: "english-comprehension"/);
+  assert.match(setup, /Section question-bank readiness/);
   assert.match(css, /\.ssc-section50-page/);
   assert.match(css, /\.ssc-section-cockpit-strip/);
   assert.match(css, /\.ssc-section-cockpit-grid/);
@@ -472,7 +428,7 @@ test("SSC CGL readiness page exposes clean 200/200 proof", () => {
   assert.match(page, /source-manifest/);
   assert.match(page, /current-affairs/);
   assert.doesNotMatch(page, /pipeline|OCR|Import review|quarantine/i);
-  assert.match(landing, /Readiness proof/);
+  assert.match(landing, /SscExamSetup/);
   assert.match(css, /\.ssc-proof-page/);
   assert.match(css, /\.ssc-proof-evidence-grid/);
   assert.match(css, /\.ssc-proof-gate-list/);

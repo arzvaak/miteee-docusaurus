@@ -7,6 +7,7 @@ const coursePage = fs.readFileSync("app/courses/[code]/page.tsx", "utf8");
 const homePage = fs.readFileSync("app/page.tsx", "utf8");
 const courseOutline = fs.existsSync("components/CourseOutline.tsx") ? fs.readFileSync("components/CourseOutline.tsx", "utf8") : "";
 const studyDashboard = fs.readFileSync("components/StudyDashboard.tsx", "utf8");
+const studyDashboardCss = fs.readFileSync("components/StudyDashboard.module.css", "utf8");
 const studyToday = fs.readFileSync("components/StudyToday.tsx", "utf8");
 const answerPracticeLab = fs.existsSync("components/AnswerPracticeLab.tsx") ? fs.readFileSync("components/AnswerPracticeLab.tsx", "utf8") : "";
 const coursePracticeSection = fs.readFileSync("components/CoursePracticeSection.tsx", "utf8");
@@ -27,7 +28,7 @@ function hasRule(selector: string, pattern: RegExp) {
 
 test("dense note lists do not prefetch every heavyweight note page", () => {
   assert.match(courseOutline, /<Link\s+prefetch=\{false\}\s+className="course-outline-note"/);
-  assert.match(studyDashboard, /<Link\s+prefetch=\{false\}\s+href=\{`\/notes\/\$\{note\.slug\}`\}/);
+  assert.match(studyDashboard, /<Link\s+prefetch=\{false\}\s+className=\{styles\.cardAction\}\s+href=\{activity\?\.href/);
   assert.match(coursePracticeSection, /<Link\s+prefetch=\{false\}\s+href=\{`\/notes\/\$\{drill\.slug\}`\}/);
   assert.match(readerControls, /<Link\s+prefetch=\{false\}\s+aria-current=\{item\.current/);
   assert.match(previewLink, /<Link\s+prefetch=\{false\}\s+href=\{`\/notes\/\$\{preview\.slug\}`\}/);
@@ -165,35 +166,35 @@ test("personal briefing body copy stays fully readable on mobile", () => {
   assert.equal(hasRule(".memory-briefing-main p", /overflow:\s*hidden;/), false);
 });
 
-test("homepage is a calm library that preserves free exploration and optional continuation", () => {
-  assert.match(studyDashboard, /What would you like to study\?/);
-  assert.match(studyDashboard, /className="study-global-search"/);
-  assert.match(studyDashboard, /className="study-continue"/);
-  assert.match(studyDashboard, /Continue where you left off/);
-  assert.match(studyDashboard, /className="study-subject-columns"/);
-  assert.match(studyDashboard, /className="study-discovery-grid"/);
-  assert.match(studyDashboard, /Fresh to explore/);
-  assert.doesNotMatch(studyDashboard, /Study Today|hard loop|memory pressure/i);
-  assert.equal(hasRule(".study-subject-columns", /grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\);/), true);
-  assert.equal(hasRule(".study-subject-group a", /grid-template-columns:\s*76px minmax\(0,\s*1fr\) auto;/), true);
-  assert.equal(hasRule(".study-discovery-grid", /grid-template-columns:\s*minmax\(0,\s*1fr\) minmax\(0,\s*1fr\);/), true);
+test("homepage keeps free exploration while using explicit local study states", () => {
+  assert.match(studyDashboard, /Make room for what matters now\./);
+  assert.match(studyDashboard, /What you need to do/);
+  assert.match(studyDashboard, /Subject Spaces/);
+  assert.match(studyDashboard, /group\.courses\.map/);
+  assert.match(studyDashboard, /studySpaceStatusOptions\.map/);
+  assert.match(studyDashboard, /Create a study plan/);
+  assert.match(studyDashboard, /Device-local/);
+  assert.doesNotMatch(studyDashboard, /Recent score|Weak topics|Next full mock|Your progress|Resume study/i);
+  assert.match(studyDashboardCss, /\.spaceGrid\s*\{[\s\S]*?grid-template-columns:\s*repeat\(auto-fit,\s*minmax\(250px,\s*1fr\)\);/);
+  assert.match(studyDashboardCss, /\.statusControl\s*\{[\s\S]*?grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\);/);
 });
 
-test("homepage has a real dark-mode canvas instead of a card dashboard", () => {
+test("homepage has a responsive graphite-card canvas with a light alternative", () => {
   assert.match(css, /--bg:\s*#090c11/);
   assert.match(css, /\.main-content:has\(\.public-home-page\)[\s\S]*?background:\s*var\(--bg\)/);
-  assert.match(css, /\.study-global-search[\s\S]*?background:\s*transparent/);
-  assert.match(css, /\.study-subject-map[\s\S]*?border-top:\s*1px solid var\(--border\)/);
-  assert.doesNotMatch(studyDashboard, /home-hero|home-reader-preview/);
+  assert.match(studyDashboardCss, /--dashboard-panel:\s*#0e1621/);
+  assert.match(studyDashboardCss, /:global\(:root\[data-theme="light"\]\) \.dashboard/);
+  assert.match(studyDashboardCss, /@media \(max-width:\s*900px\)/);
+  assert.match(studyDashboardCss, /\.spaceCardCompleted\s*\{/);
 });
 
-test("homepage note search does not serialize the full search index", () => {
+test("homepage leaves global search to the shell Quick Find without serializing an index", () => {
   assert.doesNotMatch(homePage, /getSearchCandidates/);
   assert.doesNotMatch(homePage, /searchNotes=/);
   assert.doesNotMatch(studyDashboard, /searchNotes/);
   assert.doesNotMatch(studyDashboard, /selectQuickSearchResults/);
-  assert.match(studyDashboard, /\/api\/search/);
-  assert.match(studyDashboard, /remoteNoteSearchState/);
+  assert.doesNotMatch(studyDashboard, /\/api\/search/);
+  assert.doesNotMatch(studyDashboard, /study-global-search|remoteNoteSearchState/);
 });
 
 test("study coach receives synthesized local weakness insight", () => {

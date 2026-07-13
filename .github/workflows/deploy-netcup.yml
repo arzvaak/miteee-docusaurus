@@ -142,11 +142,17 @@ jobs:
           curl --fail --location --silent --show-error https://note.arzvak.com/ > /tmp/note-home.html
           grep -q "/research/valorant-preliminary-findings" /tmp/note-home.html
           grep -q "Can agent composition predict" /tmp/note-home.html
+          grep -q "Subject Spaces" /tmp/note-home.html
+          grep -q "Choose what you want to learn" /tmp/note-home.html
+          grep -q "/settings" /tmp/note-home.html
           curl --fail --location --silent --show-error https://note.arzvak.com/research/valorant-preliminary-findings > /tmp/valorant-research.html
           grep -q "Pre-match outcome prediction in professional VALORANT" /tmp/valorant-research.html
-          grep -q "a separate future tournament is still needed" /tmp/valorant-research.html
+          grep -q "This is still a progress report" /tmp/valorant-research.html
+          grep -q "test the final version on a future tournament" /tmp/valorant-research.html
           curl --fail --location --silent --show-error --output /dev/null https://note.arzvak.com/content-assets/research/valorant-preliminary-findings/assets/composition-map-feature-audit.png
+          curl --fail --location --silent --show-error https://note.arzvak.com/settings > /tmp/study-settings.html
+          grep -q "Make this study space yours" /tmp/study-settings.html
           curl --fail --location --silent --show-error https://note.arzvak.com/exams/ssc-cgl > /tmp/ssc-cgl.html
-          grep -q "SSC CGL" /tmp/ssc-cgl.html
+          grep -q "What do you want to practice?" /tmp/ssc-cgl.html
           npx playwright install --with-deps chromium
           SSC_BROWSER_BASE_URL=https://note.arzvak.com npm run verify:ssc-browser

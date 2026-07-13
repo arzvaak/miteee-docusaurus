@@ -43,21 +43,25 @@ test("public image directory does not ship legacy Docusaurus marketing assets", 
   assert.deepEqual(legacyNames, []);
 });
 
-test("homepage uses the calm study-library canvas instead of decorative desk art", () => {
+test("homepage uses graphite study cards instead of a flat library index", () => {
   const dashboard = fs.readFileSync(path.join(process.cwd(), "components", "StudyDashboard.tsx"), "utf8");
-  const css = fs.readFileSync(path.join(process.cwd(), "app", "study-minimal.css"), "utf8");
+  const css = fs.readFileSync(path.join(process.cwd(), "components", "StudyDashboard.module.css"), "utf8");
 
-  assert.match(dashboard, /What would you like to study\?/);
-  assert.match(dashboard, /className="study-subject-columns"/);
+  assert.match(dashboard, /Make room for what matters now\./);
+  assert.match(dashboard, /Subject Spaces/);
+  assert.match(dashboard, /studySpaceStatusOptions\.map/);
   assert.doesNotMatch(dashboard, /home-hero|study desk/i);
-  assert.match(css, /\.main-content:has\(\.public-home-page\)[\s\S]*?background:\s*var\(--bg\)/);
+  assert.match(css, /\.dashboardGrid\s*\{/);
+  assert.match(css, /\.spaceCard\s*\{/);
   assert.doesNotMatch(css, /miteee-hero-bg/);
 });
 
 test("homepage uses a dark-safe palette with an explicit light alternative", () => {
   const css = fs.readFileSync(path.join(process.cwd(), "app", "study-minimal.css"), "utf8");
+  const dashboardCss = fs.readFileSync(path.join(process.cwd(), "components", "StudyDashboard.module.css"), "utf8");
   assert.match(css, /:root,[\s\S]*?--bg:\s*#090c11/);
   assert.match(css, /--surface:\s*#10151d/);
   assert.match(css, /:root\[data-theme="light"\][\s\S]*?--bg:\s*#f7f8fa/);
-  assert.match(css, /\.study-global-search[\s\S]*?background:\s*transparent/);
+  assert.match(dashboardCss, /--dashboard-panel:\s*#0e1621/);
+  assert.match(dashboardCss, /:global\(:root\[data-theme="light"\]\) \.dashboard/);
 });

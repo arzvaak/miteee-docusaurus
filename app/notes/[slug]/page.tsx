@@ -40,8 +40,8 @@ export default async function NotePage({ params }: NotePageProps) {
   const related = getResolvedPreviewsForNote(note);
   const navigation = getNoteNavigation(note);
   const previewCandidates = getSearchCandidates();
-  const outline = buildHeadingAnchors(note.headings, 18);
-  const questionAnchors = buildQuestionAnchors(note.headings);
+  const outline = buildHeadingAnchors(note.headings, 48);
+  const questionAnchors = buildQuestionAnchors(note.headings, 400);
   const practice = buildNotePractice(note);
   const formulaSignal = buildFormulaReaderSignal(note.stats);
   const isTechnicalNote = note.stats.mathBlocks >= 20 || note.stats.questionBlocks >= 8 || note.stats.codeBlocks >= 4;
@@ -74,18 +74,9 @@ export default async function NotePage({ params }: NotePageProps) {
             <h2>{note.courseName || "Study note"}</h2>
             <p>{note.excerpt}</p>
           </div>
-          <div className="reader-signal-grid">
-            <Signal icon={<ListChecks size={16} aria-hidden="true" />} label="Questions" value={note.stats.questionBlocks + quizQuestionCount} />
-            <Signal icon={<ClipboardList size={16} aria-hidden="true" />} label="Drills" value={quizQuestionCount} />
-            <Signal icon={<Sigma size={16} aria-hidden="true" />} label="Math" value={note.stats.mathBlocks} />
-            <Signal icon={<FileText size={16} aria-hidden="true" />} label="Code" value={note.stats.codeBlocks} />
-            <Signal icon={<BookOpen size={16} aria-hidden="true" />} label="Headings" value={note.headings.length} />
-          </div>
           <ReaderQuestionNavigator questions={questionAnchors} />
-          <FormulaReaderCard signal={formulaSignal} />
-          <ReaderCourseNavigator groups={navigation.groups} courseLabel={note.courseName || note.courseCode || "this course"} />
-          <ReaderProgressPanel note={{ slug: note.slug, title: note.sidebarLabel || note.title, courseCode: note.courseCode, courseName: note.courseName }} />
           <ReaderOutlineNav outline={outline} />
+          <ReaderCourseNavigator groups={navigation.groups} courseLabel={note.courseName || note.courseCode || "this course"} />
         </ReaderGuideRail>
 
         <article id="lesson-content" className={isTechnicalNote ? "article technical-article" : "article"}>
@@ -107,6 +98,15 @@ export default async function NotePage({ params }: NotePageProps) {
         </article>
 
         <ReaderToolsPanel>
+          <div className="reader-signal-grid" aria-label="Lesson signals">
+            <Signal icon={<ListChecks size={16} aria-hidden="true" />} label="Questions" value={note.stats.questionBlocks + quizQuestionCount} />
+            <Signal icon={<ClipboardList size={16} aria-hidden="true" />} label="Drills" value={quizQuestionCount} />
+            <Signal icon={<Sigma size={16} aria-hidden="true" />} label="Math" value={note.stats.mathBlocks} />
+            <Signal icon={<FileText size={16} aria-hidden="true" />} label="Code" value={note.stats.codeBlocks} />
+            <Signal icon={<BookOpen size={16} aria-hidden="true" />} label="Headings" value={note.headings.length} />
+          </div>
+          <FormulaReaderCard signal={formulaSignal} />
+          <ReaderProgressPanel note={{ slug: note.slug, title: note.sidebarLabel || note.title, courseCode: note.courseCode, courseName: note.courseName }} />
           <ActiveRecallPanel />
           <NotePracticePanel practice={practice} />
           <NoteMemoryPanel note={{ slug: note.slug, title: note.sidebarLabel || note.title, courseCode: note.courseCode, courseName: note.courseName }} />

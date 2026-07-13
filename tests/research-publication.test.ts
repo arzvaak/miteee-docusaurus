@@ -12,12 +12,16 @@ test("VALORANT report is published as a clearly preliminary research page", () =
   const route = fs.readFileSync(routePath, "utf8");
   const dashboard = fs.readFileSync(dashboardPath, "utf8");
 
-  assert.match(route, /Preliminary exploratory findings/);
-  assert.match(route, /a separate future tournament is still needed/);
+  assert.match(route, /Undergraduate research · Work in progress/);
+  assert.match(route, /test the final version on a future tournament/);
   assert.match(route, /research-valorant-preliminary-findings-index/);
   assert.match(dashboard, /href="\/research\/valorant-preliminary-findings"/);
   assert.match(dashboard, /Can agent composition predict a professional VALORANT map\?/);
   assert.doesNotMatch(report, /\[Student ID\]|\[Professor's name\]|\[Programme and Department\]|\[Name\]/);
+  assert.match(report, /I wanted to see how much that actually helps/);
+  assert.match(report, /## Technical note/);
+  assert.doesNotMatch(report, /## 1[0-5]\.|## Appendix A\./);
+  assert.ok(report.trim().split(/\s+/).length < 4_000, "the public progress report should stay selective rather than reading like an audit log");
 });
 
 test("VALORANT report ships every referenced figure inside the site", () => {

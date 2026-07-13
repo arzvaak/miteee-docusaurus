@@ -1,23 +1,56 @@
 "use client";
 
+import clsx from "clsx";
 import Link from "next/link";
-import { Activity, ArrowRight, Clock3, Compass, FileText, FlaskConical, Search } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
-import type { Course, NotePreview } from "@/lib/content";
+import {
+  Activity,
+  ArrowRight,
+  BookOpen,
+  BriefcaseBusiness,
+  CheckCircle2,
+  CircleDot,
+  Database,
+  FileText,
+  FlaskConical,
+  GraduationCap,
+  HardDrive,
+  Landmark,
+  Settings2,
+  Sparkles,
+  Target,
+  Zap
+} from "lucide-react";
+import { useMemo, type ReactNode } from "react";
+import type { Course } from "@/lib/content";
+import type { LearnerMemory } from "@/lib/learner-memory";
+import { studySpaceStatusOptions, type StudySpaceStatus } from "@/lib/study-space-preferences";
+import { useLearnerMemory } from "@/components/useLearnerMemory";
+import { useStudyPlanPreferences } from "@/components/useStudyPlanPreferences";
+import { useStudySpacePreferences } from "@/components/useStudySpacePreferences";
+import styles from "./StudyDashboard.module.css";
 
 type Totals = {
   courses: number;
   notes: number;
 };
 
-type HomeSearchResult = {
-  preview: Pick<NotePreview, "slug" | "label" | "courseCode" | "week" | "excerpt" | "stats">;
-};
-
 type CourseGroup = {
   key: string;
   label: string;
   courses: Course[];
+};
+
+type DashboardActivity = {
+  title: string;
+  context: string;
+  href: string;
+  recordedAt: string;
+};
+
+const statusLabels: Record<StudySpaceStatus, string> = {
+  available: "Available",
+  active: "Studying now",
+  completed: "Completed"
 };
 
 function compactCode(code: string) {
@@ -32,184 +65,303 @@ function courseBucket(course: Course) {
   return "engineering";
 }
 
-function noteSignal(note: NotePreview) {
-  if (note.stats.questionBlocks >= 100) return "Question bank";
-  if (note.stats.questionBlocks > 0) return `${note.stats.questionBlocks} questions`;
-  if (note.stats.mathBlocks >= 20) return "Formula-rich";
-  if (note.stats.mathBlocks > 0) return `${note.stats.mathBlocks} formulas`;
-  return "Open note";
-}
-
 function groupCourses(courses: Course[]): CourseGroup[] {
   const groups: CourseGroup[] = [
-    { key: "engineering", label: "Engineering", courses: [] },
     { key: "exams", label: "Competitive exams", courses: [] },
+    { key: "engineering", label: "Engineering", courses: [] },
     { key: "skills", label: "Skills & management", courses: [] }
   ];
   for (const course of courses) groups.find((group) => group.key === courseBucket(course))?.courses.push(course);
   return groups.filter((group) => group.courses.length > 0);
 }
 
-export function StudyDashboard({ totals, courses, notes }: { totals: Totals; courses: Course[]; notes: NotePreview[] }) {
-  const [query, setQuery] = useState("");
-  const [remoteNoteSearch, setRemoteNoteSearch] = useState<{ query: string; results: NotePreview[]; state: "idle" | "error" }>({
-    query: "",
-    results: [],
-    state: "idle"
-  });
+function courseHref(course: Course) {
+  return course.code === "SSC-CGL" ? "/exams/ssc-cgl" : `/courses/${encodeURIComponent(course.code)}`;
+}
 
-  const needle = query.trim().toLowerCase();
-  const visibleCourses = useMemo(() => {
-    if (!needle) return courses;
-    return courses.filter((course) => `${course.code} ${course.name} ${course.level} ${course.category}`.toLowerCase().includes(needle));
-  }, [courses, needle]);
-  const courseGroups = useMemo(() => groupCourses(visibleCourses), [visibleCourses]);
-  const visibleNotes = useMemo(() => {
-    if (!needle) return notes.slice(0, 6);
-    return remoteNoteSearch.query.toLowerCase() === needle ? remoteNoteSearch.results : [];
-  }, [needle, notes, remoteNoteSearch]);
-  const continueNote = notes[0] ?? null;
-  const freshNotes = visibleNotes.slice(0, 3);
-  const recentNotes = visibleNotes.slice(3, 6);
-  const remoteNoteSearchState = !needle ? "idle" : remoteNoteSearch.query.toLowerCase() === needle ? remoteNoteSearch.state : "loading";
+function courseMatches(course: Course, courseCode: string | null, courseName: string | null) {
+  if (courseCode && courseCode.trim().toUpperCase() === course.code.trim().toUpperCase()) return true;
+  return Boolean(courseName && courseName.trim().toLowerCase() === course.name.trim().toLowerCase());
+}
 
-  useEffect(() => {
-    const requestQuery = query.trim();
-    if (!requestQuery) return;
-    const controller = new AbortController();
-    fetch(`/api/search?${new URLSearchParams({ q: requestQuery, limit: "8" }).toString()}`, { signal: controller.signal })
-      .then((response) => {
-        if (!response.ok) throw new Error("Search failed");
-        return response.json() as Promise<{ results: HomeSearchResult[] }>;
-      })
-      .then((payload) => {
-        setRemoteNoteSearch({
-          query: requestQuery,
-          state: "idle",
-          results: (payload.results || []).map(({ preview }) => ({
-            ...preview,
-            title: preview.label,
-            aliases: [],
-            headings: [],
-            courseName: null,
-            runnable: false
-          }))
-        });
-      })
-      .catch((error) => {
-        if ((error as Error).name !== "AbortError") setRemoteNoteSearch({ query: requestQuery, state: "error", results: [] });
-      });
-    return () => controller.abort();
-  }, [query]);
+function safeTimestamp(value: string) {
+  const timestamp = Date.parse(value);
+  return Number.isFinite(timestamp) ? timestamp : 0;
+}
+
+function latestActivityForCourse(memory: LearnerMemory, course: Course): DashboardActivity | null {
+  const candidates: DashboardActivity[] = [];
+
+  for (const note of Object.values(memory.notes)) {
+    if (!courseMatches(course, note.courseCode, note.courseName)) continue;
+    candidates.push({
+      title: note.title,
+      context: "Last opened note recorded on this device",
+      href: `/notes/${note.slug}`,
+      recordedAt: note.lastReadAt
+    });
+  }
+
+  for (const activity of memory.studyActivity) {
+    if (!activity.note || !courseMatches(course, activity.note.courseCode, activity.note.courseName)) continue;
+    candidates.push({
+      title: activity.title,
+      context: "Completed study block recorded on this device",
+      href: activity.note.slug ? `/notes/${activity.note.slug}` : courseHref(course),
+      recordedAt: activity.completedAt
+    });
+  }
+
+  return candidates.sort((a, b) => safeTimestamp(b.recordedAt) - safeTimestamp(a.recordedAt))[0] ?? null;
+}
+
+function courseIcon(course: Course, size = 24): ReactNode {
+  const value = `${course.code} ${course.name}`.toLowerCase();
+  const props = { size, strokeWidth: 1.7, "aria-hidden": true as const };
+  if (value.includes("ssc")) return <Target {...props} />;
+  if (value.includes("upsc") || value.includes("political")) return <Landmark {...props} />;
+  if (value.includes("machine") || value.includes("power") || value.includes("grid")) return <Zap {...props} />;
+  if (value.includes("signal") || value.includes("measurement")) return <Activity {...props} />;
+  if (value.includes("data")) return <Database {...props} />;
+  if (value.includes("management") || value.includes("financial")) return <BriefcaseBusiness {...props} />;
+  return <BookOpen {...props} />;
+}
+
+function toneForCourse(course: Course) {
+  const value = `${course.code} ${course.name}`.toLowerCase();
+  if (value.includes("ssc")) return styles.toneViolet;
+  if (value.includes("upsc") || value.includes("political")) return styles.toneGreen;
+  if (value.includes("machine") || value.includes("power") || value.includes("grid")) return styles.toneAmber;
+  if (value.includes("management") || value.includes("financial")) return styles.toneRose;
+  return styles.toneBlue;
+}
+
+export function StudyDashboard({ totals, courses }: { totals: Totals; courses: Course[] }) {
+  const { memory } = useLearnerMemory();
+  const { preferences: studyPlan } = useStudyPlanPreferences();
+  const { getCourseStatus, updateCourseStatus } = useStudySpacePreferences();
+  const courseGroups = useMemo(() => groupCourses(courses), [courses]);
+  const activeCourses = courses.filter((course) => getCourseStatus(course.code) === "active");
+  const plannedCourseCodes = new Set(studyPlan.subjectCodes.map((courseCode) => courseCode.toUpperCase()));
+  const plannedActiveCourses = activeCourses.filter((course) => plannedCourseCodes.has(course.code.toUpperCase()));
+  const hasActivePlan = studyPlan.enabled && studyPlan.subjectCodes.length > 0 && plannedActiveCourses.length > 0;
+  const focusCourses = hasActivePlan ? plannedActiveCourses : activeCourses;
+  const completedCount = courses.filter((course) => getCourseStatus(course.code) === "completed").length;
+  const availableCount = Math.max(0, courses.length - activeCourses.length - completedCount);
+  const hasStudyState = activeCourses.length > 0 || completedCount > 0 || studyPlan.enabled;
+
+  const subjectSpaces = (
+    <section className={clsx(styles.panel, styles.subjectSpaces)} id="subject-spaces" aria-labelledby="subject-spaces-title">
+      <div className={styles.spacesHeading}>
+        <div>
+          <p className={styles.eyebrow}>{hasStudyState ? "Full library" : "Start here"}</p>
+          <h2 id="subject-spaces-title">Subject Spaces</h2>
+          <p>
+            {hasStudyState
+              ? "Every subject stays here, including the ones you have completed. Change its status whenever your priorities change."
+              : "Explore every subject, then mark only the ones you want to study now. Nothing is forced into your dashboard."}
+          </p>
+        </div>
+        <div className={styles.spacesActions}>
+          <span className={styles.localLabel}><HardDrive size={15} aria-hidden="true" /> Status saved on this device</span>
+          <Link className={styles.planShortcut} href="/settings"><Settings2 size={16} aria-hidden="true" /> Create a study plan</Link>
+        </div>
+      </div>
+
+      <div className={styles.groupStack}>
+        {courseGroups.map((group) => (
+          <section className={styles.courseGroup} key={group.key} aria-labelledby={`space-group-${group.key}`}>
+            <div className={styles.groupHeading}>
+              <h3 id={`space-group-${group.key}`}>{group.label}</h3>
+              <span>{group.courses.length} {group.courses.length === 1 ? "space" : "spaces"}</span>
+            </div>
+            <div className={styles.spaceGrid}>
+              {group.courses.map((course) => (
+                <SubjectSpaceCard
+                  course={course}
+                  key={course.code}
+                  onStatusChange={(status) => updateCourseStatus(course.code, status)}
+                  status={getCourseStatus(course.code)}
+                />
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+    </section>
+  );
 
   return (
-    <div className="page public-home-page study-home">
-      <header className="study-home-header">
-        <p className="study-date">MITEEE Study · {totals.notes} notes across {totals.courses} subjects</p>
-        <h1>What would you like to study?</h1>
-        <p>Search subjects, notes, formulas, question banks and more.</p>
-        <label className="study-global-search">
-          <Search size={18} aria-hidden="true" />
-          <input
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search UPSC, practice, answer frameworks, federalism, EM2…"
-            aria-label="Search subjects and notes"
-          />
-          <kbd>Ctrl K</kbd>
-        </label>
+    <div className={clsx("page", "public-home-page", styles.dashboard, !hasStudyState && styles.firstVisit)}>
+      <header className={styles.intro}>
+        <div>
+          <p className={styles.eyebrow}>{hasStudyState ? "Study dashboard" : "Your learning library"}</p>
+          <h1>{hasStudyState ? "Make room for what matters now." : "Choose what you want to learn."}</h1>
+          <p className={styles.introCopy}>
+            {hasStudyState
+              ? "Every subject stays available. Your active spaces and their real activity stay close without hiding the rest of the library."
+              : "Start with any subject space. Mark it Studying now when you want it in your focused dashboard, or leave it available for later."}
+          </p>
+        </div>
+        <div className={styles.libraryFacts} aria-label="Library totals">
+          <span><strong>{totals.courses}</strong> subjects</span>
+          <span><strong>{totals.notes}</strong> notes</span>
+        </div>
       </header>
 
-      {!needle && continueNote && (
-        <section className="study-continue" aria-labelledby="continue-title">
-          <h2 id="continue-title">Continue where you left off</h2>
-          <Link prefetch={false} href={`/notes/${continueNote.slug}`}>
-            <span className="study-continue-icon"><Activity size={22} strokeWidth={1.6} aria-hidden="true" /></span>
-            <span className="study-continue-copy">
-              <strong>{continueNote.label}</strong>
-              <small>{continueNote.courseCode || "MITEEE"}{continueNote.courseName ? ` · ${continueNote.courseName}` : ""}</small>
-              <small>{continueNote.week ? `Next: Week ${continueNote.week}` : "Pick up from your last reading position"}</small>
-            </span>
-            <span className="study-text-action">Continue <ArrowRight size={17} aria-hidden="true" /></span>
-          </Link>
-        </section>
-      )}
+      {!hasStudyState && subjectSpaces}
 
-      {!needle && (
-        <section className="study-research-feature" aria-labelledby="research-feature-title">
-          <div className="study-research-icon"><FlaskConical size={22} strokeWidth={1.6} aria-hidden="true" /></div>
-          <div className="study-research-copy">
-            <span>Research · Preliminary exploratory findings</span>
+      {hasStudyState && <div className={styles.dashboardGrid}>
+        <section className={clsx(styles.panel, styles.activePanel)} aria-labelledby="active-study-title">
+          <div className={styles.panelHeading}>
+            <div>
+              <p className={styles.eyebrow}>Active study</p>
+              <h2 id="active-study-title">What you need to do</h2>
+              <p>Only spaces marked Studying now appear here. Activity comes from this device.</p>
+            </div>
+            <span className={styles.localLabel}><HardDrive size={15} aria-hidden="true" /> Device-local</span>
+          </div>
+
+          {focusCourses.length === 0 ? (
+            <div className={styles.emptyState}>
+              <span className={styles.emptyIcon}><Sparkles size={26} strokeWidth={1.6} aria-hidden="true" /></span>
+              <div>
+                <h3>Choose what deserves your attention.</h3>
+                <p>No subject is marked Studying now. Set one below, or create a study plan when you want more structure.</p>
+              </div>
+              <div className={styles.emptyActions}>
+                <a className={styles.primaryAction} href="#subject-spaces">Browse subject spaces <ArrowRight size={17} aria-hidden="true" /></a>
+                <Link className={styles.secondaryAction} href="/settings"><Settings2 size={17} aria-hidden="true" /> Create a study plan</Link>
+              </div>
+            </div>
+          ) : (
+            <>
+              {hasActivePlan && (
+                <div className={styles.planSummary}>
+                  <div>
+                    <span>Active study plan</span>
+                    <strong>{studyPlan.dailyMinutes} minutes · {studyPlan.studyDays.length} {studyPlan.studyDays.length === 1 ? "day" : "days"} each week</strong>
+                  </div>
+                  <span>{focusCourses.length} planned {focusCourses.length === 1 ? "space" : "spaces"}</span>
+                  <Link href="/settings">Adjust plan <ArrowRight size={15} aria-hidden="true" /></Link>
+                </div>
+              )}
+              <div className={styles.activeGrid}>
+              {focusCourses.map((course) => {
+                const activity = latestActivityForCourse(memory, course);
+                return (
+                  <article className={clsx(styles.activeCard, toneForCourse(course))} key={course.code}>
+                    <div className={styles.activeCardHeader}>
+                      <span className={styles.courseIcon}>{courseIcon(course)}</span>
+                      <span className={styles.statusPill}><CircleDot size={14} aria-hidden="true" /> Studying now</span>
+                    </div>
+                    <div>
+                      <p className={styles.courseCode}>{compactCode(course.code)}</p>
+                      <h3>{course.name}</h3>
+                    </div>
+                    {activity ? (
+                      <div className={styles.realActivity}>
+                        <span><FileText size={17} aria-hidden="true" /></span>
+                        <div>
+                          <small>{activity.context}</small>
+                          <strong>{activity.title}</strong>
+                        </div>
+                      </div>
+                    ) : (
+                      <p className={styles.noActivity}>No study activity has been recorded for this space on this device yet.</p>
+                    )}
+                    <Link prefetch={false} className={styles.cardAction} href={activity?.href ?? courseHref(course)}>
+                      {activity ? "Continue from activity" : "Open subject"} <ArrowRight size={17} aria-hidden="true" />
+                    </Link>
+                  </article>
+                );
+              })}
+              </div>
+            </>
+          )}
+        </section>
+
+        <aside className={styles.sideRail} aria-label="Dashboard context">
+          <section className={clsx(styles.panel, styles.spaceSummary)} aria-labelledby="space-summary-title">
+            <div className={styles.panelHeadingCompact}>
+              <span className={styles.summaryIcon}><GraduationCap size={22} strokeWidth={1.6} aria-hidden="true" /></span>
+              <div>
+                <p className={styles.eyebrow}>Your spaces</p>
+                <h2 id="space-summary-title">A clear, local study state</h2>
+              </div>
+            </div>
+            <div className={styles.summaryMetrics}>
+              <span><strong>{activeCourses.length}</strong><small>Studying now</small></span>
+              <span><strong>{completedCount}</strong><small>Completed</small></span>
+              <span><strong>{availableCount}</strong><small>Available</small></span>
+            </div>
+            <p className={styles.localNotice}><HardDrive size={15} aria-hidden="true" /> These choices are stored on this device until account sync is available.</p>
+          </section>
+
+          <section className={clsx(styles.panel, styles.researchCard)} aria-labelledby="research-feature-title">
+            <div className={styles.researchLabel}><span>Research spotlight</span><FlaskConical size={21} strokeWidth={1.6} aria-hidden="true" /></div>
             <h2 id="research-feature-title">Can agent composition predict a professional VALORANT map?</h2>
             <p>Early results from 1,684 maps across regional and global VCT events, with team strength, patches, chronology and calibration kept in view.</p>
-          </div>
-          <Link className="study-text-action" href="/research/valorant-preliminary-findings">
-            Read findings <ArrowRight size={17} aria-hidden="true" />
-          </Link>
-        </section>
-      )}
+            <Link className={styles.cardAction} href="/research/valorant-preliminary-findings">
+              Read findings <ArrowRight size={17} aria-hidden="true" />
+            </Link>
+          </section>
+        </aside>
+      </div>}
 
-      <section className="study-subject-map" id="courses" aria-labelledby="subject-map-title">
-        <div className="study-section-heading">
-          <div>
-            <h2 id="subject-map-title">{needle ? "Matching subjects" : "Subject map"}</h2>
-            <p>{visibleCourses.length} {visibleCourses.length === 1 ? "subject" : "subjects"}</p>
-          </div>
-          <Link href="/courses">View library <ArrowRight size={15} aria-hidden="true" /></Link>
-        </div>
-        {courseGroups.length > 0 ? (
-          <div className="study-subject-columns">
-            {courseGroups.map((group) => (
-              <section className="study-subject-group" key={group.key} aria-labelledby={`home-${group.key}`}>
-                <h3 id={`home-${group.key}`}>{group.label}</h3>
-                <div>
-                  {group.courses.map((course) => (
-                    <Link className={course.code === continueNote?.courseCode ? "active" : undefined} href={`/courses/${course.code}`} key={course.code}>
-                      <span>{compactCode(course.code)}</span>
-                      <strong>{course.name}</strong>
-                      <small>{course.noteCount} notes</small>
-                    </Link>
-                  ))}
-                </div>
-              </section>
-            ))}
-          </div>
-        ) : (
-          <p className="study-empty">No subjects match “{query.trim()}”. Try a course code or a broader topic.</p>
-        )}
-      </section>
-
-      <section className="study-discovery-grid" id="recent-notes">
-        <StudyNoteList icon={<Compass size={19} />} title={needle ? "Matching notes" : "Fresh to explore"} notes={freshNotes} />
-        <StudyNoteList icon={<Clock3 size={19} />} title="More to explore" notes={recentNotes.length ? recentNotes : notes.slice(0, 3)} />
-      </section>
-
-      {needle && remoteNoteSearchState === "loading" && <p className="study-search-state">Searching the note library…</p>}
-      {needle && remoteNoteSearchState === "error" && <p className="study-search-state">Note search is temporarily unavailable. Subject results are still shown above.</p>}
+      {hasStudyState && subjectSpaces}
     </div>
   );
 }
 
-function StudyNoteList({ icon, title, notes }: { icon: React.ReactNode; title: string; notes: NotePreview[] }) {
+function SubjectSpaceCard({
+  course,
+  status,
+  onStatusChange
+}: {
+  course: Course;
+  status: StudySpaceStatus;
+  onStatusChange: (status: StudySpaceStatus) => void;
+}) {
+  const headingId = `space-${course.code.replace(/[^a-z0-9]+/gi, "-").toLowerCase()}`;
   return (
-    <section className="study-note-list" aria-label={title}>
-      <header>
-        <span>{icon}</span>
-        <h2>{title}</h2>
-        <Link href="/#recent-notes">View all notes <ArrowRight size={14} aria-hidden="true" /></Link>
-      </header>
-      <div>
-        {notes.length ? notes.map((note) => (
-          <Link prefetch={false} href={`/notes/${note.slug}`} key={note.slug}>
-            <FileText size={17} strokeWidth={1.6} aria-hidden="true" />
-            <span>
-              <strong>{note.label}</strong>
-              <small>{note.courseName || note.courseCode || "MITEEE"}{note.week ? ` · Week ${note.week}` : ""}</small>
-            </span>
-            <small>{noteSignal(note)}</small>
-          </Link>
-        )) : <p className="study-empty">No matching notes yet.</p>}
+    <article
+      className={clsx(
+        styles.spaceCard,
+        toneForCourse(course),
+        status === "active" && styles.spaceCardActive,
+        status === "completed" && styles.spaceCardCompleted
+      )}
+      aria-labelledby={headingId}
+    >
+      <div className={styles.spaceCardTop}>
+        <span className={styles.courseIcon}>{courseIcon(course, 26)}</span>
+        <span className={styles.statusPill}>
+          {status === "completed" ? <CheckCircle2 size={14} aria-hidden="true" /> : <CircleDot size={14} aria-hidden="true" />}
+          {statusLabels[status]}
+        </span>
       </div>
-    </section>
+      <div className={styles.spaceCardCopy}>
+        <p className={styles.courseCode}>{compactCode(course.code)}</p>
+        <h4 id={headingId}>{course.name}</h4>
+        <p>{course.noteCount} {course.noteCount === 1 ? "note" : "notes"} · {course.level}</p>
+      </div>
+      <div className={styles.statusControl} role="group" aria-label={`Study status for ${course.name}`}>
+        {studySpaceStatusOptions.map((option) => (
+          <button
+            aria-pressed={status === option.value}
+            className={clsx(styles.statusButton, status === option.value && styles.statusButtonSelected)}
+            key={option.value}
+            onClick={() => onStatusChange(option.value)}
+            type="button"
+          >
+            {option.label}
+          </button>
+        ))}
+      </div>
+      <Link className={styles.openSpace} href={courseHref(course)}>
+        Open space <ArrowRight size={17} aria-hidden="true" />
+      </Link>
+    </article>
   );
 }

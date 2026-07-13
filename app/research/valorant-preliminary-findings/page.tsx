@@ -11,7 +11,7 @@ const reportPath = "/research/valorant-preliminary-findings";
 
 export const metadata = buildPageMetadata({
   title: "Preliminary VALORANT research findings",
-  description: "Exploratory findings on whether team strength, agent composition, and patch changes improve pre-match prediction in professional VALORANT.",
+  description: "An undergraduate progress report on whether team composition helps predict professional VALORANT maps before play begins.",
   pathname: reportPath
 });
 
@@ -32,9 +32,9 @@ export default function ValorantPreliminaryFindingsPage() {
         <Link className="research-back-link" href="/">
           <ArrowLeft size={15} aria-hidden="true" /> Home
         </Link>
-        <p className="eyebrow">Research · Preliminary exploratory findings</p>
+        <p className="eyebrow">Undergraduate research · Work in progress</p>
         <h1>Pre-match outcome prediction in professional VALORANT</h1>
-        <p className="research-publication-deck">Team strength, agent composition and patch changes across 1,684 professional maps.</p>
+        <p className="research-publication-deck">What I found after comparing team strength, agent picks and patch changes across 1,684 professional maps.</p>
         <p className="research-publication-meta">
           <span>Progress report</span>
           <span>13 July 2026</span>
@@ -43,7 +43,7 @@ export default function ValorantPreliminaryFindingsPage() {
       </header>
 
       <aside className="research-status-note" aria-label="Research status">
-        <strong>How to read this:</strong> these are exploratory findings, not final confirmation. The current maps were used during model development; a separate future tournament is still needed for the final test.
+        <strong>This is still a progress report.</strong> I used the current maps while building and checking the models, so I still need to test the final version on a future tournament.
       </aside>
 
       <article className="article research-report-body">

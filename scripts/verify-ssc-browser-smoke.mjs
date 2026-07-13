@@ -11,381 +11,167 @@ function fail(label, message) {
   failures.push(`${label}: ${message}`);
 }
 
-async function checkNoConsoleErrors(page, label, fn) {
-  const errors = [];
-  page.on("console", (message) => {
-    if (message.type() === "error") {
-      const text = message.text();
-      if (!text.includes("net::ERR_NETWORK_ACCESS_DENIED")) errors.push(text);
-    }
-  });
-  page.on("pageerror", (error) => errors.push(error.message));
-
-  await fn();
-
-  if (errors.length) {
-    fail(label, `console/page errors: ${errors.join(" | ")}`);
+async function runCheck(label, check) {
+  try {
+    await check();
+  } catch (error) {
+    fail(label, error instanceof Error ? error.message : String(error));
   }
+}
+
+async function requireText(page, text, label) {
+  const locator = page.getByText(text, { exact: true }).first();
+  await locator.waitFor({ state: "visible", timeout: 20_000 });
+  if (!(await locator.isVisible())) fail(label, `missing visible text: ${text}`);
 }
 
 async function checkNoHorizontalOverflow(page, label) {
-  const hasOverflow = await page.evaluate(() => (
-    document.documentElement.scrollWidth > document.documentElement.clientWidth + 2
-  ));
-  if (hasOverflow) fail(label, "horizontal overflow");
+  const dimensions = await page.evaluate(() => ({
+    scrollWidth: document.documentElement.scrollWidth,
+    clientWidth: document.documentElement.clientWidth
+  }));
+  if (dimensions.scrollWidth > dimensions.clientWidth + 2) {
+    fail(label, `horizontal overflow (${dimensions.scrollWidth}px content in ${dimensions.clientWidth}px viewport)`);
+  }
 }
 
-async function checkDashboard(page, label) {
+async function checkSetup(page, label) {
   await page.goto(`${baseUrl}/exams/ssc-cgl`, { waitUntil: "networkidle" });
-  await page.getByText("Strict 200/200 gates").waitFor({ timeout: 15000 });
+  await page.getByRole("heading", { name: "What do you want to practice?", level: 1 }).waitFor({ timeout: 20_000 });
 
-  const cards = await page.locator(".ssc-strict-gate-card").count();
-  if (cards !== 9) fail(label, `expected 9 strict gate cards, found ${cards}`);
-
-  const nonPass = await page.locator(".ssc-strict-gate-card:not(.status-pass)").count();
-  if (nonPass !== 0) fail(label, `expected all strict gates pass, found ${nonPass} non-pass`);
-
-  const text = await page.locator("body").innerText();
-  for (const needle of ["22,160", "46/46", "29378/29378", "Current affairs", "Question bank", "Start topic queue"]) {
-    if (!text.toLowerCase().includes(needle.toLowerCase())) fail(label, `missing dashboard text ${needle}`);
-  }
-
-  const background = await page.locator("body").evaluate((node) => getComputedStyle(node).backgroundColor);
-  if (background === "rgb(255, 255, 255)" || background === "rgba(0, 0, 0, 0)") {
-    fail(label, `body background still looks blank/white: ${background}`);
-  }
-
-  await checkNoHorizontalOverflow(page, label);
-}
-
-async function checkTopicPractice(page, label) {
-  await page.goto(`${baseUrl}/exams/ssc-cgl/practice/analogy-classification`, { waitUntil: "networkidle" });
-  await page.getByText("Pick an option to reveal the answer").waitFor({ timeout: 15000 });
-
-  const waitingBefore = await page.locator(".ssc-topic-practice-answer.status-waiting").count();
-  if (waitingBefore !== 1) fail(label, `expected one waiting panel before answer, found ${waitingBefore}`);
-
-  const revealedBefore = await page.locator(".ssc-topic-practice-answer:not(.status-waiting)").count();
-  if (revealedBefore !== 0) fail(label, `revealed answer panel visible before selecting option (${revealedBefore})`);
-
-  const optionCount = await page.locator(".ssc-topic-practice-option").count();
-  if (optionCount < 4) fail(label, `expected at least 4 topic practice options, found ${optionCount}`);
-
-  const firstQuestionMeta = await page.locator(".ssc-question-meta span").first().innerText();
-  // keyboard option answer
-  await page.keyboard.press("2");
-  await page.locator(".ssc-topic-practice-answer:not(.status-waiting)").waitFor({ timeout: 10000 });
-
-  const selectedCount = await page.locator(".ssc-topic-practice-option.selected").count();
-  if (selectedCount !== 1) fail(label, `expected one selected option after keyboard answer, found ${selectedCount}`);
-
-  const explanationText = await page.locator(".ssc-topic-practice-answer:not(.status-waiting)").innerText();
-  for (const needle of ["Correct answer", "Method", "Why it fits", "Trap"]) {
-    if (!new RegExp(needle, "i").test(explanationText)) fail(label, `practice explanation missing ${needle}`);
-  }
-
-  await page.keyboard.press("n");
-  await page.waitForFunction((previousMeta) => {
-    const node = document.querySelector(".ssc-question-meta span");
-    return node?.textContent && node.textContent !== previousMeta;
-  }, firstQuestionMeta, { timeout: 10000 });
-
-  await checkNoHorizontalOverflow(page, label);
-}
-
-async function checkPracticeHub(page, label) {
-  await page.goto(`${baseUrl}/exams/ssc-cgl`, { waitUntil: "networkidle" });
-  await page.evaluate(() => {
-    window.localStorage.setItem("ssc-cgl-topic-practice:series-coding", JSON.stringify({
-      index: 12,
-      answers: {
-        "smoke-series-coding-1": "b",
-        "smoke-series-coding-2": "z"
-      },
-      savedAt: new Date().toISOString(),
-      topicSlug: "series-coding",
-      topicTitle: "Series and Coding",
-      subject: "Reasoning",
-      totalQuestions: 500,
-      correct: 1,
-      wrong: 0,
-      skipped: 1
-    }));
-  });
-  await page.goto(`${baseUrl}/exams/ssc-cgl/practice`, { waitUntil: "networkidle" });
-  await page.getByText("Overall topic queue").waitFor({ timeout: 15000 });
-  await page.getByText("Resume next unfinished topic").waitFor({ timeout: 15000 });
-  await page.getByText("Local progress").first().waitFor({ timeout: 15000 });
-  await page.getByText("In progress").first().waitFor({ timeout: 15000 });
-
-  const topicCards = await page.locator(".ssc-practice-topic-card").count();
-  if (topicCards < 40) fail(label, `expected at least 40 topic practice cards, found ${topicCards}`);
-
-  const progressMeters = await page.locator(".ssc-practice-progress-meter").count();
-  if (progressMeters < 10) fail(label, `expected practice progress meters, found ${progressMeters}`);
-
-  await checkNoHorizontalOverflow(page, label);
-}
-
-async function checkResourceMap(page, label) {
-  await page.goto(`${baseUrl}/exams/ssc-cgl/resources`, { waitUntil: "networkidle" });
-  await page.getByText("Sources organized for practice, not clutter.").waitFor({ timeout: 15000 });
-
-  const text = await page.locator("body").innerText();
-  const normalizedText = text.toLowerCase();
-  for (const needle of ["Practice every question", "Read by sublevel", "Daily GA brief", "Primary lane", "Source lanes", "Mapped leads"]) {
-    if (!normalizedText.includes(needle.toLowerCase())) fail(label, `missing resource map text ${needle}`);
-  }
-
-  for (const forbidden of ["pipeline", "OCR", "quarantine", "Import review"]) {
-    if (text.toLowerCase().includes(forbidden.toLowerCase())) fail(label, `resource map exposes internal word ${forbidden}`);
-  }
-
-  const actionCards = await page.locator(".ssc-action-card").count();
-  if (actionCards < 3) fail(label, `expected resource action cards, found ${actionCards}`);
-
-  await checkNoHorizontalOverflow(page, label);
-}
-
-async function checkReadinessProof(page, label) {
-  await page.goto(`${baseUrl}/exams/ssc-cgl/readiness`, { waitUntil: "networkidle" });
-  await page.getByText("Strict proof gates").waitFor({ timeout: 15000 });
-
-  const text = await page.locator("body").innerText();
-  for (const needle of ["Question bank", "Timed tests", "Deep notes", "Resources", "Current affairs"]) {
-    if (!text.includes(needle)) fail(label, `missing readiness proof text ${needle}`);
-  }
-
-  for (const forbidden of ["pipeline", "OCR", "quarantine", "Import review"]) {
-    if (text.toLowerCase().includes(forbidden.toLowerCase())) fail(label, `readiness proof exposes internal word ${forbidden}`);
-  }
-
-  const gateCards = await page.locator(".ssc-proof-gate").count();
-  if (gateCards < 9) fail(label, `expected at least 9 proof gates, found ${gateCards}`);
-
-  await checkNoHorizontalOverflow(page, label);
-}
-
-async function checkSection50(page, label, path, heading) {
-  await page.goto(`${baseUrl}${path}`, { waitUntil: "networkidle" });
-  await page.getByText(heading).waitFor({ timeout: 15000 });
-  await page.getByText("Section score first, browsing second.").waitFor({ timeout: 15000 });
-
-  const text = await page.locator("body").innerText();
-  for (const needle of ["50/50 bar", "15-minute section sprints", "Practice unanswered", "Topic drill shortcuts"]) {
-    if (!new RegExp(needle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i").test(text)) fail(label, `missing section cockpit text ${needle}`);
-  }
-
-  for (const forbidden of ["pipeline", "OCR", "quarantine", "Import review"]) {
-    if (text.toLowerCase().includes(forbidden.toLowerCase())) fail(label, `section cockpit exposes internal word ${forbidden}`);
-  }
-
-  const launchCards = await page.locator(".ssc-quant-launch-card").count();
-  if (launchCards !== 4) fail(label, `expected 4 section launch cards, found ${launchCards}`);
-
-  const topicCards = await page.locator(".ssc-quant-topic-card").count();
-  if (topicCards < 4) fail(label, `expected section topic cards, found ${topicCards}`);
-
-  const sprintRows = await page.locator(".ssc-quant-sprint-list a").count();
-  if (sprintRows < 1) fail(label, `expected section sprint rows, found ${sprintRows}`);
-
-  await checkNoHorizontalOverflow(page, label);
-}
-
-async function checkSectionCockpits(page, label) {
-  await checkSection50(page, `${label} reasoning 50`, "/exams/ssc-cgl/reasoning-50", "Reasoning 50/50 cockpit.");
-  await checkSection50(page, `${label} ga 50`, "/exams/ssc-cgl/ga-50", "GA 50/50 cockpit.");
-  await checkSection50(page, `${label} quant 50`, "/exams/ssc-cgl/quant-50", "Quant 50/50 cockpit.");
-  await checkSection50(page, `${label} english 50`, "/exams/ssc-cgl/english-50", "English 50/50 cockpit.");
-}
-
-async function checkTopicPracticeQueueComplete(page, label) {
-  await page.goto(`${baseUrl}/exams/ssc-cgl/practice/analogy-classification`, { waitUntil: "networkidle" });
-  await page.evaluate(() => window.localStorage.clear());
-  await page.reload({ waitUntil: "networkidle" });
-  await page.getByText("Pick an option to reveal the answer").waitFor({ timeout: 15000 });
-
-  await page.getByRole("button", { name: /Misses/i }).click();
-  await page.getByText("All questions complete in this queue").waitFor({ timeout: 10000 });
-
-  const completePanelCount = await page.locator(".ssc-topic-practice-complete").count();
-  if (completePanelCount !== 1) fail(label, `expected one complete queue panel, found ${completePanelCount}`);
-
-  await page.goto(`${baseUrl}/exams/ssc-cgl/practice/analogy-classification?mode=speed`, { waitUntil: "networkidle" });
-  await page.getByText("All questions complete in this queue").waitFor({ timeout: 10000 });
-  const speedQueueText = await page.locator("body").innerText();
-  if (!/Speed repairs currently has no remaining questions/i.test(speedQueueText)) {
-    fail(label, "speed repair query did not open the speed repair queue");
-  }
-
-  await page.getByRole("button", { name: /Switch to all questions/i }).click();
-  await page.getByText("Pick an option to reveal the answer").waitFor({ timeout: 10000 });
-
-  await checkNoHorizontalOverflow(page, label);
-}
-
-async function checkCurrentAffairs(page, label) {
-  await page.goto(`${baseUrl}/exams/ssc-cgl/current-affairs`, { waitUntil: "networkidle" });
-  await page.getByText("Daily recall protocol").waitFor({ timeout: 15000 });
-  await page.getByText("Recall queue").waitFor({ timeout: 15000 });
-  await page.locator(".ssc-current-run-state .ssc-panel-heading strong", { hasText: "Daily reliability" }).waitFor({ timeout: 15000 });
-  await page.getByText("Fresh for today").waitFor({ timeout: 15000 });
-  await page.getByText(/Expected \d{4}-\d{2}-\d{2}/).waitFor({ timeout: 15000 });
-
-  const pageText = await page.locator("body").innerText();
-  const forbiddenCurrentAffairsText = [
-    "Which source reported",
-    "Which source published",
-    "Austria urges Europe to host Anthropic",
-    "Harry Brook says leading England",
-    "series loss in Ireland",
-    "plane crash",
-    "skydiving aircraft crash",
-    "AI-chip investment"
+  const modes = [
+    "Quick 10",
+    "Section Test",
+    "Full Mock",
+    "Endless Practice",
+    "Book / PYQ Practice",
+    "Weakness Repair"
   ];
-  for (const forbidden of forbiddenCurrentAffairsText) {
-    if (pageText.toLowerCase().includes(forbidden.toLowerCase())) {
-      fail(label, `current-affairs page exposes non-exam-priority or source-name recall text: ${forbidden}`);
+  const modeRegion = page.locator('section[aria-label="Choose a practice mode"]');
+  for (const mode of modes) {
+    const button = modeRegion.getByRole("button").filter({ hasText: mode });
+    if ((await button.count()) !== 1) fail(label, `expected one ${mode} mode card`);
+  }
+
+  const fullMock = modeRegion.getByRole("button").filter({ hasText: "Full Mock" });
+  if ((await fullMock.getAttribute("aria-pressed")) !== "true") {
+    fail(label, "Full Mock is not the selected default");
+  }
+
+  for (const text of ["Configure your session", "Due for review"]) {
+    await requireText(page, text, label);
+  }
+
+  const selects = page.locator("#ssc-session-config select");
+  if ((await selects.count()) !== 5) fail(label, `expected 5 configuration controls, found ${await selects.count()}`);
+  const expectedSelections = [
+    ["Section / subject", "all", "All four sections"],
+    ["Question length", "100", "100 Q"],
+    ["Timer", "exam", "Exam clock"],
+    ["Question source", "book", "Book / PYQ"],
+    ["Difficulty", "all", "Mixed"]
+  ];
+  const controlLabels = await page.locator("#ssc-session-config label > span").allTextContents();
+  for (const [index, [controlName, expectedValue, expectedLabel]] of expectedSelections.entries()) {
+    if (controlLabels[index]?.trim() !== controlName) {
+      fail(label, `configuration control ${index + 1} is not labelled ${controlName}`);
+    }
+    const control = selects.nth(index);
+    if ((await control.inputValue()) !== expectedValue) {
+      fail(label, `${controlName} did not default to ${expectedValue}`);
+    }
+    const selectedLabel = await control.locator("option:checked").textContent();
+    if (selectedLabel?.trim() !== expectedLabel) {
+      fail(label, `${controlName} did not show ${expectedLabel}`);
     }
   }
 
-  const recallCards = await page.locator(".ssc-current-recall-card").count();
-  if (recallCards < 1) fail(label, `expected at least one recall card, found ${recallCards}`);
+  const quickMode = modeRegion.getByRole("button").filter({ hasText: "Quick 10" });
+  await quickMode.click();
+  await page.getByRole("heading", { name: "Quick 10", level: 2 }).waitFor({ timeout: 10_000 });
+  await page.getByRole("button", { name: "Start Quick 10" }).waitFor({ timeout: 10_000 });
 
-  const itemCards = await page.locator(".ssc-current-card").count();
-  if (itemCards < 1) fail(label, `expected at least one current-affairs item card, found ${itemCards}`);
-
-  const mcqSeeds = await page.locator(".ssc-mcq-seed").count();
-  if (mcqSeeds < 1) fail(label, `expected MCQ seed cards, found ${mcqSeeds}`);
-
-  const badMcqSeeds = await page.locator(".ssc-mcq-seed").evaluateAll((nodes) => (
-    nodes
-      .map((node) => node.textContent ?? "")
-      .filter((text) => /which source|reported by|published by/i.test(text))
-  ));
-  if (badMcqSeeds.length > 0) fail(label, `source-name MCQ seed leaked into study cards: ${badMcqSeeds[0].slice(0, 120)}`);
-
-  const staticAnchors = await page.locator(".ssc-static-anchors").count();
-  if (staticAnchors < 1) fail(label, `expected static GK bridge anchors, found ${staticAnchors}`);
-
-  await page.getByRole("button", { name: /Reveal answer/i }).first().click();
-  await page.locator(".ssc-current-recall-answer").first().waitFor({ timeout: 10000 });
-  await page.getByRole("button", { name: /Know it/i }).first().click();
-  await page.waitForFunction(() => {
-    const buttons = Array.from(document.querySelectorAll("button[aria-pressed='true']"));
-    return buttons.some((button) => /Know it/i.test(button.textContent ?? ""));
-  }, null, { timeout: 10000 });
-
-  await page.getByText("Static GK bridge").first().waitFor({ timeout: 10000 });
-  await checkNoHorizontalOverflow(page, label);
-}
-
-async function checkTimedMock(page, label) {
-  await page.goto(`${baseUrl}/exams/ssc-cgl/tests/ssc-cgl-book-200-mode-mock-01`, { waitUntil: "networkidle" });
-  await page.locator(".ssc-test-runner").waitFor({ timeout: 15000 });
-
-  const sectionTabs = await page.locator(".ssc-section-tab").count();
-  if (sectionTabs !== 4) fail(label, `expected 4 section tabs, found ${sectionTabs}`);
-
-  const timerText = await page.locator(".ssc-test-timer strong").innerText();
-  if (!/^\d{2}:\d{2}$/.test(timerText)) fail(label, `timer did not render as MM:SS: ${timerText}`);
-
-  const optionCount = await page.locator(".ssc-test-option").count();
-  if (optionCount < 4) fail(label, `expected at least 4 timed-test options, found ${optionCount}`);
-
-  await page.locator(".ssc-test-option").first().click();
-  const selectedCount = await page.locator(".ssc-test-option.selected").count();
-  if (selectedCount !== 1) fail(label, `expected one selected timed-test option, found ${selectedCount}`);
-
-  const progressText = await page.locator(".ssc-progress-box span").innerText();
-  if (!/1\/100 attempted/i.test(progressText)) fail(label, `progress did not record the first answer: ${progressText}`);
-
-  await page.getByRole("button", { name: /Lock section/i }).click();
-  const activeSectionText = await page.locator(".ssc-section-tab.active strong").innerText();
-  if (!/General Awareness/i.test(activeSectionText)) fail(label, `lock section did not advance to GA: ${activeSectionText}`);
-
-  const submitButtons = await page.getByRole("button", { name: /Submit/i }).count();
-  if (submitButtons !== 1) fail(label, `expected one Submit button, found ${submitButtons}`);
+  const reasoningSetup = page.getByRole("button", { name: /^Configure a Reasoning section test\./ });
+  if ((await reasoningSetup.count()) !== 1) fail(label, "missing Reasoning readiness shortcut");
 
   await checkNoHorizontalOverflow(page, label);
 }
 
-async function checkNoteQuiz(page, label, pathname = "/notes/ssc-cgl-reasoning-analogy-classification") {
-  await page.goto(`${baseUrl}${pathname}`, { waitUntil: "networkidle" });
-  await page.getByText("Clock : Time :: Thermometer : ?").waitFor({ timeout: 15000 });
+async function checkTimedSession(page, label) {
+  const sessionUrl = `${baseUrl}/exams/ssc-cgl/session?mode=quick&section=reasoning&length=10&timer=off&source=book&difficulty=all&seed=browser-smoke`;
+  await page.goto(sessionUrl, { waitUntil: "networkidle" });
+  await page.getByRole("navigation", { name: "Test sections" }).waitFor({ timeout: 20_000 });
+  await page.getByRole("heading", { name: "Question palette", level: 2 }).waitFor({ timeout: 20_000 });
+  await requireText(page, "Question 1 of 10", label);
 
-  const markedBefore = await page.locator(".note-quiz-block .q-correct, .note-quiz-block .q-wrong, .note-quiz-block [data-correct='true']").count();
-  if (markedBefore !== 0) fail(label, `note quiz is pre-marked (${markedBefore} markers)`);
+  const answerGroup = page.getByRole("group", { name: "Choose one answer" });
+  await answerGroup.waitFor({ timeout: 20_000 });
+  const options = answerGroup.getByRole("radio");
+  if ((await options.count()) !== 4) fail(label, `expected 4 answer options, found ${await options.count()}`);
 
-  const detailsOpenBefore = await page.locator(".note-quiz-block details[open]").count();
-  if (detailsOpenBefore !== 0) fail(label, `note quiz explanation is open before interaction (${detailsOpenBefore})`);
+  await options.first().click();
+  if (!(await options.first().isChecked())) fail(label, "answer choice did not become selected");
 
-  const block = page.locator(".note-quiz-block", { hasText: "Clock : Time :: Thermometer : ?" }).first();
-  await block.locator(".quiz-option[data-opt='b']").click();
+  const clearButton = page.getByRole("button", { name: "Clear response" });
+  if (!(await clearButton.isEnabled())) fail(label, "Clear response did not enable after answering");
 
-  const correctAfter = await block.locator(".q-correct").count();
-  if (correctAfter !== 1) fail(label, `expected one correct marker after choosing Temperature, found ${correctAfter}`);
+  await page.getByRole("button", { name: "Mark for review & next" }).click();
+  await requireText(page, "Question 2 of 10", label);
 
-  const explanationText = await block.locator("details").innerText();
-  for (const needle of ["Answer: B", "Method", "Why it fits", "Trap"]) {
-    if (!explanationText.includes(needle)) fail(label, `note explanation missing ${needle}`);
+  const firstPaletteCell = page.getByRole("button", { name: /^Question 1:/ });
+  const firstPaletteLabel = await firstPaletteCell.getAttribute("aria-label");
+  if (!firstPaletteLabel || !/marked/i.test(firstPaletteLabel)) {
+    fail(label, `Question 1 was not marked for review (${firstPaletteLabel ?? "no label"})`);
   }
+
+  await requireText(page, "Answers and explanations stay hidden until you submit the test.", label);
+  await checkNoHorizontalOverflow(page, label);
 }
 
-async function checkTopicPreviewQuiz(page, label) {
-  await page.goto(`${baseUrl}/exams/ssc-cgl/topics/analogy-classification`, { waitUntil: "networkidle" });
-  await page.getByText("Reviewed PYQ-style questions from this topic").waitFor({ timeout: 15000 });
+async function checkEndlessSession(page, label) {
+  const sessionUrl = `${baseUrl}/exams/ssc-cgl/session?mode=endless&section=all&length=endless&timer=off&source=book&difficulty=all&seed=browser-smoke`;
+  await page.goto(sessionUrl, { waitUntil: "networkidle" });
+  await page.getByRole("heading", { name: "No finish line. Just focused repetitions.", level: 2 }).waitFor({ timeout: 20_000 });
+  await requireText(page, "SSC CGL · Endless practice", label);
 
-  const previewCards = await page.locator(".ssc-topic-quiz-block.note-quiz-block").count();
-  if (previewCards < 1) fail(label, `expected topic preview quiz cards, found ${previewCards}`);
+  const options = page.getByRole("radio");
+  await options.first().waitFor({ timeout: 20_000 });
+  if ((await options.count()) !== 4) fail(label, `expected 4 endless-practice options, found ${await options.count()}`);
 
-  const markedBefore = await page.locator(".ssc-topic-quiz-block .q-correct, .ssc-topic-quiz-block .q-wrong, .ssc-topic-quiz-block [data-correct='true']").count();
-  if (markedBefore !== 0) fail(label, `topic preview quiz is pre-marked (${markedBefore} markers)`);
+  await options.first().click();
+  await page.getByRole("button", { name: "Check answer" }).click();
 
-  const openBefore = await page.locator(".ssc-topic-quiz-block details[open]").count();
-  if (openBefore !== 0) fail(label, `topic preview explanation is open before interaction (${openBefore})`);
-
-  const firstPreview = page.locator(".ssc-topic-quiz-block.note-quiz-block").first();
-  const firstCorrectOption = await firstPreview.getAttribute("data-answer");
-  if (!firstCorrectOption) {
-    fail(label, "first topic preview card has no data-answer");
-    return;
+  const feedback = page.locator("aside[aria-live='polite']");
+  await feedback.waitFor({ state: "visible", timeout: 10_000 });
+  const feedbackText = await feedback.innerText();
+  if (!/Correct — keep the rhythm\.|Not quite — repair the method now\./.test(feedbackText)) {
+    fail(label, "answer feedback did not appear");
   }
 
-  await firstPreview.locator(`.quiz-option[data-opt='${firstCorrectOption}']`).click();
-
-  const correctAfter = await firstPreview.locator(".q-correct").count();
-  if (correctAfter !== 1) fail(label, `expected one correct marker after choosing topic preview answer, found ${correctAfter}`);
-
-  const explanationText = await firstPreview.locator("details").innerText();
-  for (const needle of ["Correct answer", "Method", "Why it fits", "Trap to avoid"]) {
-    if (!new RegExp(needle, "i").test(explanationText)) fail(label, `topic preview explanation missing ${needle}`);
-  }
-
+  await page.getByRole("button", { name: "Next question" }).waitFor({ timeout: 10_000 });
   await checkNoHorizontalOverflow(page, label);
 }
 
 const browser = await chromium.launch({ headless: true });
 
 for (const viewport of viewports) {
-  const context = await browser.newContext({ viewport, colorScheme: "dark" });
+  const context = await browser.newContext({ viewport });
   const page = await context.newPage();
-
-  await checkNoConsoleErrors(page, viewport.name, async () => {
-    await checkDashboard(page, `${viewport.name} dashboard`);
-    await checkPracticeHub(page, `${viewport.name} practice hub`);
-    await checkResourceMap(page, `${viewport.name} resource map`);
-    await checkReadinessProof(page, `${viewport.name} readiness proof`);
-    await checkSectionCockpits(page, viewport.name);
-    await checkTopicPractice(page, `${viewport.name} practice`);
-    await checkTopicPracticeQueueComplete(page, `${viewport.name} practice queue complete`);
-    await checkTimedMock(page, `${viewport.name} timed mock`);
-    await checkCurrentAffairs(page, `${viewport.name} current affairs`);
-    await checkNoteQuiz(page, `${viewport.name} note quiz`);
-    await checkNoteQuiz(page, `${viewport.name} topic note quiz`, "/exams/ssc-cgl/topics/analogy-classification");
-    await checkTopicPreviewQuiz(page, `${viewport.name} topic preview quiz`);
+  const consoleErrors = [];
+  page.on("console", (message) => {
+    if (message.type() !== "error") return;
+    const text = message.text();
+    if (!text.includes("net::ERR_NETWORK_ACCESS_DENIED")) consoleErrors.push(text);
   });
+  page.on("pageerror", (error) => consoleErrors.push(error.message));
 
+  await runCheck(`${viewport.name} setup`, () => checkSetup(page, `${viewport.name} setup`));
+  await runCheck(`${viewport.name} timed session`, () => checkTimedSession(page, `${viewport.name} timed session`));
+  await runCheck(`${viewport.name} endless session`, () => checkEndlessSession(page, `${viewport.name} endless session`));
+
+  if (consoleErrors.length) {
+    fail(viewport.name, `console/page errors: ${[...new Set(consoleErrors)].join(" | ")}`);
+  }
   await context.close();
 }
 

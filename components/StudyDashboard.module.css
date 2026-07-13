@@ -1,0 +1,804 @@
+.dashboard {
+  --dashboard-panel: #0e1621;
+  --dashboard-panel-raised: #121c28;
+  --dashboard-panel-soft: #0b131d;
+  --dashboard-border: rgba(151, 172, 199, 0.2);
+  --dashboard-border-strong: rgba(151, 172, 199, 0.34);
+  --dashboard-text: #f3f6fa;
+  --dashboard-copy: #b6c0cc;
+  --dashboard-muted: #8d99a8;
+  --space-accent: #6ba2ff;
+  display: grid;
+  width: min(100%, 1440px);
+  margin-inline: auto;
+  padding: 18px 0 72px;
+  gap: 22px;
+  color: var(--dashboard-text);
+}
+
+:global(:root[data-theme="light"]) .dashboard {
+  --dashboard-panel: #ffffff;
+  --dashboard-panel-raised: #f7f9fc;
+  --dashboard-panel-soft: #f2f5f9;
+  --dashboard-border: rgba(40, 55, 74, 0.15);
+  --dashboard-border-strong: rgba(40, 55, 74, 0.26);
+  --dashboard-text: #17202c;
+  --dashboard-copy: #4e5c6c;
+  --dashboard-muted: #6f7c8b;
+}
+
+.intro {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 6px 2px 12px;
+}
+
+.firstVisit {
+  gap: 18px;
+}
+
+.firstVisit .intro {
+  padding-bottom: 4px;
+}
+
+.intro h1,
+.panelHeading h2,
+.panelHeadingCompact h2,
+.spacesHeading h2,
+.researchCard h2,
+.activeCard h3,
+.spaceCard h4,
+.emptyState h3 {
+  margin: 0;
+  color: var(--dashboard-text);
+  letter-spacing: -0.025em;
+}
+
+.intro h1 {
+  max-width: 760px;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 680;
+  line-height: 1.04;
+}
+
+.eyebrow {
+  margin: 0 0 9px;
+  color: #72a8ff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.introCopy {
+  max-width: 760px;
+  margin: 13px 0 0;
+  color: var(--dashboard-copy);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.libraryFacts {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 10px;
+}
+
+.libraryFacts span {
+  display: grid;
+  min-width: 112px;
+  min-height: 72px;
+  align-content: center;
+  padding: 10px 18px;
+  border: 1px solid var(--dashboard-border);
+  border-radius: 14px;
+  color: var(--dashboard-muted);
+  background: var(--dashboard-panel);
+  font-size: 13px;
+}
+
+.libraryFacts strong {
+  color: var(--dashboard-text);
+  font-size: 21px;
+  line-height: 1.2;
+}
+
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.85fr) minmax(300px, 0.72fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.panel {
+  border: 1px solid var(--dashboard-border);
+  border-radius: 16px;
+  background: var(--dashboard-panel);
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.12);
+}
+
+.activePanel {
+  min-height: 410px;
+  padding: 24px;
+}
+
+.panelHeading,
+.spacesHeading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.panelHeading h2,
+.spacesHeading h2 {
+  font-size: clamp(24px, 2.2vw, 32px);
+  line-height: 1.15;
+}
+
+.panelHeading > div > p:last-child,
+.spacesHeading > div > p:last-child {
+  max-width: 690px;
+  margin: 8px 0 0;
+  color: var(--dashboard-copy);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.localLabel,
+.statusPill {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 9px;
+  border: 1px solid var(--dashboard-border);
+  border-radius: 999px;
+  color: var(--dashboard-copy);
+  background: var(--dashboard-panel-soft);
+  font-size: 12px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.emptyState {
+  display: grid;
+  min-height: 285px;
+  place-content: center;
+  justify-items: center;
+  gap: 15px;
+  padding: 34px;
+  text-align: center;
+}
+
+.emptyIcon,
+.summaryIcon,
+.courseIcon {
+  display: grid;
+  place-items: center;
+  color: var(--space-accent);
+  background: color-mix(in srgb, var(--space-accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--space-accent) 44%, transparent);
+}
+
+.emptyIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 15px;
+}
+
+.emptyState h3 {
+  font-size: 22px;
+}
+
+.emptyState p {
+  max-width: 590px;
+  margin: 7px auto 0;
+  color: var(--dashboard-copy);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.emptyActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.primaryAction,
+.secondaryAction,
+.cardAction,
+.openSpace {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.primaryAction {
+  padding: 0 17px;
+  color: #ffffff;
+  background: #397eec;
+}
+
+.secondaryAction {
+  padding: 0 16px;
+  border: 1px solid var(--dashboard-border-strong);
+  color: var(--dashboard-copy);
+  background: var(--dashboard-panel-raised);
+}
+
+.activeGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.planSummary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 16px;
+  align-items: center;
+  margin-top: 21px;
+  padding: 13px 15px;
+  border: 1px solid color-mix(in srgb, #a784ed 34%, var(--dashboard-border));
+  border-radius: 12px;
+  background: var(--dashboard-panel-soft);
+}
+
+.planSummary > div {
+  display: grid;
+  gap: 3px;
+}
+
+.planSummary span {
+  color: var(--dashboard-muted);
+  font-size: 12px;
+}
+
+.planSummary strong {
+  color: var(--dashboard-text);
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.planSummary a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 7px;
+  color: #b89af4;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.activeCard {
+  --space-accent: #6ba2ff;
+  display: flex;
+  min-height: 285px;
+  flex-direction: column;
+  gap: 17px;
+  padding: 18px;
+  border: 1px solid color-mix(in srgb, var(--space-accent) 25%, var(--dashboard-border));
+  border-radius: 14px;
+  background: var(--dashboard-panel-raised);
+  box-shadow: inset 0 2px 0 color-mix(in srgb, var(--space-accent) 60%, transparent);
+}
+
+.activeCardHeader,
+.spaceCardTop,
+.researchLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.courseIcon {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 auto;
+  border-radius: 13px;
+}
+
+.courseCode {
+  margin: 0 0 5px;
+  color: var(--dashboard-muted);
+  font: 12px/1.3 var(--font-mono);
+  letter-spacing: 0.04em;
+}
+
+.activeCard h3 {
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.realActivity {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 11px;
+  align-items: center;
+  padding: 13px;
+  border: 1px solid var(--dashboard-border);
+  border-radius: 11px;
+  background: var(--dashboard-panel-soft);
+}
+
+.realActivity > span {
+  color: var(--space-accent);
+}
+
+.realActivity > div {
+  display: grid;
+  min-width: 0;
+  gap: 4px;
+}
+
+.realActivity small,
+.noActivity {
+  color: var(--dashboard-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.realActivity strong {
+  overflow: hidden;
+  color: var(--dashboard-text);
+  font-size: 14px;
+  font-weight: 620;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.noActivity {
+  min-height: 62px;
+  margin: 0;
+  padding: 13px;
+  border: 1px dashed var(--dashboard-border-strong);
+  border-radius: 11px;
+}
+
+.cardAction {
+  width: fit-content;
+  margin-top: auto;
+  color: var(--space-accent);
+}
+
+.sideRail {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 18px;
+}
+
+.spaceSummary,
+.researchCard {
+  padding: 21px;
+}
+
+.panelHeadingCompact {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.panelHeadingCompact .eyebrow {
+  margin-bottom: 5px;
+}
+
+.panelHeadingCompact h2 {
+  font-size: 19px;
+  line-height: 1.25;
+}
+
+.summaryIcon {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 auto;
+  border-radius: 12px;
+}
+
+.summaryMetrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 19px;
+}
+
+.summaryMetrics span {
+  display: grid;
+  gap: 3px;
+  padding: 11px;
+  border: 1px solid var(--dashboard-border);
+  border-radius: 10px;
+  background: var(--dashboard-panel-soft);
+}
+
+.summaryMetrics strong {
+  color: var(--dashboard-text);
+  font-size: 21px;
+}
+
+.summaryMetrics small {
+  color: var(--dashboard-muted);
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+.localNotice {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  margin: 15px 0 0;
+  color: var(--dashboard-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.localNotice svg {
+  flex: 0 0 auto;
+  margin-top: 2px;
+}
+
+.researchCard {
+  --space-accent: #70ccb6;
+  display: flex;
+  flex-direction: column;
+}
+
+.researchLabel {
+  color: #70ccb6;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.researchCard h2 {
+  margin-top: 22px;
+  font-size: 21px;
+  line-height: 1.35;
+}
+
+.researchCard p {
+  margin: 10px 0 18px;
+  color: var(--dashboard-copy);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.subjectSpaces {
+  padding: 24px;
+}
+
+.firstVisit .subjectSpaces {
+  box-shadow: 0 24px 72px rgba(0, 0, 0, 0.18);
+}
+
+.spacesActions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 9px;
+}
+
+.planShortcut {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 12px;
+  border: 1px solid var(--dashboard-border-strong);
+  border-radius: 10px;
+  color: var(--dashboard-text);
+  background: var(--dashboard-panel-raised);
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.planShortcut:hover,
+.planShortcut:focus-visible {
+  border-color: color-mix(in srgb, #6ba2ff 60%, var(--dashboard-border));
+  background: color-mix(in srgb, #6ba2ff 10%, var(--dashboard-panel-raised));
+}
+
+.planShortcut:focus-visible {
+  outline: 3px solid color-mix(in srgb, #6ba2ff 55%, #ffffff);
+  outline-offset: 3px;
+}
+
+.groupStack {
+  display: grid;
+  gap: 30px;
+  margin-top: 26px;
+}
+
+.courseGroup {
+  display: grid;
+  gap: 13px;
+}
+
+.groupHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--dashboard-border);
+}
+
+.groupHeading h3 {
+  margin: 0;
+  color: var(--dashboard-copy);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.groupHeading span {
+  color: var(--dashboard-muted);
+  font-size: 12px;
+}
+
+.spaceGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 13px;
+}
+
+.spaceCard {
+  --space-accent: #6ba2ff;
+  display: flex;
+  min-width: 0;
+  min-height: 272px;
+  flex-direction: column;
+  padding: 16px;
+  border: 1px solid color-mix(in srgb, var(--space-accent) 18%, var(--dashboard-border));
+  border-radius: 14px;
+  background: var(--dashboard-panel-raised);
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.spaceCard:hover {
+  border-color: color-mix(in srgb, var(--space-accent) 48%, var(--dashboard-border));
+  box-shadow: 0 13px 30px rgba(0, 0, 0, 0.14);
+  transform: translateY(-2px);
+}
+
+.spaceCardActive {
+  box-shadow: inset 0 2px 0 color-mix(in srgb, var(--space-accent) 72%, transparent);
+}
+
+.spaceCardCompleted {
+  --space-accent: #78c88b;
+  border-color: color-mix(in srgb, var(--space-accent) 42%, var(--dashboard-border));
+}
+
+.spaceCardCopy {
+  padding: 17px 1px 15px;
+}
+
+.spaceCard h4 {
+  min-height: 48px;
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.spaceCardCopy > p:last-child {
+  margin: 8px 0 0;
+  color: var(--dashboard-muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.statusControl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--dashboard-border);
+  border-radius: 11px;
+  background: var(--dashboard-panel-soft);
+}
+
+.statusButton {
+  min-width: 0;
+  min-height: 44px;
+  padding: 5px 7px;
+  border: 0;
+  border-radius: 8px;
+  color: var(--dashboard-muted);
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 620;
+  line-height: 1.25;
+}
+
+.statusButton:hover {
+  color: var(--dashboard-text);
+  background: var(--dashboard-panel-raised);
+}
+
+.statusButtonSelected {
+  color: var(--dashboard-text);
+  background: color-mix(in srgb, var(--space-accent) 18%, var(--dashboard-panel-raised));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--space-accent) 38%, transparent);
+}
+
+.openSpace {
+  width: 100%;
+  justify-content: space-between;
+  margin-top: auto;
+  padding: 5px 2px 0;
+  color: var(--space-accent);
+}
+
+.toneViolet {
+  --space-accent: #a784ed;
+}
+
+.toneBlue {
+  --space-accent: #65a2ff;
+}
+
+.toneAmber {
+  --space-accent: #e9a83c;
+}
+
+.toneGreen {
+  --space-accent: #79c98b;
+}
+
+.toneRose {
+  --space-accent: #db879e;
+}
+
+.primaryAction:hover,
+.primaryAction:focus-visible {
+  background: #4c8df4;
+}
+
+.secondaryAction:hover,
+.secondaryAction:focus-visible,
+.cardAction:hover,
+.cardAction:focus-visible,
+.openSpace:hover,
+.openSpace:focus-visible {
+  color: var(--dashboard-text);
+}
+
+.primaryAction:focus-visible,
+.secondaryAction:focus-visible,
+.cardAction:focus-visible,
+.openSpace:focus-visible,
+.statusButton:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--space-accent) 55%, #ffffff);
+  outline-offset: 3px;
+}
+
+@media (max-width: 1120px) {
+  .dashboardGrid {
+    grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.75fr);
+  }
+
+  .activeGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .intro,
+  .panelHeading,
+  .spacesHeading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .spacesActions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .dashboardGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .sideRail {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .dashboard {
+    padding-top: 8px;
+    gap: 15px;
+  }
+
+  .intro h1 {
+    font-size: 34px;
+  }
+
+  .introCopy {
+    font-size: 15px;
+  }
+
+  .libraryFacts {
+    width: 100%;
+  }
+
+  .libraryFacts span {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .spacesActions,
+  .spacesActions > * {
+    width: 100%;
+  }
+
+  .spacesActions > * {
+    justify-content: center;
+  }
+
+  .activePanel,
+  .subjectSpaces,
+  .spaceSummary,
+  .researchCard {
+    padding: 18px;
+  }
+
+  .planSummary {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .emptyState {
+    padding: 28px 4px;
+  }
+
+  .emptyActions,
+  .emptyActions > * {
+    width: 100%;
+  }
+
+  .sideRail {
+    grid-template-columns: 1fr;
+  }
+
+  .summaryMetrics {
+    grid-template-columns: 1fr;
+  }
+
+  .summaryMetrics span {
+    grid-template-columns: auto 1fr;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .spaceGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spaceCard {
+    transition: none;
+  }
+
+  .spaceCard:hover {
+    transform: none;
+  }
+}
