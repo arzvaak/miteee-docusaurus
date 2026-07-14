@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
+import { spawnSync } from "node:child_process";
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 
@@ -37,6 +39,61 @@ test("SSC CGL daily news runner writes auditable start and success log markers",
   assert.match(runner, /ssc-cgl-news run completed/);
   assert.match(runner, /RUN_DATE/);
   assert.match(runner, /LOG_FILE/);
+});
+
+test("Netcup news installer keeps explicit deployment secrets ahead of the server env file", () => {
+  const installer = fs.readFileSync(path.join(root, "ops", "netcup", "install-ssc-cgl-news.sh"), "utf8");
+  const sourceIndex = installer.indexOf("source .env");
+  const captureIndex = installer.indexOf('incoming_mistral_api_key="${MISTRAL_API_KEY-}"');
+  const restoreIndex = installer.indexOf('MISTRAL_API_KEY="${incoming_mistral_api_key:-${MISTRAL_API_KEY:-}}"');
+
+  assert.ok(captureIndex >= 0 && captureIndex < sourceIndex);
+  assert.ok(restoreIndex > sourceIndex);
+  assert.match(installer, /DEEPSEEK_API_KEY="\$\{incoming_deepseek_api_key:-\$\{DEEPSEEK_API_KEY:-\}\}"/);
+  assert.match(installer, /MISTRAL_MODEL="\$\{incoming_mistral_model:-\$\{MISTRAL_MODEL:-mistral-small-latest\}\}"/);
+});
+
+test("Netcup news installer passes the caller Mistral secret through an empty legacy env", { skip: process.platform === "win32" }, () => {
+  const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "miteee-news-env-"));
+  const binRoot = path.join(tempRoot, "bin");
+  const installer = path.join(root, "ops", "netcup", "install-ssc-cgl-news.sh");
+
+  try {
+    fs.mkdirSync(path.join(tempRoot, "scripts"), { recursive: true });
+    fs.mkdirSync(path.join(tempRoot, "ops", "netcup"), { recursive: true });
+    fs.mkdirSync(binRoot, { recursive: true });
+    fs.writeFileSync(path.join(tempRoot, "docker-compose.ssc-cgl-news.yml"), "services: {}\n");
+    fs.writeFileSync(path.join(tempRoot, "scripts", "daily_news_pipeline.py"), "# fixture\n");
+    fs.writeFileSync(path.join(tempRoot, "scripts", "run_ssc_cgl_daily_news_once.sh"), "#!/bin/sh\n");
+    fs.writeFileSync(path.join(tempRoot, "ops", "netcup", "verify-ssc-cgl-news.sh"), "#!/bin/sh\nexit 0\n");
+    fs.writeFileSync(path.join(tempRoot, ".env"), "MISTRAL_API_KEY=\nMISTRAL_MODEL=legacy-empty-model\n");
+    fs.writeFileSync(path.join(binRoot, "docker"), [
+      "#!/bin/sh",
+      "test \"$MISTRAL_API_KEY\" = \"$EXPECTED_MISTRAL_API_KEY\" || exit 42",
+      "test \"$MISTRAL_MODEL\" = \"$EXPECTED_MISTRAL_MODEL\" || exit 43",
+      "exit 0",
+      ""
+    ].join("\n"));
+    fs.writeFileSync(path.join(binRoot, "bash"), "#!/bin/sh\nexit 0\n");
+    fs.chmodSync(path.join(binRoot, "docker"), 0o755);
+    fs.chmodSync(path.join(binRoot, "bash"), 0o755);
+
+    const result = spawnSync("/bin/bash", [installer, tempRoot], {
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        EXPECTED_MISTRAL_API_KEY: "deployment-secret-sentinel",
+        EXPECTED_MISTRAL_MODEL: "deployment-model-sentinel",
+        MISTRAL_API_KEY: "deployment-secret-sentinel",
+        MISTRAL_MODEL: "deployment-model-sentinel",
+        PATH: `${binRoot}${path.delimiter}${process.env.PATH ?? ""}`
+      }
+    });
+
+    assert.equal(result.status, 0, result.stderr);
+  } finally {
+    fs.rmSync(tempRoot, { recursive: true, force: true });
+  }
 });
 
 test("SSC CGL daily news runner prevents overlapping cron runs and prunes old logs", () => {
