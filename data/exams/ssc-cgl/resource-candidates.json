@@ -1,0 +1,3608 @@
+{
+  "generatedAt": "2026-06-28T19:35:16.889484+00:00",
+  "policy": {
+    "rankedPractice": "Only reviewed official_open, user_provided, or original_practice items enter ranked tests.",
+    "copyrightRisk": "copyright_risk_reference resources are metadata-only; do not download, copy, OCR, or publish source text.",
+    "webPdf": "web_pdf_unverified candidates require provenance, OCR, answer-key, and duplicate review before use."
+  },
+  "candidates": [
+    {
+      "id": "kiran-ssc-cgl-book-reference",
+      "title": "Kiran SSC CGL solved papers, eBooks, and practice tests",
+      "url": "https://www.kiranprepare.com/CGL/books/sp/kiranprepare/91263/3",
+      "sourceId": "book-reference-lanes",
+      "sourceType": "copyright_risk_reference",
+      "acquisitionPolicy": "metadata and purchased/user-provided page references only; do not copy paid eBook or book text",
+      "publishPolicy": "do not copy paid eBook or book text; use for coverage planning and source bibliography only, then generate original agent-reviewed items",
+      "reviewStatus": "metadata_only",
+      "tags": [
+        "kiran",
+        "book",
+        "reference",
+        "solved-paper",
+        "mock-test"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889484+00:00",
+      "snippet": "Book/reference lane for solved-paper coverage and mock-test taxonomy."
+    },
+    {
+      "id": "pinnacle-ssc-cgl-book-reference",
+      "title": "Pinnacle SSC CGL books and TCS MCQ references",
+      "url": "https://books.ssccglpinnacle.com/",
+      "sourceId": "book-reference-lanes",
+      "sourceType": "copyright_risk_reference",
+      "acquisitionPolicy": "metadata and purchased/user-provided page references only; do not OCR or copy copyrighted books without rights clearance",
+      "publishPolicy": "do not copy book text; use for topic taxonomy and difficulty calibration only, then generate original reviewed practice",
+      "reviewStatus": "metadata_only",
+      "tags": [
+        "pinnacle",
+        "book",
+        "reference",
+        "taxonomy"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889484+00:00",
+      "snippet": "Book/reference lane for SSC-like topic coverage and TCS-style MCQ taxonomy."
+    },
+    {
+      "id": "rakesh-yadav-ssc-maths-reference",
+      "title": "Rakesh Yadav SSC maths question-bank reference",
+      "url": "https://www.amazon.in/SSC-Exam-rakesh-yadav-Government-Exams/s?rh=n%3A4149789031%2Cp_lbr_books_authors_browse-bin%3Arakesh%2Byadav",
+      "sourceId": "book-reference-lanes",
+      "sourceType": "copyright_risk_reference",
+      "acquisitionPolicy": "metadata and purchased/user-provided page references only; do not copy copyrighted question-bank text",
+      "publishPolicy": "do not copy copyrighted question-bank text; use for quant coverage planning only, then generate original reviewed quant practice",
+      "reviewStatus": "metadata_only",
+      "tags": [
+        "rakesh-yadav",
+        "quant",
+        "book",
+        "reference"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889484+00:00",
+      "snippet": "Book/reference lane for Quant coverage and difficulty calibration."
+    },
+    {
+      "id": "scribd-ssc-cgl-reference-search",
+      "title": "Scribd SSC CGL reference search",
+      "url": "https://www.scribd.com/search?query=SSC%20CGL",
+      "sourceId": "scribd-ssc-cgl-reference",
+      "sourceType": "copyright_risk_reference",
+      "acquisitionPolicy": "metadata and link only; do not download documents from Scribd",
+      "publishPolicy": "do not copy paid, login-gated, or copyright-risk document text",
+      "reviewStatus": "metadata_only",
+      "tags": [
+        "scribd",
+        "book",
+        "reference"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889484+00:00",
+      "snippet": "Reference class requested by user; metadata only unless rights are supplied."
+    },
+    {
+      "id": "official-ssc-answer-key-page",
+      "title": "SSC answer key page",
+      "url": "https://ssc.gov.in/home/answer-key",
+      "sourceId": "ssc-official-answer-keys",
+      "sourceType": "official_login_personal",
+      "acquisitionPolicy": "metadata only; candidate response sheets require personal login and stay private",
+      "publishPolicy": "do not publish personal response sheets or login-gated answers",
+      "reviewStatus": "metadata_only",
+      "tags": [
+        "official",
+        "answer-key"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889484+00:00",
+      "snippet": "Official answer-key discovery surface; login-gated candidate sheets stay private."
+    },
+    {
+      "id": "ssc-official-answer-key-notices-combined-graduate-level-examination-2024-tier-ii-uploa-415b331e2f5a",
+      "title": "Combined Graduate Level Examination, 2024 · 2024 · Combined Graduate Level Examination, 2024 (Tier-II): Uploading of Final Answer Key(s) along with Candidates’ Response Sheet(s) an",
+      "url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Writeup_Final_Answer_Keyand_marks_CGLE_2024_Tier-II_18325.pdf",
+      "sourceId": "ssc-official-answer-key-notices",
+      "sourceType": "official_notice_metadata",
+      "acquisitionPolicy": "download public SSC CGL answer-key/write-up notice PDFs only; candidate response sheets stay login-gated and private",
+      "publishPolicy": "official answer-key/write-up notices can support provenance and alignment review, but are not treated as question papers or ranked practice sources",
+      "reviewStatus": "metadata_only",
+      "tags": [
+        "official",
+        "official-api",
+        "cgl",
+        "not-question-paper",
+        "official-answer-key-notice",
+        "2024"
+      ],
+      "discoveredAt": "2026-06-28T19:34:35.101151+00:00",
+      "snippet": "Combined Graduate Level Examination, 2024 (Tier-II): Uploading of Final Answer Key(s) along with Candidates’ Response Sheet(s) and Marks.; contentType=notice-boards; recordId=1lc9kj0vdzb9wunt82x3w; attachmentId=8nn29ht297okedn22li9r."
+    },
+    {
+      "id": "ssc-official-answer-key-notices-uploading-of-final-answer-key-s-along-with-response-sh-1296b38475df",
+      "title": "Combined Graduate Level Examination, 2024 · 2024 · Uploading of Final Answer Key(s) along with Response Sheet(s) of Combined Graduate Level Examination, 2024 (Tier-I) · Writeup_Fin",
+      "url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Writeup_Final_Anwerkey_CGLE_2024_T1_191224.pdf",
+      "sourceId": "ssc-official-answer-key-notices",
+      "sourceType": "official_notice_metadata",
+      "acquisitionPolicy": "download public SSC CGL answer-key/write-up notice PDFs only; candidate response sheets stay login-gated and private",
+      "publishPolicy": "official answer-key/write-up notices can support provenance and alignment review, but are not treated as question papers or ranked practice sources",
+      "reviewStatus": "metadata_only",
+      "tags": [
+        "official",
+        "official-api",
+        "cgl",
+        "not-question-paper",
+        "official-answer-key-notice",
+        "2024"
+      ],
+      "discoveredAt": "2026-06-28T19:34:35.101449+00:00",
+      "snippet": "Uploading of Final Answer Key(s) along with Response Sheet(s) of Combined Graduate Level Examination, 2024 (Tier-I); contentType=notice-boards; recordId=ui1ybictwb0ja7qeudbz3; attachmentId=7hrb6q6c8d4pq1ifqofsy."
+    },
+    {
+      "id": "ssc-official-answer-key-notices-uploading-of-tentative-answer-keys-along-with-candidat-cf51618375e0",
+      "title": "Combined Graduate Level Examination, 2024 · 2024 · Uploading of Tentative Answer Keys along with Candidates’ Response Sheet(s) of Combined Graduate Level Examination (Paper-II) - 2",
+      "url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Write_up_tentative_answer_key_21012025.pdf",
+      "sourceId": "ssc-official-answer-key-notices",
+      "sourceType": "official_notice_metadata",
+      "acquisitionPolicy": "download public SSC CGL answer-key/write-up notice PDFs only; candidate response sheets stay login-gated and private",
+      "publishPolicy": "official answer-key/write-up notices can support provenance and alignment review, but are not treated as question papers or ranked practice sources",
+      "reviewStatus": "metadata_only",
+      "tags": [
+        "official",
+        "official-api",
+        "cgl",
+        "not-question-paper",
+        "official-answer-key-notice",
+        "2024"
+      ],
+      "discoveredAt": "2026-06-28T19:34:35.101151+00:00",
+      "snippet": "Uploading of Tentative Answer Keys along with Candidates’ Response Sheet(s) of Combined Graduate Level Examination (Paper-II) - 2024.; contentType=notice-boards; recordId=zce70wbtgxahk28h1sckc; attachmentId=osu9ihe3b46f23bazegg0."
+    },
+    {
+      "id": "ssc-official-answer-key-notices-uploading-of-tentative-answer-keys-along-with-candidat-8affaeeebd43",
+      "title": "Combined Graduate Level Examination, 2024 · 2024 · Uploading of Tentative Answer Keys along with Candidates’ Response Sheet(s) of Combined Graduate Level Examination (Tier-I) - 202",
+      "url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Writeup_Answerkey_Tier_1_CGLE_2024_031024.pdf",
+      "sourceId": "ssc-official-answer-key-notices",
+      "sourceType": "official_notice_metadata",
+      "acquisitionPolicy": "download public SSC CGL answer-key/write-up notice PDFs only; candidate response sheets stay login-gated and private",
+      "publishPolicy": "official answer-key/write-up notices can support provenance and alignment review, but are not treated as question papers or ranked practice sources",
+      "reviewStatus": "metadata_only",
+      "tags": [
+        "official",
+        "official-api",
+        "cgl",
+        "not-question-paper",
+        "official-answer-key-notice",
+        "2024"
+      ],
+      "discoveredAt": "2026-06-28T19:34:35.101449+00:00",
+      "snippet": "Uploading of Tentative Answer Keys along with Candidates’ Response Sheet(s) of Combined Graduate Level Examination (Tier-I) - 2024; contentType=notice-boards; recordId=ssznveaw7r13z7lel16eh; attachmentId=e01elq0mk6xol18yil0hf."
+    },
+    {
+      "id": "ssc-official-answer-key-notices-combined-graduate-level-examination-2025-tier-i-upload-fdb896d33ac2",
+      "title": "Combined Graduate Level Examination, 2024 · 2025 · Combined Graduate Level Examination, 2025 (Tier-I): Uploading of Marks and Final Answer Key(s) along with Candidates’ Response Sh",
+      "url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Answer_key_09012025.pdf",
+      "sourceId": "ssc-official-answer-key-notices",
+      "sourceType": "official_notice_metadata",
+      "acquisitionPolicy": "download public SSC CGL answer-key/write-up notice PDFs only; candidate response sheets stay login-gated and private",
+      "publishPolicy": "official answer-key/write-up notices can support provenance and alignment review, but are not treated as question papers or ranked practice sources",
+      "reviewStatus": "metadata_only",
+      "tags": [
+        "official",
+        "official-api",
+        "cgl",
+        "not-question-paper",
+        "official-answer-key-notice",
+        "2025"
+      ],
+      "discoveredAt": "2026-06-28T19:34:35.100498+00:00",
+      "snippet": "Combined Graduate Level Examination, 2025 (Tier-I): Uploading of Marks and Final Answer Key(s) along with Candidates’ Response Sheet(s); contentType=notice-boards; recordId=2o1tq2nnrkalky6zy82cd; attachmentId=v45eoqvrg10rcajo7grwp."
+    },
+    {
+      "id": "ssc-official-answer-key-notices-combined-graduate-level-examination-2025-tier-ii-uploa-b06a667f6d47",
+      "title": "Combined Graduate Level Examination, 2024 · 2025 · Combined Graduate Level Examination, 2025 (Tier-II): Uploading of Tentative Answer Key(s) along with Candidates’ Response Sheet(s",
+      "url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Tentative_answer_key_30012026.pdf",
+      "sourceId": "ssc-official-answer-key-notices",
+      "sourceType": "official_notice_metadata",
+      "acquisitionPolicy": "download public SSC CGL answer-key/write-up notice PDFs only; candidate response sheets stay login-gated and private",
+      "publishPolicy": "official answer-key/write-up notices can support provenance and alignment review, but are not treated as question papers or ranked practice sources",
+      "reviewStatus": "metadata_only",
+      "tags": [
+        "official",
+        "official-api",
+        "cgl",
+        "not-question-paper",
+        "official-answer-key-notice",
+        "2025"
+      ],
+      "discoveredAt": "2026-06-28T19:34:35.100498+00:00",
+      "snippet": "Combined Graduate Level Examination, 2025 (Tier-II): Uploading of Tentative Answer Key(s) along with Candidates’ Response Sheet(s) and inviting challenges thereon; contentType=notice-boards; recordId=04dl0r53qc9se0kitvpy5; attachmentId=9ipo9avj8p9eoejo3ruq1."
+    },
+    {
+      "id": "ssc-official-answer-key-notices-important-notice-for-extension-of-window-to-challenge--e28485da1d60",
+      "title": "Combined Graduate Level Examination, 2025 · 2025 · Important Notice for extension of window to challenge/view the Tentative Answer Key(s) along with Candidates’ Response Sheet(s) o",
+      "url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Extension_Writeup_CGLE_2025_Tier_I_Answer Key17102025.pdf",
+      "sourceId": "ssc-official-answer-key-notices",
+      "sourceType": "official_notice_metadata",
+      "acquisitionPolicy": "download public SSC CGL answer-key/write-up notice PDFs only; candidate response sheets stay login-gated and private",
+      "publishPolicy": "official answer-key/write-up notices can support provenance and alignment review, but are not treated as question papers or ranked practice sources",
+      "reviewStatus": "metadata_only",
+      "tags": [
+        "official",
+        "official-api",
+        "cgl",
+        "not-question-paper",
+        "official-answer-key-notice",
+        "2025"
+      ],
+      "discoveredAt": "2026-06-28T19:34:35.100498+00:00",
+      "snippet": "Important Notice for extension of window to challenge/view the Tentative Answer Key(s) along with Candidates’ Response Sheet(s) of Combined Graduate Level Examination, 2025 (Tier-I).; contentType=notice-boards; recordId=xd4bb2cgipwxcg1c2fd20; attachmentId=vbhhcn00ay0qns5d0c640."
+    },
+    {
+      "id": "ssc-official-answer-key-notices-uploading-of-final-answer-key-s-along-with-candidates--f5fe67e4ddf2",
+      "title": "Combined Graduate Level Examination, 2025 · 2025 · Uploading of Final Answer Key(s) along with Candidates’ Response Sheet(s) and Marks of candidates of Combined Graduate Level Exam",
+      "url": "https://ssc.gov.in/api/attachment/uploads/masterData/AnswerKeys/Final_writeup_17062026.pdf",
+      "sourceId": "ssc-official-answer-key-notices",
+      "sourceType": "official_notice_metadata",
+      "acquisitionPolicy": "download public SSC CGL answer-key/write-up notice PDFs only; candidate response sheets stay login-gated and private",
+      "publishPolicy": "official answer-key/write-up notices can support provenance and alignment review, but are not treated as question papers or ranked practice sources",
+      "reviewStatus": "metadata_only",
+      "tags": [
+        "official",
+        "official-api",
+        "cgl",
+        "not-question-paper",
+        "official-answer-key-notice",
+        "2025"
+      ],
+      "discoveredAt": "2026-06-28T19:34:32.286190+00:00",
+      "snippet": "Uploading of Final Answer Key(s) along with Candidates’ Response Sheet(s) and Marks of candidates of Combined Graduate Level Examination, 2025 (Tier-II) -reg; contentType=answer-key; recordId=2ixbnttrj423jafqdp82g; attachmentId=n71egbc2l6coxdbo6bjr6."
+    },
+    {
+      "id": "ssc-official-answer-key-notices-uploading-of-tentative-answer-keys-along-with-candidat-cb17b59965e4",
+      "title": "Combined Graduate Level Examination, 2025 · 2025 · Uploading of Tentative Answer Keys along with Candidates’ Response Sheet(s) of Combined Graduate Level Examination, 2025 (Tier-I)",
+      "url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Writeup_AnswerKey_Tier-I_CGLE_25.pdf",
+      "sourceId": "ssc-official-answer-key-notices",
+      "sourceType": "official_notice_metadata",
+      "acquisitionPolicy": "download public SSC CGL answer-key/write-up notice PDFs only; candidate response sheets stay login-gated and private",
+      "publishPolicy": "official answer-key/write-up notices can support provenance and alignment review, but are not treated as question papers or ranked practice sources",
+      "reviewStatus": "metadata_only",
+      "tags": [
+        "official",
+        "official-api",
+        "cgl",
+        "not-question-paper",
+        "official-answer-key-notice",
+        "2025"
+      ],
+      "discoveredAt": "2026-06-28T19:34:35.100498+00:00",
+      "snippet": "Uploading of Tentative Answer Keys along with Candidates’ Response Sheet(s) of Combined Graduate Level Examination, 2025 (Tier-I).; contentType=notice-boards; recordId=z8lucv3tupw8jl1mmolm0; attachmentId=238sho7vfx9dqbj3zyrvi."
+    },
+    {
+      "id": "official-ssc-2026-cgl-notice",
+      "title": "SSC CGL 2026 notice",
+      "url": "https://ssc.gov.in/api/attachment/uploads/masterData/NoticeBoards/Notice_of_adv_cgl_2026.pdf",
+      "sourceId": "ssc-official-notices",
+      "sourceType": "official_notice_metadata",
+      "acquisitionPolicy": "metadata/provenance only; do not treat the notice as a PYQ paper source",
+      "publishPolicy": "official notices can support syllabus and provenance, but cannot enter ranked practice as question papers",
+      "reviewStatus": "metadata_only",
+      "tags": [
+        "official",
+        "notice",
+        "syllabus",
+        "not-question-paper"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889484+00:00",
+      "snippet": "Official baseline for pattern, syllabus, marks, and timers."
+    },
+    {
+      "id": "official-ssc-model-questions-api",
+      "title": "SSC official model-question API",
+      "url": "https://ssc.gov.in/api/general-website/portal/records?page=1&limit=50&contentType=model-questions&key=createdAt&order=DESC&isAttachment=true&attributes=id,headline,examId,examYear,contentType,startDate,endDate,language,createdAt&language=english",
+      "sourceId": "ssc-official-previous-year-papers",
+      "sourceType": "official_open",
+      "acquisitionPolicy": "check public model-question metadata and download only CGL public attachments",
+      "publishPolicy": "official public files can enter import review with provenance; non-CGL records are metadata only",
+      "reviewStatus": "metadata_only",
+      "tags": [
+        "official",
+        "pyq",
+        "paper",
+        "official-api"
+      ],
+      "discoveredAt": "2026-06-28T19:34:31.129517+00:00",
+      "snippet": "1 official model-question records checked; 0 CGL records matched by exam metadata; 0 importable CGL PDF attachments."
+    },
+    {
+      "id": "official-ssc-previous-year-question-paper-page",
+      "title": "SSC previous year question paper page",
+      "url": "https://ssc.gov.in/for-candidates/previous-year-question-paper",
+      "sourceId": "ssc-official-previous-year-papers",
+      "sourceType": "official_open",
+      "acquisitionPolicy": "download metadata and public files only when SSC exposes them without login",
+      "publishPolicy": "official public files can enter import review with provenance",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "official",
+        "pyq",
+        "paper"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889484+00:00",
+      "snippet": "Official source for open previous-year paper discovery."
+    },
+    {
+      "id": "aptidude-practice-page",
+      "title": "AptiDude aptitude practice topics",
+      "url": "https://aptidude.in/practice",
+      "sourceId": "aptidude-practice",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape topic link metadata only; use as practice coverage leads after review",
+      "publishPolicy": "practice links can seed topic drills, not SSC PYQ claims",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "aptidude",
+        "practice",
+        "topic-drill"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889484+00:00",
+      "snippet": "User-supplied aptitude practice source; topic links are practice leads, not PYQs."
+    },
+    {
+      "id": "aptidude-practice-author-s-purpose-and-tone-aptitude-questions-9947ab81e69f",
+      "title": "Author's Purpose and Tone aptitude questions",
+      "url": "https://aptidude.in/practice/authors-purpose-and-tone",
+      "sourceId": "aptidude-practice",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape topic link metadata only; use as practice coverage leads after review",
+      "publishPolicy": "practice links can seed topic drills, not SSC PYQ claims",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "aptidude",
+        "practice",
+        "topic-drill"
+      ],
+      "discoveredAt": "2026-06-28T19:34:54.451197+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "aptidude-practice-averages-aptitude-questions-9b3bbb58d5f1",
+      "title": "Averages aptitude questions",
+      "url": "https://aptidude.in/practice/averages",
+      "sourceId": "aptidude-practice",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape topic link metadata only; use as practice coverage leads after review",
+      "publishPolicy": "practice links can seed topic drills, not SSC PYQ claims",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "aptidude",
+        "practice",
+        "topic-drill"
+      ],
+      "discoveredAt": "2026-06-28T19:34:54.451349+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "aptidude-practice-basic-algebra-aptitude-questions-3791dedee5f8",
+      "title": "Basic Algebra aptitude questions",
+      "url": "https://aptidude.in/practice/basic-algebra",
+      "sourceId": "aptidude-practice",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape topic link metadata only; use as practice coverage leads after review",
+      "publishPolicy": "practice links can seed topic drills, not SSC PYQ claims",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "aptidude",
+        "practice",
+        "topic-drill"
+      ],
+      "discoveredAt": "2026-06-28T19:34:54.451126+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "aptidude-practice-boats-and-streams-aptitude-questions-ec52b4866cf3",
+      "title": "Boats and Streams aptitude questions",
+      "url": "https://aptidude.in/practice/boats-and-streams",
+      "sourceId": "aptidude-practice",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape topic link metadata only; use as practice coverage leads after review",
+      "publishPolicy": "practice links can seed topic drills, not SSC PYQ claims",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "aptidude",
+        "practice",
+        "topic-drill"
+      ],
+      "discoveredAt": "2026-06-28T19:34:54.451149+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "aptidude-practice-descriptive-passages-aptitude-questions-938cbc4a6248",
+      "title": "Descriptive Passages aptitude questions",
+      "url": "https://aptidude.in/practice/descriptive-passages",
+      "sourceId": "aptidude-practice",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape topic link metadata only; use as practice coverage leads after review",
+      "publishPolicy": "practice links can seed topic drills, not SSC PYQ claims",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "aptidude",
+        "practice",
+        "topic-drill"
+      ],
+      "discoveredAt": "2026-06-28T19:34:54.451435+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "disha-ssc-cgl-free-sample-reference",
+      "title": "Disha SSC CGL free downloads and book samples",
+      "url": "https://freedownloads.dishapublication.com/category/ssc/ssc-cgl/",
+      "sourceId": "book-reference-lanes",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "collect public free-sample metadata and permitted sample files only; full books remain copyright-risk references",
+      "publishPolicy": "public samples can inspire original drills after review, but copied sample text does not enter ranked practice",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "disha",
+        "free-sample",
+        "practice-set",
+        "book-reference"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889484+00:00",
+      "snippet": "Public sample lane for model practice and topic coverage discovery."
+    },
+    {
+      "id": "aptidude-practice-factual-passages-aptitude-questions-1e358a85a2c2",
+      "title": "Factual Passages aptitude questions",
+      "url": "https://aptidude.in/practice/factual-passages",
+      "sourceId": "aptidude-practice",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape topic link metadata only; use as practice coverage leads after review",
+      "publishPolicy": "practice links can seed topic drills, not SSC PYQ claims",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "aptidude",
+        "practice",
+        "topic-drill"
+      ],
+      "discoveredAt": "2026-06-28T19:34:54.450985+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "aptidude-practice-fractions-and-decimals-aptitude-questions-de26047a2372",
+      "title": "Fractions and Decimals aptitude questions",
+      "url": "https://aptidude.in/practice/fractions-and-decimals",
+      "sourceId": "aptidude-practice",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape topic link metadata only; use as practice coverage leads after review",
+      "publishPolicy": "practice links can seed topic drills, not SSC PYQ claims",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "aptidude",
+        "practice",
+        "topic-drill"
+      ],
+      "discoveredAt": "2026-06-28T19:34:54.451080+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "aptidude-practice-hcf-and-lcm-aptitude-questions-47077358d41c",
+      "title": "HCF and LCM aptitude questions",
+      "url": "https://aptidude.in/practice/hcf-and-lcm",
+      "sourceId": "aptidude-practice",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape topic link metadata only; use as practice coverage leads after review",
+      "publishPolicy": "practice links can seed topic drills, not SSC PYQ claims",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "aptidude",
+        "practice",
+        "topic-drill"
+      ],
+      "discoveredAt": "2026-06-28T19:34:54.450888+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "aptidude-practice-history-and-politics-aptitude-questions-2e189c6b3186",
+      "title": "History and Politics aptitude questions",
+      "url": "https://aptidude.in/practice/history-and-politics",
+      "sourceId": "aptidude-practice",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape topic link metadata only; use as practice coverage leads after review",
+      "publishPolicy": "practice links can seed topic drills, not SSC PYQ claims",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "aptidude",
+        "practice",
+        "topic-drill"
+      ],
+      "discoveredAt": "2026-06-28T19:34:54.450961+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "aptidude-practice-inference-based-questions-aptitude-questions-296d30613320",
+      "title": "Inference-Based Questions aptitude questions",
+      "url": "https://aptidude.in/practice/inference-based-questions",
+      "sourceId": "aptidude-practice",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape topic link metadata only; use as practice coverage leads after review",
+      "publishPolicy": "practice links can seed topic drills, not SSC PYQ claims",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "aptidude",
+        "practice",
+        "topic-drill"
+      ],
+      "discoveredAt": "2026-06-28T19:34:54.450933+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "aptidude-practice-informative-passages-aptitude-questions-bdedbf8f965e",
+      "title": "Informative Passages aptitude questions",
+      "url": "https://aptidude.in/practice/informative-passages",
+      "sourceId": "aptidude-practice",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape topic link metadata only; use as practice coverage leads after review",
+      "publishPolicy": "practice links can seed topic drills, not SSC PYQ claims",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "aptidude",
+        "practice",
+        "topic-drill"
+      ],
+      "discoveredAt": "2026-06-28T19:34:54.451242+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "aptidude-practice-medium-passages-aptitude-questions-167e4a566dc1",
+      "title": "Medium Passages aptitude questions",
+      "url": "https://aptidude.in/practice/medium-passages",
+      "sourceId": "aptidude-practice",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape topic link metadata only; use as practice coverage leads after review",
+      "publishPolicy": "practice links can seed topic drills, not SSC PYQ claims",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "aptidude",
+        "practice",
+        "topic-drill"
+      ],
+      "discoveredAt": "2026-06-28T19:34:54.451286+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "aptidude-practice-mensuration-3d-aptitude-questions-f41f313d5101",
+      "title": "Mensuration 3D aptitude questions",
+      "url": "https://aptidude.in/practice/mensuration-3d",
+      "sourceId": "aptidude-practice",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape topic link metadata only; use as practice coverage leads after review",
+      "publishPolicy": "practice links can seed topic drills, not SSC PYQ claims",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "aptidude",
+        "practice",
+        "topic-drill"
+      ],
+      "discoveredAt": "2026-06-28T19:34:54.451307+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-english-set-12-b31ed9f97012",
+      "title": "Model Questions for SSC CGL TIER-1 (English) Set - 12",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions/english-set-12",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-12",
+        "english",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.375361+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-english-set-16-1c57b3f9129e",
+      "title": "Model Questions for SSC CGL TIER-1 (English) Set - 16",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions/english-set-16",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-16",
+        "english",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.375425+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-english-set-20-3289acb62aae",
+      "title": "Model Questions for SSC CGL TIER-1 (English) Set - 20",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions/english-set-20",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-20",
+        "english",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.375565+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-english-set-24-2edaa4c2e8b8",
+      "title": "Model Questions for SSC CGL TIER-1 (English) Set - 24",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions#listed-set-24",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-24",
+        "english",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.376446+00:00",
+      "snippet": "SSCPortal model-question set listed without a direct link; use the page-level source before extraction review."
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-english-set-28-f7fefcb0373e",
+      "title": "Model Questions for SSC CGL TIER-1 (English) Set - 28",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions#listed-set-28",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-28",
+        "english",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.376532+00:00",
+      "snippet": "SSCPortal model-question set listed without a direct link; use the page-level source before extraction review."
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-english-set-32-980b99e77c04",
+      "title": "Model Questions for SSC CGL TIER-1 (English) Set - 32",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions#listed-set-32",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-32",
+        "english",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.376609+00:00",
+      "snippet": "SSCPortal model-question set listed without a direct link; use the page-level source before extraction review."
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-english-set-4-61fb6a18d784",
+      "title": "Model Questions for SSC CGL TIER-1 (English) Set - 4",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions/english-set-4",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-4",
+        "english",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.375241+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-english-set-8-b1e8e1c6f50e",
+      "title": "Model Questions for SSC CGL TIER-1 (English) Set - 8",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions/english-set-8",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-8",
+        "english",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.375302+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-general-knowledge-s-d19441ad741b",
+      "title": "Model Questions for SSC CGL TIER-1 (General Knowledge) Set - 10",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions/general-knowledge-set-10",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-10",
+        "general-knowledge",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.375331+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-general-knowledge-s-dab05aab0dff",
+      "title": "Model Questions for SSC CGL TIER-1 (General Knowledge) Set - 14",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions/general-knowledge-set-14",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-14",
+        "general-knowledge",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.375396+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-general-knowledge-s-fcaad2cc8c36",
+      "title": "Model Questions for SSC CGL TIER-1 (General Knowledge) Set - 18",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions/general-knowledge-set-18",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-18",
+        "general-knowledge",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.375522+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-general-knowledge-s-e52bac4753a7",
+      "title": "Model Questions for SSC CGL TIER-1 (General Knowledge) Set - 2",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions/general-knowledge-set-2",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-2",
+        "general-knowledge",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.375206+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-general-knowledge-s-8dd5b6d8a43c",
+      "title": "Model Questions for SSC CGL TIER-1 (General Knowledge) Set - 22",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions/general-knowledge-set-22",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-22",
+        "general-knowledge",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.375597+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-general-knowledge-s-70d94ced6e5d",
+      "title": "Model Questions for SSC CGL TIER-1 (General Knowledge) Set - 26",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions#listed-set-26",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-26",
+        "general-knowledge",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.376491+00:00",
+      "snippet": "SSCPortal model-question set listed without a direct link; use the page-level source before extraction review."
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-general-knowledge-s-1a9e6f214319",
+      "title": "Model Questions for SSC CGL TIER-1 (General Knowledge) Set - 30",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions#listed-set-30",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-30",
+        "general-knowledge",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.376571+00:00",
+      "snippet": "SSCPortal model-question set listed without a direct link; use the page-level source before extraction review."
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-general-knowledge-s-1035cc518f80",
+      "title": "Model Questions for SSC CGL TIER-1 (General Knowledge) Set - 6",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions/general-knowledge-set-6",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-6",
+        "general-knowledge",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.375272+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-maths-set-11-5a944db2f736",
+      "title": "Model Questions for SSC CGL TIER-1 (Maths) Set - 11",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions/maths-set-11",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-11",
+        "maths",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.375346+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-maths-set-15-6397fdede567",
+      "title": "Model Questions for SSC CGL TIER-1 (Maths) Set - 15",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions/maths-set-15",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-15",
+        "maths",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.375410+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-maths-set-19-e28f859fa123",
+      "title": "Model Questions for SSC CGL TIER-1 (Maths) Set - 19",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions/maths-set-19",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-19",
+        "maths",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.375547+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-maths-set-23-307fd2015c12",
+      "title": "Model Questions for SSC CGL TIER-1 (Maths) Set - 23",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions#listed-set-23",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-23",
+        "maths",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.376413+00:00",
+      "snippet": "SSCPortal model-question set listed without a direct link; use the page-level source before extraction review."
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-maths-set-27-4cc20eb43ee6",
+      "title": "Model Questions for SSC CGL TIER-1 (Maths) Set - 27",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions#listed-set-27",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-27",
+        "maths",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.376512+00:00",
+      "snippet": "SSCPortal model-question set listed without a direct link; use the page-level source before extraction review."
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-maths-set-3-4f13401d1024",
+      "title": "Model Questions for SSC CGL TIER-1 (Maths) Set - 3",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions/maths-set-3",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-3",
+        "maths",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.375224+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-maths-set-31-86534ce71436",
+      "title": "Model Questions for SSC CGL TIER-1 (Maths) Set - 31",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions#listed-set-31",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-31",
+        "maths",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.376590+00:00",
+      "snippet": "SSCPortal model-question set listed without a direct link; use the page-level source before extraction review."
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-maths-set-7-1b2555cb1b03",
+      "title": "Model Questions for SSC CGL TIER-1 (Maths) Set - 7",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions/maths-set-7",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-7",
+        "maths",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.375287+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-reasoning-set-1-680e883c0f8b",
+      "title": "Model Questions for SSC CGL TIER-1 (Reasoning) Set - 1",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions/reasoning-set-1",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-1",
+        "reasoning",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.375170+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-reasoning-set-13-c3ff00f21477",
+      "title": "Model Questions for SSC CGL TIER-1 (Reasoning) Set - 13",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions/reasoning-set-13",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-13",
+        "reasoning",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.375377+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-reasoning-set-17-eecb2ef235a0",
+      "title": "Model Questions for SSC CGL TIER-1 (Reasoning) Set - 17",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions/reasoning-set-17",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-17",
+        "reasoning",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.375439+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-reasoning-set-21-63c540e78a5a",
+      "title": "Model Questions for SSC CGL TIER-1 (Reasoning) Set - 21",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions/reasoning-set-21",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-21",
+        "reasoning",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.375580+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-reasoning-set-25-c3023f3f56f9",
+      "title": "Model Questions for SSC CGL TIER-1 (Reasoning) Set - 25",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions#listed-set-25",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-25",
+        "reasoning",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.376470+00:00",
+      "snippet": "SSCPortal model-question set listed without a direct link; use the page-level source before extraction review."
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-reasoning-set-29-370e3fb2f214",
+      "title": "Model Questions for SSC CGL TIER-1 (Reasoning) Set - 29",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions#listed-set-29",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-29",
+        "reasoning",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.376551+00:00",
+      "snippet": "SSCPortal model-question set listed without a direct link; use the page-level source before extraction review."
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-reasoning-set-5-4f3d39817a3f",
+      "title": "Model Questions for SSC CGL TIER-1 (Reasoning) Set - 5",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions/reasoning-set-5",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-5",
+        "reasoning",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.375256+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "sscportal-cgl-model-questions-model-questions-for-ssc-cgl-tier-1-reasoning-set-9-f226bfc9895c",
+      "title": "Model Questions for SSC CGL TIER-1 (Reasoning) Set - 9",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions/reasoning-set-9",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1",
+        "set-9",
+        "reasoning",
+        "model-practice-lead"
+      ],
+      "discoveredAt": "2026-06-28T19:34:49.375316+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "aptidude-practice-others-mixed-genres-aptitude-questions-205639318d23",
+      "title": "Others/Mixed Genres aptitude questions",
+      "url": "https://aptidude.in/practice/othersmixed-genres",
+      "sourceId": "aptidude-practice",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape topic link metadata only; use as practice coverage leads after review",
+      "publishPolicy": "practice links can seed topic drills, not SSC PYQ claims",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "aptidude",
+        "practice",
+        "topic-drill"
+      ],
+      "discoveredAt": "2026-06-28T19:34:54.451220+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "aptidude-practice-others-mixed-type-passages-aptitude-questions-9b4566250338",
+      "title": "Others/Mixed-Type Passages aptitude questions",
+      "url": "https://aptidude.in/practice/othersmixed-type-passages",
+      "sourceId": "aptidude-practice",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape topic link metadata only; use as practice coverage leads after review",
+      "publishPolicy": "practice links can seed topic drills, not SSC PYQ claims",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "aptidude",
+        "practice",
+        "topic-drill"
+      ],
+      "discoveredAt": "2026-06-28T19:34:54.451104+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "aptidude-practice-percentages-aptitude-questions-50bdde6a2a62",
+      "title": "Percentages aptitude questions",
+      "url": "https://aptidude.in/practice/percentages",
+      "sourceId": "aptidude-practice",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape topic link metadata only; use as practice coverage leads after review",
+      "publishPolicy": "practice links can seed topic drills, not SSC PYQ claims",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "aptidude",
+        "practice",
+        "topic-drill"
+      ],
+      "discoveredAt": "2026-06-28T19:34:54.451370+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "aptidude-practice-polynomials-aptitude-questions-8105cadbdf2c",
+      "title": "Polynomials aptitude questions",
+      "url": "https://aptidude.in/practice/polynomials",
+      "sourceId": "aptidude-practice",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape topic link metadata only; use as practice coverage leads after review",
+      "publishPolicy": "practice links can seed topic drills, not SSC PYQ claims",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "aptidude",
+        "practice",
+        "topic-drill"
+      ],
+      "discoveredAt": "2026-06-28T19:34:54.451264+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "aptidude-practice-profit-and-loss-aptitude-questions-f3793e4f7fbf",
+      "title": "Profit and Loss aptitude questions",
+      "url": "https://aptidude.in/practice/profit-and-loss",
+      "sourceId": "aptidude-practice",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape topic link metadata only; use as practice coverage leads after review",
+      "publishPolicy": "practice links can seed topic drills, not SSC PYQ claims",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "aptidude",
+        "practice",
+        "topic-drill"
+      ],
+      "discoveredAt": "2026-06-28T19:34:54.451391+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "aptidude-practice-set-theory-aptitude-questions-0cd20a3860a2",
+      "title": "Set Theory aptitude questions",
+      "url": "https://aptidude.in/practice/set-theory",
+      "sourceId": "aptidude-practice",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape topic link metadata only; use as practice coverage leads after review",
+      "publishPolicy": "practice links can seed topic drills, not SSC PYQ claims",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "aptidude",
+        "practice",
+        "topic-drill"
+      ],
+      "discoveredAt": "2026-06-28T19:34:54.451328+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "aptidude-practice-simple-and-compound-interest-aptitude-questions-6c5d0fbb5342",
+      "title": "Simple and Compound Interest aptitude questions",
+      "url": "https://aptidude.in/practice/simple-and-compound-interest",
+      "sourceId": "aptidude-practice",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape topic link metadata only; use as practice coverage leads after review",
+      "publishPolicy": "practice links can seed topic drills, not SSC PYQ claims",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "aptidude",
+        "practice",
+        "topic-drill"
+      ],
+      "discoveredAt": "2026-06-28T19:34:54.451011+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "sscportal-cgl-model-questions-page",
+      "title": "SSC Portal CGL Tier-1 model questions",
+      "url": "https://sscportal.in/cgl/tier-1/model-questions",
+      "sourceId": "sscportal-cgl-model-questions",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape public link metadata only; copy no page text until rights and attribution review",
+      "publishPolicy": "model-question links can seed original practice review, not ranked PYQ tests",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "sscportal",
+        "model-question",
+        "practice",
+        "tier-1"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889484+00:00",
+      "snippet": "User-supplied model-question source; scrape only public link metadata before review."
+    },
+    {
+      "id": "aptidude-practice-surds-and-indices-aptitude-questions-92b2d1a7d191",
+      "title": "Surds and Indices aptitude questions",
+      "url": "https://aptidude.in/practice/surds-and-indices",
+      "sourceId": "aptidude-practice",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape topic link metadata only; use as practice coverage leads after review",
+      "publishPolicy": "practice links can seed topic drills, not SSC PYQ claims",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "aptidude",
+        "practice",
+        "topic-drill"
+      ],
+      "discoveredAt": "2026-06-28T19:34:54.451034+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "aptidude-practice-time-and-work-aptitude-questions-f6dcc92fc2ce",
+      "title": "Time and Work aptitude questions",
+      "url": "https://aptidude.in/practice/time-and-work",
+      "sourceId": "aptidude-practice",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape topic link metadata only; use as practice coverage leads after review",
+      "publishPolicy": "practice links can seed topic drills, not SSC PYQ claims",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "aptidude",
+        "practice",
+        "topic-drill"
+      ],
+      "discoveredAt": "2026-06-28T19:34:54.451413+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "aptidude-practice-verbal-analogy-aptitude-questions-fed25201643a",
+      "title": "Verbal Analogy aptitude questions",
+      "url": "https://aptidude.in/practice/verbal-analogy-1",
+      "sourceId": "aptidude-practice",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape topic link metadata only; use as practice coverage leads after review",
+      "publishPolicy": "practice links can seed topic drills, not SSC PYQ claims",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "aptidude",
+        "practice",
+        "topic-drill"
+      ],
+      "discoveredAt": "2026-06-28T19:34:54.451057+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "aptidude-practice-vocabulary-in-context-aptitude-questions-82f5e6007c8a",
+      "title": "Vocabulary in Context aptitude questions",
+      "url": "https://aptidude.in/practice/vocabulary-in-context",
+      "sourceId": "aptidude-practice",
+      "sourceType": "original_practice",
+      "acquisitionPolicy": "scrape topic link metadata only; use as practice coverage leads after review",
+      "publishPolicy": "practice links can seed topic drills, not SSC PYQ claims",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "aptidude",
+        "practice",
+        "topic-drill"
+      ],
+      "discoveredAt": "2026-06-28T19:34:54.451173+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "pw-ssc-cgl-previous-year-papers-33-ssc-cgl-tier-i-previous-year-question-papers-book-61f33f2e9034",
+      "title": "33 SSC CGL Tier I Previous Year Question Papers Book",
+      "url": "https://store.pw.live/products/33-ssc-cgl-tier-1-previous-year-paper-2026",
+      "sourceId": "pw-ssc-cgl-previous-year-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine files only after rights review",
+      "publishPolicy": "do not copy PW article or PDF text into public content; use as source leads until curated",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "physicswallah",
+        "pw",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:11.826404+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "pw-ssc-cgl-previous-year-papers-33-ssc-cgl-tier-i-previous-year-question-papers-book-i-0899b667af8d",
+      "title": "33 SSC CGL Tier I Previous Year Question Papers Book in Hindi",
+      "url": "https://store.pw.live/products/33-ssc-cgl-tier-1-previous-year-paper-ssc-2026",
+      "sourceId": "pw-ssc-cgl-previous-year-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine files only after rights review",
+      "publishPolicy": "do not copy PW article or PDF text into public content; use as source leads until curated",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "physicswallah",
+        "pw",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:11.826480+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-pdf-ssc-cgl-2022-tier-1-december-6-2022-shift-1-questi-2f40aa4faba5",
+      "title": "[PDF] SSC CGL 2022 TIER 1 December 6, 2022 SHIFT 1 QUESTION PAPER",
+      "url": "https://cdn-images.prepp.in/public/image/4366f8e6d76002f767d4d885936ce853.pdf",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-google"
+      ],
+      "discoveredAt": "2026-06-28T19:35:15.619176+00:00",
+      "snippet": "SSC CGL 2022 TIER 1 December 6, 2022 SHIFT 1 QUESTION PAPER. Page 2. Page 3. Page 4. Page 5. Page 6. Page 7. Page 8. Page 9. Page 10. Page 11. Page 12 ..."
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-pdf-ssc-cgl-2024-tier-i-previous-year-paper-10-sep-202-f4d64040a543",
+      "title": "[PDF] SSC CGL 2024 (Tier-I) Previous Year Paper (10-Sep-2024) (Shift 3)",
+      "url": "https://cdn-images.prepp.in/public/image/SSC_CGL_2024_Tier_1_Shift_3_Question_Paper_with_Answer_Key_PDF_Sept_10_2024_1_42_bd924865aea06117dfb97f872a422198.pdf",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-google",
+        "engine-startpage"
+      ],
+      "discoveredAt": "2026-06-28T19:35:15.618479+00:00",
+      "snippet": "1. Test will auto submit when the Time is up. 2. The Test comprises of multiple choice questions (MCQ) with one or more correct."
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-pdf-ssc-cgl-tier-i-testbook-ba312613ba98",
+      "title": "[PDF] SSC CGL Tier-I - Testbook",
+      "url": "https://cdn.testbook.com/1771252760054-SSC%20CGL%202025%20Tier-I%20Similar%20Paper%20%28Held%20On_%2012%20Sept%2C%202025%20Shift%202%29.pdf/1771252791.pdf",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-google",
+        "engine-startpage"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889085+00:00",
+      "snippet": "Correct Option - 1. उन मान्यताओं की पहचान कर जो कथन के मान्य होने के िलए आवश्यक ह। कथन: नवीकरणीय ऊजा ोतों का िवकास सतत िवकास के िलए महत्वपूण है, लेिकन उच्च ापना लागत एक चुनौती बनी हुई. है।"
+    },
+    {
+      "id": "adda247-ssc-cgl-previous-year-paper-page",
+      "title": "Adda247 SSC CGL previous year question paper",
+      "url": "https://www.adda247.com/jobs/ssc-cgl-previous-year-question-paper/",
+      "sourceId": "adda247-ssc-cgl-previous-year-paper",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine direct PDFs only after rights review",
+      "publishPolicy": "do not copy coaching-bank PDF text into public content; use only as provenance-visible review leads",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "adda247",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889484+00:00",
+      "snippet": "Search-discovered PYQ collection; metadata-only until legal/provenance review."
+    },
+    {
+      "id": "arihant-ssc-cgl-pyq-practice-reference",
+      "title": "Arihant SSC CGL previous papers and practice references",
+      "url": "https://examwitharihant.com/exam/ssc-cgl-t-1-t-2-online-exam/pyqs/",
+      "sourceId": "book-reference-lanes",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public metadata and links only; login-gated or copyrighted content stays out of import",
+      "publishPolicy": "use as source leads and taxonomy only until rights/provenance gates clear",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "arihant",
+        "pyq",
+        "practice",
+        "book-reference"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889484+00:00",
+      "snippet": "Reference lane for model papers and previous-paper lead discovery."
+    },
+    {
+      "id": "careerpower-ssc-cgl-previous-year-paper-page",
+      "title": "CareerPower SSC CGL previous year question paper",
+      "url": "https://www.careerpower.in/ssc-cgl-previous-year-question-paper.html",
+      "sourceId": "careerpower-ssc-cgl-previous-year-paper",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine direct PDFs only after rights review",
+      "publishPolicy": "do not copy coaching-bank PDF text into public content; use only as provenance-visible review leads",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "careerpower",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889484+00:00",
+      "snippet": "Search-discovered PYQ collection; metadata-only until legal/provenance review."
+    },
+    {
+      "id": "cracku-ssc-cgl-previous-papers-page",
+      "title": "Cracku SSC CGL previous papers",
+      "url": "https://cracku.in/ssc-cgl-previous-papers",
+      "sourceId": "cracku-ssc-cgl-previous-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-paper link metadata only; import files only after rights, answer-key, and provenance review",
+      "publishPolicy": "do not copy solved-paper text into ranked practice from this source without a curated promotion record",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "cracku",
+        "pyq",
+        "previous-paper",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889484+00:00",
+      "snippet": "Search-discovered PYQ collection; metadata-only until legal/provenance review."
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-download-ssc-cgl-tier-1-exam-papers-and-answer-keys-ss-7e59663feb49",
+      "title": "Download SSC CGL [Tier-1] Exam : Papers and Answer Keys - SSC PORTAL",
+      "url": "https://sscportal.in/cgl/tier-1/papers",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-duckduckgo"
+      ],
+      "discoveredAt": "2026-06-28T19:35:15.619265+00:00",
+      "snippet": "SSC: Combined Graduate Level (Tier-1) Exam (Previous Year Papers) (Free E-book) SSC CGL (Tier-1) 5 Year Exam Papers हिंदी माध्यम में पेपर डाउनलोड करने के लिए यहां क्लिक करें NEW! Submit your Admit Card & Get Free Exam Study Materials & Help"
+    },
+    {
+      "id": "drishti-ssc-cgl-pyq-pdf-page",
+      "title": "Drishti SSC CGL PYQ PDF page",
+      "url": "https://www.sscdrishti.com/pyq-pdf/cgl",
+      "sourceId": "drishti-ssc-cgl-pyq-pdf",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public PDF link metadata; download only after rights, provenance, OCR, and answer-key review",
+      "publishPolicy": "do not copy unreviewed PDFs into ranked practice; keep every Drishti lead unverified until review",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "drishti",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889484+00:00",
+      "snippet": "User-supplied PYQ PDF page; candidate links stay unverified until review."
+    },
+    {
+      "id": "archive-ssc-cgl-reference-search",
+      "title": "Internet Archive SSC CGL reference search",
+      "url": "https://archive.org/search?query=SSC%20CGL",
+      "sourceId": "internet-archive-ssc-cgl-reference",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "metadata first; download only public files after license and provenance review",
+      "publishPolicy": "do not copy unreviewed scans into ranked practice",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "archive",
+        "pdf",
+        "book",
+        "paper"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889484+00:00",
+      "snippet": "Public archive candidates still require license, OCR, and answer-key review."
+    },
+    {
+      "id": "archive-ssc-cgl-kiran-ssc-cgl-exams-question-bank-solved-papers-of-pre-9df2f8d74e48",
+      "title": "Kiran SSC CGL Exams Question Bank Solved Papers Of Previous Years",
+      "url": "https://archive.org/details/kiran-ssc-cgl-exams-question-bank-solved-papers-of-previous-years",
+      "sourceId": "internet-archive-ssc-cgl-reference",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "metadata first; inspect license, provenance, files, OCR quality, and answer keys before download or import",
+      "publishPolicy": "do not copy unreviewed scans into ranked practice; keep provenance and rights review visible",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "archive",
+        "archive-api",
+        "web-pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:34:36.146343+00:00",
+      "snippet": "Kiran Ssc CGL qus bank"
+    },
+    {
+      "id": "oliveboard-ssc-cgl-tier-1-pyps-page",
+      "title": "Oliveboard SSC CGL Tier-1 PYP PDFs",
+      "url": "https://www.oliveboard.in/blog/ssc-cgl-tier-1-pyps/",
+      "sourceId": "oliveboard-ssc-cgl-tier-1-pyps",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public link/PDF metadata only; download into quarantine only after rights and provenance review",
+      "publishPolicy": "do not copy coaching-bank PDF text into ranked practice; use as source leads until agent-reviewed and provenance-cleared",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "oliveboard",
+        "pyq",
+        "pdf",
+        "tier-1",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889484+00:00",
+      "snippet": "Search-discovered PYQ collection; metadata-only until legal/provenance review."
+    },
+    {
+      "id": "pw-ssc-cgl-previous-year-papers-page",
+      "title": "PhysicsWallah SSC CGL previous year papers",
+      "url": "https://store.pw.live/blogs/ssc-exams/ssc-cgl-previous-year-question-papers-pdfs",
+      "sourceId": "pw-ssc-cgl-previous-year-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine files only after rights review",
+      "publishPolicy": "do not copy PW article or PDF text into public content; use as source leads until curated",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "physicswallah",
+        "pw",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889484+00:00",
+      "snippet": "Search-discovered PYQ collection; metadata-only until legal/provenance review."
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-previous-year-papers-ssc-cgl-oswaal360-e325e8424e52",
+      "title": "Previous Year Papers - SSC CGL - oswaal360",
+      "url": "https://www.oswaal360.com/pages/previous-year-papers-ssc-cgl",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-google",
+        "engine-startpage"
+      ],
+      "discoveredAt": "2026-06-28T19:35:15.618659+00:00",
+      "snippet": "Practice SSC CGL previous year paper with solutions in free PDF. Understand exam pattern, improve speed & confidence for government job tests."
+    },
+    {
+      "id": "pw-ssc-cgl-previous-year-papers-pw-33-ssc-cgl-pyq-combined-graduate-level-tier-1-hindi-f4b5067227c4",
+      "title": "PW 33 SSC CGL PYQ (Combined Graduate Level) Tier 1 (Hindi) Previous Year Solved Papers (2025-2018) with 5 Online Mock Tests For 2026-2027 Exam | Yearwise PYQs | Fully Solved ₹260 (",
+      "url": "https://store.pw.live/products/33-ssc-cgl-tier-1-previous-year-paper-ssc-2026/?source=blog-page",
+      "sourceId": "pw-ssc-cgl-previous-year-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine files only after rights review",
+      "publishPolicy": "do not copy PW article or PDF text into public content; use as source leads until curated",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "physicswallah",
+        "pw",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:11.826649+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "pw-ssc-cgl-previous-year-papers-pw-33-ssc-cgl-pyq-combined-graduate-level-tier-1-previ-b9097de203d8",
+      "title": "PW 33 SSC CGL PYQ (Combined Graduate Level) Tier 1 Previous Year Solved Papers (2025-2018) with 5 Online Mock Tests For 2026-27 Exam | Yearwise PYQs | Fully Solved | English Editio",
+      "url": "https://store.pw.live/products/33-ssc-cgl-tier-1-previous-year-paper-2026/?source=blog-page",
+      "sourceId": "pw-ssc-cgl-previous-year-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine files only after rights review",
+      "publishPolicy": "do not copy PW article or PDF text into public content; use as source leads until curated",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "physicswallah",
+        "pw",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:11.826718+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "careerpower-ssc-cgl-previous-year-paper-question-paper-pdf-1a5e7faa4bc5",
+      "title": "Question Paper PDF",
+      "url": "https://www.careerpower.in/blog/wp-content/uploads/2026/06/04122058/SSC-CGL-12-Sep-2025-S1-English.pdf",
+      "sourceId": "careerpower-ssc-cgl-previous-year-paper",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine direct PDFs only after rights review",
+      "publishPolicy": "do not copy coaching-bank PDF text into public content; use only as provenance-visible review leads",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "careerpower",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:06.468014+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "careerpower-ssc-cgl-previous-year-paper-question-paper-pdf-15e6ebc8fbec",
+      "title": "Question Paper PDF",
+      "url": "https://www.careerpower.in/blog/wp-content/uploads/2026/06/04122101/SSC-CGL-12-Sep-2025-S2-English.pdf",
+      "sourceId": "careerpower-ssc-cgl-previous-year-paper",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine direct PDFs only after rights review",
+      "publishPolicy": "do not copy coaching-bank PDF text into public content; use only as provenance-visible review leads",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "careerpower",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:06.468041+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "careerpower-ssc-cgl-previous-year-paper-question-paper-pdf-1f9f716338f7",
+      "title": "Question Paper PDF",
+      "url": "https://www.careerpower.in/blog/wp-content/uploads/2026/06/04122103/SSC-CGL-Held-on-12-Sep-2025-S3-English.pdf",
+      "sourceId": "careerpower-ssc-cgl-previous-year-paper",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine direct PDFs only after rights review",
+      "publishPolicy": "do not copy coaching-bank PDF text into public content; use only as provenance-visible review leads",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "careerpower",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:06.468068+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "careerpower-ssc-cgl-previous-year-paper-question-paper-pdf-05eacaebe13a",
+      "title": "Question Paper PDF",
+      "url": "https://www.careerpower.in/blog/wp-content/uploads/2026/05/26152638/SSC-CGL-T-I-Similar-Paper-Held-on-13-Sep-2025-S1-English.pdf",
+      "sourceId": "careerpower-ssc-cgl-previous-year-paper",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine direct PDFs only after rights review",
+      "publishPolicy": "do not copy coaching-bank PDF text into public content; use only as provenance-visible review leads",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "careerpower",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:06.468094+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "careerpower-ssc-cgl-previous-year-paper-question-paper-pdf-c2653d8a0998",
+      "title": "Question Paper PDF",
+      "url": "https://www.careerpower.in/blog/wp-content/uploads/2026/05/26152640/SSC-CGL-T-I-Similar-Paper-Held-on-13-Sep-2025-S2-English.pdf",
+      "sourceId": "careerpower-ssc-cgl-previous-year-paper",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine direct PDFs only after rights review",
+      "publishPolicy": "do not copy coaching-bank PDF text into public content; use only as provenance-visible review leads",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "careerpower",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:06.468119+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "careerpower-ssc-cgl-previous-year-paper-question-paper-pdf-8030ab55c543",
+      "title": "Question Paper PDF",
+      "url": "https://www.careerpower.in/blog/wp-content/uploads/2026/05/26152642/SSC-CGL-T-I-Similar-Paper-Held-on-13-Sep-2025-S3-English.pdf",
+      "sourceId": "careerpower-ssc-cgl-previous-year-paper",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine direct PDFs only after rights review",
+      "publishPolicy": "do not copy coaching-bank PDF text into public content; use only as provenance-visible review leads",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "careerpower",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:06.468142+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "careerpower-ssc-cgl-previous-year-paper-question-paper-pdf-d6a444cdb6ec",
+      "title": "Question Paper PDF",
+      "url": "https://www.careerpower.in/blog/wp-content/uploads/2026/05/26152644/SSC-CGL-T-I-Similar-Paper-Held-on-14-Sep-2025-S1-English.pdf",
+      "sourceId": "careerpower-ssc-cgl-previous-year-paper",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine direct PDFs only after rights review",
+      "publishPolicy": "do not copy coaching-bank PDF text into public content; use only as provenance-visible review leads",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "careerpower",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:06.468166+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "careerpower-ssc-cgl-previous-year-paper-question-paper-pdf-6193f3bab371",
+      "title": "Question Paper PDF",
+      "url": "https://www.careerpower.in/blog/wp-content/uploads/2026/05/26152646/SSC-CGL-T-I-Similar-Paper-Held-on-14-Sep-2025-S2-English.pdf",
+      "sourceId": "careerpower-ssc-cgl-previous-year-paper",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine direct PDFs only after rights review",
+      "publishPolicy": "do not copy coaching-bank PDF text into public content; use only as provenance-visible review leads",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "careerpower",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:06.468189+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "careerpower-ssc-cgl-previous-year-paper-question-paper-pdf-35d61890ad00",
+      "title": "Question Paper PDF",
+      "url": "https://www.careerpower.in/blog/wp-content/uploads/2026/05/26152648/SSC-CGL-T-I-Similar-Paper-Held-on-14-Sep-2025-S3-English.pdf",
+      "sourceId": "careerpower-ssc-cgl-previous-year-paper",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine direct PDFs only after rights review",
+      "publishPolicy": "do not copy coaching-bank PDF text into public content; use only as provenance-visible review leads",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "careerpower",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:06.468212+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "careerpower-ssc-cgl-previous-year-paper-question-paper-pdf-a2ab8401f301",
+      "title": "Question Paper PDF",
+      "url": "https://www.careerpower.in/blog/wp-content/uploads/2026/05/26152651/SSC-CGL-T-I-Similar-Paper-Held-on-15-Sep-2025-S1-English.pdf",
+      "sourceId": "careerpower-ssc-cgl-previous-year-paper",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine direct PDFs only after rights review",
+      "publishPolicy": "do not copy coaching-bank PDF text into public content; use only as provenance-visible review leads",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "careerpower",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:06.468236+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "careerpower-ssc-cgl-previous-year-paper-question-paper-pdf-5b1f71e881b6",
+      "title": "Question Paper PDF",
+      "url": "https://www.careerpower.in/blog/wp-content/uploads/2026/05/26152654/SSC-CGL-T-I-Similar-Paper-Held-on-15-Sep-2025-S2-English.pdf",
+      "sourceId": "careerpower-ssc-cgl-previous-year-paper",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine direct PDFs only after rights review",
+      "publishPolicy": "do not copy coaching-bank PDF text into public content; use only as provenance-visible review leads",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "careerpower",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:06.468258+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "careerpower-ssc-cgl-previous-year-paper-question-paper-pdf-6fadf9bd9ada",
+      "title": "Question Paper PDF",
+      "url": "https://www.careerpower.in/blog/wp-content/uploads/2026/05/26152657/SSC-CGL-T-I-Similar-Paper-Held-on-15-Sep-2025-S3-English.pdf",
+      "sourceId": "careerpower-ssc-cgl-previous-year-paper",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine direct PDFs only after rights review",
+      "publishPolicy": "do not copy coaching-bank PDF text into public content; use only as provenance-visible review leads",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "careerpower",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:06.468281+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "careerpower-ssc-cgl-previous-year-paper-question-paper-pdf-75b592ce18b9",
+      "title": "Question Paper PDF",
+      "url": "https://www.careerpower.in/blog/wp-content/uploads/2026/05/26152659/SSC-CGL-T-I-Similar-Paper-Held-on-16-Sep-2025-S1-English.pdf",
+      "sourceId": "careerpower-ssc-cgl-previous-year-paper",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine direct PDFs only after rights review",
+      "publishPolicy": "do not copy coaching-bank PDF text into public content; use only as provenance-visible review leads",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "careerpower",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:06.468304+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "careerpower-ssc-cgl-previous-year-paper-question-paper-pdf-2f60a4ad043e",
+      "title": "Question Paper PDF",
+      "url": "https://www.careerpower.in/blog/wp-content/uploads/2026/05/26152701/SSC-CGL-T-I-Similar-Paper-Held-on-16-Sep-2025-S2-English.pdf",
+      "sourceId": "careerpower-ssc-cgl-previous-year-paper",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine direct PDFs only after rights review",
+      "publishPolicy": "do not copy coaching-bank PDF text into public content; use only as provenance-visible review leads",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "careerpower",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:06.468413+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-2025-question-papers-pdf-all-shifts-download-b711219eccce",
+      "title": "SSC CGL 2025 Question Papers PDF (All Shifts) Download",
+      "url": "https://www.governmentdailyjobs.com/2026/04/ssc-cgl-2025-question-papers-pdf-all-shifts.html",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-duckduckgo"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889302+00:00",
+      "snippet": "Download SSC CGL 2025 Question Papers PDF for all shifts. Get Tier 1 & Tier 2 previous papers with answers to boost exam preparation."
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-2025-tier-1-question-paper-with-answer-key-dow-594c0c97c36f",
+      "title": "SSC CGL 2025 Tier 1 Question Paper with Answer Key; Download PDF - Prepp",
+      "url": "https://prepp.in/ssc-cgl-exam/question-paper-2025",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-duckduckgo"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889162+00:00",
+      "snippet": "SSC CGL 2025 Tier 1 Question Paper with Answer Key is available for download in PDF format. SSC CGL 2025 Tier 1 Computer-Based Exam, conducted in multiple shifts, consists of objective-type questions. The exam is conducted from Sep 12 to Se"
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-2025-tier-1-question-papers-shift-wise-pyps-do-e95863e741b7",
+      "title": "SSC CGL 2025 Tier 1 Question Papers, Shift-Wise PYPs, Download PDFs",
+      "url": "https://statenaukri.com/2025/12/08/ssc-cgl-2025-tier-1-question-papers-shift-wise-pyps-download-pdfs/",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-duckduckgo"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889329+00:00",
+      "snippet": "SSC CGL 2024 Tier 1 PYPs PDF Below are the shift-wise SSC CGL 2024 Tier 1 PYPs PDFs conducted in September 2024 for your practice and exam preparation."
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-2025-tier-1-all-shift-papers-download-pdf-in-1-4516eb236511",
+      "title": "SSC CGL 2025 Tier-1 All Shift Papers | Download PDF in 1 Click",
+      "url": "https://www.learntheta.com/ssc-cgl-previous-year-question-paper-tier1-2025-all-papers/",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-duckduckgo"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889275+00:00",
+      "snippet": "Download single pdf for cgl 2025 tier 1 papers with one click and practice for upcoming cgl. No watermark, No sign up!"
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-all-46-shifts-question-paper-2025-with-answer--ee90d19cda09",
+      "title": "SSC CGL All 46 Shifts Question Paper 2025 with Answer Key",
+      "url": "https://xamtoppr.com/blog/details/ssc-cgl-all-46-shifts-question-paper-2025-tier-1-pdf",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-startpage"
+      ],
+      "discoveredAt": "2026-06-28T19:35:15.619293+00:00",
+      "snippet": "Below, you will find SSC CGL 2025 Tier 1 question papers PDF, available shift-wise in both English and Hindi mediums. SSC CGL 2025 Tier 1 ..."
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-previous-papers-with-solutions-pdf-download-no-446b38490eb5",
+      "title": "SSC CGL Previous Papers With Solutions PDF, Download Now",
+      "url": "https://cracku.in/ssc-cgl-previous-papers/",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-brave"
+      ],
+      "discoveredAt": "2026-06-28T19:35:15.618803+00:00",
+      "snippet": "Download SSC CGL Previous year question papers PDFs. Check out all the SSC CGL tier 1 question papers from 2010 to 2023 are available with answer key."
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-previous-year-papers-pdf-scribd-7785e9c39304",
+      "title": "SSC CGL Previous Year Papers PDF - Scribd",
+      "url": "https://www.scribd.com/document/621604658/2022-09-07-0-11374688868857841",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-google",
+        "engine-startpage"
+      ],
+      "discoveredAt": "2026-06-28T19:35:15.618955+00:00",
+      "snippet": "Rating 5.0(1)1) SSC CGL 2018 to 2021 Tier-1 & Tier-2 question papers. 2) SSC CHSL 2019 to 2021 Tier-1 question papers. 3) SSC MTS 2020 & 2021 Tier-1 question papers. 4 ..."
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-previous-year-papers-pdf-2026-tier-1-tier-2-wi-0452eb1b5769",
+      "title": "SSC CGL Previous Year Papers PDF 2026 – Tier 1 & Tier 2 with Solutions - Beincareer",
+      "url": "https://beincareer.com/ssc-cgl-previous-papers-pdf/",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-brave"
+      ],
+      "discoveredAt": "2026-06-28T19:35:15.618897+00:00",
+      "snippet": "SSC CGL previous papers 2015–2024 PDF. Tier 1 & Tier 2 question papers with solutions, cut-off marks, exam pattern & preparation tips."
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-previous-year-papers-examvictor-184a4cecdb71",
+      "title": "SSC CGL Previous Year Papers | ExamVictor",
+      "url": "https://examvictor.com/online-course-for-ssc-cgl/ssc-cgl-previous-year-papers/",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-brave",
+        "engine-google",
+        "engine-startpage"
+      ],
+      "discoveredAt": "2026-06-28T19:35:15.618508+00:00",
+      "snippet": "SSC CGL previous year papers with answers. Free to view. You can also download the pdf of the papers and solution answer key. ... Find Out More! SSC CGL Tier 1 ..."
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-previous-year-question-paper-pdf-2025-tier-i-a-3d3294bcefb5",
+      "title": "SSC CGL Previous Year Question Paper PDF 2025 (Tier-I : All Shifts ...",
+      "url": "https://www.westbengaljob.in/2025/12/ssc-cgl-previous-year-question-paper.html",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-duckduckgo"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889388+00:00",
+      "snippet": "On this page, you will find SSC CGL 2025, Tier-I, all shifts question paper in PDF format for free download, collected date-wise for easy access. All papers are bilingual (Hindi & English) and include officially marked answers, making them"
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-previous-year-question-paper-pdf-2025-tier-i-a-bcc96f055e09",
+      "title": "SSC CGL Previous Year Question Paper PDF 2025 (Tier-I : All Shifts) - SSC STUDY",
+      "url": "https://sscstudy.com/ssc-cgl-previous-year-question-paper-pdf-2025-tier-i-all-shifts/",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-duckduckgo",
+        "engine-brave"
+      ],
+      "discoveredAt": "2026-06-28T19:35:15.618986+00:00",
+      "snippet": "On this page, you will find SSC CGL 2025, Tier-I, all shifts question paper in PDF format for free download, collected date-wise for easy access. All papers are bilingual (Hindi & English) and include officially marked answers, making them"
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-previous-year-question-paper-pdfs-for-tier-1-t-caf10ae626af",
+      "title": "SSC CGL Previous Year Question Paper PDFs for Tier 1 & Tier 2",
+      "url": "https://www.jagranjosh.com/articles/ssc-cgl-previous-year-question-paper-tier-1-and-2-download-pdf-with-solutions-1720440131-1",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-brave"
+      ],
+      "discoveredAt": "2026-06-28T19:35:15.618749+00:00",
+      "snippet": "C CGL previous year question papers for Tier 1 and Tier 2 are provided here. Practice SSC CGL Previous Year Question Papers with Solutions PDF in both Hindi and English for 2024, 2023, 2022, 2021, 2020 and other years here."
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-previous-year-question-paper-tier-1-pdf-downlo-9fbf6cbfb919",
+      "title": "SSC CGL Previous Year Question Paper Tier 1 PDF Download With Solution ...",
+      "url": "https://preppyq.in/ssc-cgl-previous-year-question-paper-tier-1-pdf/",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-duckduckgo"
+      ],
+      "discoveredAt": "2026-06-28T19:35:15.619145+00:00",
+      "snippet": "Download free SSC CGL previous year question paper Tier 1 PDFs with solutions. Enhance your preparation with shift-wise solved papers from 2019-2025. Boost your speed and accuracy today!"
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-previous-year-question-papers-for-tier-1-and-2-e040d00b55db",
+      "title": "SSC CGL Previous Year Question Papers for Tier 1 and 2, Download PDF",
+      "url": "https://govtadhikari.com/ssc-exam/ssc-cgl-previous-year-question-papers/",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-brave"
+      ],
+      "discoveredAt": "2026-06-28T19:35:15.618926+00:00",
+      "snippet": "Candidates who are preparing for the upcoming SSC CGL exam should practice with the SSC CGL Previous Year Question Papers 2024 (Tier 1) . These papers, conducted between 9th September to 26th September 2024, will give a real idea of the exa"
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-previous-year-question-papers-pdf-tier-1-tier--64d6f75c507d",
+      "title": "SSC CGL Previous Year Question Papers PDF (Tier 1 & Tier 2)",
+      "url": "https://www.practicemock.com/ssc-cgl-previous-year-paper/",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-brave"
+      ],
+      "discoveredAt": "2026-06-28T19:35:15.619235+00:00",
+      "snippet": "Download SSC CGL previous year question papers PDF for Tier 1 & Tier 2 (2024, 2023, 2022). Get shift-wise PYQs with solutions and boost your exam preparation."
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-previous-year-question-papers-pdfs-for-tier-1--7dc195e34174",
+      "title": "SSC CGL Previous Year Question Papers PDFs for Tier 1 & 2 Exam - Practicemock",
+      "url": "https://www.practicemock.com/blog/ssc-cgl-previous-year-papers-with-solutions/",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-brave"
+      ],
+      "discoveredAt": "2026-06-28T19:35:15.618862+00:00",
+      "snippet": "Collect and Download Past Year Papers: Start your preparation by sourcing a reliable question book or utilizing the direct links provided above. Make it a point to download an authentic SSC CGL previous year question paper tier 1 PDF to for"
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-previous-year-question-papers-with-solutions-t-af78801d4b0b",
+      "title": "SSC CGL Previous Year Question Papers With Solutions - Tier 1 & 2 Exam PDFs | PDF",
+      "url": "https://www.scribd.com/document/889421266/SSC-CGL-Previous-Year-Question-Papers-with-Solutions-Tier-1-2-Exam-PDFs",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-brave"
+      ],
+      "discoveredAt": "2026-06-28T19:35:15.619451+00:00",
+      "snippet": "The document provides information on SSC CGL previous year question papers for Tier 1 and Tier 2 exams from 2016 to 2024, emphasizing the importance of practicing these papers to improve candidates' performance."
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-previous-year-question-papers-with-solutions-p-38a77ee392a4",
+      "title": "SSC CGL Previous Year Question Papers with Solutions PDF (2019-2025)",
+      "url": "https://onlineresult.in/article/ssc-cgl-previous-year-question-paper",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-duckduckgo"
+      ],
+      "discoveredAt": "2026-06-28T19:35:15.619015+00:00",
+      "snippet": "Download free SSC CGL previous year question papers with detailed solutions. Get 250+ shift-wise PDFs from 2019-2025 to master the exam pattern and boost your 2026 test preparation."
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-previous-year-question-papers-download-cgl-pyq-6baa2c7b8f2c",
+      "title": "SSC CGL Previous Year Question Papers, Download CGL PYQs PDF",
+      "url": "https://www.studyiq.com/articles/ssc-cgl-previous-year-question-papers/",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-brave"
+      ],
+      "discoveredAt": "2026-06-28T19:35:15.619423+00:00",
+      "snippet": "Below are the links to download SSC CGL Tier 1 Previous Year Solved Question Papers PDFs in both Hindi and English for various shifts."
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-previous-year-question-papers-check-detailed-s-d0423b107145",
+      "title": "SSC CGL Previous Year Question Papers: Check Detailed Solution PDF(2016-2024)",
+      "url": "https://prepp.in/ssc-cgl-exam/practice-papers",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-brave"
+      ],
+      "discoveredAt": "2026-06-28T19:35:15.619345+00:00",
+      "snippet": "SSC CGL Previous Year Question Papers pdf along with Answer Key are available here to download in PDF format. Practicing and reviewing last year paper of SSC CGL Tier 1 and Tier 2 is an effective way to identify key topics, their weightage,"
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-previous-year-question-papers-download-shift-w-f60420d8b113",
+      "title": "SSC CGL Previous Year Question Papers: Download Shift-wise PDFs (2010-2025)",
+      "url": "https://result91.com/article/ssc-cgl-previous-year-question-paper",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-duckduckgo"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889207+00:00",
+      "snippet": "Download SSC CGL previous year question papers for Tier 1 and Tier 2 (2010-2025). Access authentic, shift-wise PDFs with solutions, expert exam analysis, and proven preparation strategies to ace your exam."
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-previous-year-question-papers-get-tier-1-tier--d22691d8afe8",
+      "title": "SSC CGL Previous Year Question Papers: Get Tier 1 & Tier 2 PDFs",
+      "url": "https://www.practicemock.com/blog/ssc-cgl-question-paper/",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-duckduckgo"
+      ],
+      "discoveredAt": "2026-06-28T19:35:15.619207+00:00",
+      "snippet": "In this blog, you can download SSC CGL Previous Year Question Paper PDFs for both Tier 1 and Tier 2 — year-wise, shift-wise, and subject-wise — completely free. You will also find smart strategies to use these papers in a way that actually"
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-previous-year-question-papers-tier-1-2-8ecabaa71577",
+      "title": "SSC CGL Previous Year Question Papers: Tier 1 & 2",
+      "url": "https://www.learntheta.com/ssc-cgl-previous-year-question-papers/",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-brave"
+      ],
+      "discoveredAt": "2026-06-28T19:35:15.619318+00:00",
+      "snippet": "Download SSC CGL previous year question paper pdfs | Prepare yourself better for upcoming cgl tier 1& 2 exams!"
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-previous-year-questions-papers-download-pdf-wi-206aba476e45",
+      "title": "SSC CGL Previous Year Questions Papers: Download PDF with Solutions",
+      "url": "https://www.jagranjosh.com/articles/ssc-cgl-previous-year-question-papers-download-pdf-with-solutions-1800012596-1",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-duckduckgo"
+      ],
+      "discoveredAt": "2026-06-28T19:35:15.619116+00:00",
+      "snippet": "SSC CGL Tier 1 Previous Year Question Paper with Solutions If you want to excel in the SSC CGL exam you will need to practice the PYQs with solutions. For this you can take help of the mock test ..."
+    },
+    {
+      "id": "pw-ssc-cgl-previous-year-papers-ssc-cgl-pyqs-in-english-64126611d5a9",
+      "title": "SSC CGL PYQs in English",
+      "url": "https://drive.google.com/file/d/10MJJJ1OY8DwaX3J4KaN86r3DbCH6ua0z/view",
+      "sourceId": "pw-ssc-cgl-previous-year-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine files only after rights review",
+      "publishPolicy": "do not copy PW article or PDF text into public content; use as source leads until curated",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "physicswallah",
+        "pw",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:11.825806+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "pw-ssc-cgl-previous-year-papers-ssc-cgl-pyqs-in-english-f12df0e9da75",
+      "title": "SSC CGL PYQs in English",
+      "url": "https://drive.google.com/file/d/1GUWuG9fI-BWan_HoEPMOD5qYNTnIEKC2/view",
+      "sourceId": "pw-ssc-cgl-previous-year-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine files only after rights review",
+      "publishPolicy": "do not copy PW article or PDF text into public content; use as source leads until curated",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "physicswallah",
+        "pw",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:11.825861+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "pw-ssc-cgl-previous-year-papers-ssc-cgl-pyqs-in-english-6cee67eeb36a",
+      "title": "SSC CGL PYQs in English",
+      "url": "https://drive.google.com/file/d/1zAGIiK_olYzNnLyNmotUehQJiN0OXkht/view",
+      "sourceId": "pw-ssc-cgl-previous-year-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine files only after rights review",
+      "publishPolicy": "do not copy PW article or PDF text into public content; use as source leads until curated",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "physicswallah",
+        "pw",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:11.825912+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "pw-ssc-cgl-previous-year-papers-ssc-cgl-pyqs-in-english-763477898619",
+      "title": "SSC CGL PYQs in English",
+      "url": "https://drive.google.com/file/d/1iLjm7iaMogj1MGLUKelpY_UOJK4j1kui/view",
+      "sourceId": "pw-ssc-cgl-previous-year-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine files only after rights review",
+      "publishPolicy": "do not copy PW article or PDF text into public content; use as source leads until curated",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "physicswallah",
+        "pw",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:11.825964+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "pw-ssc-cgl-previous-year-papers-ssc-cgl-pyqs-in-english-828bce3b2667",
+      "title": "SSC CGL PYQs in English",
+      "url": "https://drive.google.com/file/d/1BVRRMNwzHuDwFrq5j6MhLBLX_fZFUa19/view",
+      "sourceId": "pw-ssc-cgl-previous-year-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine files only after rights review",
+      "publishPolicy": "do not copy PW article or PDF text into public content; use as source leads until curated",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "physicswallah",
+        "pw",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:11.826132+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "pw-ssc-cgl-previous-year-papers-ssc-cgl-pyqs-in-english-edcda48472f0",
+      "title": "SSC CGL PYQs in English",
+      "url": "https://drive.google.com/file/d/196SMejxBFUvgOHmRPCnCCa6MC8M8VF7z/view",
+      "sourceId": "pw-ssc-cgl-previous-year-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine files only after rights review",
+      "publishPolicy": "do not copy PW article or PDF text into public content; use as source leads until curated",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "physicswallah",
+        "pw",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:11.826185+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "pw-ssc-cgl-previous-year-papers-ssc-cgl-pyqs-in-hindi-b26668290c44",
+      "title": "SSC CGL PYQs in Hindi",
+      "url": "https://drive.google.com/file/d/1-Hvmlz3gE0s_YJC4SPhuV8GS4LT7_b0s/view",
+      "sourceId": "pw-ssc-cgl-previous-year-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine files only after rights review",
+      "publishPolicy": "do not copy PW article or PDF text into public content; use as source leads until curated",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "physicswallah",
+        "pw",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:11.825835+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "pw-ssc-cgl-previous-year-papers-ssc-cgl-pyqs-in-hindi-37e990700141",
+      "title": "SSC CGL PYQs in Hindi",
+      "url": "https://drive.google.com/file/d/1OTCV1uYXRcfiqSUOtZtFb1krtljQe3oU/view",
+      "sourceId": "pw-ssc-cgl-previous-year-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine files only after rights review",
+      "publishPolicy": "do not copy PW article or PDF text into public content; use as source leads until curated",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "physicswallah",
+        "pw",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:11.825888+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "pw-ssc-cgl-previous-year-papers-ssc-cgl-pyqs-in-hindi-2dfb041a7444",
+      "title": "SSC CGL PYQs in Hindi",
+      "url": "https://drive.google.com/file/d/13yr9kCb96zSX6bo83A47SlcLuED1EdCF/view",
+      "sourceId": "pw-ssc-cgl-previous-year-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine files only after rights review",
+      "publishPolicy": "do not copy PW article or PDF text into public content; use as source leads until curated",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "physicswallah",
+        "pw",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:11.825938+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "pw-ssc-cgl-previous-year-papers-ssc-cgl-pyqs-in-hindi-1b39611609b4",
+      "title": "SSC CGL PYQs in Hindi",
+      "url": "https://drive.google.com/file/d/1zwC9HuH8W0zpzWJakTiqEjKzQ0M84Mih/view",
+      "sourceId": "pw-ssc-cgl-previous-year-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine files only after rights review",
+      "publishPolicy": "do not copy PW article or PDF text into public content; use as source leads until curated",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "physicswallah",
+        "pw",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:11.825989+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "pw-ssc-cgl-previous-year-papers-ssc-cgl-pyqs-in-hindi-c86c40d56d24",
+      "title": "SSC CGL PYQs in Hindi",
+      "url": "https://drive.google.com/file/d/1PaaruIsF1eyaC8N6dV98tBsqc8ArtVts/view",
+      "sourceId": "pw-ssc-cgl-previous-year-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine files only after rights review",
+      "publishPolicy": "do not copy PW article or PDF text into public content; use as source leads until curated",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "physicswallah",
+        "pw",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:11.826101+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "pw-ssc-cgl-previous-year-papers-ssc-cgl-pyqs-in-hindi-16c4c6427ef3",
+      "title": "SSC CGL PYQs in Hindi",
+      "url": "https://drive.google.com/file/d/1OSrtarfnnVkcXAYXriQOBrpUEFbQaCHt/view",
+      "sourceId": "pw-ssc-cgl-previous-year-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine files only after rights review",
+      "publishPolicy": "do not copy PW article or PDF text into public content; use as source leads until curated",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "physicswallah",
+        "pw",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:11.826159+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "pw-ssc-cgl-previous-year-papers-ssc-cgl-pyqs-in-hindi-7f536b8c9f19",
+      "title": "SSC CGL PYQs in Hindi",
+      "url": "https://drive.google.com/file/d/1gnYRfjo7-iItyjKc8lA1Wo4uu0V73ehN/view",
+      "sourceId": "pw-ssc-cgl-previous-year-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-year paper link metadata only; quarantine files only after rights review",
+      "publishPolicy": "do not copy PW article or PDF text into public content; use as source leads until curated",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "physicswallah",
+        "pw",
+        "pyq",
+        "pdf",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:11.826227+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-tier-1-exam-paper-2025-pdf-qualifications-scri-66b8900f3818",
+      "title": "SSC CGL Tier 1 Exam Paper 2025 | PDF | Qualifications - Scribd",
+      "url": "https://www.scribd.com/document/952709107/Ssc-Cgl-2025-Full-Compilation",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-startpage"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889418+00:00",
+      "snippet": "Click and join us on these plateform. Subscribe. Follow Roll No. Candidate Name. Exam Level : SSC CGL Tier 1. Test Date : 12 Sep 2025. Test Time and Shift ..."
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-tier-1-exam-paper-2025-pdf-qualifications-test-e371d847b4ac",
+      "title": "SSC CGL Tier 1 Exam Paper 2025 | PDF | Qualifications | Tests - Scribd",
+      "url": "https://www.scribd.com/document/979524506/Ssc-Cgl-15th-Sep-Shift-1-2025",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-google"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889452+00:00",
+      "snippet": "Test Date : 15 Sep 2025 · Test Time and Shift : 09:00 AM (Shift-1). Centre Name : · PART-A (General Intelligence and Reasoning). [Link]: 1 · Test Date : 15 Sep ..."
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-tier-1-previous-year-papers-download-attempt-3cab1118f49c",
+      "title": "SSC CGL Tier 1 Previous Year Papers - Download & Attempt",
+      "url": "https://www.ixambee.com/previous-year-question-paper/ssc-cgl-tier-I",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-brave"
+      ],
+      "discoveredAt": "2026-06-28T19:35:15.619372+00:00",
+      "snippet": "SSC CGL Tier 1 Previous Year Question Papers: Attempt here previous year question paper for SSC CGL Tier 1, which will be helpful in preparation for the upcoming SSC CGL 2025 exam."
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-tier-1-previous-year-question-paper-free-pdf-076a7538bf5e",
+      "title": "SSC CGL Tier 1 Previous Year Question Paper Free PDF",
+      "url": "https://www.scribd.com/document/647777280/SSC-CGL-Tier-1-Previous-Year-Question-Paper-Free-PDF",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-brave"
+      ],
+      "discoveredAt": "2026-06-28T19:35:15.618777+00:00",
+      "snippet": "This document contains 46 multiple choice questions from a previous year SSC CGL Tier 1 exam paper. The questions cover topics like coding, logical reasoning, data interpretation, and general knowledge."
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-tier-1-previous-year-question-paper-with-solut-c7b789424234",
+      "title": "SSC CGL Tier 1 Previous Year Question Paper with Solutions from (2016-2024)",
+      "url": "https://prepp.in/ssc-cgl-exam/tier-1-previous-year-question-paper",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-duckduckgo"
+      ],
+      "discoveredAt": "2026-06-28T19:35:15.618606+00:00",
+      "snippet": "You can now download SSC CGL Tier 1 previous year question papers (2016-2024) in PDF format from here."
+    },
+    {
+      "id": "drishti-ssc-cgl-pyq-pdf-ssc-cgl-tier-1-question-paper-bilingual-23-september-2-e96394e91c86",
+      "title": "SSC CGL Tier 1 Question Paper Bilingual 23 September 2025 Shift 3",
+      "url": "https://vault.sscdrishti.com/english_file_uploads/1770126209_SSC-CGL-Tier-1-Question-Paper-Bilingual-23-September-2025-Shift-3.pdf",
+      "sourceId": "drishti-ssc-cgl-pyq-pdf",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public PDF link metadata; download only after rights, provenance, OCR, and answer-key review",
+      "publishPolicy": "do not copy unreviewed PDFs into ranked practice; keep every Drishti lead unverified until review",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "drishti",
+        "pyq",
+        "pdf",
+        "review",
+        "2025",
+        "shift-3",
+        "23-september-2025"
+      ],
+      "discoveredAt": "2026-06-28T19:34:51.749127+00:00",
+      "snippet": "filename-derived metadata from 1770126209_SSC-CGL-Tier-1-Question-Paper-Bilingual-23-September-2025-Shift-3.pdf"
+    },
+    {
+      "id": "drishti-ssc-cgl-pyq-pdf-ssc-cgl-tier-1-question-paper-bilingual-24-september-2-8a29723da847",
+      "title": "SSC CGL Tier 1 Question Paper Bilingual 24 September 2025 Shift 1",
+      "url": "https://vault.sscdrishti.com/english_file_uploads/1770126209_SSC-CGL-Tier-1-Question-Paper-Bilingual-24-September-2025-Shift-1.pdf",
+      "sourceId": "drishti-ssc-cgl-pyq-pdf",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public PDF link metadata; download only after rights, provenance, OCR, and answer-key review",
+      "publishPolicy": "do not copy unreviewed PDFs into ranked practice; keep every Drishti lead unverified until review",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "drishti",
+        "pyq",
+        "pdf",
+        "review",
+        "2025",
+        "shift-1",
+        "24-september-2025"
+      ],
+      "discoveredAt": "2026-06-28T19:34:51.749092+00:00",
+      "snippet": "filename-derived metadata from 1770126209_SSC-CGL-Tier-1-Question-Paper-Bilingual-24-September-2025-Shift-1.pdf"
+    },
+    {
+      "id": "drishti-ssc-cgl-pyq-pdf-ssc-cgl-tier-1-question-paper-bilingual-24-september-2-2e8cbbccc9c0",
+      "title": "SSC CGL Tier 1 Question Paper Bilingual 24 September 2025 Shift 2",
+      "url": "https://vault.sscdrishti.com/english_file_uploads/1770126209_SSC-CGL-Tier-1-Question-Paper-Bilingual-24-September-2025-Shift-2.pdf",
+      "sourceId": "drishti-ssc-cgl-pyq-pdf",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public PDF link metadata; download only after rights, provenance, OCR, and answer-key review",
+      "publishPolicy": "do not copy unreviewed PDFs into ranked practice; keep every Drishti lead unverified until review",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "drishti",
+        "pyq",
+        "pdf",
+        "review",
+        "2025",
+        "shift-2",
+        "24-september-2025"
+      ],
+      "discoveredAt": "2026-06-28T19:34:51.749058+00:00",
+      "snippet": "filename-derived metadata from 1770126209_SSC-CGL-Tier-1-Question-Paper-Bilingual-24-September-2025-Shift-2.pdf"
+    },
+    {
+      "id": "drishti-ssc-cgl-pyq-pdf-ssc-cgl-tier-1-question-paper-bilingual-24-september-2-8fb1fb7b3dd0",
+      "title": "SSC CGL Tier 1 Question Paper Bilingual 24 September 2025 Shift 3",
+      "url": "https://vault.sscdrishti.com/english_file_uploads/1770126209_SSC-CGL-Tier-1-Question-Paper-Bilingual-24-September-2025-Shift-3.pdf",
+      "sourceId": "drishti-ssc-cgl-pyq-pdf",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public PDF link metadata; download only after rights, provenance, OCR, and answer-key review",
+      "publishPolicy": "do not copy unreviewed PDFs into ranked practice; keep every Drishti lead unverified until review",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "drishti",
+        "pyq",
+        "pdf",
+        "review",
+        "2025",
+        "shift-3",
+        "24-september-2025"
+      ],
+      "discoveredAt": "2026-06-28T19:34:51.749015+00:00",
+      "snippet": "filename-derived metadata from 1770126209_SSC-CGL-Tier-1-Question-Paper-Bilingual-24-September-2025-Shift-3.pdf"
+    },
+    {
+      "id": "drishti-ssc-cgl-pyq-pdf-ssc-cgl-tier-1-question-paper-bilingual-25-september-2-e539f1d2ecf3",
+      "title": "SSC CGL Tier 1 Question Paper Bilingual 25 September 2025 Shift 1",
+      "url": "https://vault.sscdrishti.com/english_file_uploads/1770126209_SSC-CGL-Tier-1-Question-Paper-Bilingual-25-September-2025-Shift-1.pdf",
+      "sourceId": "drishti-ssc-cgl-pyq-pdf",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public PDF link metadata; download only after rights, provenance, OCR, and answer-key review",
+      "publishPolicy": "do not copy unreviewed PDFs into ranked practice; keep every Drishti lead unverified until review",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "drishti",
+        "pyq",
+        "pdf",
+        "review",
+        "2025",
+        "shift-1",
+        "25-september-2025"
+      ],
+      "discoveredAt": "2026-06-28T19:34:51.748981+00:00",
+      "snippet": "filename-derived metadata from 1770126209_SSC-CGL-Tier-1-Question-Paper-Bilingual-25-September-2025-Shift-1.pdf"
+    },
+    {
+      "id": "drishti-ssc-cgl-pyq-pdf-ssc-cgl-tier-1-question-paper-bilingual-25-september-2-b7fae166a771",
+      "title": "SSC CGL Tier 1 Question Paper Bilingual 25 September 2025 Shift 2",
+      "url": "https://vault.sscdrishti.com/english_file_uploads/1770126209_SSC-CGL-Tier-1-Question-Paper-Bilingual-25-September-2025-Shift-2.pdf",
+      "sourceId": "drishti-ssc-cgl-pyq-pdf",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public PDF link metadata; download only after rights, provenance, OCR, and answer-key review",
+      "publishPolicy": "do not copy unreviewed PDFs into ranked practice; keep every Drishti lead unverified until review",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "drishti",
+        "pyq",
+        "pdf",
+        "review",
+        "2025",
+        "shift-2",
+        "25-september-2025"
+      ],
+      "discoveredAt": "2026-06-28T19:34:51.748943+00:00",
+      "snippet": "filename-derived metadata from 1770126209_SSC-CGL-Tier-1-Question-Paper-Bilingual-25-September-2025-Shift-2.pdf"
+    },
+    {
+      "id": "drishti-ssc-cgl-pyq-pdf-ssc-cgl-tier-1-question-paper-bilingual-25-september-2-c873bf308751",
+      "title": "SSC CGL Tier 1 Question Paper Bilingual 25 September 2025 Shift 3",
+      "url": "https://vault.sscdrishti.com/english_file_uploads/1770126209_SSC-CGL-Tier-1-Question-Paper-Bilingual-25-September-2025-Shift-3.pdf",
+      "sourceId": "drishti-ssc-cgl-pyq-pdf",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public PDF link metadata; download only after rights, provenance, OCR, and answer-key review",
+      "publishPolicy": "do not copy unreviewed PDFs into ranked practice; keep every Drishti lead unverified until review",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "drishti",
+        "pyq",
+        "pdf",
+        "review",
+        "2025",
+        "shift-3",
+        "25-september-2025"
+      ],
+      "discoveredAt": "2026-06-28T19:34:51.748900+00:00",
+      "snippet": "filename-derived metadata from 1770126209_SSC-CGL-Tier-1-Question-Paper-Bilingual-25-September-2025-Shift-3.pdf"
+    },
+    {
+      "id": "drishti-ssc-cgl-pyq-pdf-ssc-cgl-tier-1-question-paper-bilingual-26-september-2-bd77395cee37",
+      "title": "SSC CGL Tier 1 Question Paper Bilingual 26 September 2025 Shift 1",
+      "url": "https://vault.sscdrishti.com/english_file_uploads/1770126210_SSC-CGL-Tier-1-Question-Paper-Bilingual-26-September-2025-Shift-1.pdf",
+      "sourceId": "drishti-ssc-cgl-pyq-pdf",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public PDF link metadata; download only after rights, provenance, OCR, and answer-key review",
+      "publishPolicy": "do not copy unreviewed PDFs into ranked practice; keep every Drishti lead unverified until review",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "drishti",
+        "pyq",
+        "pdf",
+        "review",
+        "2025",
+        "shift-1",
+        "26-september-2025"
+      ],
+      "discoveredAt": "2026-06-28T19:34:51.748848+00:00",
+      "snippet": "filename-derived metadata from 1770126210_SSC-CGL-Tier-1-Question-Paper-Bilingual-26-September-2025-Shift-1.pdf"
+    },
+    {
+      "id": "drishti-ssc-cgl-pyq-pdf-ssc-cgl-tier-1-question-paper-bilingual-26-september-2-5949b84802b9",
+      "title": "SSC CGL Tier 1 Question Paper Bilingual 26 September 2025 Shift 2",
+      "url": "https://vault.sscdrishti.com/english_file_uploads/1770126210_SSC-CGL-Tier-1-Question-Paper-Bilingual-26-September-2025-Shift-2.pdf",
+      "sourceId": "drishti-ssc-cgl-pyq-pdf",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public PDF link metadata; download only after rights, provenance, OCR, and answer-key review",
+      "publishPolicy": "do not copy unreviewed PDFs into ranked practice; keep every Drishti lead unverified until review",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "drishti",
+        "pyq",
+        "pdf",
+        "review",
+        "2025",
+        "shift-2",
+        "26-september-2025"
+      ],
+      "discoveredAt": "2026-06-28T19:34:51.748742+00:00",
+      "snippet": "filename-derived metadata from 1770126210_SSC-CGL-Tier-1-Question-Paper-Bilingual-26-September-2025-Shift-2.pdf"
+    },
+    {
+      "id": "drishti-ssc-cgl-pyq-pdf-ssc-cgl-tier-1-question-paper-bilingual-26-september-2-0de1b22e58cd",
+      "title": "SSC CGL Tier 1 Question Paper Bilingual 26 September 2025 Shift 3",
+      "url": "https://vault.sscdrishti.com/english_file_uploads/1770126210_SSC-CGL-Tier-1-Question-Paper-Bilingual-26-September-2025-Shift-3.pdf",
+      "sourceId": "drishti-ssc-cgl-pyq-pdf",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public PDF link metadata; download only after rights, provenance, OCR, and answer-key review",
+      "publishPolicy": "do not copy unreviewed PDFs into ranked practice; keep every Drishti lead unverified until review",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "drishti",
+        "pyq",
+        "pdf",
+        "review",
+        "2025",
+        "shift-3",
+        "26-september-2025"
+      ],
+      "discoveredAt": "2026-06-28T19:34:51.748600+00:00",
+      "snippet": "filename-derived metadata from 1770126210_SSC-CGL-Tier-1-Question-Paper-Bilingual-26-September-2025-Shift-3.pdf"
+    },
+    {
+      "id": "cracku-ssc-cgl-previous-papers-ssc-cgl-tier-l-2023-question-paper-shift-1-july-25th-8cdf2263ce1b",
+      "title": "SSC CGL Tier l 2023 Question Paper Shift 1 (July 25th)",
+      "url": "https://cracku.in/ssc-cgl-tier-1-25th-july-2023-shift-1-question-paper-solved",
+      "sourceId": "cracku-ssc-cgl-previous-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-paper link metadata only; import files only after rights, answer-key, and provenance review",
+      "publishPolicy": "do not copy solved-paper text into ranked practice from this source without a curated promotion record",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "cracku",
+        "pyq",
+        "previous-paper",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:34:59.221333+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "cracku-ssc-cgl-previous-papers-ssc-cgl-tier-l-2023-question-paper-shift-1-july-26th-5a46c35925d5",
+      "title": "SSC CGL Tier l 2023 Question Paper Shift 1 (July 26th)",
+      "url": "https://cracku.in/ssc-cgl-tier-1-26th-july-2023-shift-1-question-paper-solved",
+      "sourceId": "cracku-ssc-cgl-previous-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-paper link metadata only; import files only after rights, answer-key, and provenance review",
+      "publishPolicy": "do not copy solved-paper text into ranked practice from this source without a curated promotion record",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "cracku",
+        "pyq",
+        "previous-paper",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:34:59.220987+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "cracku-ssc-cgl-previous-papers-ssc-cgl-tier-l-2023-question-paper-shift-1-july-27th-6a401fd2d79a",
+      "title": "SSC CGL Tier l 2023 Question Paper Shift 1 (July 27th)",
+      "url": "https://cracku.in/ssc-cgl-tier-1-27th-july-2023-shift-1-question-paper-solved",
+      "sourceId": "cracku-ssc-cgl-previous-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-paper link metadata only; import files only after rights, answer-key, and provenance review",
+      "publishPolicy": "do not copy solved-paper text into ranked practice from this source without a curated promotion record",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "cracku",
+        "pyq",
+        "previous-paper",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:34:59.220702+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "cracku-ssc-cgl-previous-papers-ssc-cgl-tier-l-2023-question-paper-shift-2-july-27th-ecb79932e201",
+      "title": "SSC CGL Tier l 2023 Question Paper Shift 2 (July 27th)",
+      "url": "https://cracku.in/ssc-cgl-tier-1-27th-july-2023-shift-2-question-paper-solved",
+      "sourceId": "cracku-ssc-cgl-previous-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-paper link metadata only; import files only after rights, answer-key, and provenance review",
+      "publishPolicy": "do not copy solved-paper text into ranked practice from this source without a curated promotion record",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "cracku",
+        "pyq",
+        "previous-paper",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:34:59.220630+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "cracku-ssc-cgl-previous-papers-ssc-cgl-tier-l-2023-question-paper-shift-3-july-24th-108e5cc21e56",
+      "title": "SSC CGL Tier l 2023 Question Paper Shift 3 (July 24th)",
+      "url": "https://cracku.in/ssc-cgl-tier-1-24th-july-2023-shift-3-question-paper-solved",
+      "sourceId": "cracku-ssc-cgl-previous-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-paper link metadata only; import files only after rights, answer-key, and provenance review",
+      "publishPolicy": "do not copy solved-paper text into ranked practice from this source without a curated promotion record",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "cracku",
+        "pyq",
+        "previous-paper",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:34:59.221477+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "cracku-ssc-cgl-previous-papers-ssc-cgl-tier-l-2023-question-paper-shift-3-july-25th-dc0e782e5854",
+      "title": "SSC CGL Tier l 2023 Question Paper Shift 3 (July 25th)",
+      "url": "https://cracku.in/ssc-cgl-tier-1-25th-july-2023-shift-3-question-paper-solved",
+      "sourceId": "cracku-ssc-cgl-previous-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-paper link metadata only; import files only after rights, answer-key, and provenance review",
+      "publishPolicy": "do not copy solved-paper text into ranked practice from this source without a curated promotion record",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "cracku",
+        "pyq",
+        "previous-paper",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:34:59.221249+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "cracku-ssc-cgl-previous-papers-ssc-cgl-tier-l-2023-question-paper-shift-3-july-26th-5414c7218778",
+      "title": "SSC CGL Tier l 2023 Question Paper Shift 3 (July 26th)",
+      "url": "https://cracku.in/ssc-cgl-tier-1-26th-july-2023-shift-3-question-paper-solved",
+      "sourceId": "cracku-ssc-cgl-previous-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-paper link metadata only; import files only after rights, answer-key, and provenance review",
+      "publishPolicy": "do not copy solved-paper text into ranked practice from this source without a curated promotion record",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "cracku",
+        "pyq",
+        "previous-paper",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:34:59.220845+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "cracku-ssc-cgl-previous-papers-ssc-cgl-tier-l-2023-question-paper-shift-3-july-27th-81de2dde1943",
+      "title": "SSC CGL Tier l 2023 Question Paper Shift 3 (July 27th)",
+      "url": "https://cracku.in/ssc-cgl-tier-1-27th-july-2023-shift-3-question-paper-solved",
+      "sourceId": "cracku-ssc-cgl-previous-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-paper link metadata only; import files only after rights, answer-key, and provenance review",
+      "publishPolicy": "do not copy solved-paper text into ranked practice from this source without a curated promotion record",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "cracku",
+        "pyq",
+        "previous-paper",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:34:59.220530+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "cracku-ssc-cgl-previous-papers-ssc-cgl-tier-l-2023-question-paper-shift-4-july-24th-873c9f5c93a1",
+      "title": "SSC CGL Tier l 2023 Question Paper Shift 4 (July 24th)",
+      "url": "https://cracku.in/ssc-cgl-tier-1-24th-july-2023-shift-4-question-paper-solved",
+      "sourceId": "cracku-ssc-cgl-previous-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-paper link metadata only; import files only after rights, answer-key, and provenance review",
+      "publishPolicy": "do not copy solved-paper text into ranked practice from this source without a curated promotion record",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "cracku",
+        "pyq",
+        "previous-paper",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:34:59.221406+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "cracku-ssc-cgl-previous-papers-ssc-cgl-tier-l-25th-july-2023-shift-4-62a7bd5b66d2",
+      "title": "SSC CGL Tier l 25th July 2023 Shift-4",
+      "url": "https://cracku.in/ssc-cgl-tier-1-25th-july-2023-shift-4-question-paper-solved",
+      "sourceId": "cracku-ssc-cgl-previous-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-paper link metadata only; import files only after rights, answer-key, and provenance review",
+      "publishPolicy": "do not copy solved-paper text into ranked practice from this source without a curated promotion record",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "cracku",
+        "pyq",
+        "previous-paper",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:34:59.221057+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "cracku-ssc-cgl-previous-papers-ssc-cgl-tier-l-26th-july-2023-shift-2-85c28dd92c83",
+      "title": "SSC CGL Tier l 26th July 2023 Shift-2",
+      "url": "https://cracku.in/ssc-cgl-tier-1-26th-july-2023-shift-2-question-paper-solved",
+      "sourceId": "cracku-ssc-cgl-previous-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-paper link metadata only; import files only after rights, answer-key, and provenance review",
+      "publishPolicy": "do not copy solved-paper text into ranked practice from this source without a curated promotion record",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "cracku",
+        "pyq",
+        "previous-paper",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:34:59.220916+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "cracku-ssc-cgl-previous-papers-ssc-cgl-tier-l-26th-july-2023-shift-4-dfab3360d1b1",
+      "title": "SSC CGL Tier l 26th July 2023 Shift-4",
+      "url": "https://cracku.in/ssc-cgl-tier-1-26th-july-2023-shift-4-question-paper-solved",
+      "sourceId": "cracku-ssc-cgl-previous-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-paper link metadata only; import files only after rights, answer-key, and provenance review",
+      "publishPolicy": "do not copy solved-paper text into ranked practice from this source without a curated promotion record",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "cracku",
+        "pyq",
+        "previous-paper",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:34:59.220773+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-tier-1-past-papers-2015-2024-pdf-216d840f3522",
+      "title": "SSC CGL Tier-1 Past Papers (2015-2024) | PDF",
+      "url": "https://www.scribd.com/document/888941679/SSC-CGL-Tier1-PYQ-2015-2024",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-brave"
+      ],
+      "discoveredAt": "2026-06-28T19:35:15.619398+00:00",
+      "snippet": "The document lists SSC CGL Tier-1 previous year papers from 2015 to 2024, detailing the availability of question papers and solutions for each year. It includes multiple shifts and answer keys for the exams conducted in various months."
+    },
+    {
+      "id": "searxng-ssc-cgl-pyq-search-ssc-cgl-2025-tier-1-question-paper-and-answer-key-pdf--dfc72d7cfc14",
+      "title": "ssc-cgl-2025-tier-1-question-paper-and-answer-key-pdf-sep-12 ...",
+      "url": "https://cdn-images.prepp.in/public/image/ssc-cgl-2025-tier-1-question-paper-and-answer-key-pdf-sep-12-2025-shift-1-1776750147.pdf",
+      "sourceId": "searxng-ssc-cgl-pyq-search",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "local SearXNG metadata only; fetch or download files only after rights and provenance review",
+      "publishPolicy": "search leads are not ranked practice and must remain provenance-visible review candidates",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "searxng",
+        "search",
+        "pyq",
+        "review",
+        "searxng-query",
+        "engine-google",
+        "engine-startpage"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889027+00:00",
+      "snippet": "Page 1. Exam Level. : SSC CGL Tier 1. Test Date. : 12 Sep 2025. Test Time and Shift. : 09:00 AM (Shift-1). Correct Option selected Wrong Option selected ..."
+    },
+    {
+      "id": "cracku-ssc-cgl-previous-papers-take-test-6d0ddc876b33",
+      "title": "Take Test",
+      "url": "https://cracku.in/ssc-cgl-previous-papers/ssc-cgl-tier-1-27th-july-2023-shift-3",
+      "sourceId": "cracku-ssc-cgl-previous-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-paper link metadata only; import files only after rights, answer-key, and provenance review",
+      "publishPolicy": "do not copy solved-paper text into ranked practice from this source without a curated promotion record",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "cracku",
+        "pyq",
+        "previous-paper",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:34:59.220600+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "cracku-ssc-cgl-previous-papers-take-test-5ccb046461c8",
+      "title": "Take Test",
+      "url": "https://cracku.in/ssc-cgl-previous-papers/ssc-cgl-tier-1-27th-july-2023-shift-2",
+      "sourceId": "cracku-ssc-cgl-previous-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-paper link metadata only; import files only after rights, answer-key, and provenance review",
+      "publishPolicy": "do not copy solved-paper text into ranked practice from this source without a curated promotion record",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "cracku",
+        "pyq",
+        "previous-paper",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:34:59.220675+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "cracku-ssc-cgl-previous-papers-take-test-a76b7c6bf829",
+      "title": "Take Test",
+      "url": "https://cracku.in/ssc-cgl-previous-papers/ssc-cgl-tier-1-27th-july-2023-shift-1",
+      "sourceId": "cracku-ssc-cgl-previous-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-paper link metadata only; import files only after rights, answer-key, and provenance review",
+      "publishPolicy": "do not copy solved-paper text into ranked practice from this source without a curated promotion record",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "cracku",
+        "pyq",
+        "previous-paper",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:34:59.220748+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "cracku-ssc-cgl-previous-papers-take-test-e7739905a126",
+      "title": "Take Test",
+      "url": "https://cracku.in/ssc-cgl-previous-papers/ssc-cgl-tier-1-26th-july-2023-shift-4",
+      "sourceId": "cracku-ssc-cgl-previous-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-paper link metadata only; import files only after rights, answer-key, and provenance review",
+      "publishPolicy": "do not copy solved-paper text into ranked practice from this source without a curated promotion record",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "cracku",
+        "pyq",
+        "previous-paper",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:34:59.220818+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "cracku-ssc-cgl-previous-papers-take-test-47f684e3831f",
+      "title": "Take Test",
+      "url": "https://cracku.in/ssc-cgl-previous-papers/ssc-cgl-tier-1-26th-july-2023-shift-3",
+      "sourceId": "cracku-ssc-cgl-previous-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-paper link metadata only; import files only after rights, answer-key, and provenance review",
+      "publishPolicy": "do not copy solved-paper text into ranked practice from this source without a curated promotion record",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "cracku",
+        "pyq",
+        "previous-paper",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:34:59.220891+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "cracku-ssc-cgl-previous-papers-take-test-eccf32d6b6a9",
+      "title": "Take Test",
+      "url": "https://cracku.in/ssc-cgl-previous-papers/ssc-cgl-tier-1-26th-july-2023-shift-2",
+      "sourceId": "cracku-ssc-cgl-previous-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-paper link metadata only; import files only after rights, answer-key, and provenance review",
+      "publishPolicy": "do not copy solved-paper text into ranked practice from this source without a curated promotion record",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "cracku",
+        "pyq",
+        "previous-paper",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:34:59.220961+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "cracku-ssc-cgl-previous-papers-take-test-71a6c662a8d8",
+      "title": "Take Test",
+      "url": "https://cracku.in/ssc-cgl-previous-papers/ssc-cgl-tier-1-26th-july-2023-shift-1",
+      "sourceId": "cracku-ssc-cgl-previous-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-paper link metadata only; import files only after rights, answer-key, and provenance review",
+      "publishPolicy": "do not copy solved-paper text into ranked practice from this source without a curated promotion record",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "cracku",
+        "pyq",
+        "previous-paper",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:34:59.221031+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "cracku-ssc-cgl-previous-papers-take-test-0363f0916241",
+      "title": "Take Test",
+      "url": "https://cracku.in/ssc-cgl-previous-papers/ssc-cgl-tier-1-25th-july-2023-shift-4",
+      "sourceId": "cracku-ssc-cgl-previous-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-paper link metadata only; import files only after rights, answer-key, and provenance review",
+      "publishPolicy": "do not copy solved-paper text into ranked practice from this source without a curated promotion record",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "cracku",
+        "pyq",
+        "previous-paper",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:34:59.221171+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "cracku-ssc-cgl-previous-papers-take-test-9a845dd5844e",
+      "title": "Take Test",
+      "url": "https://cracku.in/ssc-cgl-previous-papers/ssc-cgl-tier-1-25th-july-2023-shift-3",
+      "sourceId": "cracku-ssc-cgl-previous-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-paper link metadata only; import files only after rights, answer-key, and provenance review",
+      "publishPolicy": "do not copy solved-paper text into ranked practice from this source without a curated promotion record",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "cracku",
+        "pyq",
+        "previous-paper",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:34:59.221305+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "cracku-ssc-cgl-previous-papers-take-test-324f9ed97955",
+      "title": "Take Test",
+      "url": "https://cracku.in/ssc-cgl-previous-papers/ssc-cgl-tier-1-25th-july-2023-shift-1",
+      "sourceId": "cracku-ssc-cgl-previous-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-paper link metadata only; import files only after rights, answer-key, and provenance review",
+      "publishPolicy": "do not copy solved-paper text into ranked practice from this source without a curated promotion record",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "cracku",
+        "pyq",
+        "previous-paper",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:34:59.221380+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "cracku-ssc-cgl-previous-papers-take-test-052a70a5aafd",
+      "title": "Take Test",
+      "url": "https://cracku.in/ssc-cgl-previous-papers/ssc-cgl-tier-1-24th-july-2023-shift-4",
+      "sourceId": "cracku-ssc-cgl-previous-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-paper link metadata only; import files only after rights, answer-key, and provenance review",
+      "publishPolicy": "do not copy solved-paper text into ranked practice from this source without a curated promotion record",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "cracku",
+        "pyq",
+        "previous-paper",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:34:59.221451+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "cracku-ssc-cgl-previous-papers-take-test-cf62b2bf4ea7",
+      "title": "Take Test",
+      "url": "https://cracku.in/ssc-cgl-previous-papers/ssc-cgl-tier-1-24th-july-2023-shift-3",
+      "sourceId": "cracku-ssc-cgl-previous-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-paper link metadata only; import files only after rights, answer-key, and provenance review",
+      "publishPolicy": "do not copy solved-paper text into ranked practice from this source without a curated promotion record",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "cracku",
+        "pyq",
+        "previous-paper",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:34:59.221524+00:00",
+      "snippet": ""
+    },
+    {
+      "id": "testbook-ssc-cgl-previous-year-papers-page",
+      "title": "Testbook SSC CGL previous year papers",
+      "url": "https://testbook.com/ssc-cgl-exam/previous-year-papers",
+      "sourceId": "testbook-ssc-cgl-previous-year-papers",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "collect public previous-paper link metadata only; keep login-gated material metadata-only",
+      "publishPolicy": "do not copy Testbook question text into ranked practice without rights-cleared import and agent review",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "testbook",
+        "pyq",
+        "previous-paper",
+        "review"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889484+00:00",
+      "snippet": "Search-discovered PYQ collection; metadata-only until legal/provenance review."
+    },
+    {
+      "id": "web-pdf-ssc-cgl-pyq-query",
+      "title": "Web PDF candidates for SSC CGL PYQ",
+      "url": "https://www.google.com/search?q=SSC+CGL+previous+year+question+paper+PDF",
+      "sourceId": "web-pdf-search-reference",
+      "sourceType": "web_pdf_unverified",
+      "acquisitionPolicy": "link metadata only from search result pages; import files only after rights review",
+      "publishPolicy": "do not copy coaching-bank or book text without review",
+      "reviewStatus": "needs_review",
+      "tags": [
+        "web-pdf",
+        "review",
+        "pyq"
+      ],
+      "discoveredAt": "2026-06-28T19:35:16.889484+00:00",
+      "snippet": "Search query seed for finding normal PDFs without treating them as reviewed."
+    }
+  ]
+}

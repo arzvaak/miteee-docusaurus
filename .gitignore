@@ -47,6 +47,7 @@ data/exams/ssc-cgl/content-audit/
 data/exams/ssc-cgl/downloads/
 data/exams/ssc-cgl/ocr-review/
 data/exams/ssc-cgl/resource-candidates*.json
+!data/exams/ssc-cgl/resource-candidates.json
 data/exams/ssc-cgl/segments/
 data/exams/ssc-cgl/source-extraction-queue/
 data/exams/ssc-cgl/topic-review/

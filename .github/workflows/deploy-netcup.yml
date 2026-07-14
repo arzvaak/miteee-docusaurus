@@ -29,6 +29,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Generate runtime data
+        run: npm run build:content
+
       - name: Test
         run: npm test
 

@@ -15,8 +15,11 @@ test("Netcup workflow deploys the current Next standalone app instead of stale D
   const packageJson = fs.readFileSync(path.join(root, "package.json"), "utf8");
 
   assert.match(workflow, /scripts\/standalone-assets\.mjs/);
+  assert.match(workflow, /name: Generate runtime data[\s\S]*?run: npm run build:content/);
   assert.match(workflow, /run: npm test/);
   assert.match(workflow, /run: npm run lint/);
+  assert.ok(workflow.indexOf("run: npm run build:content") < workflow.indexOf("run: npm test"));
+  assert.equal(fs.existsSync(path.join(root, "data", "exams", "ssc-cgl", "resource-candidates.json")), true);
   assert.match(workflow, /npm run verify:ssc-render/);
   assert.match(packageJson, /"verify:ssc-browser":\s*"node scripts\/verify-ssc-browser-smoke\.mjs"/);
   assert.match(packageJson, /"verify:ssc-render":\s*"node --import tsx scripts\/verify-ssc-rendered-output\.ts"/);
