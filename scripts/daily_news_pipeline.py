@@ -36,8 +36,8 @@ MISTRAL_SUMMARY_ITEM_LIMIT = 18
 # Provider calls stay bounded to this many source records, but the run publishes
 # every valid record by processing as many deterministic batches as required.
 LLM_BATCH_ITEM_LIMIT = MISTRAL_SUMMARY_ITEM_LIMIT
-MIN_DAILY_SUMMARY_ITEMS = 12
-MAX_DAILY_SUMMARY_ITEMS = 12
+MIN_DAILY_SUMMARY_ITEMS = 5
+MAX_DAILY_SUMMARY_ITEMS = 8
 MISTRAL_CONTEXT_EXCERPT_CHARS = 3200
 MISTRAL_MAX_TOKENS = 12000
 DEEPSEEK_ENDPOINT = "https://api.deepseek.com/chat/completions"
@@ -682,6 +682,12 @@ def is_low_value_current_affairs(item: RawItem) -> bool:
         r"quote of the day|top stocks? to buy|gold price prediction|stock market live updates?|netizens|"
         r"donation theft row|dogs? (?:are|have such a) friendly (?:companions?|relationship)|fed salmon to canines|"
         r"(?:dog|labrador|pet)\b.{0,120}\b(?:cannabis|marijuana|discarded edible|discarded drug)|"
+        r"(?:mystery|mysteries) of .{0,100}(?:forest|trees?)|crooked forest|"
+        r"lawsuit\b.{0,100}\b(?:fake|false)\b.{0,100}\bconspiracy|"
+        r"(?:fake|false)\b.{0,100}\bconspiracy\b.{0,100}\blawsuit|"
+        r"(?:construction site|worksite) fire|"
+        r"(?:extends?|extension of) (?:the )?deadline\b.{0,120}\b(?:voter verification|enumeration forms?|sir exercise)|"
+        r"(?:uk|britain|british)\b.{0,120}\b(?:covid|ppe)\b.{0,120}\b(?:waste|wasted|procurement flaws?|inquiry)|"
         r"why do antibiotics not work against viruses|evergreen classroom explainer)\b",
         content_text,
     ):

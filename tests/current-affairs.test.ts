@@ -925,6 +925,11 @@ items = [
     raw("US stocks today: Wall Street trades in green; stocks steady as inflation data arrives", "Times of India Business", "US stocks traded higher during routine intraday trade as Wall Street weighed inflation and possible central bank rate cuts.", ["economy", "upsc-gs3"]),
     raw("Wildfire southwest of Denver forces thousands to evacuate", "Times of India Environment", "A local wildfire southwest of Denver destroyed structures after dry weather and erratic winds.", ["environment", "science", "upsc-gs3"]),
     raw("Labrador collapses after eating discarded cannabis on Ben Nevis", "Times of India World", "A pet Labrador collapsed on a walk after eating discarded cannabis and later recovered.", ["international", "upsc-gs2"]),
+    raw("Scientists race to solve mystery of Poland's Crooked Forest", "Times of India Science", "Scientists examined the mystery of oddly shaped trees in the Crooked Forest before the trees die out.", ["science", "environment", "upsc-gs3"]),
+    raw("Florida man files lawsuit over fake 'Muslim city' conspiracy", "Times of India World", "An individual filed a lawsuit over a false online conspiracy about a private development.", ["international", "upsc-gs2"]),
+    raw("Several dead in Brussels construction site fire", "Times of India World", "A construction site fire in Brussels caused local casualties while rescue teams searched the site.", ["international", "upsc-gs2"]),
+    raw("EC extends deadline for voter verification exercise", "Times of India India", "The Election Commission extends the deadline for a routine SIR exercise and enumeration forms.", ["national", "polity", "governance"]),
+    raw("UK inquiry finds billions wasted on Covid PPE", "Times of India World", "A British inquiry found domestic Covid PPE spending was wasted because of procurement flaws.", ["international", "upsc-gs2"]),
     raw("AI economy must protect workers; BMS seeks fairer growth model", "Times of India India", "The trade union BMS sought social security and worker protection as artificial intelligence changes labour markets.", ["national", "polity", "governance"]),
     raw("13 Indians killed, 3 missing in Gulf amid war", "Times of India India", "The government reported Indians killed and missing during the Gulf war and described consular support and evacuation planning.", ["national", "polity", "governance"]),
     raw("Ministry of Education publishes official NIRF methodology", "Indian Express Education", "The Ministry of Education published the National Institutional Ranking Framework methodology as an official report.", ["education"]),
@@ -940,6 +945,7 @@ selected = module.filter_study_relevant_items(items)
 brief = module.fallback_brief("2026-07-14", selected)
 print(json.dumps({
     "selected": [item.title for item in selected],
+    "maxDaily": module.MAX_DAILY_SUMMARY_ITEMS,
     "labels": {
         item["title"]: [item["ssc_relevance"], item["upsc_cse_relevance"]]
         for item in brief["items"]
@@ -948,7 +954,8 @@ print(json.dumps({
 `);
 
   assert.equal(result.status, 0, result.stderr);
-  const parsed = JSON.parse(result.stdout) as { selected: string[]; labels: Record<string, [string, string]> };
+  const parsed = JSON.parse(result.stdout) as { selected: string[]; maxDaily: number; labels: Record<string, [string, string]> };
+  assert.equal(parsed.maxDaily, 8);
   assert.deepEqual(new Set(parsed.selected), new Set([
     "OBC status of 77 castes: government withdraws SC challenge to HC verdict",
     "India and China stack gold while trimming US Treasuries",
