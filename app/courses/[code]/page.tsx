@@ -5,10 +5,12 @@ import { CourseOutline } from "@/components/CourseOutline";
 import { CoursePracticeSection } from "@/components/CoursePracticeSection";
 import { CourseResumePanel } from "@/components/CourseResumePanel";
 import { JsonLd } from "@/components/JsonLd";
+import { SscCglLibraryLanding } from "@/components/SscCglLibraryLanding";
 import { UpscActiveRecallSection } from "@/components/UpscActiveRecallSection";
 import { courseDisplaySummary, formatNumber, getAllCourses, getCourse, getCourseNavigationGroups, getCourseNotes } from "@/lib/content";
 import { buildCoursePracticeDrills } from "@/lib/course-practice";
 import { buildBreadcrumbJsonLd, buildCourseJsonLd, buildPageMetadata, courseDescription } from "@/lib/seo";
+import { getSscCglDashboard } from "@/lib/ssc-cgl";
 import { buildUpscActiveRecallDrills } from "@/lib/upsc-active-recall";
 
 type CoursePageProps = {
@@ -36,6 +38,38 @@ export default async function CoursePage({ params }: CoursePageProps) {
   if (!course) notFound();
   const notes = getCourseNotes(course.code);
   const courseGroups = getCourseNavigationGroups(course.code);
+  const structuredData = [
+    buildCourseJsonLd(course),
+    buildBreadcrumbJsonLd([
+      { name: "Home", pathname: "/" },
+      { name: "Courses", pathname: "/courses" },
+      { name: course.code, pathname: `/courses/${course.code}` }
+    ])
+  ];
+
+  if (course.code === "SSC-CGL") {
+    const dashboard = getSscCglDashboard();
+    return (
+      <>
+        <JsonLd data={structuredData} />
+        <SscCglLibraryLanding
+          groups={courseGroups}
+          corpus={{
+            reviewedQuestions: dashboard.readiness.reviewedQuestions,
+            fullMocks: dashboard.readiness.fullMocks,
+            sections: dashboard.readiness.sectionReadiness.map((section) => ({
+              section: section.section,
+              title: section.title,
+              reviewedQuestions: section.reviewedQuestions,
+              bookBackedQuestions: section.bookBackedQuestions,
+              drillHref: section.drillHref
+            }))
+          }}
+        />
+      </>
+    );
+  }
+
   const upscDrills = course.code === "UPSC-CSE-POLITICAL-SCIENCE" ? buildUpscActiveRecallDrills(notes, 4) : [];
   const coursePracticeDrills = course.code === "UPSC-CSE-POLITICAL-SCIENCE" ? [] : buildCoursePracticeDrills(course, notes, 3);
   const activePracticeCount = course.questionCount + (course.practicePromptCount ?? 0);
@@ -44,14 +78,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
   return (
     <div className="page course-detail-page">
       <JsonLd
-        data={[
-          buildCourseJsonLd(course),
-          buildBreadcrumbJsonLd([
-            { name: "Home", pathname: "/" },
-            { name: "Courses", pathname: "/courses" },
-            { name: course.code, pathname: `/courses/${course.code}` }
-          ])
-        ]}
+        data={structuredData}
       />
       <section className="course-page-header">
         <div className="course-header-copy">

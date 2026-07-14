@@ -29,6 +29,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Test
+        run: npm test
+
+      - name: Lint
+        run: npm run lint
+
       - name: Typecheck
         run: npm run typecheck
 
@@ -67,6 +73,18 @@ jobs:
           set -euo pipefail
           test -n "$NETCUP_APP_DIR"
           ssh -i ~/.ssh/netcup_deploy_key "$NETCUP_USER@$NETCUP_HOST" "mkdir -p '$NETCUP_APP_DIR'"
+          ssh -i ~/.ssh/netcup_deploy_key "$NETCUP_USER@$NETCUP_HOST" \
+            "set -euo pipefail
+             stamp=\$(date +%Y%m%d%H%M%S)
+             backup_dir=/root/note-arzvak-backups
+             mkdir -p \"\$backup_dir\"
+             if [ -d '$NETCUP_APP_DIR/.next' ]; then
+               tar --exclude='.next/cache' -C '$NETCUP_APP_DIR' -czf \"\$backup_dir/note-arzvak-predeploy-\$stamp.tar.gz\" .next public docker-compose.next.yml
+               chmod 600 \"\$backup_dir/note-arzvak-predeploy-\$stamp.tar.gz\"
+             fi
+             if [ -f /etc/nginx/conf.d/note.arzvak.com.conf ]; then
+               install -m 600 /etc/nginx/conf.d/note.arzvak.com.conf \"\$backup_dir/note-nginx-predeploy-\$stamp.conf\"
+             fi"
           rsync -az --delete \
             --exclude '.docusaurus/' \
             --exclude '.env' \
@@ -75,6 +93,8 @@ jobs:
             --exclude 'build/' \
             --exclude '.next/cache/' \
             --exclude 'node_modules/' \
+            --exclude 'data/auth/' \
+            --exclude 'data/current-affairs/' \
             -e "ssh -i ~/.ssh/netcup_deploy_key" \
             ./ "$NETCUP_USER@$NETCUP_HOST:$NETCUP_APP_DIR/"
 
@@ -121,19 +141,24 @@ jobs:
              RUN_DATE=\$(TZ=Asia/Kolkata date +%F)
              test -s data/current-affairs/daily/\$RUN_DATE.json
              chmod -R a+rX data/current-affairs
-             printf '%s\n' 'services:' '  miteee-next:' '    ports:' '      - \"3025:3000\"' > /tmp/miteee-next-netcup-ports.yml
-             docker compose -f docker-compose.next.yml -f /tmp/miteee-next-netcup-ports.yml up -d --no-build --force-recreate
+             mkdir -p data/auth
+             chown -R 1001:1001 data/auth
+             chmod 700 data/auth
+             export NEXT_APP_PUBLISHED_PORT=3025
+             export BETTER_AUTH_URL=https://note.arzvak.com
+             docker compose -f docker-compose.next.yml up -d --no-build --force-recreate
              docker cp data/current-affairs/. miteee-next-app:/app/data/current-affairs/
-             docker compose -f docker-compose.next.yml -f /tmp/miteee-next-netcup-ports.yml restart miteee-next
-             docker compose -f docker-compose.next.yml -f /tmp/miteee-next-netcup-ports.yml exec -T miteee-next sh -lc \"ls -lah /app/data/current-affairs/daily && test -s /app/data/current-affairs/daily/\$RUN_DATE.json\"
+             docker compose -f docker-compose.next.yml restart miteee-next
+             docker compose -f docker-compose.next.yml exec -T miteee-next sh -lc \"ls -lah /app/data/current-affairs/daily && test -s /app/data/current-affairs/daily/\$RUN_DATE.json\"
              for attempt in \$(seq 1 30); do
-               if curl --fail --silent --show-error http://127.0.0.1:3025/exams/ssc-cgl/current-affairs | grep -q 'Recall queue'; then
+               if curl --fail --silent --show-error http://127.0.0.1:3025/exams/ssc-cgl/current-affairs | grep -q 'Recall queue' \
+                 && curl --fail --silent --show-error http://127.0.0.1:3025/api/auth/get-session >/dev/null; then
                  exit 0
                fi
                sleep 2
              done
-             docker compose -f docker-compose.next.yml -f /tmp/miteee-next-netcup-ports.yml ps || true
-             docker compose -f docker-compose.next.yml -f /tmp/miteee-next-netcup-ports.yml logs --tail 80 miteee-next || true
+             docker compose -f docker-compose.next.yml ps || true
+             docker compose -f docker-compose.next.yml logs --tail 80 miteee-next || true
              exit 1"
 
       - name: Verify public site
@@ -150,6 +175,19 @@ jobs:
           curl --fail --location --silent --show-error --output /dev/null https://note.arzvak.com/content-assets/research/valorant-preliminary-findings/assets/composition-map-feature-audit.png
           curl --fail --location --silent --show-error https://note.arzvak.com/settings > /tmp/study-settings.html
           grep -q "Make this study space yours" /tmp/study-settings.html
+          curl --fail --location --silent --show-error https://note.arzvak.com/login > /tmp/login.html
+          grep -q "Log in" /tmp/login.html
+          grep -q 'noindex' /tmp/login.html
+          curl --fail --location --silent --show-error https://note.arzvak.com/register > /tmp/register.html
+          grep -q "Create account" /tmp/register.html
+          grep -q 'noindex' /tmp/register.html
+          auth_status="$(curl --location --silent --show-error --output /tmp/auth-probe.json --write-out '%{http_code}' \
+            --request POST \
+            --header 'Origin: https://note.arzvak.com' \
+            --header 'Content-Type: application/json' \
+            --data '{"email":"deployment-auth-probe@invalid.example","password":"deliberately-wrong-password"}' \
+            https://note.arzvak.com/api/auth/sign-in/email)"
+          test "$auth_status" = "401"
           curl --fail --location --silent --show-error https://note.arzvak.com/exams/ssc-cgl > /tmp/ssc-cgl.html
           grep -q "What do you want to practice?" /tmp/ssc-cgl.html
           npx playwright install --with-deps chromium

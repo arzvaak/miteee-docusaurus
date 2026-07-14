@@ -14,6 +14,11 @@ COPY requirements-ssc.txt /tmp/requirements-ssc.txt
 RUN python -m pip install --no-cache-dir -r /tmp/requirements-ssc.txt
 
 COPY ops/netcup/ssc-cgl-news.cron /etc/cron.d/ssc-cgl-news
-RUN chmod 0644 /etc/cron.d/ssc-cgl-news && crontab /etc/cron.d/ssc-cgl-news
+COPY scripts/daily_news_pipeline.py scripts/run_ssc_cgl_daily_news_once.sh ./scripts/
+RUN sed -i 's/\r$//' /etc/cron.d/ssc-cgl-news scripts/daily_news_pipeline.py scripts/run_ssc_cgl_daily_news_once.sh \
+  && chmod 0644 /etc/cron.d/ssc-cgl-news \
+  && crontab /etc/cron.d/ssc-cgl-news \
+  && chmod 0755 scripts/run_ssc_cgl_daily_news_once.sh \
+  && mkdir -p /app/data/current-affairs/logs
 
 CMD ["cron", "-f"]

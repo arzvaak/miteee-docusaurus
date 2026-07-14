@@ -1,7 +1,7 @@
 {
   "id": "/",
-  "name": "MITEEE Study",
-  "short_name": "MITEEE Study",
+  "name": "MITEEE",
+  "short_name": "MITEEE",
   "description": "A calm MITEEE, SSC CGL, and UPSC study library for notes, formulas, question banks, practice, and revision.",
   "start_url": "/",
   "scope": "/",
@@ -108,14 +108,14 @@
       "sizes": "1200x630",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "MITEEE Study library with notes, subjects, and revision paths"
+      "label": "MITEEE library with notes, subjects, and revision paths"
     },
     {
       "src": "/img/miteee-splash-portrait.jpg",
       "sizes": "1080x1920",
       "type": "image/jpeg",
       "form_factor": "narrow",
-      "label": "MITEEE Study artwork for mobile install surfaces"
+      "label": "MITEEE artwork for mobile install surfaces"
     }
   ]
 }

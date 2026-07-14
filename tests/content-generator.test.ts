@@ -115,8 +115,11 @@ test("buildContentData indexes docs, copies assets, and writes catalog files", (
   const generatedRoot = path.join(root, "data", "generated");
   const publicRoot = path.join(root, "public");
   const noteDir = path.join(docsRoot, "sem6", "mi");
+  const examMarker = path.join(generatedRoot, "exams", "ssc-cgl", "index.json");
 
   fs.mkdirSync(path.join(noteDir, "assets"), { recursive: true });
+  fs.mkdirSync(path.dirname(examMarker), { recursive: true });
+  fs.writeFileSync(examMarker, "{\"preserved\":true}\n");
   fs.writeFileSync(path.join(noteDir, "assets", "diagram.svg"), "<svg />");
   fs.writeFileSync(
     path.join(noteDir, "tutorial-1.md"),
@@ -144,6 +147,7 @@ test("buildContentData indexes docs, copies assets, and writes catalog files", (
   assert.doesNotMatch(result.notes[0]?.content || "", /^# Tutorial One/m);
   assert.ok(fs.existsSync(path.join(generatedRoot, "catalog.json")));
   assert.ok(fs.existsSync(path.join(generatedRoot, "notes", "sem6-mi-tutorial-1.json")));
+  assert.equal(fs.readFileSync(examMarker, "utf8"), "{\"preserved\":true}\n");
   assert.ok(fs.existsSync(path.join(publicRoot, "content-assets", "sem6", "mi", "assets", "diagram.svg")));
 });
 

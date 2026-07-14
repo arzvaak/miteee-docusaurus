@@ -11,14 +11,24 @@ test("settings route passes the complete course catalog to the client settings e
   assert.match(page, /<StudySettings courses=/);
 });
 
-test("settings is explicit about device-only persistence and unavailable account sync", () => {
+test("settings exposes real account actions while keeping study persistence truthful", () => {
   const component = fs.readFileSync(path.join(root, "components", "StudySettings.tsx"), "utf8");
+  const account = fs.readFileSync(path.join(root, "components", "SettingsAccountCard.tsx"), "utf8");
   assert.match(component, /Saved on this device/);
-  assert.match(component, /This device only/);
-  assert.match(component, /Account &amp; sync/);
-  assert.match(component, /Not connected yet/);
-  assert.match(component, /do not sync across devices/);
-  assert.doesNotMatch(component, /Signed in as/);
+  assert.match(component, /This device/);
+  assert.match(component, /<SettingsAccountCard/);
+  assert.match(account, /Signed in as/);
+  assert.match(account, /href="\/login\?next=%2Fsettings"/);
+  assert.match(account, /href="\/register\?next=%2Fsettings"/);
+  assert.match(account, /does not sync across devices yet/);
+  assert.match(account, /still remain on this device and do not sync yet/);
+});
+
+test("settings makes the complete theme gallery discoverable", () => {
+  const component = fs.readFileSync(path.join(root, "components", "StudySettings.tsx"), "utf8");
+  assert.match(component, /import \{ ThemeGallery \} from "@\/components\/ThemeToggle"/);
+  assert.match(component, /aria-label="Appearance settings"/);
+  assert.match(component, /<ThemeGallery \/>/);
 });
 
 test("settings supports all statuses, an optional constrained plan, and data controls", () => {
@@ -36,9 +46,12 @@ test("settings supports all statuses, an optional constrained plan, and data con
   assert.match(component, /Reset device settings/);
 });
 
-test("the shell avatar is a truthful settings link", () => {
+test("the shell keeps settings visible and exposes account access", () => {
   const shell = fs.readFileSync(path.join(root, "components", "AppShell.tsx"), "utf8");
+  const account = fs.readFileSync(path.join(root, "components", "AuthControls.tsx"), "utf8");
   assert.match(shell, /href="\/settings"/);
   assert.match(shell, /aria-label="Open study settings"/);
-  assert.doesNotMatch(shell, /Signed in as MITEEE learner/);
+  assert.match(shell, /<AuthControls/);
+  assert.match(account, /href=\{loginHref\}/);
+  assert.match(account, /href=\{registerHref\}/);
 });

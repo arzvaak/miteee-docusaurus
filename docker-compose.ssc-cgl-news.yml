@@ -14,5 +14,5 @@ services:
       MISTRAL_API_KEY: ${MISTRAL_API_KEY:-}
       CURRENT_AFFAIRS_DATA_ROOT: /app/data/current-affairs
     volumes:
-      - ./:/app:Z
+      - ./data/current-affairs:/app/data/current-affairs:z
     command: ["cron", "-f"]

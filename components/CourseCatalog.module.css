@@ -1,0 +1,568 @@
+.catalog {
+  display: grid;
+  gap: 34px;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: minmax(280px, 680px) auto;
+  gap: 16px 24px;
+  align-items: center;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+}
+
+.searchField {
+  display: grid;
+  min-height: 50px;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  padding: 0 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  background: var(--surface-strong);
+  color: var(--muted);
+}
+
+.searchField:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.searchField input {
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text);
+  font-size: 14px;
+}
+
+.searchField input::placeholder {
+  color: var(--muted);
+}
+
+.searchField button {
+  display: inline-grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.searchField button:hover {
+  background: var(--surface-muted);
+  color: var(--text);
+}
+
+.resultCount {
+  display: flex;
+  align-items: baseline;
+  justify-self: end;
+  gap: 7px;
+  color: var(--muted);
+}
+
+.resultCount strong {
+  color: var(--text);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-size: 27px;
+  font-weight: 650;
+}
+
+.resultCount span {
+  font-size: 11px;
+}
+
+.filters {
+  display: flex;
+  grid-column: 1 / -1;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border);
+  border-bottom: 0;
+}
+
+.filters button {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  gap: 7px;
+  padding: 0 11px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-soft);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 760;
+}
+
+.filters button span {
+  display: inline-grid;
+  min-width: 20px;
+  height: 20px;
+  place-items: center;
+  margin: 0;
+  border-radius: 999px;
+  background: var(--surface-muted);
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.filters button:hover,
+.filters button[aria-pressed="true"] {
+  border-color: color-mix(in srgb, var(--accent) 56%, var(--border));
+  background: var(--accent-soft);
+  color: var(--text);
+}
+
+.filters button[aria-pressed="true"] span {
+  background: color-mix(in srgb, var(--accent) 20%, var(--surface));
+  color: var(--accent-strong);
+}
+
+.groups {
+  display: grid;
+  gap: 46px;
+}
+
+.group {
+  display: grid;
+  gap: 17px;
+}
+
+.groupHeader {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 22px;
+  padding-bottom: 13px;
+  border-bottom: 1px solid var(--border-strong);
+}
+
+.groupHeader > div {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  gap: 13px;
+  align-items: start;
+}
+
+.groupHeader > div > span {
+  color: var(--accent-strong);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.groupHeader h2,
+.groupHeader p {
+  margin: 0;
+}
+
+.groupHeader h2 {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-size: clamp(23px, 2vw, 31px);
+  font-weight: 620;
+  letter-spacing: -0.035em;
+}
+
+.groupHeader p {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.groupHeader > strong {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+  gap: 13px;
+}
+
+.courseCard {
+  --card-accent: var(--accent);
+  --card-accent-soft: var(--accent-soft);
+  position: relative;
+  display: grid;
+  min-width: 0;
+  min-height: 310px;
+  grid-template-rows: auto minmax(0, 1fr) auto auto;
+  gap: 20px;
+  padding: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  color: var(--text);
+  transition: border-color 160ms ease, transform 160ms ease, background-color 160ms ease;
+}
+
+.courseCard::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 3px;
+  background: var(--card-accent);
+  content: "";
+  opacity: 0.72;
+}
+
+.courseCard[data-tone="blue"] {
+  --card-accent: var(--blue);
+  --card-accent-soft: var(--blue-soft);
+}
+
+.courseCard[data-tone="emerald"] {
+  --card-accent: var(--emerald);
+  --card-accent-soft: var(--emerald-soft);
+}
+
+.courseCard[data-tone="rose"] {
+  --card-accent: var(--rose);
+  --card-accent-soft: var(--rose-soft);
+}
+
+.courseCard[data-tone="violet"] {
+  --card-accent: var(--violet);
+  --card-accent-soft: var(--violet-soft);
+}
+
+.courseCard[data-tone="amber"] {
+  --card-accent: var(--amber);
+  --card-accent-soft: var(--amber-soft);
+}
+
+.courseCard:hover,
+.courseCard:focus-visible {
+  border-color: color-mix(in srgb, var(--card-accent) 58%, var(--border));
+  background: color-mix(in srgb, var(--card-accent-soft) 26%, var(--surface));
+  transform: translateY(-2px);
+}
+
+.courseCard:focus-visible {
+  outline: 2px solid var(--card-accent);
+  outline-offset: 2px;
+}
+
+.courseCard[data-featured="true"] {
+  border-color: color-mix(in srgb, var(--card-accent) 35%, var(--border));
+  background: color-mix(in srgb, var(--card-accent-soft) 20%, var(--surface));
+}
+
+.cardTopline {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+}
+
+.courseIcon {
+  display: inline-grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--card-accent) 34%, var(--border));
+  border-radius: 11px;
+  background: var(--card-accent-soft);
+  color: var(--card-accent);
+}
+
+.courseCode {
+  overflow: hidden;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.045em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cardTopline > svg {
+  color: var(--muted);
+  transition: color 160ms ease, transform 160ms ease;
+}
+
+.courseCard:hover .cardTopline > svg,
+.courseCard:focus-visible .cardTopline > svg {
+  color: var(--card-accent);
+  transform: translate(2px, -2px);
+}
+
+.cardBody {
+  display: grid;
+  align-content: start;
+  gap: 9px;
+}
+
+.cardBody p {
+  margin: 0;
+  color: var(--card-accent);
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
+.cardBody h3 {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-size: 24px;
+  font-weight: 620;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+
+.cardBody > span {
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--text-soft);
+  font-size: 12px;
+  line-height: 1.55;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.cardMetrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  padding: 12px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.cardMetrics > div {
+  display: grid;
+  gap: 4px;
+  padding: 0 10px;
+  border-right: 1px solid var(--border);
+}
+
+.cardMetrics > div:first-child {
+  padding-left: 0;
+}
+
+.cardMetrics > div:last-child {
+  padding-right: 0;
+  border-right: 0;
+}
+
+.cardMetrics dt {
+  color: var(--muted);
+  font-size: 8px;
+  font-weight: 850;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.cardMetrics dd {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-size: 19px;
+  font-weight: 650;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cardFooter > span {
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 750;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cardFooter strong {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 6px;
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.courseCard:hover .cardFooter strong,
+.courseCard:focus-visible .cardFooter strong {
+  color: var(--card-accent);
+}
+
+.emptyState {
+  display: grid;
+  min-height: 330px;
+  place-items: center;
+  align-content: center;
+  gap: 9px;
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  text-align: center;
+}
+
+.emptyState > span {
+  display: inline-grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: var(--surface-strong);
+  color: var(--accent-strong);
+}
+
+.emptyState h2,
+.emptyState p {
+  margin: 0;
+}
+
+.emptyState h2 {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-size: 27px;
+  font-weight: 620;
+  letter-spacing: -0.035em;
+}
+
+.emptyState > p:not(:global(.eyebrow)) {
+  max-width: 480px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.emptyState button {
+  min-height: 40px;
+  margin-top: 6px;
+  padding: 0 14px;
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 850;
+}
+
+:global(:root[data-theme="paper"]) .courseCard,
+:global(:root[data-theme="paper"]) .controls {
+  background: color-mix(in srgb, var(--surface) 94%, var(--bg));
+}
+
+:global(:root[data-theme="high-contrast"]) .courseCard,
+:global(:root[data-theme="high-contrast"]) .controls,
+:global(:root[data-theme="high-contrast"]) .searchField {
+  border-width: 2px;
+}
+
+:global(:root[data-theme="high-contrast"]) .courseCard:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+  .catalog {
+    gap: 26px;
+  }
+
+  .controls {
+    grid-template-columns: 1fr auto;
+    padding: 13px;
+    border-radius: 13px;
+  }
+
+  .filters {
+    flex-wrap: nowrap;
+    padding-bottom: 3px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+
+  .filters button {
+    flex: 0 0 auto;
+  }
+
+  .groups {
+    gap: 34px;
+  }
+
+  .groupHeader {
+    align-items: flex-start;
+  }
+
+  .groupHeader > strong {
+    padding-top: 5px;
+  }
+
+  .cardGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .courseCard {
+    min-height: 0;
+    border-radius: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .controls {
+    grid-template-columns: 1fr;
+  }
+
+  .resultCount {
+    justify-self: start;
+  }
+
+  .filters {
+    grid-column: 1;
+  }
+
+  .groupHeader {
+    display: grid;
+  }
+
+  .cardFooter > span {
+    display: none;
+  }
+
+  .cardFooter strong {
+    margin-left: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .courseCard,
+  .cardTopline > svg {
+    transition: none;
+  }
+
+  .courseCard:hover,
+  .courseCard:focus-visible {
+    transform: none;
+  }
+}

@@ -1,6 +1,8 @@
-# MITEEE Study
+# MITEEE
 
 Local-first study site for MIT EEE notes, UPSC CSE Political Science NCERT notes, revision memory, active recall, and practice workflows.
+
+The current app includes server-backed email/password accounts, 14 appearance choices (System plus 13 palettes, including Monokai, Dracula, Nord, Gruvbox, Solarized, Tokyo Night, One Dark, and Catppuccin), and dedicated SSC CGL subject homes with searchable staged tables of contents.
 
 ## Run Locally
 
@@ -9,7 +11,7 @@ npm install
 npm run dev
 ```
 
-The app runs on Next.js. Content indexes are generated from `docs/` into `data/generated/` before production builds.
+The app runs on Next.js and requires Node.js 22 or newer; CI and Docker use Node.js 24. Content indexes are generated from `docs/` into `data/generated/` before production builds.
 
 ## Validate
 
@@ -44,6 +46,7 @@ With the Docker app running, verify these local production URLs before packaging
 ```bash
 curl.exe -I http://127.0.0.1:3000/
 curl.exe -I http://127.0.0.1:3000/courses
+curl.exe -I http://127.0.0.1:3000/courses/SSC-CGL/reasoning
 curl.exe -I http://127.0.0.1:3000/exams/ssc-cgl
 curl.exe -I http://127.0.0.1:3000/exams/ssc-cgl/tests
 curl.exe -I http://127.0.0.1:3000/exams/ssc-cgl/topics/probability
@@ -51,6 +54,9 @@ curl.exe -I http://127.0.0.1:3000/robots.txt
 curl.exe -I http://127.0.0.1:3000/sitemap.xml
 curl.exe -I http://127.0.0.1:3000/site.webmanifest
 curl.exe -I http://127.0.0.1:3000/img/icons/icon-192.png
+curl.exe -I http://127.0.0.1:3000/login
+curl.exe -I http://127.0.0.1:3000/register
+curl.exe -I http://127.0.0.1:3000/settings
 ```
 
 Stop the local production container when verification is done:
@@ -58,6 +64,16 @@ Stop the local production container when verification is done:
 ```bash
 docker compose -f docker-compose.next.yml down
 ```
+
+## Accounts and local study data
+
+Accounts use Better Auth with a persistent SQLite database at `data/auth/miteee-auth.sqlite` in the Docker workflow. That folder is intentionally excluded from Git, Docker build contexts, and deployment sync so an upgrade cannot overwrite existing accounts. The app creates a strong secret beside the database when no managed `BETTER_AUTH_SECRET` is supplied; production can provide a managed secret through the environment instead.
+
+Set `BETTER_AUTH_URL` to the public origin for production. For local Docker verification it follows the published localhost port and defaults to `http://localhost:3000`.
+
+The app publishes on host port `3000` by default. Set `NEXT_APP_PUBLISHED_PORT` when a local or server process needs a different host port; the container still listens on port `3000`. Published ports bind to `127.0.0.1` so nginx remains the only public entry point. The Compose default keeps the auth origin on that same localhost port. For any non-local hostname, set `BETTER_AUTH_URL` explicitly to the browser-visible origin.
+
+Account records and sessions are server-backed. Email ownership verification is not enabled yet, so the email is currently a sign-in identifier rather than a verified contact address. Reading progress, plans, attempts, mistakes, saved items, and the selected theme remain in the current browser and do not sync across devices yet.
 
 ## Optional Mistral Coach
 

@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import type {
@@ -5,10 +6,13 @@ import type {
   CurrentAffairsArchiveDay,
   CurrentAffairsCalendarDigest,
   CurrentAffairsItem,
+  CurrentAffairsIssue,
+  CurrentAffairsIssueKind,
   CurrentAffairsRawItem,
   CurrentAffairsRecallCard,
   CurrentAffairsRevisionPacket,
   CurrentAffairsRunState,
+  CurrentAffairsStoryRecord,
   CurrentAffairsStaticAnchor,
   CurrentAffairsSourceQuality,
   CurrentAffairsStudyBrief,
@@ -24,6 +28,7 @@ type ParseSummaryResult = {
 
 const currentAffairsRoot = path.join(process.cwd(), "data", "current-affairs", "daily");
 const currentAffairsDataRoot = path.join(process.cwd(), "data", "current-affairs");
+const currentAffairsBaseHref = "/exams/ssc-cgl/current-affairs";
 const officialCurrentAffairsSources = new Set(["PIB", "RBI", "SSC", "PRS"]);
 const defaultStaticAnchor: CurrentAffairsStaticAnchor = {
   topicSlug: "current-affairs-static-gk",
@@ -108,7 +113,8 @@ function parseUtcDateOnly(value: string | null) {
   if (!value || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
   const [year, month, day] = value.split("-").map(Number);
   if (!year || !month || !day) return null;
-  return Date.UTC(year, month - 1, day);
+  const timestamp = Date.UTC(year, month - 1, day);
+  return new Date(timestamp).toISOString().slice(0, 10) === value ? timestamp : null;
 }
 
 function currentAffairsFreshness(lastSuccessfulDate: string | null, expectedDate = getCurrentAffairsIstDate()) {
@@ -245,12 +251,24 @@ function hasGrounding(item: CurrentAffairsSummaryItem, sources: CurrentAffairsIt
 function normalizeSummaryItem(item: CurrentAffairsSummaryItem): CurrentAffairsSummaryItem {
   const keyPoints = Array.isArray(item.key_points) ? item.key_points.map((point) => cleanText(String(point))).filter(Boolean).slice(0, 4) : [];
   const sourceExcerpt = cleanText(item.source_excerpt || keyPoints[0] || item.why_it_matters_for_ssc_cgl || "").slice(0, 900);
+  const evidence = item.content_evidence;
+  const normalizedEvidence = evidence
+    && ["article-page", "feed-summary", "official-record", "official-page", "unknown"].includes(evidence.origin)
+    && typeof evidence.method === "string"
+    && Number.isFinite(evidence.captured_characters)
+    ? {
+        origin: evidence.origin,
+        method: cleanText(evidence.method).slice(0, 80),
+        captured_characters: Math.max(0, Math.round(evidence.captured_characters))
+      }
+    : undefined;
   return {
     title: cleanText(item.title).slice(0, 160),
     source: cleanText(item.source).slice(0, 80),
     url: item.url.trim(),
     published_at: cleanText(item.published_at),
     source_excerpt: sourceExcerpt,
+    ...(normalizedEvidence ? { content_evidence: normalizedEvidence } : {}),
     ssc_relevance: item.ssc_relevance === "high" || item.ssc_relevance === "medium" ? item.ssc_relevance : "low",
     upsc_cse_relevance: item.upsc_cse_relevance === "high" || item.upsc_cse_relevance === "medium" ? item.upsc_cse_relevance : "low",
     exam_areas: Array.isArray(item.exam_areas) ? item.exam_areas.map((area) => cleanText(String(area))).filter(Boolean).slice(0, 6) : [],
@@ -324,6 +342,225 @@ function normalizeCalendar(value: unknown): CurrentAffairsBrief["calendar"] | un
     month_total_items: typeof input.month_total_items === "number" && Number.isFinite(input.month_total_items) ? input.month_total_items : undefined,
     month_high_yield: typeof input.month_high_yield === "number" && Number.isFinite(input.month_high_yield) ? input.month_high_yield : undefined
   };
+}
+
+function isSafeHttpUrl(value: string) {
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:" || url.protocol === "http:";
+  } catch {
+    return false;
+  }
+}
+
+function slugSegment(value: string, fallback: string) {
+  const normalized = cleanText(value)
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/&/g, " and ")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 64)
+    .replace(/-+$/g, "");
+  return normalized || fallback;
+}
+
+function isSafeStorySlug(value: string) {
+  return /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value) && value.length <= 96;
+}
+
+function isCurrentAffairsRelevance(value: unknown): value is "high" | "medium" | "low" {
+  return value === "high" || value === "medium" || value === "low";
+}
+
+export function isTechnicallyValidCurrentAffairsItem(value: unknown): value is CurrentAffairsSummaryItem {
+  if (!value || typeof value !== "object") return false;
+  const item = value as Partial<CurrentAffairsSummaryItem>;
+  return typeof item.title === "string"
+    && Boolean(item.title.trim())
+    && typeof item.source === "string"
+    && Boolean(item.source.trim())
+    && typeof item.url === "string"
+    && isSafeHttpUrl(item.url)
+    && typeof item.published_at === "string"
+    && Boolean(item.published_at.trim())
+    && isCurrentAffairsRelevance(item.ssc_relevance)
+    && (item.upsc_cse_relevance === undefined || isCurrentAffairsRelevance(item.upsc_cse_relevance));
+}
+
+export function getCurrentAffairsStorySlug(date: string, item: CurrentAffairsSummaryItem, ordinal = 0) {
+  if (parseUtcDateOnly(date) === null || !isTechnicallyValidCurrentAffairsItem(item) || !Number.isSafeInteger(ordinal) || ordinal < 0) {
+    return null;
+  }
+  const digest = createHash("sha256")
+    .update(`${date}\u0000${item.source}\u0000${item.url}\u0000${ordinal}`)
+    .digest("hex")
+    .slice(0, 10);
+  return `${slugSegment(item.title, "story")}-${digest}`;
+}
+
+export function getCurrentAffairsStoryHref(date: string, storySlug: string) {
+  if (parseUtcDateOnly(date) === null || !isSafeStorySlug(storySlug)) return null;
+  const query = new URLSearchParams({ date, story: storySlug });
+  return `${currentAffairsBaseHref}?${query.toString()}#story-${storySlug}`;
+}
+
+export function buildCurrentAffairsStoryRecords(brief: CurrentAffairsBrief): CurrentAffairsStoryRecord[] {
+  if (parseUtcDateOnly(brief.date) === null || !Array.isArray(brief.items)) return [];
+  return brief.items.flatMap((item, ordinal) => {
+    if (!isTechnicallyValidCurrentAffairsItem(item)) return [];
+    const slug = getCurrentAffairsStorySlug(brief.date, item, ordinal);
+    const href = slug ? getCurrentAffairsStoryHref(brief.date, slug) : null;
+    if (!slug || !href) return [];
+    const keyPoints = Array.isArray(item.key_points) ? item.key_points.map((point) => cleanText(String(point))).filter(Boolean) : [];
+    const examAreas = Array.isArray(item.exam_areas) ? item.exam_areas.map((area) => cleanText(String(area))).filter(Boolean) : [];
+    const summary = cleanText(keyPoints[0] || item.source_excerpt || item.why_it_matters_for_ssc_cgl || item.title).slice(0, 280);
+    return [{
+      date: brief.date,
+      slug,
+      selectionId: `story-${slug}`,
+      href,
+      title: cleanText(item.title),
+      source: cleanText(item.source),
+      sourceUrl: item.url,
+      publishedAt: cleanText(item.published_at),
+      summary,
+      examAreas,
+      lenses: {
+        ssc: item.ssc_relevance,
+        upsc: isCurrentAffairsRelevance(item.upsc_cse_relevance) ? item.upsc_cse_relevance : "low"
+      },
+      item
+    }];
+  });
+}
+
+export function getCurrentAffairsStoryBySlug(
+  date: string,
+  storySlug: string,
+  root = currentAffairsRoot
+): CurrentAffairsStoryRecord | null {
+  if (parseUtcDateOnly(date) === null || !isSafeStorySlug(storySlug)) return null;
+  return buildCurrentAffairsStoryRecords(getCurrentAffairsBrief(date, root))
+    .find((story) => story.slug === storySlug || story.selectionId === storySlug) ?? null;
+}
+
+const dayMilliseconds = 86_400_000;
+
+export function getCurrentAffairsWeekKey(date: string) {
+  const timestamp = parseUtcDateOnly(date);
+  if (timestamp === null) return null;
+  const weekDate = new Date(timestamp);
+  const weekday = weekDate.getUTCDay() || 7;
+  weekDate.setUTCDate(weekDate.getUTCDate() + 4 - weekday);
+  const weekYear = weekDate.getUTCFullYear();
+  const yearStart = Date.UTC(weekYear, 0, 1);
+  const week = Math.ceil(((weekDate.getTime() - yearStart) / dayMilliseconds + 1) / 7);
+  return `${weekYear}-W${String(week).padStart(2, "0")}`;
+}
+
+export function getCurrentAffairsMonthKey(date: string) {
+  return parseUtcDateOnly(date) === null ? null : date.slice(0, 7);
+}
+
+function currentAffairsIssueBounds(kind: CurrentAffairsIssueKind, key: string) {
+  if (kind === "monthly") {
+    const match = /^(\d{4})-(\d{2})$/.exec(key);
+    if (!match) return null;
+    const year = Number(match[1]);
+    const month = Number(match[2]);
+    if (month < 1 || month > 12) return null;
+    const startTimestamp = Date.UTC(year, month - 1, 1);
+    const endTimestamp = Date.UTC(year, month, 0);
+    return {
+      startDate: new Date(startTimestamp).toISOString().slice(0, 10),
+      endDate: new Date(endTimestamp).toISOString().slice(0, 10)
+    };
+  }
+
+  const match = /^(\d{4})-W(\d{2})$/.exec(key);
+  if (!match) return null;
+  const year = Number(match[1]);
+  const week = Number(match[2]);
+  if (week < 1 || week > 53) return null;
+  const januaryFourth = Date.UTC(year, 0, 4);
+  const januaryFourthDay = new Date(januaryFourth).getUTCDay() || 7;
+  const startTimestamp = januaryFourth - (januaryFourthDay - 1) * dayMilliseconds + (week - 1) * 7 * dayMilliseconds;
+  const startDate = new Date(startTimestamp).toISOString().slice(0, 10);
+  if (getCurrentAffairsWeekKey(startDate) !== key) return null;
+  return {
+    startDate,
+    endDate: new Date(startTimestamp + 6 * dayMilliseconds).toISOString().slice(0, 10)
+  };
+}
+
+export function getCurrentAffairsIssueHref(kind: CurrentAffairsIssueKind, key: string) {
+  if (!currentAffairsIssueBounds(kind, key)) return null;
+  return `${currentAffairsBaseHref}?${new URLSearchParams({ edition: kind, period: key }).toString()}`;
+}
+
+export function buildCurrentAffairsIssue(
+  kind: CurrentAffairsIssueKind,
+  key: string,
+  briefs: CurrentAffairsBrief[]
+): CurrentAffairsIssue | null {
+  const bounds = currentAffairsIssueBounds(kind, key);
+  const href = getCurrentAffairsIssueHref(kind, key);
+  if (!bounds || !href) return null;
+  const issueBriefs = briefs
+    .filter((brief) => kind === "weekly" ? getCurrentAffairsWeekKey(brief.date) === key : getCurrentAffairsMonthKey(brief.date) === key)
+    .sort((a, b) => a.date.localeCompare(b.date));
+  const stories = issueBriefs.flatMap(buildCurrentAffairsStoryRecords);
+  if (stories.length === 0) return null;
+
+  const grouped = new Map<string, { id: string; label: string; stories: CurrentAffairsStoryRecord[] }>();
+  for (const story of stories) {
+    const label = story.examAreas[0] || "General current affairs";
+    const groupKey = label.toLocaleLowerCase("en-IN");
+    const existing = grouped.get(groupKey);
+    if (existing) {
+      existing.stories.push(story);
+    } else {
+      const groupDigest = createHash("sha256").update(groupKey).digest("hex").slice(0, 6);
+      grouped.set(groupKey, {
+        id: `${slugSegment(label, "general")}-${groupDigest}`,
+        label,
+        stories: [story]
+      });
+    }
+  }
+
+  const title = kind === "weekly"
+    ? `Current affairs ${key.replace("-W", " week ")}`
+    : new Intl.DateTimeFormat("en-IN", { month: "long", year: "numeric", timeZone: "UTC" })
+      .format(new Date(`${key}-01T00:00:00.000Z`));
+  return {
+    kind,
+    key,
+    href,
+    title,
+    ...bounds,
+    availableDates: [...new Set(issueBriefs.map((brief) => brief.date))],
+    storyCount: stories.length,
+    stories,
+    groups: [...grouped.values()].sort((a, b) => a.label.localeCompare(b.label, "en-IN"))
+  };
+}
+
+function getCurrentAffairsIssueFromDisk(kind: CurrentAffairsIssueKind, key: string, root: string) {
+  const dates = getCurrentAffairsAvailableDates(root).filter((date) => (
+    kind === "weekly" ? getCurrentAffairsWeekKey(date) === key : getCurrentAffairsMonthKey(date) === key
+  ));
+  return buildCurrentAffairsIssue(kind, key, dates.map((date) => getCurrentAffairsBrief(date, root)));
+}
+
+export function getCurrentAffairsWeeklyIssue(key: string, root = currentAffairsRoot) {
+  return getCurrentAffairsIssueFromDisk("weekly", key, root);
+}
+
+export function getCurrentAffairsMonthlyIssue(key: string, root = currentAffairsRoot) {
+  return getCurrentAffairsIssueFromDisk("monthly", key, root);
 }
 
 function cardId(date: string, item: CurrentAffairsSummaryItem) {

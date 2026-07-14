@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
+import { resolvedThemes } from "../lib/themes";
 
 type WebManifest = {
   name: string;
@@ -15,11 +16,37 @@ function publicPath(src: string) {
   return path.join(process.cwd(), "public", src.replace(/^\//, ""));
 }
 
+function cssBlock(css: string, selector: string) {
+  const selectorIndex = css.indexOf(selector);
+  assert.notEqual(selectorIndex, -1, `${selector} should exist`);
+  const openBrace = css.indexOf("{", selectorIndex);
+  const closeBrace = css.indexOf("}", openBrace);
+  return css.slice(openBrace + 1, closeBrace);
+}
+
+function hexToken(block: string, token: string) {
+  const match = new RegExp(`--${token}:\\s*(#[0-9a-f]{6})`, "i").exec(block);
+  assert.ok(match, `--${token} should be a six-digit hex color`);
+  return match[1]!;
+}
+
+function contrastRatio(foreground: string, background: string) {
+  function luminance(hex: string) {
+    const channels = [1, 3, 5].map((offset) => Number.parseInt(hex.slice(offset, offset + 2), 16) / 255);
+    const linear = channels.map((channel) => channel <= 0.03928 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4);
+    return 0.2126 * linear[0]! + 0.7152 * linear[1]! + 0.0722 * linear[2]!;
+  }
+
+  const lighter = Math.max(luminance(foreground), luminance(background));
+  const darker = Math.min(luminance(foreground), luminance(background));
+  return (lighter + 0.05) / (darker + 0.05);
+}
+
 test("web app manifest exposes the generated brand assets and study shortcuts", () => {
   const manifest = JSON.parse(fs.readFileSync(path.join(process.cwd(), "public", "site.webmanifest"), "utf8")) as WebManifest;
 
-  assert.equal(manifest.name, "MITEEE Study");
-  assert.equal(manifest.short_name, "MITEEE Study");
+  assert.equal(manifest.name, "MITEEE");
+  assert.equal(manifest.short_name, "MITEEE");
   assert.ok(manifest.icons.some((icon) => icon.src === "/img/icons/icon-192.png" && icon.sizes === "192x192"));
   assert.ok(manifest.icons.some((icon) => icon.src === "/img/app-icon.png" && icon.purpose?.includes("maskable")));
   assert.ok(manifest.shortcuts?.some((shortcut) => shortcut.name === "Revision Queue" && shortcut.url === "/revision"));
@@ -64,4 +91,61 @@ test("homepage uses a dark-safe palette with an explicit light alternative", () 
   assert.match(css, /:root\[data-theme="light"\][\s\S]*?--bg:\s*#f7f8fa/);
   assert.match(dashboardCss, /--dashboard-panel:\s*#0e1621/);
   assert.match(dashboardCss, /:global\(:root\[data-theme="light"\]\) \.dashboard/);
+});
+
+test("appearance themes include warm paper and high-contrast palettes", () => {
+  const css = fs.readFileSync(path.join(process.cwd(), "app", "globals.css"), "utf8");
+
+  assert.match(css, /:root\[data-theme="paper"\][\s\S]*?--bg:\s*#f4efe5/);
+  assert.match(css, /:root\[data-theme="high-contrast"\][\s\S]*?--bg:\s*#000000/);
+  assert.match(css, /:root\[data-theme="high-contrast"\][\s\S]*?:focus-visible/);
+});
+
+test("light and paper muted text tokens retain small-text contrast on muted surfaces", () => {
+  const globalCss = fs.readFileSync(path.join(process.cwd(), "app", "globals.css"), "utf8");
+  const minimalCss = fs.readFileSync(path.join(process.cwd(), "app", "study-minimal.css"), "utf8");
+  const globalLight = cssBlock(globalCss, ':root[data-theme="light"]');
+  const finalLight = cssBlock(minimalCss, ':root[data-theme="light"]');
+  const paper = cssBlock(globalCss, ':root[data-theme="paper"]');
+
+  assert.equal(hexToken(globalLight, "muted"), hexToken(finalLight, "muted"));
+  assert.ok(contrastRatio(hexToken(finalLight, "muted"), hexToken(finalLight, "surface-muted")) >= 4.5);
+  assert.ok(contrastRatio(hexToken(paper, "muted"), hexToken(paper, "surface-muted")) >= 4.5);
+});
+
+test("every registered palette has readable semantic tokens", () => {
+  const globalCss = fs.readFileSync(path.join(process.cwd(), "app", "globals.css"), "utf8");
+  const minimalCss = fs.readFileSync(path.join(process.cwd(), "app", "study-minimal.css"), "utf8");
+
+  for (const theme of resolvedThemes) {
+    const selector = `:root[data-theme="${theme.value}"]`;
+    const source = theme.value === "dark" || theme.value === "light" ? minimalCss : globalCss;
+    const block = cssBlock(source, selector);
+
+    for (const token of ["bg", "surface", "surface-muted", "text", "text-soft", "muted", "accent", "accent-strong"]) {
+      assert.match(block, new RegExp(`--${token}:`), `${theme.label} should define --${token}`);
+    }
+
+    assert.ok(
+      contrastRatio(hexToken(block, "text"), hexToken(block, "surface")) >= 4.5,
+      `${theme.label} text should meet WCAG AA on its surface`
+    );
+    assert.ok(
+      contrastRatio(hexToken(block, "muted"), hexToken(block, "surface-muted")) >= 4.5,
+      `${theme.label} muted text should meet WCAG AA on muted surfaces`
+    );
+    assert.ok(
+      contrastRatio(hexToken(block, "accent-strong"), hexToken(block, "bg")) >= 4.5,
+      `${theme.label} accent text should meet WCAG AA on the page background`
+    );
+  }
+});
+
+test("homepage surfaces inherit the active palette instead of resetting to graphite", () => {
+  const css = fs.readFileSync(path.join(process.cwd(), "app", "globals.css"), "utf8");
+
+  assert.doesNotMatch(css, /\.public-home-page\s*\{\s*--bg:/);
+  assert.match(css, /:root\[data-theme\] \.public-home-page\s*\{[\s\S]*?--dashboard-panel:\s*var\(--surface\)/);
+  assert.match(css, /--dashboard-text:\s*var\(--text\)/);
+  assert.match(css, /--dashboard-muted:\s*var\(--muted\)/);
 });

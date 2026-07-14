@@ -1,4 +1,4 @@
-/* MITEEE Study — calm library interface */
+/* MITEEE — calm library interface */
 :root,
 :root[data-theme="dark"] {
   --bg: #090c11;
@@ -29,7 +29,7 @@
   --surface-muted: #e9edf3;
   --text: #171a20;
   --text-soft: #4d5562;
-  --muted: #737c89;
+  --muted: #626b77;
   --border: rgba(31, 40, 52, 0.12);
   --border-strong: rgba(31, 40, 52, 0.22);
   --accent: #2567df;

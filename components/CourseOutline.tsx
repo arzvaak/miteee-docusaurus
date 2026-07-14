@@ -48,7 +48,7 @@ export function CourseOutline({ groups, courseName, courseCode }: CourseOutlineP
     <section className={isSscCgl ? "panel course-outline-panel ssc-course-outline" : "panel course-outline-panel"} aria-labelledby="course-outline-heading" id="course-map">
       <div className="section-header">
         <div>
-          <span className="micro-label">{isSscCgl ? "SSC Study OS" : "Course map"}</span>
+          <span className="micro-label">{isSscCgl ? "SSC CGL" : "Course map"}</span>
           <h2 className="section-title" id="course-outline-heading">{isSscCgl ? "Tier-I level map" : "Reading order"}</h2>
         </div>
         <Link className="button ghost" href={isSscCgl ? "/exams/ssc-cgl" : "/courses"}>

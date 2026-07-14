@@ -35,6 +35,36 @@ async function checkNoHorizontalOverflow(page, label) {
   }
 }
 
+async function checkSubjectHome(page, label) {
+  await page.goto(`${baseUrl}/courses/SSC-CGL`, { waitUntil: "networkidle" });
+  const reasoningCard = page.locator("article").filter({
+    has: page.getByRole("heading", { name: "Reasoning", exact: true })
+  });
+  await reasoningCard.waitFor({ state: "visible", timeout: 20_000 });
+
+  const subjectLink = reasoningCard.getByRole("link", { name: /Open Reasoning subject/i }).first();
+  if ((await subjectLink.getAttribute("href")) !== "/courses/SSC-CGL/reasoning") {
+    fail(label, "Reasoning card does not point to its stable subject homepage");
+  }
+  await subjectLink.click();
+  await page.waitForURL(`${baseUrl}/courses/SSC-CGL/reasoning`, { timeout: 20_000 });
+  await page.getByRole("heading", { name: "General Intelligence and Reasoning", level: 1 }).waitFor({ timeout: 20_000 });
+  await requireText(page, "Complete table of contents", label);
+  await requireText(page, "Choose exactly what to study next.", label);
+
+  const toc = page.locator("section[aria-labelledby='ssc-subject-toc-title']");
+  const studyLinks = toc.getByRole("link", { name: "Study note" });
+  if ((await studyLinks.count()) !== 12) {
+    fail(label, `expected 12 Reasoning study notes, found ${await studyLinks.count()}`);
+  }
+  await page.getByRole("searchbox", { name: /Search Reasoning topics/i }).fill("blood relation");
+  if ((await toc.getByRole("link", { name: "Study note" }).count()) !== 1) {
+    fail(label, "Reasoning TOC search did not narrow the study-note list");
+  }
+
+  await checkNoHorizontalOverflow(page, label);
+}
+
 async function checkSetup(page, label) {
   await page.goto(`${baseUrl}/exams/ssc-cgl`, { waitUntil: "networkidle" });
   await page.getByRole("heading", { name: "What do you want to practice?", level: 1 }).waitFor({ timeout: 20_000 });
@@ -166,6 +196,7 @@ for (const viewport of viewports) {
   page.on("pageerror", (error) => consoleErrors.push(error.message));
 
   await runCheck(`${viewport.name} setup`, () => checkSetup(page, `${viewport.name} setup`));
+  await runCheck(`${viewport.name} subject home`, () => checkSubjectHome(page, `${viewport.name} subject home`));
   await runCheck(`${viewport.name} timed session`, () => checkTimedSession(page, `${viewport.name} timed session`));
   await runCheck(`${viewport.name} endless session`, () => checkEndlessSession(page, `${viewport.name} endless session`));
 

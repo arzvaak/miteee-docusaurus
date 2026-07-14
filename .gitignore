@@ -5,6 +5,9 @@ build/
 .cache-loader/
 .agents/
 .codex/
+.codex-qa/
+.playwright-cli/
+design-qa.md
 .pytest_cache/
 .mypy_cache/
 playwright-report/
@@ -21,6 +24,7 @@ deploy-artifacts/
 backups/
 work/
 data/generated/
+data/auth/
 data/current-affairs/logs/
 data/current-affairs/raw/
 data/current-affairs/daily/
@@ -51,6 +55,7 @@ data/exams/ssc-cgl/pyq-source-backlog*.json
 data/exams/ssc-cgl/pyq-source-expansion-plan.json
 legacy-docusaurus/
 public/img/generated-sources/
+public/img/current-affairs/edition-world-india-v1.png
 public/content-assets/
 public/downloads/em2/
 __pycache__/

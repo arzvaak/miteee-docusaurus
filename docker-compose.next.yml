@@ -11,12 +11,16 @@ services:
       NEXT_TELEMETRY_DISABLED: "1"
       HOSTNAME: 0.0.0.0
       PORT: "3000"
+      AUTH_DB_PATH: /app/data/auth/miteee-auth.sqlite
+      BETTER_AUTH_URL: ${BETTER_AUTH_URL:-http://localhost:${NEXT_APP_PUBLISHED_PORT:-3000}}
+      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:-}
     ports:
-      - "3000:3000"
+      - "127.0.0.1:${NEXT_APP_PUBLISHED_PORT:-3000}:3000"
     volumes:
-      - ./data/current-affairs:/app/data/current-affairs:Z
+      - ./data/current-affairs:/app/data/current-affairs:z
+      - ./data/auth:/app/data/auth:Z
     healthcheck:
-      test: ["CMD-SHELL", "node -e \"fetch('http://127.0.0.1:3000/exams/ssc-cgl').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))\""]
+      test: ["CMD-SHELL", "node -e \"Promise.all(['http://127.0.0.1:3000/exams/ssc-cgl','http://127.0.0.1:3000/api/auth/get-session'].map(url=>fetch(url))).then(responses=>process.exit(responses.every(response=>response.ok)?0:1)).catch(()=>process.exit(1))\""]
       interval: 30s
       timeout: 10s
       retries: 5

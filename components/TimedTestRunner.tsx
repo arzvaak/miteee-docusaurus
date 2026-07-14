@@ -37,6 +37,8 @@ import {
   serializeSscMistakeBank,
   sscMistakeBankStorageKey
 } from "@/lib/ssc-cgl-mistake-bank";
+import { persistLearnerAttemptEvidenceBatch } from "@/lib/learner-weakness-client";
+import { buildSscCglLearnerAttemptEvidence, type LearnerAttemptEvidenceInput } from "@/lib/learner-weakness-engine";
 import { scoreSscAttempt } from "@/lib/ssc-cgl-tests";
 import styles from "./TimedTestRunner.module.css";
 
@@ -85,6 +87,11 @@ export function timedTestDraftStorageKey(testId: string) {
 
 export function isTimedSection(timerSeconds: number) {
   return Number.isFinite(timerSeconds) && timerSeconds > 0;
+}
+
+export function getSectionEvidenceTargetSeconds(timerSeconds: number, questionCount: number) {
+  if (!isTimedSection(timerSeconds)) return 36;
+  return timerSeconds / Math.max(1, Math.floor(questionCount));
 }
 
 function formatTimer(seconds: number) {
@@ -343,6 +350,25 @@ export function TimedTestRunner({ test }: { test: SscCglTestDetail }) {
       sscMistakeBankStorageKey,
       serializeSscMistakeBank(mergeSscMistakeBank(currentMistakes, nextMistakes, correctedQuestionIds))
     );
+
+    const learnerEvidence = test.sections.flatMap((testSection) => {
+      const averageTime = (sectionTimeSpentSeconds[testSection.id] ?? 0) / Math.max(1, testSection.questions.length);
+      const targetTime = getSectionEvidenceTargetSeconds(testSection.timerSeconds, testSection.questions.length);
+      return testSection.questions
+        .map((testQuestion) => buildSscCglLearnerAttemptEvidence({
+          attemptId,
+          test,
+          question: testQuestion,
+          selectedOption: answers[testQuestion.id],
+          confidence: "medium",
+          timeSpentSeconds: averageTime,
+          targetTimeSeconds: targetTime,
+          answeredAt: submittedAt
+        }))
+        .filter((item): item is LearnerAttemptEvidenceInput => item !== null);
+    });
+    persistLearnerAttemptEvidenceBatch(learnerEvidence);
+
     window.localStorage.removeItem(draftKey);
     setSubmittedAttemptId(attemptId);
     setSaveStatus(origin === "timeout" ? "Time ended — submitting…" : "Submitting…");

@@ -3,7 +3,7 @@ import { getAllCourses, getCatalog } from "@/lib/content";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
-  title: "MITEEE Study - Notes, Subjects, Practice, and Revision",
+  title: "MITEEE - Notes, Subjects, Practice, and Revision",
   description: "Explore MIT EEE, SSC CGL, and UPSC notes, tutorials, formulas, question banks, practice, and revision paths.",
   pathname: "/"
 });

@@ -396,16 +396,19 @@ test("SSC CGL section 50/50 cockpits expose four section workflows", () => {
   assert.match(css, /\.ssc-quant-drill-list/);
 });
 
-test("SSC CGL current-affairs page keeps missed recall cards visible in repair memory", () => {
+test("SSC CGL current-affairs page mounts the same-screen magazine and account-ready actions", () => {
   const page = fs.readFileSync(path.join(root, "app", "exams", "ssc-cgl", "current-affairs", "page.tsx"), "utf8");
-  const notebook = fs.readFileSync(path.join(root, "components", "SscMistakeNotebook.tsx"), "utf8");
+  const actions = fs.readFileSync(path.join(root, "components", "CurrentAffairsActions.tsx"), "utf8");
 
   assert.match(page, /CurrentAffairsFeed/);
-  assert.match(page, /SscMistakeNotebook/);
   assert.match(page, /ssc-current-affairs-page/);
-  assert.match(notebook, /Wrong, missed, unattempted, and slow questions/);
-  assert.match(notebook, /slowCount/);
-  assert.match(notebook, /speed repairs/);
+  assert.match(page, /data-shell-full-bleed/);
+  assert.match(page, /buildCurrentAffairsStoryRecords/);
+  assert.match(page, /getCurrentAffairsWeeklyIssue/);
+  assert.match(page, /getCurrentAffairsMonthlyIssue/);
+  assert.match(actions, /CurrentAffairsActionsAdapter/);
+  assert.match(actions, /Save for revision/);
+  assert.match(actions, /Hide/);
 });
 
 test("SSC CGL readiness page exposes clean 200/200 proof", () => {

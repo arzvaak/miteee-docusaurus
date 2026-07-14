@@ -17,6 +17,8 @@ import {
   sscTopicPracticeStorageKey,
   type SscStoredTopicPractice
 } from "@/lib/ssc-cgl-topic-practice-memory";
+import { persistLearnerAttemptEvidenceBatch } from "@/lib/learner-weakness-client";
+import type { LearnerAttemptEvidenceInput } from "@/lib/learner-weakness-engine";
 
 type PracticeMode = "all" | "unanswered" | "misses" | "speed" | "book" | "gap";
 
@@ -199,6 +201,20 @@ export function SscTopicPracticeClient({
     const correctedQuestionIds = selectedAnswer === item.correctOption && questionElapsedSeconds <= targetSecondsPerQuestion ? [item.id] : [];
     const merged = mergeSscMistakeBank(existing, nextItem ? [nextItem] : [], correctedQuestionIds);
     window.localStorage.setItem(sscMistakeBankStorageKey, serializeSscMistakeBank(merged));
+    persistLearnerAttemptEvidenceBatch([{
+      attemptId: `topic-practice-${topic.slug}-${savedAt}`,
+      exam: { id: "ssc-cgl-tier-i", label: "SSC CGL Tier I" },
+      subject: { id: item.section, label: topic.subject },
+      topic: { id: topic.slug, label: topic.title },
+      question: { id: item.id, label: item.stem },
+      correct: selectedAnswer === item.correctOption,
+      answered: selectedAnswer !== "z",
+      confidence: "medium",
+      timeSpentSeconds: questionElapsedSeconds,
+      targetTimeSeconds: targetSecondsPerQuestion,
+      answeredAt: savedAt,
+      context: "practice"
+    } satisfies LearnerAttemptEvidenceInput]);
     setSpeedRepairQuestionIds((current) => {
       const next = new Set(current);
       if (selectedAnswer === item.correctOption && questionElapsedSeconds > targetSecondsPerQuestion) {

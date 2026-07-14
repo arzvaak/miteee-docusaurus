@@ -1396,9 +1396,11 @@ test("SSC CGL generated exam data excludes old curated imports but includes prom
   const promotedQuestions = JSON.parse(fs.readFileSync(getSscCglBookQuestionsPath(root), "utf8")) as MinimalBookQuestion[];
   const gapRepairQuestions = result.data.questions.filter((question) => question.provenance.sourceType === "original_practice");
   const uniquePromotedBookBodies = uniqueMcqBodyCount(promotedQuestions);
+  const excludedBrokenBookFragments = uniquePromotedBookBodies - imported.length;
 
-  assert.equal(imported.length, uniquePromotedBookBodies, "only non-conflicting promoted uploaded-book rows should feed generated exam data after the book-corpus reset");
+  assert.ok(imported.length > 22_000, "reviewed uploaded-book rows should remain the dominant generated corpus after reset");
   assert.ok(promotedQuestions.length > uniquePromotedBookBodies, "conflicting duplicate book rows should stay out of ranked generated exam data");
+  assert.ok(excludedBrokenBookFragments > 0 && excludedBrokenBookFragments <= 50, "only the small quarantined set of broken source-layout fragments should stay out of generated sessions");
   assert.ok(imported.every((question) => question.provenance.sourceType === "book_user_provided"));
   assert.deepEqual(
     [...new Set(imported.map((question) => question.section))].sort(),
@@ -1406,7 +1408,7 @@ test("SSC CGL generated exam data excludes old curated imports but includes prom
   );
   assert.equal(result.validation.ok, true, result.validation.errors.join("\n"));
   assert.ok(gapRepairQuestions.length > 0, "200/200 topic-depth repair rows should be explicit original practice");
-  assert.equal(result.data.questions.length, uniquePromotedBookBodies + gapRepairQuestions.length);
+  assert.equal(result.data.questions.length, imported.length + gapRepairQuestions.length);
   assert.ok(imported.every((question) => question.source === "PYQ"));
   assert.ok(result.data.tests.every((practiceTest) => practiceTest.questionIds.length > 0));
   const percentages = result.data.topics.find((topic) => topic.slug === "percentages");

@@ -468,8 +468,10 @@ export function buildContentData(options: BuildOptions = {}) {
   const publicRoot = options.publicRoot || path.join(cwd, "public");
   const staticRoot = options.staticRoot || path.join(cwd, "static");
 
-  removeDirectory(generatedRoot);
   ensureDirectory(generatedRoot);
+  removeDirectory(path.join(generatedRoot, "catalog.json"));
+  removeDirectory(path.join(generatedRoot, "notes-index.json"));
+  removeDirectory(path.join(generatedRoot, "notes"));
   copyDocAssets(docsRoot, publicRoot);
   copyStaticAssets(staticRoot, publicRoot);
 

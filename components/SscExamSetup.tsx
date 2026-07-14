@@ -73,6 +73,7 @@ export type SscExamSetupProps = {
   sectionSprintCount: number;
   sections: SscExamSetupSection[];
   featuredTest?: { id: string; title: string; questionCount: number; durationMinutes: number };
+  overviewHref?: string;
 };
 
 const modes: ModeCard[] = [
@@ -240,7 +241,7 @@ export function SscExamSetup(props: SscExamSetupProps) {
           {examRailLinks.map((item) => (
             <Link
               className={item.active ? `${styles.railLink} ${styles.active}` : styles.railLink}
-              href={item.href}
+              href={item.active ? (props.overviewHref ?? item.href) : item.href}
               key={item.href}
               aria-current={item.active ? "page" : undefined}
             >

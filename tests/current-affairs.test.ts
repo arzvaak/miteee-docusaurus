@@ -510,89 +510,68 @@ test("current affairs study brief reads the run-state ledger beside a custom dai
   });
 });
 
-test("current affairs page surfaces run continuity and source health", () => {
+test("current affairs magazine keeps operational telemetry out of the learner reader", () => {
   const component = fs.readFileSync(path.join(process.cwd(), "components", "CurrentAffairsFeed.tsx"), "utf8");
   const types = fs.readFileSync(path.join(process.cwd(), "lib", "exam-types.ts"), "utf8");
 
-  assert.match(component, /Daily reliability/);
-  assert.match(component, /brief\.runState/);
-  assert.match(component, /freshnessLabel/);
-  assert.match(component, /freshnessStatus/);
-  assert.match(component, /repairAction/);
-  assert.match(component, /Expected \{brief\.runState\.expectedDate\}/);
-  assert.match(component, /lastSuccessfulDate/);
-  assert.match(component, /sourceCounts/);
-  assert.match(component, /latestSources/);
+  assert.match(component, /Daily depth, weekly clarity, monthly revision/);
+  assert.match(component, /stories in today’s complete edition/);
+  assert.match(component, /return rankStories\(dailyStories\)/);
+  assert.doesNotMatch(component, /Daily reliability|brief\.runState|repairAction|latestRawItems/);
   assert.match(types, /freshnessStatus: "current" \| "stale" \| "missing"/);
 });
 
-test("current affairs page presents a daily 200/200 recall protocol", () => {
+test("current affairs page expands a detailed story reader without navigation", () => {
   const component = fs.readFileSync(path.join(process.cwd(), "components", "CurrentAffairsFeed.tsx"), "utf8");
-  const recallClient = fs.readFileSync(path.join(process.cwd(), "components", "CurrentAffairsRecallClient.tsx"), "utf8");
-  const css = fs.readFileSync(path.join(process.cwd(), "app", "globals.css"), "utf8");
+  const actions = fs.readFileSync(path.join(process.cwd(), "components", "CurrentAffairsActions.tsx"), "utf8");
+  const css = fs.readFileSync(path.join(process.cwd(), "components", "CurrentAffairsFeed.module.css"), "utf8");
 
-  assert.match(component, /Daily recall protocol/);
-  assert.match(component, /Read fact -&gt; answer MCQ seed -&gt; bridge static GK -&gt; attach UPSC angle -&gt; retest/);
-  assert.match(component, /brief\.recallCards\.length/);
-  assert.match(component, /brief\.revisionPackets/);
-  assert.match(component, /UPSC CSE:/);
-  assert.match(component, /Prelims facts/);
-  assert.match(component, /Mains angles/);
-  assert.match(component, /current-affairs-static-gk/);
-  assert.match(component, /speed_sprint&section=general-awareness/);
-  assert.match(css, /\.ssc-current-protocol/);
-  assert.match(css, /\.ssc-current-protocol-grid/);
-  assert.match(css, /\.ssc-current-protocol-step/);
+  assert.match(component, /function selectStory/);
+  assert.match(component, /window\.history\.pushState/);
+  assert.match(component, /aria-expanded=\{selected\}/);
+  assert.match(component, /ExpandedStory/);
+  assert.match(component, /What happened/);
+  assert.match(component, /Background/);
+  assert.match(component, /Why it matters/);
+  assert.match(component, /At a glance/);
+  assert.match(component, /Key facts/);
+  assert.match(component, /Source detail pending/);
+  assert.match(component, /No title-based summary has been shown/);
+  assert.match(component, /Article body parsed/);
+  assert.match(component, /body characters captured via/);
+  assert.match(component, /Article body not verified/);
+  assert.match(component, /CurrentAffairsStoryActions/);
+  assert.match(actions, /Save for revision/);
+  assert.match(actions, /Hide/);
+  assert.match(css, /\.reader/);
+  assert.match(css, /\.storyRow/);
+  assert.match(css, /\.contextRail/);
+  assert.match(css, /max-height: min\(680px, calc\(100vh - 150px\)\)/);
+  assert.doesNotMatch(component, /Memory hook|Check your recall|Reveal answer/);
   assert.doesNotMatch(component, /pipeline|Netcup|Mistral|OCR|raw items/i);
-  assert.match(recallClient, /RecallOutcome/);
-  assert.match(recallClient, /RecallMode/);
-  assert.match(recallClient, /card\?: CurrentAffairsRecallCard/);
-  assert.match(recallClient, /allRecallCards/);
-  assert.match(recallClient, /sessionAccuracy/);
-  assert.match(recallClient, /recallMode/);
-  assert.match(recallClient, /queueCards/);
-  assert.match(recallClient, /Review backlog/);
-  assert.match(recallClient, /Missed first/);
-  assert.match(recallClient, /missed retest/);
-  assert.match(recallClient, /isDueCard/);
-  assert.match(recallClient, /markOutcome/);
-  assert.match(recallClient, /sscMistakeBankStorageKey/);
-  assert.match(recallClient, /buildSscCurrentAffairsMistakeBankItem/);
-  assert.match(recallClient, /mergeSscMistakeBank/);
-  assert.match(recallClient, /Know it/);
-  assert.match(recallClient, /Missed/);
-  assert.match(recallClient, /Reveal answer/);
-  assert.match(recallClient, /aria-pressed/);
-  assert.match(css, /\.ssc-current-recall-card\.is-revealed/);
-  assert.match(css, /\.ssc-current-recall-modes/);
-  assert.match(css, /\.ssc-current-recall-empty/);
-  assert.match(css, /\.ssc-current-recall-outcomes/);
 });
 
-test("current affairs page exposes daily brief archive navigation", () => {
+test("current affairs page exposes daily, weekly, and monthly editions on one screen", () => {
   const page = fs.readFileSync(path.join(process.cwd(), "app", "exams", "ssc-cgl", "current-affairs", "page.tsx"), "utf8");
   const component = fs.readFileSync(path.join(process.cwd(), "components", "CurrentAffairsFeed.tsx"), "utf8");
-  const css = fs.readFileSync(path.join(process.cwd(), "app", "globals.css"), "utf8");
+  const css = fs.readFileSync(path.join(process.cwd(), "components", "CurrentAffairsFeed.module.css"), "utf8");
 
   assert.match(page, /searchParams/);
   assert.match(page, /getCurrentAffairsArchive/);
-  assert.match(page, /date/);
-  assert.match(component, /Daily brief archive/);
+  assert.match(page, /getCurrentAffairsWeeklyIssue/);
+  assert.match(page, /getCurrentAffairsMonthlyIssue/);
+  assert.match(page, /buildCurrentAffairsStoryRecords/);
   assert.match(component, /archiveDays/);
-  assert.match(component, /item\.isSelected/);
-  assert.match(component, /item\.href/);
-  assert.match(component, /Calendar memory/);
-  assert.match(component, /brief\.calendar/);
-  assert.match(component, /as_they_come/);
-  assert.match(component, /As they come today/);
-  assert.match(component, /Source excerpt/);
-  assert.match(component, /Running week/);
-  assert.match(component, /Running month/);
-  assert.match(css, /\.ssc-current-archive/);
-  assert.match(css, /\.ssc-current-archive-list/);
-  assert.match(css, /\.ssc-current-arrival-stream/);
-  assert.match(css, /\.ssc-current-source-excerpt/);
-  assert.match(css, /\.ssc-current-calendar-grid/);
+  assert.match(component, /day\.isSelected/);
+  assert.match(component, /day\.href/);
+  assert.match(component, /Weekly digests/);
+  assert.match(component, /Monthly magazine/);
+  assert.match(component, /condensed for revision/);
+  assert.match(component, /repetition removed/);
+  assert.match(component, /CurrentAffairsLensSelector/);
+  assert.match(css, /\.issueRail/);
+  assert.match(css, /\.modeSwitch/);
+  assert.match(css, /\.storyStream/);
 });
 
 test("daily news pipeline uses Scrapling selector API compatible with installed runtime", () => {
@@ -658,7 +637,7 @@ def fake_fetch_url(url):
     return json.dumps(payload).encode("utf-8")
 
 module.fetch_url = fake_fetch_url
-items = module.parse_ssc_api(module.Source("ssc", "SSC", module.SSC_NOTICE_BOARDS_API, ("ssc", "exam-notice"), 1.0, "ssc_api"))
+items = module.parse_ssc_api(module.Source("ssc", "SSC", "Staff Selection Commission", module.SSC_NOTICE_BOARDS_API, ("ssc", "exam-notice"), 1.0, "ssc_api"))
 print(json.dumps({
     "count": len(items),
     "title": items[0].title,
@@ -678,17 +657,17 @@ print(json.dumps({
   });
 });
 
-test("daily news pipeline keeps Mistral summaries compact enough for valid JSON", () => {
+test("daily news pipeline batches compact model calls without capping the published edition", () => {
   const script = fs.readFileSync(path.join(process.cwd(), "scripts", "daily_news_pipeline.py"), "utf8");
 
   assert.match(script, /MISTRAL_SUMMARY_ITEM_LIMIT\s*=\s*18/);
-  assert.match(script, /MIN_DAILY_SUMMARY_ITEMS\s*=\s*12/);
-  assert.match(script, /MISTRAL_CONTEXT_EXCERPT_CHARS\s*=\s*1200/);
+  assert.match(script, /LLM_BATCH_ITEM_LIMIT\s*=\s*MISTRAL_SUMMARY_ITEM_LIMIT/);
+  assert.match(script, /MISTRAL_CONTEXT_EXCERPT_CHARS\s*=\s*3200/);
   assert.match(script, /MISTRAL_MAX_TOKENS\s*=\s*12000/);
-  assert.match(script, /select_items_for_mistral\(items\)/);
-  assert.match(script, /item\.raw_excerpt\[:MISTRAL_CONTEXT_EXCERPT_CHARS\]/);
-  assert.match(script, /parsed\["items"\]\[:MISTRAL_SUMMARY_ITEM_LIMIT\]/);
-  assert.match(script, /Mistral summary too thin/);
+  assert.match(script, /range\(0, len\(ordered_items\), LLM_BATCH_ITEM_LIMIT\)/);
+  assert.match(script, /combined_items\.extend\(candidate\["items"\]\)/);
+  assert.match(script, /isolate_untrusted_text\(item\.raw_excerpt\)\[:MISTRAL_CONTEXT_EXCERPT_CHARS\]/);
+  assert.doesNotMatch(script, /parsed\["items"\]\[:MISTRAL_SUMMARY_ITEM_LIMIT\]/);
 });
 
 test("daily news pipeline calls DeepSeek first with JSON chat completions", () => {
@@ -780,7 +759,7 @@ print(json.dumps({
   });
 });
 
-test("daily news pipeline filters irrelevant business and routine trivia before study cards", () => {
+test("daily news pipeline keeps exam-relevant stories and rejects low-value noise", () => {
   const result = runPipelineSnippet(String.raw`
 import importlib.util
 import json
@@ -847,18 +826,51 @@ items = [
         "The UN-linked ocean floor regulator prepared an election amid debate over deep-sea mining and marine environment governance.",
         ["environment", "international", "upsc-gs3"],
     ),
+    raw(
+        "World Cup betting market predicts the semifinal winner",
+        "Times of India Sports",
+        "https://example.com/betting",
+        "Bookmakers and betting odds favour one team before the semifinal.",
+        ["sports", "awards", "ssc"],
+    ),
+    raw(
+        "Supplementary result released: direct link to download scorecards",
+        "Times of India Education",
+        "https://example.com/scorecard",
+        "Students can use a direct link to download their supplementary result scorecards.",
+        ["education", "exam-notice", "governance"],
+    ),
+    raw(
+        "Temple treasurer speaks amid donation theft row",
+        "Times of India India",
+        "https://example.com/theft-row",
+        "A donation theft row prompted personal claims by the temple treasurer.",
+        ["national", "polity", "governance"],
+    ),
+    raw(
+        "Scientists explain why dogs are friendly companions",
+        "Times of India Science",
+        "https://example.com/dogs",
+        "Researchers said early ancestors fed salmon to canines 12,000 years ago.",
+        ["science", "technology", "upsc-gs3"],
+    ),
 ]
 
 selected = module.filter_study_relevant_items(items)
-print(json.dumps([item.title for item in selected]))
+brief = module.fallback_brief("2026-07-02", selected)
+print(json.dumps({
+    "selected": [item.title for item in selected],
+    "published": [item["title"] for item in brief["items"]],
+    "labels": [item["ssc_relevance"] for item in brief["items"]],
+}))
 `);
 
   assert.equal(result.status, 0, result.stderr);
-  assert.deepEqual(JSON.parse(result.stdout), [
-    "Centre plans new levies on tobacco, pan masala as GST compensation cess lapses",
-    "RBI issues Responsible Business Conduct directions for rural co-operative banks",
-    "UN ocean floor body prepares election amid deep-sea mining debate"
-  ]);
+  const parsed = JSON.parse(result.stdout);
+  assert.equal(parsed.selected.length, 3);
+  assert.equal(parsed.published.length, 3);
+  assert.deepEqual(new Set(parsed.published), new Set(parsed.selected));
+  assert.deepEqual(parsed.labels, ["high", "high", "high"]);
 });
 
 test("daily news pipeline rejects source-name recall cards", () => {
@@ -970,7 +982,7 @@ module = importlib.util.module_from_spec(spec)
 sys.modules[spec.name] = module
 spec.loader.exec_module(module)
 
-source = module.Source("news", "News", "https://news.example/feed", ("upsc",), parser="rss")
+source = module.Source("news", "News", "The Indian Express", "https://news.example/feed", ("upsc",), parser="rss")
 item = module.RawItem(
     title="Short headline",
     source="News",
@@ -982,17 +994,66 @@ item = module.RawItem(
 )
 
 module.robots_allows_url = lambda url: True
-module.fetch_url = lambda url: b"<html><head><meta name='description' content='The government released a detailed policy update with fiscal and governance implications.'></head><body><p>The update explains institutional background, beneficiaries, implementation timeline, and exam-relevant policy context for learners.</p><p>Advertisement</p></body></html>"
+module.fetch_url = lambda url: b'''<html><head><meta name='description' content='The government released a detailed policy update with fiscal and governance implications.'><script type='application/ld+json'>{"headline":"Government publishes the complete policy implementation framework"}</script></head><body><p>The update explains institutional background, beneficiaries, implementation timeline, and exam-relevant policy context for learners.</p><p>Advertisement</p></body></html>'''
 module.time.sleep = lambda seconds: None
 items = module.enrich_raw_items_with_article_excerpts(source, [item])
-print(json.dumps({"excerpt": items[0].raw_excerpt, "tags": items[0].tags}))
+print(json.dumps({"title": items[0].title, "excerpt": items[0].raw_excerpt, "tags": items[0].tags, "origin": items[0].content_origin, "method": items[0].extraction_method, "characters": items[0].captured_characters}))
 `);
 
   assert.equal(result.status, 0, result.stderr);
   const parsed = JSON.parse(result.stdout);
+  assert.equal(parsed.title, "Government publishes the complete policy implementation framework");
   assert.match(parsed.excerpt, /institutional background/);
   assert.ok(parsed.excerpt.length <= 1800);
   assert.ok(parsed.tags.includes("article-excerpt"));
+  assert.equal(parsed.origin, "article-page");
+  assert.equal(parsed.method, "html-paragraphs");
+  assert.ok(parsed.characters >= 110);
+});
+
+test("daily news pipeline enforces the publisher and domain allowlist", () => {
+  const result = runPipelineSnippet(String.raw`
+import importlib.util
+import json
+import sys
+from pathlib import Path
+
+script_path = Path("scripts/daily_news_pipeline.py").resolve()
+spec = importlib.util.spec_from_file_location("daily_news_pipeline", script_path)
+module = importlib.util.module_from_spec(spec)
+sys.modules[spec.name] = module
+spec.loader.exec_module(module)
+
+publishers = sorted({source.publisher for source in module.SOURCES})
+toi_sources = [source.id for source in module.SOURCES if source.publisher == "The Times of India"]
+rejected = []
+for candidate in [
+    module.Source("unknown", "Unknown", "Random Blog", "https://example.com/feed", ("news",), parser="rss"),
+    module.Source("spoofed", "Spoofed Hindu", "The Hindu", "https://example.com/feed", ("news",), parser="rss"),
+]:
+    try:
+        module.validate_source_policy([candidate])
+    except ValueError as error:
+        rejected.append(str(error))
+
+print(json.dumps({"publishers": publishers, "toi_sources": toi_sources, "rejected": rejected}))
+`);
+
+  assert.equal(result.status, 0, result.stderr);
+  const parsed = JSON.parse(result.stdout);
+  assert.deepEqual(parsed.publishers, [
+    "PRS Legislative Research",
+    "Press Information Bureau",
+    "Reserve Bank of India",
+    "Staff Selection Commission",
+    "The Hindu",
+    "The Indian Express",
+    "The Times of India"
+  ]);
+  assert.equal(parsed.toi_sources.length, 7);
+  assert.equal(parsed.rejected.length, 2);
+  assert.match(parsed.rejected[0], /Unapproved publisher/);
+  assert.match(parsed.rejected[1], /domain is not approved/);
 });
 
 test("daily news pipeline selects source-diverse items before Mistral summarization", () => {
@@ -1121,7 +1182,7 @@ print(json.dumps({
   assert.deepEqual(JSON.parse(result.stdout), {
     isNone: false,
     count: 4,
-    sources: ["RBI", "SSC", "PIB", "PRS"],
+    sources: ["SSC", "PIB", "PRS", "RBI"],
     minimum: 4
   });
 });
@@ -1152,7 +1213,7 @@ def fake_discover_items():
             url="https://rbi.example/policy",
             published_at="2026-06-28T07:00:00+05:30",
             fetched_at="2026-06-28T07:00:01+05:30",
-            raw_excerpt="RBI publishes monetary policy update for bank liquidity and repo operations.",
+            raw_excerpt="The Reserve Bank published a monetary policy update describing bank liquidity conditions, repo operations, the effective review period, and reporting responsibilities. The document also names the covered institutions and the schedule for the next policy assessment.",
             tags=["economy", "banking", "rbi"],
         )
     ]

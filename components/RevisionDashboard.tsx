@@ -1,35 +1,130 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { ArrowDownToLine, ArrowRight, BookOpenCheck, BrainCircuit, CheckCircle2, Clipboard, DatabaseBackup, Flame, ListTodo, RotateCcw, Sigma, Target, TimerReset, Trash2, Upload } from "lucide-react";
-import { buildLearnerMemoryBackup, buildLearnerWeaknessInsight, createEmptyLearnerMemory, getDueRevisionCards, getLearnerMemoryStats, getStudyMomentum, getStudyNudge, restoreLearnerMemoryBackup, reviewRevisionCardWithAttempt, type RecallGrade } from "@/lib/learner-memory";
+import { useMemo, useState } from "react";
+import {
+  ArrowDownToLine,
+  ArrowRight,
+  BookOpenCheck,
+  Brain,
+  Calculator,
+  CheckCircle2,
+  Clipboard,
+  DatabaseBackup,
+  Gauge,
+  Globe2,
+  RotateCcw,
+  SearchCheck,
+  Target,
+  TimerReset,
+  Trash2,
+  TrendingUp,
+  Upload
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import {
+  buildLearnerMemoryBackup,
+  buildLearnerWeaknessInsight,
+  createEmptyLearnerMemory,
+  getDueRevisionCards,
+  getLearnerMemoryStats,
+  getStudyMomentum,
+  restoreLearnerMemoryBackup,
+  reviewRevisionCardWithAttempt,
+  type RecallGrade
+} from "@/lib/learner-memory";
+import type {
+  LearnerDrillRecommendation,
+  LearnerTopicWeakness
+} from "@/lib/learner-weakness-engine";
 import { recallGradeOptions } from "@/lib/recall-grades";
 import { buildRecallAttemptState } from "@/lib/revision-attempt";
 import { buildRevisionAttemptRepairBrief, buildRevisionRepairSprint } from "@/lib/revision-repair";
 import type { NotePreview } from "@/lib/content";
 import { useLearnerMemory } from "@/components/useLearnerMemory";
+import { useLearnerWeakness } from "@/components/useLearnerWeakness";
+import styles from "@/components/RevisionDashboard.module.css";
+
+const subjectDiagnostics: Array<{
+  id: string;
+  label: string;
+  shortLabel: string;
+  icon: LucideIcon;
+  tone: "blue" | "amber" | "rose" | "green";
+}> = [
+  { id: "reasoning", label: "General Intelligence & Reasoning", shortLabel: "Reasoning", icon: Brain, tone: "blue" },
+  { id: "general-awareness", label: "General Awareness", shortLabel: "General Awareness", icon: Globe2, tone: "amber" },
+  { id: "quantitative-aptitude", label: "Quantitative Aptitude", shortLabel: "Quant", icon: Calculator, tone: "rose" },
+  { id: "english-comprehension", label: "English Comprehension", shortLabel: "English", icon: BookOpenCheck, tone: "green" }
+];
 
 function formatDate(value: string | null | undefined) {
   if (!value) return "Not reviewed";
   return new Intl.DateTimeFormat("en-IN", { day: "2-digit", month: "short" }).format(new Date(value));
 }
 
+function formatPercent(value: number) {
+  return `${Math.round(value * 100)}%`;
+}
+
+function humanize(value: string) {
+  return value.replaceAll("-", " ");
+}
+
+function drillLabel(drill: LearnerDrillRecommendation) {
+  const labels: Record<LearnerDrillRecommendation["mode"], string> = {
+    diagnostic: "Diagnostic",
+    "accuracy-repair": "Accuracy repair",
+    "confidence-calibration": "Confidence check",
+    "speed-repair": "Speed repair",
+    "spaced-recall": "Spaced recall",
+    "mixed-practice": "Mixed practice"
+  };
+  return labels[drill.mode];
+}
+
+function drillHref(drill: LearnerDrillRecommendation) {
+  if (drill.topic) {
+    const mode = drill.mode === "speed-repair" ? "speed" : drill.mode === "accuracy-repair" ? "misses" : "unanswered";
+    return `/exams/ssc-cgl/practice/${encodeURIComponent(drill.topic.id)}?mode=${mode}`;
+  }
+  const section = drill.subject?.id ?? "reasoning";
+  return `/exams/ssc-cgl/session?mode=quick&section=${encodeURIComponent(section)}&length=10&timer=exam&source=book&difficulty=all`;
+}
+
+function topicEvidenceLine(topic: LearnerTopicWeakness) {
+  if (topic.evidenceCount < 3) return `${topic.evidenceCount} answer${topic.evidenceCount === 1 ? "" : "s"} · more evidence needed`;
+  return `${topic.correct}/${topic.evidenceCount} correct · ${formatPercent(topic.recencyWeightedAccuracy)} recent accuracy`;
+}
+
 export function RevisionDashboard({ suggestions }: { suggestions: NotePreview[] }) {
   const { memory, updateMemory } = useLearnerMemory();
+  const { report, hydrated } = useLearnerWeakness();
   const now = new Date().toISOString();
   const dueCards = getDueRevisionCards(memory, now);
   const stats = getLearnerMemoryStats(memory, now);
   const momentum = getStudyMomentum(memory, now, 7);
-  const studyNudge = getStudyNudge(memory, now);
-  const weaknessInsight = buildLearnerWeaknessInsight(memory, now);
+  const noteWeakness = buildLearnerWeaknessInsight(memory, now);
   const repairSprint = buildRevisionRepairSprint(memory, now);
-  const recentMistakes = memory.mistakes.slice(0, 6);
+  const recentMistakes = memory.mistakes.slice(0, 4);
   const recentAttempts = memory.revisionAttempts.slice(0, 4);
   const [importValue, setImportValue] = useState("");
   const [dataMessage, setDataMessage] = useState<string | null>(null);
   const [recallAttempts, setRecallAttempts] = useState<Record<string, string>>({});
   const backupText = buildLearnerMemoryBackup(memory, now);
+  const hasExamEvidence = hydrated && report.usableEvidenceCount > 0;
+  const primaryTopic = hasExamEvidence ? report.weakestTopic : null;
+  const recommendedDrill = report.nextDrill;
+
+  const subjectSummaries = useMemo(() => subjectDiagnostics.map((subject) => {
+    const topics = report.topics.filter((topic) => topic.subject.id === subject.id);
+    const evidenceCount = topics.reduce((sum, topic) => sum + topic.evidenceCount, 0);
+    const mastery = evidenceCount > 0
+      ? Math.round(topics.reduce((sum, topic) => sum + topic.masteryScore * topic.evidenceCount, 0) / evidenceCount)
+      : null;
+    const weakest = topics[0] ?? null;
+    return { ...subject, topics, evidenceCount, mastery, weakest };
+  }), [report.topics]);
 
   function review(cardId: string, grade: RecallGrade, attempt: string) {
     setRecallAttempts((current) => {
@@ -77,270 +172,273 @@ export function RevisionDashboard({ suggestions }: { suggestions: NotePreview[] 
   }
 
   return (
-    <div className="page revision-page">
-      <section className="revision-hero">
-        <div>
-          <span className="micro-label">Revision queue</span>
-          <h1>Fix the things that are actually weak.</h1>
-          <p className="section-copy">This is local learner memory: notes read, mistakes logged, and due recall cards. Nothing needs an account.</p>
+    <div className={styles.page}>
+      <header className={styles.masthead}>
+        <div className={styles.mastheadCopy}>
+          <span className={styles.eyebrow}>Revision intelligence</span>
+          <h1>Know what to fix next.</h1>
+          <p>MITEEE now turns actual answers, mistakes, confidence, pace, and recency into a repair order. No vague “weak subject” labels.</p>
         </div>
-        <div className="revision-stat-grid">
-          <RevisionStat icon={BookOpenCheck} label="Read notes" value={stats.readNotes} />
-          <RevisionStat icon={Sigma} label="Open mistakes" value={stats.openMistakes} />
-          <RevisionStat icon={RotateCcw} label="Due cards" value={stats.dueCards} />
-          <RevisionStat icon={Clipboard} label="Study minutes" value={stats.completedStudyMinutes} />
+        <div className={styles.evidenceStrip} aria-label="Evidence summary">
+          <span><strong>{hasExamEvidence ? report.usableEvidenceCount : "—"}</strong><small>graded answers</small></span>
+          <span><strong>{hasExamEvidence ? report.topics.length : "—"}</strong><small>topics measured</small></span>
+          <span><strong>{primaryTopic ? `${primaryTopic.masteryScore}` : "—"}</strong><small>weakest mastery</small></span>
+          <span><strong>{stats.dueCards}</strong><small>recall cards due</small></span>
         </div>
-      </section>
+      </header>
 
-      <section className="revision-layout">
-        <div className="revision-main-panel">
-          <div className="section-header">
-            <div>
-              <span className="micro-label">Due now</span>
-              <h2 className="section-title">Recall before reading.</h2>
-            </div>
-            <ListTodo size={20} aria-hidden="true" />
+      <section className={styles.commandGrid}>
+        <article className={styles.commandCard} aria-label="Repair sprint priority">
+          <div className={styles.commandTopline}>
+            <span className={styles.iconBadge}><Target size={20} aria-hidden="true" /></span>
+            <span>{hasExamEvidence ? "Next best drill" : "Build your baseline"}</span>
+            {primaryTopic ? <em>{humanize(primaryTopic.status)}</em> : <em>not measured</em>}
           </div>
-
-          <div className={`study-nudge kind-${weaknessInsight.hasSignals ? "attempt-repair" : "start"}`} aria-label="Weakness insight">
-            <span className="micro-label">Weakness insight</span>
-            <strong>
-              {weaknessInsight.topCourse
-                ? `${weaknessInsight.topCourse.label} needs the most repair.`
-                : "No weak pattern recorded yet."}
-            </strong>
-            <p>{weaknessInsight.nextAction}</p>
-            {weaknessInsight.topTheme && <small>Recurring theme: {weaknessInsight.topTheme.theme} · {weaknessInsight.topTheme.count} signal{weaknessInsight.topTheme.count === 1 ? "" : "s"}</small>}
+          <h2>{primaryTopic ? `Repair ${primaryTopic.topic.label}` : "Take one short diagnostic."}</h2>
+          <Link className={styles.primaryAction} href={drillHref(recommendedDrill)}>
+            {primaryTopic ? "Start recommended drill" : "Start a Quick 10"} <ArrowRight size={17} aria-hidden="true" />
+          </Link>
+          <p>{primaryTopic ? recommendedDrill.reason : "A ten-question section sprint is enough to start separating missing knowledge from slow recall and careless errors."}</p>
+          <div className={styles.commandMeta}>
+            <span>{drillLabel(recommendedDrill)}</span>
+            <span>{recommendedDrill.questionCount} questions</span>
+            <span>{recommendedDrill.timed ? `${recommendedDrill.targetSecondsPerQuestion ?? 36}s target` : "untimed first"}</span>
           </div>
+        </article>
 
-          <article className={`repair-sprint-card kind-${repairSprint.kind}`} aria-label="Repair sprint priority">
-            <div className="repair-sprint-heading">
-              <span className="home-small-icon"><Target size={17} aria-hidden="true" /></span>
-              <div>
-                <span className="micro-label">{repairSprint.label}</span>
-                <h3>{repairSprint.title}</h3>
-              </div>
-              <Link prefetch={false} className="button primary" href={repairSprint.href}>{repairSprint.primaryLabel} <ArrowRight size={15} aria-hidden="true" /></Link>
-            </div>
-            <p>{repairSprint.body}</p>
-            <small>{repairSprint.focus}</small>
-            <ol className="repair-sprint-plan">
-              {repairSprint.plan.map((step) => <li key={step}>{step}</li>)}
-            </ol>
-            <div className="repair-grade-hint" aria-label="Recall grading guide">
-              <strong>Grade meaning</strong>
-              <span>{repairSprint.gradingHint}</span>
-            </div>
-          </article>
-
-          <div className="revision-card-list">
-            {dueCards.length > 0 ? dueCards.map((card) => {
-              const attempt = recallAttempts[card.id] ?? "";
-              const attemptState = buildRecallAttemptState(attempt);
-
-              return (
-                <article className={`revision-card source-${card.source}`} key={card.id}>
-                  <div>
-                    <span className="revision-source">{card.source === "mistake" ? "Mistake repair" : "Note recall"}</span>
-                    <h3>{card.title}</h3>
-                    <p>{card.prompt}</p>
-                    <small>{card.courseName || card.courseCode || "Study note"} · due {formatDate(card.dueAt)}</small>
-                  </div>
-
-                  <label className="recall-attempt-box">
-                    <span>My recall attempt</span>
-                    <textarea
-                      value={attempt}
-                      onChange={(event) => setRecallAttempts((current) => ({ ...current, [card.id]: event.target.value }))}
-                      placeholder="Answer from memory first. A rough attempt or 'I do not know' counts."
-                      rows={4}
-                    />
-                    <small>{attemptState.helperText}</small>
-                  </label>
-
-                  <div className="revision-card-actions">
-                    <Link prefetch={false} className="button ghost" href={`/notes/${card.slug}`}>Open note <ArrowRight size={15} aria-hidden="true" /></Link>
-                    <span className="revision-grade-guide">Again = repair · Hard = unstable · Good/Easy = move forward</span>
-                    {recallGradeOptions.map((option) => (
-                      <button
-                        className={option.emphasis === "primary" ? "button primary" : `button ghost recall-grade-${option.grade}`}
-                        type="button"
-                        onClick={() => review(card.id, option.grade, attempt)}
-                        title={attemptState.canGrade ? option.description : attemptState.helperText}
-                        disabled={!attemptState.canGrade}
-                        key={option.grade}
-                      >
-                        {option.label}
-                      </button>
-                    ))}
-                  </div>
-                </article>
-              );
-            }) : (
-              <div className="revision-empty">
-                <BrainCircuit size={28} aria-hidden="true" />
-                <strong>No cards due yet.</strong>
-                <p>Mark notes as read or add a mistake from any note page. Until then, start with a question-heavy page below.</p>
-              </div>
-            )}
-          </div>
-        </div>
-
-        <aside className="revision-side-panel">
-          <div className="section-header">
-            <div>
-              <span className="micro-label">Mistake book</span>
-              <h2 className="section-title">Recent repairs.</h2>
-            </div>
-            <CheckCircle2 size={19} aria-hidden="true" />
-          </div>
-          <div className="mistake-list">
-            {weaknessInsight.courseInsights.length > 0 && (
-              <div className="attempt-history" aria-label="Course weakness ranking">
-                <span className="micro-label">Weak courses</span>
-                {weaknessInsight.courseInsights.map((course) => (
-                  <div className="attempt-row tone-repair" key={`${course.courseCode ?? course.label}:weakness`}>
-                    <span>{course.score} pressure points</span>
-                    <strong>{course.label}</strong>
-                    <p>{course.openMistakes} open · {course.weakAttempts} weak attempts · {course.dueCards} due</p>
-                  </div>
-                ))}
-              </div>
-            )}
-            {recentMistakes.length > 0 ? recentMistakes.map((mistake) => (
-              <Link prefetch={false} className="mistake-row" href={`/notes/${mistake.slug}`} key={mistake.id}>
-                <strong>{mistake.mistake}</strong>
-                <span>{mistake.correction}</span>
-                {mistake.catchQuestion && <span>Catch: {mistake.catchQuestion}</span>}
-                <small>{mistake.courseName || mistake.courseCode || "Study note"} · {mistake.resolvedAt ? "reviewed" : "open"}</small>
-              </Link>
-            )) : <p className="memory-empty">Mistakes you log from notes will appear here.</p>}
-          </div>
+        <aside className={styles.explanationCard}>
+          <span className={styles.eyebrow}>Why this recommendation</span>
+          {primaryTopic ? (
+            <>
+              <strong>{topicEvidenceLine(primaryTopic)}</strong>
+              <ul>
+                {primaryTopic.reasons.slice(0, 3).map((reason) => <li key={reason}>{reason}</li>)}
+              </ul>
+              <small>Scores shrink toward neutral until enough evidence exists, so one lucky answer cannot mark a topic “mastered”.</small>
+            </>
+          ) : (
+            <>
+              <strong>There is no SSC attempt evidence yet.</strong>
+              <p>The old screen showed four zeroes and guessed from note activity. This state is honest: take a short test and the first evidence will appear here.</p>
+              <small>Note recall and SSC MCQ evidence remain separate, then meet in one repair queue.</small>
+            </>
+          )}
         </aside>
       </section>
 
-      <section className="revision-momentum-panel">
-        <div className="section-header">
+      <section className={styles.subjectSection} aria-labelledby="subject-map-title">
+        <div className={styles.sectionHeading}>
           <div>
-            <span className="micro-label">Study momentum</span>
-            <h2 className="section-title">Blocks completed this week.</h2>
+            <span className={styles.eyebrow}>Subject map</span>
+            <h2 id="subject-map-title">Four sections, measured separately.</h2>
           </div>
-          <Flame size={20} aria-hidden="true" />
+          <Link href="/exams/ssc-cgl">Configure another test <ArrowRight size={15} aria-hidden="true" /></Link>
         </div>
-
-        <div className="momentum-grid">
-          <MomentumStat icon={TimerReset} label="Today" value={`${momentum.todayMinutes} min`} />
-          <MomentumStat icon={Clipboard} label="7 days" value={`${momentum.weekMinutes} min`} />
-          <MomentumStat icon={Flame} label="Streak" value={`${momentum.currentStreakDays} day${momentum.currentStreakDays === 1 ? "" : "s"}`} />
-          <div className="momentum-methods" aria-label="Study method mix">
-            {Object.entries(momentum.methodMinutes).map(([method, minutes]) => (
-              <span key={method}><strong>{minutes}</strong>{method.replace("-", " ")}</span>
-            ))}
-          </div>
-        </div>
-
-        <Link prefetch={false} className={`study-nudge kind-${studyNudge.kind}`} href={studyNudge.href}>
-          <span className="micro-label">Next move</span>
-          <strong>{studyNudge.title}</strong>
-          <p>{studyNudge.body}</p>
-        </Link>
-
-        <div className="activity-list">
-          {momentum.recentActivity.length > 0 ? momentum.recentActivity.slice(0, 5).map((activity) => (
-            <Link prefetch={false} className="activity-row" href={activity.note ? `/notes/${activity.note.slug}` : "/"} key={activity.id}>
-              <span>{formatDate(activity.completedAt)}</span>
-              <strong>{activity.title}</strong>
-              <small>{activity.minutes} min · {activity.method.replace("-", " ")}{activity.note ? ` · ${activity.note.title}` : ""}</small>
-            </Link>
-          )) : <p className="memory-empty">Complete Study Today blocks to build a visible momentum trail.</p>}
-        </div>
-
-        <div className="attempt-history" aria-label="Recent recall attempts">
-          <span className="micro-label">Recent attempts</span>
-          {recentAttempts.length > 0 ? recentAttempts.map((attempt) => {
-            const brief = buildRevisionAttemptRepairBrief(attempt);
-
+        <div className={styles.subjectGrid}>
+          {subjectSummaries.map((subject) => {
+            const Icon = subject.icon;
             return (
-              <Link prefetch={false} className={`attempt-row tone-${brief.tone} grade-${attempt.grade}`} href={`/notes/${attempt.slug}`} key={attempt.id}>
-                <span>{formatDate(attempt.reviewedAt)} · {attempt.grade} · {brief.label}</span>
-                <strong>{attempt.title}</strong>
-                <p>{attempt.attempt}</p>
-                <em>{brief.action}</em>
-                <small>{brief.check}</small>
+              <Link
+                className={`${styles.subjectCard} ${styles[subject.tone]}`}
+                href={`/exams/ssc-cgl/session?mode=quick&section=${subject.id}&length=10&timer=exam&source=book&difficulty=all`}
+                key={subject.id}
+              >
+                <span className={styles.subjectIcon}><Icon size={22} aria-hidden="true" /></span>
+                <div>
+                  <small>{subject.evidenceCount > 0 ? `${subject.evidenceCount} graded answers` : "No evidence yet"}</small>
+                  <h3>{subject.shortLabel}</h3>
+                  <p>{subject.weakest ? `Needs attention: ${subject.weakest.topic.label}` : "Run a baseline to map this section."}</p>
+                </div>
+                <strong>{subject.mastery === null ? "Start" : `${subject.mastery}`}</strong>
+                <span className={styles.subjectMeter} aria-label={subject.mastery === null ? "Not measured" : `${subject.mastery} mastery score`}>
+                  <i style={{ width: `${subject.mastery ?? 0}%` }} />
+                </span>
+                <em>{subject.mastery === null ? "Take baseline" : "Open section"} <ArrowRight size={14} aria-hidden="true" /></em>
               </Link>
             );
-          }) : <p className="memory-empty">Graded recall attempts will appear here after you write and score them.</p>}
+          })}
         </div>
       </section>
 
-      <section className="revision-data-panel">
-        <div className="section-header">
+      <section className={styles.weaknessSection} aria-labelledby="weakness-map-title">
+        <div className={styles.sectionHeading}>
           <div>
-            <span className="micro-label">Data safety</span>
-            <h2 className="section-title">Backup learner memory.</h2>
+            <span className={styles.eyebrow}>Weakness map</span>
+            <h2 id="weakness-map-title">Evidence, not guesswork.</h2>
           </div>
-          <DatabaseBackup size={20} aria-hidden="true" />
+          {hasExamEvidence ? <span>Updated from {report.usableEvidenceCount} recorded answers</span> : <span>Waiting for your first SSC drill</span>}
         </div>
-        <div className="revision-data-grid">
-          <div className="data-export-box">
-            <label>
-              Export JSON
-              <textarea readOnly value={backupText} rows={8} aria-label="Exported learner memory JSON" />
-            </label>
-            <div className="data-action-row">
-              <button className="button primary" type="button" onClick={copyBackup}>Copy <Clipboard size={15} aria-hidden="true" /></button>
-              <button className="button ghost" type="button" onClick={downloadBackup}>Download <ArrowDownToLine size={15} aria-hidden="true" /></button>
-            </div>
+
+        {hasExamEvidence ? (
+          <div className={styles.weaknessGrid}>
+            {report.topics.slice(0, 6).map((topic, index) => (
+              <article className={`${styles.weaknessCard} ${styles[`status-${topic.status}`]}`} key={topic.key}>
+                <header>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div><small>{topic.subject.label}</small><h3>{topic.topic.label}</h3></div>
+                  <strong>{topic.masteryScore}</strong>
+                </header>
+                <div className={styles.masteryTrack} aria-label={`${topic.masteryScore} mastery score`}><i style={{ width: `${topic.masteryScore}%` }} /></div>
+                <div className={styles.metricRow}>
+                  <span><strong>{formatPercent(topic.recencyWeightedAccuracy)}</strong><small>recent accuracy</small></span>
+                  <span><strong>{topic.evidenceCount}</strong><small>answers</small></span>
+                  <span><strong>{topic.timedEvidenceCount ? `${Math.round(topic.averageTimeSeconds)}s` : "—"}</strong><small>average pace</small></span>
+                </div>
+                <p>{topic.reasons[0]}</p>
+                <Link href={drillHref(topic.nextDrill)}>{drillLabel(topic.nextDrill)} <ArrowRight size={14} aria-hidden="true" /></Link>
+              </article>
+            ))}
           </div>
-          <div className="data-import-box">
-            <label>
-              Restore JSON
-              <textarea value={importValue} onChange={(event) => setImportValue(event.target.value)} rows={8} placeholder="Paste a MITEEE learner-memory backup here" aria-label="Restore learner memory JSON" />
-            </label>
-            <div className="data-action-row">
-              <button className="button primary" type="button" onClick={restoreBackup} disabled={!importValue.trim()}>Restore <Upload size={15} aria-hidden="true" /></button>
-              <button className="button ghost" type="button" onClick={resetMemory}>Reset <Trash2 size={15} aria-hidden="true" /></button>
-            </div>
-            {dataMessage && <p className="data-message">{dataMessage}</p>}
+        ) : (
+          <div className={styles.noEvidence}>
+            <span><SearchCheck size={25} aria-hidden="true" /></span>
+            <div><strong>Your map will fill itself from real attempts.</strong><p>Correct, wrong, skipped, pace, confidence, sample size, and age all change the recommendation.</p></div>
+            <Link href="/practice">Open practice <ArrowRight size={15} aria-hidden="true" /></Link>
           </div>
-        </div>
+        )}
       </section>
 
-      <section className="revision-suggestions">
-        <div className="section-header">
-          <div>
-            <span className="micro-label">Seed the queue</span>
-            <h2 className="section-title">Question-heavy starting points.</h2>
+      <section className={styles.repairLayout}>
+        <div className={styles.recallPanel}>
+          <div className={styles.sectionHeading}>
+            <div><span className={styles.eyebrow}>Due recall</span><h2>Answer before opening the source.</h2></div>
+            <RotateCcw size={19} aria-hidden="true" />
           </div>
+
+          <div className={styles.noteSignal}>
+            <span>Note-memory signal</span>
+            <strong>{noteWeakness.topCourse ? `${noteWeakness.topCourse.label} needs repair.` : "No note weakness has been recorded."}</strong>
+            <p>{noteWeakness.nextAction}</p>
+          </div>
+
+          {dueCards.length > 0 ? dueCards.slice(0, 3).map((card) => {
+            const attempt = recallAttempts[card.id] ?? "";
+            const attemptState = buildRecallAttemptState(attempt);
+            return (
+              <article className={styles.recallCard} key={card.id}>
+                <header>
+                  <span>{card.source === "mistake" ? "Mistake repair" : "Note recall"}</span>
+                  <small>due {formatDate(card.dueAt)}</small>
+                </header>
+                <h3>{card.title}</h3>
+                <p>{card.prompt}</p>
+                <label>
+                  <span>My closed-book answer</span>
+                  <textarea
+                    value={attempt}
+                    onChange={(event) => setRecallAttempts((current) => ({ ...current, [card.id]: event.target.value }))}
+                    placeholder="Write what you remember—even ‘I do not know’ is useful evidence."
+                    rows={4}
+                  />
+                  <small>{attemptState.helperText}</small>
+                </label>
+                <footer>
+                  <Link href={`/notes/${card.slug}`}>Open source</Link>
+                  <span>Again = repair · Hard = unstable · Good/Easy = move forward</span>
+                  {recallGradeOptions.map((option) => (
+                    <button
+                      type="button"
+                      onClick={() => review(card.id, option.grade, attempt)}
+                      disabled={!attemptState.canGrade}
+                      title={attemptState.canGrade ? option.description : attemptState.helperText}
+                      key={option.grade}
+                    >
+                      {option.label}
+                    </button>
+                  ))}
+                </footer>
+              </article>
+            );
+          }) : (
+            <div className={styles.compactEmpty}>
+              <CheckCircle2 size={21} aria-hidden="true" />
+              <div><strong>No note cards are due.</strong><p>Keep the queue clean by running the recommended SSC drill above.</p></div>
+            </div>
+          )}
         </div>
-        <div className="revision-suggestion-grid">
-          {suggestions.slice(0, 6).map((note) => (
-            <Link prefetch={false} className="revision-suggestion-card" key={note.slug} href={`/notes/${note.slug}`}>
+
+        <aside className={styles.repairSidebar}>
+          <article className={styles.sprintCard}>
+            <span className={styles.eyebrow}>{repairSprint.label}</span>
+            <h2>{repairSprint.title}</h2>
+            <p>{repairSprint.body}</p>
+            <ol>{repairSprint.plan.map((step) => <li key={step}>{step}</li>)}</ol>
+            <Link href={repairSprint.href}>{repairSprint.primaryLabel} <ArrowRight size={14} aria-hidden="true" /></Link>
+          </article>
+
+          <article className={styles.mistakeCard}>
+            <div className={styles.cardTitle}><Target size={17} aria-hidden="true" /><strong>Recent repairs</strong><span>{stats.openMistakes} open</span></div>
+            {recentMistakes.length > 0 ? recentMistakes.map((mistake) => (
+              <Link href={`/notes/${mistake.slug}`} key={mistake.id}>
+                <strong>{mistake.mistake}</strong>
+                <small>{mistake.courseName || mistake.courseCode || "Study note"} · {mistake.resolvedAt ? "reviewed" : "open"}</small>
+              </Link>
+            )) : <p>No note mistakes have been logged yet.</p>}
+          </article>
+        </aside>
+      </section>
+
+      <section className={styles.momentumPanel}>
+        <div className={styles.sectionHeading}>
+          <div><span className={styles.eyebrow}>Study rhythm</span><h2>Keep repair work visible.</h2></div>
+          <TrendingUp size={19} aria-hidden="true" />
+        </div>
+        <div className={styles.momentumGrid}>
+          <MomentumStat icon={TimerReset} label="Today" value={`${momentum.todayMinutes} min`} />
+          <MomentumStat icon={Clipboard} label="Last 7 days" value={`${momentum.weekMinutes} min`} />
+          <MomentumStat icon={Gauge} label="Current streak" value={`${momentum.currentStreakDays} day${momentum.currentStreakDays === 1 ? "" : "s"}`} />
+          <MomentumStat icon={Target} label="Open repair" value={`${stats.openMistakes + stats.dueCards}`} />
+        </div>
+        {recentAttempts.length > 0 && (
+          <div className={styles.attemptStrip}>
+            {recentAttempts.map((attempt) => {
+              const brief = buildRevisionAttemptRepairBrief(attempt);
+              return (
+                <Link href={`/notes/${attempt.slug}`} key={attempt.id}>
+                  <span>{formatDate(attempt.reviewedAt)} · {brief.label}</span>
+                  <strong>{attempt.title}</strong>
+                  <small>{brief.action}</small>
+                </Link>
+              );
+            })}
+          </div>
+        )}
+      </section>
+
+      <section className={styles.exploreSection}>
+        <div className={styles.sectionHeading}>
+          <div><span className={styles.eyebrow}>Build more evidence</span><h2>Question-heavy starting points.</h2></div>
+        </div>
+        <div className={styles.exploreGrid}>
+          {suggestions.slice(0, 4).map((note) => (
+            <Link href={`/notes/${note.slug}`} key={note.slug}>
+              <span>{note.courseName || note.courseCode || "MITEEE"}</span>
               <strong>{note.label}</strong>
               <p>{note.excerpt}</p>
-              <span>{note.courseName || note.courseCode || "MITEEE"} · {note.stats.questionBlocks} questions</span>
+              <small>{note.stats.questionBlocks} question blocks <ArrowRight size={13} aria-hidden="true" /></small>
             </Link>
           ))}
         </div>
       </section>
+
+      <details className={styles.dataPanel}>
+        <summary><DatabaseBackup size={18} aria-hidden="true" /><span><strong>Backup learner memory</strong><small>Export, restore, or reset note-based memory.</small></span><ArrowRight size={15} aria-hidden="true" /></summary>
+        <div className={styles.dataGrid}>
+          <label>Export JSON<textarea readOnly value={backupText} rows={7} aria-label="Exported learner memory JSON" /></label>
+          <label>Restore JSON<textarea value={importValue} onChange={(event) => setImportValue(event.target.value)} rows={7} placeholder="Paste a MITEEE learner-memory backup here" aria-label="Restore learner memory JSON" /></label>
+        </div>
+        <div className={styles.dataActions}>
+          <button type="button" onClick={copyBackup}>Copy <Clipboard size={14} aria-hidden="true" /></button>
+          <button type="button" onClick={downloadBackup}>Save file <ArrowDownToLine size={14} aria-hidden="true" /></button>
+          <button type="button" onClick={restoreBackup} disabled={!importValue.trim()}>Restore <Upload size={14} aria-hidden="true" /></button>
+          <button type="button" onClick={resetMemory}>Reset <Trash2 size={14} aria-hidden="true" /></button>
+          {dataMessage && <span>{dataMessage}</span>}
+        </div>
+      </details>
     </div>
   );
 }
 
-function RevisionStat({ icon: Icon, label, value }: { icon: typeof BookOpenCheck; label: string; value: number }) {
-  return (
-    <div className="revision-stat">
-      <span><Icon size={17} aria-hidden="true" /> {label}</span>
-      <strong>{value}</strong>
-    </div>
-  );
-}
-
-function MomentumStat({ icon: Icon, label, value }: { icon: typeof BookOpenCheck; label: string; value: string }) {
-  return (
-    <div className="momentum-stat">
-      <span><Icon size={16} aria-hidden="true" /> {label}</span>
-      <strong>{value}</strong>
-    </div>
-  );
+function MomentumStat({ icon: Icon, label, value }: { icon: LucideIcon; label: string; value: string }) {
+  return <div className={styles.momentumStat}><Icon size={17} aria-hidden="true" /><span><small>{label}</small><strong>{value}</strong></span></div>;
 }

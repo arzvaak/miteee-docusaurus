@@ -9,6 +9,14 @@ function copyDirectory(source, destination) {
   fs.cpSync(source, destination, { recursive: true, force: true });
 }
 
+function copyDirectoryOrCreateEmpty(source, destination) {
+  fs.rmSync(destination, { recursive: true, force: true });
+  fs.mkdirSync(destination, { recursive: true });
+  if (fs.existsSync(source)) {
+    fs.cpSync(source, destination, { recursive: true, force: true });
+  }
+}
+
 function copyFileIfExists(source, destination) {
   if (!fs.existsSync(source)) return;
   fs.mkdirSync(path.dirname(destination), { recursive: true });
@@ -27,6 +35,32 @@ function requireDirectory(root, relativePath) {
   return directory;
 }
 
+function assertLeanStandaloneBundle(standaloneRoot) {
+  if (!fs.existsSync(path.join(standaloneRoot, "server.js"))) return;
+
+  const forbiddenWorkspaceEntries = [
+    ".github",
+    "app",
+    "components",
+    "design-qa.md",
+    "docker",
+    "lib",
+    "ops",
+    "output",
+    "src",
+    "tests"
+  ];
+  const leakedEntries = forbiddenWorkspaceEntries.filter((entry) => fs.existsSync(path.join(standaloneRoot, entry)));
+  if (leakedEntries.length > 0) {
+    throw new Error(`Standalone output contains traced workspace source: ${leakedEntries.join(", ")}. Check outputFileTracingExcludes.`);
+  }
+
+  const sqliteAddon = path.join(standaloneRoot, "node_modules", "better-sqlite3", "build", "Release", "better_sqlite3.node");
+  if (!fs.existsSync(sqliteAddon)) {
+    throw new Error("Standalone output is missing the better-sqlite3 native addon required by account authentication.");
+  }
+}
+
 export function ensureStandaloneAssets(root = process.cwd()) {
   const standaloneRoot = path.join(root, ".next", "standalone");
   requireDirectory(root, ".next/standalone");
@@ -35,6 +69,7 @@ export function ensureStandaloneAssets(root = process.cwd()) {
     "output",
     "work",
     "backups",
+    "data/auth",
     "data/current-affairs/logs",
     "data/current-affairs/raw",
     "data/exams/ssc-cgl/agent-answer-key",
@@ -56,10 +91,11 @@ export function ensureStandaloneAssets(root = process.cwd()) {
   ].forEach((relativePath) => removeRelative(standaloneRoot, relativePath));
   copyDirectory(path.join(root, "public"), path.join(standaloneRoot, "public"));
   copyDirectory(requireDirectory(root, ".next/static"), path.join(standaloneRoot, ".next", "static"));
-  copyDirectory(requireDirectory(root, "data/current-affairs/daily"), path.join(standaloneRoot, "data", "current-affairs", "daily"));
+  copyDirectoryOrCreateEmpty(path.join(root, "data", "current-affairs", "daily"), path.join(standaloneRoot, "data", "current-affairs", "daily"));
   copyFileIfExists(path.join(root, "data", "current-affairs", "state.json"), path.join(standaloneRoot, "data", "current-affairs", "state.json"));
   copyFileIfExists(path.join(root, "data", "exams", "ssc-cgl", "resource-candidates.json"), path.join(standaloneRoot, "data", "exams", "ssc-cgl", "resource-candidates.json"));
   copyFileIfExists(path.join(root, "data", "exams", "ssc-cgl", "source-registry.json"), path.join(standaloneRoot, "data", "exams", "ssc-cgl", "source-registry.json"));
+  assertLeanStandaloneBundle(standaloneRoot);
 }
 
 const invokedPath = process.argv[1] ? path.resolve(process.argv[1]) : "";

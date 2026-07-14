@@ -74,6 +74,49 @@ test("ensureStandaloneAssets removes traced deployment artifacts from standalone
   assert.equal(fs.existsSync(path.join(root, ".next", "standalone", "deploy-artifacts")), false);
 });
 
+test("ensureStandaloneAssets supports a fresh checkout without current-affairs runtime data", () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "miteee-standalone-fresh-"));
+  fs.mkdirSync(path.join(root, "public"), { recursive: true });
+  fs.mkdirSync(path.join(root, ".next", "static"), { recursive: true });
+  fs.mkdirSync(path.join(root, ".next", "standalone"), { recursive: true });
+  seedSscResourceRuntimeData(root);
+
+  ensureStandaloneAssets(root);
+
+  assert.equal(fs.existsSync(path.join(root, ".next", "standalone", "data", "current-affairs", "daily")), true);
+  assert.equal(fs.existsSync(path.join(root, ".next", "standalone", "data", "current-affairs", "state.json")), false);
+});
+
+test("ensureStandaloneAssets rejects leaked workspace source in a real standalone bundle", () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "miteee-standalone-leak-"));
+  fs.mkdirSync(path.join(root, "public"), { recursive: true });
+  fs.mkdirSync(path.join(root, ".next", "static"), { recursive: true });
+  fs.mkdirSync(path.join(root, ".next", "standalone", "tests"), { recursive: true });
+  fs.writeFileSync(path.join(root, ".next", "standalone", "server.js"), "// server");
+  seedCurrentAffairsRuntimeData(root);
+  seedSscResourceRuntimeData(root);
+
+  assert.throws(
+    () => ensureStandaloneAssets(root),
+    /Standalone output contains traced workspace source: tests/
+  );
+});
+
+test("ensureStandaloneAssets requires the auth native addon in a real standalone bundle", () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "miteee-standalone-auth-addon-"));
+  fs.mkdirSync(path.join(root, "public"), { recursive: true });
+  fs.mkdirSync(path.join(root, ".next", "static"), { recursive: true });
+  fs.mkdirSync(path.join(root, ".next", "standalone"), { recursive: true });
+  fs.writeFileSync(path.join(root, ".next", "standalone", "server.js"), "// server");
+  seedCurrentAffairsRuntimeData(root);
+  seedSscResourceRuntimeData(root);
+
+  assert.throws(
+    () => ensureStandaloneAssets(root),
+    /missing the better-sqlite3 native addon/
+  );
+});
+
 test("ensureStandaloneAssets removes traced SSC OCR and review intermediates from standalone runtime", () => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "miteee-standalone-ssc-clean-"));
   fs.mkdirSync(path.join(root, "public"), { recursive: true });

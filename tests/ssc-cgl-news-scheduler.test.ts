@@ -78,7 +78,7 @@ test("SSC CGL local news verifier runs only through Docker and validates throwaw
   assert.match(docs, /temporary Docker volume/);
 });
 
-test("SSC CGL Netcup shell scripts use LF line endings for Linux cron", () => {
+test("SSC CGL Netcup shell scripts use LF line endings for Linux cron", { skip: process.platform === "win32" }, () => {
   for (const relativePath of [
     "scripts/run_ssc_cgl_daily_news_once.sh",
     "scripts/verify_ssc_cgl_daily_news_docker.sh",

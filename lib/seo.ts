@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { cleanInlineMarkdown, type Course, type Note } from "@/lib/content";
 import { truncateText } from "@/lib/text";
 
-export const SITE_NAME = "MITEEE Study";
+export const SITE_NAME = "MITEEE";
 export const SITE_URL = "https://note.arzvak.com";
 export const DEFAULT_SITE_DESCRIPTION =
   "A calm MITEEE, SSC CGL, and UPSC study library for notes, formulas, question banks, practice, and revision.";

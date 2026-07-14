@@ -256,6 +256,7 @@ const strictReadinessPath = path.join(process.cwd(), "data", "exams", "ssc-cgl",
 const resourceCandidatesPath = path.join(process.cwd(), "data", "exams", "ssc-cgl", "resource-candidates.json");
 const sourceRegistryPath = path.join(process.cwd(), "data", "exams", "ssc-cgl", "source-registry.json");
 let generatedDataCache: GeneratedSscCglData | null = null;
+let generatedDataCacheFingerprint: string | null = null;
 let strictReadinessCache: SscCglStrictReadinessAudit | null = null;
 let resourceDashboardCache: SscCglResourceDashboard | null = null;
 const questionMapCache = new WeakMap<GeneratedSscCglData, Map<string, SscCglQuestion>>();
@@ -285,7 +286,19 @@ function readGeneratedData(): GeneratedSscCglData {
 }
 
 export function getSscCglData() {
-  generatedDataCache ??= readGeneratedData();
+  let fingerprint: string | null = null;
+  try {
+    const stats = fs.statSync(generatedPath);
+    fingerprint = `${stats.size}:${stats.mtimeMs}`;
+  } catch {
+    // Keep the last good corpus available while a generated artifact is being
+    // replaced. A first load still receives the explicit empty fallback.
+  }
+
+  if (!generatedDataCache || (fingerprint !== null && fingerprint !== generatedDataCacheFingerprint)) {
+    generatedDataCache = readGeneratedData();
+    generatedDataCacheFingerprint = fingerprint;
+  }
   return generatedDataCache;
 }
 

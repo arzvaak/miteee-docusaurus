@@ -150,7 +150,28 @@
   background: transparent;
 }
 
-.avatar {
+.settingsLink {
+  display: inline-grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-soft);
+  background: transparent;
+}
+
+.settingsLink:hover,
+.settingsLink:focus-visible,
+.settingsActive {
+  border-color: var(--accent);
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+}
+
+.settingsLink:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.accountAvatar {
   display: inline-grid;
   width: 32px;
   height: 32px;
@@ -164,18 +185,58 @@
   transition: border-color 150ms ease, color 150ms ease, background 150ms ease;
 }
 
-.avatar:hover,
-.avatar:focus-visible,
-.avatarActive {
+.accountAvatar:hover,
+.accountAvatar:focus-visible {
   border-color: var(--accent);
   color: var(--accent-strong);
   background: var(--accent-soft);
 }
 
-.avatar:focus-visible {
+.accountAvatar:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
+
+.authLinks {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.authLinks[aria-busy="true"] { opacity: 0.78; }
+
+.loginLink,
+.registerLink {
+  display: inline-flex;
+  min-height: 35px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-soft);
+  font-size: 12px;
+  font-weight: 780;
+  white-space: nowrap;
+}
+
+.loginLink:hover,
+.loginLink:focus-visible {
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+
+.registerLink {
+  border-color: var(--accent);
+  color: var(--bg);
+  background: var(--accent);
+}
+
+.registerLink:hover,
+.registerLink:focus-visible { filter: brightness(1.06); }
+.loginLink:focus-visible,
+.registerLink:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.registerShort { display: none; }
 
 .main {
   min-width: 0;
@@ -200,7 +261,7 @@
   display: none;
 }
 
-@media (max-width: 1180px) {
+@media (max-width: 1320px) {
   .topbar {
     grid-template-columns: 152px minmax(380px, 1fr) minmax(230px, 340px) auto;
     padding-inline: 18px;
@@ -213,9 +274,15 @@
   .searchSlot {
     padding-inline: 12px;
   }
+
 }
 
-@media (max-width: 940px) {
+@media (max-width: 1180px) {
+  .registerLong { display: none; }
+  .registerShort { display: inline; }
+}
+
+@media (max-width: 1040px) {
   .topbar {
     grid-template-columns: auto minmax(210px, 1fr) auto;
   }
@@ -228,34 +295,6 @@
     justify-self: center;
     max-width: 520px;
   }
-}
-
-@media (max-width: 700px) {
-  .topbar {
-    position: sticky;
-    grid-template-columns: 1fr auto;
-    min-height: 60px;
-    padding-inline: 14px;
-  }
-
-  .brandMark {
-    width: 30px;
-    height: 30px;
-  }
-
-  .brandCopy small,
-  .searchSlot {
-    display: none;
-  }
-
-  .main {
-    min-height: calc(100vh - 60px);
-    padding: 22px 14px 90px;
-  }
-
-  .main:has(> [data-shell-full-bleed="true"]) {
-    padding: 0 0 72px;
-  }
 
   .bottomNav {
     position: fixed;
@@ -264,7 +303,7 @@
     left: 0;
     z-index: 80;
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     min-height: 66px;
     padding: 5px max(4px, env(safe-area-inset-right)) max(5px, env(safe-area-inset-bottom)) max(4px, env(safe-area-inset-left));
     border-top: 1px solid var(--border);
@@ -299,10 +338,50 @@
   }
 }
 
+@media (max-width: 700px) {
+  .topbar {
+    position: sticky;
+    grid-template-columns: 1fr auto;
+    min-height: 60px;
+    padding-inline: 14px;
+  }
+
+  .brandMark {
+    width: 30px;
+    height: 30px;
+  }
+
+  .brandCopy small,
+  .searchSlot {
+    display: none;
+  }
+
+  .main {
+    min-height: calc(100vh - 60px);
+    padding: 22px 14px 90px;
+  }
+
+  .main:has(> [data-shell-full-bleed="true"]) {
+    padding: 0 0 72px;
+  }
+
+  .bottomLink {
+    font-size: 9px;
+  }
+
+  .actions { gap: 6px; }
+  .authLinks { gap: 5px; }
+  .loginLink,
+  .registerLink { min-height: 32px; padding-inline: 9px; font-size: 11px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .navLink,
   .navLink::after,
-  .avatar {
+  .accountAvatar,
+  .settingsLink,
+  .loginLink,
+  .registerLink {
     transition: none;
   }
 }

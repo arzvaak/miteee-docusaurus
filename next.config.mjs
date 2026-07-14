@@ -1,10 +1,54 @@
 const dockerBuild = process.env.NEXT_DOCKER_BUILD === "1";
+const authTraceExcludes = [
+  "./.github/**/*",
+  "./app/**/*",
+  "./components/**/*",
+  "./data/**/*",
+  "./deploy-artifacts/**/*",
+  "./docker/**/*",
+  "./docs/**/*",
+  "./lib/**/*",
+  "./ops/**/*",
+  "./output/**/*",
+  "./public/**/*",
+  "./scripts/**/*",
+  "./src/**/*",
+  "./tests/**/*",
+  "./*.md",
+  "./*.py",
+  "./*.ts",
+  "./*.mjs",
+  "./*.sh",
+  "./*.yml",
+  "./*.yaml",
+  "./package-lock.json",
+  "./requirements*.txt",
+  "./tsconfig*.json"
+];
+const authTraceIncludes = [
+  "./node_modules/better-sqlite3/**/*",
+  "./node_modules/bindings/**/*",
+  "./node_modules/file-uri-to-path/**/*"
+];
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
   devIndicators: false,
   output: "standalone",
+  serverExternalPackages: ["better-sqlite3"],
+  outputFileTracingExcludes: {
+    "/api/auth/*": authTraceExcludes,
+    "/login": authTraceExcludes,
+    "/register": authTraceExcludes,
+    "/account": authTraceExcludes
+  },
+  outputFileTracingIncludes: {
+    "/api/auth/*": authTraceIncludes,
+    "/login": authTraceIncludes,
+    "/register": authTraceIncludes,
+    "/account": authTraceIncludes
+  },
   experimental: dockerBuild
     ? {
         cpus: 1,

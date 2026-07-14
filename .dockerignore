@@ -5,6 +5,8 @@
 .cache-loader
 .agents
 .codex
+.codex-qa
+.playwright-cli
 .pytest_cache
 .mypy_cache
 node_modules
@@ -25,9 +27,8 @@ test-results
 __pycache__
 *.pyc
 data/generated
-data/current-affairs/raw
-data/current-affairs/logs
-data/current-affairs/state.json
+data/auth
+data/current-affairs
 data/current-affairs/rolling
 data/exams/ssc-cgl/agent-answer-key
 data/exams/ssc-cgl/agent-review

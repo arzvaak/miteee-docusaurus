@@ -42,13 +42,17 @@ test("local production verification uses the Dockerized Next standalone app", ()
   assert.match(nextConfig, /staticGenerationMaxConcurrency:\s*1/);
   assert.match(nextConfig, /staticGenerationMinPagesPerWorker:\s*1000/);
   assert.match(dockerfile, /npm run build/);
+  assert.match(dockerfile, /FROM node:24-bookworm-slim AS deps/);
+  assert.match(dockerfile, /python3 make g\+\+/);
+  assert.match(dockerfile, /FROM node:24-bookworm-slim AS runner/);
   assert.match(dockerfile, /NEXT_DOCKER_BUILD=1/);
   assert.match(dockerfile, /\.next\/standalone/);
   assert.match(dockerfile, /CMD \["node", "server\.js"\]/);
   assert.match(compose, /miteee-next/);
   assert.match(compose, /docker\/next-app\.Dockerfile/);
-  assert.match(compose, /"3000:3000"/);
+  assert.match(compose, /"127\.0\.0\.1:\$\{NEXT_APP_PUBLISHED_PORT:-3000\}:3000"/);
   assert.match(compose, /\/exams\/ssc-cgl/);
+  assert.match(compose, /\/api\/auth\/get-session/);
   assert.match(dockerignore, /node_modules/);
   assert.match(dockerignore, /\.next/);
 });

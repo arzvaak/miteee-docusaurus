@@ -5,7 +5,6 @@ import {
   CalendarDays,
   CheckCircle2,
   Clipboard,
-  CloudOff,
   Download,
   HardDrive,
   RotateCcw,
@@ -36,6 +35,8 @@ import {
 import { buildStudySettingsBackup, restoreStudySettingsBackup } from "@/lib/study-settings-backup";
 import { useStudyPlanPreferences } from "@/components/useStudyPlanPreferences";
 import { useStudySpacePreferences } from "@/components/useStudySpacePreferences";
+import { SettingsAccountCard } from "@/components/SettingsAccountCard";
+import { ThemeGallery } from "@/components/ThemeToggle";
 import styles from "@/components/StudySettings.module.css";
 
 function persistStudySpacePreferences(preferences: StudySpacePreferences) {
@@ -162,6 +163,10 @@ export function StudySettings({ courses }: { courses: Course[] }) {
 
       <div className={styles.layout}>
         <main className={styles.primaryColumn}>
+          <section className={styles.card} aria-label="Appearance settings">
+            <ThemeGallery />
+          </section>
+
           <section className={styles.card} aria-labelledby="subject-status-heading">
             <div className={styles.sectionHeading}>
               <div>
@@ -302,13 +307,7 @@ export function StudySettings({ courses }: { courses: Course[] }) {
         </main>
 
         <aside className={styles.sideColumn}>
-          <section className={styles.sideCard} aria-labelledby="account-sync-heading">
-            <div className={styles.sideIcon}><CloudOff size={20} aria-hidden="true" /></div>
-            <span className={styles.eyebrow}>Account &amp; sync</span>
-            <h2 id="account-sync-heading">Not connected yet.</h2>
-            <p>There is no account attached to this study space. Subject status and plans are saved only in this browser and do not sync across devices.</p>
-            <span className={styles.localNotice}><HardDrive size={14} aria-hidden="true" /> This device only</span>
-          </section>
+          <SettingsAccountCard />
 
           <section className={styles.sideCard} aria-labelledby="settings-data-heading">
             <div className={styles.sideIcon}><Clipboard size={20} aria-hidden="true" /></div>

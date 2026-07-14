@@ -4,7 +4,7 @@ import { getSscCglDashboard } from "@/lib/ssc-cgl";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
-  title: "Exam Systems - MITEEE Study OS",
+  title: "Exam Systems - MITEEE",
   description: "First-class exam modules with timed practice, ranked attempts, topic repair, and daily current affairs.",
   pathname: "/exams"
 });

@@ -3,18 +3,31 @@ import Script from "next/script";
 import { AppShell } from "@/components/AppShell";
 import { JsonLd } from "@/components/JsonLd";
 import { buildWebSiteJsonLd, DEFAULT_SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { resolvedThemes, themeStorageKey } from "@/lib/themes";
 import "./globals.css";
 import "./study-minimal.css";
 import "katex/dist/katex.min.css";
 
+const shellThemeModes = Object.fromEntries(resolvedThemes.map((theme) => [theme.value, theme.mode]));
+
 const shellInitScript = `
 (() => {
+  const themeModes = ${JSON.stringify(shellThemeModes)};
+  let preference = "system";
   try {
-    const stored = window.localStorage.getItem("miteee-theme");
-    document.documentElement.dataset.theme = stored === "light" ? "light" : "dark";
-  } catch {
-    document.documentElement.dataset.theme = "dark";
-  }
+    const stored = window.localStorage.getItem(${JSON.stringify(themeStorageKey)});
+    if (stored === "system" || Object.prototype.hasOwnProperty.call(themeModes, stored)) preference = stored;
+  } catch {}
+
+  const resolved = preference === "system"
+    ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+    : preference;
+  const mode = themeModes[resolved] || "dark";
+  const root = document.documentElement;
+  root.dataset.themePreference = preference;
+  root.dataset.theme = resolved;
+  root.dataset.themeMode = mode;
+  root.style.colorScheme = mode;
 })();
 `;
 
@@ -31,7 +44,7 @@ export const metadata: Metadata = {
   publisher: SITE_NAME,
   appleWebApp: {
     capable: true,
-    title: "MITEEE Study",
+    title: SITE_NAME,
     statusBarStyle: "black-translucent"
   },
   formatDetection: {
@@ -45,7 +58,7 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     type: "website",
     locale: "en_IN",
-    images: [{ url: "/img/miteee-social-card.png", width: 1200, height: 630, alt: "MITEEE Study OS dashboard" }]
+    images: [{ url: "/img/miteee-social-card.png", width: 1200, height: 630, alt: `${SITE_NAME} dashboard` }]
   },
   twitter: {
     card: "summary_large_image",

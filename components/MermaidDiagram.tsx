@@ -50,7 +50,9 @@ function mermaidId(id: string) {
 }
 
 function isDarkTheme() {
-  return document.documentElement.dataset.theme !== "light";
+  const mode = document.documentElement.dataset.themeMode;
+  if (mode === "dark" || mode === "light") return mode === "dark";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches;
 }
 
 function loadMermaid() {

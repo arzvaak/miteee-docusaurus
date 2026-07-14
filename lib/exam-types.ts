@@ -222,6 +222,11 @@ export type CurrentAffairsSummaryItem = {
   url: string;
   published_at: string;
   source_excerpt?: string;
+  content_evidence?: {
+    origin: "article-page" | "feed-summary" | "official-record" | "official-page" | "unknown";
+    method: string;
+    captured_characters: number;
+  };
   ssc_relevance: "high" | "medium" | "low";
   upsc_cse_relevance?: "high" | "medium" | "low";
   exam_areas: string[];
@@ -237,6 +242,47 @@ export type CurrentAffairsSummaryItem = {
     answer: string;
     trap: string;
   };
+};
+
+export type CurrentAffairsExamLens = {
+  ssc: CurrentAffairsSummaryItem["ssc_relevance"];
+  upsc: NonNullable<CurrentAffairsSummaryItem["upsc_cse_relevance"]>;
+};
+
+export type CurrentAffairsStoryRecord = {
+  date: string;
+  slug: string;
+  selectionId: string;
+  href: string;
+  title: string;
+  source: string;
+  sourceUrl: string;
+  publishedAt: string;
+  summary: string;
+  examAreas: string[];
+  lenses: CurrentAffairsExamLens;
+  item: CurrentAffairsSummaryItem;
+};
+
+export type CurrentAffairsIssueKind = "weekly" | "monthly";
+
+export type CurrentAffairsIssueGroup = {
+  id: string;
+  label: string;
+  stories: CurrentAffairsStoryRecord[];
+};
+
+export type CurrentAffairsIssue = {
+  kind: CurrentAffairsIssueKind;
+  key: string;
+  href: string;
+  title: string;
+  startDate: string;
+  endDate: string;
+  availableDates: string[];
+  storyCount: number;
+  stories: CurrentAffairsStoryRecord[];
+  groups: CurrentAffairsIssueGroup[];
 };
 
 export type CurrentAffairsBrief = {

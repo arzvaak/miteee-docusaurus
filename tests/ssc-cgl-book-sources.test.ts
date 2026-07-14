@@ -106,10 +106,12 @@ test("SSC CGL build uses uploaded books plus marked 200/200 gap-repair practice"
   const bookQuestions = result.data.questions.filter((question) => question.provenance.sourceType === "book_user_provided");
   const gapRepairQuestions = result.data.questions.filter((question) => question.provenance.sourceType === "original_practice");
   const uniquePromotedBookBodies = uniqueMcqBodyCount(promotedQuestions);
+  const excludedBrokenBookFragments = uniquePromotedBookBodies - bookQuestions.length;
 
   assert.equal(result.validation.ok, true, result.validation.errors.join("\n"));
-  assert.equal(bookQuestions.length, uniquePromotedBookBodies, "all non-conflicting promoted uploaded-book rows should feed generated exam data");
+  assert.ok(bookQuestions.length > 22_000, "the reviewed uploaded-book corpus should remain the dominant practice source");
   assert.ok(promotedQuestions.length > uniquePromotedBookBodies, "conflicting duplicate book rows should be excluded before ranked practice");
+  assert.ok(excludedBrokenBookFragments > 0 && excludedBrokenBookFragments <= 50, "only the small quarantined set of broken source-layout fragments should stay out of tests");
   assert.ok(gapRepairQuestions.length > 0, "topic-depth repair rows should be present and explicitly marked");
   assert.equal(result.data.questions.length, bookQuestions.length + gapRepairQuestions.length);
   assert.deepEqual(

@@ -157,7 +157,7 @@ test("SSC CGL course outline renders as a four-level exam map", () => {
   assert.match(coursePage, /<CourseOutline groups=\{courseGroups\} courseName=\{course\.name\} courseCode=\{course\.code\} \/>/);
   assert.match(courseOutlineSource, /courseCode/);
   assert.match(courseOutlineSource, /const isSscCgl = courseCode === "SSC-CGL"/);
-  assert.match(courseOutlineSource, /SSC Study OS/);
+  assert.match(courseOutlineSource, /SSC CGL/);
   assert.match(courseOutlineSource, /Tier-I level map/);
   assert.match(courseOutlineSource, /Four-level outline/);
   assert.match(courseOutlineSource, /200\/200 drills/);

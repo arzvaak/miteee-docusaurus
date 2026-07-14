@@ -4,7 +4,7 @@ import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
   title: "Study Settings",
-  description: "Choose active subjects and shape a device-only study plan for MITEEE Study.",
+  description: "Manage your MITEEE account, active subjects, and device-only study plan.",
   pathname: "/settings"
 });
 
