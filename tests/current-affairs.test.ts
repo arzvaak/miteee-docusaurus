@@ -142,7 +142,7 @@ test("current affairs loader picks the latest local brief for the SSC page", () 
   const latest = getLatestCurrentAffairsDate();
   const brief = getCurrentAffairsStudyBrief();
 
-  assert.equal(brief.date, latest ?? new Date().toISOString().slice(0, 10));
+  assert.equal(brief.date, latest ?? getCurrentAffairsIstDate());
   assert.ok(brief.sourceQuality.totalItems >= brief.items.length);
   assert.equal(
     brief.recallCards.length,
@@ -921,9 +921,10 @@ items = [
     raw("Can your city make you feel like a failure? IIT graduate's viral take", "Times of India Education", "A viral take starts a conversation about lifestyle and personal feelings in large cities.", ["education", "exam-notice", "governance"]),
     raw("Programming will never go out of scope, industry leaders urge students", "Times of India Education", "Industry leaders urge engineering students to learn programming fundamentals as career advice.", ["education", "exam-notice", "governance"]),
     raw("E Jean Carroll receives $5.6 million after years-long legal battle with Trump", "Times of India World", "A private civil case ended with damages and a payment from escrow after a sexual abuse case and years-long legal battle.", ["international", "upsc-gs2"]),
-    raw("NCP rejects leadership challenge to Sunetra Pawar as party chief", "Times of India India", "An internal party leadership challenge and factional feud concerned who would remain party chief.", ["national", "polity", "governance"]),
-    raw("US stocks today: Wall Street trades in green; stocks steady as inflation data arrives", "Times of India Business", "US stocks traded higher during routine intraday trade as Wall Street reacted to inflation data.", ["economy", "upsc-gs3"]),
+    raw("NCP rejects leadership challenge to Sunetra Pawar as party chief", "Times of India India", "An internal party leadership challenge concerned who would remain party chief under the party constitution, according to a Supreme Court advocate.", ["national", "polity", "governance"]),
+    raw("US stocks today: Wall Street trades in green; stocks steady as inflation data arrives", "Times of India Business", "US stocks traded higher during routine intraday trade as Wall Street weighed inflation and possible central bank rate cuts.", ["economy", "upsc-gs3"]),
     raw("Wildfire southwest of Denver forces thousands to evacuate", "Times of India Environment", "A local wildfire southwest of Denver destroyed structures after dry weather and erratic winds.", ["environment", "science", "upsc-gs3"]),
+    raw("Labrador collapses after eating discarded cannabis on Ben Nevis", "Times of India World", "A pet Labrador collapsed on a walk after eating discarded cannabis and later recovered.", ["international", "upsc-gs2"]),
     raw("AI economy must protect workers; BMS seeks fairer growth model", "Times of India India", "The trade union BMS sought social security and worker protection as artificial intelligence changes labour markets.", ["national", "polity", "governance"]),
     raw("13 Indians killed, 3 missing in Gulf amid war", "Times of India India", "The government reported Indians killed and missing during the Gulf war and described consular support and evacuation planning.", ["national", "polity", "governance"]),
     raw("Ministry of Education publishes official NIRF methodology", "Indian Express Education", "The Ministry of Education published the National Institutional Ranking Framework methodology as an official report.", ["education"]),

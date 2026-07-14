@@ -681,6 +681,7 @@ def is_low_value_current_affairs(item: RawItem) -> bool:
         r"\b(study abroad aspirants? need a plan b|returned to bengaluru|reason had nothing to do with money|"
         r"quote of the day|top stocks? to buy|gold price prediction|stock market live updates?|netizens|"
         r"donation theft row|dogs? (?:are|have such a) friendly (?:companions?|relationship)|fed salmon to canines|"
+        r"(?:dog|labrador|pet)\b.{0,120}\b(?:cannabis|marijuana|discarded edible|discarded drug)|"
         r"why do antibiotics not work against viruses|evergreen classroom explainer)\b",
         content_text,
     ):
@@ -712,12 +713,7 @@ def is_low_value_current_affairs(item: RawItem) -> bool:
         r"challenge to .{0,60} as (?:party )?chief|party succession|party chief contest)\b",
         content_text,
     )
-    public_electoral_context = re.search(
-        r"\b(?:election commission|supreme court|high court|anti-defection|election result|"
-        r"government formation|coalition government|floor test|constitutional)\b",
-        content_text,
-    )
-    if internal_party_dispute and not public_electoral_context:
+    if internal_party_dispute:
         return True
     routine_market_subject = re.search(
         r"\b(?:u\.?s\.? |global |asian |european |indian )?"
@@ -730,12 +726,7 @@ def is_low_value_current_affairs(item: RawItem) -> bool:
         r"trade|trades|traded|steady|higher|lower|up|down|green|red|mixed)\b",
         content_text,
     )
-    structural_market_context = re.search(
-        r"\b(?:central bank decision|rbi|sebi|interest-rate decision|rate cut|rate hike|"
-        r"market regulation|capital-market reform|currency intervention)\b",
-        content_text,
-    )
-    if routine_market_subject and routine_market_move and not structural_market_context:
+    if routine_market_subject and routine_market_move:
         return True
     if re.search(r"\b(?:wildfire|forest fire|brush fire)\b", content_text) and not re.search(
         r"\b(?:india|indian|climate change|disaster management|public health|air pollution|"

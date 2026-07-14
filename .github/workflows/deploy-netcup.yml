@@ -125,11 +125,13 @@ jobs:
           MISTRAL_MODEL: mistral-small-latest
         run: |
           set -euo pipefail
+          RUN_DATE="$(TZ=Asia/Kolkata date +%F)"
+          echo "CURRENT_AFFAIRS_RUN_DATE=$RUN_DATE" >> "$GITHUB_ENV"
           ssh -i ~/.ssh/netcup_deploy_key "$NETCUP_USER@$NETCUP_HOST" \
             "set -euo pipefail
              cd '$NETCUP_APP_DIR'
              chmod +x ops/netcup/install-ssc-cgl-news.sh
-             DEEPSEEK_API_KEY='$DEEPSEEK_API_KEY' DEEPSEEK_MODEL='$DEEPSEEK_MODEL' MISTRAL_API_KEY='$MISTRAL_API_KEY' MISTRAL_MODEL='$MISTRAL_MODEL' RUN_DATE=\$(TZ=Asia/Kolkata date +%F) ops/netcup/install-ssc-cgl-news.sh '$NETCUP_APP_DIR'"
+             DEEPSEEK_API_KEY='$DEEPSEEK_API_KEY' DEEPSEEK_MODEL='$DEEPSEEK_MODEL' MISTRAL_API_KEY='$MISTRAL_API_KEY' MISTRAL_MODEL='$MISTRAL_MODEL' RUN_DATE='$RUN_DATE' ops/netcup/install-ssc-cgl-news.sh '$NETCUP_APP_DIR'"
 
       - name: Refresh Next app after current-affairs artifacts
         env:
@@ -138,10 +140,11 @@ jobs:
           NETCUP_APP_DIR: ${{ secrets.NETCUP_APP_DIR }}
         run: |
           set -euo pipefail
+          test -n "${CURRENT_AFFAIRS_RUN_DATE:-}"
           ssh -i ~/.ssh/netcup_deploy_key "$NETCUP_USER@$NETCUP_HOST" \
             "set -euo pipefail
              cd '$NETCUP_APP_DIR'
-             RUN_DATE=\$(TZ=Asia/Kolkata date +%F)
+             RUN_DATE='$CURRENT_AFFAIRS_RUN_DATE'
              test -s data/current-affairs/daily/\$RUN_DATE.json
              chmod -R a+rX data/current-affairs
              mkdir -p data/auth
@@ -149,9 +152,7 @@ jobs:
              chmod 700 data/auth
              export NEXT_APP_PUBLISHED_PORT=3025
              export BETTER_AUTH_URL=https://note.arzvak.com
-             docker compose -f docker-compose.next.yml up -d --no-build --force-recreate
-             docker cp data/current-affairs/. miteee-next-app:/app/data/current-affairs/
-             docker compose -f docker-compose.next.yml restart miteee-next
+             docker compose -f docker-compose.next.yml up -d --no-build
              docker compose -f docker-compose.next.yml exec -T miteee-next sh -lc \"ls -lah /app/data/current-affairs/daily && test -s /app/data/current-affairs/daily/\$RUN_DATE.json\"
              for attempt in \$(seq 1 30); do
              if curl --fail --silent --show-error http://127.0.0.1:3025/exams/ssc-cgl/current-affairs | grep -q 'Daily depth, weekly clarity, monthly revision.' \

@@ -32,11 +32,14 @@ test("Netcup workflow deploys the current Next standalone app instead of stale D
   assert.match(workflow, /chmod 600 .*note-arzvak-predeploy-/);
   assert.match(workflow, /Refresh Next app after current-affairs artifacts/);
   assert.match(workflow, /test -s data\/current-affairs\/daily\/\\\$RUN_DATE\.json/);
+  assert.match(workflow, /echo "CURRENT_AFFAIRS_RUN_DATE=\$RUN_DATE" >> "\$GITHUB_ENV"/);
+  assert.match(workflow, /RUN_DATE='\$CURRENT_AFFAIRS_RUN_DATE'/);
   assert.match(workflow, /chmod -R a\+rX data\/current-affairs/);
   assert.match(workflow, /export NEXT_APP_PUBLISHED_PORT=3025/);
-  assert.match(workflow, /docker compose -f docker-compose\.next\.yml up -d --no-build --force-recreate/);
-  assert.match(workflow, /docker cp data\/current-affairs\/\. miteee-next-app:\/app\/data\/current-affairs\//);
-  assert.match(workflow, /docker compose -f docker-compose\.next\.yml restart miteee-next/);
+  assert.match(workflow, /docker compose -f docker-compose\.next\.yml up -d --no-build/);
+  assert.doesNotMatch(workflow, /docker compose -f docker-compose\.next\.yml up -d --no-build --force-recreate/);
+  assert.doesNotMatch(workflow, /docker cp data\/current-affairs\/\. miteee-next-app:\/app\/data\/current-affairs\//);
+  assert.doesNotMatch(workflow, /docker compose -f docker-compose\.next\.yml restart miteee-next/);
   assert.match(workflow, /ls -lah \/app\/data\/current-affairs\/daily && test -s \/app\/data\/current-affairs\/daily\/\\\$RUN_DATE\.json/);
   assert.match(workflow, /grep -q 'Daily depth, weekly clarity, monthly revision\.'/);
   assert.match(workflow, /http:\/\/127\.0\.0\.1:3025\/exams\/ssc-cgl\/current-affairs/);
@@ -126,7 +129,8 @@ test("Netcup workflow can install the SSC CGL news Docker cron service from the 
   assert.match(workflow, /chmod \+x ops\/netcup\/install-ssc-cgl-news\.sh/);
   assert.match(workflow, /DEEPSEEK_API_KEY/);
   assert.match(workflow, /MISTRAL_API_KEY/);
-  assert.match(workflow, /RUN_DATE=\\\$\(TZ=Asia\/Kolkata date \+%F\)/);
+  assert.match(workflow, /RUN_DATE="\$\(TZ=Asia\/Kolkata date \+%F\)"/);
+  assert.match(workflow, /echo "CURRENT_AFFAIRS_RUN_DATE=\$RUN_DATE" >> "\$GITHUB_ENV"/);
 });
 
 test("Netcup and Docker builds include the promoted SSC CGL book corpus", () => {
