@@ -38,7 +38,7 @@ test("Netcup workflow deploys the current Next standalone app instead of stale D
   assert.match(workflow, /docker cp data\/current-affairs\/\. miteee-next-app:\/app\/data\/current-affairs\//);
   assert.match(workflow, /docker compose -f docker-compose\.next\.yml restart miteee-next/);
   assert.match(workflow, /ls -lah \/app\/data\/current-affairs\/daily && test -s \/app\/data\/current-affairs\/daily\/\\\$RUN_DATE\.json/);
-  assert.match(workflow, /grep -q 'Recall queue'/);
+  assert.match(workflow, /grep -q 'Daily depth, weekly clarity, monthly revision\.'/);
   assert.match(workflow, /http:\/\/127\.0\.0\.1:3025\/exams\/ssc-cgl\/current-affairs/);
   assert.match(workflow, /http:\/\/127\.0\.0\.1:3025\/api\/auth\/get-session/);
   assert.match(workflow, /deployment-auth-probe@invalid\.example/);

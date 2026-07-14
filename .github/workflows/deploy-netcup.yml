@@ -154,7 +154,7 @@ jobs:
              docker compose -f docker-compose.next.yml restart miteee-next
              docker compose -f docker-compose.next.yml exec -T miteee-next sh -lc \"ls -lah /app/data/current-affairs/daily && test -s /app/data/current-affairs/daily/\$RUN_DATE.json\"
              for attempt in \$(seq 1 30); do
-               if curl --fail --silent --show-error http://127.0.0.1:3025/exams/ssc-cgl/current-affairs | grep -q 'Recall queue' \
+             if curl --fail --silent --show-error http://127.0.0.1:3025/exams/ssc-cgl/current-affairs | grep -q 'Daily depth, weekly clarity, monthly revision.' \
                  && curl --fail --silent --show-error http://127.0.0.1:3025/api/auth/get-session >/dev/null; then
                  exit 0
                fi
