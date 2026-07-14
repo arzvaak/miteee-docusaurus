@@ -19,7 +19,7 @@
 <label data-opt="c"><span class="opt-key">C</span> 340 V</label>
 <label data-opt="d"><span class="opt-key">D</span> 100 V</label>
 </div>
-<details class="quiz-exp"><summary>Show Answer</summary><div class="quiz-exp-body"><strong>Answer: B — 200 V.</strong> In a buck converter, the switch sees $V_{in}$ when it is OFF $diode is ON$. Voltage rating must exceed $V_{in} = 200\,V$.</div></details>
+<details class="quiz-exp"><summary>Show Answer</summary><div class="quiz-exp-body"><strong>Answer: B — 200 V.</strong> In a buck converter, the switch sees $V_{in}$ when it is OFF (diode is ON). Voltage rating must exceed $V_{in} = 200\,V$.</div></details>
 </div>
 
 <div class="quiz-block mcq arithmatex" data-answer="b">
@@ -77,7 +77,7 @@
 <label data-opt="a"><span class="opt-key">A</span> 3.0 A</label>
 <label data-opt="b"><span class="opt-key">B</span> 4.0 A</label>
 <label data-opt="c"><span class="opt-key">C</span> 4.2 A</label>
-<label data-opt="d"><span class="opt-key">D</span> ≈4.5 A $peak current$</label>
+<label data-opt="d"><span class="opt-key">D</span> ≈4.5 A (peak current)</label>
 </div>
 <details class="quiz-exp"><summary>Show Answer</summary><div class="quiz-exp-body"><strong>Answer: D ≈ 4.44 A.</strong> $I_{peak} = I_{o,max} + \Delta i_L/2$. With 1200 μH: $\Delta i_L = 140\times0.3/(40000\times1.2\times10^{-3}) = 42/48 = 0.875\,A$. $I_{peak} = 4 + 0.4375 = 4.44\,A$. Range: 4.2–4.8 A.</div></details>
 </div>
@@ -89,9 +89,9 @@
 <label data-opt="a"><span class="opt-key">A</span> 0.1 μF</label>
 <label data-opt="b"><span class="opt-key">B</span> 1.5 μF</label>
 <label data-opt="c"><span class="opt-key">C</span> 3 μF</label>
-<label data-opt="d"><span class="opt-key">D</span> 6 μF $select standard value ≥ required$</label>
+<label data-opt="d"><span class="opt-key">D</span> 6 μF (select standard value ≥ required)</label>
 </div>
-<details class="quiz-exp"><summary>Show Answer</summary><div class="quiz-exp-body"><strong>Answer: D — 6 μF.</strong> Required C ≈ 3.7–4.2 μF $calculated from ripple formula$. Standard value ≥ required → 6 μF. Note: 4.46 μF was the exact calculation in assignment $incorrect answer by student — actual ≈ 3.9 μF$.</div></details>
+<details class="quiz-exp"><summary>Show Answer</summary><div class="quiz-exp-body"><strong>Answer: D — 6 μF.</strong> Required C ≈ 3.7–4.2 μF (calculated from ripple formula). Standard value ≥ required → 6 μF. Note: 4.46 μF was the exact calculation in assignment (incorrect answer by student — actual ≈ 3.9 μF).</div></details>
 </div>
 
 <div class="quiz-block mcq arithmatex" data-answer="c">
@@ -103,7 +103,7 @@
 <label data-opt="c"><span class="opt-key">C</span> Electrolytic</label>
 <label data-opt="d"><span class="opt-key">D</span> Film</label>
 </div>
-<details class="quiz-exp"><summary>Show Answer</summary><div class="quiz-exp-body"><strong>Answer: C — Electrolytic.</strong> Electrolytic capacitors provide high capacitance $μF–mF$ at low cost with adequate ripple current ratings. Ceramics are for small-value decoupling; film for AC filtering.</div></details>
+<details class="quiz-exp"><summary>Show Answer</summary><div class="quiz-exp-body"><strong>Answer: C — Electrolytic.</strong> Electrolytic capacitors provide high capacitance (μF–mF) at low cost with adequate ripple current ratings. Ceramics are for small-value decoupling; film for AC filtering.</div></details>
 </div>
 
 ---
@@ -112,10 +112,10 @@
 
 <div class="quiz-block mcq arithmatex" data-answer="d">
 <div class="quiz-meta"><span class="quiz-num">W1-P1</span><span class="quiz-tag">W1</span><span class="quiz-type">MCQ</span></div>
-<p class="quiz-q">Doubling the switching frequency in a buck converter $all else same$ reduces output voltage ripple by a factor of:</p>
+<p class="quiz-q">Doubling the switching frequency in a buck converter (all else same) reduces output voltage ripple by a factor of:</p>
 <div class="quiz-options">
 <label data-opt="a"><span class="opt-key">A</span> 2</label>
-<label data-opt="b"><span class="opt-key">B</span> 1 $no change$</label>
+<label data-opt="b"><span class="opt-key">B</span> 1 (no change)</label>
 <label data-opt="c"><span class="opt-key">C</span> 8</label>
 <label data-opt="d"><span class="opt-key">D</span> 4</label>
 </div>
@@ -136,7 +136,7 @@
 
 <div class="quiz-block msq arithmatex" data-answers="a,b,d">
 <div class="quiz-meta"><span class="quiz-num">W1-P3</span><span class="quiz-tag">W1·GATE</span><span class="quiz-type">MSQ</span></div>
-<p class="quiz-q">In CCM buck converter, which are TRUE? $Select ALL that apply$</p>
+<p class="quiz-q">In CCM buck converter, which are TRUE? Select ALL that apply</p>
 <div class="quiz-options">
 <label data-opt="a"><span class="opt-key">A</span> Switch voltage stress equals $V_{in}$</label>
 <label data-opt="b"><span class="opt-key">B</span> Freewheeling diode carries inductor current during switch OFF interval</label>
@@ -144,7 +144,7 @@
 <label data-opt="d"><span class="opt-key">D</span> Average inductor current equals output current by charge balance</label>
 </div>
 <button class="quiz-check">Check Answers</button>
-<details class="quiz-exp"><summary>Show Answer</summary><div class="quiz-exp-body"><strong>Answers: A, B, D.</strong> C is false — buck $V_o \leq V_{in}$ always. A: switch sees $V_{in}$ when OFF $diode clamps$. B: diode provides path for inductor current. D: from capacitor charge balance, avg $I_C = 0$ → avg $I_L = I_o$.</div></details>
+<details class="quiz-exp"><summary>Show Answer</summary><div class="quiz-exp-body"><strong>Answers: A, B, D.</strong> C is false — buck $V_o \leq V_{in}$ always. A: switch sees $V_{in}$ when OFF (diode clamps). B: diode provides path for inductor current. D: from capacitor charge balance, avg $I_C = 0$ → avg $I_L = I_o$.</div></details>
 </div>
 
 ---
@@ -246,7 +246,7 @@
 <label data-opt="c"><span class="opt-key">C</span> 12 ns</label>
 <label data-opt="d"><span class="opt-key">D</span> 150 ns</label>
 </div>
-<details class="quiz-exp"><summary>Show Answer</summary><div class="quiz-exp-body"><strong>Answer: B — 87 ns.</strong> Note: The student entered 44 ns $incorrect$. The correct datasheet value is 87 ns for turn-OFF time. Turn-ON time is 84 ns.</div></details>
+<details class="quiz-exp"><summary>Show Answer</summary><div class="quiz-exp-body"><strong>Answer: B — 87 ns.</strong> Note: The student entered 44 ns (incorrect). The correct datasheet value is 87 ns for turn-OFF time. Turn-ON time is 84 ns.</div></details>
 </div>
 
 <div class="quiz-block mcq arithmatex" data-answer="a">
@@ -306,7 +306,7 @@
 <label data-opt="c"><span class="opt-key">C</span> 44 ns</label>
 <label data-opt="d"><span class="opt-key">D</span> 150 ns</label>
 </div>
-<details class="quiz-exp"><summary>Show Answer</summary><div class="quiz-exp-body"><strong>Answer: A — 84 ns.</strong> Student entered 12 ns $incorrect$. Correct: 84 ns.</div></details>
+<details class="quiz-exp"><summary>Show Answer</summary><div class="quiz-exp-body"><strong>Answer: A — 84 ns.</strong> Student entered 12 ns (incorrect). Correct: 84 ns.</div></details>
 </div>
 
 <div class="quiz-block mcq arithmatex" data-answer="a">
@@ -323,7 +323,7 @@
 
 <div class="quiz-block mcq arithmatex" data-answer="b">
 <div class="quiz-meta"><span class="quiz-num">W2-A15</span><span class="quiz-tag">Assignment</span><span class="quiz-type">MCQ</span></div>
-<p class="quiz-q">Typical $I_{rr}$ at 125°C for IRFB7545PbF $(Q_{rr}=97\,nC$, $t_{rr}=75\,ns$) is:</p>
+<p class="quiz-q">Typical $I_{rr}$ at 125°C for IRFB7545PbF ($Q_{rr}=97\,nC$, $t_{rr}=75\,ns$) is:</p>
 <div class="quiz-options">
 <label data-opt="a"><span class="opt-key">A</span> 1.3 A</label>
 <label data-opt="b"><span class="opt-key">B</span> 2.6 A</label>
@@ -359,7 +359,7 @@
 
 <div class="quiz-block msq arithmatex" data-answers="b,d">
 <div class="quiz-meta"><span class="quiz-num">W2-A18</span><span class="quiz-tag">Assignment</span><span class="quiz-type">MSQ</span></div>
-<p class="quiz-q">Which are TRUE about MOSFET vs BJT? $Select ALL that apply$</p>
+<p class="quiz-q">Which are TRUE about MOSFET vs BJT? Select ALL that apply</p>
 <div class="quiz-options">
 <label data-opt="a"><span class="opt-key">A</span> On-state voltage drop of MOSFET is lower than BJT</label>
 <label data-opt="b"><span class="opt-key">B</span> On-state voltage drop of MOSFET is higher than BJT</label>
@@ -372,7 +372,7 @@
 
 <div class="quiz-block msq arithmatex" data-answers="b,d">
 <div class="quiz-meta"><span class="quiz-num">W2-A19</span><span class="quiz-tag">Assignment</span><span class="quiz-type">MSQ</span></div>
-<p class="quiz-q">Which are TRUE about device control? $Select ALL that apply$</p>
+<p class="quiz-q">Which are TRUE about device control? Select ALL that apply</p>
 <div class="quiz-options">
 <label data-opt="a"><span class="opt-key">A</span> IGBT is current-controlled</label>
 <label data-opt="b"><span class="opt-key">B</span> BJT is current-controlled</label>
@@ -380,7 +380,7 @@
 <label data-opt="d"><span class="opt-key">D</span> IGBT and MOSFET are voltage-controlled</label>
 </div>
 <button class="quiz-check">Check Answers</button>
-<details class="quiz-exp"><summary>Show Answer</summary><div class="quiz-exp-body"><strong>Answers: B, D.</strong> BJT: current-controlled $base current$. IGBT and MOSFET: voltage-controlled $MOS gate$.</div></details>
+<details class="quiz-exp"><summary>Show Answer</summary><div class="quiz-exp-body"><strong>Answers: B, D.</strong> BJT: current-controlled (base current). IGBT and MOSFET: voltage-controlled (MOS gate).</div></details>
 </div>
 
 <div class="quiz-block mcq arithmatex" data-answer="b">
@@ -511,7 +511,7 @@
 
 <div class="quiz-block msq arithmatex" data-answers="a,b,c,d">
 <div class="quiz-meta"><span class="quiz-num">W3-A10</span><span class="quiz-tag">Assignment</span><span class="quiz-type">MSQ</span></div>
-<p class="quiz-q">Requirements of a gate driver $Select ALL that apply$:</p>
+<p class="quiz-q">Requirements of a gate driver (select ALL that apply):</p>
 <div class="quiz-options">
 <label data-opt="a"><span class="opt-key">A</span> Meet voltage and current requirement of gate-emitter/source region</label>
 <label data-opt="b"><span class="opt-key">B</span> Provide isolation</label>
@@ -542,7 +542,7 @@
 
 <div class="quiz-block msq arithmatex" data-answers="a,b,c">
 <div class="quiz-meta"><span class="quiz-num">W4-A2</span><span class="quiz-tag">Assignment</span><span class="quiz-type">MSQ</span></div>
-<p class="quiz-q">Bootstrap method can be used in: $Select ALL that apply$</p>
+<p class="quiz-q">Bootstrap method can be used in: Select ALL that apply</p>
 <div class="quiz-options">
 <label data-opt="a"><span class="opt-key">A</span> Buck converters</label>
 <label data-opt="b"><span class="opt-key">B</span> H-Bridge converters</label>
@@ -587,7 +587,7 @@
 
 <div class="quiz-block msq arithmatex" data-answers="a,b,c,d">
 <div class="quiz-meta"><span class="quiz-num">W4-A6</span><span class="quiz-tag">Assignment</span><span class="quiz-type">MSQ</span></div>
-<p class="quiz-q">Additional benefits of snubbers apart from spike reduction: $Select ALL that apply$</p>
+<p class="quiz-q">Additional benefits of snubbers apart from spike reduction: Select ALL that apply</p>
 <div class="quiz-options">
 <label data-opt="a"><span class="opt-key">A</span> Limit dV/dt and dI/dt during transitions</label>
 <label data-opt="b"><span class="opt-key">B</span> Shape switching trajectory within SOA</label>
@@ -607,7 +607,7 @@
 <label data-opt="c"><span class="opt-key">C</span> Both equal</label>
 <label data-opt="d"><span class="opt-key">D</span> Neither</label>
 </div>
-<details class="quiz-exp"><summary>Show Answer</summary><div class="quiz-exp-body"><strong>Answer: A — small.</strong> Exact fill-in-blank answer from assignment. Smaller $C_s$ → less energy $\frac{1}{2}C_s V^2$) dissipated per cycle.</div></details>
+<details class="quiz-exp"><summary>Show Answer</summary><div class="quiz-exp-body"><strong>Answer: A — small.</strong> Exact fill-in-blank answer from assignment. Smaller $C_s$ → less energy $\frac{1}{2}C_s V^2$ dissipated per cycle.</div></details>
 </div>
 
 ---
@@ -646,14 +646,14 @@
 
 <div class="quiz-block mcq arithmatex" data-answer="a">
 <div class="quiz-meta"><span class="quiz-num">W5-P1</span><span class="quiz-tag">W5·GATE</span><span class="quiz-type">MCQ</span></div>
-<p class="quiz-q">MOSFET switching loss — when switching frequency doubles $all else same$:</p>
+<p class="quiz-q">MOSFET switching loss — when switching frequency doubles (all else same):</p>
 <div class="quiz-options">
 <label data-opt="a"><span class="opt-key">A</span> Doubles</label>
 <label data-opt="b"><span class="opt-key">B</span> Quadruples</label>
 <label data-opt="c"><span class="opt-key">C</span> Stays same</label>
 <label data-opt="d"><span class="opt-key">D</span> Halves</label>
 </div>
-<details class="quiz-exp"><summary>Show Answer</summary><div class="quiz-exp-body"><strong>Answer: A — doubles.</strong> $P_{sw} \propto f_s$. Linear relationship. $Compare: voltage ripple $\propto 1/f_s^2$ — reduces by 4×.)</div></details>
+<details class="quiz-exp"><summary>Show Answer</summary><div class="quiz-exp-body"><strong>Answer: A — doubles.</strong> $P_{sw} \propto f_s$. Linear relationship. Compare: voltage ripple $\propto 1/f_s^2$ — reduces by 4×.</div></details>
 </div>
 
 <div class="quiz-block mcq arithmatex" data-answer="b">
@@ -670,9 +670,9 @@
 
 <div class="quiz-block msq arithmatex" data-answers="a,b,c">
 <div class="quiz-meta"><span class="quiz-num">W5-P3</span><span class="quiz-tag">W5·GATE</span><span class="quiz-type">MSQ</span></div>
-<p class="quiz-q">Which increase MOSFET conduction loss? $Select ALL that apply$</p>
+<p class="quiz-q">Which increase MOSFET conduction loss? Select ALL that apply.</p>
 <div class="quiz-options">
-<label data-opt="a"><span class="opt-key">A</span> Higher junction temperature $positive temp coefficient of $R_{DS(on)}$)</label>
+<label data-opt="a"><span class="opt-key">A</span> Higher junction temperature (positive temperature coefficient of $R_{DS(on)}$)</label>
 <label data-opt="b"><span class="opt-key">B</span> Higher load current</label>
 <label data-opt="c"><span class="opt-key">C</span> Higher duty cycle D</label>
 <label data-opt="d"><span class="opt-key">D</span> Higher switching frequency</label>

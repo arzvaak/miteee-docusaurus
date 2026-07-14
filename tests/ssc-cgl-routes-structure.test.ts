@@ -250,7 +250,8 @@ test("SSC CGL topic pages show book-backed and gap-repair practice coverage", ()
   assert.match(topicDetail, /data-opt=\{option\.id\}/);
   assert.match(topicDetail, /className="opt-key"/);
   assert.match(topicDetail, /className="opt-text"/);
-  assert.match(topicDetail, /className="markdown-body ssc-flowchart-rendered"/);
+  assert.match(topicDetail, /className="ssc-flowchart-rendered"/);
+  assert.doesNotMatch(topicDetail, /className="markdown-body(?:\s+ssc-flowchart-rendered)?"/);
   assert.doesNotMatch(topicDetail, /<pre className="ssc-flowchart"/);
   assert.match(css, /\.ssc-source-split/);
   assert.match(css, /\.ssc-topic-mastery-route/);

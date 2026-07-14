@@ -11,6 +11,7 @@ import type { NotePreview } from "@/lib/content";
 import { uniqueHeadingAnchorId } from "@/lib/heading-anchors";
 import { prepareMarkdownContent } from "@/lib/markdown-normalize";
 import { normalizeCodeLanguage } from "@/lib/code-block";
+import { rehypeRawMathText } from "@/lib/rehype-raw-math-text";
 
 function flattenText(children: unknown): string {
   if (typeof children === "string") return children;
@@ -48,43 +49,45 @@ export function MarkdownNote({ content, previews = [], sectionName }: { content:
   const headingIds = new Map<string, number>();
 
   return (
-    <ReactMarkdown
-      remarkPlugins={[remarkGfm, remarkMath]}
-      rehypePlugins={[rehypeRaw, [rehypeKatex, { strict: false, throwOnError: false }]]}
-      components={{
-        a({ href = "", children }) {
-          const text = flattenText(children);
-          const key = href.startsWith("/notes/") ? href.replace("/notes/", "") : basenameWithoutExtension(href || text);
-          const preview = lookup.get(normalizeLookupKey(key)) || lookup.get(normalizeLookupKey(text));
-          return <PreviewLink href={href || "#"} preview={preview}>{children}</PreviewLink>;
-        },
-        h2({ children }) {
-          return <h2 id={uniqueHeadingAnchorId(flattenText(children), headingIds)}>{children}</h2>;
-        },
-        h3({ children }) {
-          return <h3 id={uniqueHeadingAnchorId(flattenText(children), headingIds)}>{children}</h3>;
-        },
-        h4({ children }) {
-          return <h4 id={uniqueHeadingAnchorId(flattenText(children), headingIds)}>{children}</h4>;
-        },
-        pre({ children }) {
-          const child = Array.isArray(children) ? children[0] : children;
-          const className =
-            isValidElement(child) && typeof child.props === "object" && child.props && "className" in child.props
-              ? String((child.props as { className?: unknown }).className || "")
-              : "";
-          const language = normalizeCodeLanguage(className);
-          const text = flattenText(children);
-          if (language === "mermaid") return <MermaidDiagram source={text} />;
-          return <CodeBlock className={className} text={text} />;
-        },
-        code({ className, children, ...props }) {
-          const language = /language-(\w+)/.exec(className || "")?.[1];
-          return <code className={className} data-language={language} {...props}>{children}</code>;
-        }
-      }}
-    >
-      {preparedContent}
-    </ReactMarkdown>
+    <div className="markdown-body">
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm, remarkMath]}
+        rehypePlugins={[rehypeRaw, rehypeRawMathText, [rehypeKatex, { strict: false, throwOnError: false, trust: false }]]}
+        components={{
+          a({ href = "", children }) {
+            const text = flattenText(children);
+            const key = href.startsWith("/notes/") ? href.replace("/notes/", "") : basenameWithoutExtension(href || text);
+            const preview = lookup.get(normalizeLookupKey(key)) || lookup.get(normalizeLookupKey(text));
+            return <PreviewLink href={href || "#"} preview={preview}>{children}</PreviewLink>;
+          },
+          h2({ children }) {
+            return <h2 id={uniqueHeadingAnchorId(flattenText(children), headingIds)}>{children}</h2>;
+          },
+          h3({ children }) {
+            return <h3 id={uniqueHeadingAnchorId(flattenText(children), headingIds)}>{children}</h3>;
+          },
+          h4({ children }) {
+            return <h4 id={uniqueHeadingAnchorId(flattenText(children), headingIds)}>{children}</h4>;
+          },
+          pre({ children }) {
+            const child = Array.isArray(children) ? children[0] : children;
+            const className =
+              isValidElement(child) && typeof child.props === "object" && child.props && "className" in child.props
+                ? String((child.props as { className?: unknown }).className || "")
+                : "";
+            const language = normalizeCodeLanguage(className);
+            const text = flattenText(children);
+            if (language === "mermaid") return <MermaidDiagram source={text} />;
+            return <CodeBlock className={className} text={text} />;
+          },
+          code({ className, children, ...props }) {
+            const language = /language-(\w+)/.exec(className || "")?.[1];
+            return <code className={className} data-language={language} {...props}>{children}</code>;
+          }
+        }}
+      >
+        {preparedContent}
+      </ReactMarkdown>
+    </div>
   );
 }

@@ -9,11 +9,11 @@ const notePage = fs.readFileSync("app/notes/[slug]/page.tsx", "utf8");
 test("reader uses a stable wide article canvas and one focused navigation rail", () => {
   assert.match(css, /--content-max:\s*1688px;/);
   assert.match(css, /--reader-canvas-width:\s*1120px;/);
-  assert.match(css, /--reader-prose-width:\s*820px;/);
+  assert.match(css, /\.reader-layout\s*\{[^}]*--reader-prose-width:\s*74ch;/s);
   assert.match(css, /grid-template-columns:\s*minmax\(220px, 260px\) minmax\(0, var\(--reader-canvas-width\)\) minmax\(220px, 260px\);/);
   assert.match(css, /\.reader-layout > \.article\s*\{[^}]*grid-column:\s*2;/s);
-  assert.match(css, /\.article :where\(p, ul, ol, blockquote\)\s*\{[^}]*max-width:\s*var\(--reader-prose-width\);/s);
-  assert.match(css, /\.article :where\(table, \.katex-display, \.code-block-shell, \.mermaid-shell\)\s*\{[^}]*width:\s*100%;[^}]*max-width:\s*var\(--reader-canvas-width\);/s);
+  assert.match(css, /\.article \.markdown-body :where\(p, ul, ol, blockquote\)\s*\{[^}]*max-width:\s*var\(--reader-prose-width\);/s);
+  assert.match(css, /\.article \.markdown-body :where\(table, \.katex-display, \.code-block-shell, \.mermaid-shell\)\s*\{[^}]*width:\s*100%;[^}]*max-width:\s*var\(--reader-canvas-width\);/s);
 });
 
 test("reader rails reclaim compact desktop space without narrowing the article", () => {

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { AlertTriangle, ArrowRight, Gauge, Target, Trophy } from "lucide-react";
 import { useEffect, useState } from "react";
+import { MathText } from "@/components/MathText";
 import { SscExplanationPanel } from "@/components/SscExplanationPanel";
 import type { SscCglAttemptResult, SscCglOptionId, SscCglTestDetail } from "@/lib/exam-types";
 import { buildSscAttemptQuestionReview } from "@/lib/ssc-cgl-attempt-review";
@@ -234,15 +235,15 @@ export function SscAttemptResultClient({ attemptId }: { attemptId: string }) {
                 </div>
                 <Link href={row.topicHref}>Repair topic</Link>
               </header>
-              <p>{row.stem}</p>
+              <p><MathText text={row.stem} /></p>
               <div className="ssc-answer-option-grid">
                 <span>
                   <small>Your answer</small>
-                  <strong>{row.chosenOptionId ? row.chosenOptionId.toUpperCase() : "-"} · {row.chosenOptionText}</strong>
+                  <strong>{row.chosenOptionId ? row.chosenOptionId.toUpperCase() : "-"} · <MathText text={row.chosenOptionText} /></strong>
                 </span>
                 <span>
                   <small>Correct answer</small>
-                  <strong>{row.correctOptionId.toUpperCase()} · {row.correctOptionText}</strong>
+                  <strong>{row.correctOptionId.toUpperCase()} · <MathText text={row.correctOptionText} /></strong>
                 </span>
               </div>
               <SscExplanationPanel explanation={row.explanation} className="ssc-answer-explanation" />

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, CheckCircle2, Circle, Flag, RotateCcw, Target, XCircle } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { MathText } from "@/components/MathText";
 import { SscExplanationPanel } from "@/components/SscExplanationPanel";
 import type { SscCglOptionId, SscCglQuestion, SscCglTopic } from "@/lib/exam-types";
 import {
@@ -37,9 +38,9 @@ function isPracticeMode(value: string | null): value is PracticeMode {
   return Boolean(value && practiceModeIds.has(value as PracticeMode));
 }
 
-function answerLabel(question: SscCglQuestion, optionId: SscCglOptionId) {
+function answerText(question: SscCglQuestion, optionId: SscCglOptionId) {
   const option = question.options.find((item) => item.id === optionId);
-  return `${optionId.toUpperCase()}. ${option?.text ?? ""}`;
+  return option?.text ?? "";
 }
 
 function clampIndex(index: number, total: number) {
@@ -450,7 +451,7 @@ export function SscTopicPracticeClient({
             </div>
             <i style={{ width: `${pacePercent}%` }} />
           </div>
-          <h2>{question.stem}</h2>
+          <h2><MathText text={question.stem} /></h2>
           <div className="ssc-options" role="list" aria-label="Answer options">
             {question.options.map((option, optionIndex) => {
               const optionIsCorrect = revealed && option.id === question.correctOption;
@@ -470,7 +471,7 @@ export function SscTopicPracticeClient({
                   aria-keyshortcuts={`${option.id.toUpperCase()} ${optionIndex + 1}`}
                 >
                   <span>{option.id.toUpperCase()}</span>
-                  <strong>{option.text}</strong>
+                  <strong><MathText text={option.text} /></strong>
                 </button>
               );
             })}
@@ -478,7 +479,10 @@ export function SscTopicPracticeClient({
 
           {revealed ? (
             <section className={`ssc-topic-practice-answer ${isCorrect ? "status-correct" : isWrong ? "status-wrong" : "status-skipped"}`} aria-live="polite">
-              <strong>{isCorrect ? "Correct" : isWrong ? "Wrong" : "Skipped"} · Answer {answerLabel(question, question.correctOption)}</strong>
+              <strong>
+                {isCorrect ? "Correct" : isWrong ? "Wrong" : "Skipped"} · Answer {question.correctOption.toUpperCase()}.{" "}
+                <MathText text={answerText(question, question.correctOption)} />
+              </strong>
               <SscExplanationPanel explanation={question.explanation} />
             </section>
           ) : (

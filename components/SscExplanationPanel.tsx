@@ -1,4 +1,5 @@
 import { parseSscExplanationBlocks } from "@/lib/ssc-cgl-explanations";
+import { MathText } from "@/components/MathText";
 
 export function SscExplanationPanel({
   explanation,
@@ -16,7 +17,7 @@ export function SscExplanationPanel({
         {blocks.map((block) => (
           <section className={`ssc-explanation-block type-${block.type}`} key={`${block.type}-${block.label}`}>
             <strong>{block.label}</strong>
-            <p>{block.body}</p>
+            <p><MathText text={block.body} /></p>
           </section>
         ))}
       </div>

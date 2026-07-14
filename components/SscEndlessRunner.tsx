@@ -14,6 +14,7 @@ import {
   X
 } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { MathText } from "@/components/MathText";
 import type { SscCglOptionId, SscCglQuestion } from "@/lib/exam-types";
 import type { SscEndlessBatch, SscSessionConfig } from "@/lib/ssc-cgl-session";
 import styles from "@/components/SscSession.module.css";
@@ -167,7 +168,7 @@ export function SscEndlessRunner({
             <span>{question.difficulty}</span>
             <span>{question.source}</span>
           </div>
-          <h1>{question.stem}</h1>
+          <h1><MathText text={question.stem} /></h1>
           <div className={styles.endlessOptions} role="radiogroup" aria-label="Answer options">
             {question.options.map((option, optionIndex) => {
               const isSelected = selected === option.id;
@@ -190,7 +191,7 @@ export function SscEndlessRunner({
                   onClick={() => setSelected(option.id)}
                 >
                   <span>{option.id.toUpperCase()}</span>
-                  <strong>{option.text}</strong>
+                  <strong><MathText text={option.text} /></strong>
                   <kbd>{optionIndex + 1}</kbd>
                   {isCorrect ? <Check size={18} aria-hidden="true" /> : null}
                   {isWrong ? <X size={18} aria-hidden="true" /> : null}
@@ -202,7 +203,7 @@ export function SscEndlessRunner({
           {revealed ? (
             <aside className={selected === question.correctOption ? styles.correctFeedback : styles.wrongFeedback} aria-live="polite">
               <strong>{selected === question.correctOption ? "Correct — keep the rhythm." : "Not quite — repair the method now."}</strong>
-              <p>{question.explanation}</p>
+              <p><MathText text={question.explanation} /></p>
             </aside>
           ) : (
             <p className={styles.keyboardHint}>Use keys 1–4 to choose. Press Enter to check.</p>

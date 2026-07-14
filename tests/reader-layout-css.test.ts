@@ -60,13 +60,13 @@ test("mobile shell clips page-level horizontal overflow", () => {
 test("desktop note reader uses one centered prose measure inside a wider canvas", () => {
   assert.match(readerRuleBody(".note-page"), /--content-max:\s*1688px;/);
   assert.match(readerRuleBody(".reader-layout"), /--reader-canvas-width:\s*1120px;/);
-  assert.match(readerRuleBody(".reader-layout"), /--reader-prose-width:\s*820px;/);
+  assert.match(readerRuleBody(".reader-layout"), /--reader-prose-width:\s*74ch;/);
   assert.match(readerRuleBody(".reader-layout"), /grid-template-columns:\s*minmax\(220px,\s*260px\) minmax\(0,\s*var\(--reader-canvas-width\)\) minmax\(220px,\s*260px\);/);
   assert.match(readerRuleBody(".article"), /max-width:\s*var\(--reader-canvas-width\);/);
   assert.match(readerRuleBody(".article-header"), /max-width:\s*var\(--reader-prose-width\);/);
-  assert.match(readerRuleBody(".article :where(p, ul, ol, blockquote)"), /max-width:\s*var\(--reader-prose-width\);/);
-  assert.match(readerRuleBody(".article :where(h2, h3, h4)"), /max-width:\s*var\(--reader-prose-width\);/);
-  assert.match(readerRuleBody(".article :where(table, .katex-display, .code-block-shell, .mermaid-shell)"), /max-width:\s*var\(--reader-canvas-width\);/);
+  assert.match(readerRuleBody(".article .markdown-body :where(p, ul, ol, blockquote)"), /max-width:\s*var\(--reader-prose-width\);/);
+  assert.match(readerRuleBody(".article .markdown-body :where(h2, h3, h4)"), /max-width:\s*var\(--reader-prose-width\);/);
+  assert.match(readerRuleBody(".article .markdown-body :where(table, .katex-display, .code-block-shell, .mermaid-shell)"), /max-width:\s*var\(--reader-canvas-width\);/);
 });
 
 test("research publication aligns prose while allowing figures to use the wide canvas", () => {

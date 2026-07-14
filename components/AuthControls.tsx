@@ -13,7 +13,7 @@ function accountInitial(name: string | null | undefined, email: string | null | 
 export function AuthControls() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const { data: session, isPending } = authClient.useSession();
+  const { data: session } = authClient.useSession();
   const returnPath = authReturnPath(pathname, searchParams.toString());
   const loginHref = `/login?next=${encodeURIComponent(returnPath)}`;
   const registerHref = `/register?next=${encodeURIComponent(returnPath)}`;
@@ -32,7 +32,7 @@ export function AuthControls() {
   }
 
   return (
-    <nav className={styles.authLinks} aria-label="Account access" aria-busy={isPending || undefined}>
+    <nav className={styles.authLinks} aria-label="Account access">
       <Link className={styles.loginLink} href={loginHref}>Log in</Link>
       <Link className={styles.registerLink} href={registerHref}>
         <span className={styles.registerLong}>Create account</span>

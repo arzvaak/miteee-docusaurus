@@ -101,6 +101,21 @@ test("appearance themes include warm paper and high-contrast palettes", () => {
   assert.match(css, /:root\[data-theme="high-contrast"\][\s\S]*?:focus-visible/);
 });
 
+test("editor themes keep distinct surface, typography, shape, and multi-accent personalities", () => {
+  const css = fs.readFileSync(path.join(process.cwd(), "app", "globals.css"), "utf8");
+  const personalities = [
+    "paper", "monokai", "dracula", "nord", "gruvbox", "solarized-dark", "solarized-light",
+    "tokyo-night", "one-dark", "catppuccin", "high-contrast"
+  ];
+
+  for (const theme of personalities) {
+    const block = cssBlock(css, `:root[data-theme="${theme}"]`);
+    for (const token of ["theme-canvas", "theme-panel", "theme-rule", "font-display", "font-reading", "radius"]) {
+      assert.match(block, new RegExp(`--${token}:`), `${theme} should define --${token}`);
+    }
+  }
+});
+
 test("light and paper muted text tokens retain small-text contrast on muted surfaces", () => {
   const globalCss = fs.readFileSync(path.join(process.cwd(), "app", "globals.css"), "utf8");
   const minimalCss = fs.readFileSync(path.join(process.cwd(), "app", "study-minimal.css"), "utf8");

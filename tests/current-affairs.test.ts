@@ -527,7 +527,16 @@ test("current affairs page expands a detailed story reader without navigation", 
   const css = fs.readFileSync(path.join(process.cwd(), "components", "CurrentAffairsFeed.module.css"), "utf8");
 
   assert.match(component, /function selectStory/);
+  assert.match(component, /useState<string \| null>/);
+  assert.match(component, /selectedSlug === null/);
+  assert.match(component, /selectedStory\?\.slug === story\.slug/);
+  assert.match(component, /function pushStorySelection/);
+  assert.match(component, /url\.searchParams\.set\("date", story\.date\)/);
+  assert.match(component, /url\.searchParams\.set\("story", story\.slug\)/);
+  assert.match(component, /url\.searchParams\.delete\("story"\)/);
+  assert.match(component, /currentAffairsStory: story\?\.slug \?\? null/);
   assert.match(component, /window\.history\.pushState/);
+  assert.doesNotMatch(component, /pushState\([\s\S]{0,180}story\.href/);
   assert.match(component, /aria-expanded=\{selected\}/);
   assert.match(component, /ExpandedStory/);
   assert.match(component, /What happened/);
@@ -870,7 +879,94 @@ print(json.dumps({
   assert.equal(parsed.selected.length, 3);
   assert.equal(parsed.published.length, 3);
   assert.deepEqual(new Set(parsed.published), new Set(parsed.selected));
-  assert.deepEqual(parsed.labels, ["high", "high", "high"]);
+  assert.deepEqual(parsed.labels, ["high", "high", "low"]);
+});
+
+test("daily news editorial gate rejects promotional and evergreen filler without losing real exam developments", () => {
+  const result = runPipelineSnippet(String.raw`
+import importlib.util
+import json
+import sys
+from pathlib import Path
+
+script_path = Path("scripts/daily_news_pipeline.py").resolve()
+spec = importlib.util.spec_from_file_location("daily_news_pipeline", script_path)
+module = importlib.util.module_from_spec(spec)
+sys.modules[spec.name] = module
+spec.loader.exec_module(module)
+
+def raw(title, source, excerpt, tags):
+    return module.RawItem(
+        title=title,
+        source=source,
+        url="https://example.com/" + str(abs(hash(title))),
+        published_at="2026-07-14T07:00:00+05:30",
+        fetched_at="2026-07-14T08:00:00+05:30",
+        raw_excerpt=excerpt,
+        tags=tags + ["article-excerpt"],
+        content_origin="article-page",
+        extraction_method="html-paragraphs",
+        captured_characters=len(excerpt),
+    )
+
+items = [
+    raw("BITS Pilani tops Hurun India U30 list with entrepreneur alumni", "Times of India Education", "The private Hurun U30 list profiles young entrepreneur alumni and college prestige.", ["education", "exam-notice", "governance"]),
+    raw("India tour of Bangladesh gets closer; Afghanistan T20Is could be pushed back", "Times of India Sports", "Officials discussed a bilateral series fixture and proposed schedule that could be pushed back.", ["sports", "awards", "ssc"]),
+    raw("OBC status of 77 castes: government withdraws SC challenge to HC verdict", "Times of India India", "The state government withdrew its Supreme Court challenge to a High Court ruling on OBC reservation for 77 castes.", ["national", "polity", "governance"]),
+    raw("Britain bought farmland; four years later beavers are helping it make money", "Times of India World", "A private farmland project used beavers and four years later began making money from visitors.", ["international", "upsc-gs2"]),
+    raw("India and China stack gold while trimming US Treasuries", "Times of India Business", "Central bank data show India and China expanded gold reserves while reducing US Treasuries exposure and diversifying foreign exchange reserves.", ["economy", "upsc-gs3"]),
+    raw("Europe heatwave death toll tops 10,000", "Times of India Environment", "Scientists attributed the heatwave death toll to human-caused climate change and described the public-health impact.", ["environment", "science", "upsc-gs3"]),
+    raw("Rare deep-sea life discovered on Arctic seabed opened for mining", "Times of India Science", "Scientists discovered rare deep-sea life in an Arctic seabed mining zone, raising environmental-impact questions.", ["science", "technology", "upsc-gs3"]),
+    raw("Why do antibiotics not work against viruses?", "Times of India Education", "An evergreen classroom explainer describes bacteria, viruses, and antimicrobial resistance without a new report or policy event.", ["education", "exam-notice", "governance"]),
+    raw("Can your city make you feel like a failure? IIT graduate's viral take", "Times of India Education", "A viral take starts a conversation about lifestyle and personal feelings in large cities.", ["education", "exam-notice", "governance"]),
+    raw("Programming will never go out of scope, industry leaders urge students", "Times of India Education", "Industry leaders urge engineering students to learn programming fundamentals as career advice.", ["education", "exam-notice", "governance"]),
+    raw("AI economy must protect workers; BMS seeks fairer growth model", "Times of India India", "The trade union BMS sought social security and worker protection as artificial intelligence changes labour markets.", ["national", "polity", "governance"]),
+    raw("13 Indians killed, 3 missing in Gulf amid war", "Times of India India", "The government reported Indians killed and missing during the Gulf war and described consular support and evacuation planning.", ["national", "polity", "governance"]),
+    raw("Ministry of Education publishes official NIRF methodology", "Indian Express Education", "The Ministry of Education published the National Institutional Ranking Framework methodology as an official report.", ["education"]),
+    raw("WHO releases antimicrobial resistance report", "Times of India Science", "A new WHO antimicrobial resistance report records surveillance findings, health risks, and a public-health response.", ["science", "international"]),
+    raw("ISRO launches earth observation satellite", "The Hindu Sci-Tech", "ISRO completed a satellite launch for an Indian earth observation space mission.", ["environment", "science", "technology"]),
+    raw("Country elects new president in national vote", "Times of India World", "Voters completed a presidential election and the elected head of state will take office next month.", ["international"]),
+    raw("DRDO completes missile test", "Times of India India", "DRDO completed an Indian missile test for a new defence system after a technical trial.", ["national", "technology"]),
+    raw("New governor appointed", "Times of India India", "The government announced the appointment of a new governor to the constitutional office.", ["national", "polity"]),
+    raw("Public scheme helps farmers earn more five years later", "Times of India India", "A government scheme reported that beneficiaries and farmers make money from higher crop yields five years later.", ["national", "government"]),
+]
+
+selected = module.filter_study_relevant_items(items)
+brief = module.fallback_brief("2026-07-14", selected)
+print(json.dumps({
+    "selected": [item.title for item in selected],
+    "labels": {
+        item["title"]: [item["ssc_relevance"], item["upsc_cse_relevance"]]
+        for item in brief["items"]
+    },
+}))
+`);
+
+  assert.equal(result.status, 0, result.stderr);
+  const parsed = JSON.parse(result.stdout) as { selected: string[]; labels: Record<string, [string, string]> };
+  assert.deepEqual(new Set(parsed.selected), new Set([
+    "OBC status of 77 castes: government withdraws SC challenge to HC verdict",
+    "India and China stack gold while trimming US Treasuries",
+    "Europe heatwave death toll tops 10,000",
+    "Rare deep-sea life discovered on Arctic seabed opened for mining",
+    "AI economy must protect workers; BMS seeks fairer growth model",
+    "13 Indians killed, 3 missing in Gulf amid war",
+    "Ministry of Education publishes official NIRF methodology",
+    "WHO releases antimicrobial resistance report",
+    "ISRO launches earth observation satellite",
+    "Country elects new president in national vote",
+    "DRDO completes missile test",
+    "New governor appointed",
+    "Public scheme helps farmers earn more five years later"
+  ]));
+  assert.deepEqual(parsed.labels["Europe heatwave death toll tops 10,000"], ["low", "medium"]);
+  assert.deepEqual(parsed.labels["Rare deep-sea life discovered on Arctic seabed opened for mining"], ["low", "medium"]);
+  assert.deepEqual(parsed.labels["AI economy must protect workers; BMS seeks fairer growth model"], ["low", "medium"]);
+  assert.deepEqual(parsed.labels["OBC status of 77 castes: government withdraws SC challenge to HC verdict"], ["high", "high"]);
+  assert.deepEqual(parsed.labels["ISRO launches earth observation satellite"], ["high", "medium"]);
+  assert.deepEqual(parsed.labels["Country elects new president in national vote"], ["high", "medium"]);
+  assert.deepEqual(parsed.labels["DRDO completes missile test"], ["high", "medium"]);
+  assert.deepEqual(parsed.labels["New governor appointed"], ["high", "medium"]);
 });
 
 test("daily news pipeline rejects source-name recall cards", () => {

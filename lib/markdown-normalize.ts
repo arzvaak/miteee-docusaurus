@@ -380,7 +380,15 @@ export function normalizeMarkdownQuizSectionBody(content: string, sectionName?: 
 }
 
 function normalizeMathBody(body: string) {
-  return body
+  const textCommands: string[] = [];
+  const protectedBody = body.replace(/\\(?:text|mathrm|mathbf)\s*\{[^{}]*\}/g, (value) => {
+    const token = `@@MITEEE_TEX_TEXT_${textCommands.length}@@`;
+    textCommands.push(value.replace(/(?<!\\)%/g, "\\%").replace(/₹/g, "Rs."));
+    return token;
+  });
+  const normalized = protectedBody
+    .replace(/&lt;/gi, "<")
+    .replace(/&gt;/gi, ">")
     .replace(/₹/g, "\\text{Rs.}")
     .replace(/μ/g, "\\mu")
     .replace(/≤/g, "\\le")
@@ -391,6 +399,106 @@ function normalizeMathBody(body: string) {
     .replace(/[–—]/g, "-")
     .replace(/•/g, "\\bullet")
     .replace(/(?<!\\)%/g, "\\%");
+  return textCommands.reduce(
+    (value, command, index) => value.replace(`@@MITEEE_TEX_TEXT_${index}@@`, () => command),
+    normalized
+  );
+}
+
+const standaloneTexCommands = new Set([
+  "begin", "end", "frac", "dfrac", "tfrac", "sqrt", "cdot", "times", "div", "pm", "mp",
+  "le", "leq", "ge", "geq", "neq", "approx", "equiv", "quad", "qquad", "pi", "theta",
+  "alpha", "beta", "gamma", "delta", "lambda", "mu", "sigma", "omega", "sin", "cos", "tan",
+  "log", "ln", "lim", "mod", "max", "min", "sum", "prod", "int", "left", "right", "text",
+  "mathrm", "mathbf"
+]);
+
+function hasBalancedBraces(value: string) {
+  let depth = 0;
+  for (const character of value) {
+    if (character === "{") depth += 1;
+    if (character === "}") depth -= 1;
+    if (depth < 0) return false;
+  }
+  return depth === 0;
+}
+
+export function normalizeStandaloneMathText(value: string) {
+  const trimmed = value.trim();
+  const withoutOrphanDisplayClose = !trimmed.startsWith("$") && trimmed.endsWith("$$")
+    ? trimmed.slice(0, -2).trim()
+    : trimmed;
+  const candidate = withoutOrphanDisplayClose.replace(/^\$(?!\$)/, "").replace(/(?<!\$)\$$/, "").trim();
+  const commands = [...candidate.matchAll(/\\([A-Za-z]+)/g)].map((match) => match[1] || "");
+  if (!commands.length || commands.some((command) => !standaloneTexCommands.has(command)) || !hasBalancedBraces(candidate)) return value;
+  const withoutText = candidate.replace(/\\(?:text|mathrm|mathbf)\s*\{[^{}]*\}/g, "");
+  const withoutCommands = withoutText
+    .replace(/\\(?:begin|end)\s*\{[A-Za-z*]+\}/g, "")
+    .replace(/\\[A-Za-z]+/g, "")
+    .replace(/\\\\(?:\[[^\]]+\])?/g, "");
+  const words = withoutCommands.match(/[A-Za-z]+/g) ?? [];
+  const safeCharacters = withoutCommands.replace(/[A-Za-z0-9\s{}\[\]().,+\-*/=<>_^&|:'%;]/g, "");
+  if (safeCharacters || words.some((word) => word.length !== 1 && !/^(?:sin|cos|tan|log|ln|lim|mod|max|min)$/.test(word))) return value;
+  return `$${candidate}$`;
+}
+
+function findUnescapedToken(content: string, token: string, fromIndex: number) {
+  let index = content.indexOf(token, fromIndex);
+  while (index >= 0) {
+    if (index === 0 || content[index - 1] !== "\\") return index;
+    index = content.indexOf(token, index + token.length);
+  }
+  return -1;
+}
+
+function replacePairedLegacyDelimiter(
+  content: string,
+  opener: string,
+  closer: string,
+  render: (body: string) => string
+) {
+  let cursor = 0;
+  let output = "";
+  while (cursor < content.length) {
+    const openIndex = findUnescapedToken(content, opener, cursor);
+    if (openIndex < 0) break;
+    const closeIndex = findUnescapedToken(content, closer, openIndex + opener.length);
+    const nestedOpenIndex = findUnescapedToken(content, opener, openIndex + opener.length);
+    if (closeIndex < 0 || (nestedOpenIndex >= 0 && nestedOpenIndex < closeIndex)) {
+      output += content.slice(cursor, openIndex + opener.length);
+      cursor = openIndex + opener.length;
+      continue;
+    }
+    output += content.slice(cursor, openIndex);
+    output += render(content.slice(openIndex + opener.length, closeIndex));
+    cursor = closeIndex + closer.length;
+  }
+  return output + content.slice(cursor);
+}
+
+export function normalizeLegacyMathDelimiters(content: string) {
+  const fenced = protectCodeFences(content);
+  const inlineCode = protectInlineCode(fenced.protectedContent);
+  const displayBlocks: string[] = [];
+  const displayProtected = replacePairedLegacyDelimiter(
+    inlineCode.protectedContent,
+    "\\[",
+    "\\]",
+    (body) => {
+      const token = `@@MITEEE_LEGACY_DISPLAY_${displayBlocks.length}@@`;
+      displayBlocks.push(`\n\n$$\n${body.trim()}\n$$\n\n`);
+      return token;
+    }
+  );
+  const inlineNormalized = replacePairedLegacyDelimiter(displayProtected, "\\(", "\\)", (body) => {
+    const trimmed = body.trim();
+    return /\r?\n/.test(body) ? `\n\n$$\n${trimmed}\n$$\n\n` : `$${trimmed}$`;
+  });
+  const displayRestored = displayBlocks.reduce(
+    (result, block, index) => result.replace(`@@MITEEE_LEGACY_DISPLAY_${index}@@`, () => block),
+    inlineNormalized
+  );
+  return restoreCodeFences(restoreInlineCode(displayRestored, inlineCode.blocks), fenced.blocks);
 }
 
 export function normalizeMathForKatex(content: string) {
@@ -401,11 +509,40 @@ export function normalizeMathForKatex(content: string) {
   return restoreCodeFences(normalized, blocks);
 }
 
+export const CURRENCY_DOLLAR_PLACEHOLDER = "\uE000";
+
 export function normalizeCurrencyDollars(content: string) {
-  const { protectedContent, blocks } = protectCodeFences(content);
-  const normalized = protectedContent
-    .replace(/(?<!\\)\$(\d[\d,]*(?:\.\d+)?)(?![\d.])(?=(?:,(?=\s)|[.;:]|\s+(?:with|and|for|at|as|in|per|to|worth|each|if|or|which|under|after|from)\b))/gi, "&#36;$1");
-  return restoreCodeFences(normalized, blocks);
+  const fenced = protectCodeFences(content);
+  const inlineCode = protectInlineCode(fenced.protectedContent);
+  const escapedCurrency = inlineCode.protectedContent.replace(
+    /(?<!\\)\$\\\$(\d[\d,]*(?:\.\d+)?(?:[KMB])?)\$/gi,
+    `${CURRENCY_DOLLAR_PLACEHOLDER}$1`
+  );
+  const protectedCurrency = escapedCurrency.replace(/(?<!\\)\$/g, (marker, offset: number, source: string) => {
+    if (source[offset - 1] === "$" || source[offset + 1] === "$") return marker;
+    const tail = source.slice(offset + 1);
+    if (/^\s*=\s*100\s+cents?\b/i.test(tail)) return CURRENCY_DOLLAR_PLACEHOLDER;
+    if (/^\s*\/(?:h|hr|kwh|mwh)\b/i.test(tail)) return CURRENCY_DOLLAR_PLACEHOLDER;
+    if (!/^\d/.test(tail)) return marker;
+
+    const lineEnd = source.indexOf("\n", offset + 1);
+    const nextDollar = findUnescapedToken(source, "$", offset + 1);
+    if (nextDollar < 0 || (lineEnd >= 0 && nextDollar > lineEnd)) return CURRENCY_DOLLAR_PLACEHOLDER;
+
+    const body = source.slice(offset + 1, nextDollar);
+    const nextCharacter = source[nextDollar + 1] || "";
+    const proseWords = body.replace(/\\[A-Za-z]+/g, "").match(/[A-Za-z]{3,}/g) ?? [];
+    const hasMathSyntax = /\\[A-Za-z]+|[=<>^_{}]/.test(body);
+    const looksLikeCurrencyRange = /[–—-]\s*$/.test(body) || /^\d[\d,.]*\s*(?:to|through)\s*$/i.test(body);
+    const looksLikeProse = proseWords.length >= 2 && !/\\(?:text|mathrm|operatorname)\b/.test(body);
+    if (/\d/.test(nextCharacter) || looksLikeCurrencyRange) return CURRENCY_DOLLAR_PLACEHOLDER;
+    if (hasMathSyntax) return marker;
+    if (looksLikeProse || (body.length > 48 && !/[\\=<>^_{}]/.test(body))) {
+      return CURRENCY_DOLLAR_PLACEHOLDER;
+    }
+    return marker;
+  });
+  return restoreCodeFences(restoreInlineCode(protectedCurrency, inlineCode.blocks), fenced.blocks);
 }
 
 function admonitionTitle(kind: string, rawTitle: string) {
@@ -481,5 +618,14 @@ export function normalizeQuizOptionRows(content: string) {
 
 export function prepareMarkdownContent(content: string, sectionName?: string) {
   const sectionBody = normalizeMarkdownQuizSectionBody(content, sectionName);
-  return normalizeMathForKatex(normalizeCurrencyDollars(normalizeQuizOptionRows(normalizeMarkdownQuizBlocks(normalizeWikiLinks(normalizeDetails(normalizeDocusaurusAdmonitions(sectionBody)))))));
+  const structured = normalizeQuizOptionRows(
+    normalizeMarkdownQuizBlocks(
+      normalizeWikiLinks(
+        normalizeDetails(
+          normalizeDocusaurusAdmonitions(sectionBody)
+        )
+      )
+    )
+  );
+  return normalizeMathForKatex(normalizeCurrencyDollars(normalizeLegacyMathDelimiters(structured)));
 }

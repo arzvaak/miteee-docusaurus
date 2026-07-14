@@ -3,6 +3,7 @@ import fs from "node:fs";
 import test from "node:test";
 
 const notePage = fs.readFileSync("app/notes/[slug]/page.tsx", "utf8");
+const markdownNote = fs.readFileSync("components/MarkdownNote.tsx", "utf8");
 const readerControls = fs.readFileSync("components/ReaderControls.tsx", "utf8");
 const css = fs.readFileSync("app/globals.css", "utf8");
 
@@ -42,6 +43,11 @@ test("reader CSS supports collapsible maps, active outline, progress states, and
   assert.match(css, /\.related-lesson-link/);
   assert.match(css, /\.reader-breadcrumbs/);
   assert.match(css, /\.technical-article/);
+  assert.match(css, /:root\[data-theme="high-contrast"\] \.note-page :where\(a, button, input, select, textarea, summary\):focus-visible\s*\{[^}]*outline:\s*3px solid var\(--accent\) !important;/s);
+  assert.match(css, /@media \(prefers-reduced-motion:\s*reduce\)\s*\{[\s\S]*?scroll-behavior:\s*auto;/s);
+  assert.match(css, /@media \(prefers-reduced-motion:\s*reduce\)\s*\{[\s\S]*?\.related-lesson-link:hover\s*\{[^}]*transform:\s*none;/s);
+  assert.match(css, /\.article \.markdown-body a,/);
+  assert.doesNotMatch(css, /(?:^|\n)\.article a,/);
 });
 
 test("note reader keeps related lessons available after the main reading flow", () => {
@@ -54,7 +60,10 @@ test("note reader keeps related lessons available after the main reading flow", 
   assert.match(notePage, /className="related-lesson-link"/);
   assert.match(notePage, /aria-label=\{`Open related lesson: \$\{preview\.label\}`\}/);
   assert.match(css, /\.related-lesson-grid\s*\{[^}]*grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\);/s);
-  assert.match(css, /@media \(max-width:\s*1180px\)\s*\{[\s\S]*?\.related-lesson-grid\s*\{[^}]*grid-template-columns:\s*1fr;/s);
+  assert.match(css, /@media \(max-width:\s*1180px\)\s*\{[\s\S]*?\.related-lesson-grid\s*\{[^}]*grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\);/s);
+  assert.match(css, /@media \(max-width:\s*820px\)\s*\{[\s\S]*?\.related-lesson-grid\s*\{[^}]*grid-template-columns:\s*1fr;/s);
+  assert.match(markdownNote, /className="markdown-body"/);
+  assert.doesNotMatch(notePage, /<PreviewCard preview=\{preview\} compact \/>/);
 });
 
 test("reader course map lets large course sections collapse independently", () => {

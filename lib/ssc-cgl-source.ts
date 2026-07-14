@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { getSscCglBookQuestionsPath } from "@/lib/ssc-cgl-corpus-paths";
 import type { SscCglExamPattern, SscCglOptionId, SscCglQuestion, SscCglSectionId, SscCglTopic } from "@/lib/exam-types";
+import { normalizeStandaloneMathText } from "@/lib/markdown-normalize";
 
 export const sscCglPattern: SscCglExamPattern = {
   totalQuestions: 100,
@@ -967,6 +968,36 @@ function extractSourceCue(existingExplanation: string) {
   return existingExplanation.replace(/\s+/g, " ").trim();
 }
 
+function bracesAreBalanced(value: string) {
+  let depth = 0;
+  for (const character of value) {
+    if (character === "{") depth += 1;
+    if (character === "}") depth -= 1;
+    if (depth < 0) return false;
+  }
+  return depth === 0;
+}
+
+function hasUnsafeUnwrappedTex(value: string) {
+  if (!bracesAreBalanced(value)) return true;
+  const withoutMath = value
+    .replace(/\$\$[\s\S]*?\$\$/g, "")
+    .replace(/(?<!\\)\$[^$\n]+(?<!\\)\$/g, "")
+    .replace(/(?<!\\)\\\([\s\S]*?(?<!\\)\\\)/g, "")
+    .replace(/(?<!\\)\\\[[\s\S]*?(?<!\\)\\\]/g, "");
+  return /(?<!\\)\$|(?<!\\)\\[()[\]]|\\[A-Za-z]+/.test(withoutMath);
+}
+
+function safeSourceCue(value: string) {
+  return hasUnsafeUnwrappedTex(value) ? "" : value;
+}
+
+function removeUnsafeStructuredSourceCue(value: string) {
+  const match = value.match(/\s+Source cue:\s*(.+)$/i);
+  if (!match || !hasUnsafeUnwrappedTex(match[1] || "")) return value;
+  return value.slice(0, match.index).trim();
+}
+
 function inferGrammarErrorRoute(question: SscCglQuestion, correctText: string, sourceCue: string) {
   const evidence = englishOnlyText([
     question.stem,
@@ -1106,8 +1137,8 @@ function inferGrammarErrorRoute(question: SscCglQuestion, correctText: string, s
 function buildMethodExplanation(question: SscCglQuestion, existingExplanation: string) {
   const seed = allTopicSeeds.find((item) => item.slug === question.topic);
   const correctOption = question.options.find((option) => option.id === question.correctOption);
-  const correctText = correctOption?.text?.trim() || "the keyed option";
-  const sourceCue = extractSourceCue(existingExplanation);
+  const correctText = normalizeStandaloneMathText(correctOption?.text?.trim() || "the keyed option");
+  const sourceCue = safeSourceCue(extractSourceCue(existingExplanation));
   const route = question.topic === "grammar-error-spotting"
     ? inferGrammarErrorRoute(question, correctText, sourceCue)
     : inferQuestionRoute(question, seed);
@@ -1135,12 +1166,13 @@ function buildMethodExplanation(question: SscCglQuestion, existingExplanation: s
 }
 
 function ensureMethodExplanation(question: SscCglQuestion): string {
-  const explanation = englishOnlyText(question.explanation);
+  const explanation = removeUnsafeStructuredSourceCue(englishOnlyText(question.explanation));
   if (
     question.topic !== "grammar-error-spotting"
     && question.topic !== "data-interpretation"
     && hasStructuredSscExplanation(explanation)
     && !isGenericStructuredSscExplanation(explanation)
+    && !hasUnsafeUnwrappedTex(explanation)
   ) return explanation;
   return englishOnlyText(buildMethodExplanation(question, explanation));
 }
@@ -1186,24 +1218,34 @@ function normalizeBookQuestionTopic(question: SscCglQuestion): SscCglQuestion {
   };
 }
 
+export function stripTrailingOrphanDisplayDelimiter(value: string) {
+  const trailingWhitespace = value.match(/\s*$/)?.[0] || "";
+  const trimmed = value.slice(0, value.length - trailingWhitespace.length);
+  if (!trimmed.endsWith("$$")) return value;
+  const withoutCompletePairs = trimmed.replace(/\$\$[\s\S]*?\$\$/g, "");
+  if (!withoutCompletePairs.endsWith("$$")) return value;
+  return `${trimmed.slice(0, -2).trimEnd()}${trailingWhitespace}`;
+}
+
 function normalizeBookQuestion(question: SscCglQuestion): SscCglQuestion {
   const topicNormalized = normalizeBookQuestionTopic(question);
   if (topicNormalized.provenance.sourceType !== "book_user_provided") return topicNormalized;
+  const stem = stripTrailingOrphanDisplayDelimiter(englishOnlyText(topicNormalized.stem));
+  const options = topicNormalized.options.map((option) => ({
+    ...option,
+    text: stripTrailingOrphanDisplayDelimiter(englishOnlyText(option.text)) || "Option text unavailable after English-only cleanup"
+  }));
+  const explanation = stripTrailingOrphanDisplayDelimiter(englishOnlyText(topicNormalized.explanation));
   return {
     ...topicNormalized,
-    stem: englishOnlyText(topicNormalized.stem),
+    stem,
     explanation: ensureMethodExplanation({
       ...topicNormalized,
-      stem: englishOnlyText(topicNormalized.stem),
-      options: topicNormalized.options.map((option) => ({
-        ...option,
-        text: englishOnlyText(option.text) || "Option text unavailable after English-only cleanup"
-      }))
+      stem,
+      explanation,
+      options
     }),
-    options: topicNormalized.options.map((option) => ({
-      ...option,
-      text: englishOnlyText(option.text) || "Option text unavailable after English-only cleanup"
-    }))
+    options
   };
 }
 

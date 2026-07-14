@@ -19,6 +19,8 @@ test("theme registry is broad, unique, and includes the requested editor palette
   ]) {
     assert.ok(ids.includes(expected as (typeof ids)[number]), `${expected} should be registered`);
   }
+
+  assert.ok(themeOptions.every((theme) => theme.swatch.length === 5), "theme previews should expose the full multi-accent palette");
 });
 
 test("theme registry carries the native light and dark mode for every palette", () => {

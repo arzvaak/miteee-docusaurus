@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, Database, FileCheck2, FileSearch, ShieldAlert } from "lucide-react";
+import { MathText } from "@/components/MathText";
 import { getSscImportReviewDashboard, type SscImportReviewSource } from "@/lib/ssc-cgl-import-review";
 import { buildPageMetadata } from "@/lib/seo";
 
@@ -226,7 +227,7 @@ export default function SscCglImportReviewPage() {
                   {source.sampleCandidates.map((candidate) => (
                     <article key={candidate.id}>
                       <strong>Q{candidate.questionNumber} · page {candidate.pageNumber} · {candidate.alignmentStatus}</strong>
-                      <p>{candidate.stem}</p>
+                      <p><MathText text={candidate.stem} /></p>
                       <small>rankedEligible: {String(candidate.rankedEligible)}</small>
                     </article>
                   ))}

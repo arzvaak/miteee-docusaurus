@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { AlertTriangle, ArrowRight, BookOpenCheck } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
+import { MathText } from "@/components/MathText";
 import {
   parseSscMistakeBank,
   sscMistakeBankStorageKey,
@@ -82,10 +83,10 @@ export function SscMistakeNotebook() {
               <strong>{item.subtopic}</strong>
               <small>{item.sectionTitle} · {item.status} · {formatDate(item.savedAt)}</small>
             </div>
-            <p>{item.stem}</p>
+            <p><MathText text={item.stem} /></p>
             <div className="ssc-mistake-answer-row">
-              <span><small>Your answer</small><strong>{item.chosenOptionText}</strong></span>
-              <span><small>Correct</small><strong>{item.correctOptionText}</strong></span>
+              <span><small>Your answer</small><strong><MathText text={item.chosenOptionText} /></strong></span>
+              <span><small>Correct</small><strong><MathText text={item.correctOptionText} /></strong></span>
             </div>
             <div className="ssc-mistake-actions">
               <Link href={item.topicHref}>Repair topic</Link>

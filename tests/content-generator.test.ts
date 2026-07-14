@@ -7,6 +7,7 @@ import {
   buildContentData,
   courseCodeFromSegments,
   rewriteMarkdownAssetLinks,
+  sentenceExcerpt,
   slugFromRelativePath
 } from "../scripts/build-content-data";
 
@@ -134,7 +135,13 @@ test("buildContentData indexes docs, copies assets, and writes catalog files", (
       "",
       "$$",
       "V = IR",
-      "$$"
+      "$$",
+      "",
+      "Legacy inline \\( P = VI \\).",
+      "",
+      "\\[",
+      "Z = R + jX",
+      "\\]"
     ].join("\n")
   );
 
@@ -143,12 +150,32 @@ test("buildContentData indexes docs, copies assets, and writes catalog files", (
   assert.equal(result.catalog.totals.notes, 1);
   assert.equal(result.catalog.totals.courses, 1);
   assert.equal(result.notes[0]?.courseCode, "SEM6-MI");
+  assert.equal(result.notes[0]?.stats.mathBlocks, 3);
   assert.match(result.notes[0]?.content || "", /\/content-assets\/sem6\/mi\/assets\/diagram\.svg/);
   assert.doesNotMatch(result.notes[0]?.content || "", /^# Tutorial One/m);
   assert.ok(fs.existsSync(path.join(generatedRoot, "catalog.json")));
   assert.ok(fs.existsSync(path.join(generatedRoot, "notes", "sem6-mi-tutorial-1.json")));
   assert.equal(fs.readFileSync(examMarker, "utf8"), "{\"preserved\":true}\n");
   assert.ok(fs.existsSync(path.join(publicRoot, "content-assets", "sem6", "mi", "assets", "diagram.svg")));
+});
+
+test("sentenceExcerpt selects readable prose instead of title, attribution, or raw math", () => {
+  const excerpt = sentenceExcerpt([
+    "# Weeks 4–5 — DFT & Its Properties",
+    "",
+    "> **NPTEL: Signal Processing Techniques and Its Applications** | IIT Kharagpur",
+    "",
+    "## 1. DFT & IDFT Definitions",
+    "",
+    "$$X[k]=\\sum_{n=0}^{N-1}x[n]W_N^{nk}$$",
+    "",
+    "The DFT is a **sampled version of the DTFT** at $N$ equally spaced frequencies $\\omega_k=2\\pi k/N$, which makes finite computation practical.",
+    "",
+    "A later paragraph should not be selected."
+  ].join("\n"), "DFT lesson");
+
+  assert.equal(excerpt, "The DFT is a sampled version of the DTFT at equally spaced frequencies, which makes finite computation practical.");
+  assert.doesNotMatch(excerpt, /NPTEL|\$|\\sum|Weeks 4/);
 });
 
 test("buildContentData removes generated output with Windows-safe retries", () => {

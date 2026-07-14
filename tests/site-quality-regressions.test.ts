@@ -259,12 +259,12 @@ test("homepage study section progressively discloses dense support controls", ()
 });
 
 test("wide KaTeX displays stay contained on narrow reader screens", () => {
-  assert.equal(hasRule(".article .katex-display", /max-width:\s*100%;/), true);
-  assert.equal(hasRule(".article .katex-display", /overflow-x:\s*auto;/), true);
-  assert.equal(hasRule(".article .katex", /max-width:\s*100%;/), true);
-  assert.equal(hasRule(".article .katex", /overflow-x:\s*auto;/), true);
-  assert.equal(hasRule(".article .katex-display > .katex", /display:\s*inline-block;/), true);
-  assert.equal(hasRule(".article .katex-display > .katex", /min-width:\s*max-content;/), true);
+  assert.equal(hasRule(".article .markdown-body .katex-display", /max-width:\s*100%;/), true);
+  assert.equal(hasRule(".article .markdown-body .katex-display", /overflow-x:\s*auto;/), true);
+  assert.equal(hasRule(".article .markdown-body .katex", /max-width:\s*100%;/), true);
+  assert.equal(hasRule(".article .markdown-body .katex", /overflow-x:\s*auto;/), true);
+  assert.equal(hasRule(".article .markdown-body .katex-display > .katex", /display:\s*inline-block;/), true);
+  assert.equal(hasRule(".article .markdown-body .katex-display > .katex", /min-width:\s*max-content;/), true);
 });
 
 test("previewable note links expose a live-preview affordance", () => {

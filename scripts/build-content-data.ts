@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import matter from "gray-matter";
+import { normalizeLegacyMathDelimiters } from "../lib/markdown-normalize";
 
 type BuildOptions = {
   docsRoot?: string;
@@ -127,18 +128,42 @@ function stripLeadingTitleHeading(content: string, title: string) {
   });
 }
 
-function sentenceExcerpt(content: string, fallback: string) {
-  const plain = cleanInlineMarkdown(
-    content
-      .replace(/^---[\s\S]*?---/, "")
-      .replace(/```[\s\S]*?```/g, " ")
-      .replace(/\$\$[\s\S]*?\$\$/g, " ")
-  );
-  return truncateText(plain || fallback, 220);
+export function sentenceExcerpt(content: string, fallback: string) {
+  const withoutNonProse = content
+    .replace(/^---[\s\S]*?---/, "")
+    .replace(/```[\s\S]*?```/g, " ")
+    .replace(/\$\$[\s\S]*?\$\$/g, " ")
+    .replace(/\\\[[\s\S]*?\\\]/g, " ");
+
+  const paragraph = withoutNonProse
+    .split(/\r?\n\s*\r?\n/)
+    .map((block) => block.trim())
+    .filter((block) => {
+      if (!block || /^(?:#{1,6}\s|>|\|)/.test(block)) return false;
+      if (/^(?:-{3,}|\*{3,}|_{3,})$/.test(block)) return false;
+      if (/^(?:[-*+]\s|\d+[.)]\s)/.test(block)) return false;
+      return true;
+    })
+    .map((block) => cleanInlineMarkdown(
+      block
+        .replace(/\$[^$\r\n]+\$/g, " ")
+        .replace(/\\\([^\r\n]*?\\\)/g, " ")
+    ).replace(/\s+([,.;:!?])/g, "$1"))
+    .find((block) => block.length >= 36);
+
+  const plain = paragraph || cleanInlineMarkdown(withoutNonProse.replace(/\$[^$\r\n]+\$/g, " ")) || fallback;
+  return truncateAtWordBoundary(plain, 220);
 }
 
-function truncateText(value: string, maxLength: number) {
-  return Array.from(value).slice(0, maxLength).join("");
+function truncateAtWordBoundary(value: string, maxLength: number) {
+  const normalized = value.replace(/\s+/g, " ").trim();
+  const characters = Array.from(normalized);
+  if (characters.length <= maxLength) return normalized;
+
+  const clipped = characters.slice(0, maxLength + 1).join("");
+  const boundary = clipped.lastIndexOf(" ");
+  const safe = boundary >= Math.floor(maxLength * 0.72) ? clipped.slice(0, boundary) : characters.slice(0, maxLength).join("");
+  return `${safe.replace(/[\s,;:–—-]+$/g, "")}…`;
 }
 
 function getMarkdownFiles(root: string) {
@@ -230,9 +255,10 @@ function parseHeadings(content: string) {
 }
 
 function noteStats(content: string): NoteStats {
+  const mathReadyContent = normalizeLegacyMathDelimiters(content);
   const codeBlocks = [...content.matchAll(/```[\s\S]*?```/g)].length;
   const mermaidBlocks = [...content.matchAll(/```mermaid[\s\S]*?```/gi)].length;
-  const mathBlocks = [...content.matchAll(/\$\$[\s\S]*?\$\$|(?<!\\)\$[^$\n]+(?<!\\)\$/g)].length;
+  const mathBlocks = [...mathReadyContent.matchAll(/\$\$[\s\S]*?\$\$|(?<!\\)\$[^$\n]+(?<!\\)\$/g)].length;
   const details = [...content.matchAll(/<details\b|:::(?:note|tip|info|warning|danger|question|exam|summary)/gi)].length;
   const questionBlocks = [...content.matchAll(/^#{2,4}\s+(?:Question|Q\.?|Soal)\s*\d+/gim)].length;
   const practicePrompts = [...content.matchAll(/^#{2,4}\s+(?:Prelims\s+Drill|Mains\s+Answer\s+Practice)\s*$/gim)].length;

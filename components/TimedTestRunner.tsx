@@ -21,6 +21,7 @@ import {
   X
 } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { MathText } from "@/components/MathText";
 import type { SscCglOptionId, SscCglTestDetail } from "@/lib/exam-types";
 import {
   buildSscAttemptHistoryItem,
@@ -729,7 +730,7 @@ export function TimedTestRunner({ test }: { test: SscCglTestDetail }) {
             <span>Question {questionIndex + 1} of {section.questions.length}</span>
             <span className={styles.subjectChip}>{section.title}</span>
           </div>
-          <h2>{question.stem}</h2>
+          <h2><MathText text={question.stem} /></h2>
 
           <fieldset className={styles.options}>
             <legend className={styles.srOnly}>Choose one answer</legend>
@@ -745,7 +746,7 @@ export function TimedTestRunner({ test }: { test: SscCglTestDetail }) {
                     onChange={() => selectOption(option.id)}
                   />
                   <strong>{option.id.toUpperCase()}</strong>
-                  <span>{option.text}</span>
+                  <span><MathText text={option.text} /></span>
                 </label>
               );
             })}

@@ -219,6 +219,97 @@ print(json.dumps({"urls": [item.url for item in selected], "evidence": summary["
   });
 });
 
+test("current-affairs extraction deduplicates article prose and trims excerpts on a readable boundary", () => {
+  const result = runPipelineSnippet(String.raw`
+import importlib.util
+import json
+import sys
+from pathlib import Path
+
+script_path = Path("scripts/daily_news_pipeline.py").resolve()
+spec = importlib.util.spec_from_file_location("daily_news_pipeline", script_path)
+module = importlib.util.module_from_spec(spec)
+sys.modules[spec.name] = module
+spec.loader.exec_module(module)
+
+intro = "News News: India's startup ecosystem supports founders across deeptech and space technology."
+longer = "India's startup ecosystem supports founders across deeptech, space technology, fintech, sustainability, healthcare, and mobility."
+sentences = " ".join(f"Official finding {index} records a concrete policy fact for the published study brief." for index in range(1, 25))
+article_body = f"{intro} {longer} {longer} {sentences}"
+deduped = module.deduplicate_article_sentences(f"News News: {sentences}")
+payload = (
+    '<html><head><meta name="description" content="' + intro + '"></head><body>'
+    '<script type="application/ld+json">' + json.dumps({"articleBody": article_body}) + '</script>'
+    '</body></html>'
+).encode("utf-8")
+excerpt, method, captured = module.extract_article_content(payload, "fallback")
+item = module.RawItem(
+    title="Example current-affairs report",
+    source="Example",
+    url="https://example.com/report",
+    published_at="2026-07-14T07:00:00+05:30",
+    fetched_at="2026-07-14T08:00:00+05:30",
+    raw_excerpt=excerpt,
+    tags=["economy"],
+    content_origin="article-page",
+    extraction_method=method,
+    captured_characters=captured,
+)
+source_excerpt = module.source_excerpt_for_item(item)
+print(json.dumps({
+    "excerpt": excerpt,
+    "sourceExcerpt": source_excerpt,
+    "method": method,
+    "introCount": source_excerpt.count("startup ecosystem supports founders"),
+    "numberedFacts": deduped.count("Official finding"),
+}))
+`);
+
+  assert.equal(result.status, 0, result.stderr);
+  const parsed = JSON.parse(result.stdout);
+  assert.equal(parsed.method, "json-ld-articleBody");
+  assert.equal(parsed.introCount, 1);
+  assert.equal(parsed.numberedFacts, 24);
+  assert.doesNotMatch(parsed.sourceExcerpt, /^News News:/i);
+  assert.ok(parsed.sourceExcerpt.length <= 900);
+  assert.match(parsed.sourceExcerpt, /[.!?…]$/);
+});
+
+test("current-affairs recall routing does not mistake Hurun for UN or a sports tag for official SSC", () => {
+  const result = runPipelineSnippet(String.raw`
+import importlib.util
+import json
+import sys
+from pathlib import Path
+
+script_path = Path("scripts/daily_news_pipeline.py").resolve()
+spec = importlib.util.spec_from_file_location("daily_news_pipeline", script_path)
+module = importlib.util.module_from_spec(spec)
+sys.modules[spec.name] = module
+spec.loader.exec_module(module)
+
+def raw(title, source, tags):
+    return module.RawItem(
+        title=title,
+        source=source,
+        url="https://example.com/item",
+        published_at="2026-07-14T07:00:00+05:30",
+        fetched_at="2026-07-14T08:00:00+05:30",
+        raw_excerpt=title + " contains enough article context for a deterministic recall card.",
+        tags=tags,
+    )
+
+hurun = module.content_mcq_seed(raw("Hurun India U30 alumni list", "Times of India Education", ["education", "exam-notice"]))
+sports = module.content_mcq_seed(raw("Cricket schedule update", "Times of India Sports", ["sports", "ssc"]))
+print(json.dumps({"hurun": hurun["question"], "sports": sports["question"]}))
+`);
+
+  assert.equal(result.status, 0, result.stderr);
+  const parsed = JSON.parse(result.stdout);
+  assert.doesNotMatch(parsed.hurun, /ocean-floor|UN-linked/i);
+  assert.doesNotMatch(parsed.sports, /exam body|portal|SSC/i);
+});
+
 test("current-affairs validation rejects a brief that omits a technically valid source item", () => {
   const result = runPipelineSnippet(String.raw`
 import importlib.util

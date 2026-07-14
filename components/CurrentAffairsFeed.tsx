@@ -198,7 +198,9 @@ export function CurrentAffairsFeed({
 }: CurrentAffairsFeedProps) {
   const { state } = useCurrentAffairsActions();
   const [mode, setMode] = useState<EditionMode>(initialEdition);
-  const [selectedSlug, setSelectedSlug] = useState(() => initialStorySlug || "");
+  // An empty string means "open the best lead", while null is an explicit
+  // learner choice to keep every story collapsed.
+  const [selectedSlug, setSelectedSlug] = useState<string | null>(() => initialStorySlug || "");
   const activeStories = useMemo(
     () => editionStories(mode, dailyStories, weeklyIssue, monthlyIssue),
     [dailyStories, mode, monthlyIssue, weeklyIssue]
@@ -207,7 +209,9 @@ export function CurrentAffairsFeed({
     () => activeStories.filter((story) => !isCurrentAffairsStoryHidden(state, storyIdentity(story))),
     [activeStories, state]
   );
-  const selectedStory = visibleStories.find((story) => story.slug === selectedSlug) ?? leadStory(activeStories, state);
+  const selectedStory = selectedSlug === null
+    ? null
+    : visibleStories.find((story) => story.slug === selectedSlug) ?? leadStory(activeStories, state);
   const lens = state.lens;
   const issue = mode === "weekly" ? weeklyIssue : mode === "monthly" ? monthlyIssue : null;
 
@@ -216,16 +220,40 @@ export function CurrentAffairsFeed({
       const url = new URL(window.location.href);
       const edition = url.searchParams.get("edition");
       const story = url.searchParams.get("story");
+      const historyStory = window.history.state?.currentAffairsStory;
       setMode(edition === "weekly" || edition === "monthly" ? edition : "daily");
-      if (story) setSelectedSlug(story);
+      if (typeof historyStory === "string" || historyStory === null) {
+        setSelectedSlug(historyStory);
+      } else {
+        setSelectedSlug(story || "");
+      }
     }
     window.addEventListener("popstate", syncFromHistory);
     return () => window.removeEventListener("popstate", syncFromHistory);
   }, []);
 
+  function pushStorySelection(story: CurrentAffairsStoryRecord | null) {
+    const url = new URL(window.location.href);
+    if (story) {
+      url.searchParams.set("date", story.date);
+      url.searchParams.set("story", story.slug);
+    } else url.searchParams.delete("story");
+    url.hash = story ? story.selectionId : "";
+    window.history.pushState(
+      { ...(window.history.state ?? {}), currentAffairsStory: story?.slug ?? null },
+      "",
+      `${url.pathname}${url.search}${url.hash}`
+    );
+  }
+
   function selectStory(story: CurrentAffairsStoryRecord) {
+    if (selectedStory?.slug === story.slug) {
+      setSelectedSlug(null);
+      pushStorySelection(null);
+      return;
+    }
     setSelectedSlug(story.slug);
-    window.history.pushState({}, "", story.href);
+    pushStorySelection(story);
     window.requestAnimationFrame(() => {
       document.getElementById(story.selectionId)?.scrollIntoView({ block: "nearest", behavior: "smooth" });
     });
@@ -247,8 +275,13 @@ export function CurrentAffairsFeed({
     }
     if (nextStory) url.searchParams.set("story", nextStory.slug);
     else url.searchParams.delete("story");
+    if (nextStory) url.searchParams.set("date", nextStory.date);
     url.hash = nextStory ? nextStory.selectionId : "";
-    window.history.pushState({}, "", `${url.pathname}${url.search}${url.hash}`);
+    window.history.pushState(
+      { ...(window.history.state ?? {}), currentAffairsStory: nextStory?.slug ?? null },
+      "",
+      `${url.pathname}${url.search}${url.hash}`
+    );
   }
 
   const issueLabel = mode === "daily"
@@ -374,7 +407,8 @@ export function CurrentAffairsFeed({
                       lens={lens}
                       onHidden={() => {
                         const next = visibleStories.find((candidate) => candidate.slug !== story.slug);
-                        setSelectedSlug(next?.slug ?? "");
+                        setSelectedSlug(next?.slug ?? null);
+                        pushStorySelection(next ?? null);
                       }}
                       story={story}
                     />

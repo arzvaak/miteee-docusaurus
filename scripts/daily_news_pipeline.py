@@ -108,22 +108,22 @@ SOURCES = [
     Source("indian-express-world", "Indian Express World", "The Indian Express", "https://indianexpress.com/section/world/feed/", ("international", "upsc-gs2"), parser="rss"),
     Source("indian-express-economy", "Indian Express Economy", "The Indian Express", "https://indianexpress.com/section/business/economy/feed/", ("economy", "upsc-gs3"), parser="rss"),
     Source("indian-express-science", "Indian Express Science", "The Indian Express", "https://indianexpress.com/section/technology/science/feed/", ("science", "technology", "upsc-gs3"), parser="rss"),
-    Source("indian-express-sports", "Indian Express Sports", "The Indian Express", "https://indianexpress.com/section/sports/feed/", ("sports", "awards", "ssc"), parser="rss"),
+    Source("indian-express-sports", "Indian Express Sports", "The Indian Express", "https://indianexpress.com/section/sports/feed/", ("sports",), parser="rss"),
     Source("the-hindu-national", "The Hindu National", "The Hindu", "https://www.thehindu.com/news/national/feeder/default.rss", ("national", "polity", "governance"), parser="rss"),
     Source("the-hindu-international", "The Hindu International", "The Hindu", "https://www.thehindu.com/news/international/feeder/default.rss", ("international", "upsc-gs2"), parser="rss"),
     Source("the-hindu-business", "The Hindu Business", "The Hindu", "https://www.thehindu.com/business/feeder/default.rss", ("economy", "upsc-gs3"), parser="rss"),
     Source("the-hindu-sci-tech", "The Hindu Sci-Tech", "The Hindu", "https://www.thehindu.com/sci-tech/feeder/default.rss", ("science", "technology", "environment", "upsc-gs3"), parser="rss"),
-    Source("the-hindu-sport", "The Hindu Sport", "The Hindu", "https://www.thehindu.com/sport/feeder/default.rss", ("sports", "awards", "ssc"), parser="rss"),
+    Source("the-hindu-sport", "The Hindu Sport", "The Hindu", "https://www.thehindu.com/sport/feeder/default.rss", ("sports",), parser="rss"),
     Source("the-hindu-environment", "The Hindu Environment", "The Hindu", "https://www.thehindu.com/sci-tech/energy-and-environment/feeder/default.rss", ("environment", "science", "upsc-gs3"), parser="rss"),
-    Source("the-hindu-education", "The Hindu Education", "The Hindu", "https://www.thehindu.com/education/feeder/default.rss", ("education", "schemes", "governance", "upsc-gs2"), parser="rss"),
+    Source("the-hindu-education", "The Hindu Education", "The Hindu", "https://www.thehindu.com/education/feeder/default.rss", ("education",), parser="rss"),
     Source("times-of-india-india", "Times of India India", "The Times of India", "https://timesofindia.indiatimes.com/rssfeeds/-2128936835.cms", ("national", "polity", "governance"), parser="rss"),
     Source("times-of-india-world", "Times of India World", "The Times of India", "https://timesofindia.indiatimes.com/rssfeeds/296589292.cms", ("international", "upsc-gs2"), parser="rss"),
     Source("times-of-india-business", "Times of India Business", "The Times of India", "https://timesofindia.indiatimes.com/rssfeeds/1898055.cms", ("economy", "upsc-gs3"), parser="rss"),
-    Source("times-of-india-sports", "Times of India Sports", "The Times of India", "https://timesofindia.indiatimes.com/rssfeeds/4719148.cms", ("sports", "awards", "ssc"), parser="rss"),
+    Source("times-of-india-sports", "Times of India Sports", "The Times of India", "https://timesofindia.indiatimes.com/rssfeeds/4719148.cms", ("sports",), parser="rss"),
     Source("times-of-india-science", "Times of India Science", "The Times of India", "https://timesofindia.indiatimes.com/rssfeeds/-2128672765.cms", ("science", "technology", "upsc-gs3"), parser="rss"),
     Source("times-of-india-environment", "Times of India Environment", "The Times of India", "https://timesofindia.indiatimes.com/rssfeeds/2647163.cms", ("environment", "science", "upsc-gs3"), parser="rss"),
-    Source("times-of-india-education", "Times of India Education", "The Times of India", "https://timesofindia.indiatimes.com/rssfeeds/913168846.cms", ("education", "exam-notice", "governance"), parser="rss"),
-    Source("indian-express-education", "Indian Express Education", "The Indian Express", "https://indianexpress.com/section/education/feed/", ("education", "exam-notice", "governance"), parser="rss"),
+    Source("times-of-india-education", "Times of India Education", "The Times of India", "https://timesofindia.indiatimes.com/rssfeeds/913168846.cms", ("education",), parser="rss"),
+    Source("indian-express-education", "Indian Express Education", "The Indian Express", "https://indianexpress.com/section/education/feed/", ("education",), parser="rss"),
     Source("indian-express-research", "Indian Express Research", "The Indian Express", "https://indianexpress.com/section/research/feed/", ("science", "technology", "research", "upsc-gs3"), parser="rss"),
 ]
 
@@ -168,6 +168,52 @@ def state_path_for(root: Path | None = None) -> Path:
 
 def clean_text(value: str) -> str:
     return html.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", value or "")).strip())
+
+
+def trim_text_at_boundary(value: str, limit: int) -> str:
+    value = clean_text(value)
+    if len(value) <= limit:
+        return value
+    sentence_cut = max(value.rfind(". ", 0, limit), value.rfind("! ", 0, limit), value.rfind("? ", 0, limit))
+    if sentence_cut >= int(limit * 0.6):
+        return value[:sentence_cut + 1].rstrip()
+    clipped = value[: max(1, limit - 1)].rstrip()
+    clipped = re.sub(r"\s+\S*$", "", clipped).rstrip(" ,;:-") or clipped
+    return f"{clipped}…"[:limit]
+
+
+def deduplicate_article_sentences(value: str) -> str:
+    cleaned = re.sub(r"^(?:news\b[\s:]*){2,}", "", clean_text(value), flags=re.IGNORECASE)
+    sentences = [part.strip() for part in re.split(r"(?<=[.!?])\s+", cleaned) if part.strip()]
+    unique: list[str] = []
+    normalized: list[str] = []
+    for sentence in sentences:
+        key = normalize_for_grounding(sentence)
+        if not key:
+            continue
+        def is_duplicate(existing: str) -> bool:
+            if key == existing or key in existing or existing in key:
+                return True
+            key_numbers = set(re.findall(r"\b\d+(?:\.\d+)?\b", key))
+            existing_numbers = set(re.findall(r"\b\d+(?:\.\d+)?\b", existing))
+            if key_numbers != existing_numbers:
+                return False
+            key_words = set(key.split()) - {"and"}
+            existing_words = set(existing.split()) - {"and"}
+            shorter = min(len(key_words), len(existing_words))
+            return shorter >= 6 and (key_words <= existing_words or existing_words <= key_words)
+
+        duplicate_index = next(
+            (index for index, existing in enumerate(normalized) if is_duplicate(existing)),
+            None,
+        )
+        if duplicate_index is None:
+            unique.append(sentence)
+            normalized.append(key)
+        elif len(key) > len(normalized[duplicate_index]):
+            unique[duplicate_index] = sentence
+            normalized[duplicate_index] = key
+    return " ".join(unique)
 
 
 def isolate_untrusted_text(value: str) -> str:
@@ -383,8 +429,8 @@ def extract_article_content(payload: bytes, fallback: str) -> tuple[str, str, in
         except Exception:
             continue
     body_values = decoded_bodies if decoded_bodies else parser.paragraphs
-    cleaned_body = [clean_text(value) for value in body_values]
-    cleaned = [clean_text(value) for value in [*parser.meta_descriptions, *cleaned_body]]
+    cleaned_body = [deduplicate_article_sentences(value) for value in body_values]
+    cleaned = [deduplicate_article_sentences(value) for value in [*parser.meta_descriptions, *cleaned_body]]
     useful = [
         value
         for value in cleaned
@@ -399,8 +445,11 @@ def extract_article_content(payload: bytes, fallback: str) -> tuple[str, str, in
             continue
         seen.add(normalized)
         unique.append(value)
-    excerpt = (" ".join(unique[:8]) or fallback)[:MAX_RAW_EXCERPT_CHARS].strip()
-    body_excerpt = " ".join(value for value in cleaned_body if len(value) >= 45)[:MAX_RAW_EXCERPT_CHARS].strip()
+    excerpt = trim_text_at_boundary(deduplicate_article_sentences(" ".join(unique[:8]) or fallback), MAX_RAW_EXCERPT_CHARS)
+    body_excerpt = trim_text_at_boundary(
+        deduplicate_article_sentences(" ".join(value for value in cleaned_body if len(value) >= 45)),
+        MAX_RAW_EXCERPT_CHARS,
+    )
     if decoded_bodies and body_excerpt:
         return excerpt, "json-ld-articleBody", len(body_excerpt)
     if parser.paragraphs and body_excerpt:
@@ -611,7 +660,8 @@ def is_routine_sports_or_trivia(item: RawItem, text: str) -> bool:
     routine_terms = {
         "says", "privilege", "series loss", "lineup", "squad", "debut delayed", "captaincy",
         "injury", "practice", "selection", "wait", "return after long absences", "betting",
-        "odds", "jersey", "live score", "match preview", "ahead of"
+        "odds", "jersey", "live score", "match preview", "ahead of", "bilateral series",
+        "tour of", "tour gets", "fixtures", "fixture", "proposed schedule", "pushed back"
     }
     return not any(term in text for term in durable_terms) or any(term in text for term in routine_terms)
 
@@ -630,7 +680,24 @@ def is_low_value_current_affairs(item: RawItem) -> bool:
     if re.search(
         r"\b(study abroad aspirants? need a plan b|returned to bengaluru|reason had nothing to do with money|"
         r"quote of the day|top stocks? to buy|gold price prediction|stock market live updates?|netizens|"
-        r"donation theft row|dogs? (?:are|have such a) friendly (?:companions?|relationship)|fed salmon to canines)\b",
+        r"donation theft row|dogs? (?:are|have such a) friendly (?:companions?|relationship)|fed salmon to canines|"
+        r"why do antibiotics not work against viruses|evergreen classroom explainer)\b",
+        content_text,
+    ):
+        return True
+    if re.search(
+        r"\b(?:hurun|forbes)\b.{0,100}\b(?:u30|under[ -]?30|young entrepreneurs?|alumni|rich list)\b|"
+        r"\bviral (?:take|post|opinion)\b|\bstarts? (?:a )?conversation\b|"
+        r"\bprogramming will never go out of scope\b|\bindustry leaders? urge\b.{0,120}\bstudents?\b",
+        content_text,
+    ):
+        return True
+    private_money_feature = re.search(
+        r"\b(?:three|four|five|\d+) years later\b.{0,120}\b(?:make|makes|making|made) money\b",
+        content_text,
+    )
+    if private_money_feature and re.search(
+        r"\b(?:private|farm|farmland|estate|property|company|business|startup|investment|visitors?|tourism)\b",
         content_text,
     ):
         return True
@@ -660,26 +727,156 @@ def is_low_value_current_affairs(item: RawItem) -> bool:
     return False
 
 
-def study_relevance(item: RawItem) -> str:
-    text = item_text(item)
-    if is_low_value_current_affairs(item):
+OFFICIAL_CURRENT_AFFAIRS_SOURCES = {"PIB", "PIB Features", "RBI", "PRS", "SSC"}
+CURATED_EXAM_NEWS_SOURCES = {"Indian Express UPSC"}
+
+PUBLIC_AFFAIRS_TERMS = {
+    "constitution", "constitutional", "supreme court", "high court", "parliament", "lok sabha",
+    "rajya sabha", "cabinet", "ministry", "government", "regulator", "regulation", "policy",
+    "scheme", "judgment", "verdict", "ruling", "reservation", "obc", "census", "commission",
+    "election commission", "legislation", "ordinance", "tribunal", "rights", "social security",
+    "labour", "workers", "trade union", "bms", "war", "conflict", "sanctions", "treaty",
+    "summit", "diplomacy", "evacuation", "diaspora", "consular", "official data"
+}
+ECONOMY_TERMS = {
+    "rbi", "reserve bank", "gst", "budget", "monetary policy", "repo rate", "inflation", "gdp",
+    "fiscal deficit", "current account", "trade deficit", "unemployment", "central bank", "gold reserves",
+    "us treasuries", "treasury holdings", "foreign exchange reserves", "rupee", "tariff", "exports", "imports"
+}
+ENVIRONMENT_TERMS = {
+    "climate change", "heatwave", "biodiversity", "ecosystem", "protected area", "pollution",
+    "carbon emissions", "renewable energy", "deep-sea mining", "seabed mining", "ocean floor",
+    "rare deep-sea life", "species discovery", "conservation", "environmental impact"
+}
+SCIENCE_TERMS = {
+    "scientists discovered", "researchers discovered", "new study", "peer-reviewed study", "clinical trial",
+    "space mission", "satellite launch", "isro", "nasa", "health alert", "outbreak", "vaccine",
+    "antimicrobial resistance report", "quantum", "semiconductor mission", "scientific discovery"
+}
+EDUCATION_POLICY_TERMS = {
+    "ministry of education", "education ministry", "national education policy", "education policy", "nep 2020",
+    "university grants commission", "ugc", "ncert", "cbse", "national testing agency", "nta",
+    "right to education", "curriculum framework", "education regulation", "exam reform", "paper leak",
+    "nirf", "national institutional ranking framework", "supreme court", "high court", "government scheme"
+}
+DURABLE_SPORTS_TERMS = {
+    "olympic", "asian games", "commonwealth games", "world cup", "grand slam", "wimbledon",
+    "world championship", "gold medal", "silver medal", "bronze medal", "world record", "host nation"
+}
+REPORT_AND_CULTURE_TERMS = {
+    "government report", "official report", "annual report", "survey", "index", "unesco", "world heritage",
+    "gi tag", "geographical indication", "archaeological discovery", "national award", "civilian award"
+}
+INTERNATIONAL_RELATIONS_TERMS = {
+    "bilateral", "diplomatic relations", "foreign policy", "strategic partnership", "state visit",
+    "foreign minister", "external affairs minister", "peace talks", "border talks", "trade agreement",
+    "free trade agreement", "international relations", "multilateral", "geopolitics"
+}
+DEFENCE_TERMS = {
+    "defence", "defense", "missile", "missile test", "military exercise", "joint exercise", "armed forces",
+    "indian army", "indian navy", "indian air force", "drdo", "coast guard", "defence system"
+}
+ELECTION_TERMS = {
+    "election", "elections", "presidential election", "general election", "voters", "ballot", "polling"
+}
+APPOINTMENT_EVENT_TERMS = {"appointed", "appointment", "sworn in", "takes charge", "named as", "elected as"}
+PUBLIC_INSTITUTION_TERMS = {
+    "government", "ministry", "commission", "supreme court", "high court", "chief justice", "governor",
+    "parliament", "cabinet", "rbi", "reserve bank", "sebi", "isro", "drdo", "united nations", "who",
+    "world bank", "imf", "army", "navy", "air force", "constitutional body", "statutory body"
+}
+
+
+def contains_any_term(text: str, terms: set[str]) -> bool:
+    for term in terms:
+        if re.search(rf"(?<![a-z0-9]){re.escape(term)}(?![a-z0-9])", text):
+            return True
+    return False
+
+
+def has_exam_relevance_anchor(item: RawItem) -> bool:
+    """Require evidence in the story itself; newspaper section tags are only navigation metadata."""
+    if item.source in OFFICIAL_CURRENT_AFFAIRS_SOURCES:
+        return True
+    if item.source in CURATED_EXAM_NEWS_SOURCES:
+        return True
+
+    text = isolate_untrusted_text(" ".join([item.title, item.raw_excerpt])).lower()
+    tags = set(item.tags)
+    anchor_terms = (
+        PUBLIC_AFFAIRS_TERMS
+        | ECONOMY_TERMS
+        | REPORT_AND_CULTURE_TERMS
+        | INTERNATIONAL_RELATIONS_TERMS
+        | DEFENCE_TERMS
+        | ELECTION_TERMS
+    )
+    if "education" in tags:
+        anchor_terms |= EDUCATION_POLICY_TERMS
+    if "sports" in tags:
+        anchor_terms |= DURABLE_SPORTS_TERMS
+    if "economy" in tags or "banking" in tags:
+        anchor_terms |= ECONOMY_TERMS
+    if "environment" in tags:
+        anchor_terms |= ENVIRONMENT_TERMS
+    if tags.intersection({"science", "technology", "research"}):
+        anchor_terms |= SCIENCE_TERMS | ENVIRONMENT_TERMS
+    if tags.intersection({"culture", "awards"}):
+        anchor_terms |= REPORT_AND_CULTURE_TERMS
+    has_public_appointment = (
+        contains_any_term(text, APPOINTMENT_EVENT_TERMS)
+        and contains_any_term(text, PUBLIC_INSTITUTION_TERMS)
+    )
+    return contains_any_term(text, anchor_terms) or has_public_appointment
+
+
+def ssc_study_relevance(item: RawItem) -> str:
+    if is_low_value_current_affairs(item) or not has_exam_relevance_anchor(item):
         return "low"
-    high_tags = {
-        "ssc", "exam-notice", "rbi", "banking", "notifications", "schemes", "government",
-        "parliament", "bills", "governance", "upsc", "prelims", "mains", "explained",
-        "upsc-gs1", "upsc-gs2", "upsc-gs3", "environment"
+    if item.source in OFFICIAL_CURRENT_AFFAIRS_SOURCES:
+        return "high" if item.source != "SSC" or "ssc" in item.tags else "medium"
+
+    text = isolate_untrusted_text(" ".join([item.title, item.raw_excerpt])).lower()
+    ssc_high_terms = {
+        "constitution", "supreme court", "high court", "parliament", "reservation", "obc", "census",
+        "rbi", "reserve bank", "gst", "budget", "inflation", "gdp", "gold reserves", "us treasuries",
+        "foreign exchange reserves", "official report", "government report", "index", "appointment",
+        "national award", "war", "indians killed", "evacuation", "presidential election", "general election",
+        "isro", "satellite launch", "space mission", "missile", "military exercise", "defence", "defense",
+        "appointed", "appointment", "sworn in", "takes charge"
     }
-    high_terms = {
-        "rbi", "gst", "compensation cess", "budget", "monetary policy", "repo", "scheme",
-        "bill", "act", "parliament", "supreme court", "constitution", "united nations",
-        " un ", "deep-sea mining", "ocean floor", "climate", "biodiversity", "report",
-        "index", "appointment", "commissioned", "defence", "medical devices rules",
-        "digital public infrastructure", "education policy"
-    }
-    if any(tag in high_tags for tag in item.tags) or any(term in f" {text} " for term in high_terms):
+    if contains_any_term(text, ssc_high_terms):
         return "high"
-    medium_tags = {"polity", "economy", "science", "technology", "international", "national", "culture", "awards"}
-    if any(tag in medium_tags for tag in item.tags):
+    if "sports" in item.tags or set(item.tags).intersection({"culture", "awards"}):
+        return "medium"
+    if "india" in text and set(item.tags).intersection({"science", "technology", "environment"}):
+        return "medium"
+    return "low"
+
+
+def upsc_study_relevance(item: RawItem) -> str:
+    if is_low_value_current_affairs(item) or not has_exam_relevance_anchor(item):
+        return "low"
+    if item.source == "SSC" or "sports" in item.tags:
+        return "low"
+    if item.source in OFFICIAL_CURRENT_AFFAIRS_SOURCES | CURATED_EXAM_NEWS_SOURCES:
+        return "high"
+
+    text = isolate_untrusted_text(" ".join([item.title, item.raw_excerpt])).lower()
+    upsc_high_terms = {
+        "constitution", "supreme court", "high court", "parliament", "reservation", "obc", "census",
+        "monetary policy", "rbi", "gst", "budget", "fiscal deficit", "gdp", "gold reserves",
+        "us treasuries", "foreign exchange reserves", "treaty", "summit", "sanctions", "war",
+        "national education policy", "education policy", "government scheme"
+    }
+    return "high" if contains_any_term(text, upsc_high_terms) else "medium"
+
+
+def study_relevance(item: RawItem) -> str:
+    labels = {ssc_study_relevance(item), upsc_study_relevance(item)}
+    if "high" in labels:
+        return "high"
+    if "medium" in labels:
         return "medium"
     return "low"
 
@@ -842,21 +1039,28 @@ def build_mistral_prompt(
 def excerpt_points(item: RawItem, limit: int) -> list[str]:
     candidates = [
         isolate_untrusted_text(part)
-        for part in re.split(r"(?<=[.!?])\s+|;\s+|\|\s+", isolate_untrusted_text(item.raw_excerpt))
+        for part in re.split(
+            r"(?<=[.!?])\s+|;\s+|\|\s+",
+            deduplicate_article_sentences(isolate_untrusted_text(item.raw_excerpt)),
+        )
     ]
-    points = [
-        point[:MAX_SUMMARY_FIELD_CHARS].strip()
-        for point in candidates
-        if len(point.strip()) >= 25
-    ]
+    points: list[str] = []
+    seen: set[str] = set()
+    for point in candidates:
+        cleaned = trim_text_at_boundary(point, MAX_SUMMARY_FIELD_CHARS)
+        normalized = normalize_for_grounding(cleaned)
+        if len(cleaned) < 25 or not normalized or normalized in seen:
+            continue
+        seen.add(normalized)
+        points.append(cleaned)
     return points[:limit]
 
 
 def source_excerpt_for_item(item: RawItem) -> str:
-    excerpt = isolate_untrusted_text(item.raw_excerpt)
+    excerpt = deduplicate_article_sentences(isolate_untrusted_text(item.raw_excerpt))
     if not excerpt:
         excerpt = isolate_untrusted_text(item.title)
-    return excerpt[:MAX_SOURCE_EXCERPT_CHARS].strip()
+    return trim_text_at_boundary(excerpt, MAX_SOURCE_EXCERPT_CHARS)
 
 
 GENERIC_STUDY_FILLER_PATTERN = re.compile(
@@ -914,7 +1118,7 @@ def content_mcq_seed(item: RawItem) -> dict:
             "answer": "RBI",
             "trap": "Confusing RBI's banking role with SEBI or the Finance Commission.",
         }
-    if "ssc" in item.tags or item.source == "SSC":
+    if item.source == "SSC":
         return {
             "question": "Which exam body or portal is linked to this notice?",
             "answer": "SSC",
@@ -926,7 +1130,7 @@ def content_mcq_seed(item: RawItem) -> dict:
             "answer": "Bills, Parliament, and legislative scrutiny",
             "trap": "Reading it only as a headline without linking it to polity.",
         }
-    if "un " in f" {text} " or "united nations" in text or "ocean floor" in text or "deep-sea mining" in text:
+    if re.search(r"\bun\b", text) or "united nations" in text or "ocean floor" in text or "deep-sea mining" in text:
         return {
             "question": "Which exam theme is tied to this ocean-floor or UN-linked update?",
             "answer": "Deep-sea mining and marine environment governance",
@@ -960,9 +1164,8 @@ def content_evidence_for_item(item: RawItem) -> dict:
 
 
 def fallback_summary_item(item: RawItem) -> dict:
-    relevance = study_relevance(item)
-    has_upsc_tag = any(tag in item.tags for tag in ["upsc", "prelims", "mains", "explained", "upsc-gs1", "upsc-gs2", "upsc-gs3"])
-    upsc_relevance = "high" if has_upsc_tag or relevance == "high" else relevance
+    ssc_relevance = ssc_study_relevance(item)
+    upsc_relevance = upsc_study_relevance(item)
     points = excerpt_points(item, 5)
     lead = points[0]
     context = points[1] if len(points) > 1 else lead
@@ -974,7 +1177,7 @@ def fallback_summary_item(item: RawItem) -> dict:
         "published_at": item.published_at,
         "content_evidence": content_evidence_for_item(item),
         "source_excerpt": source_excerpt_for_item(item),
-        "ssc_relevance": relevance,
+        "ssc_relevance": ssc_relevance,
         "upsc_cse_relevance": upsc_relevance,
         "exam_areas": item.tags[:4] or [item.source],
         "key_points": points[:4],
@@ -991,16 +1194,19 @@ def fallback_summary_item(item: RawItem) -> dict:
 def trim_generated_summary_item(item: dict) -> dict:
     for field in ["title", "source", "published_at", "memory_hook", "why_it_matters_for_ssc_cgl"]:
         if isinstance(item.get(field), str):
-            item[field] = clean_text(str(item[field]))[:MAX_SUMMARY_FIELD_CHARS]
+            item[field] = trim_text_at_boundary(str(item[field]), MAX_SUMMARY_FIELD_CHARS)
     if isinstance(item.get("source_excerpt"), str):
-        item["source_excerpt"] = clean_text(str(item["source_excerpt"]))[:MAX_SOURCE_EXCERPT_CHARS]
+        item["source_excerpt"] = trim_text_at_boundary(
+            deduplicate_article_sentences(str(item["source_excerpt"])),
+            MAX_SOURCE_EXCERPT_CHARS,
+        )
     for field in ["why_it_matters_for_upsc_cse", "static_context"]:
         if isinstance(item.get(field), str):
-            item[field] = clean_text(str(item[field]))[:MAX_DEEP_DIVE_FIELD_CHARS]
+            item[field] = trim_text_at_boundary(str(item[field]), MAX_DEEP_DIVE_FIELD_CHARS)
     for field, limit in [("key_points", MAX_SUMMARY_FIELD_CHARS), ("prelims_facts", MAX_DEEP_DIVE_FIELD_CHARS), ("mains_angles", MAX_DEEP_DIVE_FIELD_CHARS)]:
         if isinstance(item.get(field), list):
             item[field] = [
-                clean_text(str(value))[:limit]
+                trim_text_at_boundary(str(value), limit)
                 for value in item[field]
                 if clean_text(str(value))
             ][:5]
@@ -1008,7 +1214,7 @@ def trim_generated_summary_item(item: dict) -> dict:
     if isinstance(mcq_seed, dict):
         for field in ["question", "answer", "trap"]:
             if isinstance(mcq_seed.get(field), str):
-                mcq_seed[field] = clean_text(str(mcq_seed[field]))[:MAX_SUMMARY_FIELD_CHARS]
+                mcq_seed[field] = trim_text_at_boundary(str(mcq_seed[field]), MAX_SUMMARY_FIELD_CHARS)
     evidence = item.get("content_evidence")
     if isinstance(evidence, dict):
         evidence["origin"] = clean_text(str(evidence.get("origin", "unknown")))[:40]
@@ -1044,10 +1250,10 @@ def repair_generated_summary_item(item: dict, raw_item: RawItem | None) -> dict:
     grounded_lead = grounded_points[0]
     grounded_context = grounded_points[1] if len(grounded_points) > 1 else grounded_lead
     grounded_implication = grounded_points[2] if len(grounded_points) > 2 else grounded_context
-    if item.get("upsc_cse_relevance") not in {"high", "medium", "low"}:
-        item["upsc_cse_relevance"] = "high" if any(tag.startswith("upsc") or tag in {"prelims", "mains", "explained"} for tag in tags) else "medium"
-    if item.get("ssc_relevance") not in {"high", "medium", "low"}:
-        item["ssc_relevance"] = "high" if "ssc" in tags else "medium"
+    # The model writes explanations, but deterministic evidence rules own the
+    # exam labels so a broad RSS section tag cannot inflate every story to high.
+    item["upsc_cse_relevance"] = upsc_study_relevance(raw_item)
+    item["ssc_relevance"] = ssc_study_relevance(raw_item)
     for field, fallback in [
         ("title", raw_item.title),
         ("source", raw_item.source),

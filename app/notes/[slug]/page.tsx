@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, BookOpen, ClipboardList, FileText, ListChecks, Sigma } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, ClipboardList, FileText, ListChecks, Sigma } from "lucide-react";
 import { ActiveRecallPanel } from "@/components/ActiveRecallPanel";
 import { JsonLd } from "@/components/JsonLd";
 import { MarkdownNote } from "@/components/MarkdownNote";
@@ -93,7 +93,7 @@ export default async function NotePage({ params }: NotePageProps) {
           <NoteQuizClient />
           <MarkdownNote content={note.content} previews={previewCandidates} />
           <LessonSequence previous={navigation.previous} next={navigation.next} position={navigation.position} total={navigation.total} footer />
-          <ContinueReadingStrip previous={navigation.previous} next={navigation.next} courseCode={note.courseCode} />
+          <ContinueReadingStrip courseCode={note.courseCode} />
           <RelatedLessonsSection previews={related} />
         </article>
 
@@ -224,12 +224,16 @@ function LessonSequence({
   );
 }
 
-function ContinueReadingStrip({ previous, next, courseCode }: { previous: NotePreview | null; next: NotePreview | null; courseCode: string | null }) {
+function ContinueReadingStrip({ courseCode }: { courseCode: string | null }) {
   return (
     <nav className="continue-strip" aria-label="Continue reading">
-      {previous ? <Link prefetch={false} className="button ghost" href={`/notes/${previous.slug}`}>Previous lesson</Link> : <span />}
-      <Link className="button primary" href={courseCode ? `/courses/${courseCode}` : "/courses"}>Course index</Link>
-      {next ? <Link prefetch={false} className="button ghost" href={`/notes/${next.slug}`}>Next lesson</Link> : <span />}
+      <span className="continue-strip-copy">
+        <small>Course map</small>
+        <strong>Zoom out and choose your next lesson</strong>
+      </span>
+      <Link className="button primary" href={courseCode ? `/courses/${courseCode}` : "/courses"}>
+        Open {courseCode || "course"} index <ArrowRight size={15} aria-hidden="true" />
+      </Link>
     </nav>
   );
 }
@@ -240,21 +244,46 @@ function RelatedLessonsSection({ previews }: { previews: NotePreview[] }) {
   return (
     <section className="related-lessons-section" aria-label="Related lessons">
       <div className="related-lessons-heading">
-        <span className="micro-label">Related lessons</span>
-        <h2>Keep this thread connected</h2>
+        <div>
+          <span className="micro-label">Related lessons</span>
+          <h2>Keep the momentum going</h2>
+        </div>
+        <p>Nearby lessons, stripped down to the signals that help you choose quickly.</p>
       </div>
       <div className="related-lesson-grid">
-        {previews.slice(0, 3).map((preview) => (
-          <Link
-            prefetch={false}
-            className="related-lesson-link"
-            href={`/notes/${preview.slug}`}
-            aria-label={`Open related lesson: ${preview.label}`}
-            key={preview.slug}
-          >
-            <PreviewCard preview={preview} compact />
-          </Link>
-        ))}
+        {previews.slice(0, 3).map((preview, index) => {
+          const signals = [
+            { count: preview.stats.mathBlocks, label: "formulas", icon: <Sigma size={13} aria-hidden="true" /> },
+            { count: preview.stats.questionBlocks, label: "questions", icon: <ClipboardList size={13} aria-hidden="true" /> },
+            { count: preview.stats.codeBlocks, label: "code blocks", icon: <FileText size={13} aria-hidden="true" /> }
+          ].filter((signal) => signal.count > 0).slice(0, 2);
+
+          return (
+            <Link
+              prefetch={false}
+              className="related-lesson-link"
+              data-tone={["blue", "amber", "violet"][index]}
+              href={`/notes/${preview.slug}`}
+              aria-label={`Open related lesson: ${preview.label}`}
+              key={preview.slug}
+            >
+              <span className="related-lesson-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+              <span className="related-lesson-copy">
+                <span className="related-lesson-kicker">
+                  <span>{preview.courseCode || "MITEEE"}</span>
+                  {preview.week ? <span>Week {preview.week}</span> : null}
+                </span>
+                <strong>{preview.label}</strong>
+                <span className="related-lesson-meta">
+                  {signals.length > 0 ? signals.map((signal) => (
+                    <span key={signal.label}>{signal.icon}{signal.count} {signal.label}</span>
+                  )) : <span><BookOpen size={13} aria-hidden="true" />Reading note</span>}
+                </span>
+              </span>
+              <span className="related-lesson-open" aria-hidden="true"><ArrowUpRight size={17} /></span>
+            </Link>
+          );
+        })}
       </div>
     </section>
   );

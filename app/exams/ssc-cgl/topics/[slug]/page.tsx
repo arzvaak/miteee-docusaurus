@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, ListChecks } from "lucide-react";
 import { MarkdownNote } from "@/components/MarkdownNote";
+import { MathText } from "@/components/MathText";
 import { NoteQuizClient } from "@/components/NoteQuizClient";
 import { SscExplanationPanel } from "@/components/SscExplanationPanel";
 import { getSscTopic, getSscTopicPracticePreview, getSscTopics } from "@/lib/ssc-cgl";
@@ -92,9 +93,7 @@ export default async function SscCglTopicPage({ params }: { params: Promise<{ sl
           {topic.study.sections.map((section) => (
             <article className="ssc-study-block" key={section.title}>
               <h2>{section.title}</h2>
-              <div className="markdown-body">
-                <MarkdownNote content={section.body} sectionName={section.title} />
-              </div>
+              <MarkdownNote content={section.body} sectionName={section.title} />
             </article>
           ))}
         </section>
@@ -114,7 +113,7 @@ export default async function SscCglTopicPage({ params }: { params: Promise<{ sl
 
       <section className="panel">
         <strong>Flowchart</strong>
-        <div className="markdown-body ssc-flowchart-rendered">
+        <div className="ssc-flowchart-rendered">
           <MarkdownNote content={topic.study.flowchart} />
         </div>
       </section>
@@ -145,19 +144,19 @@ export default async function SscCglTopicPage({ params }: { params: Promise<{ sl
                   <span className="quiz-tag">Book PYQ</span>
                   <span className="quiz-type">{question.provenance.title}</span>
                 </div>
-                <p className="quiz-q">{question.stem}</p>
+                <p className="quiz-q"><MathText text={question.stem} /></p>
                 <div className="quiz-options" role="list">
                   {question.options.map((option) => (
                     <div className="quiz-option" data-opt={option.id} key={option.id} role="listitem">
                       <span className="opt-key">{option.id.toUpperCase()}</span>
-                      <span className="opt-text">{option.text}</span>
+                      <span className="opt-text"><MathText text={option.text} /></span>
                     </div>
                   ))}
                 </div>
                 <details className="quiz-exp ssc-topic-answer">
                   <summary>Show answer and explanation</summary>
                   <div className="quiz-exp-body">
-                    <p><strong>Answer: {question.correctOption.toUpperCase()}.</strong> {answer?.text}</p>
+                    <p><strong>Answer: {question.correctOption.toUpperCase()}.</strong>{" "}<MathText text={answer?.text ?? ""} /></p>
                     <SscExplanationPanel explanation={question.explanation} />
                   </div>
                 </details>
