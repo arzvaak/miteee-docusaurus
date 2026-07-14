@@ -692,6 +692,57 @@ def is_low_value_current_affairs(item: RawItem) -> bool:
         content_text,
     ):
         return True
+    private_civil_dispute = re.search(
+        r"\b(?:civil (?:case|lawsuit|trial)|defamation (?:case|lawsuit|suit|verdict)|sexual abuse case)\b",
+        content_text,
+    ) and re.search(
+        r"\b(?:damages?|compensation|payout|payment|escrow|legal battle|jury award|million awarded)\b",
+        content_text,
+    )
+    systemic_law_change = re.search(
+        r"\b(?:constitutional question|constitutional challenge|law reform|legislation|"
+        r"statute (?:struck down|upheld)|class action|public authority|government policy|"
+        r"precedent-setting|landmark ruling)\b",
+        content_text,
+    )
+    if private_civil_dispute and not systemic_law_change:
+        return True
+    internal_party_dispute = re.search(
+        r"\b(?:intra-party|party infighting|factional (?:fight|feud)|leadership challenge|"
+        r"challenge to .{0,60} as (?:party )?chief|party succession|party chief contest)\b",
+        content_text,
+    )
+    public_electoral_context = re.search(
+        r"\b(?:election commission|supreme court|high court|anti-defection|election result|"
+        r"government formation|coalition government|floor test|constitutional)\b",
+        content_text,
+    )
+    if internal_party_dispute and not public_electoral_context:
+        return True
+    routine_market_subject = re.search(
+        r"\b(?:u\.?s\.? |global |asian |european |indian )?"
+        r"(?:stocks?|shares?|wall street|dow jones|nasdaq|s&p 500)\b",
+        content_text,
+    )
+    routine_market_move = re.search(
+        r"\b(?:rise|rises|rose|fall|falls|fell|gain|gains|gained|slip|slips|slipped|"
+        r"edge|edges|edged|rally|rallies|rallied|sell-off|close|closes|closed|open|opens|opened|"
+        r"trade|trades|traded|steady|higher|lower|up|down|green|red|mixed)\b",
+        content_text,
+    )
+    structural_market_context = re.search(
+        r"\b(?:central bank decision|rbi|sebi|interest-rate decision|rate cut|rate hike|"
+        r"market regulation|capital-market reform|currency intervention)\b",
+        content_text,
+    )
+    if routine_market_subject and routine_market_move and not structural_market_context:
+        return True
+    if re.search(r"\b(?:wildfire|forest fire|brush fire)\b", content_text) and not re.search(
+        r"\b(?:india|indian|climate change|disaster management|public health|air pollution|"
+        r"biodiversity|official report|new study|national emergency|cross-border smoke|carbon emissions)\b",
+        content_text,
+    ):
+        return True
     private_money_feature = re.search(
         r"\b(?:three|four|five|\d+) years later\b.{0,120}\b(?:make|makes|making|made) money\b",
         content_text,
