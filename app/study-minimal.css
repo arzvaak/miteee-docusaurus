@@ -1101,6 +1101,48 @@ body {
   padding-top: 12px;
 }
 
+/* Apply saved panel choices before the large note reader hydrates. */
+[data-reader-guide-collapsed="true"] .reader-guide-rail {
+  width: 48px;
+  justify-self: end;
+}
+
+[data-reader-tools-collapsed="true"] .reader-tools-panel {
+  width: 56px;
+  justify-self: start;
+  padding: 0;
+}
+
+[data-reader-guide-collapsed="true"] .reader-guide-body,
+[data-reader-tools-collapsed="true"] .reader-tools-body {
+  display: none;
+}
+
+[data-reader-guide-collapsed="true"] .reader-guide-toggle,
+[data-reader-tools-collapsed="true"] .reader-tools-toggle {
+  width: 42px;
+  min-width: 42px;
+  padding: 0;
+}
+
+[data-reader-guide-collapsed="true"] .reader-guide-toggle span,
+[data-reader-tools-collapsed="true"] .reader-tools-toggle span {
+  font-size: 0;
+}
+
+[data-reader-guide-collapsed="true"] .reader-guide-toggle span::after,
+[data-reader-tools-collapsed="true"] .reader-tools-toggle span::after {
+  font-size: 0.75rem;
+}
+
+[data-reader-guide-collapsed="true"] .reader-guide-toggle span::after {
+  content: "Map";
+}
+
+[data-reader-tools-collapsed="true"] .reader-tools-toggle span::after {
+  content: "Tools";
+}
+
 .reader-guide-toggle,
 .reader-tools-toggle {
   min-height: 42px;
@@ -1324,7 +1366,7 @@ body {
     grid-template-columns: 56px minmax(0, var(--reader-canvas-width)) 56px;
   }
 
-  .reader-guide-rail:not(.collapsed) {
+  :root:not([data-reader-guide-collapsed="true"]) .reader-guide-rail:not(.collapsed) {
     position: absolute;
     inset: 0 auto auto 0;
     z-index: 40;
@@ -1338,7 +1380,7 @@ body {
     backdrop-filter: blur(18px);
   }
 
-  .reader-layout .reader-rail.reader-tools-panel:not(.left):not(.collapsed) {
+  :root:not([data-reader-tools-collapsed="true"]) .reader-layout .reader-rail.reader-tools-panel:not(.left):not(.collapsed) {
     position: fixed;
     inset: max(82px, calc(var(--topbar-height, 0px) + 12px)) 24px auto auto;
     z-index: 80;
@@ -1354,7 +1396,7 @@ body {
     backdrop-filter: blur(18px);
   }
 
-  .reader-tools-panel:not(.collapsed) .reader-tools-body {
+  :root:not([data-reader-tools-collapsed="true"]) .reader-tools-panel:not(.collapsed) .reader-tools-body {
     max-height: calc(100dvh - 116px);
     overflow-y: auto;
     overscroll-behavior: contain;
@@ -1364,6 +1406,8 @@ body {
 }
 
 @media (min-width: 1181px) {
+  [data-reader-guide-collapsed="true"] .reader-layout > .reader-guide-rail,
+  [data-reader-tools-collapsed="true"] .reader-layout > .reader-tools-panel,
   .reader-layout > .reader-guide-rail,
   .reader-layout > .reader-tools-panel.collapsed {
     position: sticky;

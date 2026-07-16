@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { AppShell } from "@/components/AppShell";
 import { JsonLd } from "@/components/JsonLd";
+import { readerGuideStorageKey, readerToolsStorageKey } from "@/lib/reader-layout-preferences";
 import { buildWebSiteJsonLd, DEFAULT_SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
 import { resolvedThemes, themeStorageKey } from "@/lib/themes";
 import "./globals.css";
@@ -13,17 +14,19 @@ const shellThemeModes = Object.fromEntries(resolvedThemes.map((theme) => [theme.
 const shellInitScript = `
 (() => {
   const themeModes = ${JSON.stringify(shellThemeModes)};
+  const root = document.documentElement;
   let preference = "system";
   try {
     const stored = window.localStorage.getItem(${JSON.stringify(themeStorageKey)});
     if (stored === "system" || Object.prototype.hasOwnProperty.call(themeModes, stored)) preference = stored;
+    if (window.localStorage.getItem(${JSON.stringify(readerGuideStorageKey)}) === "true") root.dataset.readerGuideCollapsed = "true";
+    if (window.localStorage.getItem(${JSON.stringify(readerToolsStorageKey)}) === "true") root.dataset.readerToolsCollapsed = "true";
   } catch {}
 
   const resolved = preference === "system"
     ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
     : preference;
   const mode = themeModes[resolved] || "dark";
-  const root = document.documentElement;
   root.dataset.themePreference = preference;
   root.dataset.theme = resolved;
   root.dataset.themeMode = mode;

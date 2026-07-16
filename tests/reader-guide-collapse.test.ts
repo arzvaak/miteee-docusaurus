@@ -7,6 +7,7 @@ const readerControls = fs.readFileSync("components/ReaderControls.tsx", "utf8");
 const readerPreferences = fs.readFileSync("lib/reader-layout-preferences.ts", "utf8");
 const readerSettings = fs.readFileSync("components/ReaderLayoutSettings.tsx", "utf8");
 const readerCss = fs.readFileSync("app/study-minimal.css", "utf8");
+const rootLayout = fs.readFileSync("app/layout.tsx", "utf8");
 
 test("note page wraps the left reader rail in a collapsible guide component", () => {
   assert.match(notePage, /ReaderGuideRail/);
@@ -37,6 +38,14 @@ test("settings expose every persistent reader panel combination", () => {
   assert.match(readerSettings, /Tools only/);
   assert.match(readerSettings, /Hide both/);
   assert.match(readerSettings, /saveReaderLayoutPreference/);
+});
+
+test("saved panel choices apply before a large note reader hydrates", () => {
+  assert.match(rootLayout, /readerGuideStorageKey/);
+  assert.match(rootLayout, /readerToolsStorageKey/);
+  assert.match(rootLayout, /root\.dataset\.readerGuideCollapsed = "true"/);
+  assert.match(rootLayout, /root\.dataset\.readerToolsCollapsed = "true"/);
+  assert.match(readerCss, /\[data-reader-guide-collapsed="true"\] \.reader-guide-body,[\s\S]*?\[data-reader-tools-collapsed="true"\] \.reader-tools-body\s*\{[^}]*display:\s*none;/s);
 });
 
 test("reader guide collapsed state widens the article column on desktop", () => {
