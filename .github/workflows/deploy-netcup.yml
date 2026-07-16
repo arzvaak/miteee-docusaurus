@@ -169,16 +169,22 @@ jobs:
         run: |
           set -euo pipefail
           curl --fail --location --silent --show-error https://note.arzvak.com/ > /tmp/note-home.html
-          grep -q "Subject Spaces" /tmp/note-home.html
+          grep -q "Library spaces" /tmp/note-home.html
           grep -q "Choose what you want to learn" /tmp/note-home.html
           grep -q "/settings" /tmp/note-home.html
-          curl --fail --location --silent --show-error https://note.arzvak.com/research/valorant-preliminary-findings > /tmp/valorant-research.html
+          redirect_status="$(curl --silent --show-error --output /dev/null --write-out '%{http_code}' https://note.arzvak.com/research/valorant-preliminary-findings)"
+          test "$redirect_status" = "308"
+          curl --fail --location --silent --show-error https://note.arzvak.com/notes/research-valorant-preliminary-findings-index > /tmp/valorant-research.html
+          grep -q "Research note" /tmp/valorant-research.html
           grep -q "Pre-match outcome prediction in professional VALORANT" /tmp/valorant-research.html
           grep -q "This is still a progress report" /tmp/valorant-research.html
           grep -q "test the final version on a future tournament" /tmp/valorant-research.html
+          curl --fail --location --silent --show-error https://note.arzvak.com/courses/RESEARCH > /tmp/research-notes.html
+          grep -q "Research notes" /tmp/research-notes.html
           curl --fail --location --silent --show-error --output /dev/null https://note.arzvak.com/content-assets/research/valorant-preliminary-findings/assets/composition-map-feature-audit.png
           curl --fail --location --silent --show-error https://note.arzvak.com/settings > /tmp/study-settings.html
           grep -q "Make this study space yours" /tmp/study-settings.html
+          grep -q "Reader layout" /tmp/study-settings.html
           curl --fail --location --silent --show-error https://note.arzvak.com/login > /tmp/login.html
           grep -q "Log in" /tmp/login.html
           grep -q 'noindex' /tmp/login.html

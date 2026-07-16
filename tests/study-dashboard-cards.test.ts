@@ -5,8 +5,8 @@ import test from "node:test";
 const dashboard = fs.readFileSync("components/StudyDashboard.tsx", "utf8");
 const dashboardCss = fs.readFileSync("components/StudyDashboard.module.css", "utf8");
 
-test("homepage keeps every course in visible grouped subject cards", () => {
-  assert.match(dashboard, /Subject Spaces/);
+test("homepage keeps every course in visible grouped library cards", () => {
+  assert.match(dashboard, /Library spaces/);
   assert.match(dashboard, /courseGroups\.map/);
   assert.match(dashboard, /group\.courses\.map/);
   assert.match(dashboard, /studySpaceStatusOptions\.map/);

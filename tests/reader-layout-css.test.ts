@@ -5,6 +5,7 @@ import test from "node:test";
 const css = fs.readFileSync("app/globals.css", "utf8");
 const readerCss = fs.readFileSync("app/study-minimal.css", "utf8");
 const readerControlsSource = fs.readFileSync("components/ReaderControls.tsx", "utf8");
+const readerPreferencesSource = fs.readFileSync("lib/reader-layout-preferences.ts", "utf8");
 
 function ruleBodies(selector: string) {
   const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -69,15 +70,12 @@ test("desktop note reader uses one centered prose measure inside a wider canvas"
   assert.match(readerRuleBody(".article .markdown-body :where(table, .katex-display, .code-block-shell, .mermaid-shell)"), /max-width:\s*var\(--reader-canvas-width\);/);
 });
 
-test("research publication aligns prose while allowing figures to use the wide canvas", () => {
-  assert.match(readerRuleBody(".research-publication"), /--reader-canvas-width:\s*1120px;/);
-  assert.match(readerRuleBody(".research-publication"), /--reader-prose-width:\s*820px;/);
-  assert.match(readerRuleBody(".research-publication-header"), /width:\s*min\(100%,\s*var\(--reader-prose-width\)\);/);
-  assert.match(readerRuleBody(".research-status-note"), /width:\s*min\(100%,\s*var\(--reader-prose-width\)\);/);
-  assert.match(readerRuleBody(".research-publication .research-report-body"), /max-width:\s*var\(--reader-canvas-width\);/);
-  assert.match(readerRuleBody(".research-report-body > :where(p, ul, ol, blockquote, h2, h3, h4)"), /max-width:\s*var\(--reader-prose-width\);/);
-  assert.match(readerRuleBody(".research-report-body > p:has(> img)"), /max-width:\s*var\(--reader-canvas-width\);/);
-  assert.match(readerCss, /\.research-report-body > p:has\(> img\) \+ p,[\s\S]*?max-width:\s*var\(--reader-canvas-width\);/);
+test("research note keeps prose, headings, tables, and figures on one left edge", () => {
+  assert.match(readerRuleBody(".research-note-article.article"), /max-width:\s*var\(--research-wide\);/);
+  assert.match(readerRuleBody(".research-note-article.article .markdown-body > :where(p, ul, ol, blockquote, h2, h3, h4, hr)"), /max-width:\s*var\(--research-prose\);/);
+  assert.match(readerRuleBody(".research-note-article.article .markdown-body > :where(p, ul, ol, blockquote, h2, h3, h4, hr)"), /margin-left:\s*0;/);
+  assert.match(readerRuleBody(".research-note-article.article .markdown-body > :where(h2, h3, h4)"), /margin-left:\s*0;/);
+  assert.match(readerCss, /\.research-note-article \.markdown-body > :where\(table,[\s\S]*?max-width:\s*var\(--research-wide\);[\s\S]*?margin-left:\s*0;/s);
 });
 
 test("desktop course map jump buttons wrap inside the reader rail", () => {
@@ -146,7 +144,9 @@ test("mobile expanded reader guide stays scroll bounded before the article", () 
 });
 
 test("reader sidebars persist collapsed panel state", () => {
-  assert.match(readerControlsSource, /miteee-reader-tools-collapsed/);
+  assert.match(readerPreferencesSource, /miteee-reader-tools-collapsed/);
+  assert.match(readerPreferencesSource, /guideVisible:\s*true/);
+  assert.match(readerPreferencesSource, /toolsVisible:\s*true/);
   assert.match(readerControlsSource, /readReaderToolsSnapshot/);
   assert.match(readerControlsSource, /useSyncExternalStore\(subscribeReaderToolsState,\s*readReaderToolsSnapshot/);
   assert.match(readerControlsSource, /window\.localStorage\.setItem\(readerToolsStorageKey,\s*String\(next\)\)/);

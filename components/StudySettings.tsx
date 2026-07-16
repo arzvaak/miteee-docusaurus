@@ -36,6 +36,7 @@ import { buildStudySettingsBackup, restoreStudySettingsBackup } from "@/lib/stud
 import { useStudyPlanPreferences } from "@/components/useStudyPlanPreferences";
 import { useStudySpacePreferences } from "@/components/useStudySpacePreferences";
 import { SettingsAccountCard } from "@/components/SettingsAccountCard";
+import { ReaderLayoutSettings } from "@/components/ReaderLayoutSettings";
 import { ThemeGallery } from "@/components/ThemeToggle";
 import styles from "@/components/StudySettings.module.css";
 
@@ -167,17 +168,21 @@ export function StudySettings({ courses }: { courses: Course[] }) {
             <ThemeGallery />
           </section>
 
+          <section className={styles.card} aria-label="Reader layout settings">
+            <ReaderLayoutSettings />
+          </section>
+
           <section className={styles.card} aria-labelledby="subject-status-heading">
             <div className={styles.sectionHeading}>
               <div>
-                <span className={styles.eyebrow}>Subject status</span>
+                <span className={styles.eyebrow}>Library status</span>
                 <h2 id="subject-status-heading">Decide what belongs in focus.</h2>
-                <p>Every subject remains available. Status only changes how your study space is organised.</p>
+                <p>Every collection remains available. Status only changes how your study space is organised.</p>
               </div>
               <span className={styles.savedLabel}><HardDrive size={14} aria-hidden="true" /> Saved on this device</span>
             </div>
 
-            <div className={styles.statusSummary} aria-label="Subject status summary">
+            <div className={styles.statusSummary} aria-label="Library status summary">
               <span><strong>{counts.available}</strong> Available</span>
               <span><strong>{counts.active}</strong> Studying now</span>
               <span><strong>{counts.completed}</strong> Completed</span>
@@ -185,8 +190,8 @@ export function StudySettings({ courses }: { courses: Course[] }) {
 
             <label className={styles.searchBox}>
               <Search size={17} aria-hidden="true" />
-              <span className={styles.srOnly}>Search subjects</span>
-              <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search subjects" />
+              <span className={styles.srOnly}>Search collections</span>
+              <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search collections" />
               <small>{visibleCourses.length} shown</small>
             </label>
 
@@ -198,7 +203,7 @@ export function StudySettings({ courses }: { courses: Course[] }) {
                     <div className={styles.courseCopy}>
                       <span>{compactCourseCode(course.code)}</span>
                       <strong>{course.name}</strong>
-                      <small>{course.noteCount} notes · {course.category}</small>
+                      <small>{course.noteCount} {course.noteCount === 1 ? "note" : "notes"} · {course.category}</small>
                     </div>
                     <div className={styles.statusPicker} role="group" aria-label={`${course.name} status`}>
                       {studySpaceStatusOptions.map((option) => (

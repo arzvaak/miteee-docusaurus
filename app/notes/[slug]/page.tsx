@@ -10,6 +10,7 @@ import { NotePracticePanel } from "@/components/NotePracticePanel";
 import { PreviewCard } from "@/components/PreviewLink";
 import { ReaderCourseNavigator, ReaderFocusButton, ReaderGuideRail, ReaderKeyboardShortcuts, ReaderOutlineNav, ReaderQuestionNavigator, ReaderQuickActions, ReaderToolsPanel } from "@/components/ReaderControls";
 import { ReaderProgressPanel } from "@/components/ReaderProgressPanel";
+import { ResearchNote } from "@/components/ResearchNote";
 import { getNote, getNoteNavigation, getResolvedPreviewsForNote, getSearchCandidates, toNotePreview } from "@/lib/content";
 import type { NotePreview } from "@/lib/content";
 import { buildHeadingAnchors, buildQuestionAnchors } from "@/lib/heading-anchors";
@@ -37,6 +38,7 @@ export default async function NotePage({ params }: NotePageProps) {
   const { slug } = await params;
   const note = getNote(slug);
   if (!note) notFound();
+  if (note.contentType === "research_note" || note.courseCode === "RESEARCH") return <ResearchNote note={note} />;
   const related = getResolvedPreviewsForNote(note);
   const navigation = getNoteNavigation(note);
   const previewCandidates = getSearchCandidates();

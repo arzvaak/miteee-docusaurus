@@ -31,14 +31,14 @@ test("library preserves search and discovery filters", () => {
   assert.equal(ssc.some((course) => course.code === "SSC-CGL"), true);
   assert.ok(semesterFive.length > 0);
   assert.match(catalog, /filterCourseDiscoveryGroups\(discovery\.groups, activeFilter, query\)/);
-  assert.match(catalog, /aria-label="Search all subjects"/);
-  assert.match(catalog, /aria-label="Subject filters"/);
-  assert.match(catalog, /Clear subject search/);
-  assert.match(catalog, /Show every subject/);
+  assert.match(catalog, /aria-label="Search all collections"/);
+  assert.match(catalog, /aria-label="Collection filters"/);
+  assert.match(catalog, /Clear collection search/);
+  assert.match(catalog, /Show every collection/);
 });
 
-test("library masthead uses real totals and full-width subject-space framing", () => {
-  assert.match(page, /Choose a subject, then go deep\./);
+test("library masthead uses real totals and full-width collection framing", () => {
+  assert.match(page, /Choose a collection, then go deep\./);
   assert.match(page, /catalog\.totals\.courses/);
   assert.match(page, /catalog\.totals\.notes/);
   assert.match(page, /practiceTotal/);

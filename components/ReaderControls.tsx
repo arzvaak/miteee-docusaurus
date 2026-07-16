@@ -6,17 +6,18 @@ import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "reac
 import type { CourseNavigationGroup, NotePreview } from "@/lib/content";
 import { parseReaderProgressStore, readerProgressStorageKey } from "@/lib/reader-progress";
 import type { HeadingAnchor } from "@/lib/heading-anchors";
+import {
+  readerGuideStateChangeEvent,
+  readerGuideStorageKey,
+  readerToolsStateChangeEvent,
+  readerToolsStorageKey
+} from "@/lib/reader-layout-preferences";
 
 type ReaderCourseNavigatorProps = {
   groups: CourseNavigationGroup[];
   courseLabel: string;
 };
 
-const readerGuideStorageKey = "miteee-reader-guide-collapsed";
-const readerGuideStateChangeEvent = "miteee-reader-guide-state-change";
-const readerGuideCompactQuery = "(max-width: 1360px)";
-const readerToolsStorageKey = "miteee-reader-tools-collapsed";
-const readerToolsStateChangeEvent = "miteee-reader-tools-state-change";
 const readerCourseMapStorageKey = "miteee-reader-course-map-collapsed";
 const readerCourseMapStateChangeEvent = "miteee-reader-course-map-state-change";
 const readerCourseGroupsStorageKey = "miteee-reader-course-groups-collapsed";
@@ -71,11 +72,11 @@ function subscribeCollapsedCourseGroups(callback: () => void) {
 }
 
 function readReaderToolsSnapshot() {
-  if (typeof window === "undefined") return true;
+  if (typeof window === "undefined") return false;
   const stored = window.localStorage.getItem(readerToolsStorageKey);
   if (stored === "true") return true;
   if (stored === "false") return false;
-  return true;
+  return false;
 }
 
 function subscribeReaderToolsState(callback: () => void) {
@@ -149,28 +150,25 @@ function applyReaderToolsState(collapsed: boolean) {
 }
 
 function readReaderGuideSnapshot() {
-  if (typeof window === "undefined") return true;
+  if (typeof window === "undefined") return false;
   const stored = window.localStorage.getItem(readerGuideStorageKey);
   if (stored === "true") return true;
   if (stored === "false") return false;
-  return true;
+  return false;
 }
 
 function subscribeReaderGuideState(callback: () => void) {
   if (typeof window === "undefined") return () => {};
-  const mobileQuery = window.matchMedia(readerGuideCompactQuery);
   window.addEventListener("storage", callback);
   window.addEventListener(readerGuideStateChangeEvent, callback);
-  mobileQuery.addEventListener("change", callback);
   return () => {
     window.removeEventListener("storage", callback);
     window.removeEventListener(readerGuideStateChangeEvent, callback);
-    mobileQuery.removeEventListener("change", callback);
   };
 }
 
 export function ReaderGuideRail({ children }: { children: React.ReactNode }) {
-  const collapsed = useSyncExternalStore(subscribeReaderGuideState, readReaderGuideSnapshot, () => true);
+  const collapsed = useSyncExternalStore(subscribeReaderGuideState, readReaderGuideSnapshot, () => false);
   const Icon = collapsed ? PanelLeftOpen : PanelLeftClose;
 
   useEffect(() => {
@@ -484,7 +482,7 @@ export function ReaderQuestionNavigator({ questions }: { questions: HeadingAncho
 }
 
 export function ReaderToolsPanel({ children }: { children: React.ReactNode }) {
-  const collapsed = useSyncExternalStore(subscribeReaderToolsState, readReaderToolsSnapshot, () => true);
+  const collapsed = useSyncExternalStore(subscribeReaderToolsState, readReaderToolsSnapshot, () => false);
 
   useEffect(() => {
     applyReaderToolsState(collapsed);

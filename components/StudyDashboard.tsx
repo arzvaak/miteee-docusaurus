@@ -60,6 +60,7 @@ function compactCode(code: string) {
 
 function courseBucket(course: Course) {
   const value = `${course.code} ${course.name} ${course.level} ${course.category}`.toLowerCase();
+  if (value.includes("research")) return "research";
   if (value.includes("upsc") || value.includes("ssc") || value.includes("civil services") || value.includes("competitive")) return "exams";
   if (course.category.toLowerCase() === "general" || value.includes("management") || value.includes("financial") || value.includes("sejarah") || value.includes("power sharing")) return "skills";
   return "engineering";
@@ -69,7 +70,8 @@ function groupCourses(courses: Course[]): CourseGroup[] {
   const groups: CourseGroup[] = [
     { key: "exams", label: "Competitive exams", courses: [] },
     { key: "engineering", label: "Engineering", courses: [] },
-    { key: "skills", label: "Skills & management", courses: [] }
+    { key: "skills", label: "Skills & management", courses: [] },
+    { key: "research", label: "Research notes", courses: [] }
   ];
   for (const course of courses) groups.find((group) => group.key === courseBucket(course))?.courses.push(course);
   return groups.filter((group) => group.courses.length > 0);
@@ -155,11 +157,11 @@ export function StudyDashboard({ totals, courses }: { totals: Totals; courses: C
       <div className={styles.spacesHeading}>
         <div>
           <p className={styles.eyebrow}>{hasStudyState ? "Full library" : "Start here"}</p>
-          <h2 id="subject-spaces-title">Subject Spaces</h2>
+          <h2 id="subject-spaces-title">Library spaces</h2>
           <p>
             {hasStudyState
-              ? "Every subject stays here, including the ones you have completed. Change its status whenever your priorities change."
-              : "Explore every subject, then mark only the ones you want to study now. Nothing is forced into your dashboard."}
+              ? "Every collection stays here, including the ones you have completed. Change its status whenever your priorities change."
+              : "Explore every collection, then mark only the ones you want to study now. Nothing is forced into your dashboard."}
           </p>
         </div>
         <div className={styles.spacesActions}>
@@ -199,12 +201,12 @@ export function StudyDashboard({ totals, courses }: { totals: Totals; courses: C
           <h1>{hasStudyState ? "Make room for what matters now." : "Choose what you want to learn."}</h1>
           <p className={styles.introCopy}>
             {hasStudyState
-              ? "Every subject stays available. Your active spaces and their real activity stay close without hiding the rest of the library."
-              : "Start with any subject space. Mark it Studying now when you want it in your focused dashboard, or leave it available for later."}
+            ? "Every collection stays available. Your active spaces and their real activity stay close without hiding the rest of the library."
+              : "Start with any library space. Mark it Studying now when you want it in your focused dashboard, or leave it available for later."}
           </p>
         </div>
         <div className={styles.libraryFacts} aria-label="Library totals">
-          <span><strong>{totals.courses}</strong> subjects</span>
+          <span><strong>{totals.courses}</strong> collections</span>
           <span><strong>{totals.notes}</strong> notes</span>
         </div>
       </header>
@@ -302,8 +304,8 @@ export function StudyDashboard({ totals, courses }: { totals: Totals; courses: C
             <div className={styles.researchLabel}><span>Research spotlight</span><FlaskConical size={21} strokeWidth={1.6} aria-hidden="true" /></div>
             <h2 id="research-feature-title">Can agent composition predict a professional VALORANT map?</h2>
             <p>Early results from 1,684 maps across regional and global VCT events, with team strength, patches, chronology and calibration kept in view.</p>
-            <Link className={styles.cardAction} href="/research/valorant-preliminary-findings">
-              Read findings <ArrowRight size={17} aria-hidden="true" />
+            <Link className={styles.cardAction} href="/notes/research-valorant-preliminary-findings-index">
+              Read note <ArrowRight size={17} aria-hidden="true" />
             </Link>
           </section>
         </aside>

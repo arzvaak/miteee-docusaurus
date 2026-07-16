@@ -54,6 +54,9 @@ export type NoteIndexItem = {
   sidebarPosition: number | null;
   description: string;
   tags: string[];
+  contentType?: string | null;
+  status?: string | null;
+  publishedAt?: string | null;
   runnable: boolean;
   courseCode: string | null;
   courseFolder: string | null;
@@ -97,7 +100,8 @@ const courseNames: Record<string, string> = {
   "SEM6-SGT": "Smart Grid Technologies",
   "SEM6-SPM": "Sejarah Pemikiran Modern",
   "UPSC-CSE-POLITICAL-SCIENCE": "UPSC Political Science NCERT",
-  "SSC-CGL": "SSC CGL Tier-I 200/200 System"
+  "SSC-CGL": "SSC CGL Tier-I 200/200 System",
+  "RESEARCH": "Research notes"
 };
 
 function posixPath(value: string) {
@@ -204,6 +208,7 @@ export function courseCodeFromSegments(segments: string[]) {
 }
 
 function categoryFromSegments(segments: string[]) {
+  if (segments[0] === "research") return "Research";
   if (segments[0] === "ssc-cgl") return "Competitive exams";
   if (segments[0] === "upsc-cse") return "Civil services";
   if (segments[0]?.startsWith("sem")) return `Semester ${segments[0].replace("sem", "")}`;
@@ -211,6 +216,7 @@ function categoryFromSegments(segments: string[]) {
 }
 
 function levelFromSegments(segments: string[]) {
+  if (segments[0] === "research") return "Note collection";
   if (segments[0] === "ssc-cgl") return "SSC CGL Tier-I";
   if (segments[0] === "upsc-cse") return "UPSC CSE";
   if (segments[0]?.startsWith("sem")) return `Semester ${segments[0].replace("sem", "")}`;
@@ -231,6 +237,7 @@ function courseName(code: string, segments: string[]) {
 
 function courseFolderFromSegments(code: string, segments: string[]) {
   if (code === "SSC-CGL") return "ssc-cgl";
+  if (code === "RESEARCH") return "research";
   return segments.slice(0, 2).join("/");
 }
 
@@ -530,6 +537,9 @@ export function buildContentData(options: BuildOptions = {}) {
       sidebarPosition: Number.isFinite(Number(parsed.data.sidebar_position)) ? Number(parsed.data.sidebar_position) : index,
       description,
       tags: Array.isArray(parsed.data.tags) ? parsed.data.tags.map(String) : [],
+      contentType: parsed.data.content_type ? String(parsed.data.content_type) : null,
+      status: parsed.data.status ? String(parsed.data.status) : null,
+      publishedAt: parsed.data.published ? String(parsed.data.published) : null,
       runnable: stats.codeBlocks > 0,
       courseCode: code,
       courseFolder: courseFolderFromSegments(code, segments),

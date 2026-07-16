@@ -6,8 +6,8 @@ import { BookOpen, Layers3, ListChecks } from "lucide-react";
 import styles from "./CoursesPage.module.css";
 
 export const metadata = buildPageMetadata({
-  title: "MITEEE Course Library",
-  description: "Find MITEEE courses by semester, exam readiness, and practice depth with notes, question banks, diagrams, and tutorials.",
+  title: "MITEEE Library",
+  description: "Find study subjects, exam systems, and research-note collections with notes, question banks, diagrams, and tutorials.",
   pathname: "/courses"
 });
 
@@ -30,12 +30,12 @@ export default function CoursesPage() {
       />
       <section className={`${styles.masthead} course-page-header`}>
         <div className={styles.mastheadCopy}>
-          <p className="eyebrow">Subject library</p>
-          <h1>Choose a subject, then go deep.</h1>
-          <p className="section-copy">Every exam system, engineering course, research space, and study vault stays open—now arranged for scanning instead of scrolling.</p>
+          <p className="eyebrow">Study library</p>
+          <h1>Choose a collection, then go deep.</h1>
+          <p className="section-copy">Subjects, exam systems, research notes, and study vaults stay together without pretending they are all the same kind of thing.</p>
         </div>
         <div className={styles.libraryFacts} aria-label="Library totals">
-          <span><BookOpen size={17} aria-hidden="true" /><strong>{catalog.totals.courses}</strong><small>subject spaces</small></span>
+          <span><BookOpen size={17} aria-hidden="true" /><strong>{catalog.totals.courses}</strong><small>collections</small></span>
           <span><Layers3 size={17} aria-hidden="true" /><strong>{catalog.totals.notes}</strong><small>indexed notes</small></span>
           <span><ListChecks size={17} aria-hidden="true" /><strong>{practiceTotal}</strong><small>practice items</small></span>
           <span><BookOpen size={17} aria-hidden="true" /><strong>{runnableTotal}</strong><small>runnable notes</small></span>

@@ -21,11 +21,11 @@ test("reader rails reclaim compact desktop space without narrowing the article",
   assert.match(css, /@media \(min-width:\s*1181px\) and \(max-width:\s*1560px\)[\s\S]*?\.reader-tools-panel:not\(\.left\):not\(\.collapsed\)\s*\{[^}]*position:\s*fixed;/s);
 });
 
-test("research prose is centered while diagrams retain the full publication canvas", () => {
-  assert.match(css, /\.research-publication\s*\{[^}]*--reader-canvas-width:\s*1120px;[^}]*--reader-prose-width:\s*820px;[^}]*margin-inline:\s*auto;/s);
-  assert.match(css, /\.research-report-body > :where\(p, ul, ol, blockquote, h2, h3, h4\)\s*\{[^}]*max-width:\s*var\(--reader-prose-width\);[^}]*margin-inline:\s*auto;/s);
-  assert.match(css, /\.research-report-body > p:has\(> img\)\s*\{[^}]*max-width:\s*var\(--reader-canvas-width\);/s);
-  assert.match(css, /\.research-report-body > :where\(table, \.katex-display, \.code-block-shell, \.mermaid-shell\)\s*\{[^}]*max-width:\s*var\(--reader-canvas-width\);/s);
+test("research prose and evidence share one left edge", () => {
+  assert.match(css, /\.research-note-page,[\s\S]*?--research-wide:\s*980px;[^}]*--research-prose:\s*720px;/s);
+  assert.match(css, /\.research-note-article\.article \.markdown-body > :where\(p, ul, ol, blockquote, h2, h3, h4, hr\)\s*\{[^}]*max-width:\s*var\(--research-prose\);[^}]*margin-left:\s*0;/s);
+  assert.match(css, /\.research-note-article \.markdown-body > :where\(table,[\s\S]*?max-width:\s*var\(--research-wide\);[^}]*margin-left:\s*0;/s);
+  assert.match(css, /\.research-note-article \.markdown-body > p:has\(> img\)[\s\S]*?max-width:\s*var\(--research-wide\);/s);
 });
 
 test("wide inline diagrams stay within a scrollable full-width canvas", () => {

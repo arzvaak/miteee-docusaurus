@@ -93,23 +93,23 @@ export function CourseCatalog({ courses }: { courses: Course[] }) {
   }
 
   return (
-    <section className={`${styles.catalog} course-index-section study-library-index`} aria-label="Subject library">
+    <section className={`${styles.catalog} course-index-section study-library-index`} aria-label="Study library">
       <div className={`${styles.controls} study-library-toolbar`}>
         <label className={styles.searchField}>
           <Search size={18} aria-hidden="true" />
-          <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search subjects, codes, or topics" aria-label="Search all subjects" />
+          <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search collections, codes, or topics" aria-label="Search all collections" />
           {query ? (
-            <button type="button" onClick={() => setQuery("")} aria-label="Clear subject search">
+            <button type="button" onClick={() => setQuery("")} aria-label="Clear collection search">
               <X size={15} aria-hidden="true" />
             </button>
           ) : null}
         </label>
         <div className={styles.resultCount} aria-live="polite">
           <strong>{filteredCourseCount}</strong>
-          <span>{filteredCourseCount === 1 ? "subject" : "subjects"} shown</span>
+          <span>{filteredCourseCount === 1 ? "collection" : "collections"} shown</span>
         </div>
 
-        <div className={`${styles.filters} study-library-filters`} aria-label="Subject filters">
+        <div className={`${styles.filters} study-library-filters`} aria-label="Collection filters">
           {discovery.filters.map((filter) => (
             <button
               aria-pressed={activeFilter === filter.id}
@@ -181,8 +181,8 @@ export function CourseCatalog({ courses }: { courses: Course[] }) {
                       </dl>
 
                       <footer className={styles.cardFooter}>
-                        <span>{isFeaturedCourse(course) ? "Featured subject space" : course.category || "Subject space"}</span>
-                        <strong>Open subject <ArrowUpRight size={14} aria-hidden="true" /></strong>
+                        <span>{course.code === "RESEARCH" ? "Growing note collection" : isFeaturedCourse(course) ? "Featured study space" : course.category || "Study space"}</span>
+                        <strong>Open {course.code === "RESEARCH" ? "collection" : "subject"} <ArrowUpRight size={14} aria-hidden="true" /></strong>
                       </footer>
                     </Link>
                   );
@@ -195,9 +195,9 @@ export function CourseCatalog({ courses }: { courses: Course[] }) {
         <div className={styles.emptyState}>
           <span><SearchX size={23} aria-hidden="true" /></span>
           <p className="eyebrow">No match in {activeFilterLabel}</p>
-          <h2>No subject space fits that search.</h2>
+          <h2>No collection fits that search.</h2>
           <p>Try a broader phrase, or reset the filters to reopen the full library.</p>
-          <button type="button" onClick={clearDiscovery}>Show every subject</button>
+          <button type="button" onClick={clearDiscovery}>Show every collection</button>
         </div>
       )}
     </section>

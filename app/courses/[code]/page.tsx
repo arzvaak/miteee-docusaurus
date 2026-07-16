@@ -5,6 +5,7 @@ import { CourseOutline } from "@/components/CourseOutline";
 import { CoursePracticeSection } from "@/components/CoursePracticeSection";
 import { CourseResumePanel } from "@/components/CourseResumePanel";
 import { JsonLd } from "@/components/JsonLd";
+import { ResearchCollection } from "@/components/ResearchCollection";
 import { SscCglLibraryLanding } from "@/components/SscCglLibraryLanding";
 import { UpscActiveRecallSection } from "@/components/UpscActiveRecallSection";
 import { courseDisplaySummary, formatNumber, getAllCourses, getCourse, getCourseNavigationGroups, getCourseNotes } from "@/lib/content";
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: CoursePageProps) {
   const course = getCourse(code);
   if (!course) return {};
   return buildPageMetadata({
-    title: `${course.name} (${course.code})`,
+    title: course.code === "RESEARCH" ? course.name : `${course.name} (${course.code})`,
     description: courseDescription(course),
     pathname: `/courses/${course.code}`
   });
@@ -66,6 +67,15 @@ export default async function CoursePage({ params }: CoursePageProps) {
             }))
           }}
         />
+      </>
+    );
+  }
+
+  if (course.code === "RESEARCH") {
+    return (
+      <>
+        <JsonLd data={structuredData} />
+        <ResearchCollection course={course} notes={notes} />
       </>
     );
   }

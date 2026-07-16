@@ -168,19 +168,22 @@ function compareDiscoveryGroups(a: CourseDiscoveryGroup, b: CourseDiscoveryGroup
 
 function discoveryGroupPriority(label: string) {
   if (/civil services|upsc/i.test(label)) return 0;
-  if (/semester\s*5/i.test(label)) return 1;
-  if (/semester\s*6/i.test(label)) return 2;
+  if (/research/i.test(label)) return 1;
+  if (/semester\s*5/i.test(label)) return 2;
+  if (/semester\s*6/i.test(label)) return 3;
   if (/mit eee|general/i.test(label)) return 9;
   return 5;
 }
 
 function courseDiscoveryGroupLabel(course: Course) {
   if (isUpscCourse(course)) return "Civil services";
+  if (/research/i.test(`${course.code} ${course.name} ${course.category}`)) return "Research";
   return course.level || course.category || "Courses";
 }
 
 function courseDiscoveryGroupSummary(label: string) {
   if (/civil services/i.test(label)) return "Breadth-first reading with active recall prompts.";
+  if (/research/i.test(label)) return "Independent notes, methods, and findings in one growing notebook.";
   if (/semester\s*5/i.test(label)) return "Core exam material, solved banks, and technical notes.";
   if (/semester\s*6/i.test(label)) return "Later semester subjects, tutorials, and applied notes.";
   return "General vault references and launch points.";

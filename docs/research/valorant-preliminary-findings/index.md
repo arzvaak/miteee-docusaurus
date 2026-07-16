@@ -2,6 +2,9 @@
 title: "Pre-match outcome prediction in professional VALORANT"
 sidebar_label: "VALORANT preliminary findings"
 description: "An undergraduate progress report on whether team composition helps predict professional VALORANT maps before play begins."
+content_type: research_note
+status: "Work in progress"
+published: "2026-07-13"
 tags:
   - research
   - valorant

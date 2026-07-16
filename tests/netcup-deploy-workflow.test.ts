@@ -52,12 +52,15 @@ test("Netcup workflow deploys the current Next standalone app instead of stale D
   assert.doesNotMatch(workflow, /grep -q "MIT EEE"/);
   assert.match(workflow, /curl --fail[\s\S]*\/exams\/ssc-cgl/);
   assert.match(workflow, /grep -q "What do you want to practice\?" \/tmp\/ssc-cgl\.html/);
-  assert.match(workflow, /\/research\/valorant-preliminary-findings/);
+  assert.match(workflow, /\/notes\/research-valorant-preliminary-findings-index/);
+  assert.match(workflow, /redirect_status/);
+  assert.match(workflow, /\/courses\/RESEARCH/);
   assert.match(workflow, /This is still a progress report/);
   assert.match(workflow, /test the final version on a future tournament/);
-  assert.match(workflow, /Subject Spaces/);
+  assert.match(workflow, /Library spaces/);
   assert.match(workflow, /Choose what you want to learn/);
   assert.match(workflow, /Make this study space yours/);
+  assert.match(workflow, /Reader layout/);
   assert.match(workflow, /composition-map-feature-audit\.png/);
   assert.match(workflow, /npx playwright install --with-deps chromium/);
   assert.match(workflow, /SSC_BROWSER_BASE_URL=https:\/\/note\.arzvak\.com npm run verify:ssc-browser/);

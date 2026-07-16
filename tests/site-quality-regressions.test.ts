@@ -169,7 +169,7 @@ test("personal briefing body copy stays fully readable on mobile", () => {
 test("homepage keeps free exploration while using explicit local study states", () => {
   assert.match(studyDashboard, /Make room for what matters now\./);
   assert.match(studyDashboard, /What you need to do/);
-  assert.match(studyDashboard, /Subject Spaces/);
+  assert.match(studyDashboard, /Library spaces/);
   assert.match(studyDashboard, /group\.courses\.map/);
   assert.match(studyDashboard, /studySpaceStatusOptions\.map/);
   assert.match(studyDashboard, /Create a study plan/);

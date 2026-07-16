@@ -75,7 +75,7 @@ test("homepage uses graphite study cards instead of a flat library index", () =>
   const css = fs.readFileSync(path.join(process.cwd(), "components", "StudyDashboard.module.css"), "utf8");
 
   assert.match(dashboard, /Make room for what matters now\./);
-  assert.match(dashboard, /Subject Spaces/);
+  assert.match(dashboard, /Library spaces/);
   assert.match(dashboard, /studySpaceStatusOptions\.map/);
   assert.doesNotMatch(dashboard, /home-hero|study desk/i);
   assert.match(css, /\.dashboardGrid\s*\{/);
