@@ -821,7 +821,8 @@
 }
 
 :global(:root[data-theme="light"]) .practice,
-:global(:root[data-theme="paper"]) .practice {
+:global(:root[data-theme="paper"]) .practice,
+:global(:root[data-theme="parchment"]) .practice {
   --practice-accent: #bd4d31;
 }
 

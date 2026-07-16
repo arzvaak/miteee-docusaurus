@@ -37,6 +37,22 @@ export const resolvedThemes = [
     swatch: ["#f4efe5", "#8b5b2b", "#416d85", "#3f7257", "#9a5361"]
   },
   {
+    value: "parchment",
+    label: "Parchment",
+    description: "Dimmed tan paper",
+    mode: "light",
+    themeColor: "#c9b99f",
+    swatch: ["#c9b99f", "#74491f", "#365f70", "#3f684f", "#81505a"]
+  },
+  {
+    value: "night-paper",
+    label: "Night Paper",
+    description: "Warm paper after dark",
+    mode: "dark",
+    themeColor: "#211d18",
+    swatch: ["#211d18", "#d5a460", "#78a9b4", "#82ad8b", "#c98994"]
+  },
+  {
     value: "monokai",
     label: "Monokai",
     description: "Ink, lime, and magenta",

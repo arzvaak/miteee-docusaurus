@@ -93,10 +93,12 @@ test("homepage uses a dark-safe palette with an explicit light alternative", () 
   assert.match(dashboardCss, /:global\(:root\[data-theme="light"\]\) \.dashboard/);
 });
 
-test("appearance themes include warm paper and high-contrast palettes", () => {
+test("appearance themes include warm, dimmed, night paper, and high-contrast palettes", () => {
   const css = fs.readFileSync(path.join(process.cwd(), "app", "globals.css"), "utf8");
 
   assert.match(css, /:root\[data-theme="paper"\][\s\S]*?--bg:\s*#f4efe5/);
+  assert.match(css, /:root\[data-theme="parchment"\][\s\S]*?--bg:\s*#c9b99f/);
+  assert.match(css, /:root\[data-theme="night-paper"\][\s\S]*?--bg:\s*#211d18/);
   assert.match(css, /:root\[data-theme="high-contrast"\][\s\S]*?--bg:\s*#000000/);
   assert.match(css, /:root\[data-theme="high-contrast"\][\s\S]*?:focus-visible/);
 });
@@ -104,7 +106,7 @@ test("appearance themes include warm paper and high-contrast palettes", () => {
 test("editor themes keep distinct surface, typography, shape, and multi-accent personalities", () => {
   const css = fs.readFileSync(path.join(process.cwd(), "app", "globals.css"), "utf8");
   const personalities = [
-    "paper", "monokai", "dracula", "nord", "gruvbox", "solarized-dark", "solarized-light",
+    "paper", "parchment", "night-paper", "monokai", "dracula", "nord", "gruvbox", "solarized-dark", "solarized-light",
     "tokyo-night", "one-dark", "catppuccin", "high-contrast"
   ];
 

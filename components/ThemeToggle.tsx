@@ -17,6 +17,8 @@ const themeIcons: Partial<Record<ThemePreference, typeof Monitor>> = {
   dark: Moon,
   light: Sun,
   paper: BookOpen,
+  parchment: BookOpen,
+  "night-paper": BookOpen,
   "high-contrast": Contrast
 };
 

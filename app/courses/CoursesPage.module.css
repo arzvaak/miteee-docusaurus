@@ -83,7 +83,9 @@
   text-transform: uppercase;
 }
 
-:global(:root[data-theme="paper"]) .page .masthead {
+:global(:root[data-theme="paper"]) .page .masthead,
+:global(:root[data-theme="parchment"]) .page .masthead,
+:global(:root[data-theme="night-paper"]) .page .masthead {
   background: color-mix(in srgb, var(--surface) 94%, var(--bg));
 }
 

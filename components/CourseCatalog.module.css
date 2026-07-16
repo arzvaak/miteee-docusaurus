@@ -470,7 +470,11 @@
 }
 
 :global(:root[data-theme="paper"]) .courseCard,
-:global(:root[data-theme="paper"]) .controls {
+:global(:root[data-theme="paper"]) .controls,
+:global(:root[data-theme="parchment"]) .courseCard,
+:global(:root[data-theme="parchment"]) .controls,
+:global(:root[data-theme="night-paper"]) .courseCard,
+:global(:root[data-theme="night-paper"]) .controls {
   background: color-mix(in srgb, var(--surface) 94%, var(--bg));
 }
 

@@ -14,7 +14,7 @@ test("theme registry is broad, unique, and includes the requested editor palette
   assert.ok(themeOptions.length >= 14);
 
   for (const expected of [
-    "dark", "light", "paper", "monokai", "dracula", "nord", "gruvbox", "solarized-dark",
+    "dark", "light", "paper", "parchment", "night-paper", "monokai", "dracula", "nord", "gruvbox", "solarized-dark",
     "solarized-light", "tokyo-night", "one-dark", "catppuccin", "high-contrast"
   ]) {
     assert.ok(ids.includes(expected as (typeof ids)[number]), `${expected} should be registered`);
@@ -25,6 +25,8 @@ test("theme registry is broad, unique, and includes the requested editor palette
 
 test("theme registry carries the native light and dark mode for every palette", () => {
   assert.equal(themeModeById.paper, "light");
+  assert.equal(themeModeById.parchment, "light");
+  assert.equal(themeModeById["night-paper"], "dark");
   assert.equal(themeModeById["solarized-light"], "light");
   assert.equal(themeModeById.monokai, "dark");
   assert.equal(themeModeById.dracula, "dark");
