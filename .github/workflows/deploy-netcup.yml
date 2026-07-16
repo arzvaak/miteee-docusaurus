@@ -176,9 +176,9 @@ jobs:
           test "$redirect_status" = "308"
           curl --fail --location --silent --show-error https://note.arzvak.com/notes/research-valorant-preliminary-findings-index > /tmp/valorant-research.html
           grep -q "Research note" /tmp/valorant-research.html
-          grep -q "Pre-match outcome prediction in professional VALORANT" /tmp/valorant-research.html
-          grep -q "This is still a progress report" /tmp/valorant-research.html
-          grep -q "test the final version on a future tournament" /tmp/valorant-research.html
+          grep -q "Pre match outcome prediction in professional VALORANT" /tmp/valorant-research.html
+          grep -q "Work in progress" /tmp/valorant-research.html
+          grep -q "not yet tested the final model on a completely untouched future tournament" /tmp/valorant-research.html
           curl --fail --location --silent --show-error https://note.arzvak.com/courses/RESEARCH > /tmp/research-notes.html
           grep -q "Research notes" /tmp/research-notes.html
           curl --fail --location --silent --show-error --output /dev/null https://note.arzvak.com/content-assets/research/valorant-preliminary-findings/assets/composition-map-feature-audit.png

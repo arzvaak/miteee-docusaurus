@@ -55,8 +55,8 @@ test("Netcup workflow deploys the current Next standalone app instead of stale D
   assert.match(workflow, /\/notes\/research-valorant-preliminary-findings-index/);
   assert.match(workflow, /redirect_status/);
   assert.match(workflow, /\/courses\/RESEARCH/);
-  assert.match(workflow, /This is still a progress report/);
-  assert.match(workflow, /test the final version on a future tournament/);
+  assert.match(workflow, /Work in progress/);
+  assert.match(workflow, /not yet tested the final model on a completely untouched future tournament/);
   assert.match(workflow, /Library spaces/);
   assert.match(workflow, /Choose what you want to learn/);
   assert.match(workflow, /Make this study space yours/);
