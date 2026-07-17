@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
-  <title id="title">SSC CGL synonyms antonyms 36-second vocabulary map</title>
+  <title id="title">SSC CGL synonyms and antonyms vocabulary map</title>
   <desc id="desc">A visual map for solving SSC CGL synonyms and antonyms through part of speech, meaning, connotation, degree, roots, and context.</desc>
   <rect width="1200" height="760" fill="#f8fafc"/>
   <rect x="42" y="36" width="1116" height="688" rx="18" fill="#ffffff" stroke="#0f172a" stroke-width="3"/>
-  <text x="74" y="88" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800" fill="#0f172a">Synonyms and Antonyms: 36-Second Filter</text>
+  <text x="74" y="88" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800" fill="#0f172a">Synonyms and Antonyms: Context Filter</text>
   <text x="76" y="122" font-family="Inter, Arial, sans-serif" font-size="18" fill="#475569">Do not guess from word shape alone. Filter by part of speech, meaning, tone, degree, and context.</text>
 
   <g font-family="Inter, Arial, sans-serif">

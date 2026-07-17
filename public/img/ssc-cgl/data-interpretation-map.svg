@@ -1,31 +1,31 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
   <title id="title">SSC CGL Data Interpretation attack map</title>
-  <desc id="desc">A compact visual map for classifying DI sets, locking data, choosing operations, and finishing within 36 seconds per question.</desc>
+  <desc id="desc">A compact visual map for auditing DI displays, locking data, choosing operations, and checking results.</desc>
   <rect width="1200" height="675" fill="#0f172a"/>
   <rect x="42" y="42" width="1116" height="591" rx="28" fill="#111827" stroke="#38bdf8" stroke-width="3"/>
-  <text x="78" y="104" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="800">Data Interpretation: 36-Second Attack Map</text>
+  <text x="78" y="104" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="800">Data Interpretation: Read-Compute-Check</text>
   <text x="80" y="143" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="21">Classify the set, lock the base, compute only what the options need.</text>
 
   <g font-family="Inter, Arial, sans-serif">
     <rect x="78" y="190" width="224" height="116" rx="18" fill="#164e63"/>
-    <text x="104" y="232" fill="#ecfeff" font-size="25" font-weight="750">0-5 sec</text>
+      <text x="104" y="232" fill="#ecfeff" font-size="25" font-weight="750">1. Audit display</text>
     <text x="104" y="263" fill="#cffafe" font-size="20">Classify: table, bar,</text>
     <text x="104" y="289" fill="#cffafe" font-size="20">pie, line, caselet</text>
 
     <rect x="350" y="190" width="224" height="116" rx="18" fill="#365314"/>
-    <text x="376" y="232" fill="#f7fee7" font-size="25" font-weight="750">5-15 sec</text>
+      <text x="376" y="232" fill="#f7fee7" font-size="25" font-weight="750">2. Lock data</text>
     <text x="376" y="263" fill="#dcfce7" font-size="20">Row-column lock</text>
     <text x="376" y="289" fill="#dcfce7" font-size="20">and base discipline</text>
 
     <rect x="622" y="190" width="224" height="116" rx="18" fill="#7c2d12"/>
-    <text x="648" y="232" fill="#fff7ed" font-size="25" font-weight="750">15-28 sec</text>
+      <text x="648" y="232" fill="#fff7ed" font-size="25" font-weight="750">3. Compute</text>
     <text x="648" y="263" fill="#ffedd5" font-size="20">Total, share, change,</text>
     <text x="648" y="289" fill="#ffedd5" font-size="20">ratio, average</text>
 
     <rect x="894" y="190" width="224" height="116" rx="18" fill="#581c87"/>
-    <text x="920" y="232" fill="#faf5ff" font-size="25" font-weight="750">28-36 sec</text>
-    <text x="920" y="263" fill="#f3e8ff" font-size="20">Use option gap, mark,</text>
-    <text x="920" y="289" fill="#f3e8ff" font-size="20">or skip cleanly</text>
+      <text x="920" y="232" fill="#faf5ff" font-size="25" font-weight="750">4. Verify</text>
+      <text x="920" y="263" fill="#f3e8ff" font-size="20">Check unit, base,</text>
+      <text x="920" y="289" fill="#f3e8ff" font-size="20">and reasonable scale</text>
 
     <path d="M307 248h38" stroke="#e2e8f0" stroke-width="5" stroke-linecap="round"/>
     <path d="M579 248h38" stroke="#e2e8f0" stroke-width="5" stroke-linecap="round"/>

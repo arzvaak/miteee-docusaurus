@@ -3,7 +3,7 @@
   <desc id="desc">A visual map for sentence improvement decisions: grammar, tense, preposition, pronoun, redundancy, parallelism, modifiers, and no improvement.</desc>
   <rect width="1100" height="620" fill="#0f172a"/>
   <rect x="42" y="38" width="1016" height="544" rx="18" fill="#111827" stroke="#a78bfa" stroke-width="3"/>
-  <text x="550" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#faf5ff">Sentence Improvement: 15-second Decision Map</text>
+  <text x="550" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#faf5ff">Sentence Improvement: Decision Map</text>
   <text x="550" y="113" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#ddd6fe">Find the error type, preserve meaning, prefer concise standard English, and respect No Improvement</text>
 
   <g font-family="Arial, sans-serif" fill="#f8fafc">

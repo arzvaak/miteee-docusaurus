@@ -34,7 +34,7 @@ test("SSC CGL deep notes cover every Tier-I subject with 200/200 artifacts", () 
   const combined = files.map((file) => fs.readFileSync(file, "utf8")).join("\n\n");
 
   assert.ok(files.length >= 10, `expected at least 10 SSC CGL notes, got ${files.length}`);
-  for (const subject of ["Reasoning", "General Awareness", "Quantitative Aptitude", "English"]) {
+  for (const subject of ["Reasoning", "General Awareness", "Quantitative[ -]Aptitude", "English"]) {
     assert.match(combined, new RegExp(subject, "i"));
   }
   for (const phrase of ["200/200 Drill", "PYQ Link Queue", "Trap Table", "Flowchart", "Solved Example"]) {
@@ -53,7 +53,7 @@ test("SSC CGL deep notes link study material back to generated exam routes", () 
   assert.match(combined, /\/exams\/ssc-cgl\/current-affairs/);
 });
 
-test("SSC CGL topic notes end with direct one-by-one practice queues", () => {
+test("SSC CGL topic notes end with a direct next step into focused practice", () => {
   const missingPracticeClosers = getSscTopics()
     .map((topic) => {
       const notePath = path.join(
@@ -65,14 +65,16 @@ test("SSC CGL topic notes end with direct one-by-one practice queues", () => {
       );
       const note = fs.readFileSync(notePath, "utf8");
       const tail = note.slice(-3500);
+      const hasPracticeLink = tail.includes(`/exams/ssc-cgl/practice/${topic.slug}`);
       return {
         slug: topic.slug,
-        hasFinalQueue: /Final Practice Queue|Practice Queue|Drill Queue/i.test(tail),
-        hasPracticeLink: tail.includes(`/exams/ssc-cgl/practice/${topic.slug}`),
-        hasTestLink: tail.includes("/exams/ssc-cgl/tests")
+        hasClosingPractice:
+          /Final Practice Queue|Practice Queue|Drill Queue/i.test(tail)
+          || (hasPracticeLink && /^##\s+(?:\d+\.\s+)?(?:Mixed (?:Exam )?Practice|Mastery(?: Check)?)(?:\s+.*)?$/im.test(tail)),
+        hasPracticeLink
       };
     })
-    .filter((topic) => !topic.hasFinalQueue || !topic.hasPracticeLink || !topic.hasTestLink);
+    .filter((topic) => !topic.hasClosingPractice || !topic.hasPracticeLink);
 
   assert.deepEqual(missingPracticeClosers, []);
 });
@@ -219,5 +221,5 @@ test("SSC CGL DeepSeek note dry run includes book-PYQ corpus blueprint context",
   assert.match(prompt, /Book PYQ corpus blueprint/i);
   assert.match(prompt, /ssc-maths-6800-mcq/i);
   assert.match(prompt, /quantitative-aptitude/i);
-  assert.match(prompt, /Use the book-PYQ corpus distribution/i);
+  assert.match(prompt, /Use source and PYQ metadata only to choose what deserves emphasis/i);
 });

@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-labelledby="title desc">
-  <title id="title">HCF and LCM 36-second decision map</title>
+  <title id="title">HCF and LCM decision map</title>
   <desc id="desc">A study map for choosing HCF, LCM, product relation, fraction relation, and remainder-difference routes in SSC CGL Quant.</desc>
   <rect width="960" height="520" fill="#f7fbf8"/>
   <rect x="44" y="38" width="872" height="84" rx="18" fill="#163f38"/>
@@ -28,5 +28,5 @@
     <path d="M480 260 C525 302 590 310 685 330"/>
     <path d="M780 260 C760 302 735 314 685 330"/>
   </g>
-  <text x="480" y="475" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#163f38">36-second rule: identify divisor/multiple/remainder wording before calculating.</text>
+  <text x="480" y="475" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#163f38">Identify divisor, multiple, or remainder wording before calculating.</text>
 </svg>

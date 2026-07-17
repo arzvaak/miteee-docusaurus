@@ -444,8 +444,8 @@ test("SSC CGL topic coverage map enforces a real 200/200 sufficiency gate", () =
   assert.equal(allRows.length, coverage.totalTopics);
   assert.equal(coverage.masteryTargetQuestionsPerTopic, 500);
   assert.equal(coverage.bookBackedTargetQuestionsPerTopic, 300);
-  assert.equal(coverage.deepNoteTargetChars, 14000);
-  assert.equal(coverage.exampleTargetPerTopic, 20);
+  assert.equal(coverage.deepNoteTargetChars, 9000);
+  assert.equal(coverage.exampleTargetPerTopic, 10);
   assert.equal(coverage.topicsPracticeSufficient, allRows.filter((row) => row.practiceReady).length);
   assert.equal(coverage.topicsFullySufficient, allRows.filter((row) => row.masteryReady).length);
   assert.equal(coverage.masteryGateFailures, allRows.filter((row) => !row.masteryReady).length);

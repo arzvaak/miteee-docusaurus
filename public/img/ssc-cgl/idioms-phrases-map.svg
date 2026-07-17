@@ -3,7 +3,7 @@
   <desc id="desc">A visual recall map grouping idioms by body, animal, colour, number, action, preposition, tone, and context.</desc>
   <rect width="1100" height="620" fill="#111827"/>
   <rect x="42" y="38" width="1016" height="544" rx="18" fill="#0f172a" stroke="#f59e0b" stroke-width="3"/>
-  <text x="550" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#fff7ed">Idioms and Phrases: 15-second Recall Map</text>
+  <text x="550" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#fff7ed">Idioms and Phrases: Meaning Map</text>
   <text x="550" y="113" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#fed7aa">Reject literal meaning first, then match figurative meaning, tone, and fixed wording</text>
 
   <g font-family="Arial, sans-serif" fill="#f8fafc">

@@ -2422,15 +2422,13 @@ TOPICS: dict[str, dict[str, Any]] = {
 }
 
 
-REQUIRED_SECTIONS = [
-    "## Concept Ladder",
-    "## Type System",
-    "## Speed Methods",
-    "## Trap Table",
-    "## Flowchart",
-    "## Solved Examples",
-    "## PYQ Mapping",
-    "## 200/200 Drill",
+SUGGESTED_SECTIONS = [
+    "## What You Need to Know",
+    "## How to Solve It",
+    "## Worked Examples",
+    "## Common Traps",
+    "## Check Yourself",
+    "## Mixed Exam Practice",
 ]
 
 
@@ -2462,12 +2460,10 @@ def normalize_heading(value: str) -> str:
 
 
 def section_presence(markdown: str) -> list[str]:
-    present: list[str] = []
-    for section in REQUIRED_SECTIONS:
-        heading = re.escape(section).replace(r"\ ", r"\s+")
-        if re.search(rf"^{heading}\s*$", markdown, re.IGNORECASE | re.MULTILINE):
-            present.append(section)
-    return present
+    return [
+        f"## {match.group(1).strip()}"
+        for match in re.finditer(r"^##\s+(.+?)\s*$", markdown, re.MULTILINE)
+    ]
 
 
 def section_text(markdown: str, section: str) -> str:
@@ -2555,68 +2551,56 @@ def strip_leading_metadata_object(markdown: str) -> str:
     return text
 
 
-def sanitize_ascii(markdown: str) -> str:
-    replacements = {
-        "\u2013": "-",
-        "\u2014": "-",
-        "\u2192": "->",
-        "\u00d7": "x",
-        "\u00b1": "+/-",
-        "\u2260": "!=",
-        "\u2248": "~=",
-        "\u2264": "<=",
-        "\u2265": ">=",
-        "\u2018": "'",
-        "\u2019": "'",
-        "\u201c": '"',
-        "\u201d": '"',
-        "\u2026": "...",
-        "\u20b9": "Rs ",
-    }
-    text = markdown
-    for source, target in replacements.items():
-        text = text.replace(source, target)
+def sanitize_markdown(markdown: str) -> str:
+    text = markdown.replace("\r\n", "\n")
     text = re.sub(r"\bre-?evaluate\b", "check again", text, flags=re.IGNORECASE)
     text = re.sub(r"\bnot in options\b", "answer absent from option list", text, flags=re.IGNORECASE)
     text = re.sub(r"\breplace with\b", "use", text, flags=re.IGNORECASE)
     text = re.sub(r"\boptions?\s+(?:do|does)\s+not\s+(?:include|match)\b", "option conflicts with", text, flags=re.IGNORECASE)
     text = re.sub(r"\bunsolvable\b", "inconsistent", text, flags=re.IGNORECASE)
     text = re.sub(r"\bno solution\b", "inconsistent", text, flags=re.IGNORECASE)
-    return text.encode("ascii", errors="ignore").decode("ascii")
+    return text
 
 
 def ensure_frontmatter(markdown: str, topic: dict[str, Any]) -> str:
     body = markdown.strip()
     if body.startswith("---"):
         body = re.sub(r"^---\s*[\s\S]*?\s*---\s*", "", body, count=1).strip()
-    body = sanitize_ascii(strip_leading_metadata_object(body))
+    body = sanitize_markdown(strip_leading_metadata_object(body))
     return canonical_frontmatter(topic) + body.strip() + "\n"
 
 
 def validate_markdown(markdown: str) -> None:
-    missing = [section for section in REQUIRED_SECTIONS if section not in section_presence(markdown)]
-    if missing:
-        raise ValueError(f"DeepSeek note is missing required sections: {', '.join(missing)}")
+    sections = section_presence(markdown)
+    if not 6 <= len(sections) <= 8:
+        raise ValueError("DeepSeek note needs 6 to 8 purposeful H2 learning sections")
     if "generated_by: deepseek" not in markdown.lower():
         raise ValueError("DeepSeek note is missing generated_by frontmatter")
-    if "```mermaid" not in markdown:
-        raise ValueError("DeepSeek note is missing a Mermaid flowchart")
-    if re.search(r"[^\x00-\x7F]", markdown):
-        raise ValueError("DeepSeek note contains non-ASCII characters after sanitization")
+    if not re.search(r"```mermaid|!\[[^\]]+\]\([^)]+\)", markdown, re.IGNORECASE):
+        raise ValueError("DeepSeek note needs one purposeful diagram or image")
     leaked = generator_leakage(markdown)
     if leaked:
         raise ValueError(f"DeepSeek note contains unresolved generator drafting text: {', '.join(leaked)}")
-    solved_examples = re.findall(r"^\*\*Example\s+\d+", markdown, re.IGNORECASE | re.MULTILINE)
-    if len(solved_examples) < 10:
-        raise ValueError("DeepSeek note needs at least 10 solved examples")
-    trap_rows = [
-        line for line in section_text(markdown, "## Trap Table").splitlines()
-        if line.strip().startswith("|") and "---" not in line
-    ]
-    if len(trap_rows) < 13:
-        raise ValueError("DeepSeek note needs a Trap Table with at least 12 traps")
-    if len(markdown) < 9000:
-        raise ValueError("DeepSeek note is too short for the exhaustive topic contract")
+    learning_checks = re.findall(
+        r"^\*\*(?:Worked example|Self-check|Example\s+\d+)\*\*|^###\s+Question\s+\d+",
+        markdown,
+        re.IGNORECASE | re.MULTILINE,
+    )
+    if len(learning_checks) < 8:
+        raise ValueError("DeepSeek note needs at least 8 placed worked examples or self-checks")
+    table_lines = [line for line in markdown.splitlines() if line.strip().startswith("|")]
+    table_headers = [line for line in table_lines if re.search(r"\|\s*:?-{3,}", line)]
+    if len(table_headers) > 5:
+        raise ValueError("DeepSeek note must use no more than 5 purposeful tables")
+    for line in table_lines:
+        if line.count("|") - 1 > 4:
+            raise ValueError("DeepSeek note tables must not exceed 4 columns")
+    if len(markdown) < 6000:
+        raise ValueError("DeepSeek note is too short to teach the complete topic")
+    if len(markdown) > 16000:
+        raise ValueError("DeepSeek note is too long; remove repetition and bulk question dumps")
+    if re.search(r"corpus pressure|indexed book-PYQ|gap-repair|200/200 drill", markdown, re.IGNORECASE):
+        raise ValueError("DeepSeek note exposes internal corpus or authoring language")
 
 
 def load_book_corpus_blueprint(path: Path = BOOK_CORPUS_BLUEPRINT_PATH) -> dict[str, Any] | None:
@@ -2688,32 +2672,30 @@ def build_prompt(topic_id: str, topic: dict[str, Any]) -> str:
         "review_status": "ai-authored-needs-agent-review",
     }
     prompt_parts = [
-        "You are DeepSeek writing a one-topic SSC CGL Tier-I 200/200 study note.",
-        "Return strict markdown only. Do not wrap it in a code fence. Use ASCII punctuation only.",
+        "You are DeepSeek writing one polished SSC CGL Tier-I topic lesson for a learner.",
+        "Return strict markdown only. Do not wrap it in a code fence. Use natural, correct English and KaTeX-compatible math.",
         "Write exam-ready explanations from the supplied anchors, syllabus scope, source metadata, and exam pattern.",
         "Do not add source-policy, legal-policy, copyright-policy, or provenance disclaimers to the learner-facing note.",
-        "Use the book-PYQ corpus distribution below to decide depth: high-count topics need more type coverage and repeated traps; low-count topics need extra original examples and repair drills so the note stays exhaustive.",
-        "The student is aiming for 200/200, so be extremely thorough: every step, shortcut, type, trap, and example must be explicit.",
-        "The note must be usable as a standalone study chapter and must include the exact headings listed below.",
-        "Required headings, exactly as written:",
-        *REQUIRED_SECTIONS,
+        "Use source and PYQ metadata only to choose what deserves emphasis. Never expose corpus counts, source filenames, ingestion language, or authoring policy to the learner.",
+        "Make the lesson complete but concise. Prefer one clear rule, a placed worked example, a self-check, and its answer over repeated explanation.",
+        "Use 6 to 8 purposeful H2 sections. Adapt their names to the topic; this is a suggested learning sequence:",
+        *SUGGESTED_SECTIONS,
         "Frontmatter must include these keys and values:",
         json.dumps(expected_frontmatter, ensure_ascii=False),
         "Required content rules:",
-        "- At least 9000 characters.",
-        "- Include a Concept Ladder from first principles to exam-level integration for this topic.",
-        "- Include a Type System table with type, recognition cue, method, speed target, and trap.",
-        "- Include Speed Methods with recall tables, decision rules, and step-by-step algorithms suited to this topic.",
+        "- Aim for 6000 to 14000 characters; never pad to hit length.",
+        "- Start with the core idea and a usable decision method, then build toward mixed exam practice.",
+        "- Place every worked example and self-check immediately after the rule it tests. Put answers in collapsed <details> blocks.",
+        "- Include at least 8 total worked examples and self-checks, but do not append a bulk 25-question dump.",
+        "- Use no more than 5 tables. Every table must have at most 4 columns and about 10 data rows.",
+        "- Include one purposeful Mermaid diagram or an existing local image, followed immediately by an italic visible caption.",
         "- For Quantitative Aptitude topics, include the exact phrase \"36-second attempt plan\" and make the note brutally practical for 25 Quant questions in 15 minutes.",
         "- For Quantitative Aptitude topics, every method should tell the student when to use direct formula, option testing, approximation, substitution, or skip-and-return.",
-        "- Include a Trap Table as a markdown table, not a numbered list. It must have this header exactly: | Trap | Trigger Wording | Wrong Move | Correct Move | Repair Drill | and at least 14 data rows.",
-        "- Include one Mermaid flowchart under Flowchart.",
-        "- Include at least 10 solved examples with option-style answers and explanation.",
+        "- Keep trap guidance compact and tied to actual decision mistakes.",
         "- Every solved example must be internally consistent, fully solvable, and final-polished. Do not include ambiguous examples, scratch reasoning, self-corrections, rewritten examples, or phrases like wait, maybe, assume extra clue, I will modify, or no solution.",
         "- Never include draft-process words such as corrected, reevaluate, re-evaluate, not in options, option missing, replace with, quick fix, or maybe. Return only the final polished chapter.",
-        "- Include a PYQ Mapping section that links topic types to practice routes, not copied PYQs.",
-        "- Include a 200/200 Drill ending with timed micro-drills and repair rules.",
-        "- Add links to these local practice routes: " + ", ".join(topic["routeLinks"]),
+        "- End with a short mixed practice set and one clear next-step link; do not repeat the lesson or expose source/corpus metadata.",
+        "- Add relevant links from these local practice routes: " + ", ".join(topic["routeLinks"]),
         f"Topic id: {topic_id}",
         f"Topic title: {topic['title']}",
         f"Section: {topic['section']}",
@@ -2726,9 +2708,8 @@ def build_prompt(topic_id: str, topic: dict[str, Any]) -> str:
     locked_examples = str(topic.get("lockedSolvedExamples") or "").strip()
     if locked_examples:
         prompt_parts.extend([
-            "Locked solved-example block:",
-            "For the ## Solved Examples section, paste the following block exactly and do not invent, replace, correct, summarize, or add solved examples.",
-            "You may explain methods in other sections, but the solved examples themselves must remain final-polished and unchanged.",
+            "Verified example source block:",
+            "Select only the 6 to 10 most distinct examples needed for this lesson. Keep the selected question, options, key, and mathematical result unchanged, but place each example next to the rule it tests instead of pasting this block wholesale.",
             locked_examples,
         ])
     return "\n".join(prompt_parts)

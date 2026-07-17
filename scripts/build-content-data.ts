@@ -89,7 +89,7 @@ type Catalog = {
 };
 
 const courseNames: Record<string, string> = {
-  "MITEEE": "MIT EEE Study Vault",
+  "MITEEE": "MIT EEE",
   "SEM5-DSP": "Digital Signal Processing",
   "SEM5-EM2": "Electrical Machines II",
   "SEM5-EOM": "Essentials of Management",
@@ -232,7 +232,7 @@ function titleCase(value: string) {
 }
 
 function courseName(code: string, segments: string[]) {
-  return courseNames[code] || titleCase(segments[1] || segments[0] || "Study Vault");
+  return courseNames[code] || titleCase(segments[1] || segments[0] || "MIT EEE");
 }
 
 function courseFolderFromSegments(code: string, segments: string[]) {
@@ -243,6 +243,8 @@ function courseFolderFromSegments(code: string, segments: string[]) {
 
 function isPublicLearnerNote(relativePath: string) {
   const normalized = posixPath(relativePath);
+  if (normalized === "index.md" || normalized === "index.mdx") return false;
+  if (normalized.startsWith("superpowers/")) return false;
   if (!normalized.startsWith("ssc-cgl/")) return true;
   return normalized.split("/").length >= 3;
 }

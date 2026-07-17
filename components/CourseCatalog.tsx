@@ -49,7 +49,7 @@ function iconForCourse(course: Course): LucideIcon {
   if (/Data Science|CRA/i.test(identity)) return Braces;
   if (/Management|Financial|Economics/i.test(identity)) return ChartNoAxesCombined;
   if (/Research|Valorant/i.test(identity)) return FlaskConical;
-  if (/MITEEE|Study Vault/i.test(identity)) return LibraryBig;
+  if (/MITEEE/i.test(identity)) return LibraryBig;
   return BookOpen;
 }
 
@@ -69,7 +69,6 @@ function blurbForCourse(course: Course) {
   if (/UPSC|Political Science/i.test(identity)) return "NCERT-grounded reading with Prelims traps, Mains scaffolds, and active recall.";
   if (/Research|Valorant/i.test(identity)) return "An evidence-led research space with methods, findings, and reproducible analysis.";
   if (/Plans/i.test(identity)) return "Implementation notes and working plans kept together for deliberate project review.";
-  if (/Study Vault/i.test(identity)) return "A compact doorway into the wider MIT EEE study collection.";
   if (course.runnableNoteCount > 0) return "A practical subject space combining structured notes, worked material, and runnable study tools.";
   if (coursePracticeTotal(course) > 0) return "Focused course notes paired with question banks and exam-oriented practice.";
   return "Structured notes and reference material for steady, topic-by-topic study.";

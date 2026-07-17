@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
-  <title id="title">SSC CGL percentages 36-second base map</title>
-  <desc id="desc">A 381-question percentages map showing base selection, fraction conversion, multiplier choice, option-gap computation and repair.</desc>
+  <title id="title">SSC CGL percentages base map</title>
+  <desc id="desc">A percentages map showing base selection, fraction conversion, multiplier choice, reverse percentages, and answer checks.</desc>
   <rect width="960" height="540" fill="#101820"/>
   <rect x="28" y="28" width="904" height="484" rx="18" fill="#172235" stroke="#fbbf24" stroke-width="2"/>
-  <text x="480" y="68" text-anchor="middle" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Percentages 381-Q Base Map</text>
+  <text x="480" y="68" text-anchor="middle" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Percentages: Base-First Map</text>
   <text x="480" y="100" text-anchor="middle" fill="#fde68a" font-family="Inter, Arial, sans-serif" font-size="15">Lock the base first; then choose fraction, multiplier, approximation, or reverse percentage.</text>
 
   <g font-family="Inter, Arial, sans-serif" font-size="15">
@@ -32,16 +32,16 @@
     <text x="78" y="425" fill="#0f172a">area and volume factors</text>
 
     <rect x="355" y="315" width="250" height="118" rx="12" fill="#ede9fe"/>
-    <text x="480" y="343" text-anchor="middle" fill="#0f172a" font-size="19" font-weight="700">36-Second Check</text>
-    <text x="378" y="375" fill="#0f172a">0-8s identify base</text>
-    <text x="378" y="400" fill="#0f172a">8-28s calculate route</text>
-    <text x="378" y="425" fill="#0f172a">28-36s verify wording</text>
+    <text x="480" y="343" text-anchor="middle" fill="#0f172a" font-size="19" font-weight="700">Answer Check</text>
+    <text x="378" y="375" fill="#0f172a">confirm reference base</text>
+    <text x="378" y="400" fill="#0f172a">check sign and magnitude</text>
+    <text x="378" y="425" fill="#0f172a">verify percent vs points</text>
 
     <rect x="655" y="315" width="250" height="118" rx="12" fill="#cffafe"/>
-    <text x="780" y="343" text-anchor="middle" fill="#0f172a" font-size="19" font-weight="700">Repair Queue</text>
+    <text x="780" y="343" text-anchor="middle" fill="#0f172a" font-size="19" font-weight="700">Mistake Repair</text>
     <text x="678" y="375" fill="#0f172a">tag base, conversion, SI/CI</text>
     <text x="678" y="400" fill="#0f172a">redo same family twice</text>
-    <text x="678" y="425" fill="#0f172a">promote only under timer</text>
+    <text x="678" y="425" fill="#0f172a">recheck with a 100 model</text>
   </g>
 
   <g stroke="#fbbf24" stroke-width="3" fill="none" marker-end="url(#arrow)">

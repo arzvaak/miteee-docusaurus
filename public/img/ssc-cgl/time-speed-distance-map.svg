@@ -3,7 +3,7 @@
   <desc id="desc">A compact map for classifying time speed distance questions into basic formula, average speed, train crossing, boat-stream, race, and circular track types.</desc>
   <rect width="1200" height="720" fill="#f8fafc"/>
   <rect x="48" y="40" width="1104" height="92" rx="18" fill="#0f172a"/>
-  <text x="82" y="88" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#ffffff">Time-Speed-Distance 36-Second Map</text>
+  <text x="82" y="88" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#ffffff">Time-Speed-Distance Decision Map</text>
   <text x="82" y="118" font-family="Arial, sans-serif" font-size="18" fill="#cbd5e1">Classify first, align units, then calculate. Most misses are model-selection errors.</text>
 
   <g font-family="Arial, sans-serif">

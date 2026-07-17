@@ -3,7 +3,7 @@
   <desc id="desc">A visual scan order for grammar error spotting: SVA, tense markers, articles, prepositions, pronouns, modifiers, parallelism, comparison, idioms, and No Error discipline.</desc>
   <rect width="1200" height="675" fill="#0f172a"/>
   <rect x="46" y="42" width="1108" height="591" rx="28" fill="#111827" stroke="#38bdf8" stroke-width="3"/>
-  <text x="78" y="104" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="800">Grammar Error Spotting: 15-Second Scan</text>
+  <text x="78" y="104" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="800">Grammar Error Spotting: Rule Scan</text>
   <text x="80" y="143" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="21">Classify the error family first, then reject options by rule lock.</text>
 
   <g font-family="Inter, Arial, sans-serif">
@@ -52,6 +52,6 @@
     <text x="832" y="406" fill="#f8fafc" font-size="25" font-weight="750">Option Decision</text>
     <text x="832" y="444" fill="#ddd6fe" font-size="20">Find exact part</text>
     <text x="832" y="474" fill="#ddd6fe" font-size="20">Do not invent errors</text>
-    <text x="832" y="504" fill="#ddd6fe" font-size="20">Move under 30 seconds</text>
+  <text x="832" y="504" fill="#ddd6fe" font-size="20">Verify the exact error</text>
   </g>
 </svg>

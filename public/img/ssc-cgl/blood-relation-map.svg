@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
-  <title id="title">Blood Relation 118-Q Chain Map</title>
-  <desc id="desc">A study map for SSC CGL blood relation questions: classify the stem, decode relation chains, control only-word traps, and answer inside the Reasoning timer.</desc>
+  <title id="title">Blood Relation Chain Map</title>
+  <desc id="desc">A study map for blood-relation questions: anchor the base person, walk the relation chain, decode symbols, compare generations, and verify the final direction.</desc>
   <rect width="960" height="540" fill="#111827"/>
   <rect x="36" y="34" width="888" height="472" rx="22" fill="#0f172a" stroke="#334155" stroke-width="2"/>
-  <text x="72" y="82" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Blood Relation: 118-Q Chain Map</text>
+  <text x="72" y="82" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Blood Relation Chain Map</text>
   <text x="72" y="114" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="16">Base person first, relation words second, generation count last.</text>
 
   <g font-family="Inter, Arial, sans-serif">
@@ -19,7 +19,7 @@
 
     <rect x="662" y="152" width="226" height="102" rx="12" fill="#1e293b" stroke="#22c55e" stroke-width="2"/>
     <text x="686" y="184" fill="#dcfce7" font-size="19" font-weight="700">3. Only-Word Gate</text>
-    <text x="686" y="212" fill="#cbd5e1" font-size="14">Only son excludes brothers.</text>
+  <text x="686" y="212" fill="#cbd5e1" font-size="14">Only son still permits sisters.</text>
     <text x="686" y="233" fill="#cbd5e1" font-size="14">Only child excludes all siblings.</text>
 
     <rect x="72" y="318" width="226" height="102" rx="12" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
@@ -33,9 +33,9 @@
     <text x="391" y="399" fill="#cbd5e1" font-size="14">0 sibling/cousin, -1 child line.</text>
 
     <rect x="662" y="318" width="226" height="102" rx="12" fill="#1e293b" stroke="#14b8a6" stroke-width="2"/>
-    <text x="686" y="350" fill="#ccfbf1" font-size="19" font-weight="700">6. 36-Second Answer</text>
-    <text x="686" y="378" fill="#cbd5e1" font-size="14">25s for direct chains.</text>
-    <text x="686" y="399" fill="#cbd5e1" font-size="14">45s max for coded sets.</text>
+  <text x="686" y="350" fill="#ccfbf1" font-size="19" font-weight="700">6. Final Answer Check</text>
+  <text x="686" y="378" fill="#cbd5e1" font-size="14">Verify base and chain direction.</text>
+  <text x="686" y="399" fill="#cbd5e1" font-size="14">Keep unknown gender unknown.</text>
   </g>
 
   <g stroke="#64748b" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -55,6 +55,6 @@
     <path d="M177 263 L185 251 L193 263 Z"/>
   </g>
 
-  <text x="72" y="466" fill="#e2e8f0" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600">200/200 rule:</text>
-  <text x="174" y="466" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="15">No relation answer is chosen before base, chain, only-word cue, and generation have all been checked.</text>
+  <text x="72" y="466" fill="#e2e8f0" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600">Accuracy rule:</text>
+  <text x="190" y="466" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="15">No relation answer is chosen before base, chain, only-word cue, and generation have all been checked.</text>
 </svg>

@@ -69,6 +69,20 @@ export function MarkdownNote({ content, previews = [], sectionName }: { content:
           h4({ children }) {
             return <h4 id={uniqueHeadingAnchorId(flattenText(children), headingIds)}>{children}</h4>;
           },
+          blockquote({ children }) {
+            const parts = (Array.isArray(children) ? children : [children])
+              .filter((part) => flattenText(part).trim().length > 0);
+            const summary = flattenText(parts[0]).trim();
+            if (/^answer(?: and explanation)?$/i.test(summary)) {
+              return (
+                <details className="study-answer">
+                  <summary>{summary}</summary>
+                  <div className="study-answer-body">{parts.slice(1)}</div>
+                </details>
+              );
+            }
+            return <blockquote>{children}</blockquote>;
+          },
           pre({ children }) {
             const child = Array.isArray(children) ? children[0] : children;
             const className =

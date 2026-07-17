@@ -16,8 +16,8 @@
     <text x="550" y="216" text-anchor="middle" font-size="14">debt, receipt, doubt</text>
 
     <rect x="790" y="155" width="230" height="86" rx="12" fill="#7c2d12" stroke="#fdba74"/>
-    <text x="905" y="190" text-anchor="middle" font-size="20" font-weight="700">ie / ei / Suffix</text>
-    <text x="905" y="216" text-anchor="middle" font-size="14">receive, weird, -able</text>
+  <text x="905" y="190" text-anchor="middle" font-size="20" font-weight="700">Pattern + Suffix</text>
+  <text x="905" y="216" text-anchor="middle" font-size="14">receive, weird; exceptions exist</text>
 
     <rect x="80" y="305" width="230" height="86" rx="12" fill="#14532d" stroke="#86efac"/>
     <text x="195" y="340" text-anchor="middle" font-size="20" font-weight="700">Person OWS</text>

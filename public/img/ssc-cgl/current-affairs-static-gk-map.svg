@@ -3,8 +3,8 @@
   <desc id="desc">A compact map showing how daily news becomes SSC-ready static GK recall and MCQ practice.</desc>
   <rect width="960" height="540" fill="#10151f"/>
   <rect x="28" y="28" width="904" height="484" rx="20" fill="#172235" stroke="#fde68a" stroke-width="2"/>
-  <text x="480" y="70" text-anchor="middle" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">2810-Fact Static GK Conversion Map</text>
-  <text x="480" y="100" text-anchor="middle" fill="#d1d5db" font-family="Inter, Arial, sans-serif" font-size="15">07:00 Netcup Docker brief -> official source -> static anchor -> trap MCQ -> repair queue</text>
+  <text x="480" y="70" text-anchor="middle" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Current Affairs to Static GK Map</text>
+  <text x="480" y="100" text-anchor="middle" fill="#d1d5db" font-family="Inter, Arial, sans-serif" font-size="15">Live brief -> official source -> dated fact -> static anchor -> mixed practice</text>
 
   <g font-family="Inter, Arial, sans-serif" font-size="15">
     <rect x="60" y="135" width="250" height="118" rx="14" fill="#fef3c7"/>
@@ -32,16 +32,16 @@
     <text x="82" y="430" fill="#0f172a">Rank, year, venue reversal</text>
 
     <rect x="355" y="320" width="250" height="115" rx="14" fill="#f5f3ff"/>
-    <text x="480" y="348" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">5-Second Classifier</text>
+    <text x="480" y="348" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">Source Classifier</text>
     <text x="377" y="380" fill="#0f172a">Scheme -> ministry</text>
     <text x="377" y="405" fill="#0f172a">Report -> publisher</text>
     <text x="377" y="430" fill="#0f172a">Notice -> date/action</text>
 
     <rect x="650" y="320" width="250" height="115" rx="14" fill="#ecfeff"/>
     <text x="775" y="348" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">Practice Route</text>
-    <text x="672" y="380" fill="#0f172a">/current-affairs</text>
-    <text x="672" y="405" fill="#0f172a">/topics/current-affairs-static-gk</text>
-    <text x="672" y="430" fill="#0f172a">GA mixed mock repair queue</text>
+    <text x="672" y="380" fill="#0f172a">Live current-affairs brief</text>
+    <text x="672" y="405" fill="#0f172a">Static-GK topic lesson</text>
+    <text x="672" y="430" fill="#0f172a">Focused and mixed practice</text>
   </g>
 
   <g stroke="#fde68a" stroke-width="3" fill="none" marker-end="url(#arrow)">

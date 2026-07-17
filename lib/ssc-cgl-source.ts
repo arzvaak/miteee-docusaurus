@@ -657,13 +657,18 @@ function parseDeepNoteSections(seed: TopicSeed) {
   const headingPattern = /^##\s+(.+)$/gm;
   const headings = [...markdown.matchAll(headingPattern)];
   if (headings.length < 2) return null;
+  const preambleEnd = headings[0]?.index ?? 0;
+  const preamble = markdown.slice(0, preambleEnd).trim();
 
   const sections = headings
     .map((match, index) => {
       const title = match[1]?.trim() || `Section ${index + 1}`;
       const bodyStart = (match.index ?? 0) + match[0].length;
       const bodyEnd = index < headings.length - 1 ? headings[index + 1]!.index ?? markdown.length : markdown.length;
-      const body = markdown.slice(bodyStart, bodyEnd).trim();
+      const sectionBody = markdown.slice(bodyStart, bodyEnd).trim();
+      const body = index === 0 && preamble
+        ? `${preamble}\n\n${sectionBody}`.trim()
+        : sectionBody;
       return { title, body };
     })
     .filter((section) => section.body.length > 0);

@@ -3,7 +3,7 @@
   <desc id="desc">A visual decision map for cost price, selling price, marked price, discount, profit, loss, false weight, overheads, and two article problems.</desc>
   <rect width="1100" height="620" fill="#0f172a"/>
   <rect x="42" y="38" width="1016" height="544" rx="18" fill="#111827" stroke="#22c55e" stroke-width="3"/>
-  <text x="550" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#f0fdf4">Profit, Loss, Discount: 36-second Multiplier Map</text>
+  <text x="550" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#f0fdf4">Profit, Loss, Discount: Multiplier Map</text>
   <text x="550" y="113" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#bbf7d0">Identify the base first: CP for profit/loss, MP for discount, weight given for false weight</text>
 
   <g font-family="Arial, sans-serif" fill="#f8fafc">

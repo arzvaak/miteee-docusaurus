@@ -21,7 +21,6 @@ import { useEffect, useMemo, useState } from "react";
 import type { CourseNavigationGroup, CourseNavigationItem } from "@/lib/content";
 import {
   parseReaderProgressStore,
-  readerProgressResumeHref,
   readerProgressStorageKey,
   type ReaderProgressEntry,
   type ReaderProgressStore
@@ -29,6 +28,7 @@ import {
 import {
   sscCglSubjectDefinitions,
   sscCglSubjectHref,
+  sscCglTopicSlugFromNote,
   type SscCglSubjectDefinition
 } from "@/lib/ssc-cgl-subjects";
 import styles from "@/components/SscCglLibraryLanding.module.css";
@@ -124,6 +124,13 @@ function featuredNotes(group: CourseNavigationGroup, progressStore: ReaderProgre
     .slice(0, 3);
 }
 
+function studyHrefForNote(groupKey: string, noteSlug: string) {
+  const subject = sscCglSubjectDefinitions.find((definition) => definition.groupKey === groupKey);
+  if (!subject) return "/exams/ssc-cgl";
+  const topicSlug = sscCglTopicSlugFromNote(subject, noteSlug);
+  return topicSlug ? `/exams/ssc-cgl/topics/${topicSlug}` : sscCglSubjectHref(subject.section);
+}
+
 export function SscCglLibraryLanding({ groups, corpus }: SscCglLibraryLandingProps) {
   const [progressStore, setProgressStore] = useState<ReaderProgressStore>({});
   const [progressLoaded, setProgressLoaded] = useState(false);
@@ -185,23 +192,27 @@ export function SscCglLibraryLanding({ groups, corpus }: SscCglLibraryLandingPro
     };
   }).filter((subject) => subject.group.notes.length > 0);
   const visibleNoteCount = visibleSubjects.reduce((total, subject) => total + subject.group.notes.length, 0);
-  const firstNote = subjects[0]?.group.notes[0] || null;
+  const firstSubject = subjects[0] ?? null;
+  const firstNote = firstSubject?.group.notes[0] || null;
+  const firstNoteHref = firstSubject && firstNote ? studyHrefForNote(firstSubject.group.key, firstNote.slug) : null;
+  const resumeGroup = resumeEntry ? groups.find((group) => group.notes.some((note) => note.slug === resumeEntry.slug)) : null;
+  const resumeHref = resumeEntry && resumeGroup ? `${studyHrefForNote(resumeGroup.key, resumeEntry.slug)}?resume=1` : null;
 
   return (
     <div className={styles.page} data-ssc-library-landing="true">
       <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
-        <Link href="/courses">Subjects</Link>
+        <Link href="/exams">Exams</Link>
         <span aria-hidden="true">/</span>
         <span>SSC CGL</span>
       </nav>
 
       <section className={styles.hero} aria-labelledby="ssc-library-title">
         <div className={styles.heroCopy}>
-          <span className={styles.eyebrow}>SSC CGL Tier-I library</span>
-          <h1 id="ssc-library-title">Build each section. Then test it.</h1>
-          <p>Move through the four Tier-I subjects without wading through one enormous list. Open a topic, build the method, then use the question bank at exam pace.</p>
+          <span className={styles.eyebrow}>SSC CGL Tier-I exam</span>
+          <h1 id="ssc-library-title">Build each subject. Then test it.</h1>
+          <p>Choose one of the four Tier-I subjects, learn a focused topic, then practise it at exam pace. Your lessons and tests stay separate, but always connected.</p>
           <div className={styles.heroActions}>
-            <Link className={styles.primaryAction} href="/exams/ssc-cgl">
+            <Link className={styles.primaryAction} href="/exams/ssc-cgl/tests">
               <ClipboardCheck size={17} aria-hidden="true" /> Start a test <ArrowRight size={15} aria-hidden="true" />
             </Link>
             <Link className={styles.secondaryAction} href="/exams/ssc-cgl/practice">
@@ -214,7 +225,7 @@ export function SscCglLibraryLanding({ groups, corpus }: SscCglLibraryLandingPro
         </div>
 
         <aside className={styles.continueCard} aria-label="Reading status">
-          {resumeEntry ? (
+          {resumeEntry && resumeHref ? (
             <>
               <span>Continue reading</span>
               <strong>{resumeEntry.title}</strong>
@@ -222,22 +233,22 @@ export function SscCglLibraryLanding({ groups, corpus }: SscCglLibraryLandingPro
                 <span aria-hidden="true"><i style={{ width: `${resumeEntry.progress}%` }} /></span>
                 <small>{resumeEntry.progress}% read</small>
               </div>
-              <Link href={readerProgressResumeHref(resumeEntry)}>Resume note <ArrowRight size={15} aria-hidden="true" /></Link>
+              <Link href={resumeHref}>Resume topic <ArrowRight size={15} aria-hidden="true" /></Link>
             </>
           ) : (
             <>
-              <span>Start the library</span>
+              <span>Start studying</span>
               <strong>{firstNote?.label || "Choose your first subject"}</strong>
-              <p>Your reading progress begins only after you open a note. Nothing is marked complete in advance.</p>
-              {firstNote ? <Link href={`/notes/${firstNote.slug}`}>Open first note <ArrowRight size={15} aria-hidden="true" /></Link> : null}
+              <p>Your reading progress begins only after you open a topic. Nothing is marked complete in advance.</p>
+              {firstNote && firstNoteHref ? <Link href={firstNoteHref}>Open first topic <ArrowRight size={15} aria-hidden="true" /></Link> : null}
             </>
           )}
         </aside>
 
         <div className={styles.corpusStrip} aria-label="SSC CGL library facts">
-          <span><strong>{formatNumber(totalNotes)}</strong><small>Study notes</small></span>
-          <span><strong>{formatNumber(corpus.reviewedQuestions)}</strong><small>Reviewed questions</small></span>
-          <span><strong>{formatNumber(groups.length)}</strong><small>Tier-I sections</small></span>
+          <span><strong>{formatNumber(totalNotes)}</strong><small>Study topics</small></span>
+          <span><strong>{formatNumber(corpus.reviewedQuestions)}</strong><small>Practice questions</small></span>
+          <span><strong>{formatNumber(groups.length)}</strong><small>Tier-I subjects</small></span>
           <span><strong>{formatNumber(corpus.fullMocks)}</strong><small>Full mocks</small></span>
         </div>
       </section>
@@ -247,7 +258,7 @@ export function SscCglLibraryLanding({ groups, corpus }: SscCglLibraryLandingPro
           <div>
             <span className={styles.eyebrow}>Your subjects</span>
             <h2 id="ssc-subjects-title">Four sections, clearly separated.</h2>
-            <p>Each card shows real library depth and only the reading progress saved on this device.</p>
+            <p>Each subject keeps its topics, progress, and practice routes together.</p>
           </div>
           <div className={styles.activeNotice} aria-live="polite">
             <Sparkles size={16} aria-hidden="true" />
@@ -271,7 +282,7 @@ export function SscCglLibraryLanding({ groups, corpus }: SscCglLibraryLandingPro
           <div>
             <span className={styles.eyebrow}>Browse all</span>
             <h2 id="ssc-syllabus-title">The complete syllabus, folded neatly.</h2>
-            <p>Open only the subject you need. Search expands matching sections automatically.</p>
+            <p>Open only the subject you need. Search expands matching topics automatically.</p>
           </div>
           <label className={styles.searchBox}>
             <Search size={17} aria-hidden="true" />
@@ -305,7 +316,7 @@ export function SscCglLibraryLanding({ groups, corpus }: SscCglLibraryLandingPro
                   </summary>
                   <div className={styles.noteGrid}>
                     {subject.group.notes.map((note) => (
-                      <SyllabusNote key={note.slug} note={note} progress={progressStore[note.slug]?.progress} />
+                      <SyllabusNote groupKey={subject.group.key} key={note.slug} note={note} progress={progressStore[note.slug]?.progress} />
                     ))}
                   </div>
                 </details>
@@ -353,9 +364,9 @@ function SubjectCard({ progressStore, subject }: { progressStore: ReaderProgress
         <p>{subject.definition.description}</p>
 
         <div className={styles.subjectFacts}>
-          <span><strong>{subject.group.notes.length}</strong><small>Study notes</small></span>
-          <span><strong>{formatNumber(subject.corpusSection?.reviewedQuestions || 0)}</strong><small>Reviewed questions</small></span>
-          <span><strong>{formatNumber(subject.corpusSection?.bookBackedQuestions || 0)}</strong><small>Book-backed</small></span>
+          <span><strong>{subject.group.notes.length}</strong><small>Study topics</small></span>
+          <span><strong>{formatNumber(subject.corpusSection?.reviewedQuestions || 0)}</strong><small>Practice questions</small></span>
+          <span><strong>{formatNumber(subject.corpusSection?.bookBackedQuestions || 0)}</strong><small>Source-backed</small></span>
         </div>
       </Link>
 
@@ -368,7 +379,7 @@ function SubjectCard({ progressStore, subject }: { progressStore: ReaderProgress
       <div className={styles.featuredTopics}>
         <span>{subject.progress.active ? "Continue in this subject" : "Start with"}</span>
         {subject.featuredNotes.map((note) => (
-          <Link href={`/notes/${note.slug}`} key={note.slug}>
+          <Link href={studyHrefForNote(subject.group.key, note.slug)} key={note.slug}>
             <span>{note.label}</span>
             {progressStore[note.slug]?.progress ? <small>{progressStore[note.slug]!.progress}%</small> : <ArrowRight size={13} aria-hidden="true" />}
           </Link>
@@ -383,12 +394,12 @@ function SubjectCard({ progressStore, subject }: { progressStore: ReaderProgress
   );
 }
 
-function SyllabusNote({ note, progress }: { note: CourseNavigationItem; progress?: number }) {
+function SyllabusNote({ groupKey, note, progress }: { groupKey: string; note: CourseNavigationItem; progress?: number }) {
   return (
-    <Link className={styles.noteLink} href={`/notes/${note.slug}`}>
+    <Link className={styles.noteLink} href={studyHrefForNote(groupKey, note.slug)}>
       <span>
         <strong>{note.label}</strong>
-        <small>{progress ? `${progress}% read` : "Study note"}</small>
+        <small>{progress ? `${progress}% read` : "Topic guide"}</small>
       </span>
       <ArrowRight size={14} aria-hidden="true" />
     </Link>

@@ -1,17 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
-  <title id="title">SSC CGL trigonometry 36-second decision map</title>
-  <desc id="desc">A 561-question trigonometry map for standard values, identities, triangle reconstruction, height-distance and 36-second repair.</desc>
+  <title id="title">SSC CGL trigonometry decision map</title>
+  <desc id="desc">A trigonometry map for standard values, identities, triangle reconstruction, quadrants, and heights and distances.</desc>
   <rect width="960" height="540" fill="#101820"/>
   <rect x="28" y="28" width="904" height="484" rx="18" fill="#172235" stroke="#93c5fd" stroke-width="2"/>
-  <text x="480" y="68" text-anchor="middle" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Trigonometry 561-Q 36-Second Map</text>
-  <text x="480" y="100" text-anchor="middle" fill="#dbeafe" font-family="Inter, Arial, sans-serif" font-size="15">Classify in 5 seconds: value, identity, triangle, height-distance, or option substitution.</text>
+  <text x="480" y="68" text-anchor="middle" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Trigonometry: Ratio and Identity Map</text>
+  <text x="480" y="100" text-anchor="middle" fill="#dbeafe" font-family="Inter, Arial, sans-serif" font-size="15">Choose the reference angle, check the domain, then use a value, identity, or triangle.</text>
 
   <g font-family="Inter, Arial, sans-serif" font-size="15">
     <rect x="58" y="132" width="250" height="118" rx="12" fill="#dbeafe"/>
     <text x="183" y="160" text-anchor="middle" fill="#0f172a" font-size="19" font-weight="700">Standard Values</text>
     <text x="80" y="192" fill="#0f172a">sin rises, cos reverses</text>
     <text x="80" y="217" fill="#0f172a">tan = sin/cos</text>
-    <text x="80" y="242" fill="#0f172a">target: 5-10 seconds</text>
+    <text x="80" y="242" fill="#0f172a">tan 90 deg is undefined</text>
 
     <rect x="355" y="132" width="250" height="118" rx="12" fill="#dcfce7"/>
     <text x="480" y="160" text-anchor="middle" fill="#0f172a" font-size="19" font-weight="700">Identity Family</text>
@@ -32,16 +32,16 @@
     <text x="80" y="425" fill="#0f172a">two-point: two equations</text>
 
     <rect x="355" y="315" width="250" height="118" rx="12" fill="#ede9fe"/>
-    <text x="480" y="343" text-anchor="middle" fill="#0f172a" font-size="19" font-weight="700">36-Second Decision</text>
-    <text x="377" y="375" fill="#0f172a">0-5s classify type</text>
-    <text x="377" y="400" fill="#0f172a">5-25s execute route</text>
-    <text x="377" y="425" fill="#0f172a">25-36s substitute or skip</text>
+    <text x="480" y="343" text-anchor="middle" fill="#0f172a" font-size="19" font-weight="700">Domain and Sign</text>
+    <text x="377" y="375" fill="#0f172a">check denominator is non-zero</text>
+    <text x="377" y="400" fill="#0f172a">use quadrant for the sign</text>
+    <text x="377" y="425" fill="#0f172a">keep length units consistent</text>
 
     <rect x="652" y="315" width="250" height="118" rx="12" fill="#cffafe"/>
-    <text x="777" y="343" text-anchor="middle" fill="#0f172a" font-size="19" font-weight="700">Repair Loop</text>
-    <text x="674" y="375" fill="#0f172a">tag exact identity miss</text>
-    <text x="674" y="400" fill="#0f172a">redo same type under timer</text>
-    <text x="674" y="425" fill="#0f172a">promote only after clean sprint</text>
+    <text x="777" y="343" text-anchor="middle" fill="#0f172a" font-size="19" font-weight="700">Answer Check</text>
+    <text x="674" y="375" fill="#0f172a">verify identity conditions</text>
+    <text x="674" y="400" fill="#0f172a">rebuild the right triangle</text>
+    <text x="674" y="425" fill="#0f172a">compare height with distance</text>
   </g>
 
   <g stroke="#93c5fd" stroke-width="3" fill="none" marker-end="url(#arrow)">

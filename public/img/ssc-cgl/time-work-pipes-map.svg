@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
   <title id="title">SSC CGL time work pipes decision map</title>
-  <desc id="desc">A 36-second decision map for time, work, efficiency, wages, and pipes questions.</desc>
+  <desc id="desc">A decision map for time, work, efficiency, wages, and pipes questions.</desc>
   <rect width="1200" height="760" fill="#08111f"/>
   <rect x="42" y="38" width="1116" height="684" rx="18" fill="#101c2b" stroke="#7dd3fc" stroke-width="3"/>
-  <text x="600" y="84" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#f8fbff">Time, Work, Pipes: 36-Second Rate Engine</text>
-  <text x="600" y="118" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#c5d4e8">324 promoted questions: classify cue, choose total work, combine signed rates, check unit</text>
+  <text x="600" y="84" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#f8fbff">Time, Work, Pipes: Rate Engine</text>
+  <text x="600" y="118" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#c5d4e8">Classify the cue, choose total work, combine signed rates, then check the unit</text>
 
   <g font-family="Arial, sans-serif">
     <rect x="78" y="158" width="310" height="156" rx="14" fill="#162a3f" stroke="#60a5fa" stroke-width="2"/>
@@ -44,6 +44,6 @@
     <text x="838" y="488" font-size="17" fill="#ffedd5">Wages = rate x time share</text>
 
     <rect x="196" y="596" width="808" height="66" rx="33" fill="#7dd3fc"/>
-    <text x="600" y="637" text-anchor="middle" font-size="22" font-weight="700" fill="#07111e">Exam loop: cue -> total work -> rates -> remaining work -> unit check inside 36 seconds</text>
+    <text x="600" y="637" text-anchor="middle" font-size="22" font-weight="700" fill="#07111e">Solve loop: cue -> total work -> signed rates -> remaining work -> unit check</text>
   </g>
 </svg>

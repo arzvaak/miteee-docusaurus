@@ -168,18 +168,17 @@ test("SSC topic section bodies render 200/200 drills when the heading is supplie
   assert.doesNotMatch(normalized, /^<h2/m);
 });
 
-test("SSC analogy note keeps the thermometer drill keyed to temperature with a method explanation", () => {
+test("SSC analogy note keeps the thermometer self-check next to its exact explanation", () => {
   const source = fs.readFileSync(path.join("docs", "ssc-cgl", "reasoning", "analogy-classification.md"), "utf8");
   const normalized = prepareMarkdownContent(source);
-  const drillStart = normalized.indexOf('<p class="quiz-q">Clock : Time :: Thermometer : ?</p>');
-  assert.ok(drillStart >= 0, "thermometer drill should render as a quiz card");
-  const drill = normalized.slice(drillStart, normalized.indexOf("</article>", drillStart));
+  const checkStart = normalized.indexOf("Thermometer : Temperature :: Clock : ?");
+  assert.ok(checkStart >= 0, "thermometer self-check should stay in the chapter");
+  const check = normalized.slice(checkStart, checkStart + 700);
 
-  assert.match(drill, /data-opt="b" role="listitem"><span class="opt-key">B<\/span> <span class="opt-text">Temperature<\/span>/);
-  assert.match(normalized.slice(Math.max(0, drillStart - 200), drillStart), /<article class="quiz-block note-quiz-block" data-answer="b">/);
-  assert.match(drill, /<p><strong>Method:<\/strong> State the exact relation/);
-  assert.match(drill, /<p><strong>Why it fits:<\/strong> Option B \(Temperature\)/);
-  assert.doesNotMatch(drill, /data-answer="d"|Answer:<\/strong> D|q-correct|q-wrong|data-correct="true"|<details class="quiz-exp" open>/);
+  assert.match(check, /Options: Time, Hour, Hand, Alarm/);
+  assert.match(check, /> \*\*Answer and explanation\*\*/);
+  assert.match(check, /> \*\*Time\.\*\* A thermometer measures temperature; a clock measures time/);
+  assert.doesNotMatch(check, /data-answer="d"|Answer:<\/strong> D|q-correct|q-wrong/);
 });
 
 test("SSC 200/200 drill answers expand thin keys into method-level explanations", () => {

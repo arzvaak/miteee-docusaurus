@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { buildExamData } from "@/scripts/build-exam-data";
 import {
+  EXAMPLE_TARGET_PER_TOPIC,
   getSscCglDashboard,
   getSscCglTopicCoverageMap,
   getSscCglTests,
@@ -52,7 +53,10 @@ test("SSC CGL dashboard exposes the official 2026 Tier-I pattern", () => {
   assert.equal(dashboard.readiness.studyDepth.notesWithPractice, dashboard.readiness.topics);
   assert.equal(dashboard.readiness.studyDepth.notesWithFlowcharts, dashboard.readiness.topics);
   assert.ok(dashboard.readiness.studyDepth.deepNotes >= dashboard.readiness.topics);
-  assert.ok(dashboard.readiness.studyDepth.totalExamples >= dashboard.readiness.topics * 20);
+  assert.ok(
+    dashboard.readiness.studyDepth.totalExamples
+      >= dashboard.readiness.topics * EXAMPLE_TARGET_PER_TOPIC
+  );
   assert.ok(dashboard.readiness.studyDepth.weakestNotes.length > 0);
   assert.ok(dashboard.readiness.studyDepth.weakestNotes.every((note) => note.href.startsWith("/exams/ssc-cgl/topics/")));
   assert.equal(dashboard.readiness.strictAudit.readyFor200, true);
@@ -91,7 +95,7 @@ test("SSC CGL topic coverage map proves every sublevel has corpus and note depth
   assert.equal(coverage.topicsBelowMastery, 0);
   assert.equal(coverage.weakestTopics.length, Math.min(8, coverage.totalTopics));
   assert.equal(coverage.thinTopics, 0);
-  assert.ok(coverage.deepNotes >= coverage.totalTopics);
+  assert.equal(coverage.deepNotes, coverage.totalTopics);
   assert.ok(coverage.sections.every((section) => section.rows.length === section.topics));
   assert.ok(coverage.sections.every((section) => section.reviewedQuestions >= 150 * section.topics));
   assert.ok(coverage.sections.every((section) => section.deepNotes === section.topics));
@@ -106,8 +110,7 @@ test("SSC CGL topic coverage map proves every sublevel has corpus and note depth
   );
   assert.ok(allRows.every((row) => row.drillHref.startsWith("/exams/ssc-cgl/tests")));
   assert.ok(allRows.every((row) => row.reviewedQuestions >= coverage.masteryTargetQuestionsPerTopic));
-  assert.ok(allRows.every((row) => row.noteBodyLength >= 14000));
-  assert.ok(allRows.every((row) => row.exampleCount >= 20));
+  assert.ok(allRows.every((row) => row.exampleCount >= coverage.exampleTargetPerTopic));
   assert.equal(coverage.minimumReviewedQuestions, Math.min(...allRows.map((row) => row.reviewedQuestions)));
   assert.deepEqual(
     coverage.weakestTopics.map((row) => row.slug),

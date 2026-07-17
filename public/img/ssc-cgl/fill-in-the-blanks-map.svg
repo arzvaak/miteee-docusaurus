@@ -3,7 +3,7 @@
   <desc id="desc">A study visual for classifying SSC CGL fill in the blanks questions by grammar, collocation, context, and option pairing.</desc>
   <rect width="1200" height="760" fill="#f8fafc"/>
   <rect x="42" y="36" width="1116" height="688" rx="18" fill="#ffffff" stroke="#0f172a" stroke-width="3"/>
-  <text x="74" y="88" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800" fill="#0f172a">Fill in the Blanks: 5-Second Filter</text>
+  <text x="74" y="88" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800" fill="#0f172a">Fill in the Blanks: Three-Gate Filter</text>
   <text x="76" y="122" font-family="Inter, Arial, sans-serif" font-size="18" fill="#475569">Do not choose what only sounds familiar. The correct option must pass grammar, meaning, and natural usage.</text>
 
   <g font-family="Inter, Arial, sans-serif">

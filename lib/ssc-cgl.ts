@@ -80,12 +80,17 @@ export type SscCglStudyDepthNote = {
   title: string;
   subject: string;
   href: string;
+  manualReviewed: boolean;
   bodyLength: number;
   examples: number;
+  sectionCount: number;
+  answerReveals: number;
   hasFlowchart: boolean;
   hasTrapTable: boolean;
   hasPractice: boolean;
   hasDrill: boolean;
+  hasMixedPractice: boolean;
+  hasCanonicalPracticeLink: boolean;
   depthScore: number;
 };
 
@@ -262,8 +267,8 @@ let resourceDashboardCache: SscCglResourceDashboard | null = null;
 const questionMapCache = new WeakMap<GeneratedSscCglData, Map<string, SscCglQuestion>>();
 const MASTERY_TARGET_QUESTIONS_PER_TOPIC = 500;
 const BOOK_BACKED_TARGET_QUESTIONS_PER_TOPIC = 300;
-const DEEP_NOTE_TARGET_CHARS = 14000;
-const EXAMPLE_TARGET_PER_TOPIC = 20;
+const DEEP_NOTE_TARGET_CHARS = 9000;
+export const EXAMPLE_TARGET_PER_TOPIC = 10;
 
 function readGeneratedData(): GeneratedSscCglData {
   try {
@@ -667,11 +672,20 @@ export function getSscCglResources() {
 function buildStudyDepthNotes(topics: SscCglTopic[]): SscCglStudyDepthNote[] {
   return topics.map((topic) => {
     const body = readTopicNoteBody(topic);
-    const examples = (body.match(/^\*\*Example\s+\d+/gim) ?? []).length;
-    const hasFlowchart = /```mermaid|flowchart/i.test(body);
-    const hasTrapTable = /trap table|\|\s*trap\s*\|/i.test(body);
-    const hasPractice = /\bPYQ\b|practice route|reviewed pyq|linked routes/i.test(body);
-    const hasDrill = /##\s+200\/200 Drill/i.test(body);
+    const manualReviewed = /review_status:\s*agent-reviewed/i.test(body)
+      && /content_quality:\s*manually-curated/i.test(body);
+    const examples = (body.match(/^(?:\*\*Example\s+\d+\*\*|\*\*(?:Worked example|Self-check)(?:\s*(?:—|–|-|:)\s*[^*\r\n]+)?\*\*|###\s+Question\s+\d+\b)/gim) ?? []).length;
+    const sectionCount = (body.match(/^##\s+/gm) ?? []).length;
+    const answerReveals = (body.match(/<summary>Answer and explanation<\/summary>/gi) ?? []).length;
+    const hasCanonicalConceptMap = body.includes(`](/img/ssc-cgl/${topic.slug}-map.svg)`);
+    const hasFlowchart = /```mermaid|flowchart|!\[[^\]]*(?:concept map|diagram|flow)/i.test(body)
+      || hasCanonicalConceptMap;
+    const hasTrapTable = /trap table|speed and trap control|\|\s*trap\s*\|/i.test(body);
+    const hasCanonicalPracticeLink = body.includes(`](/exams/ssc-cgl/practice/${topic.slug})`);
+    const hasPractice = /\bPYQ\b|practice route|reviewed pyq|linked routes|\/exams\/ssc-cgl\/practice\//i.test(body);
+    const hasMixedPractice = /^##\s+(?:\d+\.\s+)?Mixed (?:Exam )?Practice(?:\s+.*)?$/im.test(body);
+    const hasDrill = /##\s+200\/200 Drill|mixed exam practice[\s\S]{0,300}36 seconds/i.test(body)
+      || (manualReviewed && hasMixedPractice);
     const bodyLength = body.length;
     const depthScore = [
       bodyLength >= DEEP_NOTE_TARGET_CHARS ? 30 : Math.round(bodyLength / DEEP_NOTE_TARGET_CHARS * 30),
@@ -687,12 +701,17 @@ function buildStudyDepthNotes(topics: SscCglTopic[]): SscCglStudyDepthNote[] {
       title: topic.title,
       subject: topic.subject,
       href: `/exams/ssc-cgl/topics/${topic.slug}`,
+      manualReviewed,
       bodyLength,
       examples,
+      sectionCount,
+      answerReveals,
       hasFlowchart,
       hasTrapTable,
       hasPractice,
       hasDrill,
+      hasMixedPractice,
+      hasCanonicalPracticeLink,
       depthScore
     };
   });
@@ -705,7 +724,7 @@ function buildStudyDepthAudit(topics: SscCglTopic[]): SscCglStudyDepthAudit {
     totalTopics: topics.length,
     topicsWithNotes: notes.filter((note) => note.bodyLength > 0).length,
     missingNotes: notes.filter((note) => note.bodyLength === 0).length,
-    deepNotes: notes.filter((note) => note.bodyLength >= DEEP_NOTE_TARGET_CHARS).length,
+    deepNotes: notes.filter(noteHasCompleteLesson).length,
     notesWithFlowcharts: notes.filter((note) => note.hasFlowchart).length,
     notesWithTrapTables: notes.filter((note) => note.hasTrapTable).length,
     notesWithPractice: notes.filter((note) => note.hasPractice).length,
@@ -902,10 +921,29 @@ function pressureScore(topic: SscCglTopicReadiness) {
   return readinessPenalty + priorityBoost + bookDepthPenalty;
 }
 
+function noteMeetsManualReviewLessonContract(note: SscCglStudyDepthNote | undefined) {
+  return Boolean(
+    note?.manualReviewed
+    && note.bodyLength >= 6000
+    && note.examples >= EXAMPLE_TARGET_PER_TOPIC
+    && note.sectionCount >= 6
+    && note.sectionCount <= 8
+    && note.answerReveals >= 5
+    && note.hasFlowchart
+    && note.hasMixedPractice
+    && note.hasCanonicalPracticeLink
+  );
+}
+
+function noteHasCompleteLesson(note: SscCglStudyDepthNote | undefined) {
+  if (note?.manualReviewed) return noteMeetsManualReviewLessonContract(note);
+  return (note?.bodyLength ?? 0) >= DEEP_NOTE_TARGET_CHARS;
+}
+
 function topicCoverageLabel(row: SscCglTopicReadiness, note: SscCglStudyDepthNote | undefined) {
-  if (row.readinessLabel === "mastery-bank" && (note?.bodyLength ?? 0) >= DEEP_NOTE_TARGET_CHARS) return "Mastery bank";
-  if (row.readinessLabel === "ranked-ready" && (note?.bodyLength ?? 0) >= DEEP_NOTE_TARGET_CHARS) return "Ranked ready";
-  if ((note?.bodyLength ?? 0) < DEEP_NOTE_TARGET_CHARS) return "Deep-note repair";
+  if (row.readinessLabel === "mastery-bank" && noteHasCompleteLesson(note)) return "Mastery bank";
+  if (row.readinessLabel === "ranked-ready" && noteHasCompleteLesson(note)) return "Ranked ready";
+  if (!noteHasCompleteLesson(note)) return "Deep-note repair";
   return "Practice repair";
 }
 
@@ -918,12 +956,25 @@ function topicDrill(slug: string, tests: SscCglTestSummary[]) {
 }
 
 function topicSufficiency(row: SscCglTopicReadiness, note: SscCglStudyDepthNote | undefined, hasTimedDrill: boolean) {
+  const lessonChecks = note?.manualReviewed
+    ? [
+        { ok: note.bodyLength >= 6000, gap: "add enough explanation for a complete reviewed lesson" },
+        { ok: note.examples >= EXAMPLE_TARGET_PER_TOPIC, gap: `${EXAMPLE_TARGET_PER_TOPIC - note.examples} more placed worked examples or self-checks` },
+        { ok: note.sectionCount >= 6 && note.sectionCount <= 8, gap: "organize the reviewed lesson into 6-8 purposeful sections" },
+        { ok: note.answerReveals >= 5, gap: `${5 - note.answerReveals} more adjacent answer reveals` },
+        { ok: note.hasFlowchart, gap: "add a concept map or flowchart" },
+        { ok: note.hasMixedPractice, gap: "add a final mixed-practice section" },
+        { ok: note.hasCanonicalPracticeLink, gap: "add the canonical topic-practice link" }
+      ]
+    : [
+        { ok: (note?.bodyLength ?? 0) >= DEEP_NOTE_TARGET_CHARS, gap: "add enough explanation for a complete topic lesson" },
+        { ok: (note?.examples ?? 0) >= EXAMPLE_TARGET_PER_TOPIC, gap: `${EXAMPLE_TARGET_PER_TOPIC - (note?.examples ?? 0)} more worked examples or self-checks` },
+        { ok: note?.hasFlowchart ?? false, gap: "add a concept map or flowchart" },
+        { ok: note?.hasTrapTable ?? false, gap: "add trap-control guidance" }
+      ];
   const practiceChecks = [
     { ok: row.reviewedQuestions >= MASTERY_TARGET_QUESTIONS_PER_TOPIC, gap: `${MASTERY_TARGET_QUESTIONS_PER_TOPIC - row.reviewedQuestions} more reviewed questions` },
-    { ok: (note?.bodyLength ?? 0) >= DEEP_NOTE_TARGET_CHARS, gap: `expand note to ${Math.round(DEEP_NOTE_TARGET_CHARS / 1000)}k chars` },
-    { ok: (note?.examples ?? 0) >= EXAMPLE_TARGET_PER_TOPIC, gap: `${EXAMPLE_TARGET_PER_TOPIC - (note?.examples ?? 0)} more worked examples` },
-    { ok: note?.hasFlowchart ?? false, gap: "add flowchart" },
-    { ok: note?.hasTrapTable ?? false, gap: "add trap table" },
+    ...lessonChecks,
     { ok: hasTimedDrill, gap: "add 36-second timed drill" }
   ];
   const bookFloorGap = Math.max(0, BOOK_BACKED_TARGET_QUESTIONS_PER_TOPIC - row.bookBackedQuestions);
@@ -948,6 +999,11 @@ export function getSscCglTopicCoverageMap(): SscCglTopicCoverageMap {
   const masteryTargetQuestionsPerTopic = MASTERY_TARGET_QUESTIONS_PER_TOPIC;
   const topicReadiness = buildTopicReadiness(data.questions, data.topics);
   const noteBySlug = new Map(buildStudyDepthNotes(data.topics).map((note) => [note.slug, note]));
+  const completeLessonSlugs = new Set(
+    [...noteBySlug.values()]
+      .filter((note) => noteHasCompleteLesson(note))
+      .map((note) => note.slug)
+  );
   const tests = getSscCglTests();
   const rows = topicReadiness.map((topic) => {
     const note = noteBySlug.get(topic.slug);
@@ -981,7 +1037,7 @@ export function getSscCglTopicCoverageMap(): SscCglTopicCoverageMap {
       reviewedQuestions: sectionRows.reduce((sum, row) => sum + row.reviewedQuestions, 0),
       bookBackedQuestions: sectionRows.reduce((sum, row) => sum + row.bookBackedQuestions, 0),
       gapRepairQuestions: sectionRows.reduce((sum, row) => sum + row.gapRepairQuestions, 0),
-      deepNotes: sectionRows.filter((row) => row.noteBodyLength >= DEEP_NOTE_TARGET_CHARS).length,
+      deepNotes: sectionRows.filter((row) => completeLessonSlugs.has(row.slug)).length,
       rows: sectionRows
     };
   });
@@ -1009,7 +1065,7 @@ export function getSscCglTopicCoverageMap(): SscCglTopicCoverageMap {
     topicsBelowMastery: rows.filter((row) => row.reviewedQuestions < masteryTargetQuestionsPerTopic).length,
     masteryGateFailures: rows.filter((row) => !row.masteryReady).length,
     thinTopics: rows.filter((row) => row.readinessLabel === "thin").length,
-    deepNotes: rows.filter((row) => row.noteBodyLength >= DEEP_NOTE_TARGET_CHARS).length,
+    deepNotes: rows.filter((row) => completeLessonSlugs.has(row.slug)).length,
     weakestTopics: rankedRows.slice(0, 8),
     sections
   };

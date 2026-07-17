@@ -21,6 +21,7 @@ test("SSC CGL exam routes are mounted as first-class study surfaces", () => {
     "app/exams/ssc-cgl/quant-50/page.tsx",
     "app/exams/ssc-cgl/english-50/page.tsx",
     "app/exams/ssc-cgl/readiness/page.tsx",
+    "app/exams/ssc-cgl/subjects/[section]/page.tsx",
     "app/exams/ssc-cgl/topics/page.tsx",
     "app/exams/ssc-cgl/topics/[slug]/page.tsx",
     "app/exams/ssc-cgl/resources/page.tsx",
@@ -64,7 +65,7 @@ test("SSC CGL topic practice exposes one-by-one corpus practice", () => {
   const practiceClient = fs.readFileSync(path.join(root, "components", "SscTopicPracticeClient.tsx"), "utf8");
   const explanationPanel = fs.readFileSync(path.join(root, "components", "SscExplanationPanel.tsx"), "utf8");
   const topicPracticeMemory = fs.readFileSync(path.join(root, "lib", "ssc-cgl-topic-practice-memory.ts"), "utf8");
-  const topicDetail = fs.readFileSync(path.join(root, "app", "exams", "ssc-cgl", "topics", "[slug]", "page.tsx"), "utf8");
+  const topicStudyPage = fs.readFileSync(path.join(root, "components", "SscTopicStudyPage.tsx"), "utf8");
   const setup = fs.readFileSync(path.join(root, "components", "SscExamSetup.tsx"), "utf8");
   const css = fs.readFileSync(path.join(root, "app", "globals.css"), "utf8");
 
@@ -123,7 +124,8 @@ test("SSC CGL topic practice exposes one-by-one corpus practice", () => {
   assert.match(practiceClient, /Over pace/);
   assert.match(practiceClient, /elapsedSeconds > targetSecondsPerQuestion/);
   assert.match(explanationPanel, /parseSscExplanationBlocks/);
-  assert.match(topicDetail, /\/exams\/ssc-cgl\/practice\/\$\{topic\.slug\}/);
+  assert.match(topicStudyPage, /\/exams\/ssc-cgl\/practice\//);
+  assert.match(topicStudyPage, /Practice this topic/);
   assert.match(setup, /href: "\/exams\/ssc-cgl\/practice"/);
   assert.match(setup, /href: "\/exams\/ssc-cgl\/topics"/);
   assert.match(setup, /href: "\/exams\/ssc-cgl\/current-affairs"/);
@@ -222,125 +224,62 @@ test("SSC CGL result page exposes question-by-question answer review", () => {
   assert.match(css, /\.ssc-explanation-block/);
 });
 
-test("SSC CGL topic pages show book-backed and gap-repair practice coverage", () => {
-  const topicIndex = fs.readFileSync(path.join(root, "app", "exams", "ssc-cgl", "topics", "page.tsx"), "utf8");
-  const topicDetail = fs.readFileSync(path.join(root, "app", "exams", "ssc-cgl", "topics", "[slug]", "page.tsx"), "utf8");
-  const css = fs.readFileSync(path.join(root, "app", "globals.css"), "utf8");
+test("SSC CGL topic reader keeps one learner lesson and a separate practice action", () => {
+  const topicRoute = fs.readFileSync(path.join(root, "app", "exams", "ssc-cgl", "topics", "[slug]", "page.tsx"), "utf8");
+  const topicReader = fs.readFileSync(path.join(root, "components", "SscTopicStudyPage.tsx"), "utf8");
+  const topicReaderCss = fs.readFileSync(path.join(root, "components", "SscTopicStudyPage.module.css"), "utf8");
+  const combinedSource = topicRoute + topicReader;
 
-  assert.match(topicIndex, /row\.bookBackedQuestions/);
-  assert.match(topicIndex, /row\.gapRepairQuestions/);
-  assert.match(topicDetail, /ssc-source-split/);
-  assert.match(topicDetail, /ssc-topic-mastery-route/);
-  assert.match(topicDetail, /200\/200 route/);
-  assert.match(topicDetail, /Corpus pressure/);
-  assert.match(topicDetail, /Read concept/);
-  assert.match(topicDetail, /Practice every question/);
-  assert.match(topicDetail, /Timed drills/);
-  assert.match(topicDetail, /Mistake repair/);
-  assert.match(topicDetail, /book-backed/);
-  assert.match(topicDetail, /gap-repair/);
-  assert.match(topicDetail, /getSscTopicPracticePreview/);
-  assert.match(topicDetail, /NoteQuizClient/);
-  assert.match(topicDetail, /SscExplanationPanel/);
-  assert.match(topicDetail, /Reviewed PYQ-style questions from this topic/);
-  assert.match(topicDetail, /Show answer and explanation/);
-  assert.match(topicDetail, /className="quiz-block note-quiz-block ssc-topic-quiz-block"/);
-  assert.match(topicDetail, /className="quiz-options"/);
-  assert.match(topicDetail, /className="quiz-option"/);
-  assert.match(topicDetail, /data-opt=\{option\.id\}/);
-  assert.match(topicDetail, /className="opt-key"/);
-  assert.match(topicDetail, /className="opt-text"/);
-  assert.match(topicDetail, /className="ssc-flowchart-rendered"/);
-  assert.doesNotMatch(topicDetail, /className="markdown-body(?:\s+ssc-flowchart-rendered)?"/);
-  assert.doesNotMatch(topicDetail, /<pre className="ssc-flowchart"/);
-  assert.match(css, /\.ssc-source-split/);
-  assert.match(css, /\.ssc-topic-mastery-route/);
-  assert.match(css, /\.ssc-topic-route-step/);
-  assert.match(css, /\.ssc-topic-pressure-grid/);
-  assert.match(css, /\.ssc-topic-quiz-block/);
-  assert.match(css, /\.ssc-topic-answer/);
-  assert.match(css, /\.ssc-topic-detail > \*/);
-  assert.match(css, /\.ssc-study-block \.markdown-body/);
-  assert.match(css, /overflow-wrap:\s*anywhere/);
+  assert.match(topicRoute, /<SscTopicStudyPage/);
+  assert.equal(
+    (topicReader.match(/<MarkdownNote content=\{section\.body\}/g) ?? []).length,
+    1,
+    "the lesson body should have exactly one render path"
+  );
+  assert.match(topicReader, /<NoteQuizClient \/>/);
+  assert.match(topicReader, /Practice this topic/);
+  assert.match(topicReader, /\/exams\/ssc-cgl\/practice\//);
+  assert.match(topicReader, /Start timed drill/);
+  assert.match(topicReader, /<details className=\{styles\.questionBankDetails\}>/);
+  assert.match(topicReaderCss, /max-width:\s*76ch/);
+  assert.match(topicReaderCss, /\.outline\s*\{[\s\S]*?position:\s*sticky/);
+
+  assert.doesNotMatch(combinedSource, /ssc-topic-mastery-route|Corpus pressure|200\/200 route/);
+  assert.doesNotMatch(combinedSource, /getSscTopicPracticePreview|previewQuestions/);
+  assert.doesNotMatch(combinedSource, /SscExplanationPanel|Reviewed PYQ-style questions from this topic/);
+  assert.doesNotMatch(combinedSource, /topic\.study\.formulaTable|topic\.study\.flowchart|topic\.practice\.drillPrompt/);
 });
 
-test("SSC CGL topic index is grouped into the four Tier-I subject levels", () => {
-  const topicIndex = fs.readFileSync(path.join(root, "app", "exams", "ssc-cgl", "topics", "page.tsx"), "utf8");
-  const css = fs.readFileSync(path.join(root, "app", "globals.css"), "utf8");
+test("SSC CGL canonical hierarchy runs from exam to subject to topic", () => {
+  const examPage = fs.readFileSync(path.join(root, "app", "exams", "ssc-cgl", "page.tsx"), "utf8");
+  const subjectRoutePath = path.join(root, "app", "exams", "ssc-cgl", "subjects", "[section]", "page.tsx");
+  const topicRoute = fs.readFileSync(path.join(root, "app", "exams", "ssc-cgl", "topics", "[slug]", "page.tsx"), "utf8");
+  const subjectHrefSource = fs.readFileSync(path.join(root, "lib", "ssc-cgl-subjects.ts"), "utf8");
 
-  assert.match(topicIndex, /getSscCglTopicCoverageMap/);
-  assert.match(topicIndex, /200\/200 coverage matrix/);
-  assert.match(topicIndex, /Sufficiency ledger/);
-  assert.match(topicIndex, /coverage\.masteryTargetQuestionsPerTopic/);
-  assert.match(topicIndex, /coverage\.bookBackedTargetQuestionsPerTopic/);
-  assert.match(topicIndex, /coverage\.minimumReviewedQuestions/);
-  assert.match(topicIndex, /coverage\.topicsPracticeSufficient/);
-  assert.match(topicIndex, /coverage\.topicsFullySufficient/);
-  assert.match(topicIndex, /coverage\.masteryGateFailures/);
-  assert.match(topicIndex, /coverage\.topicsWithTimedDrills/);
-  assert.match(topicIndex, /coverage\.weakestTopics/);
-  assert.match(topicIndex, /coverage\.sections/);
-  assert.match(topicIndex, /row\.sectionRank/);
-  assert.match(topicIndex, /row\.reviewedQuestions/);
-  assert.match(topicIndex, /row\.sufficiencyScore/);
-  assert.match(topicIndex, /row\.practiceReady/);
-  assert.match(topicIndex, /row\.masteryReady/);
-  assert.match(topicIndex, /row\.bookFloorGap/);
-  assert.match(topicIndex, /row\.sufficiencyGaps/);
-  assert.match(topicIndex, /row\.hasTimedDrill/);
-  assert.match(topicIndex, /row\.noteBodyLength/);
-  assert.match(topicIndex, /Practice-ready/);
-  assert.match(topicIndex, /Book floor/);
-  assert.match(topicIndex, /36-sec drill/);
-  assert.match(topicIndex, /Next gap:/);
-  assert.match(topicIndex, /section\.title/);
-  assert.match(topicIndex, /focusBySection/);
-  assert.match(topicIndex, /reasoning/);
-  assert.match(topicIndex, /general-awareness/);
-  assert.match(topicIndex, /quantitative-aptitude/);
-  assert.match(topicIndex, /english-comprehension/);
-  assert.match(topicIndex, /Level \{index \+ 1\}/);
-  assert.match(topicIndex, /ssc-topic-sublevels/);
-  assert.match(css, /\.ssc-topic-levels/);
-  assert.match(css, /\.ssc-topic-sublevels/);
-  assert.match(css, /\.ssc-topic-coverage/);
-  assert.match(css, /\.ssc-topic-sufficiency/);
-  assert.match(css, /\.ssc-topic-weakest/);
-  assert.match(css, /\.ssc-topic-coverage-row/);
-  assert.match(css, /\.ssc-topic-coverage-meter/);
-  assert.match(css, /\.ssc-topic-mastery-gates/);
-  assert.match(css, /\.ssc-topic-gaps/);
+  assert.ok(fs.existsSync(subjectRoutePath), "canonical SSC CGL subject route should exist");
+  const subjectRoute = fs.readFileSync(subjectRoutePath, "utf8");
+
+  assert.match(examPage, /SscCglLibraryLanding/);
+  assert.match(subjectHrefSource, /\/exams\/ssc-cgl\/subjects\//);
+  assert.match(subjectRoute, /generateStaticParams/);
+  assert.match(subjectRoute, /sscCglSubjectDefinitions/);
+  assert.match(subjectRoute, /<SscCglSubjectLanding/);
+  assert.match(subjectRoute, /\/exams\/ssc-cgl\/topics\//);
+  assert.match(topicRoute, /<SscTopicStudyPage/);
 });
 
-test("SSC CGL landing page exposes a complete exam setup flow", () => {
+test("SSC CGL landing is an exam overview with study and test paths", () => {
   const page = fs.readFileSync(path.join(root, "app", "exams", "ssc-cgl", "page.tsx"), "utf8");
-  const setup = fs.readFileSync(path.join(root, "components", "SscExamSetup.tsx"), "utf8");
-  const css = fs.readFileSync(path.join(root, "components", "SscExamSetup.module.css"), "utf8");
+  const landing = fs.readFileSync(path.join(root, "components", "SscCglLibraryLanding.tsx"), "utf8");
 
-  assert.match(page, /SscExamSetup/);
-  assert.match(page, /sectionReadiness/);
-  assert.match(page, /readinessPercent/);
-  assert.match(setup, /Quick 10/);
-  assert.match(setup, /Section Test/);
-  assert.match(setup, /Full Mock/);
-  assert.match(setup, /Endless Practice/);
-  assert.match(setup, /Book \/ PYQ Practice/);
-  assert.match(setup, /Weakness Repair/);
-  assert.match(setup, /All four sections/);
-  assert.match(setup, /10 Q/);
-  assert.match(setup, /25 Q/);
-  assert.match(setup, /50 Q/);
-  assert.match(setup, /100 Q/);
-  assert.match(setup, /Exam clock/);
-  assert.match(setup, /Relaxed/);
-  assert.match(setup, /No timer/);
-  assert.match(setup, /\/exams\/ssc-cgl\/session/);
-  assert.match(setup, /sscAttemptHistoryStorageKey/);
-  assert.match(setup, /sscMistakeBankStorageKey/);
-  assert.doesNotMatch(setup, /pipeline|OCR|Import review/i);
-  assert.match(css, /\.modeGrid/);
-  assert.match(css, /\.configPanel/);
-  assert.match(css, /\.sectionProgress/);
+  assert.match(page, /SscCglLibraryLanding/);
+  assert.match(page, /getCourseNavigationGroups\("SSC-CGL"\)/);
+  assert.match(page, /getSscCglDashboard\(\)/);
+  assert.match(landing, /sscCglSubjectDefinitions/);
+  assert.match(landing, /\/exams\/ssc-cgl\/tests|\/exams\/ssc-cgl\/session|Start a test/);
+  assert.match(landing, /\/exams\/ssc-cgl\/practice/);
+  assert.match(landing, /\/exams\/ssc-cgl\/current-affairs/);
+  assert.doesNotMatch(landing, /pipeline|OCR|Import review/i);
 });
 
 test("SSC CGL section 50/50 cockpits expose four section workflows", () => {
@@ -432,7 +371,7 @@ test("SSC CGL readiness page exposes clean 200/200 proof", () => {
   assert.match(page, /source-manifest/);
   assert.match(page, /current-affairs/);
   assert.doesNotMatch(page, /pipeline|OCR|Import review|quarantine/i);
-  assert.match(landing, /SscExamSetup/);
+  assert.match(landing, /SscCglLibraryLanding/);
   assert.match(css, /\.ssc-proof-page/);
   assert.match(css, /\.ssc-proof-evidence-grid/);
   assert.match(css, /\.ssc-proof-gate-list/);

@@ -3,7 +3,7 @@
   <desc id="desc">Decision map for number series, letter series, coding, mixed alpha numeric patterns, and traps.</desc>
   <rect width="1280" height="720" fill="#f8fbff"/>
   <rect x="56" y="52" width="1168" height="616" rx="24" fill="#ffffff" stroke="#cbd9e8" stroke-width="3"/>
-  <text x="94" y="116" fill="#17324d" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="800">Series + Coding 30-Second Route</text>
+  <text x="94" y="116" fill="#17324d" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="800">Series + Coding Decision Route</text>
   <text x="94" y="154" fill="#53687d" font-family="Inter, Arial, sans-serif" font-size="22">Do not search randomly. Classify the pattern, test it on all terms, then mark.</text>
 
   <g font-family="Inter, Arial, sans-serif" font-size="20">
@@ -27,9 +27,9 @@
 
     <rect x="118" y="358" width="1044" height="106" rx="18" fill="#f6f8fb" stroke="#d9e2ec" stroke-width="2"/>
     <text x="640" y="396" text-anchor="middle" fill="#17324d" font-size="26" font-weight="800">Test the rule on every given term</text>
-    <text x="640" y="430" text-anchor="middle" fill="#52677c">False patterns are the main reason marks are lost in this chapter.</text>
+    <text x="640" y="430" text-anchor="middle" fill="#52677c">A valid pattern must explain every supplied term without exception.</text>
 
     <rect x="180" y="520" width="920" height="72" rx="36" fill="#17324d"/>
-    <text x="640" y="565" text-anchor="middle" fill="#ffffff" font-size="24" font-weight="800">Classify -> compute -> verify -> option match -> move on</text>
+    <text x="640" y="565" text-anchor="middle" fill="#ffffff" font-size="24" font-weight="800">Classify → test → verify → apply → move on</text>
   </g>
 </svg>

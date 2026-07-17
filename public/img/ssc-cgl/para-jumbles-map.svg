@@ -3,8 +3,8 @@
   <desc id="desc">A para-jumbles map for opener detection, mandatory pairs, connector logic, chronology and final boundary checks.</desc>
   <rect width="960" height="540" fill="#101820"/>
   <rect x="28" y="28" width="904" height="484" rx="18" fill="#172235" stroke="#f9a8d4" stroke-width="2"/>
-  <text x="480" y="68" text-anchor="middle" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Para-Jumbles 187-Q Ordering Map</text>
-  <text x="480" y="100" text-anchor="middle" fill="#fce7f3" font-family="Inter, Arial, sans-serif" font-size="15">5-second opener scan, mandatory pair lock, option elimination, then final sequence check.</text>
+  <text x="480" y="68" text-anchor="middle" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Para-Jumbles: Coherence Map</text>
+  <text x="480" y="100" text-anchor="middle" fill="#fce7f3" font-family="Inter, Arial, sans-serif" font-size="15">Find the opener, lock mandatory pairs, use connectors, then verify the complete sequence.</text>
 
   <g font-family="Inter, Arial, sans-serif" font-size="15">
     <rect x="58" y="132" width="250" height="118" rx="12" fill="#fce7f3"/>
@@ -41,7 +41,7 @@
     <text x="777" y="343" text-anchor="middle" fill="#0f172a" font-size="19" font-weight="700">Boundary Check</text>
     <text x="674" y="375" fill="#0f172a">read final sequence once</text>
     <text x="674" y="400" fill="#0f172a">verify each sentence link</text>
-    <text x="674" y="425" fill="#0f172a">target 25-30 seconds</text>
+  <text x="674" y="425" fill="#0f172a">verify global coherence</text>
   </g>
 
   <g stroke="#f9a8d4" stroke-width="3" fill="none" marker-end="url(#arrow)">

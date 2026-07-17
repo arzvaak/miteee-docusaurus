@@ -88,7 +88,7 @@ export const sscCglSubjectDefinitions: readonly SscCglSubjectDefinition[] = [
     groupKey: "ssc-cgl-english",
     notePrefix: "ssc-cgl-english-",
     shortTitle: "English",
-    title: "English Comprehension",
+    title: "English Language",
     cardDescription: "Grammar, vocabulary, comprehension, cloze, voice, and narration.",
     description: "Study grammar, vocabulary, cloze, sentence flow, voice, narration, and reading as one rule-first system.",
     outcome: "Identify the tested rule, eliminate precisely, and keep comprehension from consuming the section clock.",
@@ -103,7 +103,7 @@ export function getSscCglSubjectDefinition(section: string) {
 }
 
 export function sscCglSubjectHref(section: SscCglSectionId | string) {
-  return `/courses/SSC-CGL/${section}`;
+  return `/exams/ssc-cgl/subjects/${section}`;
 }
 
 export function sscCglTopicSlugFromNote(subject: SscCglSubjectDefinition, noteSlug: string) {

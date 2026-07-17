@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
-  <title id="title">Direction Distance 38-Q Axis Map</title>
-  <desc id="desc">A study map for SSC CGL direction and distance questions: classify the cue, lock the axis, cancel movement, choose distance or direction, and answer inside the Reasoning timer.</desc>
+  <title id="title">Direction and Distance Axis Map</title>
+  <desc id="desc">A study map for direction-and-distance questions: identify the requested quantity, set coordinate signs, translate turns, cancel movement, and report net direction or distance.</desc>
   <rect width="960" height="540" fill="#111827"/>
   <rect x="36" y="34" width="888" height="472" rx="22" fill="#0f172a" stroke="#334155" stroke-width="2"/>
-  <text x="72" y="82" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Direction Distance: 38-Q Axis Map</text>
+  <text x="72" y="82" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Direction and Distance Axis Map</text>
   <text x="72" y="114" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="16">Last sentence first, axis signs second, Pythagoras only after cancellation.</text>
 
   <g font-family="Inter, Arial, sans-serif">
@@ -33,9 +33,9 @@
     <text x="391" y="399" fill="#cbd5e1" font-size="14">Distance = net triangle.</text>
 
     <rect x="662" y="318" width="226" height="102" rx="12" fill="#1e293b" stroke="#14b8a6" stroke-width="2"/>
-    <text x="686" y="350" fill="#ccfbf1" font-size="19" font-weight="700">6. 36-Second Answer</text>
-    <text x="686" y="378" fill="#cbd5e1" font-size="14">20s direct, 30s turns.</text>
-    <text x="686" y="399" fill="#cbd5e1" font-size="14">50s only for dense relative cues.</text>
+  <text x="686" y="350" fill="#ccfbf1" font-size="19" font-weight="700">6. Final Answer Check</text>
+  <text x="686" y="378" fill="#cbd5e1" font-size="14">Use net coordinates, not last move.</text>
+  <text x="686" y="399" fill="#cbd5e1" font-size="14">Match the quantity asked.</text>
   </g>
 
   <g stroke="#64748b" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -55,6 +55,6 @@
     <path d="M177 263 L185 251 L193 263 Z"/>
   </g>
 
-  <text x="72" y="466" fill="#e2e8f0" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600">200/200 rule:</text>
-  <text x="174" y="466" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="15">No Pythagoras before cancellation; no facing answer when the question asks position from start.</text>
+  <text x="72" y="466" fill="#e2e8f0" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600">Accuracy rule:</text>
+  <text x="190" y="466" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="15">No Pythagoras before cancellation; no facing answer when the question asks position from start.</text>
 </svg>

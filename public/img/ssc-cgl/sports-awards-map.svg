@@ -3,8 +3,8 @@
   <desc id="desc">A quick recall map for SSC CGL sports, awards, honours, trophies, books, firsts, and event traps.</desc>
   <rect width="1200" height="760" fill="#08111f"/>
   <rect x="42" y="38" width="1116" height="684" rx="18" fill="#101c2b" stroke="#f8c14a" stroke-width="3"/>
-  <text x="600" y="84" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#f8fbff">Sports, Awards, Honours: 5-Second Recall Map</text>
-  <text x="600" y="118" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#c5d4e8">353 promoted questions: classify entity, retrieve pair, avoid host-winner and first-person traps</text>
+  <text x="600" y="84" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#f8fbff">Sports, Awards, and Honours Map</text>
+  <text x="600" y="118" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#c5d4e8">Classify the pair, preserve the edition year, and separate stable firsts from changing records</text>
 
   <g font-family="Arial, sans-serif">
     <rect x="76" y="158" width="310" height="158" rx="14" fill="#162a3f" stroke="#60a5fa" stroke-width="2"/>
@@ -27,9 +27,9 @@
 
     <rect x="76" y="366" width="310" height="158" rx="14" fill="#162a3f" stroke="#fb7185" stroke-width="2"/>
     <text x="231" y="398" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">Book - Author</text>
-    <text x="102" y="433" font-size="17" fill="#ffe4e6">Wings of Fire: A. P. J. Abdul Kalam</text>
-    <text x="102" y="461" font-size="17" fill="#ffe4e6">God of Small Things: Arundhati Roy</text>
-    <text x="102" y="489" font-size="17" fill="#ffe4e6">Playing It My Way: Sachin</text>
+    <text x="102" y="433" font-size="14" fill="#ffe4e6">Wings of Fire: Kalam + Arun Tiwari</text>
+    <text x="102" y="461" font-size="14" fill="#ffe4e6">God of Small Things: Arundhati Roy</text>
+    <text x="102" y="489" font-size="14" fill="#ffe4e6">Playing It My Way: Tendulkar + Majumdar</text>
 
     <rect x="445" y="366" width="310" height="158" rx="14" fill="#162a3f" stroke="#c084fc" stroke-width="2"/>
     <text x="600" y="398" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">Host / Winner Trap</text>
@@ -39,11 +39,11 @@
 
     <rect x="814" y="366" width="310" height="158" rx="14" fill="#162a3f" stroke="#fb923c" stroke-width="2"/>
     <text x="969" y="398" text-anchor="middle" font-size="22" font-weight="700" fill="#ffffff">Hierarchy</text>
-    <text x="840" y="433" font-size="17" fill="#ffedd5">Bharat Ratna highest civilian</text>
-    <text x="840" y="461" font-size="17" fill="#ffedd5">Padma: Vibhushan, Bhushan, Shri</text>
-    <text x="840" y="489" font-size="17" fill="#ffedd5">Param Vir Chakra highest wartime gallantry</text>
+    <text x="840" y="433" font-size="15" fill="#ffedd5">Bharat Ratna: highest civilian</text>
+    <text x="840" y="461" font-size="15" fill="#ffedd5">Padma: Vibhushan, Bhushan, Shri</text>
+    <text x="840" y="489" font-size="15" fill="#ffedd5">Param Vir Chakra: highest wartime</text>
 
     <rect x="198" y="596" width="804" height="66" rx="33" fill="#f8c14a"/>
-    <text x="600" y="637" text-anchor="middle" font-size="22" font-weight="700" fill="#07111e">Exam loop: trophy/award/book/first/venue -> recall pair -> check wording -> move fast</text>
+    <text x="600" y="637" text-anchor="middle" font-size="22" font-weight="700" fill="#07111e">Loop: classify pair -> recall -> check year and wording</text>
   </g>
 </svg>

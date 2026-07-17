@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
-  <title id="title">Seating Arrangement 138-Q Placement Map</title>
-  <desc id="desc">A study map for classifying SSC CGL seating arrangement clues, drawing the placement skeleton, controlling branches, and finishing inside a 36-second target.</desc>
+  <title id="title">Seating Arrangement Placement Map</title>
+  <desc id="desc">A study map for seating arrangements: classify the layout, establish facing direction, place fixed clues, preserve branches, and verify every clue.</desc>
   <rect width="960" height="540" fill="#0f172a"/>
   <rect x="36" y="34" width="888" height="472" rx="22" fill="#111827" stroke="#334155" stroke-width="2"/>
-  <text x="72" y="82" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Seating Arrangement: 138-Q Placement Map</text>
+  <text x="72" y="82" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Seating Arrangement Placement Map</text>
   <text x="72" y="114" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="16">Classify first, draw once, place fixed clues, then verify every clue before choosing.</text>
 
   <g font-family="Inter, Arial, sans-serif">
@@ -28,9 +28,9 @@
     <text x="96" y="400" fill="#cbd5e1" font-size="14">Branch only when forced.</text>
 
     <rect x="365" y="318" width="230" height="104" rx="12" fill="#1e293b" stroke="#ef4444" stroke-width="2"/>
-    <text x="389" y="350" fill="#fee2e2" font-size="19" font-weight="700">5. 36-Second Check</text>
-    <text x="389" y="379" fill="#cbd5e1" font-size="14">12s diagram, 18s placement,</text>
-    <text x="389" y="400" fill="#cbd5e1" font-size="14">6s clue verification.</text>
+  <text x="389" y="350" fill="#fee2e2" font-size="19" font-weight="700">5. Clue Verification</text>
+  <text x="389" y="379" fill="#cbd5e1" font-size="14">Check direction and gap count.</text>
+  <text x="389" y="400" fill="#cbd5e1" font-size="14">Test every clue once.</text>
 
     <rect x="658" y="318" width="230" height="104" rx="12" fill="#1e293b" stroke="#14b8a6" stroke-width="2"/>
     <text x="682" y="350" fill="#ccfbf1" font-size="19" font-weight="700">6. Repair Loop</text>
@@ -55,6 +55,6 @@
     <path d="M179 267 L187 255 L195 267 Z"/>
   </g>
 
-  <text x="72" y="466" fill="#e2e8f0" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600">200/200 rule:</text>
-  <text x="174" y="466" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="15">No unclassified clue enters the diagram. No diagram is submitted without a clue-by-clue check.</text>
+  <text x="72" y="466" fill="#e2e8f0" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600">Accuracy rule:</text>
+  <text x="190" y="466" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="15">No unclassified clue enters the diagram. No diagram is submitted without a clue-by-clue check.</text>
 </svg>

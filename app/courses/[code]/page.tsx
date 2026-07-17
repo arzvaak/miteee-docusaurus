@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
 import { ArrowRight, BookOpen, FileText, ListChecks, Sigma } from "lucide-react";
 import { CourseOutline } from "@/components/CourseOutline";
@@ -6,12 +6,10 @@ import { CoursePracticeSection } from "@/components/CoursePracticeSection";
 import { CourseResumePanel } from "@/components/CourseResumePanel";
 import { JsonLd } from "@/components/JsonLd";
 import { ResearchCollection } from "@/components/ResearchCollection";
-import { SscCglLibraryLanding } from "@/components/SscCglLibraryLanding";
 import { UpscActiveRecallSection } from "@/components/UpscActiveRecallSection";
 import { courseDisplaySummary, formatNumber, getAllCourses, getCourse, getCourseNavigationGroups, getCourseNotes } from "@/lib/content";
 import { buildCoursePracticeDrills } from "@/lib/course-practice";
 import { buildBreadcrumbJsonLd, buildCourseJsonLd, buildPageMetadata, courseDescription } from "@/lib/seo";
-import { getSscCglDashboard } from "@/lib/ssc-cgl";
 import { buildUpscActiveRecallDrills } from "@/lib/upsc-active-recall";
 
 type CoursePageProps = {
@@ -37,6 +35,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
   const { code } = await params;
   const course = getCourse(code);
   if (!course) notFound();
+  if (course.code === "SSC-CGL") redirect("/exams/ssc-cgl");
   const notes = getCourseNotes(course.code);
   const courseGroups = getCourseNavigationGroups(course.code);
   const structuredData = [
@@ -47,29 +46,6 @@ export default async function CoursePage({ params }: CoursePageProps) {
       { name: course.code, pathname: `/courses/${course.code}` }
     ])
   ];
-
-  if (course.code === "SSC-CGL") {
-    const dashboard = getSscCglDashboard();
-    return (
-      <>
-        <JsonLd data={structuredData} />
-        <SscCglLibraryLanding
-          groups={courseGroups}
-          corpus={{
-            reviewedQuestions: dashboard.readiness.reviewedQuestions,
-            fullMocks: dashboard.readiness.fullMocks,
-            sections: dashboard.readiness.sectionReadiness.map((section) => ({
-              section: section.section,
-              title: section.title,
-              reviewedQuestions: section.reviewedQuestions,
-              bookBackedQuestions: section.bookBackedQuestions,
-              drillHref: section.drillHref
-            }))
-          }}
-        />
-      </>
-    );
-  }
 
   if (course.code === "RESEARCH") {
     return (

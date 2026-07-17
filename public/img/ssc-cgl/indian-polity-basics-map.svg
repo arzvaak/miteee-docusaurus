@@ -3,8 +3,8 @@
   <desc id="desc">A compact map connecting article ranges, constitutional bodies, writs, schedules, amendments, and parliament procedure for SSC CGL General Awareness revision.</desc>
   <rect width="1200" height="720" fill="#f8fafc"/>
   <rect x="48" y="42" width="1104" height="92" rx="18" fill="#111827"/>
-  <text x="82" y="92" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#ffffff">Indian Polity 200/200 Recall Map</text>
-  <text x="82" y="120" font-family="Arial, sans-serif" font-size="18" fill="#cbd5e1">Classify in 5 seconds, recall in 20 seconds, trap-check before 45 seconds.</text>
+  <text x="82" y="92" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#ffffff">Indian Polity Concept Map</text>
+  <text x="82" y="120" font-family="Arial, sans-serif" font-size="18" fill="#cbd5e1">Classify the cue, recall the provision, then check the nearest constitutional trap.</text>
 
   <g font-family="Arial, sans-serif">
     <rect x="62" y="176" width="320" height="196" rx="14" fill="#e0f2fe" stroke="#0284c7" stroke-width="3"/>
@@ -44,7 +44,7 @@
 
     <rect x="818" y="426" width="320" height="196" rx="14" fill="#f1f5f9" stroke="#475569" stroke-width="3"/>
     <text x="844" y="464" font-size="24" font-weight="700" fill="#0f172a">Parliament</text>
-    <text x="844" y="500" font-size="18" fill="#1e293b">Money Bill: Lok Sabha only</text>
+    <text x="844" y="500" font-size="18" fill="#1e293b">Money Bill: introduced in Lok Sabha</text>
     <text x="844" y="530" font-size="18" fill="#1e293b">Speaker certifies Money Bill</text>
     <text x="844" y="560" font-size="18" fill="#1e293b">Rajya Sabha: 14 days only</text>
     <text x="844" y="590" font-size="18" fill="#1e293b">No-confidence: Lok Sabha</text>

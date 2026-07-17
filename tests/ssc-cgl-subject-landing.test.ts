@@ -11,12 +11,13 @@ import {
 
 const librarySource = fs.readFileSync("components/SscCglLibraryLanding.tsx", "utf8");
 const subjectCardSource = librarySource.slice(librarySource.indexOf("function SubjectCard"));
-const routeSource = fs.readFileSync("app/courses/[code]/[section]/page.tsx", "utf8");
+const routePath = "app/exams/ssc-cgl/subjects/[section]/page.tsx";
+const routeSource = fs.existsSync(routePath) ? fs.readFileSync(routePath, "utf8") : "";
 const subjectLandingSource = fs.readFileSync("components/SscCglSubjectLanding.tsx", "utf8");
 const subjectLandingCss = fs.readFileSync("components/SscCglSubjectLanding.module.css", "utf8");
 const sitemapSource = fs.readFileSync("app/sitemap.ts", "utf8");
 
-test("SSC CGL subject definitions expose four stable nested course routes", () => {
+test("SSC CGL subject definitions expose four canonical exam-subject routes", () => {
   assert.deepEqual(
     sscCglSubjectDefinitions.map((subject) => subject.section),
     ["reasoning", "general-awareness", "quantitative-aptitude", "english-comprehension"]
@@ -24,17 +25,17 @@ test("SSC CGL subject definitions expose four stable nested course routes", () =
   assert.deepEqual(
     sscCglSubjectDefinitions.map((subject) => sscCglSubjectHref(subject.section)),
     [
-      "/courses/SSC-CGL/reasoning",
-      "/courses/SSC-CGL/general-awareness",
-      "/courses/SSC-CGL/quantitative-aptitude",
-      "/courses/SSC-CGL/english-comprehension"
+      "/exams/ssc-cgl/subjects/reasoning",
+      "/exams/ssc-cgl/subjects/general-awareness",
+      "/exams/ssc-cgl/subjects/quantitative-aptitude",
+      "/exams/ssc-cgl/subjects/english-comprehension"
     ]
   );
   assert.match(sitemapSource, /sscCglSubjectDefinitions\.map/);
   assert.match(sitemapSource, /sscCglSubjectHref\(subject\.section\)/);
 });
 
-test("every canonical SSC CGL topic resolves to a study note inside its subject", () => {
+test("every canonical SSC CGL topic has a study source inside its exam subject", () => {
   const groups = getCourseNavigationGroups("SSC-CGL");
   const topics = getSscTopics();
   const coverage = getSscCglTopicCoverageMap();
@@ -43,20 +44,24 @@ test("every canonical SSC CGL topic resolves to a study note inside its subject"
     const group = groups.find((item) => item.key === subject.groupKey);
     const subjectTopics = topics.filter((topic) => topic.section === subject.section);
     const coverageSection = coverage.sections.find((item) => item.section === subject.section);
-    assert.ok(group, `${subject.shortTitle} navigation group should exist`);
-    assert.ok(coverageSection, `${subject.shortTitle} coverage should exist`);
-    assert.ok(subjectTopics.length > 0, `${subject.shortTitle} should have canonical topics`);
+    assert.ok(group, subject.shortTitle + " navigation group should exist");
+    assert.ok(coverageSection, subject.shortTitle + " coverage should exist");
+    assert.ok(subjectTopics.length > 0, subject.shortTitle + " should have canonical topics");
     assert.ok(coverageSection.reviewedQuestions > 0);
     assert.ok(coverageSection.bookBackedQuestions > 0);
 
     const noteTopicSlugs = new Set(group.notes.map((note) => sscCglTopicSlugFromNote(subject, note.slug)));
     for (const topic of subjectTopics) {
-      assert.equal(noteTopicSlugs.has(topic.slug), true, `${subject.shortTitle}: ${topic.slug} should have a Markdown study note`);
+      assert.equal(
+        noteTopicSlugs.has(topic.slug),
+        true,
+        subject.shortTitle + ": " + topic.slug + " should have a Markdown study source"
+      );
     }
   }
 });
 
-test("subject cards open stable subject homes instead of a history-dependent first note", () => {
+test("exam overview subject cards open canonical subject homes", () => {
   assert.match(librarySource, /sscCglSubjectDefinitions/);
   assert.match(librarySource, /sscCglSubjectHref/);
   assert.match(librarySource, /definition\.cardDescription/);
@@ -64,23 +69,27 @@ test("subject cards open stable subject homes instead of a history-dependent fir
   assert.match(subjectCardSource, /className=\{styles\.subjectMainLink\} href=\{subjectHref\}/);
   assert.match(subjectCardSource, /className=\{styles\.openSubject\} href=\{subjectHref\}>Open subject/);
   assert.doesNotMatch(subjectCardSource, /firstNote/);
-  assert.doesNotMatch(subjectCardSource, /href=\{`\/notes\/\$\{firstNote\.slug\}`\}/);
+  assert.doesNotMatch(subjectCardSource, /\/courses\/SSC-CGL/);
 });
 
-test("nested SSC CGL subject route joins notes, corpus coverage, and practice links", () => {
+test("canonical SSC CGL subject route joins study topics and practice", () => {
+  assert.ok(fs.existsSync(routePath), routePath + " should exist");
   assert.match(routeSource, /generateStaticParams/);
-  assert.match(routeSource, /code\.toUpperCase\(\) !== "SSC-CGL"/);
+  assert.match(routeSource, /sscCglSubjectDefinitions/);
   assert.match(routeSource, /getCourseNavigationGroups\("SSC-CGL"\)/);
   assert.match(routeSource, /getSscCglTopicCoverageMap\(\)/);
   assert.match(routeSource, /getSscCglPracticeTopics\(\)/);
   assert.match(routeSource, /getSscTopics\(\)/);
   assert.match(routeSource, /stage: "guide"/);
+  assert.match(routeSource, /\/exams\/ssc-cgl\/topics\//);
   assert.match(routeSource, /practiceHref: practice\?\.href/);
   assert.match(routeSource, /drillHref: row\?\.drillHref/);
   assert.match(routeSource, /<SscCglSubjectLanding/);
 });
 
-test("subject landing exposes a complete staged TOC with local progress and filters", () => {
+test("subject landing exposes a staged topic TOC and canonical exam breadcrumbs", () => {
+  assert.match(subjectLandingSource, /<Link href="\/exams">Exams<\/Link>/);
+  assert.match(subjectLandingSource, /<Link href="\/exams\/ssc-cgl">SSC CGL<\/Link>/);
   assert.match(subjectLandingSource, /Complete table of contents/);
   assert.match(subjectLandingSource, /Choose exactly what to study next/);
   assert.match(subjectLandingSource, /id: "guide"/);
@@ -96,12 +105,13 @@ test("subject landing exposes a complete staged TOC with local progress and filt
   assert.match(subjectLandingSource, /In progress/);
   assert.match(subjectLandingSource, /Completed/);
   assert.match(subjectLandingSource, /subject\.cockpitHref/);
+  assert.match(subjectLandingSource, /note\.studyHref/);
   assert.match(subjectLandingSource, /note\.practiceHref/);
   assert.match(subjectLandingSource, /note\.drillHref/);
-  assert.match(subjectLandingSource, /Study note/);
+  assert.doesNotMatch(subjectLandingSource, /\/courses\/SSC-CGL/);
 });
 
-test("subject TOC remains readable across themes and narrow screens", () => {
+test("subject topic TOC remains readable across themes and narrow screens", () => {
   assert.match(subjectLandingCss, /\.topicGrid\s*\{[^}]*grid-template-columns:\s*repeat\(2,/s);
   assert.match(subjectLandingCss, /var\(--subject-accent\)/);
   assert.match(subjectLandingCss, /var\(--surface\)/);

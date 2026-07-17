@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
   <title id="title">SSC CGL geometry and mensuration formula map</title>
-  <desc id="desc">A compact map linking geometry theorems, 2D mensuration, 3D mensuration, and 36-second exam decisions.</desc>
+  <desc id="desc">A compact map linking geometry theorems, 2D mensuration, 3D mensuration, unit checks, and method selection.</desc>
   <rect width="960" height="540" fill="#101820"/>
   <rect x="28" y="28" width="904" height="484" rx="20" fill="#16232f" stroke="#7dd3fc" stroke-width="2"/>
-  <text x="480" y="70" text-anchor="middle" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Geometry + Mensuration Quant 50/50 Map</text>
-  <text x="480" y="102" text-anchor="middle" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="15">1207 promoted questions: classify in 5 seconds, solve inside the 36-second bar</text>
+  <text x="480" y="70" text-anchor="middle" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Geometry and Mensuration Formula Map</text>
+  <text x="480" y="102" text-anchor="middle" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="15">Classify the figure, choose the theorem or measure, and preserve square or cubic units</text>
 
   <g font-family="Inter, Arial, sans-serif" font-size="15">
     <rect x="62" y="135" width="250" height="145" rx="14" fill="#f8fafc"/>
@@ -35,7 +35,7 @@
     <text x="82" y="439" fill="#0f172a">Trapezium = 1/2*(a+b)*h</text>
 
     <rect x="355" y="328" width="250" height="118" rx="14" fill="#fae8ff"/>
-    <text x="480" y="356" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">5-Second Classifier</text>
+    <text x="480" y="356" text-anchor="middle" fill="#0f172a" font-size="20" font-weight="700">Method Classifier</text>
     <text x="375" y="389" fill="#0f172a">Angle -> theorem trigger</text>
     <text x="375" y="414" fill="#0f172a">Sheet/paint -> surface area</text>
     <text x="375" y="439" fill="#0f172a">Tank/recast -> volume lock</text>

@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-labelledby="title desc">
-  <title id="title">Simplification 36-second decision map</title>
+  <title id="title">Simplification decision map</title>
   <desc id="desc">A study map for BODMAS, cancellation, indices, surds, approximation, and option-gap judgement in SSC CGL Quant.</desc>
   <rect width="960" height="520" fill="#fbfaf5"/>
   <rect x="44" y="38" width="872" height="84" rx="18" fill="#243a63"/>
@@ -11,7 +11,7 @@
     <text x="195" y="220" text-anchor="middle">Resolve BODMAS first</text>
     <rect x="365" y="160" width="230" height="88" rx="14" fill="#edf7ef" stroke="#92b89b"/>
     <text x="480" y="192" text-anchor="middle" font-weight="700">Fractions present?</text>
-    <text x="480" y="220" text-anchor="middle">Cancel before adding</text>
+    <text x="480" y="220" text-anchor="middle">Use the LCM, then reduce</text>
     <rect x="650" y="160" width="230" height="88" rx="14" fill="#fff2dc" stroke="#d4a85a"/>
     <text x="765" y="192" text-anchor="middle" font-weight="700">Options wide?</text>
     <text x="765" y="220" text-anchor="middle">Approximate and stop</text>
@@ -28,5 +28,5 @@
     <path d="M480 248 C503 300 570 314 650 330"/>
     <path d="M765 248 C760 292 715 314 650 330"/>
   </g>
-  <text x="480" y="475" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#243a63">36-second rule: never start long arithmetic before scanning for cancellation.</text>
+  <text x="480" y="475" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#243a63">Scan for grouping and cancellation before starting long arithmetic.</text>
 </svg>

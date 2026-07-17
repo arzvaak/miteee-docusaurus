@@ -3,7 +3,7 @@
   <desc id="desc">A study map for active-passive voice, direct-indirect narration, pronoun ownership, tense shifts, and option elimination.</desc>
   <rect width="1200" height="675" fill="#111827"/>
   <rect x="44" y="42" width="1112" height="591" rx="28" fill="#0f172a" stroke="#f59e0b" stroke-width="3"/>
-  <text x="78" y="103" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="800">Voice and Narration: 5-Second Classification</text>
+  <text x="78" y="103" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="800">Voice and Narration: Transformation Map</text>
   <text x="80" y="142" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="21">Lock the transformation type first. Then check tense, pronoun owner, order, and option traps.</text>
 
   <g font-family="Inter, Arial, sans-serif">

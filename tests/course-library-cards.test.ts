@@ -10,9 +10,10 @@ const catalog = fs.readFileSync("components/CourseCatalog.tsx", "utf8");
 const catalogCss = fs.readFileSync("components/CourseCatalog.module.css", "utf8");
 
 test("library renders every real subject as a routed card", () => {
-  const courses = getAllCourses();
+  const courses = getAllCourses().filter((course) => !["SSC-CGL", "MITEEE", "SUPERPOWERS"].includes(course.code));
 
-  assert.ok(courses.length >= 14);
+  assert.ok(courses.length >= 10);
+  assert.match(page, /!\["SSC-CGL", "MITEEE", "SUPERPOWERS"\]\.includes\(course\.code\)/);
   assert.match(catalog, /group\.courses\.map\(\(course\) =>/);
   assert.match(catalog, /href=\{`\/courses\/\$\{course\.code\}`\}/);
   assert.match(catalog, /className=\{styles\.courseCard\}/);
@@ -25,10 +26,10 @@ test("library renders every real subject as a routed card", () => {
 test("library preserves search and discovery filters", () => {
   const courses = getAllCourses();
   const discovery = buildCourseDiscoveryGroups(courses);
-  const ssc = filterCourseDiscoveryGroups(discovery.groups, "all", "SSC CGL").flatMap((group) => group.courses);
+  const em2 = filterCourseDiscoveryGroups(discovery.groups, "all", "Electrical Machines").flatMap((group) => group.courses);
   const semesterFive = filterCourseDiscoveryGroups(discovery.groups, "semester-5", "").flatMap((group) => group.courses);
 
-  assert.equal(ssc.some((course) => course.code === "SSC-CGL"), true);
+  assert.equal(em2.some((course) => course.code === "SEM5-EM2"), true);
   assert.ok(semesterFive.length > 0);
   assert.match(catalog, /filterCourseDiscoveryGroups\(discovery\.groups, activeFilter, query\)/);
   assert.match(catalog, /aria-label="Search all collections"/);
@@ -38,9 +39,10 @@ test("library preserves search and discovery filters", () => {
 });
 
 test("library masthead uses real totals and full-width collection framing", () => {
-  assert.match(page, /Choose a collection, then go deep\./);
-  assert.match(page, /catalog\.totals\.courses/);
-  assert.match(page, /catalog\.totals\.notes/);
+  assert.match(page, /Choose a subject, then go deep\./);
+  assert.match(page, /courses\.length/);
+  assert.match(page, /course\.noteCount/);
+  assert.doesNotMatch(page, /Study Vault|exam systems/i);
   assert.match(page, /practiceTotal/);
   assert.match(page, /runnableTotal/);
   assert.match(page, /data-shell-full-bleed="true"/);

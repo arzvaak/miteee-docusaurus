@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
-  <title id="title">Probability 64-Q Decision Map</title>
+  <title id="title">Probability Decision Map</title>
   <desc id="desc">A study map for SSC CGL probability: identify the experiment, lock the denominator, handle replacement, and use complement when faster.</desc>
   <rect width="960" height="540" fill="#111827"/>
   <rect x="36" y="34" width="888" height="472" rx="22" fill="#0f172a" stroke="#334155" stroke-width="2"/>
-  <text x="72" y="82" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Probability: 64-Q Decision Map</text>
+  <text x="72" y="82" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Probability: Sample-Space Decision Map</text>
   <text x="72" y="114" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="16">Denominator first, wording second, arithmetic last.</text>
 
   <g font-family="Inter, Arial, sans-serif">
@@ -55,6 +55,6 @@
     <path d="M177 263 L185 251 L193 263 Z"/>
   </g>
 
-  <text x="72" y="466" fill="#e2e8f0" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600">50/50 rule:</text>
+  <text x="72" y="466" fill="#e2e8f0" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600">Final check:</text>
   <text x="156" y="466" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="15">A probability miss is usually a stem-classification miss: name the experiment before counting.</text>
 </svg>

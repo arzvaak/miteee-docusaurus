@@ -21,7 +21,6 @@ import {
 import { useEffect, useMemo, useState } from "react";
 import {
   parseReaderProgressStore,
-  readerProgressResumeHref,
   readerProgressStorageKey,
   type ReaderProgressEntry,
   type ReaderProgressStore
@@ -188,17 +187,17 @@ export function SscCglSubjectLanding({
     setStatusFilter("all");
   }
 
-  const primaryHref = resumeEntry
-    ? readerProgressResumeHref(resumeEntry)
-    : firstNote?.studyHref ?? "/courses/SSC-CGL";
-  const primaryLabel = resumeNote ? `Resume ${resumeNote.label}` : "Start the first note";
+  const primaryHref = resumeEntry && resumeNote
+    ? `${resumeNote.studyHref}?resume=1`
+    : firstNote?.studyHref ?? "/exams/ssc-cgl";
+  const primaryLabel = resumeNote ? `Resume ${resumeNote.label}` : "Start the first topic";
 
   return (
     <div className={`${styles.page} ${styles[subject.tone]}`} data-ssc-subject-landing={subject.section}>
       <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
-        <Link href="/courses">Subjects</Link>
+        <Link href="/exams">Exams</Link>
         <span aria-hidden="true">/</span>
-        <Link href="/courses/SSC-CGL">SSC CGL</Link>
+        <Link href="/exams/ssc-cgl">SSC CGL</Link>
         <span aria-hidden="true">/</span>
         <span>{subject.shortTitle}</span>
       </nav>
@@ -237,7 +236,7 @@ export function SscCglSubjectLanding({
             <span className={styles.progressIcon}><Sparkles size={18} aria-hidden="true" /></span>
             <span>
               <small>Saved on this device</small>
-              <strong>{progressLoaded ? `${completedNotes}/${notes.length} notes completed` : "Checking reading progress"}</strong>
+              <strong>{progressLoaded ? `${completedNotes}/${notes.length} topics completed` : "Checking reading progress"}</strong>
             </span>
           </div>
           <div className={styles.progressMeter} aria-label={`${averageProgress}% average reading progress`}>
@@ -250,17 +249,17 @@ export function SscCglSubjectLanding({
           </div>
           <p>{subject.outcome}</p>
           {resumeEntry && resumeNote ? (
-            <Link href={readerProgressResumeHref(resumeEntry)}>Continue {resumeNote.label} <ArrowRight size={14} aria-hidden="true" /></Link>
+            <Link href={`${resumeNote.studyHref}?resume=1`}>Continue {resumeNote.label} <ArrowRight size={14} aria-hidden="true" /></Link>
           ) : firstNote ? (
             <Link href={firstNote.studyHref}>Begin with {firstNote.label} <ArrowRight size={14} aria-hidden="true" /></Link>
           ) : null}
         </aside>
 
         <div className={styles.statStrip} aria-label={`${subject.shortTitle} library facts`}>
-          <span><strong>{formatNumber(stats.studyNotes)}</strong><small>study notes</small></span>
-          <span><strong>{formatNumber(stats.canonicalTopics)}</strong><small>exam topics</small></span>
-          <span><strong>{formatNumber(stats.reviewedQuestions)}</strong><small>reviewed questions</small></span>
-          <span><strong>{formatNumber(stats.bookBackedQuestions)}</strong><small>book-backed</small></span>
+          <span><strong>{formatNumber(stats.studyNotes)}</strong><small>study guides</small></span>
+          <span><strong>{formatNumber(stats.canonicalTopics)}</strong><small>syllabus topics</small></span>
+          <span><strong>{formatNumber(stats.reviewedQuestions)}</strong><small>practice questions</small></span>
+          <span><strong>{formatNumber(stats.bookBackedQuestions)}</strong><small>source-backed</small></span>
         </div>
       </section>
 
@@ -269,11 +268,11 @@ export function SscCglSubjectLanding({
           <div>
             <span className={styles.eyebrow}>Complete table of contents</span>
             <h2 id="ssc-subject-toc-title">Choose exactly what to study next.</h2>
-            <p>Every note is visible below. Search the contents, filter by your saved reading state, then move from study into practice without losing the subject map.</p>
+            <p>Every topic is visible below. Search the contents, filter by your saved reading state, then move from study into practice without losing the subject map.</p>
           </div>
           <div className={styles.tocSummary} aria-live="polite">
             <ListTree size={18} aria-hidden="true" />
-            <span><strong>{filteredNotes.length}</strong> of {notes.length} notes shown</span>
+            <span><strong>{filteredNotes.length}</strong> of {notes.length} topics shown</span>
           </div>
         </header>
 
@@ -314,7 +313,7 @@ export function SscCglSubjectLanding({
                     <h3 id={`ssc-stage-${stage.id}`}>{stage.title}</h3>
                     <p>{stage.description}</p>
                   </div>
-                  <strong>{stage.notes.length} {stage.notes.length === 1 ? "note" : "notes"}</strong>
+                  <strong>{stage.notes.length} {stage.notes.length === 1 ? "topic" : "topics"}</strong>
                 </header>
                 <div className={styles.topicGrid}>
                   {stage.notes.map((note) => (
@@ -332,7 +331,7 @@ export function SscCglSubjectLanding({
         ) : (
           <div className={styles.emptyState}>
             <Search size={22} aria-hidden="true" />
-            <span className={styles.eyebrow}>No matching note</span>
+            <span className={styles.eyebrow}>No matching topic</span>
             <h3>Nothing fits this search and status together.</h3>
             <p>Clear the filters to reopen the complete {subject.shortTitle} table of contents.</p>
             <button onClick={resetFilters} type="button">Show every note</button>
@@ -386,7 +385,7 @@ function SubjectTopicCard({ note, position, progress }: { note: SscCglSubjectLan
       </div>
 
       <div className={styles.cardActions}>
-        <Link className={styles.studyAction} href={note.studyHref}>Study note <ArrowRight size={14} aria-hidden="true" /></Link>
+        <Link className={styles.studyAction} href={note.studyHref}>Study topic <ArrowRight size={14} aria-hidden="true" /></Link>
         {note.practiceHref ? <Link href={note.practiceHref}>Practice</Link> : null}
         {note.drillHref ? <Link href={note.drillHref}>Timed drill</Link> : null}
       </div>

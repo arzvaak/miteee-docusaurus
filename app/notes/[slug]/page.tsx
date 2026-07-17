@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, ClipboardList, FileText, ListChecks, Sigma } from "lucide-react";
 import { ActiveRecallPanel } from "@/components/ActiveRecallPanel";
 import { JsonLd } from "@/components/JsonLd";
@@ -17,20 +17,32 @@ import { buildHeadingAnchors, buildQuestionAnchors } from "@/lib/heading-anchors
 import { buildFormulaReaderSignal, type FormulaReaderSignal } from "@/lib/note-reader-signals";
 import { buildNotePractice } from "@/lib/note-practice";
 import { buildBreadcrumbJsonLd, buildNoteJsonLd, buildPageMetadata, noteDescription } from "@/lib/seo";
+import { getSscTopic } from "@/lib/ssc-cgl";
+import { sscCglSubjectDefinitions, sscCglTopicSlugFromNote } from "@/lib/ssc-cgl-subjects";
 import type { QuizSet } from "@/scripts/build-content-data";
 
 type NotePageProps = {
   params: Promise<{ slug: string }>;
 };
 
+function canonicalSscTopicHref(note: { slug: string; courseCode: string | null }) {
+  if (note.courseCode !== "SSC-CGL") return null;
+  for (const subject of sscCglSubjectDefinitions) {
+    const topicSlug = sscCglTopicSlugFromNote(subject, note.slug);
+    if (topicSlug && getSscTopic(topicSlug)) return `/exams/ssc-cgl/topics/${topicSlug}`;
+  }
+  return null;
+}
+
 export async function generateMetadata({ params }: NotePageProps) {
   const { slug } = await params;
   const note = getNote(slug);
   if (!note) return {};
+  const canonicalTopicHref = canonicalSscTopicHref(note);
   return buildPageMetadata({
     title: note.sidebarLabel || note.title,
     description: noteDescription(note),
-    pathname: `/notes/${note.slug}`
+    pathname: canonicalTopicHref || `/notes/${note.slug}`
   });
 }
 
@@ -38,6 +50,8 @@ export default async function NotePage({ params }: NotePageProps) {
   const { slug } = await params;
   const note = getNote(slug);
   if (!note) notFound();
+  const canonicalTopicHref = canonicalSscTopicHref(note);
+  if (canonicalTopicHref) redirect(canonicalTopicHref);
   if (note.contentType === "research_note" || note.courseCode === "RESEARCH") return <ResearchNote note={note} />;
   const related = getResolvedPreviewsForNote(note);
   const navigation = getNoteNavigation(note);

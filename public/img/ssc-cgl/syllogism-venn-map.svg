@@ -4,7 +4,7 @@
   <rect width="1200" height="760" fill="#0f1720"/>
   <rect x="54" y="46" width="1092" height="668" rx="28" fill="#172331" stroke="#8fd6ff" stroke-width="3"/>
   <text x="600" y="92" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#f8fbff">Syllogism and Venn Diagrams</text>
-  <text x="600" y="128" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#c8d7e3">Formal set logic for 36-second SSC reasoning decisions</text>
+  <text x="600" y="128" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#c8d7e3">Formal set logic with minimum-information diagrams</text>
 
   <g opacity="0.92">
     <circle cx="265" cy="270" r="88" fill="#276fbf" fill-opacity="0.42" stroke="#8fd6ff" stroke-width="4"/>
@@ -27,9 +27,9 @@
   <g font-family="Arial, sans-serif" fill="#f8fbff">
     <rect x="112" y="435" width="220" height="130" rx="16" fill="#23384a" stroke="#8fd6ff" stroke-width="2"/>
     <text x="222" y="468" text-anchor="middle" font-size="22" font-weight="700">Conversion</text>
-    <text x="136" y="503" font-size="17">All A-B -> Some B-A</text>
-    <text x="136" y="530" font-size="17">No A-B -> No B-A</text>
-    <text x="136" y="557" font-size="17">Some-not: no reverse</text>
+    <text x="136" y="503" font-size="17">Some A-B ↔ Some B-A</text>
+    <text x="136" y="530" font-size="17">No A-B ↔ No B-A</text>
+    <text x="136" y="557" font-size="17">All / some-not: no reverse</text>
 
     <rect x="374" y="435" width="220" height="130" rx="16" fill="#2c3f35" stroke="#7bd389" stroke-width="2"/>
     <text x="484" y="468" text-anchor="middle" font-size="22" font-weight="700">Only Few</text>

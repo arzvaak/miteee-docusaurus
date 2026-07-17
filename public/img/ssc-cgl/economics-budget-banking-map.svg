@@ -4,7 +4,7 @@
   <rect width="1200" height="760" fill="#101820"/>
   <rect x="54" y="46" width="1092" height="668" rx="28" fill="#16232f" stroke="#5fb3b3" stroke-width="3"/>
   <text x="600" y="94" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#f7f7f2">Economics, Budget, and Banking</text>
-  <text x="600" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#d5e6e6">Read cue words first, then classify inside the 36-second SSC window</text>
+  <text x="600" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#d5e6e6">Read the cue, identify the measurement boundary, then select the exact concept</text>
 
   <g font-family="Arial, sans-serif" font-size="18" fill="#f7f7f2">
     <rect x="100" y="180" width="290" height="150" rx="16" fill="#1f3a48" stroke="#7bd389" stroke-width="2"/>
@@ -22,7 +22,7 @@
     <rect x="810" y="180" width="290" height="150" rx="16" fill="#47334e" stroke="#ff9f80" stroke-width="2"/>
     <text x="955" y="214" text-anchor="middle" font-size="24" font-weight="700">RBI Tools</text>
     <text x="834" y="250">Repo = RBI lends</text>
-    <text x="834" y="278">Reverse repo = RBI borrows</text>
+    <text x="834" y="278">Absorption tools remove liquidity</text>
     <text x="834" y="306">CRR cash, SLR liquid assets</text>
 
     <rect x="100" y="415" width="290" height="165" rx="16" fill="#4a2f36" stroke="#ff6b6b" stroke-width="2"/>
@@ -40,7 +40,7 @@
     <rect x="810" y="415" width="290" height="165" rx="16" fill="#39404f" stroke="#b8f2e6" stroke-width="2"/>
     <text x="955" y="449" text-anchor="middle" font-size="24" font-weight="700">External Sector</text>
     <text x="834" y="486">BOT = goods trade</text>
-    <text x="834" y="514">Current = income and transfers</text>
+    <text x="834" y="514" font-size="17">Current adds services + income</text>
     <text x="834" y="542">Capital = assets and liabilities</text>
   </g>
 
@@ -55,5 +55,5 @@
   </g>
 
   <rect x="280" y="630" width="640" height="46" rx="23" fill="#f2c14e"/>
-  <text x="600" y="660" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#101820">Goal: classify cue word first, then answer inside 15 to 36 seconds</text>
+  <text x="600" y="660" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#101820">Classify cue -> state boundary -> apply definition or formula</text>
 </svg>
