@@ -199,6 +199,11 @@ jobs:
             https://note.arzvak.com/api/auth/sign-in/email)"
           test "$auth_status" = "401"
           curl --fail --location --silent --show-error https://note.arzvak.com/exams/ssc-cgl > /tmp/ssc-cgl.html
-          grep -q "What do you want to practice?" /tmp/ssc-cgl.html
+          grep -q "Build each subject. Then test it." /tmp/ssc-cgl.html
+          grep -q "Four sections, clearly separated." /tmp/ssc-cgl.html
+          if grep -q "Study Vault" /tmp/ssc-cgl.html; then
+            echo "Legacy Study Vault label is still present on the SSC CGL landing page" >&2
+            exit 1
+          fi
           npx playwright install --with-deps chromium
           SSC_BROWSER_BASE_URL=https://note.arzvak.com npm run verify:ssc-browser

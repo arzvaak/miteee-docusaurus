@@ -51,7 +51,9 @@ test("Netcup workflow deploys the current Next standalone app instead of stale D
   assert.doesNotMatch(workflow, /build\/\s*"\$NETCUP_USER@\$NETCUP_HOST:/);
   assert.doesNotMatch(workflow, /grep -q "MIT EEE"/);
   assert.match(workflow, /curl --fail[\s\S]*\/exams\/ssc-cgl/);
-  assert.match(workflow, /grep -q "What do you want to practice\?" \/tmp\/ssc-cgl\.html/);
+  assert.match(workflow, /grep -q "Build each subject\. Then test it\." \/tmp\/ssc-cgl\.html/);
+  assert.match(workflow, /grep -q "Four sections, clearly separated\." \/tmp\/ssc-cgl\.html/);
+  assert.match(workflow, /Legacy Study Vault label is still present/);
   assert.match(workflow, /\/notes\/research-valorant-preliminary-findings-index/);
   assert.match(workflow, /redirect_status/);
   assert.match(workflow, /\/courses\/RESEARCH/);
@@ -99,8 +101,10 @@ test("SSC CGL browser smoke verifier covers subjects, exam setup, timed sessions
 
   assert.match(script, /SSC_BROWSER_BASE_URL/);
   assert.match(script, /\/exams\/ssc-cgl/);
-  assert.match(script, /\/courses\/SSC-CGL\/reasoning/);
+  assert.match(script, /\/exams\/ssc-cgl\/subjects\/reasoning/);
   assert.match(script, /Complete table of contents/);
+  assert.match(script, /Build each subject\. Then test it\./);
+  assert.match(script, /page\.goto\(`\$\{baseUrl\}\/practice`/);
   assert.match(script, /What do you want to practice\?/);
   assert.match(script, /Quick 10/);
   assert.match(script, /Section Test/);
