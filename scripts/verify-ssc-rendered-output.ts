@@ -48,16 +48,14 @@ function verifySscMarkdownNotes() {
 
   const analogyPath = path.join(docsRoot, "reasoning", "analogy-classification.md");
   const analogy = prepareMarkdownContent(fs.readFileSync(analogyPath, "utf8"));
-  const questionIndex = analogy.indexOf('<p class="quiz-q">Clock : Time :: Thermometer : ?</p>');
-  const block = questionIndex >= 0
-    ? analogy.slice(analogy.lastIndexOf("<article", questionIndex), analogy.indexOf("</article>", questionIndex) + "</article>".length)
-    : "";
-  if (!block) offenders.push(`${relative(analogyPath)}: thermometer drill did not render`);
-  if (block && !/<article class="quiz-block note-quiz-block" data-answer="b">/.test(block)) {
-    offenders.push(`${relative(analogyPath)}: thermometer drill is not keyed to B`);
+  const questionIndex = analogy.indexOf("Thermometer : Temperature :: Clock : ?");
+  const selfCheck = questionIndex >= 0 ? analogy.slice(questionIndex, questionIndex + 700) : "";
+  if (!selfCheck) offenders.push(`${relative(analogyPath)}: thermometer self-check did not render`);
+  if (selfCheck && !/Options: Time, Hour, Hand, Alarm/.test(selfCheck)) {
+    offenders.push(`${relative(analogyPath)}: thermometer self-check options are missing`);
   }
-  if (block && !/Option B \(Temperature\)/.test(block)) {
-    offenders.push(`${relative(analogyPath)}: thermometer drill lacks B Temperature explanation`);
+  if (selfCheck && !/> \*\*Answer and explanation\*\*[\s\S]*?> \*\*Time\.\*\* A thermometer measures temperature; a clock measures time/.test(selfCheck)) {
+    offenders.push(`${relative(analogyPath)}: thermometer self-check lacks its adjacent Time explanation`);
   }
 
   return offenders;
