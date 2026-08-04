@@ -77,9 +77,9 @@ test("SSC CGL topic reader CSS guarantees a contained readable layout", () => {
   assert.match(css, /\.page\s*\{[\s\S]*?overflow-x:\s*clip/);
   assert.match(
     css,
-    /\.readerLayout\s*\{[\s\S]*?grid-template-columns:\s*minmax\(180px,\s*220px\)\s+minmax\(0,\s*76ch\)/
+    /\.readerLayout\s*\{[\s\S]*?grid-template-columns:\s*minmax\(210px,\s*248px\)\s+minmax\(0,\s*900px\)/
   );
-  assert.match(css, /\.reader\s*\{[\s\S]*?max-width:\s*76ch/);
+  assert.match(css, /\.reader\s*\{[\s\S]*?max-width:\s*900px/);
   assert.match(css, /\.outline\s*\{[\s\S]*?position:\s*sticky[\s\S]*?align-self:\s*start/);
 
   assert.match(
@@ -100,6 +100,6 @@ test("SSC CGL topic reader CSS guarantees a contained readable layout", () => {
 
   assert.match(
     css,
-    /@media \(max-width:\s*900px\)[\s\S]*?\.readerLayout\s*\{[\s\S]*?grid-template-columns:\s*minmax\(0,\s*76ch\)[\s\S]*?\.outline\s*\{[\s\S]*?position:\s*static/
+    /@media \(max-width:\s*900px\)[\s\S]*?\.readerLayout\s*\{[\s\S]*?grid-template-columns:\s*minmax\(0,\s*900px\)[\s\S]*?\.outline\s*\{[\s\S]*?position:\s*static/
   );
 });

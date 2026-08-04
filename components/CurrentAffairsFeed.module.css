@@ -401,23 +401,27 @@
 }
 
 .reader {
-  max-height: min(680px, calc(100vh - 150px));
-  margin: 12px 0 22px;
-  overflow-y: auto;
+  margin: 10px 0 26px;
   border: 1px solid var(--border-strong);
   background: color-mix(in srgb, var(--surface) 74%, transparent);
-  scrollbar-gutter: stable;
 }
 
 .readerHeader {
-  padding: 24px clamp(20px, 2.5vw, 34px) 22px;
+  padding: 20px clamp(20px, 2.5vw, 32px) 18px;
+}
+
+.readerTopline {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 .readerEyebrow {
   display: flex;
   flex-wrap: wrap;
   gap: 8px 18px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   color: var(--ca-accent);
   font-size: 10px;
   font-weight: 850;
@@ -426,27 +430,48 @@
 }
 
 .reader h2 {
-  max-width: 980px;
+  max-width: 860px;
   margin: 0;
   font-family: var(--ca-serif);
-  font-size: clamp(26px, 2.6vw, 38px);
+  font-size: clamp(23px, 2.15vw, 32px);
   font-weight: 600;
   letter-spacing: -0.032em;
   line-height: 1.08;
 }
 
 .standfirst {
-  max-width: 920px;
-  margin: 12px 0 0;
+  max-width: 76ch;
+  margin: 10px 0 0;
   color: var(--text-soft);
-  font-size: 14px;
-  line-height: 1.55;
+  font-size: 13px;
+  line-height: 1.52;
+}
+
+.closeStory {
+  display: inline-flex;
+  min-height: 32px;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 6px;
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.closeStory:hover,
+.closeStory:focus-visible {
+  border-color: var(--ca-accent);
+  color: var(--ca-accent);
 }
 
 .storyActions {
   display: grid;
   gap: 5px;
-  margin-top: 14px;
+  margin-top: 10px;
 }
 
 .storyActions > div {
@@ -487,16 +512,16 @@
 }
 
 .readerBody {
-  padding: 24px clamp(20px, 2.5vw, 34px) 28px;
+  padding: 20px clamp(20px, 2.5vw, 32px) 22px;
 }
 
 .readerBody > section {
   max-width: 900px;
-  padding: 0 0 20px;
+  padding: 0 0 16px;
 }
 
 .readerBody > section + section {
-  padding-top: 20px;
+  padding-top: 16px;
   border-top: 1px solid var(--border);
 }
 
@@ -515,8 +540,8 @@
 .readerBody li {
   color: var(--text-soft);
   font-family: var(--ca-serif);
-  font-size: 15px;
-  line-height: 1.58;
+  font-size: 14px;
+  line-height: 1.55;
 }
 
 .readerBody p {
@@ -574,7 +599,7 @@
 }
 
 .contextRail section {
-  padding: 22px 20px;
+  padding: 18px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -679,6 +704,57 @@
   align-content: center;
   gap: 8px;
   text-align: center;
+}
+
+.readerHandoff {
+  border-top: 1px solid var(--border);
+  background: color-mix(in srgb, var(--ca-accent) 4%, transparent);
+}
+
+.readerHandoff button,
+.readerHandoff > div {
+  display: grid;
+  width: 100%;
+  gap: 5px;
+  padding: 18px clamp(20px, 2.5vw, 32px);
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  text-align: left;
+}
+
+.readerHandoff button {
+  cursor: pointer;
+}
+
+.readerHandoff button:hover,
+.readerHandoff button:focus-visible {
+  background: var(--ca-accent-soft);
+}
+
+.readerHandoff span {
+  color: var(--ca-accent);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.readerHandoff strong {
+  max-width: 880px;
+  font-family: var(--ca-serif);
+  font-size: 17px;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.readerHandoff small {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
 }
 
 .emptyState h2,
@@ -820,6 +896,10 @@
     padding: 24px 20px 20px;
   }
 
+  .readerTopline {
+    gap: 12px;
+  }
+
   .readerBody {
     padding: 22px 20px 26px;
   }
@@ -859,6 +939,14 @@
 
   .reader h2 {
     font-size: 28px;
+  }
+
+  .closeStory {
+    padding-inline: 8px;
+  }
+
+  .closeStory svg {
+    display: none;
   }
 }
 
