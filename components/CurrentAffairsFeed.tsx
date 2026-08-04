@@ -2,11 +2,13 @@
 
 import Link from "next/link";
 import {
+  ArrowDown,
   ChevronDown,
   ExternalLink,
   FileQuestion,
   RotateCcw,
-  Sparkles
+  Sparkles,
+  X
 } from "lucide-react";
 import { Fragment, useEffect, useMemo, useState } from "react";
 import {
@@ -102,7 +104,10 @@ function usefulStoryText(values: Array<string | undefined>, title: string) {
 }
 
 function storyContent(item: CurrentAffairsSummaryItem, title: string, lens: "ssc" | "upsc") {
-  const facts = usefulStoryText([item.source_excerpt, ...item.key_points], title).slice(0, 4);
+  // Prefer the model's distilled points over the often much longer source
+  // excerpt. The excerpt remains the fallback when no trustworthy key point
+  // was produced.
+  const facts = usefulStoryText([...item.key_points, item.source_excerpt], title).slice(0, 4);
   const context = usefulStoryText([item.static_context], title)[0];
   const retainedFacts = usefulStoryText(item.prelims_facts ?? [], title).slice(0, 4);
   const implications = usefulStoryText([
@@ -381,6 +386,7 @@ export function CurrentAffairsFeed({
           <section className={styles.storyStream} aria-label={`${issueLabel} stories`}>
             {visibleStories.map((story, index) => {
               const selected = selectedStory?.slug === story.slug;
+              const nextStory = visibleStories[index + 1] ?? null;
               return (
                 <Fragment key={`${story.date}-${story.slug}`}>
                   <button
@@ -405,12 +411,17 @@ export function CurrentAffairsFeed({
                     <ExpandedStory
                       canAdmin={canAdmin}
                       lens={lens}
+                      nextStory={nextStory}
+                      onClose={() => selectStory(story)}
                       onHidden={() => {
                         const next = visibleStories.find((candidate) => candidate.slug !== story.slug);
                         setSelectedSlug(next?.slug ?? null);
                         pushStorySelection(next ?? null);
                       }}
+                      onNext={() => { if (nextStory) selectStory(nextStory); }}
                       story={story}
+                      storyNumber={index + 1}
+                      storyTotal={visibleStories.length}
                     />
                   ) : null}
                 </Fragment>
@@ -426,13 +437,23 @@ export function CurrentAffairsFeed({
 function ExpandedStory({
   canAdmin,
   lens,
+  nextStory,
+  onClose,
   onHidden,
-  story
+  onNext,
+  story,
+  storyNumber,
+  storyTotal
 }: {
   canAdmin: boolean;
   lens: "ssc" | "upsc";
+  nextStory: CurrentAffairsStoryRecord | null;
+  onClose: () => void;
   onHidden: () => void;
+  onNext: () => void;
   story: CurrentAffairsStoryRecord;
+  storyNumber: number;
+  storyTotal: number;
 }) {
   const item = story.item;
   const content = storyContent(item, story.title, lens);
@@ -443,9 +464,15 @@ function ExpandedStory({
   return (
     <article className={styles.reader} id={`${story.selectionId}-reader`}>
       <header className={styles.readerHeader}>
-        <div className={styles.readerEyebrow}>
-          <span>{story.examAreas.slice(0, 2).join(" · ") || "Current affairs"}</span>
-          <span>{formatDate(story.publishedAt)}</span>
+        <div className={styles.readerTopline}>
+          <div className={styles.readerEyebrow}>
+            <span>Story {storyNumber} of {storyTotal}</span>
+            <span>{story.examAreas.slice(0, 2).join(" · ") || "Current affairs"}</span>
+            <span>{formatDate(story.publishedAt)}</span>
+          </div>
+          <button aria-label="Close story" className={styles.closeStory} onClick={onClose} type="button">
+            <X size={16} aria-hidden="true" /> Close
+          </button>
         </div>
         <h2>{story.title}</h2>
         {content.facts[0] ? <p className={styles.standfirst}>{content.facts[0]}</p> : null}
@@ -518,6 +545,21 @@ function ExpandedStory({
           ) : null}
         </aside>
       </div>
+
+      <footer className={styles.readerHandoff}>
+        {nextStory ? (
+          <button onClick={onNext} type="button">
+            <span>Up next · Story {storyNumber + 1} of {storyTotal}</span>
+            <strong>{nextStory.title}</strong>
+            <small>Continue to the next explainer <ArrowDown size={14} aria-hidden="true" /></small>
+          </button>
+        ) : (
+          <div>
+            <span>Edition complete</span>
+            <strong>You’ve reached the end of this issue.</strong>
+          </div>
+        )}
+      </footer>
     </article>
   );
 }

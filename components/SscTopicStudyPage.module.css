@@ -4,7 +4,7 @@
   --topic-raised: color-mix(in srgb, var(--surface-strong) 88%, var(--bg-soft));
   --topic-border: color-mix(in srgb, var(--border-strong) 74%, transparent);
   display: grid;
-  width: min(100%, 1420px);
+  width: min(100%, 1580px);
   max-width: 100%;
   min-width: 0;
   margin-inline: auto;
@@ -172,11 +172,11 @@
 
 .readerLayout {
   display: grid;
-  grid-template-columns: minmax(180px, 220px) minmax(0, 76ch);
+  grid-template-columns: minmax(210px, 248px) minmax(0, 900px);
   min-width: 0;
   align-items: start;
   justify-content: center;
-  gap: clamp(28px, 4vw, 64px);
+  gap: clamp(32px, 4vw, 64px);
 }
 
 .outline {
@@ -306,7 +306,7 @@
 .reader {
   display: grid;
   width: 100%;
-  max-width: 76ch;
+  max-width: 900px;
   min-width: 0;
   gap: 18px;
 }
@@ -315,7 +315,7 @@
   min-width: 0;
   scroll-margin-top: 86px;
   overflow: hidden;
-  padding: clamp(22px, 3.5vw, 38px);
+  padding: clamp(28px, 4vw, 52px);
   border: 1px solid var(--topic-border);
   border-radius: 16px;
   background: color-mix(in srgb, var(--topic-panel) 94%, transparent);
@@ -353,8 +353,8 @@
 .sectionBody :global(.markdown-body) {
   min-width: 0;
   color: var(--text-soft);
-  font-size: 15px;
-  line-height: 1.78;
+  font-size: 16px;
+  line-height: 1.82;
 }
 
 .sectionBody :global(.markdown-body > :first-child) {
@@ -632,7 +632,7 @@
   display: grid;
   min-width: 0;
   gap: 18px;
-  padding: clamp(22px, 3.5vw, 36px);
+  padding: clamp(28px, 4vw, 48px);
   border: 1px solid color-mix(in srgb, var(--topic-accent) 42%, var(--topic-border));
   border-radius: 16px;
   background:
@@ -813,7 +813,7 @@
 
 @media (max-width: 900px) {
   .readerLayout {
-    grid-template-columns: minmax(0, 76ch);
+    grid-template-columns: minmax(0, 900px);
   }
 
   .outline {

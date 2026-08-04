@@ -4,6 +4,10 @@ Local-first study site for MIT EEE notes, UPSC CSE Political Science NCERT notes
 
 The current app includes server-backed email/password accounts, 14 appearance choices (System plus 13 palettes, including Monokai, Dracula, Nord, Gruvbox, Solarized, Tokyo Night, One Dark, and Catppuccin), and dedicated SSC CGL subject homes with searchable staged tables of contents.
 
+## Contributor handbook
+
+Start with [CONTRIBUTING.md](CONTRIBUTING.md) before adding a subject, writing notes, changing a page, or introducing a new feature. The detailed handbook lives in [handbook/README.md](handbook/README.md), and the copy-ready note template lives outside `docs/` under `templates/` so it is never published by accident.
+
 ## Run Locally
 
 ```bash

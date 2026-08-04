@@ -241,7 +241,7 @@ test("SSC CGL topic reader keeps one learner lesson and a separate practice acti
   assert.match(topicReader, /\/exams\/ssc-cgl\/practice\//);
   assert.match(topicReader, /Start timed drill/);
   assert.match(topicReader, /<details className=\{styles\.questionBankDetails\}>/);
-  assert.match(topicReaderCss, /max-width:\s*76ch/);
+  assert.match(topicReaderCss, /max-width:\s*900px/);
   assert.match(topicReaderCss, /\.outline\s*\{[\s\S]*?position:\s*sticky/);
 
   assert.doesNotMatch(combinedSource, /ssc-topic-mastery-route|Corpus pressure|200\/200 route/);

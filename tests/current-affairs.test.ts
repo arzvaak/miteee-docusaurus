@@ -555,7 +555,11 @@ test("current affairs page expands a detailed story reader without navigation", 
   assert.match(css, /\.reader/);
   assert.match(css, /\.storyRow/);
   assert.match(css, /\.contextRail/);
-  assert.match(css, /max-height: min\(680px, calc\(100vh - 150px\)\)/);
+  assert.doesNotMatch(css, /\.reader\s*\{[^}]*overflow-y:\s*auto/s);
+  assert.match(component, /Up next · Story/);
+  assert.match(component, /Continue to the next explainer/);
+  assert.match(component, /aria-label="Close story"/);
+  assert.match(css, /\.readerHandoff/);
   assert.doesNotMatch(component, /Memory hook|Check your recall|Reveal answer/);
   assert.doesNotMatch(component, /pipeline|Netcup|Mistral|OCR|raw items/i);
 });
