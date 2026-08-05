@@ -94,11 +94,13 @@ const courseNames: Record<string, string> = {
   "SEM5-EM2": "Electrical Machines II",
   "SEM5-EOM": "Essentials of Management",
   "SEM5-MPC": "Design of Modern Power Converters",
+  "SEM5-PSA": "Power System Analysis",
   "SEM6-CRA4409": "Data Science",
   "SEM6-EEFM": "EE Financial Management",
   "SEM6-MI": "Measurements & Instrumentation",
   "SEM6-SGT": "Smart Grid Technologies",
   "SEM6-SPM": "Sejarah Pemikiran Modern",
+  "SEM7-PSPS": "Power System Protection and Switchgear",
   "UPSC-CSE-POLITICAL-SCIENCE": "UPSC Political Science NCERT",
   "SSC-CGL": "SSC CGL Tier-I 200/200 System",
   "RESEARCH": "Research notes"
@@ -269,7 +271,9 @@ function noteStats(content: string): NoteStats {
   const mermaidBlocks = [...content.matchAll(/```mermaid[\s\S]*?```/gi)].length;
   const mathBlocks = [...mathReadyContent.matchAll(/\$\$[\s\S]*?\$\$|(?<!\\)\$[^$\n]+(?<!\\)\$/g)].length;
   const details = [...content.matchAll(/<details\b|:::(?:note|tip|info|warning|danger|question|exam|summary)/gi)].length;
-  const questionBlocks = [...content.matchAll(/^#{2,4}\s+(?:Question|Q\.?|Soal)\s*\d+/gim)].length;
+  const headedQuestionBlocks = [...content.matchAll(/^#{2,4}\s+(?:Question|Q\.?|Soal)\s*\d+/gim)].length;
+  const boldQuestionBlocks = [...content.matchAll(/^\s*\*\*(?:Question|Q)\s*\d+[\).:]?/gim)].length;
+  const questionBlocks = headedQuestionBlocks + boldQuestionBlocks;
   const practicePrompts = [...content.matchAll(/^#{2,4}\s+(?:Prelims\s+Drill|Mains\s+Answer\s+Practice)\s*$/gim)].length;
   return { codeBlocks, mermaidBlocks, mathBlocks, details, questionBlocks, practicePrompts };
 }
@@ -298,12 +302,14 @@ function countQuestionTableRows(body: string) {
 
 function countQuizQuestions(body: string) {
   const exampleCount = [...body.matchAll(/^\s*\*\*Example\s+\d+\s*:/gim)].length;
+  const boldQuestionCount = [...body.matchAll(/^\s*\*\*(?:Question|Q)\s*\d+[\).:]?(?:\*\*)?\s+/gim)].length;
+  const questionHeadingCount = [...body.matchAll(/^#{2,4}\s+Question\s+\d+\b/gim)].length;
   const numberedMcqs = [...body.matchAll(/^\s*(?:\d+[\).]|Q\s*\d+[\).:]|-\s*Q\s*\d+[\).:])\s+.*(?:\?|Options?\s*:|\([a-d]\)|\b[A-D][\).]\s+)/gim)].length;
   const tableQuestionCount = countQuestionTableRows(body);
   const drillQuestionCount = [...body.matchAll(/\b(\d+)\s*(?:[- ]?question|questions|items|PYQs?|problems)\b/gi)]
     .reduce((sum, match) => sum + Number(match[1] || 0), 0);
 
-  return exampleCount + numberedMcqs + tableQuestionCount + drillQuestionCount;
+  return exampleCount + boldQuestionCount + questionHeadingCount + numberedMcqs + tableQuestionCount + drillQuestionCount;
 }
 
 function parseQuizSets(content: string): QuizSet[] {

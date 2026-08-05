@@ -52,6 +52,8 @@ data/exams/ssc-cgl/segments/
 data/exams/ssc-cgl/source-extraction-queue/
 data/exams/ssc-cgl/topic-review/
 data/exams/ssc-cgl/topic-review-mistral/
+data/psps-ocr/
+data/psa-ocr/
 data/exams/ssc-cgl/pyq-source-backlog*.json
 data/exams/ssc-cgl/pyq-source-expansion-plan.json
 legacy-docusaurus/
