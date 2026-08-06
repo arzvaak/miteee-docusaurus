@@ -5,6 +5,7 @@ import { AlertTriangle, ArrowRight, Gauge, Target, Trophy } from "lucide-react";
 import { useEffect, useState } from "react";
 import { MathText } from "@/components/MathText";
 import { SscExplanationPanel } from "@/components/SscExplanationPanel";
+import { SscQuestionStimulus } from "@/components/SscQuestionStimulus";
 import type { SscCglAttemptResult, SscCglOptionId, SscCglTestDetail } from "@/lib/exam-types";
 import { buildSscAttemptQuestionReview } from "@/lib/ssc-cgl-attempt-review";
 
@@ -236,6 +237,7 @@ export function SscAttemptResultClient({ attemptId }: { attemptId: string }) {
                 <Link href={row.topicHref}>Repair topic</Link>
               </header>
               <p><MathText text={row.stem} /></p>
+              <SscQuestionStimulus stimulus={row.stimulus} />
               <div className="ssc-answer-option-grid">
                 <span>
                   <small>Your answer</small>

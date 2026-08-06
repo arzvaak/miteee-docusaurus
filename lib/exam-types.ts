@@ -17,6 +17,14 @@ export type SscCglOption = {
   text: string;
 };
 
+export type SscCglQuestionStimulus = {
+  type: "table";
+  caption?: string;
+  columns: string[];
+  rows: string[][];
+  reconstructionNote?: string;
+};
+
 export type SscCglProvenance = {
   sourceId: string;
   sourceType: SscCglSourceType;
@@ -41,6 +49,7 @@ export type SscCglQuestion = {
   difficulty: "easy" | "medium" | "hard";
   language: "en" | "hi" | "bilingual";
   stem: string;
+  stimulus?: SscCglQuestionStimulus;
   options: SscCglOption[];
   correctOption: SscCglOptionId;
   explanation: string;

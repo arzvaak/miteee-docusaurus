@@ -10,6 +10,15 @@ import { getSscCglBookQuestionsPath } from "@/lib/ssc-cgl-corpus-paths";
 const root = process.cwd();
 const scriptPath = path.join(root, "scripts", "ssc_cgl_book_inventory.py");
 const uploadedBooksRoot = process.env.SSC_CGL_BOOKS_ROOT ?? "G:\\SSC BOOKS";
+const expectedUploadedBookFiles = [
+  "1000747369-SSC-Maths-6800-MCQ-Book-2026-Eduquity-Based-New-Pattern-Chapterwise.pdf",
+  "PINNACLE SSC REASONING.htm",
+  "751426926-Pinnacle-English-Book-for-Ssc-Exams.pdf",
+  "1024586786-Pinnacle-SSC-General-Studies-GS-8th-Edition-English-Medium.pdf",
+  "374612740-Lucent-GK-English-Sscpot-com.pdf"
+];
+const uploadedBookCorpusAvailable = fs.existsSync(uploadedBooksRoot)
+  && expectedUploadedBookFiles.every((fileName) => fs.existsSync(path.join(uploadedBooksRoot, fileName)));
 
 type MinimalBookQuestion = {
   section?: string;
@@ -38,7 +47,7 @@ function uniqueMcqBodyCount(questions: MinimalBookQuestion[]) {
   return bodies.size;
 }
 
-test("SSC CGL uploaded books are registered as the authoritative book corpus", { skip: !fs.existsSync(uploadedBooksRoot) }, () => {
+test("SSC CGL uploaded books are registered as the authoritative book corpus", { skip: !uploadedBookCorpusAvailable }, () => {
   const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "ssc-cgl-books-"));
   const manifestPath = path.join(tempRoot, "book-sources.json");
   const queuePath = path.join(tempRoot, "book-ocr-queue.json");

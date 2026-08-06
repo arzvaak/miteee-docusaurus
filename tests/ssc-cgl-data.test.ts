@@ -16,6 +16,7 @@ import {
   getSscTopics,
   validateSscCglExamData
 } from "@/lib/ssc-cgl";
+import { isLearnerGradeSscQuestion } from "@/lib/ssc-cgl-quality";
 
 test.before(() => {
   buildExamData();
@@ -375,6 +376,7 @@ test("SSC CGL one-by-one practice exposes every usable question by topic", () =>
   const practiceTopics = getSscCglPracticeTopics();
   const usableQuestions = getSscQuestions().filter((question) => (
     question.reviewStatus !== "rejected"
+    && isLearnerGradeSscQuestion(question)
     && question.options.length === 4
     && question.options.some((option) => option.id === question.correctOption)
     && question.stem.trim().length > 0

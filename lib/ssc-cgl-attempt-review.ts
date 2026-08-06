@@ -11,6 +11,7 @@ export type SscAttemptQuestionReviewRow = {
   subtopic: string;
   topicHref: string;
   stem: string;
+  stimulus?: SscCglQuestion["stimulus"];
   status: SscAttemptQuestionReviewStatus;
   chosenOptionId: SscCglOptionId | null;
   chosenOptionText: string;
@@ -57,6 +58,7 @@ export function buildSscAttemptQuestionReview(
       subtopic: question.subtopic,
       topicHref: `/exams/ssc-cgl/topics/${question.topic}`,
       stem: question.stem,
+      stimulus: question.stimulus,
       status,
       chosenOptionId,
       chosenOptionText: optionText(question, chosenOptionId) ?? "Not attempted",

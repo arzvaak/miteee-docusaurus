@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, CheckCircle2, Circle, Flag, RotateCcw, Target, XCircle } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { MathText } from "@/components/MathText";
+import { SscQuestionStimulus } from "@/components/SscQuestionStimulus";
 import { SscExplanationPanel } from "@/components/SscExplanationPanel";
 import type { SscCglOptionId, SscCglQuestion, SscCglTopic } from "@/lib/exam-types";
 import {
@@ -21,15 +22,14 @@ import {
 import { persistLearnerAttemptEvidenceBatch } from "@/lib/learner-weakness-client";
 import type { LearnerAttemptEvidenceInput } from "@/lib/learner-weakness-engine";
 
-type PracticeMode = "all" | "unanswered" | "misses" | "speed" | "book" | "gap";
+type PracticeMode = "all" | "unanswered" | "misses" | "speed" | "book";
 
 const practiceModes: Array<{ id: PracticeMode; label: string; help: string }> = [
   { id: "all", label: "All questions", help: "Full topic corpus" },
   { id: "unanswered", label: "Unanswered", help: "Only unsolved rows" },
   { id: "misses", label: "Misses", help: "Wrong and skipped rows" },
   { id: "speed", label: "Speed repairs", help: "Correct but slower than 36s" },
-  { id: "book", label: "Book-backed", help: "Uploaded PYQ-book rows" },
-  { id: "gap", label: "Gap repair", help: "200/200 repair rows" }
+  { id: "book", label: "Book-backed", help: "Uploaded PYQ-book rows" }
 ];
 const targetSecondsPerQuestion = 36;
 const practiceModeIds = new Set<PracticeMode>(practiceModes.map((mode) => mode.id));
@@ -109,7 +109,6 @@ export function SscTopicPracticeClient({
     if (practiceMode === "misses") return answer === "z" || (Boolean(answer) && answer !== item.correctOption);
     if (practiceMode === "speed") return speedRepairQuestionIdSet.has(item.id);
     if (practiceMode === "book") return item.provenance.sourceType === "book_user_provided";
-    if (practiceMode === "gap") return item.provenance.sourceType === "original_practice" && item.conceptTags.includes("gap-repair");
     return true;
   }), [answers, practiceMode, questions, speedRepairQuestionIdSet]);
 
@@ -390,7 +389,6 @@ export function SscTopicPracticeClient({
                 if (mode.id === "misses") return answer === "z" || (Boolean(answer) && answer !== item.correctOption);
                 if (mode.id === "speed") return speedRepairQuestionIdSet.has(item.id);
                 if (mode.id === "book") return item.provenance.sourceType === "book_user_provided";
-                if (mode.id === "gap") return item.provenance.sourceType === "original_practice" && item.conceptTags.includes("gap-repair");
                 return true;
               }).length;
 
@@ -452,6 +450,7 @@ export function SscTopicPracticeClient({
             <i style={{ width: `${pacePercent}%` }} />
           </div>
           <h2><MathText text={question.stem} /></h2>
+          <SscQuestionStimulus stimulus={question.stimulus} />
           <div className="ssc-options" role="list" aria-label="Answer options">
             {question.options.map((option, optionIndex) => {
               const optionIsCorrect = revealed && option.id === question.correctOption;

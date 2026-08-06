@@ -442,6 +442,30 @@ export function normalizeStandaloneMathText(value: string) {
   return `$${candidate}$`;
 }
 
+function isInsideDollarMath(value: string, targetIndex: number) {
+  let inside = false;
+  for (let index = 0; index < targetIndex; index += 1) {
+    if (value[index] !== "$" || value[index - 1] === "\\") continue;
+    const isDisplayDelimiter = value[index + 1] === "$";
+    inside = !inside;
+    if (isDisplayDelimiter) index += 1;
+  }
+  return inside;
+}
+
+export function normalizeEmbeddedMathText(value: string) {
+  const patterns = [
+    /(?<![\$\\\w:])\\(?:d?frac|tfrac)\s*\{[^{}\n]+\}\s*\{[^{}\n]+\}/g,
+    /(?<![\$\\\w:])\\sqrt\s*(?:\[[^\]]+\])?\s*\{[^{}\n]+\}/g,
+    /(?<![\$\\\w:])\\(?:mathrm|mathbf|text)\s*\{[^{}\n]+\}/g
+  ];
+
+  return patterns.reduce((output, pattern) => output.replace(pattern, (match, offset: number, source: string) => {
+    if (isInsideDollarMath(source, offset) || source[offset - 1] === "$" || source[offset + match.length] === "$") return match;
+    return `$${match}$`;
+  }), value);
+}
+
 function findUnescapedToken(content: string, token: string, fromIndex: number) {
   let index = content.indexOf(token, fromIndex);
   while (index >= 0) {

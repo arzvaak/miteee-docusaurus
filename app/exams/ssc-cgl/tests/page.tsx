@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Clock3, FilterX, Gauge, Target, Trophy } from "lucide-react";
+import { ArrowRight, BarChart3, Clock3, FilterX, Gauge, Target, Trophy } from "lucide-react";
 import { SscAttemptHistory } from "@/components/SscAttemptHistory";
 import { SscMistakeNotebook } from "@/components/SscMistakeNotebook";
 import { getSscCglTests, getSscTopic, sscCglPattern } from "@/lib/ssc-cgl";
@@ -136,6 +136,15 @@ export default async function SscCglTestsPage({
 
       <SscAttemptHistory title="Recent attempt history" />
       <SscMistakeNotebook />
+
+      <Link className="panel ssc-endless-statboard-link" href="/exams/ssc-cgl/statboard">
+        <BarChart3 size={22} aria-hidden="true" />
+        <span>
+          <small>Endless practice memory</small>
+          <strong>Open my statboard and review marked or missed questions.</strong>
+        </span>
+        <ArrowRight size={17} aria-hidden="true" />
+      </Link>
 
       <section className="panel ssc-test-launch-panel" aria-labelledby="ssc-test-launch-heading">
         <div className="ssc-panel-heading">

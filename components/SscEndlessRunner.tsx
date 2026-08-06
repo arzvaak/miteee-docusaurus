@@ -2,6 +2,9 @@
 
 import Link from "next/link";
 import {
+  BarChart3,
+  Bookmark,
+  BookmarkCheck,
   ArrowLeft,
   ArrowRight,
   Check,
@@ -13,9 +16,21 @@ import {
   Target,
   X
 } from "lucide-react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { MathText } from "@/components/MathText";
+import { SscExplanationPanel } from "@/components/SscExplanationPanel";
+import { SscQuestionStimulus } from "@/components/SscQuestionStimulus";
 import type { SscCglOptionId, SscCglQuestion } from "@/lib/exam-types";
+import { persistLearnerAttemptEvidenceBatch } from "@/lib/learner-weakness-client";
+import type { LearnerAttemptEvidenceInput } from "@/lib/learner-weakness-engine";
+import { useSscEndlessMemory } from "@/components/useSscEndlessMemory";
+import {
+  recordSscEndlessAnswer,
+  recordSscEndlessQuestionSeen,
+  setSscEndlessQuestionMarked,
+  startSscEndlessSession
+} from "@/lib/ssc-cgl-endless-memory";
+import type { SscEndlessOutcome } from "@/lib/ssc-cgl-endless-memory";
 import type { SscEndlessBatch, SscSessionConfig } from "@/lib/ssc-cgl-session";
 import styles from "@/components/SscSession.module.css";
 
@@ -31,6 +46,33 @@ const emptyScore: SessionScore = { correct: 0, wrong: 0, skipped: 0, streak: 0, 
 
 function serializeSessionConfig(config: SscSessionConfig) {
   return Object.fromEntries(Object.entries(config).map(([key, value]) => [key, String(value)]));
+}
+
+function elapsedSecondsSince(startedAt: number) {
+  return startedAt > 0 ? Math.max(0, Math.floor((Date.now() - startedAt) / 1000)) : 0;
+}
+
+function persistEndlessEvidence(
+  question: SscCglQuestion,
+  selectedOptionId: SscCglOptionId | null,
+  outcome: SscEndlessOutcome,
+  elapsedSeconds: number,
+  answeredAt: string
+) {
+  persistLearnerAttemptEvidenceBatch([{
+    attemptId: `endless-${question.id}-${answeredAt}`,
+    exam: { id: "ssc-cgl-tier-i", label: "SSC CGL Tier I" },
+    subject: { id: question.section, label: titleCase(question.section) },
+    topic: { id: question.topic, label: titleCase(question.topic) },
+    question: { id: question.id, label: question.stem },
+    correct: outcome === "correct",
+    answered: outcome !== "skipped",
+    confidence: "medium",
+    timeSpentSeconds: elapsedSeconds,
+    targetTimeSeconds: 36,
+    answeredAt,
+    context: "practice"
+  } satisfies LearnerAttemptEvidenceInput]);
 }
 
 export function SscEndlessRunner({
@@ -50,8 +92,30 @@ export function SscEndlessRunner({
   const [cycle, setCycle] = useState(0);
   const [loading, setLoading] = useState(false);
   const [loadError, setLoadError] = useState<string | null>(null);
+  const { memory, updateMemory, hydrated } = useSscEndlessMemory();
+  const sessionStarted = useRef(false);
+  const seenQuestionIds = useRef(new Set<string>());
+  const questionStartedAt = useRef(0);
   const question = questions[questionIndex];
   const hasNextQuestion = questionIndex < questions.length - 1;
+  const markedForReview = Boolean(question && memory.reviewItems.find((item) => item.questionId === question.id)?.marked);
+  const openReviewCount = memory.reviewItems.length;
+
+  useEffect(() => {
+    if (!hydrated || sessionStarted.current) return;
+    sessionStarted.current = true;
+    updateMemory((current) => startSscEndlessSession(current, new Date().toISOString()));
+  }, [hydrated, updateMemory]);
+
+  useEffect(() => {
+    if (!hydrated || !question || seenQuestionIds.current.has(question.id)) return;
+    seenQuestionIds.current.add(question.id);
+    updateMemory((current) => recordSscEndlessQuestionSeen(current, question));
+  }, [hydrated, question, updateMemory]);
+
+  useEffect(() => {
+    questionStartedAt.current = Date.now();
+  }, [question?.id]);
 
   const activeSeed = useCallback((targetCycle: number) => (
     targetCycle === 0 ? config.seed : `${config.seed}:cycle-${targetCycle}`
@@ -93,6 +157,9 @@ export function SscEndlessRunner({
   const checkAnswer = useCallback(() => {
     if (!question || !selected || revealed) return;
     const correct = selected === question.correctOption;
+    const outcome = correct ? "correct" : "wrong";
+    const answeredAt = new Date().toISOString();
+    const nextStreak = correct ? score.streak + 1 : 0;
     setRevealed(true);
     setScore((current) => {
       const streak = correct ? current.streak + 1 : 0;
@@ -104,7 +171,16 @@ export function SscEndlessRunner({
         bestStreak: Math.max(current.bestStreak, streak)
       };
     });
-  }, [question, revealed, selected]);
+    updateMemory((current) => recordSscEndlessAnswer(
+      current,
+      question,
+      outcome,
+      selected,
+      answeredAt,
+      nextStreak
+    ));
+    persistEndlessEvidence(question, selected, outcome, elapsedSecondsSince(questionStartedAt.current), answeredAt);
+  }, [question, revealed, score.streak, selected, updateMemory]);
 
   const moveNext = useCallback(() => {
     if (!question || !hasNextQuestion) return;
@@ -115,9 +191,29 @@ export function SscEndlessRunner({
 
   const skip = useCallback(() => {
     if (!question || revealed || !hasNextQuestion) return;
+    const skippedAt = new Date().toISOString();
     setScore((current) => ({ ...current, skipped: current.skipped + 1, streak: 0 }));
+    updateMemory((current) => recordSscEndlessAnswer(
+      current,
+      question,
+      "skipped",
+      null,
+      skippedAt,
+      0
+    ));
+    persistEndlessEvidence(question, null, "skipped", elapsedSecondsSince(questionStartedAt.current), skippedAt);
     moveNext();
-  }, [hasNextQuestion, moveNext, question, revealed]);
+  }, [hasNextQuestion, moveNext, question, revealed, updateMemory]);
+
+  const toggleMark = useCallback(() => {
+    if (!question || !hydrated) return;
+    updateMemory((current) => setSscEndlessQuestionMarked(
+      current,
+      question,
+      !markedForReview,
+      new Date().toISOString()
+    ));
+  }, [hydrated, markedForReview, question, updateMemory]);
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -157,7 +253,14 @@ export function SscEndlessRunner({
           <span><Flame size={15} aria-hidden="true" /><strong>{score.streak}</strong><small>streak</small></span>
           <span><Target size={15} aria-hidden="true" /><strong>{answered + score.skipped}</strong><small>seen</small></span>
         </div>
-        <Link className={styles.exitLink} href="/exams/ssc-cgl">End session</Link>
+        <div className={styles.endlessHeaderActions}>
+          <Link className={styles.statboardLink} href="/exams/ssc-cgl/statboard">
+            <BarChart3 size={15} aria-hidden="true" />
+            <span>My statboard</span>
+            <strong>{openReviewCount}</strong>
+          </Link>
+          <Link className={styles.exitLink} href="/exams/ssc-cgl">End session</Link>
+        </div>
       </header>
 
       <div className={styles.endlessWorkspace}>
@@ -168,7 +271,21 @@ export function SscEndlessRunner({
             <span>{question.difficulty}</span>
             <span>{question.source}</span>
           </div>
+          <div className={styles.questionUtilityRow}>
+            <span>{markedForReview ? "Saved to your review queue" : "Keep a hard question visible for later"}</span>
+            <button
+              className={markedForReview ? styles.reviewMarked : styles.reviewButton}
+              type="button"
+              onClick={toggleMark}
+              disabled={!hydrated}
+              aria-pressed={markedForReview}
+            >
+              {markedForReview ? <BookmarkCheck size={16} aria-hidden="true" /> : <Bookmark size={16} aria-hidden="true" />}
+              {markedForReview ? "Marked for review" : "Mark for review"}
+            </button>
+          </div>
           <h1><MathText text={question.stem} /></h1>
+          <SscQuestionStimulus stimulus={question.stimulus} />
           <div className={styles.endlessOptions} role="radiogroup" aria-label="Answer options">
             {question.options.map((option, optionIndex) => {
               const isSelected = selected === option.id;
@@ -203,7 +320,7 @@ export function SscEndlessRunner({
           {revealed ? (
             <aside className={selected === question.correctOption ? styles.correctFeedback : styles.wrongFeedback} aria-live="polite">
               <strong>{selected === question.correctOption ? "Correct — keep the rhythm." : "Not quite — repair the method now."}</strong>
-              <p><MathText text={question.explanation} /></p>
+              <SscExplanationPanel explanation={question.explanation} />
             </aside>
           ) : (
             <p className={styles.keyboardHint}>Use keys 1–4 to choose. Press Enter to check.</p>

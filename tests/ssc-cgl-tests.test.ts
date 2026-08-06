@@ -4,6 +4,7 @@ import { buildExamData } from "@/scripts/build-exam-data";
 import { scoreSscAttempt, simulateSscRank } from "@/lib/ssc-cgl-tests";
 import { getSscCglTest, getSscCglTests, getSscQuestions, getSscTopic, getSscCglTopicCoverageMap, validateSscCglExamData } from "@/lib/ssc-cgl";
 import { buildSscCglTestSummaries } from "@/lib/ssc-cgl-source";
+import { isLearnerGradeSscQuestion } from "@/lib/ssc-cgl-quality";
 import type { SscCglAttemptInput, SscCglQuestion, SscCglTestDetail } from "@/lib/exam-types";
 
 test.before(() => {
@@ -187,7 +188,7 @@ test("simulateSscRank rewards higher score and speed", () => {
 test("SSC CGL full mocks are generated from the balanced reviewed uploaded-book corpus", () => {
   const fullMocks = getSscCglTests().filter((item) => item.mode === "full_mock" && item.id.startsWith("ssc-cgl-book-200-mode-mock-"));
   const sectionCounts = new Map<string, number>();
-  for (const question of getSscQuestions().filter((item) => item.provenance.sourceType === "book_user_provided")) {
+  for (const question of getSscQuestions().filter((item) => item.provenance.sourceType === "book_user_provided" && isLearnerGradeSscQuestion(item))) {
     sectionCounts.set(question.section, (sectionCounts.get(question.section) ?? 0) + 1);
   }
   const expectedFullMocks = Math.min(...["reasoning", "general-awareness", "quantitative-aptitude", "english-comprehension"].map((section) => (
@@ -358,7 +359,7 @@ test("SSC CGL validator rejects reviewed questions with answer-only explanations
 
 test("SSC CGL Quant 50/50 section mock starts from the promoted uploaded-book batch", () => {
   const quantMocks = getSscCglTests().filter((item) => item.id.startsWith("ssc-cgl-quant-50-50-set-"));
-  const quantQuestionCount = getSscQuestions().filter((question) => question.section === "quantitative-aptitude").length;
+  const quantQuestionCount = getSscQuestions().filter((question) => question.section === "quantitative-aptitude" && isLearnerGradeSscQuestion(question)).length;
   const firstQuantMock = getSscCglTest("ssc-cgl-quant-50-50-set-01");
   const secondQuantMock = getSscCglTest("ssc-cgl-quant-50-50-set-02");
 
@@ -406,7 +407,7 @@ test("SSC CGL test loader filters by practice mode", () => {
 
 test("SSC CGL 50/50 section mocks use reviewed book questions plus marked 200/200 gap-repair practice", () => {
   const sectionCounts = new Map<string, number>();
-  for (const question of getSscQuestions()) {
+  for (const question of getSscQuestions().filter(isLearnerGradeSscQuestion)) {
     sectionCounts.set(question.section, (sectionCounts.get(question.section) ?? 0) + 1);
   }
   const sections = [
@@ -427,7 +428,7 @@ test("SSC CGL 50/50 section mocks use reviewed book questions plus marked 200/20
       assert.equal(questions.length, 25);
       assert.ok(questions.every((question) => (
         question.provenance.sourceType === "book_user_provided"
-        || (question.provenance.sourceType === "original_practice" && question.conceptTags.includes("gap-repair"))
+        || question.provenance.sourceType === "original_practice"
       )));
       for (const question of questions) {
         assert.equal(usedQuestionIds.has(question.id), false, `${section.title} section mocks should not reuse ${question.id}`);

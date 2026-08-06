@@ -9427,6 +9427,53 @@ button {
   align-items: start;
 }
 
+.ssc-endless-statboard-link {
+  min-height: 74px;
+  padding: 14px 18px;
+  border-color: color-mix(in srgb, var(--accent) 30%, var(--border));
+  color: var(--text);
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--accent-soft) 72%, transparent), transparent 70%),
+    var(--surface);
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.ssc-endless-statboard-link:hover,
+.ssc-endless-statboard-link:focus-visible {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.ssc-endless-statboard-link > svg:first-child {
+  color: var(--accent-strong);
+}
+
+.ssc-endless-statboard-link > span {
+  display: grid;
+  gap: 4px;
+}
+
+.ssc-endless-statboard-link small {
+  color: var(--accent-strong);
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ssc-endless-statboard-link strong {
+  color: var(--text);
+  font-size: 0.92rem;
+}
+
+.ssc-endless-statboard-link > svg:last-child {
+  color: var(--muted);
+}
+
 .ssc-mistake-notebook h2 {
   margin: 4px 0 0;
   font-size: 24px;
@@ -10054,6 +10101,62 @@ button {
   display: grid;
   gap: 8px;
   min-width: 0;
+}
+
+.ssc-question-stimulus {
+  width: min(940px, 100%);
+  margin: 0 0 24px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: color-mix(in srgb, var(--surface-strong) 72%, transparent);
+}
+
+.ssc-question-stimulus figcaption {
+  margin: 0 0 9px;
+  color: var(--text);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.ssc-question-stimulus-note {
+  margin: -3px 0 9px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+
+.ssc-question-table-scroll {
+  overflow-x: auto;
+}
+
+.ssc-question-stimulus table {
+  width: 100%;
+  min-width: 360px;
+  border-collapse: collapse;
+  color: var(--text-soft);
+  font-size: 0.84rem;
+}
+
+.ssc-question-stimulus th,
+.ssc-question-stimulus td {
+  padding: 9px 11px;
+  border: 1px solid var(--border);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.ssc-question-stimulus th {
+  color: var(--text);
+  background: var(--surface);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.ssc-question-stimulus td:not(:first-child),
+.ssc-question-stimulus th:not(:first-child) {
+  text-align: right;
 }
 
 .ssc-explanation-blocks {

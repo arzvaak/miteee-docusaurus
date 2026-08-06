@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { MathText } from "@/components/MathText";
+import { SscQuestionStimulus } from "@/components/SscQuestionStimulus";
 import type { SscCglOptionId, SscCglTestDetail } from "@/lib/exam-types";
 import {
   buildSscAttemptHistoryItem,
@@ -731,6 +732,7 @@ export function TimedTestRunner({ test }: { test: SscCglTestDetail }) {
             <span className={styles.subjectChip}>{section.title}</span>
           </div>
           <h2><MathText text={question.stem} /></h2>
+          <SscQuestionStimulus stimulus={question.stimulus} />
 
           <fieldset className={styles.options}>
             <legend className={styles.srOnly}>Choose one answer</legend>

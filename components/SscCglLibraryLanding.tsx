@@ -3,6 +3,7 @@
 import Link from "next/link";
 import {
   ArrowRight,
+  BarChart3,
   BookOpen,
   BrainCircuit,
   Calculator,
@@ -220,6 +221,9 @@ export function SscCglLibraryLanding({ groups, corpus }: SscCglLibraryLandingPro
             </Link>
             <Link className={styles.secondaryAction} href="/exams/ssc-cgl/current-affairs">
               <Newspaper size={17} aria-hidden="true" /> Current affairs
+            </Link>
+            <Link className={styles.secondaryAction} href="/exams/ssc-cgl/statboard">
+              <BarChart3 size={17} aria-hidden="true" /> My statboard
             </Link>
           </div>
         </div>

@@ -5,6 +5,7 @@ import type {
   SscCglTestDetail,
   SscCglTestMode
 } from "@/lib/exam-types";
+import { isLearnerGradeSscQuestion } from "@/lib/ssc-cgl-quality";
 import { sscCglPattern } from "@/lib/ssc-cgl";
 
 export const sscSessionModes = ["quick", "section", "full", "endless", "pyq", "weak"] as const;
@@ -86,7 +87,7 @@ export function parseSscSessionConfig(searchParams: SearchParamsLike): SscSessio
     section: mode === "full" ? "all" : oneOf(firstValue(searchParams.section), sscSessionSections, "all"),
     length: mode === "full" ? 100 : mode === "endless" ? "endless" : rawLength === "endless" ? 25 : rawLength,
     timer: mode === "full" ? "exam" : oneOf(firstValue(searchParams.timer), sscSessionTimers, "exam"),
-    source: mode === "full" || mode === "pyq"
+    source: mode === "full" || mode === "pyq" || mode === "endless"
       ? "book"
       : oneOf(firstValue(searchParams.source), sscSessionSources, "book"),
     difficulty: oneOf(firstValue(searchParams.difficulty), sscSessionDifficulties, "all"),
@@ -102,6 +103,7 @@ function isUsableQuestion(question: SscCglQuestion) {
   const needsMissingFigure = /answer\s+figures?|question\s+figures?|figure\s+series|following\s+figure/i.test(question.stem);
 
   return question.reviewStatus === "reviewed"
+    && isLearnerGradeSscQuestion(question)
     && question.stem.trim().length > 0
     && question.options.length === 4
     && question.options.every((option) => option.text.trim().length > 0)

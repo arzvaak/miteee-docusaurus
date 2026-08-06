@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { SscCglExamPattern, SscCglQuestion, SscCglSectionId, SscCglTestDetail, SscCglTestMode, SscCglTestSummary, SscCglTopic } from "@/lib/exam-types";
+import { isLearnerGradeSscQuestion } from "@/lib/ssc-cgl-quality";
 
 export const sscCglPattern: SscCglExamPattern = {
   totalQuestions: 100,
@@ -1089,6 +1090,14 @@ function toLearnerQuestion(question: SscCglQuestion): SscCglQuestion {
     difficulty: question.difficulty,
     language: question.language,
     stem: question.stem,
+    stimulus: question.stimulus
+      ? {
+          type: question.stimulus.type,
+          caption: question.stimulus.caption,
+          columns: [...question.stimulus.columns],
+          rows: question.stimulus.rows.map((row) => [...row])
+        }
+      : undefined,
     options: question.options.map((option) => ({ id: option.id, text: option.text })),
     correctOption: question.correctOption,
     explanation: question.explanation,
@@ -1134,7 +1143,10 @@ function testMatchesFilters(
   if (!filters.section && !filters.topic && !filters.mode) return true;
   if (filters.mode && test.mode !== filters.mode) return false;
   if (!filters.section && !filters.topic) return true;
-  const questions = test.questionIds.map((id) => questionById.get(id)).filter((question): question is SscCglQuestion => Boolean(question));
+  const questions = test.questionIds
+    .map((id) => questionById.get(id))
+    .filter((question): question is SscCglQuestion => question !== undefined)
+    .filter(isLearnerGradeSscQuestion);
   if (questions.length === 0) return false;
   if (filters.section && !questions.every((question) => question.section === filters.section)) return false;
   if (filters.topic && !questions.every((question) => question.topic === filters.topic)) return false;
@@ -1162,7 +1174,10 @@ export function getSscCglTest(testId: string): SscCglTestDetail | null {
   const test = data.tests.find((item) => item.id === testId);
   if (!test) return null;
   const questionById = getQuestionMap(data);
-  const questions = test.questionIds.map((id) => questionById.get(id)).filter((question): question is SscCglQuestion => Boolean(question));
+  const questions = test.questionIds
+    .map((id) => questionById.get(id))
+    .filter((question): question is SscCglQuestion => question !== undefined)
+    .filter(isLearnerGradeSscQuestion);
   const learnerQuestions = questions.map(toLearnerQuestion);
   const summary = summarizeTest(test);
 
@@ -1190,6 +1205,7 @@ export function getSscTopic(slug: string): SscCglTopic | null {
 function isUsablePracticeQuestion(question: SscCglQuestion) {
   return (
     question.reviewStatus !== "rejected"
+    && isLearnerGradeSscQuestion(question)
     && question.options.length === 4
     && question.options.some((option) => option.id === question.correctOption)
     && question.stem.trim().length > 0

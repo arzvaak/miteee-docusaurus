@@ -3,6 +3,8 @@ import path from "node:path";
 import { getSscCglBookQuestionsPath } from "@/lib/ssc-cgl-corpus-paths";
 import type { SscCglExamPattern, SscCglOptionId, SscCglQuestion, SscCglSectionId, SscCglTopic } from "@/lib/exam-types";
 import { normalizeStandaloneMathText } from "@/lib/markdown-normalize";
+import { inferSscCglDiStimulus } from "@/lib/ssc-cgl-di-stimulus";
+import { isLearnerGradeSscQuestion } from "@/lib/ssc-cgl-quality";
 
 export const sscCglPattern: SscCglExamPattern = {
   totalQuestions: 100,
@@ -1139,11 +1141,31 @@ function inferGrammarErrorRoute(question: SscCglQuestion, correctText: string, s
   };
 }
 
+function buildDataInterpretationExplanation(question: SscCglQuestion, correctText: string, sourceCue: string) {
+  const table = question.stimulus?.type === "table" ? question.stimulus : undefined;
+  const numericRows = table?.rows
+    .map((row) => ({ label: row[0] ?? "", value: Number(row[row.length - 1]) }))
+    .filter((row) => row.label && Number.isFinite(row.value)) ?? [];
+  const asksForTotal = /\btotal\b/i.test(question.stem);
+  const calculation = asksForTotal && numericRows.length > 0
+    ? `${numericRows.map((row) => `${row.label} ${row.value}`).join(", ")} gives ${numericRows.map((row) => row.value).join(" + ")} = ${numericRows.reduce((sum, row) => sum + row.value, 0)}.`
+    : "Use only the labelled row or column required by the question, then apply the requested operation once.";
+  const sourceLine = /^sol\b/i.test(sourceCue) ? ` Source cue: ${sourceCue}` : "";
+
+  return [
+    `Correct answer: ${optionLabel(question.correctOption)} (${correctText}).`,
+    "Method: Data interpretation, 36-second DI route: read the table or chart labels first, identify the exact row, column, unit, and base, then perform only the operation asked by the stem. Use the option gap to stop as soon as the answer is fixed.",
+    `Why it fits: ${calculation} Therefore option ${optionLabel(question.correctOption)} (${correctText}) is the keyed value.`,
+    `Trap to avoid: Do not calculate from the first visible number or use the wrong denominator; confirm the label and unit before adding, comparing, averaging, or taking a percentage.${sourceLine}`
+  ].join(" ");
+}
+
 function buildMethodExplanation(question: SscCglQuestion, existingExplanation: string) {
   const seed = allTopicSeeds.find((item) => item.slug === question.topic);
   const correctOption = question.options.find((option) => option.id === question.correctOption);
   const correctText = normalizeStandaloneMathText(correctOption?.text?.trim() || "the keyed option");
   const sourceCue = safeSourceCue(extractSourceCue(existingExplanation));
+  if (question.topic === "data-interpretation") return buildDataInterpretationExplanation(question, correctText, sourceCue);
   const route = question.topic === "grammar-error-spotting"
     ? inferGrammarErrorRoute(question, correctText, sourceCue)
     : inferQuestionRoute(question, seed);
@@ -1241,16 +1263,19 @@ function normalizeBookQuestion(question: SscCglQuestion): SscCglQuestion {
     text: stripTrailingOrphanDisplayDelimiter(englishOnlyText(option.text)) || "Option text unavailable after English-only cleanup"
   }));
   const explanation = stripTrailingOrphanDisplayDelimiter(englishOnlyText(topicNormalized.explanation));
-  return {
+  const stimulus = topicNormalized.topic === "data-interpretation"
+    ? inferSscCglDiStimulus(stem) ?? topicNormalized.stimulus
+    : topicNormalized.stimulus;
+  const normalizedQuestion = {
     ...topicNormalized,
     stem,
-    explanation: ensureMethodExplanation({
-      ...topicNormalized,
-      stem,
-      explanation,
-      options
-    }),
-    options
+    explanation,
+    options,
+    stimulus
+  };
+  return {
+    ...normalizedQuestion,
+    explanation: ensureMethodExplanation(normalizedQuestion)
   };
 }
 
@@ -1457,7 +1482,12 @@ function buildTopicCoverageRepairPracticeQuestions(existing: SscCglQuestion[]): 
   const counts = new Map<string, number>();
 
   for (const question of existing) {
-    if (question.reviewStatus === "reviewed") counts.set(question.topic, (counts.get(question.topic) ?? 0) + 1);
+    const countsAsLearnerCoverage = question.topic === "data-interpretation"
+      ? isLearnerGradeSscQuestion(question)
+      : true;
+    if (question.reviewStatus === "reviewed" && countsAsLearnerCoverage) {
+      counts.set(question.topic, (counts.get(question.topic) ?? 0) + 1);
+    }
   }
 
   const questions: SscCglQuestion[] = [];
@@ -1486,6 +1516,7 @@ function buildTopicCoverageRepairPracticeQuestions(existing: SscCglQuestion[]): 
         difficulty: index % 5 === 0 ? "hard" : index % 2 === 0 ? "medium" : "easy",
         language: "en",
         stem: prompt.stem,
+        stimulus: prompt.stimulus,
         options: prompt.options,
         correctOption: "a",
         explanation: prompt.explanation,
@@ -1510,7 +1541,7 @@ function buildTopicCoverageRepairPracticeQuestions(existing: SscCglQuestion[]): 
   return questions;
 }
 
-function topicCoverageRepairPrompt(seed: TopicSeed, index: number): { stem: string; options: SscCglQuestion["options"]; explanation: string } {
+function topicCoverageRepairPrompt(seed: TopicSeed, index: number): { stem: string; options: SscCglQuestion["options"]; explanation: string; stimulus?: SscCglQuestion["stimulus"] } {
   if (seed.slug === "computer-awareness") {
     const prompts = [
       ["volatile memory used for active running programs", "RAM", "ROM", "Hard disk", "Printer"],
@@ -1579,14 +1610,166 @@ function topicCoverageRepairPrompt(seed: TopicSeed, index: number): { stem: stri
   }
 
   if (seed.slug === "data-interpretation") {
-    const a = 120 + index * 3;
-    const b = 80 + index * 2;
-    const c = 100 + index;
-    const total = a + b + c;
+    const pattern = index % 8;
+
+    if (pattern === 0) {
+      const north = 120 + index * 3;
+      const south = 80 + index * 2;
+      const east = 100 + index;
+      const total = north + south + east;
+      return {
+        stem: "The following table shows regional sales. What is the total sales value?",
+        stimulus: {
+          type: "table",
+          caption: "Regional sales",
+          columns: ["Region", "Sales"],
+          rows: [["North", String(north)], ["South", String(south)], ["East", String(east)]]
+        },
+        options: optionTexts(String(total), String(north + south), String(south + east), String(north - south + east)),
+        explanation: `Read the regional labels before calculating. Total sales means add North, South, and East: ${north} + ${south} + ${east} = ${total}.`
+      };
+    }
+
+    if (pattern === 1) {
+      const rows: Array<[string, number, number, number]> = [
+        ["2021", 420 + index, 360 + index * 2, 390 + index],
+        ["2022", 450 + index, 390 + index * 2, 420 + index],
+        ["2023", 480 + index, 420 + index * 2, 450 + index]
+      ];
+      const average = rows.reduce((sum, row) => sum + row[2], 0) / rows.length;
+      return {
+        stem: "The following table shows production (in thousands) of three factories. What is the average production of Factory B over the three years?",
+        stimulus: {
+          type: "table",
+          caption: "Factory production by year (thousands)",
+          columns: ["Year", "Factory A", "Factory B", "Factory C"],
+          rows: rows.map((row) => row.map(String))
+        },
+        options: optionTexts(String(average), String(average + 20), String(average - 30), String(rows[2]![2])),
+        explanation: `Use the Factory B column only: (${rows[0]![2]} + ${rows[1]![2]} + ${rows[2]![2]}) / 3 = ${average}.`
+      };
+    }
+
+    if (pattern === 2) {
+      const income = 60000 + index * 125;
+      const rentPercent = 30;
+      const educationPercent = 20;
+      const answer = income * (rentPercent + educationPercent) / 100;
+      return {
+        stem: `The table shows the percentage distribution of a monthly income of ₹${income}. How much is spent on rent and education together?`,
+        stimulus: {
+          type: "table",
+          caption: "Monthly income distribution",
+          columns: ["Item", "Percentage"],
+          rows: [["Rent", `${rentPercent}%`], ["Food", "18%"], ["Education", `${educationPercent}%`], ["Bills", "22%"], ["Savings", "10%"]]
+        },
+        options: optionTexts(`₹${answer}`, `₹${income * rentPercent / 100}`, `₹${income * educationPercent / 100}`, `₹${income * 0.6}`),
+        explanation: `Add the two required percentages first: ${rentPercent}% + ${educationPercent}% = ${rentPercent + educationPercent}%. Then ${rentPercent + educationPercent}% of ₹${income} is ₹${answer}.`
+      };
+    }
+
+    if (pattern === 3) {
+      const rows: Array<[string, number, number]> = [
+        ["P", 12000 + index * 10, 75],
+        ["Q", 15000 + index * 12, 64],
+        ["R", 13500 + index * 8, 80],
+        ["S", 11000 + index * 9, 70]
+      ];
+      const voted = rows.reduce((sum, row) => sum + Math.round(row[1] * row[2] / 100), 0);
+      return {
+        stem: "The following table gives registered voters and the percentage who voted at four centres. How many people voted altogether?",
+        stimulus: {
+          type: "table",
+          caption: "Voter turnout by centre",
+          columns: ["Centre", "Registered voters", "Voted"],
+          rows: rows.map((row) => [String(row[0]), String(row[1]), `${row[2]}%`])
+        },
+        options: optionTexts(String(voted), String(Math.round(voted * 0.9)), String(Math.round(voted * 1.1)), String(rows.reduce((sum, row) => sum + row[1], 0))),
+        explanation: `Calculate each centre's turnout and add them: ${rows.map((row) => `${row[1]} × ${row[2]}%`).join(" + ")} = ${voted}.`
+      };
+    }
+
+    if (pattern === 4) {
+      const rows: Array<[string, number, number, number]> = [
+        ["Asha", 72 + index, 80, 88],
+        ["Bharat", 78 + index, 74, 84],
+        ["Charu", 68 + index, 82, 90],
+        ["Dev", 84 + index, 76, 86]
+      ];
+      const total = rows[2]![1] + rows[2]![2] + rows[2]![3];
+      const percentage = total / 3;
+      return {
+        stem: "The following table shows marks out of 100 in three subjects. What is Charu's average percentage?",
+        stimulus: {
+          type: "table",
+          caption: "Student marks by subject",
+          columns: ["Student", "English", "Mathematics", "Reasoning"],
+          rows: rows.map((row) => row.map(String))
+        },
+        options: optionTexts(`${percentage}%`, `${total}%`, `${(total / 2).toFixed(2)}%`, `${rows[0]![1] + rows[0]![2] + rows[0]![3]}%`),
+        explanation: `Use Charu's row only: (${rows[2]![1]} + ${rows[2]![2]} + ${rows[2]![3]}) / 3 = ${percentage}%.`
+      };
+    }
+
+    if (pattern === 5) {
+      const rows: Array<[string, number, number, number]> = [
+        ["2019", 180 + index, 150 + index * 2, 210 + index],
+        ["2020", 220 + index, 190 + index * 2, 240 + index],
+        ["2021", 260 + index, 230 + index * 2, 270 + index],
+        ["2022", 300 + index, 270 + index * 2, 300 + index]
+      ];
+      const answer = rows[1]![1] + rows[3]![2];
+      return {
+        stem: "The table shows sales of products A, B, and C over four years. What is the total of Product A in 2020 and Product B in 2022?",
+        stimulus: {
+          type: "table",
+          caption: "Product sales by year",
+          columns: ["Year", "Product A", "Product B", "Product C"],
+          rows: rows.map((row) => row.map(String))
+        },
+        options: optionTexts(String(answer), String(rows[1]![1] + rows[3]![1]), String(rows[0]![1] + rows[3]![2]), String(rows[2]![1] + rows[2]![2])),
+        explanation: `Read the two requested cells only: Product A in 2020 is ${rows[1]![1]} and Product B in 2022 is ${rows[3]![2]}; their total is ${rows[1]![1]} + ${rows[3]![2]} = ${answer}.`
+      };
+    }
+
+    if (pattern === 6) {
+      const rows: Array<[string, number, number, number]> = [
+        ["North", 48 + index, 36 + index, 42 + index],
+        ["South", 54 + index, 44 + index, 39 + index],
+        ["East", 46 + index, 51 + index, 45 + index],
+        ["West", 58 + index, 49 + index, 47 + index]
+      ];
+      const answer = Math.max(...rows.map((row) => row[1]));
+      const answerLabel = String(rows.find((row) => row[1] === answer)![0]);
+      return {
+        stem: "The bar-chart data for four regions is tabulated below. Which region has the highest value for Product A?",
+        stimulus: {
+          type: "table",
+          caption: "Bar-chart data (table view)",
+          columns: ["Region", "Product A", "Product B", "Product C"],
+          rows: rows.map((row) => row.map(String))
+        },
+        options: optionTexts(String(answerLabel), "South", "East", "West"),
+        explanation: `Compare the Product A column: the largest value is ${answer} for ${answerLabel}, so option A is correct.`
+      };
+    }
+
+    const saturday = 8200 + index * 15;
+    const wednesday = Math.round(saturday * 1.15);
     return {
-      stem: `Data interpretation drill ${index + 1}: A table gives sales as North=${a}, South=${b}, and East=${c}. What is the total sales value?`,
-      options: optionTexts(String(total), String(a + b), String(b + c), String(a - b + c)),
-      explanation: `Read labels before calculating. Total sales means add all three regions: ${a} + ${b} + ${c} = ${total}.`
+      stem: "The following table shows pages printed by four printers on three days. If Wednesday's total was 15% more than Saturday's total, what was Wednesday's total?",
+      stimulus: {
+        type: "table",
+        caption: "Pages printed by printer and day",
+        columns: ["Day", "Printer L", "Printer M", "Printer N", "Printer O"],
+        rows: [
+          ["Friday", "10230", "9580", "7560", "9600"],
+          ["Saturday", String(Math.round(saturday * 0.25)), String(Math.round(saturday * 0.3)), String(Math.round(saturday * 0.2)), String(saturday - Math.round(saturday * 0.25) - Math.round(saturday * 0.3) - Math.round(saturday * 0.2))],
+          ["Sunday", "9235", "8264", "7546", "10325"]
+        ]
+      },
+      options: optionTexts(String(wednesday), String(saturday), String(Math.round(saturday * 1.05)), String(Math.round(saturday * 0.85))),
+      explanation: `First use the given Saturday total of ${saturday}. A 15% increase is ${saturday} × 1.15 = ${wednesday}, so option A is correct.`
     };
   }
 
@@ -1947,9 +2130,14 @@ function removeDuplicateMcqBodies(questions: SscCglQuestion[]) {
 export function buildSscCglQuestions() {
   if (isUploadedBookCorpusActive()) {
     const bookQuestions = loadBookImportedQuestions().map(ensureRankedPracticeExplanation);
+    const supplementalQuestions = [
+      ...buildCalculationSpeedPracticeQuestions(),
+      ...buildAveragesMixturesAlligationPracticeQuestions()
+    ].map(ensureRankedPracticeExplanation);
     const firstPass = removeDuplicateMcqBodies([
       ...bookQuestions,
-      ...buildTopicCoverageRepairPracticeQuestions(bookQuestions).map(ensureRankedPracticeExplanation)
+      ...supplementalQuestions,
+      ...buildTopicCoverageRepairPracticeQuestions([...bookQuestions, ...supplementalQuestions]).map(ensureRankedPracticeExplanation)
     ]);
     const secondPassRepairQuestions = buildTopicCoverageRepairPracticeQuestions(firstPass).map(ensureRankedPracticeExplanation);
     return removeDuplicateMcqBodies([...firstPass, ...secondPassRepairQuestions]);
@@ -2264,7 +2452,7 @@ function buildTopicThirtySixSecondDrills(reviewed: SscCglQuestion[]) {
 }
 
 export function buildSscCglTestSummaries(questions = buildSscCglQuestions()) {
-  const reviewed = questions.filter((question) => question.reviewStatus === "reviewed");
+  const reviewed = questions.filter((question) => question.reviewStatus === "reviewed" && isLearnerGradeSscQuestion(question));
   if (reviewed.length === 0) return [];
   const shiftLabels = [...new Set(reviewed.map((question) => question.shift))].sort();
   const completeMockLabels = shiftLabels.filter((shiftLabel) => !shiftLabel.startsWith("Agent-curated imported practice") && sscCglPattern.sections.every((section) => (

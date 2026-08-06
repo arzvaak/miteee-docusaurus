@@ -15,6 +15,14 @@ test("MathText renders legacy and bare formulas through KaTeX", () => {
   assert.match(standalone, /<mfrac>/);
 });
 
+test("MathText renders bare TeX commands embedded in explanation prose", () => {
+  const markup = renderToStaticMarkup(<MathText text={String.raw`Method: use \frac{3}{5} of the total, then compare the result.`} />);
+
+  assert.match(markup, /class="katex"/);
+  assert.match(markup, /<mfrac>/);
+  assert.match(markup, /Method: use <span class="katex">/);
+});
+
 test("MathText leaves ordinary text literal and does not enable raw HTML", () => {
   const ordinary = renderToStaticMarkup(<MathText text="Choose 12 < 15 & stay safe." />);
   const attemptedHtml = renderToStaticMarkup(<MathText text={'Safe $x$ and <script>alert(1)</script> <img src=x onerror=alert(2)>'} />);

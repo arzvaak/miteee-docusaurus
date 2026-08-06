@@ -200,6 +200,7 @@ export function SscExamSetup(props: SscExamSetupProps) {
   const activeMode = modes.find((mode) => mode.id === config.mode) ?? modes[2];
   const locksOfficialPattern = config.mode === "full";
   const locksEndlessLength = config.mode === "endless";
+  const locksEndlessSource = config.mode === "endless";
   const locksPyqSource = config.mode === "pyq";
   const visibleLengthOptions = config.mode === "endless"
     ? lengthOptions.filter((option) => option.value === "endless")
@@ -330,7 +331,7 @@ export function SscExamSetup(props: SscExamSetupProps) {
 
             <label className={styles.selectField}>
               <span>Question source</span>
-              <select disabled={locksOfficialPattern || locksPyqSource} value={config.source} onChange={(event) => updateConfig("source", event.target.value as SourceMode)}>
+              <select disabled={locksOfficialPattern || locksPyqSource || locksEndlessSource} value={config.source} onChange={(event) => updateConfig("source", event.target.value as SourceMode)}>
                 {sourceOptions.map((option) => <option value={option.value} key={option.value}>{option.label}</option>)}
               </select>
             </label>

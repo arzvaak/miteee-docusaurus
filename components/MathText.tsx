@@ -3,6 +3,7 @@ import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 import {
   normalizeCurrencyDollars,
+  normalizeEmbeddedMathText,
   normalizeLegacyMathDelimiters,
   normalizeMathForKatex,
   normalizeStandaloneMathText
@@ -12,14 +13,16 @@ import { rehypeRawMathText } from "@/lib/rehype-raw-math-text";
 const mathDelimiterPattern = /\$\$[\s\S]*?\$\$|(?<!\\)\$[^$\n]+(?<!\\)\$/;
 
 export function MathText({ text }: { text: string }) {
-  const standaloneReady = normalizeStandaloneMathText(text);
+  const legacyReady = normalizeLegacyMathDelimiters(text);
+  const standaloneReady = normalizeStandaloneMathText(legacyReady);
+  const embeddedReady = normalizeEmbeddedMathText(standaloneReady);
   const prepared = normalizeMathForKatex(
     normalizeCurrencyDollars(
-      normalizeLegacyMathDelimiters(standaloneReady)
+      embeddedReady
     )
   );
 
-  if (!mathDelimiterPattern.test(prepared)) return <>{text}</>;
+  if (!mathDelimiterPattern.test(prepared)) return <>{prepared}</>;
 
   return (
     <ReactMarkdown

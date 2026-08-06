@@ -10,6 +10,7 @@ test("SSC CGL exam routes are mounted as first-class study surfaces", () => {
     "app/exams/page.tsx",
     "app/exams/ssc-cgl/page.tsx",
     "app/exams/ssc-cgl/session/page.tsx",
+    "app/exams/ssc-cgl/statboard/page.tsx",
     "app/api/exams/ssc-cgl/session/route.ts",
     "app/exams/ssc-cgl/tests/page.tsx",
     "app/exams/ssc-cgl/tests/[testId]/page.tsx",
@@ -32,6 +33,28 @@ test("SSC CGL exam routes are mounted as first-class study surfaces", () => {
   for (const relativePath of expectedFiles) {
     assert.ok(fs.existsSync(path.join(root, relativePath)), `${relativePath} should exist`);
   }
+});
+
+test("SSC CGL endless practice exposes a durable personal review board", () => {
+  const sessionPage = fs.readFileSync(path.join(root, "app", "exams", "ssc-cgl", "session", "page.tsx"), "utf8");
+  const runner = fs.readFileSync(path.join(root, "components", "SscEndlessRunner.tsx"), "utf8");
+  const statboardPage = fs.readFileSync(path.join(root, "app", "exams", "ssc-cgl", "statboard", "page.tsx"), "utf8");
+  const statboard = fs.readFileSync(path.join(root, "components", "SscEndlessStatboard.tsx"), "utf8");
+  const memory = fs.readFileSync(path.join(root, "lib", "ssc-cgl-endless-memory.ts"), "utf8");
+
+  assert.match(sessionPage, /SscEndlessRunner/);
+  assert.match(runner, /useSscEndlessMemory/);
+  assert.match(runner, /Mark for review/);
+  assert.match(runner, /\/exams\/ssc-cgl\/statboard/);
+  assert.match(runner, /recordSscEndlessAnswer/);
+  assert.match(memory, /ssc-cgl-endless-memory-v1/);
+  assert.match(memory, /sscEndlessReviewLimit/);
+  assert.match(statboardPage, /SscEndlessStatboard/);
+  assert.match(statboard, /Your SSC CGL statboard/);
+  assert.match(statboard, /Review these next/);
+  assert.match(statboard, /Mark mastered/);
+  assert.match(statboard, /SscQuestionStimulus/);
+  assert.match(statboard, /SscExplanationPanel/);
 });
 
 test("SSC CGL runtime loader reads generated data without importing corpus builders", () => {
@@ -100,7 +123,7 @@ test("SSC CGL topic practice exposes one-by-one corpus practice", () => {
   assert.match(practiceClient, /Misses/);
   assert.match(practiceClient, /Speed repairs/);
   assert.match(practiceClient, /Book-backed/);
-  assert.match(practiceClient, /Gap repair/);
+  assert.doesNotMatch(practiceClient, /Gap repair/);
   assert.match(practiceDetail, /searchParams/);
   assert.match(practiceDetail, /initialMode=\{mode\}/);
   assert.match(practiceClient, /Current queue/);
