@@ -4,6 +4,9 @@ services:
     pull_policy: missing
     container_name: miteee-deeptutor
     restart: unless-stopped
+    cpus: "1.0"
+    mem_limit: 2g
+    pids_limit: 256
     entrypoint: ["/bin/bash", "-lc", "python /opt/miteee/bootstrap.py && exec /app/entrypoint.sh"]
     environment:
       MISTRAL_API_KEY: ${MISTRAL_API_KEY:-}
@@ -61,6 +64,9 @@ services:
   deeptutor-sync:
     image: ghcr.io/hkuds/deeptutor:1.5.9@sha256:c7f811572d00edddeb4382ce8fab805a1f1517268481c207543d873dc2751767
     profiles: ["deeptutor-tools"]
+    cpus: "0.25"
+    mem_limit: 256m
+    pids_limit: 64
     entrypoint: ["python", "/opt/miteee/sync_notes.py"]
     environment:
       DEEPTUTOR_API_BASE_URL: http://deeptutor:8001
@@ -77,6 +83,9 @@ services:
     image: ghcr.io/hkuds/deeptutor:1.5.9@sha256:c7f811572d00edddeb4382ce8fab805a1f1517268481c207543d873dc2751767
     container_name: miteee-deeptutor-refresh
     restart: unless-stopped
+    cpus: "0.25"
+    mem_limit: 256m
+    pids_limit: 64
     entrypoint:
       - /bin/bash
       - -lc
