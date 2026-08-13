@@ -68,8 +68,6 @@ services:
     volumes:
       - ./data/deeptutor:/app/data:z
       - ./docs:/app/miteee-docs:ro,z
-      - ./data/generated:/app/miteee-generated:ro,z
-      - ./data/current-affairs:/app/miteee-current-affairs:ro,z
       - ./ops/deeptutor/sync_notes.py:/opt/miteee/sync_notes.py:ro,z
     depends_on:
       deeptutor:
@@ -91,8 +89,6 @@ services:
     volumes:
       - ./data/deeptutor:/app/data:z
       - ./docs:/app/miteee-docs:ro,z
-      - ./data/generated:/app/miteee-generated:ro,z
-      - ./data/current-affairs:/app/miteee-current-affairs:ro,z
       - ./ops/deeptutor/sync_notes.py:/opt/miteee/sync_notes.py:ro,z
     depends_on:
       deeptutor:

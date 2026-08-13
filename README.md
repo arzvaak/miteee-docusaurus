@@ -104,7 +104,7 @@ docker compose -f docker-compose.next.yml up -d
 docker compose -f docker-compose.next.yml --profile deeptutor-tools run --rm deeptutor-sync
 ```
 
-The sync compares a corpus hash and skips an unchanged collection. A changed collection is rebuilt from every tracked public note, every generated `exams/**/questions.json` question bank (split into index-friendly Markdown chunks), and each published daily current-affairs brief. This discovery is recursive and pattern-based, so future notes, exam question banks, and daily briefs join the tutor corpus without maintaining a hand-written file list. Production also rechecks the corpus every 15 minutes, making post-deployment daily briefs available automatically while unchanged checks remain no-ops. DeepTutor conversations and memory remain in their separate persistent directories; browser-local learner history is not copied into the corpus.
+The sync compares a corpus hash and skips an unchanged collection. A changed collection is rebuilt only from tracked `docs/**/*.md` and `docs/**/*.mdx` notes. Discovery is recursive, so future Markdown notes join the Tutor without maintaining a hand-written file list; generated question banks and current-affairs JSON are deliberately excluded to keep indexing and idle resource use small. Production rechecks the notes every 15 minutes, while unchanged checks remain no-ops. DeepTutor conversations and memory remain in their separate persistent directories; browser-local learner history is not copied into the corpus.
 
 ## SSC CGL Current Affairs
 

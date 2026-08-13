@@ -71,8 +71,8 @@ test("DeepTutor is isolated, persisted, indexed, and never published directly", 
   assert.match(compose, /DEEPTUTOR_API_BASE_URL: http:\/\/deeptutor:8001/);
   assert.match(compose, /DEEPTUTOR_WS_URL: ws:\/\/deeptutor:8001\/api\/v1\/ws/);
   assert.match(compose, /\.\/data\/deeptutor:\/app\/data/);
-  assert.match(compose, /\.\/data\/generated:\/app\/miteee-generated:ro/);
-  assert.match(compose, /\.\/data\/current-affairs:\/app\/miteee-current-affairs:ro/);
+  assert.doesNotMatch(compose, /miteee-generated/);
+  assert.doesNotMatch(compose, /miteee-current-affairs/);
   assert.match(compose, /deeptutor-refresh:/);
   assert.match(compose, /DEEPTUTOR_SYNC_INTERVAL_SECONDS:-900/);
   assert.match(compose, /DEEPTUTOR_INDEX_TIMEOUT_SECONDS:-7200/);
@@ -87,13 +87,11 @@ test("DeepTutor is isolated, persisted, indexed, and never published directly", 
   assert.match(publish, /--profile deeptutor-tools run --rm deeptutor-sync/);
   assert.match(publish, /miteee-notes knowledge base is not ready/);
   const sync = source("ops/deeptutor/sync_notes.py");
-  assert.match(sync, /GENERATED_ROOT\.glob\("exams\/\*\*\/questions\.json"\)/);
-  assert.match(sync, /CURRENT_AFFAIRS_ROOT \/ "daily"/);
-  assert.match(sync, /QUESTION_CHUNK_BYTES/);
+  assert.match(sync, /extensions = \{"\.md", "\.mdx"\}/);
+  assert.doesNotMatch(sync, /questions\.json/);
+  assert.doesNotMatch(sync, /CURRENT_AFFAIRS_ROOT/);
   assert.match(sync, /fcntl\.LOCK_EX \| fcntl\.LOCK_NB/);
   assert.match(sync, /already indexing; waiting for the existing first build/);
-  assert.match(sync, /MAX_QUESTION_EXPLANATION_CHARS/);
-  assert.match(sync, /payload\.get\("items", \[\]\)/);
   assert.match(notePage, /data-tutor-note-slug=\{note\.slug\}/);
   assert.match(nextConfig, /"\/api\/deeptutor": authTraceIncludes/);
   assert.match(nextConfig, /"\/api\/deeptutor\/\*": authTraceIncludes/);

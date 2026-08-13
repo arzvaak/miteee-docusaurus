@@ -1,7 +1,6 @@
 import hashlib
 import json
 import os
-import tempfile
 import time
 from dataclasses import dataclass
 from pathlib import Path
@@ -13,14 +12,8 @@ import requests
 API_BASE = os.environ.get("DEEPTUTOR_API_BASE_URL", "http://deeptutor:8001").rstrip("/")
 KB_NAME = os.environ.get("DEEPTUTOR_KB_NAME", "miteee-notes").strip() or "miteee-notes"
 DOCS_ROOT = Path("/app/miteee-docs")
-GENERATED_ROOT = Path("/app/miteee-generated")
-CURRENT_AFFAIRS_ROOT = Path("/app/miteee-current-affairs")
 MANIFEST_PATH = Path("/app/data/miteee-notes-manifest.json")
 SYNC_LOCK_PATH = Path("/app/data/miteee-corpus-sync.lock")
-QUESTION_CHUNK_BYTES = 750_000
-MAX_QUESTION_STEM_CHARS = 700
-MAX_QUESTION_OPTION_CHARS = 280
-MAX_QUESTION_EXPLANATION_CHARS = 320
 
 
 @dataclass(frozen=True)
@@ -30,7 +23,7 @@ class CorpusDocument:
 
 
 def public_notes():
-    extensions = {".md", ".mdx", ".txt"}
+    extensions = {".md", ".mdx"}
     if not DOCS_ROOT.exists():
         return []
     return [
@@ -40,116 +33,8 @@ def public_notes():
     ]
 
 
-def render_question(question, position):
-    if not isinstance(question, dict):
-        return f"## Question {position}\n\n{json.dumps(question, ensure_ascii=False)}\n"
-
-    def bounded(value, limit):
-        return " ".join(str(value or "").split())[:limit]
-
-    identifier = bounded(question.get("id") or position, 120)
-    heading = bounded(question.get("stem") or question.get("question") or question.get("prompt") or "Question", MAX_QUESTION_STEM_CHARS)
-    parts = [f"Q{position}", f"id:{identifier}", heading]
-
-    options = question.get("options")
-    if isinstance(options, list):
-        for index, option in enumerate(options):
-            if isinstance(option, dict):
-                label = option.get("id") or option.get("label") or chr(65 + index)
-                text = option.get("text") or option.get("value") or ""
-            else:
-                label, text = chr(65 + index), option
-            parts.append(f"{bounded(label, 12)}:{bounded(text, MAX_QUESTION_OPTION_CHARS)}")
-
-    answer = question.get("correctOption", question.get("answer"))
-    if answer not in (None, ""):
-        parts.append(f"answer:{bounded(answer, 120)}")
-    explanation = question.get("explanation") or question.get("solution")
-    if explanation:
-        parts.append(f"why:{bounded(explanation, MAX_QUESTION_EXPLANATION_CHARS)}")
-
-    metadata_fields = ["exam", "tier", "year", "shift", "section", "topic", "subtopic", "difficulty", "source"]
-    metadata = [f"{key}: {question[key]}" for key in metadata_fields if question.get(key) not in (None, "")]
-    if metadata:
-        parts.append(f"context:{'; '.join(metadata)}")
-    tags = question.get("conceptTags") or question.get("tags")
-    if isinstance(tags, list) and tags:
-        parts.append(f"tags:{', '.join(map(str, tags[:12]))}")
-    return " | ".join(parts) + "\n"
-
-
-def generated_question_documents(temp_root):
-    documents = []
-    if not GENERATED_ROOT.exists():
-        return documents
-
-    for source_path in sorted(GENERATED_ROOT.glob("exams/**/questions.json")):
-        questions = json.loads(source_path.read_text(encoding="utf-8"))
-        if not isinstance(questions, list):
-            continue
-        exam_path = source_path.parent.relative_to(GENERATED_ROOT / "exams").as_posix()
-        chunk_parts = [f"# {exam_path} question bank\n"]
-        chunk_size = len(chunk_parts[0].encode("utf-8"))
-        chunk_number = 1
-
-        def flush():
-            nonlocal chunk_parts, chunk_size, chunk_number
-            if len(chunk_parts) == 1:
-                return
-            target = temp_root / "questions" / exam_path / f"questions-{chunk_number:04d}.md"
-            target.parent.mkdir(parents=True, exist_ok=True)
-            target.write_text("\n".join(chunk_parts), encoding="utf-8")
-            documents.append(CorpusDocument(target, target.relative_to(temp_root).as_posix()))
-            chunk_number += 1
-            chunk_parts = [f"# {exam_path} question bank\n"]
-            chunk_size = len(chunk_parts[0].encode("utf-8"))
-
-        for position, question in enumerate(questions, start=1):
-            rendered = render_question(question, position)
-            rendered_size = len(rendered.encode("utf-8"))
-            if len(chunk_parts) > 1 and chunk_size + rendered_size > QUESTION_CHUNK_BYTES:
-                flush()
-            chunk_parts.append(rendered)
-            chunk_size += rendered_size
-        flush()
-    return documents
-
-
-def current_affairs_documents(temp_root):
-    documents = []
-    daily_root = CURRENT_AFFAIRS_ROOT / "daily"
-    if not daily_root.exists():
-        return documents
-    for source_path in sorted(daily_root.glob("*.json")):
-        payload = json.loads(source_path.read_text(encoding="utf-8"))
-        target = temp_root / "current-affairs" / f"{source_path.stem}.md"
-        target.parent.mkdir(parents=True, exist_ok=True)
-        lines = [f"# SSC CGL current affairs: {source_path.stem}", ""]
-        for position, item in enumerate(payload.get("items", []) if isinstance(payload, dict) else [], start=1):
-            if not isinstance(item, dict):
-                continue
-            lines.extend([
-                f"## {position}. {item.get('title', 'Current-affairs item')}",
-                f"Source: {item.get('source', '')} | Published: {item.get('published_at', '')}",
-                f"Exam areas: {', '.join(map(str, item.get('exam_areas', [])))}",
-                *[f"- {point}" for point in item.get("key_points", []) if point],
-                f"SSC CGL link: {item.get('why_it_matters_for_ssc_cgl', '')}",
-                f"Static context: {item.get('static_context', '')}",
-                f"Memory hook: {item.get('memory_hook', '')}",
-                f"Recall question: {(item.get('mcq_seed') or {}).get('question', '')}",
-                f"Recall answer: {(item.get('mcq_seed') or {}).get('answer', '')}",
-                ""
-            ])
-        target.write_text("\n".join(lines), encoding="utf-8")
-        documents.append(CorpusDocument(target, target.relative_to(temp_root).as_posix()))
-    return documents
-
-
-def corpus_documents(temp_root):
-    return sorted(
-        public_notes() + generated_question_documents(temp_root) + current_affairs_documents(temp_root),
-        key=lambda document: document.relative_path
-    )
+def corpus_documents():
+    return sorted(public_notes(), key=lambda document: document.relative_path)
 
 
 def corpus_digest(documents):
@@ -213,16 +98,11 @@ def wait_for_index():
 
 
 def write_manifest(documents, digest):
-    source_counts = {
-        "notes": sum(document.relative_path.startswith("notes/") for document in documents),
-        "question_chunks": sum(document.relative_path.startswith("questions/") for document in documents),
-        "current_affairs": sum(document.relative_path.startswith("current-affairs/") for document in documents)
-    }
     MANIFEST_PATH.write_text(json.dumps({
         "knowledge_base": KB_NAME,
         "sha256": digest,
         "documents": len(documents),
-        "sources": source_counts,
+        "sources": {"notes": len(documents)},
         "synced_at": int(time.time())
     }, indent=2) + "\n", encoding="utf-8")
 
@@ -274,18 +154,17 @@ def main():
             print("DeepTutor sync: another corpus refresh is already running; I skipped this check.")
             return
 
-        with tempfile.TemporaryDirectory(prefix="miteee-deeptutor-corpus-") as temporary_directory:
-            documents = corpus_documents(Path(temporary_directory))
-            if not documents:
-                raise RuntimeError("I found no public study material to index.")
-            digest = corpus_digest(documents)
-            wait_for_api()
-            existing = any(item.get("name") == KB_NAME for item in knowledge_bases())
-            if existing and stored_digest() == digest:
-                print(f"DeepTutor sync: {len(documents)} corpus documents are already current.")
-                return
-            rebuild(documents, digest)
-            print(f"DeepTutor sync: indexed {len(documents)} corpus documents into {KB_NAME}.")
+        documents = corpus_documents()
+        if not documents:
+            raise RuntimeError("I found no Markdown notes to index.")
+        digest = corpus_digest(documents)
+        wait_for_api()
+        existing = any(item.get("name") == KB_NAME for item in knowledge_bases())
+        if existing and stored_digest() == digest:
+            print(f"DeepTutor sync: {len(documents)} Markdown notes are already current.")
+            return
+        rebuild(documents, digest)
+        print(f"DeepTutor sync: indexed {len(documents)} Markdown notes into {KB_NAME}.")
 
 
 if __name__ == "__main__":
