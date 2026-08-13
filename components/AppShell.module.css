@@ -311,6 +311,10 @@
     backdrop-filter: blur(18px);
   }
 
+  .bottomNavWithTutor {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+
   .bottomLink {
     display: flex;
     min-width: 0;

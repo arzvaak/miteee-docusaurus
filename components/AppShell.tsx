@@ -3,13 +3,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
-import { BookOpen, ClipboardCheck, LayoutDashboard, Newspaper, PenLine, RotateCcw, Settings } from "lucide-react";
+import { BookOpen, BrainCircuit, ClipboardCheck, LayoutDashboard, Newspaper, PenLine, RotateCcw, Settings } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { HashScroller } from "@/components/HashScroller";
 import { QuickFind } from "@/components/QuickFind";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { AuthControls } from "@/components/AuthControls";
+import { DeepTutorDrawer } from "@/components/DeepTutorDrawer";
+import { useDeepTutorAccess } from "@/lib/use-deeptutor-access";
 import styles from "@/components/AppShell.module.css";
 
 type NavItem = {
@@ -45,8 +47,17 @@ const navItems: NavItem[] = [
   { href: "/revision", label: "Revision", icon: RotateCcw, isActive: (pathname) => pathname.startsWith("/revision") }
 ];
 
+const tutorNavItem: NavItem = {
+  href: "/tutor",
+  label: "Tutor",
+  icon: BrainCircuit,
+  isActive: (pathname) => pathname.startsWith("/tutor")
+};
+
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const tutorAccess = useDeepTutorAccess();
+  const visibleNavItems = tutorAccess.hasAccess ? [...navItems, tutorNavItem] : navItems;
   const focusedExamSession = pathname.startsWith("/exams/ssc-cgl/session")
     || /^\/exams\/ssc-cgl\/tests\/[^/]+$/.test(pathname);
 
@@ -65,7 +76,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         </Link>
 
         <nav className={styles.desktopNav} aria-label="Primary navigation">
-          {navItems.map((item) => {
+          {visibleNavItems.map((item) => {
             const active = item.isActive(pathname);
             return (
               <Link
@@ -86,6 +97,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
         <div className={styles.actions}>
           <ThemeToggle compact />
+          <DeepTutorDrawer hasAccess={tutorAccess.hasAccess} available={tutorAccess.available} />
           <Link
             href="/settings"
             className={pathname.startsWith("/settings") ? `${styles.settingsLink} ${styles.settingsActive}` : styles.settingsLink}
@@ -103,8 +115,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
       <main className={focusedExamSession ? `${styles.main} ${styles.focusMain}` : styles.main}>{children}</main>
 
-      {!focusedExamSession ? <nav className={styles.bottomNav} aria-label="Mobile navigation">
-        {navItems.map((item) => {
+      {!focusedExamSession ? <nav className={tutorAccess.hasAccess ? `${styles.bottomNav} ${styles.bottomNavWithTutor}` : styles.bottomNav} aria-label="Mobile navigation">
+        {visibleNavItems.map((item) => {
           const active = item.isActive(pathname);
           return (
             <Link

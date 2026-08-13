@@ -10,6 +10,11 @@ AUTH_DATA_DIR="$APP_DIR/data/auth"
 AUTH_DB_PATH="$AUTH_DATA_DIR/miteee-auth.sqlite"
 AUTH_SECRET_PATH="$AUTH_DATA_DIR/.better-auth-secret"
 BETTER_AUTH_URL="${BETTER_AUTH_URL:-https://note.arzvak.com}"
+MISTRAL_API_KEY="${MISTRAL_API_KEY:-}"
+MISTRAL_MODEL="${MISTRAL_MODEL:-mistral-small-latest}"
+MISTRAL_EMBEDDING_MODEL="${MISTRAL_EMBEDDING_MODEL:-mistral-embed}"
+DEEPTUTOR_ALLOWED_EMAILS="${DEEPTUTOR_ALLOWED_EMAILS:-}"
+DEEPTUTOR_SSH_TARGET="${DEEPTUTOR_SSH_TARGET:-root@note.arzvak.com}"
 
 cd "$APP_DIR"
 
@@ -50,9 +55,14 @@ if command -v chown >/dev/null 2>&1; then
   chown -R 1001:1001 "$AUTH_DATA_DIR" 2>/dev/null || true
 fi
 
-export AUTH_DB_PATH BETTER_AUTH_URL
+export AUTH_DB_PATH BETTER_AUTH_URL MISTRAL_API_KEY MISTRAL_MODEL MISTRAL_EMBEDDING_MODEL DEEPTUTOR_ALLOWED_EMAILS DEEPTUTOR_SSH_TARGET
 
 mkdir -p /root/note-arzvak-backups
+mkdir -p "$APP_DIR/data/deeptutor"
+chmod 700 "$APP_DIR/data/deeptutor"
+if [ -d "$APP_DIR/data/deeptutor/user" ]; then
+  tar --exclude='deeptutor/knowledge_bases' -C "$APP_DIR/data" -czf "/root/note-arzvak-backups/deeptutor-state-$(date +%Y%m%d%H%M%S).tar.gz" deeptutor 2>/dev/null || true
+fi
 if [ -d "$APP_DIR/.next/standalone" ]; then
   tar -C "$APP_DIR" -czf "/root/note-arzvak-backups/note-arzvak-next-$(date +%Y%m%d%H%M%S).tar.gz" .next public data/current-affairs 2>/dev/null || true
 else
@@ -75,6 +85,23 @@ if command -v docker >/dev/null 2>&1 && docker compose version >/dev/null 2>&1 &
   export NEXT_APP_PUBLISHED_PORT="$APP_PORT"
   docker compose -f docker-compose.next.yml up -d --build
   docker compose -f docker-compose.next.yml ps
+  test -n "$MISTRAL_API_KEY"
+  docker compose -f docker-compose.next.yml --profile deeptutor-tools run --rm deeptutor-sync
+  docker compose -f docker-compose.next.yml exec -T deeptutor python - <<'PY'
+import json
+import urllib.request
+
+items = json.load(urllib.request.urlopen("http://127.0.0.1:8001/api/v1/knowledge/list", timeout=10))
+match = next((item for item in items if item.get("name") == "miteee-notes"), None)
+if not match or str(match.get("status", "")).lower() not in {"ready", "completed"}:
+    raise SystemExit(f"miteee-notes knowledge base is not ready: {match}")
+models = json.load(urllib.request.urlopen("http://127.0.0.1:8001/api/v1/settings/llm-options", timeout=10))
+if not isinstance(models.get("options"), list):
+    raise SystemExit("DeepTutor model options endpoint is not ready")
+oauth = json.load(urllib.request.urlopen("http://127.0.0.1:8001/api/v1/settings/providers/openai-codex/oauth/status", timeout=10))
+if oauth.get("connection") not in {"disconnected", "authorizing", "connected", "error"}:
+    raise SystemExit(f"DeepTutor ChatGPT OAuth endpoint is not ready: {oauth}")
+PY
   restarted=1
 elif command -v systemctl >/dev/null 2>&1 && command -v node >/dev/null 2>&1; then
   node_bin="$(command -v node)"

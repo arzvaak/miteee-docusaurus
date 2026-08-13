@@ -1,4 +1,26 @@
 services:
+  deeptutor:
+    image: ghcr.io/hkuds/deeptutor:1.5.9@sha256:c7f811572d00edddeb4382ce8fab805a1f1517268481c207543d873dc2751767
+    pull_policy: missing
+    container_name: miteee-deeptutor
+    restart: unless-stopped
+    entrypoint: ["/bin/bash", "-lc", "python /opt/miteee/bootstrap.py && exec /app/entrypoint.sh"]
+    environment:
+      MISTRAL_API_KEY: ${MISTRAL_API_KEY:-}
+      MISTRAL_MODEL: ${MISTRAL_MODEL:-mistral-small-latest}
+      MISTRAL_EMBEDDING_MODEL: ${MISTRAL_EMBEDDING_MODEL:-mistral-embed}
+    expose:
+      - "8001"
+    volumes:
+      - ./data/deeptutor:/app/data:Z
+      - ./ops/deeptutor/bootstrap.py:/opt/miteee/bootstrap.py:ro,Z
+    healthcheck:
+      test: ["CMD", "python", "/app/healthcheck.py"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
   miteee-next:
     build:
       context: .
@@ -14,14 +36,62 @@ services:
       AUTH_DB_PATH: /app/data/auth/miteee-auth.sqlite
       BETTER_AUTH_URL: ${BETTER_AUTH_URL:-http://localhost:${NEXT_APP_PUBLISHED_PORT:-3000}}
       BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:-}
+      DEEPTUTOR_API_BASE_URL: http://deeptutor:8001
+      DEEPTUTOR_WS_URL: ws://deeptutor:8001/api/v1/ws
+      NEXT_APP_PORT: ${NEXT_APP_PORT:-3025}
+      DEEPTUTOR_SSH_TARGET: ${DEEPTUTOR_SSH_TARGET:-root@note.arzvak.com}
+      DEEPTUTOR_KB_NAME: ${DEEPTUTOR_KB_NAME:-miteee-notes}
+      DEEPTUTOR_ALLOWED_EMAILS: ${DEEPTUTOR_ALLOWED_EMAILS:-}
     ports:
       - "127.0.0.1:${NEXT_APP_PUBLISHED_PORT:-3000}:3000"
     volumes:
       - ./data/current-affairs:/app/data/current-affairs:z
       - ./data/auth:/app/data/auth:Z
+    depends_on:
+      deeptutor:
+        condition: service_healthy
     healthcheck:
       test: ["CMD-SHELL", "node -e \"Promise.all(['http://127.0.0.1:3000/exams/ssc-cgl','http://127.0.0.1:3000/api/auth/get-session'].map(url=>fetch(url))).then(responses=>process.exit(responses.every(response=>response.ok)?0:1)).catch(()=>process.exit(1))\""]
       interval: 30s
       timeout: 10s
       retries: 5
       start_period: 30s
+
+  deeptutor-sync:
+    image: ghcr.io/hkuds/deeptutor:1.5.9@sha256:c7f811572d00edddeb4382ce8fab805a1f1517268481c207543d873dc2751767
+    profiles: ["deeptutor-tools"]
+    entrypoint: ["python", "/opt/miteee/sync_notes.py"]
+    environment:
+      DEEPTUTOR_API_BASE_URL: http://deeptutor:8001
+      DEEPTUTOR_KB_NAME: ${DEEPTUTOR_KB_NAME:-miteee-notes}
+    volumes:
+      - ./data/deeptutor:/app/data:Z
+      - ./docs:/app/miteee-docs:ro,Z
+      - ./data/generated:/app/miteee-generated:ro,Z
+      - ./data/current-affairs:/app/miteee-current-affairs:ro,Z
+      - ./ops/deeptutor/sync_notes.py:/opt/miteee/sync_notes.py:ro,Z
+    depends_on:
+      deeptutor:
+        condition: service_healthy
+
+  deeptutor-refresh:
+    image: ghcr.io/hkuds/deeptutor:1.5.9@sha256:c7f811572d00edddeb4382ce8fab805a1f1517268481c207543d873dc2751767
+    container_name: miteee-deeptutor-refresh
+    restart: unless-stopped
+    entrypoint:
+      - /bin/bash
+      - -lc
+      - while true; do sleep "$${DEEPTUTOR_SYNC_INTERVAL_SECONDS:-900}"; python /opt/miteee/sync_notes.py || echo 'DeepTutor scheduled sync failed; retrying after interval.' >&2; done
+    environment:
+      DEEPTUTOR_API_BASE_URL: http://deeptutor:8001
+      DEEPTUTOR_KB_NAME: ${DEEPTUTOR_KB_NAME:-miteee-notes}
+      DEEPTUTOR_SYNC_INTERVAL_SECONDS: ${DEEPTUTOR_SYNC_INTERVAL_SECONDS:-900}
+    volumes:
+      - ./data/deeptutor:/app/data:Z
+      - ./docs:/app/miteee-docs:ro,Z
+      - ./data/generated:/app/miteee-generated:ro,Z
+      - ./data/current-affairs:/app/miteee-current-affairs:ro,Z
+      - ./ops/deeptutor/sync_notes.py:/opt/miteee/sync_notes.py:ro,Z
+    depends_on:
+      deeptutor:
+        condition: service_healthy

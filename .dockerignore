@@ -28,6 +28,7 @@ __pycache__
 *.pyc
 data/generated
 data/auth
+data/deeptutor
 data/current-affairs
 data/current-affairs/rolling
 data/exams/ssc-cgl/agent-answer-key

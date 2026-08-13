@@ -25,6 +25,7 @@ backups/
 work/
 data/generated/
 data/auth/
+data/deeptutor/
 data/current-affairs/logs/
 data/current-affairs/raw/
 data/current-affairs/daily/

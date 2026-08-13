@@ -97,6 +97,7 @@ jobs:
             --exclude '.next/cache/' \
             --exclude 'node_modules/' \
             --exclude 'data/auth/' \
+            --exclude 'data/deeptutor/' \
             --exclude 'data/current-affairs/' \
             -e "ssh -i ~/.ssh/netcup_deploy_key" \
             ./ "$NETCUP_USER@$NETCUP_HOST:$NETCUP_APP_DIR/"
@@ -106,13 +107,18 @@ jobs:
           NETCUP_HOST: ${{ secrets.NETCUP_HOST }}
           NETCUP_USER: ${{ secrets.NETCUP_USER }}
           NETCUP_APP_DIR: ${{ secrets.NETCUP_APP_DIR }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          MISTRAL_MODEL: mistral-small-latest
+          MISTRAL_EMBEDDING_MODEL: mistral-embed
+          DEEPTUTOR_ALLOWED_EMAILS: ${{ secrets.DEEPTUTOR_ALLOWED_EMAILS }}
+          DEEPTUTOR_SSH_TARGET: ${{ secrets.NETCUP_USER }}@note.arzvak.com
         run: |
           set -euo pipefail
           ssh -i ~/.ssh/netcup_deploy_key "$NETCUP_USER@$NETCUP_HOST" \
             "set -euo pipefail
              cd '$NETCUP_APP_DIR'
              chmod +x ops/netcup/publish-next-app.sh
-             ops/netcup/publish-next-app.sh '$NETCUP_APP_DIR'"
+             MISTRAL_API_KEY='$MISTRAL_API_KEY' MISTRAL_MODEL='$MISTRAL_MODEL' MISTRAL_EMBEDDING_MODEL='$MISTRAL_EMBEDDING_MODEL' DEEPTUTOR_ALLOWED_EMAILS='$DEEPTUTOR_ALLOWED_EMAILS' DEEPTUTOR_SSH_TARGET='$DEEPTUTOR_SSH_TARGET' ops/netcup/publish-next-app.sh '$NETCUP_APP_DIR'"
 
       - name: Install SSC CGL news cron container
         env:
@@ -138,6 +144,11 @@ jobs:
           NETCUP_HOST: ${{ secrets.NETCUP_HOST }}
           NETCUP_USER: ${{ secrets.NETCUP_USER }}
           NETCUP_APP_DIR: ${{ secrets.NETCUP_APP_DIR }}
+          DEEPTUTOR_ALLOWED_EMAILS: ${{ secrets.DEEPTUTOR_ALLOWED_EMAILS }}
+          DEEPTUTOR_SSH_TARGET: ${{ secrets.NETCUP_USER }}@note.arzvak.com
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          MISTRAL_MODEL: mistral-small-latest
+          MISTRAL_EMBEDDING_MODEL: mistral-embed
         run: |
           set -euo pipefail
           test -n "${CURRENT_AFFAIRS_RUN_DATE:-}"
@@ -152,7 +163,13 @@ jobs:
              chmod 700 data/auth
              export NEXT_APP_PUBLISHED_PORT=3025
              export BETTER_AUTH_URL=https://note.arzvak.com
+             export DEEPTUTOR_ALLOWED_EMAILS='$DEEPTUTOR_ALLOWED_EMAILS'
+             export DEEPTUTOR_SSH_TARGET='$DEEPTUTOR_SSH_TARGET'
+             export MISTRAL_API_KEY='$MISTRAL_API_KEY'
+             export MISTRAL_MODEL='$MISTRAL_MODEL'
+             export MISTRAL_EMBEDDING_MODEL='$MISTRAL_EMBEDDING_MODEL'
              docker compose -f docker-compose.next.yml up -d --no-build
+             docker compose -f docker-compose.next.yml --profile deeptutor-tools run --rm deeptutor-sync
              docker compose -f docker-compose.next.yml exec -T miteee-next sh -lc \"ls -lah /app/data/current-affairs/daily && test -s /app/data/current-affairs/daily/\$RUN_DATE.json\"
              for attempt in \$(seq 1 30); do
              if curl --fail --silent --show-error http://127.0.0.1:3025/exams/ssc-cgl/current-affairs | grep -q 'Daily depth, weekly clarity, monthly revision.' \
@@ -198,6 +215,12 @@ jobs:
             --data '{"email":"deployment-auth-probe@invalid.example","password":"deliberately-wrong-password"}' \
             https://note.arzvak.com/api/auth/sign-in/email)"
           test "$auth_status" = "401"
+          tutor_status="$(curl --silent --show-error --output /tmp/deeptutor-probe.json --write-out '%{http_code}' \
+            --request POST \
+            --header 'Content-Type: application/json' \
+            --data '{"message":"private route probe"}' \
+            https://note.arzvak.com/api/deeptutor)"
+          test "$tutor_status" = "404"
           curl --fail --location --silent --show-error https://note.arzvak.com/exams/ssc-cgl > /tmp/ssc-cgl.html
           grep -q "Build each subject. Then test it." /tmp/ssc-cgl.html
           grep -q "Four sections, clearly separated." /tmp/ssc-cgl.html

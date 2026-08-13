@@ -91,6 +91,21 @@ MISTRAL_MODEL=mistral-small-latest
 `MISTRAL_MODEL` is optional; it defaults to `mistral-small-latest` when unset. Do not commit `.env`; it is intentionally ignored.
 The older typo alias `MISTRAK_API_KEY` is still accepted for compatibility, but new local configs should use `MISTRAL_API_KEY`.
 
+## Private DeepTutor chat and drawer
+
+I run HKUDS DeepTutor as an internal companion service for the `arzvak@gmail.com` account. Authorized accounts get a Tutor tab in both desktop and mobile navigation, the compact drawer handles quick questions from anywhere, and `/tutor` provides the full chat workspace. The two surfaces share one saved conversation and can carry the current note into the chat. They are omitted or return not found for every other account, and `/api/deeptutor` repeats that authorization check before opening an internal streamed turn. `DEEPTUTOR_ALLOWED_EMAILS` can extend access with a server-side comma-separated allowlist; the owner account always remains allowed. DeepTutor has no published host port.
+
+The drawer and full Tutor page also share a model picker. I can connect my ChatGPT account through DeepTutor's `openai-codex` OAuth flow, refresh or revoke that connection, and select a returned GPT model per turn without adding an OpenAI API key. Because the upstream callback is fixed to localhost, the UI gives me a one-time SSH bridge command during sign-in; `DEEPTUTOR_SSH_TARGET` controls its server target. I can alternatively save a DeepSeek API key and model in the private server-side DeepTutor catalog. The API key is accepted by the owner-gated server route and is never written to browser storage or returned to the browser.
+
+The normal production Compose stack starts the pinned DeepTutor image and persists its state under `data/deeptutor/`. I use the same server-side Mistral secret for its LLM and `mistral-embed` profiles. To rebuild the generated `miteee-notes` knowledge base locally after changing `docs/**/*.md`:
+
+```powershell
+docker compose -f docker-compose.next.yml up -d
+docker compose -f docker-compose.next.yml --profile deeptutor-tools run --rm deeptutor-sync
+```
+
+The sync compares a corpus hash and skips an unchanged collection. A changed collection is rebuilt from every tracked public note, every generated `exams/**/questions.json` question bank (split into index-friendly Markdown chunks), and each published daily current-affairs brief. This discovery is recursive and pattern-based, so future notes, exam question banks, and daily briefs join the tutor corpus without maintaining a hand-written file list. Production also rechecks the corpus every 15 minutes, making post-deployment daily briefs available automatically while unchanged checks remain no-ops. DeepTutor conversations and memory remain in their separate persistent directories; browser-local learner history is not copied into the corpus.
+
 ## SSC CGL Current Affairs
 
 The SSC CGL module includes a daily official-source current-affairs fetcher:

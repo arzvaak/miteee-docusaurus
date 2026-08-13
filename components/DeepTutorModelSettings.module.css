@@ -1,0 +1,33 @@
+.root { display: grid; gap: 7px; }
+.selectorLabel { display: grid; gap: 5px; }
+.selectorLabel > span { color: var(--muted); font-size: 8px; font-weight: 820; letter-spacing: .09em; text-transform: uppercase; }
+.selectorLabel select { width: 100%; min-height: 34px; padding: 0 28px 0 9px; border: 1px solid var(--border); border-radius: 8px; color: var(--text-soft); background: var(--surface-muted); font: inherit; font-size: 9px; }
+.manageButton { display: inline-flex; min-height: 31px; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--border); border-radius: 8px; color: var(--text-soft); background: transparent; font-size: 9px; font-weight: 740; }
+.manageButton:hover { border-color: var(--accent); color: var(--accent-strong); }
+.panel { display: grid; gap: 8px; padding-top: 2px; }
+.providerCard { display: grid; gap: 9px; padding: 10px; border: 1px solid var(--border); border-radius: 9px; background: var(--surface-muted); }
+.providerHead { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 8px; }
+.providerIcon { display: grid; width: 29px; height: 29px; place-items: center; border: 1px solid var(--border-strong); border-radius: 8px; color: var(--accent-strong); background: var(--accent-soft); font-size: 9px; font-weight: 850; }
+.providerHead > div { display: grid; gap: 2px; }
+.providerHead strong { font-size: 10px; }
+.providerHead small { color: var(--muted); font-size: 8px; line-height: 1.35; }
+.connected { color: #3fca82; }
+.primary,
+.secondary,
+.providerActions button,
+.bridge button { display: inline-flex; min-height: 31px; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--accent); border-radius: 7px; color: var(--bg); background: var(--accent); font-size: 9px; font-weight: 780; }
+.secondary,
+.providerActions button,
+.bridge button { border-color: var(--border); color: var(--text-soft); background: var(--surface); }
+.providerActions { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.bridge { display: grid; gap: 7px; padding-top: 2px; }
+.bridge strong { font-size: 9px; }
+.bridge p { margin: 0; color: var(--muted); font-size: 8px; line-height: 1.45; }
+.bridge a { display: inline-flex; align-items: center; justify-content: center; gap: 5px; color: var(--accent-strong); font-size: 9px; font-weight: 760; }
+.deepSeekForm { display: grid; gap: 8px; }
+.deepSeekForm label { display: grid; gap: 4px; color: var(--muted); font-size: 8px; font-weight: 760; }
+.deepSeekForm input { min-height: 32px; padding: 0 8px; border: 1px solid var(--border); border-radius: 7px; color: var(--text); background: var(--surface); font: inherit; font-size: 9px; }
+.error { margin: 0; padding: 7px; border-radius: 7px; color: #ee8790; background: color-mix(in srgb, #e05b67 10%, transparent); font-size: 8px; line-height: 1.4; }
+.spin { animation: spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .spin { animation: none; } }
