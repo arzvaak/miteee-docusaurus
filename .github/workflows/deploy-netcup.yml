@@ -65,6 +65,13 @@ jobs:
           chmod 700 ~/.ssh
           printf '%s\n' "$NETCUP_SSH_KEY" > ~/.ssh/netcup_deploy_key
           chmod 600 ~/.ssh/netcup_deploy_key
+          cat > ~/.ssh/config <<'SSH_CONFIG'
+          Host *
+            ServerAliveInterval 30
+            ServerAliveCountMax 20
+            ConnectTimeout 30
+          SSH_CONFIG
+          chmod 600 ~/.ssh/config
           ssh-keyscan -H "$NETCUP_HOST" >> ~/.ssh/known_hosts
 
       - name: Sync source to Netcup
