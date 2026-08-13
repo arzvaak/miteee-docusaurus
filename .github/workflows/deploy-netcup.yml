@@ -130,7 +130,7 @@ jobs:
           MISTRAL_MODEL: mistral-small-latest
           MISTRAL_EMBEDDING_MODEL: mistral-embed
           DEEPTUTOR_ALLOWED_EMAILS: ${{ secrets.DEEPTUTOR_ALLOWED_EMAILS }}
-          DEEPTUTOR_SSH_TARGET: ${{ secrets.NETCUP_USER }}@note.arzvak.com
+          DEEPTUTOR_SSH_TARGET: ${{ secrets.NETCUP_USER }}@${{ secrets.NETCUP_HOST }}
         run: |
           set -euo pipefail
           ssh -i ~/.ssh/netcup_deploy_key "$NETCUP_USER@$NETCUP_HOST" \
@@ -164,7 +164,7 @@ jobs:
           NETCUP_USER: ${{ secrets.NETCUP_USER }}
           NETCUP_APP_DIR: ${{ secrets.NETCUP_APP_DIR }}
           DEEPTUTOR_ALLOWED_EMAILS: ${{ secrets.DEEPTUTOR_ALLOWED_EMAILS }}
-          DEEPTUTOR_SSH_TARGET: ${{ secrets.NETCUP_USER }}@note.arzvak.com
+          DEEPTUTOR_SSH_TARGET: ${{ secrets.NETCUP_USER }}@${{ secrets.NETCUP_HOST }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
           MISTRAL_MODEL: mistral-small-latest
           MISTRAL_EMBEDDING_MODEL: mistral-embed

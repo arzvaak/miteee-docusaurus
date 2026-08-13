@@ -81,6 +81,8 @@ test("DeepTutor is isolated, persisted, indexed, and never published directly", 
   const serviceBlock = compose.slice(compose.indexOf("  deeptutor:"), compose.indexOf("  miteee-next:"));
   assert.doesNotMatch(serviceBlock, /\n\s+ports:/);
   assert.match(workflow, /--exclude 'data\/deeptutor\/'/);
+  assert.match(workflow, /DEEPTUTOR_SSH_TARGET: \$\{\{ secrets\.NETCUP_USER \}\}@\$\{\{ secrets\.NETCUP_HOST \}\}/);
+  assert.doesNotMatch(workflow, /DEEPTUTOR_SSH_TARGET: .*@note\.arzvak\.com/);
   assert.match(workflow, /tutor_status/);
   assert.match(publish, /--profile deeptutor-tools run --rm deeptutor-sync/);
   assert.match(publish, /miteee-notes knowledge base is not ready/);
