@@ -90,6 +90,8 @@ test("DeepTutor is isolated, persisted, indexed, and never published directly", 
   assert.match(notePage, /data-tutor-note-slug=\{note\.slug\}/);
   assert.match(nextConfig, /"\/api\/deeptutor": authTraceIncludes/);
   assert.match(nextConfig, /"\/api\/deeptutor\/\*": authTraceIncludes/);
+  assert.match(nextConfig, /"\/tutor": authTraceExcludes/);
+  assert.match(nextConfig, /"\/tutor": authTraceIncludes/);
   assert.match(publish, /openai-codex\/oauth\/status/);
 });
 

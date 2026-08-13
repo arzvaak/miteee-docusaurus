@@ -43,7 +43,8 @@ const nextConfig = {
     "/api/deeptutor/*": authTraceExcludes,
     "/login": authTraceExcludes,
     "/register": authTraceExcludes,
-    "/account": authTraceExcludes
+    "/account": authTraceExcludes,
+    "/tutor": authTraceExcludes
   },
   outputFileTracingIncludes: {
     "/api/auth/*": authTraceIncludes,
@@ -51,7 +52,8 @@ const nextConfig = {
     "/api/deeptutor/*": authTraceIncludes,
     "/login": authTraceIncludes,
     "/register": authTraceIncludes,
-    "/account": authTraceIncludes
+    "/account": authTraceIncludes,
+    "/tutor": authTraceIncludes
   },
   experimental: dockerBuild
     ? {
