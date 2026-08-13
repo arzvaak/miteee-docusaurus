@@ -12,7 +12,7 @@ services:
     expose:
       - "8001"
     volumes:
-      - ./data/deeptutor:/app/data:Z
+      - ./data/deeptutor:/app/data:z
       - ./ops/deeptutor/bootstrap.py:/opt/miteee/bootstrap.py:ro,Z
     healthcheck:
       test: ["CMD", "python", "/app/healthcheck.py"]
@@ -41,6 +41,7 @@ services:
       NEXT_APP_PORT: ${NEXT_APP_PORT:-3025}
       DEEPTUTOR_SSH_TARGET: ${DEEPTUTOR_SSH_TARGET:-root@note.arzvak.com}
       DEEPTUTOR_KB_NAME: ${DEEPTUTOR_KB_NAME:-miteee-notes}
+      DEEPTUTOR_INDEX_TIMEOUT_SECONDS: ${DEEPTUTOR_INDEX_TIMEOUT_SECONDS:-7200}
       DEEPTUTOR_ALLOWED_EMAILS: ${DEEPTUTOR_ALLOWED_EMAILS:-}
     ports:
       - "127.0.0.1:${NEXT_APP_PUBLISHED_PORT:-3000}:3000"
@@ -65,11 +66,11 @@ services:
       DEEPTUTOR_API_BASE_URL: http://deeptutor:8001
       DEEPTUTOR_KB_NAME: ${DEEPTUTOR_KB_NAME:-miteee-notes}
     volumes:
-      - ./data/deeptutor:/app/data:Z
-      - ./docs:/app/miteee-docs:ro,Z
-      - ./data/generated:/app/miteee-generated:ro,Z
-      - ./data/current-affairs:/app/miteee-current-affairs:ro,Z
-      - ./ops/deeptutor/sync_notes.py:/opt/miteee/sync_notes.py:ro,Z
+      - ./data/deeptutor:/app/data:z
+      - ./docs:/app/miteee-docs:ro,z
+      - ./data/generated:/app/miteee-generated:ro,z
+      - ./data/current-affairs:/app/miteee-current-affairs:ro,z
+      - ./ops/deeptutor/sync_notes.py:/opt/miteee/sync_notes.py:ro,z
     depends_on:
       deeptutor:
         condition: service_healthy
@@ -86,12 +87,13 @@ services:
       DEEPTUTOR_API_BASE_URL: http://deeptutor:8001
       DEEPTUTOR_KB_NAME: ${DEEPTUTOR_KB_NAME:-miteee-notes}
       DEEPTUTOR_SYNC_INTERVAL_SECONDS: ${DEEPTUTOR_SYNC_INTERVAL_SECONDS:-900}
+      DEEPTUTOR_INDEX_TIMEOUT_SECONDS: ${DEEPTUTOR_INDEX_TIMEOUT_SECONDS:-7200}
     volumes:
-      - ./data/deeptutor:/app/data:Z
-      - ./docs:/app/miteee-docs:ro,Z
-      - ./data/generated:/app/miteee-generated:ro,Z
-      - ./data/current-affairs:/app/miteee-current-affairs:ro,Z
-      - ./ops/deeptutor/sync_notes.py:/opt/miteee/sync_notes.py:ro,Z
+      - ./data/deeptutor:/app/data:z
+      - ./docs:/app/miteee-docs:ro,z
+      - ./data/generated:/app/miteee-generated:ro,z
+      - ./data/current-affairs:/app/miteee-current-affairs:ro,z
+      - ./ops/deeptutor/sync_notes.py:/opt/miteee/sync_notes.py:ro,z
     depends_on:
       deeptutor:
         condition: service_healthy

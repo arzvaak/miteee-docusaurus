@@ -180,7 +180,8 @@ def wait_for_absence():
 
 
 def wait_for_index():
-    for _ in range(900):
+    timeout_seconds = max(60, int(os.environ.get("DEEPTUTOR_INDEX_TIMEOUT_SECONDS", "7200")))
+    for _ in range(timeout_seconds // 2):
         response = requests.get(f"{API_BASE}/api/v1/knowledge/{quote(KB_NAME)}/progress", timeout=20)
         response.raise_for_status()
         payload = response.json()
@@ -194,8 +195,28 @@ def wait_for_index():
     raise RuntimeError("DeepTutor corpus indexing timed out.")
 
 
+def write_manifest(documents, digest):
+    source_counts = {
+        "notes": sum(document.relative_path.startswith("notes/") for document in documents),
+        "question_chunks": sum(document.relative_path.startswith("questions/") for document in documents),
+        "current_affairs": sum(document.relative_path.startswith("current-affairs/") for document in documents)
+    }
+    MANIFEST_PATH.write_text(json.dumps({
+        "knowledge_base": KB_NAME,
+        "sha256": digest,
+        "documents": len(documents),
+        "sources": source_counts,
+        "synced_at": int(time.time())
+    }, indent=2) + "\n", encoding="utf-8")
+
+
 def rebuild(documents, digest):
-    existing = any(item.get("name") == KB_NAME for item in knowledge_bases())
+    existing = next((item for item in knowledge_bases() if item.get("name") == KB_NAME), None)
+    if existing and str(existing.get("status", "")).lower() == "processing" and not MANIFEST_PATH.exists():
+        print(f"DeepTutor corpus {KB_NAME} is already indexing; waiting for the existing first build.", flush=True)
+        wait_for_index()
+        write_manifest(documents, digest)
+        return
     if existing:
         response = requests.delete(f"{API_BASE}/api/v1/knowledge/{quote(KB_NAME)}", timeout=60)
         response.raise_for_status()
@@ -222,18 +243,7 @@ def rebuild(documents, digest):
             handle.close()
 
     wait_for_index()
-    source_counts = {
-        "notes": sum(document.relative_path.startswith("notes/") for document in documents),
-        "question_chunks": sum(document.relative_path.startswith("questions/") for document in documents),
-        "current_affairs": sum(document.relative_path.startswith("current-affairs/") for document in documents)
-    }
-    MANIFEST_PATH.write_text(json.dumps({
-        "knowledge_base": KB_NAME,
-        "sha256": digest,
-        "documents": len(documents),
-        "sources": source_counts,
-        "synced_at": int(time.time())
-    }, indent=2) + "\n", encoding="utf-8")
+    write_manifest(documents, digest)
 
 
 def main():
