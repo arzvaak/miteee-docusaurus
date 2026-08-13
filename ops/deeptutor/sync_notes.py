@@ -18,6 +18,9 @@ CURRENT_AFFAIRS_ROOT = Path("/app/miteee-current-affairs")
 MANIFEST_PATH = Path("/app/data/miteee-notes-manifest.json")
 SYNC_LOCK_PATH = Path("/app/data/miteee-corpus-sync.lock")
 QUESTION_CHUNK_BYTES = 750_000
+MAX_QUESTION_STEM_CHARS = 700
+MAX_QUESTION_OPTION_CHARS = 280
+MAX_QUESTION_EXPLANATION_CHARS = 320
 
 
 @dataclass(frozen=True)
@@ -41,9 +44,12 @@ def render_question(question, position):
     if not isinstance(question, dict):
         return f"## Question {position}\n\n{json.dumps(question, ensure_ascii=False)}\n"
 
-    identifier = str(question.get("id") or position)
-    heading = str(question.get("stem") or question.get("question") or question.get("prompt") or "Question").strip()
-    lines = [f"## Question {position}: {identifier}", "", heading, ""]
+    def bounded(value, limit):
+        return " ".join(str(value or "").split())[:limit]
+
+    identifier = bounded(question.get("id") or position, 120)
+    heading = bounded(question.get("stem") or question.get("question") or question.get("prompt") or "Question", MAX_QUESTION_STEM_CHARS)
+    parts = [f"Q{position}", f"id:{identifier}", heading]
 
     options = question.get("options")
     if isinstance(options, list):
@@ -53,24 +59,23 @@ def render_question(question, position):
                 text = option.get("text") or option.get("value") or ""
             else:
                 label, text = chr(65 + index), option
-            lines.append(f"- {label}: {text}")
-        lines.append("")
+            parts.append(f"{bounded(label, 12)}:{bounded(text, MAX_QUESTION_OPTION_CHARS)}")
 
     answer = question.get("correctOption", question.get("answer"))
     if answer not in (None, ""):
-        lines.extend([f"**Answer:** {answer}", ""])
+        parts.append(f"answer:{bounded(answer, 120)}")
     explanation = question.get("explanation") or question.get("solution")
     if explanation:
-        lines.extend([f"**Explanation:** {explanation}", ""])
+        parts.append(f"why:{bounded(explanation, MAX_QUESTION_EXPLANATION_CHARS)}")
 
     metadata_fields = ["exam", "tier", "year", "shift", "section", "topic", "subtopic", "difficulty", "source"]
     metadata = [f"{key}: {question[key]}" for key in metadata_fields if question.get(key) not in (None, "")]
     if metadata:
-        lines.extend([f"**Context:** {'; '.join(metadata)}", ""])
+        parts.append(f"context:{'; '.join(metadata)}")
     tags = question.get("conceptTags") or question.get("tags")
     if isinstance(tags, list) and tags:
-        lines.extend([f"**Concept tags:** {', '.join(map(str, tags))}", ""])
-    return "\n".join(lines)
+        parts.append(f"tags:{', '.join(map(str, tags[:12]))}")
+    return " | ".join(parts) + "\n"
 
 
 def generated_question_documents(temp_root):
@@ -119,11 +124,23 @@ def current_affairs_documents(temp_root):
         payload = json.loads(source_path.read_text(encoding="utf-8"))
         target = temp_root / "current-affairs" / f"{source_path.stem}.md"
         target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_text(
-            f"# SSC CGL current affairs: {source_path.stem}\n\n"
-            f"```json\n{json.dumps(payload, ensure_ascii=False, indent=2)}\n```\n",
-            encoding="utf-8"
-        )
+        lines = [f"# SSC CGL current affairs: {source_path.stem}", ""]
+        for position, item in enumerate(payload.get("items", []) if isinstance(payload, dict) else [], start=1):
+            if not isinstance(item, dict):
+                continue
+            lines.extend([
+                f"## {position}. {item.get('title', 'Current-affairs item')}",
+                f"Source: {item.get('source', '')} | Published: {item.get('published_at', '')}",
+                f"Exam areas: {', '.join(map(str, item.get('exam_areas', [])))}",
+                *[f"- {point}" for point in item.get("key_points", []) if point],
+                f"SSC CGL link: {item.get('why_it_matters_for_ssc_cgl', '')}",
+                f"Static context: {item.get('static_context', '')}",
+                f"Memory hook: {item.get('memory_hook', '')}",
+                f"Recall question: {(item.get('mcq_seed') or {}).get('question', '')}",
+                f"Recall answer: {(item.get('mcq_seed') or {}).get('answer', '')}",
+                ""
+            ])
+        target.write_text("\n".join(lines), encoding="utf-8")
         documents.append(CorpusDocument(target, target.relative_to(temp_root).as_posix()))
     return documents
 

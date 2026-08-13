@@ -76,6 +76,7 @@ test("DeepTutor is isolated, persisted, indexed, and never published directly", 
   assert.match(compose, /deeptutor-refresh:/);
   assert.match(compose, /DEEPTUTOR_SYNC_INTERVAL_SECONDS:-900/);
   assert.match(compose, /DEEPTUTOR_INDEX_TIMEOUT_SECONDS:-7200/);
+  assert.match(compose, /supervisorctl status backend \| grep -q RUNNING/);
   assert.match(compose, /profiles: \["deeptutor-tools"\]/);
   const serviceBlock = compose.slice(compose.indexOf("  deeptutor:"), compose.indexOf("  miteee-next:"));
   assert.doesNotMatch(serviceBlock, /\n\s+ports:/);
@@ -89,6 +90,8 @@ test("DeepTutor is isolated, persisted, indexed, and never published directly", 
   assert.match(sync, /QUESTION_CHUNK_BYTES/);
   assert.match(sync, /fcntl\.LOCK_EX \| fcntl\.LOCK_NB/);
   assert.match(sync, /already indexing; waiting for the existing first build/);
+  assert.match(sync, /MAX_QUESTION_EXPLANATION_CHARS/);
+  assert.match(sync, /payload\.get\("items", \[\]\)/);
   assert.match(notePage, /data-tutor-note-slug=\{note\.slug\}/);
   assert.match(nextConfig, /"\/api\/deeptutor": authTraceIncludes/);
   assert.match(nextConfig, /"\/api\/deeptutor\/\*": authTraceIncludes/);

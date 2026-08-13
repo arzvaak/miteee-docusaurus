@@ -15,7 +15,7 @@ services:
       - ./data/deeptutor:/app/data:z
       - ./ops/deeptutor/bootstrap.py:/opt/miteee/bootstrap.py:ro,Z
     healthcheck:
-      test: ["CMD", "python", "/app/healthcheck.py"]
+      test: ["CMD-SHELL", "supervisorctl status backend | grep -q RUNNING"]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -97,3 +97,5 @@ services:
     depends_on:
       deeptutor:
         condition: service_healthy
+    healthcheck:
+      disable: true
