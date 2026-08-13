@@ -76,7 +76,8 @@ test("DeepTutor is isolated, persisted, indexed, and never published directly", 
   assert.match(compose, /deeptutor-refresh:/);
   assert.match(compose, /DEEPTUTOR_SYNC_INTERVAL_SECONDS:-900/);
   assert.match(compose, /DEEPTUTOR_INDEX_TIMEOUT_SECONDS:-7200/);
-  assert.match(compose, /supervisorctl status backend \| grep -q RUNNING/);
+  assert.match(compose, /uvicorn\.\*8001/);
+  assert.doesNotMatch(compose, /supervisorctl status backend/);
   assert.match(compose, /profiles: \["deeptutor-tools"\]/);
   const serviceBlock = compose.slice(compose.indexOf("  deeptutor:"), compose.indexOf("  miteee-next:"));
   assert.doesNotMatch(serviceBlock, /\n\s+ports:/);

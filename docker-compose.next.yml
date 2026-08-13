@@ -15,7 +15,7 @@ services:
       - ./data/deeptutor:/app/data:z
       - ./ops/deeptutor/bootstrap.py:/opt/miteee/bootstrap.py:ro,Z
     healthcheck:
-      test: ["CMD-SHELL", "supervisorctl status backend | grep -q RUNNING"]
+      test: ["CMD-SHELL", "for proc in /proc/[0-9]*/cmdline; do tr '\\000' ' ' < \"$$proc\" 2>/dev/null | grep -q 'uvicorn.*8001' && exit 0; done; exit 1"]
       interval: 30s
       timeout: 10s
       retries: 5
