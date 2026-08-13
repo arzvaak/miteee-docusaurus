@@ -70,6 +70,9 @@ jobs:
             ServerAliveInterval 30
             ServerAliveCountMax 20
             ConnectTimeout 30
+            ControlMaster auto
+            ControlPath ~/.ssh/control-%C
+            ControlPersist 30m
           SSH_CONFIG
           chmod 600 ~/.ssh/config
           ssh-keyscan -H "$NETCUP_HOST" >> ~/.ssh/known_hosts
@@ -82,7 +85,16 @@ jobs:
         run: |
           set -euo pipefail
           test -n "$NETCUP_APP_DIR"
-          ssh -i ~/.ssh/netcup_deploy_key "$NETCUP_USER@$NETCUP_HOST" "mkdir -p '$NETCUP_APP_DIR'"
+          connected=0
+          for attempt in $(seq 1 10); do
+            if ssh -i ~/.ssh/netcup_deploy_key "$NETCUP_USER@$NETCUP_HOST" "mkdir -p '$NETCUP_APP_DIR'"; then
+              connected=1
+              break
+            fi
+            echo "Netcup SSH attempt $attempt/10 failed; retrying in 30 seconds." >&2
+            sleep 30
+          done
+          test "$connected" = "1"
           ssh -i ~/.ssh/netcup_deploy_key "$NETCUP_USER@$NETCUP_HOST" \
             "set -euo pipefail
              stamp=\$(date +%Y%m%d%H%M%S)
