@@ -89,6 +89,7 @@ test("DeepTutor is isolated, persisted, indexed, and never published directly", 
   assert.match(serviceBlock, /DEEPTUTOR_EMBEDDING_MODEL: \$\{DEEPTUTOR_EMBEDDING_MODEL:-miteee-all-minilm\}/);
   assert.match(serviceBlock, /DEEPTUTOR_EMBEDDING_DIMENSION: \$\{DEEPTUTOR_EMBEDDING_DIMENSION:-384\}/);
   assert.match(serviceBlock, /http:\/\/ollama:11434\/api\/embed/);
+  assert.match(serviceBlock, /OPENCODE_GO_MODEL: \$\{OPENCODE_GO_MODEL:-deepseek-v4-flash\}/);
   assert.match(compose, /profiles: \["deeptutor-tools"\]/);
   assert.doesNotMatch(serviceBlock, /\n\s+ports:/);
   assert.match(workflow, /--exclude 'data\/deeptutor\/'/);
@@ -99,8 +100,15 @@ test("DeepTutor is isolated, persisted, indexed, and never published directly", 
   assert.match(publish, /--profile deeptutor-tools run --rm deeptutor-sync/);
   assert.match(publish, /exec -T ollama ollama pull "\$DEEPTUTOR_EMBEDDING_BASE_MODEL"/);
   assert.match(publish, /exec -T ollama ollama create "\$DEEPTUTOR_EMBEDDING_MODEL"/);
+  assert.match(publish, /stop deeptutor-refresh/);
+  assert.match(publish, /--force-recreate deeptutor/);
+  assert.match(publish, /com\.docker\.compose\.service=deeptutor-sync/);
+  assert.match(publish, /up -d deeptutor-refresh/);
   assert.match(source("ops/deeptutor/Modelfile.all-minilm"), /PARAMETER num_ctx 512/);
-  assert.match(source("ops/deeptutor/bootstrap.py"), /"chunk_size": 510/);
+  assert.match(source("ops/deeptutor/bootstrap.py"), /"chunk_size": 508/);
+  assert.match(source("ops/deeptutor/bootstrap.py"), /"binding": "custom_anthropic"/);
+  assert.match(source("ops/deeptutor/bootstrap.py"), /https:\/\/opencode\.ai\/zen\/go\/v1/);
+  assert.doesNotMatch(source("ops/deeptutor/bootstrap.py"), /mistral-small-latest|mistral-embed/);
   assert.match(publish, /miteee-notes knowledge base is not ready/);
   const sync = source("ops/deeptutor/sync_notes.py");
   assert.match(sync, /extensions = \{"\.md", "\.mdx"\}/);

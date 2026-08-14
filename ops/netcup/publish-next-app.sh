@@ -10,8 +10,7 @@ AUTH_DATA_DIR="$APP_DIR/data/auth"
 AUTH_DB_PATH="$AUTH_DATA_DIR/miteee-auth.sqlite"
 AUTH_SECRET_PATH="$AUTH_DATA_DIR/.better-auth-secret"
 BETTER_AUTH_URL="${BETTER_AUTH_URL:-https://note.arzvak.com}"
-MISTRAL_API_KEY="${MISTRAL_API_KEY:-}"
-MISTRAL_MODEL="${MISTRAL_MODEL:-mistral-small-latest}"
+OPENCODE_GO_MODEL="${OPENCODE_GO_MODEL:-deepseek-v4-flash}"
 DEEPTUTOR_EMBEDDING_MODEL="${DEEPTUTOR_EMBEDDING_MODEL:-miteee-all-minilm}"
 DEEPTUTOR_EMBEDDING_BASE_MODEL="${DEEPTUTOR_EMBEDDING_BASE_MODEL:-all-minilm}"
 DEEPTUTOR_EMBEDDING_DIMENSION="${DEEPTUTOR_EMBEDDING_DIMENSION:-384}"
@@ -57,7 +56,7 @@ if command -v chown >/dev/null 2>&1; then
   chown -R 1001:1001 "$AUTH_DATA_DIR" 2>/dev/null || true
 fi
 
-export AUTH_DB_PATH BETTER_AUTH_URL MISTRAL_API_KEY MISTRAL_MODEL DEEPTUTOR_EMBEDDING_MODEL DEEPTUTOR_EMBEDDING_BASE_MODEL DEEPTUTOR_EMBEDDING_DIMENSION DEEPTUTOR_ALLOWED_EMAILS DEEPTUTOR_SSH_TARGET
+export AUTH_DB_PATH BETTER_AUTH_URL OPENCODE_GO_MODEL DEEPTUTOR_EMBEDDING_MODEL DEEPTUTOR_EMBEDDING_BASE_MODEL DEEPTUTOR_EMBEDDING_DIMENSION DEEPTUTOR_ALLOWED_EMAILS DEEPTUTOR_SSH_TARGET
 
 mkdir -p /root/note-arzvak-backups
 mkdir -p "$APP_DIR/data/deeptutor"
@@ -86,10 +85,19 @@ if command -v docker >/dev/null 2>&1 && docker compose version >/dev/null 2>&1 &
   fi
   export NEXT_APP_PUBLISHED_PORT="$APP_PORT"
   docker compose -f docker-compose.next.yml up -d --build
+  docker compose -f docker-compose.next.yml stop deeptutor-refresh
+  trap 'docker compose -f docker-compose.next.yml up -d deeptutor-refresh >/dev/null 2>&1 || true' EXIT
+  compose_project="$(docker inspect -f '{{ index .Config.Labels "com.docker.compose.project" }}' miteee-deeptutor)"
+  active_sync_containers="$(docker ps -q \
+    --filter "label=com.docker.compose.project=$compose_project" \
+    --filter 'label=com.docker.compose.service=deeptutor-sync')"
+  if [ -n "$active_sync_containers" ]; then
+    docker stop $active_sync_containers >/dev/null
+  fi
   docker compose -f docker-compose.next.yml ps
-  test -n "$MISTRAL_API_KEY"
   docker compose -f docker-compose.next.yml exec -T ollama ollama pull "$DEEPTUTOR_EMBEDDING_BASE_MODEL"
   docker compose -f docker-compose.next.yml exec -T ollama ollama create "$DEEPTUTOR_EMBEDDING_MODEL" -f /opt/miteee/Modelfile.all-minilm
+  docker compose -f docker-compose.next.yml up -d --force-recreate deeptutor
   docker compose -f docker-compose.next.yml --profile deeptutor-tools run --rm deeptutor-sync
   docker compose -f docker-compose.next.yml exec -T deeptutor python - <<'PY'
 import json
@@ -106,6 +114,8 @@ oauth = json.load(urllib.request.urlopen("http://127.0.0.1:8001/api/v1/settings/
 if oauth.get("connection") not in {"disconnected", "authorizing", "connected", "error"}:
     raise SystemExit(f"DeepTutor ChatGPT OAuth endpoint is not ready: {oauth}")
 PY
+  docker compose -f docker-compose.next.yml up -d deeptutor-refresh
+  trap - EXIT
   restarted=1
 elif command -v systemctl >/dev/null 2>&1 && command -v node >/dev/null 2>&1; then
   node_bin="$(command -v node)"

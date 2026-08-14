@@ -33,8 +33,7 @@ services:
     pids_limit: 256
     entrypoint: ["/bin/bash", "-lc", "python /opt/miteee/bootstrap.py && exec /app/entrypoint.sh"]
     environment:
-      MISTRAL_API_KEY: ${MISTRAL_API_KEY:-}
-      MISTRAL_MODEL: ${MISTRAL_MODEL:-mistral-small-latest}
+      OPENCODE_GO_MODEL: ${OPENCODE_GO_MODEL:-deepseek-v4-flash}
       DEEPTUTOR_EMBEDDING_MODEL: ${DEEPTUTOR_EMBEDDING_MODEL:-miteee-all-minilm}
       DEEPTUTOR_EMBEDDING_DIMENSION: ${DEEPTUTOR_EMBEDDING_DIMENSION:-384}
       DEEPTUTOR_EMBEDDING_URL: ${DEEPTUTOR_EMBEDDING_URL:-http://ollama:11434/api/embed}

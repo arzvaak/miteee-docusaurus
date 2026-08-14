@@ -33,11 +33,10 @@ def upsert_profile(target, profile, model_id):
 
 
 def main():
-    api_key = os.environ.get("MISTRAL_API_KEY", "").strip()
     SETTINGS_DIR.mkdir(parents=True, exist_ok=True)
     catalog = read_catalog()
     catalog["version"] = 1
-    llm_model = os.environ.get("MISTRAL_MODEL", "mistral-small-latest").strip() or "mistral-small-latest"
+    llm_model = os.environ.get("OPENCODE_GO_MODEL", "deepseek-v4-flash").strip() or "deepseek-v4-flash"
     embedding_model = (
         os.environ.get("DEEPTUTOR_EMBEDDING_MODEL", "miteee-all-minilm").strip()
         or "miteee-all-minilm"
@@ -48,24 +47,43 @@ def main():
     except ValueError as exc:
         raise SystemExit("DEEPTUTOR_EMBEDDING_DIMENSION must be an integer") from exc
 
+    llm = service(catalog, "llm")
+    existing_go = next(
+        (profile for profile in llm.get("profiles", []) if profile.get("id") == "miteee-opencode-go"),
+        {},
+    )
+    api_key = os.environ.get("OPENCODE_GO_API_KEY", "").strip() or str(
+        existing_go.get("api_key", "")
+    ).strip()
     if api_key:
-        upsert_profile(service(catalog, "llm"), {
-            "id": "miteee-mistral-llm",
-            "name": "MITEEE Mistral",
-            "binding": "openai",
-            "base_url": "https://api.mistral.ai/v1",
+        upsert_profile(llm, {
+            "id": "miteee-opencode-go",
+            "name": "MITEEE OpenCode Go",
+            "binding": "custom_anthropic",
+            "base_url": "https://opencode.ai/zen/go/v1",
             "api_key": api_key,
             "api_version": "",
             "extra_headers": {},
             "models": [{
-                "id": "miteee-mistral-llm-model",
+                "id": "miteee-opencode-go-deepseek-flash",
                 "name": llm_model,
                 "model": llm_model,
                 "context_window": 128000
             }]
-        }, "miteee-mistral-llm-model")
+        }, "miteee-opencode-go-deepseek-flash")
+        llm["profiles"] = [
+            profile for profile in llm.get("profiles", [])
+            if profile.get("id") != "miteee-mistral-llm"
+        ]
     else:
-        print("DeepTutor bootstrap: MISTRAL_API_KEY is absent; I left the LLM catalog unchanged.")
+        llm["profiles"] = [
+            profile for profile in llm.get("profiles", [])
+            if profile.get("id") != "miteee-mistral-llm"
+        ]
+        if llm.get("active_profile_id") == "miteee-mistral-llm":
+            llm["active_profile_id"] = None
+            llm["active_model_id"] = None
+        print("DeepTutor bootstrap: the persisted OpenCode Go credential is absent; I disabled the old Mistral default.")
 
     upsert_profile(service(catalog, "embedding"), {
         "id": "miteee-local-embedding",
@@ -93,10 +111,11 @@ def main():
             llamaindex = {}
     except (FileNotFoundError, json.JSONDecodeError):
         llamaindex = {}
-    llamaindex.update({"version": 1, "chunk_size": 510, "chunk_overlap": 50})
+    llamaindex.update({"version": 1, "chunk_size": 508, "chunk_overlap": 50})
     LLAMAINDEX_PATH.write_text(json.dumps(llamaindex, indent=2) + "\n", encoding="utf-8")
     LLAMAINDEX_PATH.chmod(0o600)
-    print(f"DeepTutor bootstrap: configured {llm_model} with local {embedding_model} embeddings.")
+    provider_message = f"OpenCode Go {llm_model}" if api_key else "no chat provider"
+    print(f"DeepTutor bootstrap: configured {provider_message} with local {embedding_model} embeddings.")
 
 
 if __name__ == "__main__":
