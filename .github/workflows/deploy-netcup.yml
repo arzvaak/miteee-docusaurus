@@ -205,6 +205,14 @@ jobs:
       - name: Verify public site
         run: |
           set -euo pipefail
+          curl() {
+            command curl \
+              --user-agent 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 MITEEE-Deploy-Verify/1.0' \
+              --retry 3 \
+              --retry-delay 2 \
+              --retry-all-errors \
+              "$@"
+          }
           curl --fail --location --silent --show-error https://note.arzvak.com/ > /tmp/note-home.html
           grep -q "Library spaces" /tmp/note-home.html
           grep -q "Choose what you want to learn" /tmp/note-home.html

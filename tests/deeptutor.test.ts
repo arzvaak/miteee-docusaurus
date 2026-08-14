@@ -97,6 +97,7 @@ test("DeepTutor is isolated, persisted, indexed, and never published directly", 
   assert.match(workflow, /DEEPTUTOR_SSH_TARGET: \$\{\{ secrets\.NETCUP_USER \}\}@\$\{\{ secrets\.NETCUP_HOST \}\}/);
   assert.doesNotMatch(workflow, /DEEPTUTOR_SSH_TARGET: .*@note\.arzvak\.com/);
   assert.match(workflow, /tutor_status/);
+  assert.match(workflow, /MITEEE-Deploy-Verify\/1\.0/);
   assert.match(publish, /--profile deeptutor-tools run --rm deeptutor-sync/);
   assert.match(publish, /exec -T ollama ollama pull "\$DEEPTUTOR_EMBEDDING_BASE_MODEL"/);
   assert.match(publish, /exec -T ollama ollama create "\$DEEPTUTOR_EMBEDDING_MODEL"/);
