@@ -202,71 +202,15 @@ jobs:
              docker compose -f docker-compose.next.yml logs --tail 80 miteee-next || true
              exit 1"
 
-      - name: Verify public site
+      - name: Verify deployed app
         env:
+          NETCUP_APP_DIR: ${{ secrets.NETCUP_APP_DIR }}
           NETCUP_HOST: ${{ secrets.NETCUP_HOST }}
           NETCUP_USER: ${{ secrets.NETCUP_USER }}
         run: |
           set -euo pipefail
-          VERIFY_BASE_URL='http://127.0.0.1:33025'
-          ssh -i ~/.ssh/netcup_deploy_key \
-            -O forward -L 33025:127.0.0.1:3025 \
-            "$NETCUP_USER@$NETCUP_HOST"
-          trap 'ssh -i ~/.ssh/netcup_deploy_key -O cancel -L 33025:127.0.0.1:3025 "$NETCUP_USER@$NETCUP_HOST" >/dev/null 2>&1 || true' EXIT
-          curl() {
-            command curl \
-              --noproxy '*' \
-              --user-agent 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 MITEEE-Deploy-Verify/1.0' \
-              --retry 3 \
-              --retry-delay 2 \
-              --retry-all-errors \
-              "$@"
-          }
-          curl --fail --location --silent --show-error "$VERIFY_BASE_URL/" > /tmp/note-home.html
-          grep -q "Library spaces" /tmp/note-home.html
-          grep -q "Choose what you want to learn" /tmp/note-home.html
-          grep -q "/settings" /tmp/note-home.html
-          redirect_status="$(curl --silent --show-error --output /dev/null --write-out '%{http_code}' "$VERIFY_BASE_URL/research/valorant-preliminary-findings")"
-          test "$redirect_status" = "308"
-          curl --fail --location --silent --show-error "$VERIFY_BASE_URL/notes/research-valorant-preliminary-findings-index" > /tmp/valorant-research.html
-          grep -q "Research note" /tmp/valorant-research.html
-          grep -q "Pre match outcome prediction in professional VALORANT" /tmp/valorant-research.html
-          grep -q "Work in progress" /tmp/valorant-research.html
-          grep -q "not yet tested the final model on a completely untouched future tournament" /tmp/valorant-research.html
-          curl --fail --location --silent --show-error "$VERIFY_BASE_URL/courses/RESEARCH" > /tmp/research-notes.html
-          grep -q "Research notes" /tmp/research-notes.html
-          curl --fail --location --silent --show-error --output /dev/null "$VERIFY_BASE_URL/content-assets/research/valorant-preliminary-findings/assets/composition-map-feature-audit.png"
-          curl --fail --location --silent --show-error "$VERIFY_BASE_URL/settings" > /tmp/study-settings.html
-          grep -q "Make this study space yours" /tmp/study-settings.html
-          grep -q "Reader layout" /tmp/study-settings.html
-          curl --fail --location --silent --show-error "$VERIFY_BASE_URL/login" > /tmp/login.html
-          grep -q "Log in" /tmp/login.html
-          grep -q 'noindex' /tmp/login.html
-          curl --fail --location --silent --show-error "$VERIFY_BASE_URL/register" > /tmp/register.html
-          grep -q "Create account" /tmp/register.html
-          grep -q 'noindex' /tmp/register.html
-          auth_status="$(curl --location --silent --show-error --output /tmp/auth-probe.json --write-out '%{http_code}' \
-            --request POST \
-            --header 'Origin: https://note.arzvak.com' \
-            --header 'Content-Type: application/json' \
-            --data '{"email":"deployment-auth-probe@invalid.example","password":"deliberately-wrong-password"}' \
-            "$VERIFY_BASE_URL/api/auth/sign-in/email")"
-          test "$auth_status" = "401"
-          tutor_status="$(curl --silent --show-error --output /tmp/deeptutor-probe.json --write-out '%{http_code}' \
-            --request POST \
-            --header 'Content-Type: application/json' \
-            --data '{"message":"private route probe"}' \
-            "$VERIFY_BASE_URL/api/deeptutor")"
-          test "$tutor_status" = "404"
-          curl --fail --location --silent --show-error "$VERIFY_BASE_URL/exams/ssc-cgl" > /tmp/ssc-cgl.html
-          grep -q "Build each subject. Then test it." /tmp/ssc-cgl.html
-          grep -q "Four sections, clearly separated." /tmp/ssc-cgl.html
-          if grep -q "Study Vault" /tmp/ssc-cgl.html; then
-            echo "Legacy Study Vault label is still present on the SSC CGL landing page" >&2
-            exit 1
-          fi
-          curl --fail --location --silent --show-error "$VERIFY_BASE_URL/exams/cat/quant" > /tmp/cat-quant.html
-          grep -q "CAT Quant" /tmp/cat-quant.html
-          grep -q "3,386" /tmp/cat-quant.html
-          npx playwright install --with-deps chromium
-          SSC_BROWSER_BASE_URL="$VERIFY_BASE_URL" npm run verify:ssc-browser
+          ssh -i ~/.ssh/netcup_deploy_key "$NETCUP_USER@$NETCUP_HOST" \
+            "set -euo pipefail
+             cd '$NETCUP_APP_DIR'
+             chmod +x ops/netcup/verify-next-app.sh
+             ops/netcup/verify-next-app.sh http://127.0.0.1:3025"

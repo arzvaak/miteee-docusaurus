@@ -8,10 +8,12 @@ const workflowPath = path.join(root, ".github", "workflows", "deploy-netcup.yml"
 const newsInstallerPath = path.join(root, "ops", "netcup", "install-ssc-cgl-news.sh");
 const newsVerifierPath = path.join(root, "ops", "netcup", "verify-ssc-cgl-news.sh");
 const nextPublisherPath = path.join(root, "ops", "netcup", "publish-next-app.sh");
+const nextVerifierPath = path.join(root, "ops", "netcup", "verify-next-app.sh");
 const currentAffairsDocPath = path.join(root, "data", "exams", "ssc-cgl", "internal-docs", "current-affairs-pipeline.md");
 
 test("Netcup workflow deploys the current Next standalone app instead of stale Docusaurus build output", () => {
   const workflow = fs.readFileSync(workflowPath, "utf8");
+  const verifier = fs.readFileSync(nextVerifierPath, "utf8");
   const packageJson = fs.readFileSync(path.join(root, "package.json"), "utf8");
 
   assert.match(workflow, /scripts\/standalone-assets\.mjs/);
@@ -44,31 +46,23 @@ test("Netcup workflow deploys the current Next standalone app instead of stale D
   assert.match(workflow, /grep -q 'Daily depth, weekly clarity, monthly revision\.'/);
   assert.match(workflow, /http:\/\/127\.0\.0\.1:3025\/exams\/ssc-cgl\/current-affairs/);
   assert.match(workflow, /http:\/\/127\.0\.0\.1:3025\/api\/auth\/get-session/);
-  assert.match(workflow, /deployment-auth-probe@invalid\.example/);
-  assert.match(workflow, /test "\$auth_status" = "401"/);
+  assert.match(verifier, /deployment-auth-probe@invalid\.example/);
+  assert.match(verifier, /test "\$auth_status" = "401"/);
   assert.doesNotMatch(workflow, /miteee-next-netcup-ports\.yml/);
   assert.doesNotMatch(workflow, /NETCUP_WEBROOT/);
   assert.doesNotMatch(workflow, /build\/\s*"\$NETCUP_USER@\$NETCUP_HOST:/);
   assert.doesNotMatch(workflow, /grep -q "MIT EEE"/);
-  assert.match(workflow, /curl --fail[\s\S]*\/exams\/ssc-cgl/);
-  assert.match(workflow, /grep -q "Build each subject\. Then test it\." \/tmp\/ssc-cgl\.html/);
-  assert.match(workflow, /grep -q "Four sections, clearly separated\." \/tmp\/ssc-cgl\.html/);
-  assert.match(workflow, /Legacy Study Vault label is still present/);
-  assert.match(workflow, /\/notes\/research-valorant-preliminary-findings-index/);
-  assert.match(workflow, /redirect_status/);
-  assert.match(workflow, /\/courses\/RESEARCH/);
-  assert.match(workflow, /Work in progress/);
-  assert.match(workflow, /not yet tested the final model on a completely untouched future tournament/);
-  assert.match(workflow, /Library spaces/);
-  assert.match(workflow, /Choose what you want to learn/);
-  assert.match(workflow, /Make this study space yours/);
-  assert.match(workflow, /Reader layout/);
-  assert.match(workflow, /composition-map-feature-audit\.png/);
-  assert.match(workflow, /npx playwright install --with-deps chromium/);
-  assert.match(workflow, /VERIFY_BASE_URL='http:\/\/127\.0\.0\.1:33025'/);
-  assert.match(workflow, /-O forward -L 33025:127\.0\.0\.1:3025/);
-  assert.match(workflow, /--noproxy '\*'/);
-  assert.match(workflow, /SSC_BROWSER_BASE_URL="\$VERIFY_BASE_URL"/);
+  assert.match(verifier, /curl --fail[\s\S]*\/exams\/ssc-cgl/);
+  assert.match(verifier, /grep -q "Build each subject\. Then test it\."/);
+  assert.match(verifier, /grep -q "Four sections, clearly separated\."/);
+  assert.match(verifier, /Legacy Study Vault label is still present/);
+  assert.match(verifier, /Library spaces/);
+  assert.match(verifier, /Choose what you want to learn/);
+  assert.match(verifier, /Make this study space yours/);
+  assert.match(verifier, /Reader layout/);
+  assert.match(verifier, /\/exams\/cat\/quant/);
+  assert.match(verifier, /3,386/);
+  assert.match(workflow, /ops\/netcup\/verify-next-app\.sh http:\/\/127\.0\.0\.1:3025/);
 });
 
 test("Netcup Next publisher restarts the live nginx-facing app instead of only syncing files", () => {
