@@ -208,15 +208,14 @@ jobs:
           NETCUP_USER: ${{ secrets.NETCUP_USER }}
         run: |
           set -euo pipefail
-          VERIFY_BASE_URL='https://note.arzvak.com:38443'
+          VERIFY_BASE_URL='http://127.0.0.1:33025'
           ssh -i ~/.ssh/netcup_deploy_key \
-            -O forward -L 38443:127.0.0.1:443 \
+            -O forward -L 33025:127.0.0.1:3025 \
             "$NETCUP_USER@$NETCUP_HOST"
-          trap 'ssh -i ~/.ssh/netcup_deploy_key -O cancel -L 38443:127.0.0.1:443 "$NETCUP_USER@$NETCUP_HOST" >/dev/null 2>&1 || true' EXIT
+          trap 'ssh -i ~/.ssh/netcup_deploy_key -O cancel -L 33025:127.0.0.1:3025 "$NETCUP_USER@$NETCUP_HOST" >/dev/null 2>&1 || true' EXIT
           curl() {
             command curl \
               --noproxy '*' \
-              --resolve note.arzvak.com:38443:127.0.0.1 \
               --user-agent 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 MITEEE-Deploy-Verify/1.0' \
               --retry 3 \
               --retry-delay 2 \
@@ -270,6 +269,4 @@ jobs:
           grep -q "CAT Quant" /tmp/cat-quant.html
           grep -q "3,386" /tmp/cat-quant.html
           npx playwright install --with-deps chromium
-          SSC_BROWSER_BASE_URL="$VERIFY_BASE_URL" \
-            SSC_BROWSER_HOST_RESOLVER_RULES='MAP note.arzvak.com 127.0.0.1' \
-            npm run verify:ssc-browser
+          SSC_BROWSER_BASE_URL="$VERIFY_BASE_URL" npm run verify:ssc-browser
