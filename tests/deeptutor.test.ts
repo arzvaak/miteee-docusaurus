@@ -63,6 +63,7 @@ test("DeepTutor turn requests are bounded and carry note context", () => {
 test("DeepTutor is isolated, persisted, indexed, and never published directly", () => {
   const compose = source("docker-compose.next.yml");
   const workflow = source(".github/workflows/deploy-netcup.yml");
+  const verifier = source("ops/netcup/verify-next-app.sh");
   const publish = source("ops/netcup/publish-next-app.sh");
   const notePage = source("app/notes/[slug]/page.tsx");
   const nextConfig = source("next.config.mjs");
@@ -96,8 +97,8 @@ test("DeepTutor is isolated, persisted, indexed, and never published directly", 
   assert.match(workflow, /--exclude 'data\/ollama\/'/);
   assert.match(workflow, /DEEPTUTOR_SSH_TARGET: \$\{\{ secrets\.NETCUP_USER \}\}@\$\{\{ secrets\.NETCUP_HOST \}\}/);
   assert.doesNotMatch(workflow, /DEEPTUTOR_SSH_TARGET: .*@note\.arzvak\.com/);
-  assert.match(workflow, /tutor_status/);
-  assert.match(workflow, /MITEEE-Deploy-Verify\/1\.0/);
+  assert.match(verifier, /tutor_status/);
+  assert.match(verifier, /\/api\/deeptutor/);
   assert.match(publish, /--profile deeptutor-tools run --rm deeptutor-sync/);
   assert.match(publish, /exec -T ollama ollama pull "\$DEEPTUTOR_EMBEDDING_BASE_MODEL"/);
   assert.match(publish, /exec -T ollama ollama create "\$DEEPTUTOR_EMBEDDING_MODEL"/);
