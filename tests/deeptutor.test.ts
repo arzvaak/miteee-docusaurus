@@ -100,6 +100,7 @@ test("DeepTutor is isolated, persisted, indexed, and never published directly", 
   assert.match(publish, /exec -T ollama ollama pull "\$DEEPTUTOR_EMBEDDING_BASE_MODEL"/);
   assert.match(publish, /exec -T ollama ollama create "\$DEEPTUTOR_EMBEDDING_MODEL"/);
   assert.match(source("ops/deeptutor/Modelfile.all-minilm"), /PARAMETER num_ctx 512/);
+  assert.match(source("ops/deeptutor/bootstrap.py"), /"chunk_size": 510/);
   assert.match(publish, /miteee-notes knowledge base is not ready/);
   const sync = source("ops/deeptutor/sync_notes.py");
   assert.match(sync, /extensions = \{"\.md", "\.mdx"\}/);

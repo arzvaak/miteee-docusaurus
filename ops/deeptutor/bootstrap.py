@@ -5,6 +5,7 @@ from pathlib import Path
 
 SETTINGS_DIR = Path("/app/data/user/settings")
 CATALOG_PATH = SETTINGS_DIR / "model_catalog.json"
+LLAMAINDEX_PATH = SETTINGS_DIR / "llamaindex.json"
 
 
 def read_catalog():
@@ -85,6 +86,16 @@ def main():
     service(catalog, "search")
     CATALOG_PATH.write_text(json.dumps(catalog, indent=2) + "\n", encoding="utf-8")
     CATALOG_PATH.chmod(0o600)
+
+    try:
+        llamaindex = json.loads(LLAMAINDEX_PATH.read_text(encoding="utf-8"))
+        if not isinstance(llamaindex, dict):
+            llamaindex = {}
+    except (FileNotFoundError, json.JSONDecodeError):
+        llamaindex = {}
+    llamaindex.update({"version": 1, "chunk_size": 510, "chunk_overlap": 50})
+    LLAMAINDEX_PATH.write_text(json.dumps(llamaindex, indent=2) + "\n", encoding="utf-8")
+    LLAMAINDEX_PATH.chmod(0o600)
     print(f"DeepTutor bootstrap: configured {llm_model} with local {embedding_model} embeddings.")
 
 
