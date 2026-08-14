@@ -183,7 +183,13 @@ async function checkEndlessSession(page, label) {
   await checkNoHorizontalOverflow(page, label);
 }
 
-const browser = await chromium.launch({ headless: true });
+const hostResolverRules = process.env.SSC_BROWSER_HOST_RESOLVER_RULES?.trim();
+const browser = await chromium.launch({
+  headless: true,
+  ...(hostResolverRules
+    ? { args: [`--host-resolver-rules=${hostResolverRules}`] }
+    : {}),
+});
 
 for (const viewport of viewports) {
   const context = await browser.newContext({ viewport });
