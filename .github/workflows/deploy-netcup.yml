@@ -215,6 +215,7 @@ jobs:
             "$NETCUP_USER@$NETCUP_HOST"
           curl() {
             command curl \
+              --noproxy '*' \
               --resolve note.arzvak.com:8443:127.0.0.1 \
               --user-agent 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 MITEEE-Deploy-Verify/1.0' \
               --retry 3 \
