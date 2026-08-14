@@ -33,52 +33,56 @@ def upsert_profile(target, profile, model_id):
 
 def main():
     api_key = os.environ.get("MISTRAL_API_KEY", "").strip()
-    if not api_key:
-        print("DeepTutor bootstrap: MISTRAL_API_KEY is absent; I left the provider catalog unchanged.")
-        return
-
     SETTINGS_DIR.mkdir(parents=True, exist_ok=True)
     catalog = read_catalog()
     catalog["version"] = 1
     llm_model = os.environ.get("MISTRAL_MODEL", "mistral-small-latest").strip() or "mistral-small-latest"
-    embedding_model = os.environ.get("MISTRAL_EMBEDDING_MODEL", "mistral-embed").strip() or "mistral-embed"
+    embedding_model = os.environ.get("DEEPTUTOR_EMBEDDING_MODEL", "all-minilm").strip() or "all-minilm"
+    embedding_url = os.environ.get("DEEPTUTOR_EMBEDDING_URL", "http://ollama:11434/api/embed").strip()
+    try:
+        embedding_dimension = int(os.environ.get("DEEPTUTOR_EMBEDDING_DIMENSION", "384"))
+    except ValueError as exc:
+        raise SystemExit("DEEPTUTOR_EMBEDDING_DIMENSION must be an integer") from exc
 
-    upsert_profile(service(catalog, "llm"), {
-        "id": "miteee-mistral-llm",
-        "name": "MITEEE Mistral",
-        "binding": "openai",
-        "base_url": "https://api.mistral.ai/v1",
-        "api_key": api_key,
-        "api_version": "",
-        "extra_headers": {},
-        "models": [{
-            "id": "miteee-mistral-llm-model",
-            "name": llm_model,
-            "model": llm_model,
-            "context_window": 128000
-        }]
-    }, "miteee-mistral-llm-model")
+    if api_key:
+        upsert_profile(service(catalog, "llm"), {
+            "id": "miteee-mistral-llm",
+            "name": "MITEEE Mistral",
+            "binding": "openai",
+            "base_url": "https://api.mistral.ai/v1",
+            "api_key": api_key,
+            "api_version": "",
+            "extra_headers": {},
+            "models": [{
+                "id": "miteee-mistral-llm-model",
+                "name": llm_model,
+                "model": llm_model,
+                "context_window": 128000
+            }]
+        }, "miteee-mistral-llm-model")
+    else:
+        print("DeepTutor bootstrap: MISTRAL_API_KEY is absent; I left the LLM catalog unchanged.")
 
     upsert_profile(service(catalog, "embedding"), {
-        "id": "miteee-mistral-embedding",
-        "name": "MITEEE Mistral Embeddings",
-        "binding": "openai",
-        "base_url": "https://api.mistral.ai/v1/embeddings",
-        "api_key": api_key,
+        "id": "miteee-local-embedding",
+        "name": "MITEEE Local Embeddings",
+        "binding": "ollama",
+        "base_url": embedding_url,
+        "api_key": "",
         "api_version": "",
         "extra_headers": {},
         "models": [{
-            "id": "miteee-mistral-embedding-model",
+            "id": "miteee-local-embedding-model",
             "name": embedding_model,
             "model": embedding_model,
-            "dimension": 1024
+            "dimension": embedding_dimension
         }]
-    }, "miteee-mistral-embedding-model")
+    }, "miteee-local-embedding-model")
 
     service(catalog, "search")
     CATALOG_PATH.write_text(json.dumps(catalog, indent=2) + "\n", encoding="utf-8")
     CATALOG_PATH.chmod(0o600)
-    print(f"DeepTutor bootstrap: configured {llm_model} with {embedding_model}.")
+    print(f"DeepTutor bootstrap: configured {llm_model} with local {embedding_model} embeddings.")
 
 
 if __name__ == "__main__":

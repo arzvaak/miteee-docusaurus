@@ -97,10 +97,11 @@ I run HKUDS DeepTutor as an internal companion service for the `arzvak@gmail.com
 
 The drawer and full Tutor page also share a model picker. I can connect my ChatGPT account through DeepTutor's `openai-codex` OAuth flow, refresh or revoke that connection, and select a returned GPT model per turn without adding an OpenAI API key. Because the upstream callback is fixed to localhost, the UI gives me a one-time SSH bridge command during sign-in; `DEEPTUTOR_SSH_TARGET` controls its server target. I can alternatively save a DeepSeek API key and model in the private server-side DeepTutor catalog. The API key is accepted by the owner-gated server route and is never written to browser storage or returned to the browser.
 
-The normal production Compose stack starts the pinned DeepTutor image and persists its state under `data/deeptutor/`. I use the same server-side Mistral secret for its LLM and `mistral-embed` profiles. To rebuild the generated `miteee-notes` knowledge base locally after changing `docs/**/*.md`:
+The normal production Compose stack starts the pinned DeepTutor image and persists its state under `data/deeptutor/`. I use the server-side Mistral secret for tutor responses, while a private local Ollama `all-minilm` profile builds the note embeddings without depending on paid embedding credits. Ollama has no published host port, is capped at 0.5 CPU and 512 MB RAM, and unloads the model after five idle minutes. To rebuild the generated `miteee-notes` knowledge base locally after changing `docs/**/*.md`:
 
 ```powershell
 docker compose -f docker-compose.next.yml up -d
+docker compose -f docker-compose.next.yml exec -T ollama ollama pull all-minilm
 docker compose -f docker-compose.next.yml --profile deeptutor-tools run --rm deeptutor-sync
 ```
 

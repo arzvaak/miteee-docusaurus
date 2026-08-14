@@ -67,6 +67,7 @@ test("DeepTutor is isolated, persisted, indexed, and never published directly", 
   const notePage = source("app/notes/[slug]/page.tsx");
   const nextConfig = source("next.config.mjs");
   const serviceBlock = compose.slice(compose.indexOf("  deeptutor:"), compose.indexOf("  miteee-next:"));
+  const ollamaBlock = compose.slice(compose.indexOf("  ollama:"), compose.indexOf("  deeptutor:"));
 
   assert.match(compose, /ghcr\.io\/hkuds\/deeptutor:1\.5\.9@sha256:/);
   assert.match(compose, /DEEPTUTOR_API_BASE_URL: http:\/\/deeptutor:8001/);
@@ -81,13 +82,22 @@ test("DeepTutor is isolated, persisted, indexed, and never published directly", 
   assert.doesNotMatch(compose, /supervisorctl status backend/);
   assert.match(serviceBlock, /cpus: "1\.0"/);
   assert.match(serviceBlock, /mem_limit: 2g/);
+  assert.match(ollamaBlock, /ollama\/ollama:0\.11\.4@sha256:/);
+  assert.match(ollamaBlock, /cpus: "0\.5"/);
+  assert.match(ollamaBlock, /mem_limit: 512m/);
+  assert.doesNotMatch(ollamaBlock, /\n\s+ports:/);
+  assert.match(serviceBlock, /DEEPTUTOR_EMBEDDING_MODEL: \$\{DEEPTUTOR_EMBEDDING_MODEL:-all-minilm\}/);
+  assert.match(serviceBlock, /DEEPTUTOR_EMBEDDING_DIMENSION: \$\{DEEPTUTOR_EMBEDDING_DIMENSION:-384\}/);
+  assert.match(serviceBlock, /http:\/\/ollama:11434\/api\/embed/);
   assert.match(compose, /profiles: \["deeptutor-tools"\]/);
   assert.doesNotMatch(serviceBlock, /\n\s+ports:/);
   assert.match(workflow, /--exclude 'data\/deeptutor\/'/);
+  assert.match(workflow, /--exclude 'data\/ollama\/'/);
   assert.match(workflow, /DEEPTUTOR_SSH_TARGET: \$\{\{ secrets\.NETCUP_USER \}\}@\$\{\{ secrets\.NETCUP_HOST \}\}/);
   assert.doesNotMatch(workflow, /DEEPTUTOR_SSH_TARGET: .*@note\.arzvak\.com/);
   assert.match(workflow, /tutor_status/);
   assert.match(publish, /--profile deeptutor-tools run --rm deeptutor-sync/);
+  assert.match(publish, /exec -T ollama ollama pull "\$DEEPTUTOR_EMBEDDING_MODEL"/);
   assert.match(publish, /miteee-notes knowledge base is not ready/);
   const sync = source("ops/deeptutor/sync_notes.py");
   assert.match(sync, /extensions = \{"\.md", "\.mdx"\}/);
