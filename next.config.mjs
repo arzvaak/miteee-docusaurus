@@ -38,6 +38,7 @@ const nextConfig = {
   output: "standalone",
   serverExternalPackages: ["better-sqlite3"],
   outputFileTracingExcludes: {
+    "/*": authTraceExcludes,
     "/api/auth/*": authTraceExcludes,
     "/api/deeptutor": authTraceExcludes,
     "/api/deeptutor/*": authTraceExcludes,

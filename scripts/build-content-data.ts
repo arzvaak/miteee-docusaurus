@@ -103,6 +103,7 @@ const courseNames: Record<string, string> = {
   "SEM7-PSPS": "Power System Protection and Switchgear",
   "UPSC-CSE-POLITICAL-SCIENCE": "UPSC Political Science NCERT",
   "SSC-CGL": "SSC CGL Tier-I 200/200 System",
+  "CAT": "CAT Quantitative Aptitude",
   "RESEARCH": "Research notes"
 };
 
@@ -203,6 +204,7 @@ export function slugFromRelativePath(relativePath: string) {
 export function courseCodeFromSegments(segments: string[]) {
   if (segments.length <= 1) return "MITEEE";
   if (segments[0] === "ssc-cgl") return "SSC-CGL";
+  if (segments[0] === "cat") return "CAT";
   if (segments[0] === "upsc-cse" && segments[1] === "political-science") return "UPSC-CSE-POLITICAL-SCIENCE";
   if (segments[0] === "upsc-cse") return segments.slice(0, Math.min(2, segments.length - 1)).join("-").toUpperCase();
   if (segments[0]?.startsWith("sem") && segments[1]) return `${segments[0]}-${segments[1]}`.toUpperCase();
@@ -212,6 +214,7 @@ export function courseCodeFromSegments(segments: string[]) {
 function categoryFromSegments(segments: string[]) {
   if (segments[0] === "research") return "Research";
   if (segments[0] === "ssc-cgl") return "Competitive exams";
+  if (segments[0] === "cat") return "Competitive exams";
   if (segments[0] === "upsc-cse") return "Civil services";
   if (segments[0]?.startsWith("sem")) return `Semester ${segments[0].replace("sem", "")}`;
   return "General";
@@ -220,6 +223,7 @@ function categoryFromSegments(segments: string[]) {
 function levelFromSegments(segments: string[]) {
   if (segments[0] === "research") return "Note collection";
   if (segments[0] === "ssc-cgl") return "SSC CGL Tier-I";
+  if (segments[0] === "cat") return "CAT";
   if (segments[0] === "upsc-cse") return "UPSC CSE";
   if (segments[0]?.startsWith("sem")) return `Semester ${segments[0].replace("sem", "")}`;
   return "MIT EEE";
@@ -239,6 +243,7 @@ function courseName(code: string, segments: string[]) {
 
 function courseFolderFromSegments(code: string, segments: string[]) {
   if (code === "SSC-CGL") return "ssc-cgl";
+  if (code === "CAT") return "cat";
   if (code === "RESEARCH") return "research";
   return segments.slice(0, 2).join("/");
 }
@@ -247,8 +252,9 @@ function isPublicLearnerNote(relativePath: string) {
   const normalized = posixPath(relativePath);
   if (normalized === "index.md" || normalized === "index.mdx") return false;
   if (normalized.startsWith("superpowers/")) return false;
-  if (!normalized.startsWith("ssc-cgl/")) return true;
-  return normalized.split("/").length >= 3;
+  if (normalized.startsWith("ssc-cgl/")) return normalized.split("/").length >= 3;
+  if (normalized.startsWith("cat/")) return normalized.split("/").length >= 3;
+  return true;
 }
 
 function parseWeek(relativePath: string, title: string) {

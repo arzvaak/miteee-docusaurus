@@ -1,0 +1,26 @@
+{
+  "generatedAt": "2026-08-14T00:00:00+05:30",
+  "corpusPolicy": "User-provided study source. OCR and model outputs remain review-only until the curate stage validates question shape, answer evidence, provenance, and duplicates.",
+  "sources": [
+    {
+      "id": "quantum-cat-sarvesh-k-verma",
+      "title": "Quantitative Aptitude Quantum CAT",
+      "author": "Sarvesh K. Verma",
+      "fileName": "Quantitative Aptitude Quantum Cat (Sarvesh K Verma) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+      "file": "C:\\Users\\arzva\\Downloads\\Quantitative Aptitude Quantum Cat (Sarvesh K Verma) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+      "sourceType": "book_user_provided",
+      "role": "notes_and_mcq_corpus",
+      "exam": "CAT",
+      "section": "quantitative-aptitude",
+      "pageCount": 1230,
+      "sha256": "a89e0dcda5f2effd8ee1bd07291e6c8408051c88cdb5f9386c0a61471ce271d4",
+      "encrypted": false,
+      "hasOutline": true,
+      "ocrModel": "mistral-ocr-4-0",
+      "noteModel": "deepseek-v4-flash",
+      "includeImages": true,
+      "rankedEligible": false,
+      "licenseNote": "User-provided book imported for the requested private study workflow; every published practice row retains page and chapter provenance."
+    }
+  ]
+}

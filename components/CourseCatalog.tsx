@@ -40,6 +40,7 @@ function coursePracticeTotal(course: Course) {
 function iconForCourse(course: Course): LucideIcon {
   const identity = `${course.code} ${course.name}`;
   if (/SSC-CGL/i.test(identity)) return Trophy;
+  if (/\bCAT\b|Quantitative Aptitude/i.test(identity)) return Gauge;
   if (/UPSC|Political Science/i.test(identity)) return Landmark;
   if (/Digital Signal|DSP/i.test(identity)) return Waves;
   if (/Electrical Machines|EM2/i.test(identity)) return Gauge;
@@ -56,6 +57,7 @@ function iconForCourse(course: Course): LucideIcon {
 function toneForCourse(course: Course): CourseTone {
   const identity = `${course.code} ${course.name}`;
   if (/SSC-CGL|Management|Financial|Economics/i.test(identity)) return "amber";
+  if (/\bCAT\b|Quantitative Aptitude/i.test(identity)) return "violet";
   if (/UPSC|Political Science|Digital Signal|DSP/i.test(identity)) return "blue";
   if (/Data Science|Smart Grid|SGT/i.test(identity)) return "emerald";
   if (/Electrical Machines|EM2|Measurement|Instrumentation/i.test(identity)) return "rose";
@@ -66,6 +68,7 @@ function toneForCourse(course: Course): CourseTone {
 function blurbForCourse(course: Course) {
   const identity = `${course.code} ${course.name}`;
   if (/SSC-CGL/i.test(identity)) return "Timed practice, section drills, topic maps, and a complete Tier-I preparation system.";
+  if (/\bCAT\b|Quantitative Aptitude/i.test(identity)) return "Chapter notes and book-backed Quant practice for CAT preparation.";
   if (/UPSC|Political Science/i.test(identity)) return "NCERT-grounded reading with Prelims traps, Mains scaffolds, and active recall.";
   if (/Research|Valorant/i.test(identity)) return "An evidence-led research space with methods, findings, and reproducible analysis.";
   if (/Plans/i.test(identity)) return "Implementation notes and working plans kept together for deliberate project review.";
@@ -75,7 +78,7 @@ function blurbForCourse(course: Course) {
 }
 
 function isFeaturedCourse(course: Course) {
-  return course.code === "SSC-CGL" || course.code === "UPSC-CSE-POLITICAL-SCIENCE";
+  return course.code === "SSC-CGL" || course.code === "CAT" || course.code === "UPSC-CSE-POLITICAL-SCIENCE";
 }
 
 export function CourseCatalog({ courses }: { courses: Course[] }) {

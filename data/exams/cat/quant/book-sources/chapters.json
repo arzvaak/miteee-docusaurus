@@ -1,0 +1,28 @@
+{
+  "sourceId": "quantum-cat-sarvesh-k-verma",
+  "pageNumbering": "one-based inclusive PDF pages",
+  "derivedFrom": "embedded PDF outline",
+  "chapters": [
+    {"number": 1, "slug": "number-system", "title": "Number System", "topic": "number-system", "startPage": 18, "endPage": 218},
+    {"number": 2, "slug": "averages", "title": "Averages", "topic": "averages", "startPage": 219, "endPage": 246},
+    {"number": 3, "slug": "alligations", "title": "Alligations", "topic": "mixtures-alligation", "startPage": 247, "endPage": 257},
+    {"number": 4, "slug": "ratio-proportion-variations", "title": "Ratio, Proportion & Variations", "topic": "ratio-proportion-variation", "startPage": 258, "endPage": 292},
+    {"number": 5, "slug": "percentages", "title": "Percentages", "topic": "percentages", "startPage": 293, "endPage": 327},
+    {"number": 6, "slug": "profit-loss-discount", "title": "Profit, Loss and Discount", "topic": "profit-loss-discount", "startPage": 328, "endPage": 361},
+    {"number": 7, "slug": "ci-si-instalments", "title": "CI/SI/Instalments", "topic": "simple-compound-interest", "startPage": 362, "endPage": 377},
+    {"number": 8, "slug": "time-and-work", "title": "Time and Work", "topic": "time-work", "startPage": 378, "endPage": 414},
+    {"number": 9, "slug": "time-speed-distance", "title": "Time, Speed and Distance", "topic": "time-speed-distance", "startPage": 415, "endPage": 469},
+    {"number": 10, "slug": "mensuration", "title": "Mensuration", "topic": "mensuration", "startPage": 470, "endPage": 545},
+    {"number": 11, "slug": "trigonometry", "title": "Trigonometry", "topic": "trigonometry", "startPage": 546, "endPage": 560},
+    {"number": 12, "slug": "geometry", "title": "Geometry", "topic": "geometry", "startPage": 561, "endPage": 741},
+    {"number": 13, "slug": "elements-of-algebra", "title": "Elements of Algebra", "topic": "algebra", "startPage": 742, "endPage": 771},
+    {"number": 14, "slug": "theory-of-equations", "title": "Theory of Equations", "topic": "equations", "startPage": 772, "endPage": 887},
+    {"number": 15, "slug": "set-theory", "title": "Set Theory", "topic": "set-theory", "startPage": 888, "endPage": 905},
+    {"number": 16, "slug": "logarithm", "title": "Logarithm", "topic": "logarithms", "startPage": 906, "endPage": 929},
+    {"number": 17, "slug": "functions-and-graphs", "title": "Functions and Graphs", "topic": "functions-graphs", "startPage": 930, "endPage": 983},
+    {"number": 18, "slug": "sequence-series-progressions", "title": "Sequence, Series & Progressions", "topic": "sequences-series", "startPage": 984, "endPage": 1032},
+    {"number": 19, "slug": "permutations-combinations", "title": "Permutations & Combinations", "topic": "permutations-combinations", "startPage": 1033, "endPage": 1169},
+    {"number": 20, "slug": "probability", "title": "Probability", "topic": "probability", "startPage": 1170, "endPage": 1210},
+    {"number": 21, "slug": "coordinate-geometry", "title": "Co-ordinate Geometry", "topic": "coordinate-geometry", "startPage": 1211, "endPage": 1230}
+  ]
+}

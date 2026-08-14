@@ -1,10 +1,12 @@
+import Link from "next/link";
+import { ArrowRight, Calculator } from "lucide-react";
 import { SscExamSetup } from "@/components/SscExamSetup";
 import { getSscCglDashboard, getSscCglTests } from "@/lib/ssc-cgl";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
-  title: "SSC CGL MCQ Practice - MITEEE",
-  description: "Choose an SSC CGL MCQ drill by section, length, timing, source, difficulty, or weakness evidence, including endless practice and full mocks.",
+  title: "Exam Practice - MITEEE",
+  description: "Practice CAT Quant chapter questions or choose an SSC CGL drill by section, length, timing, source, difficulty, and weakness evidence.",
   pathname: "/practice"
 });
 
@@ -15,26 +17,35 @@ export default function PracticePage() {
   const modeCounts = dashboard.readiness.testModeCounts;
 
   return (
-    <SscExamSetup
-      overviewHref="/practice"
-      reviewedQuestions={dashboard.readiness.reviewedQuestions}
-      testCount={dashboard.readiness.tests}
-      topicCount={dashboard.readiness.topics}
-      fullMockCount={dashboard.readiness.fullMocks}
-      pyqShiftCount={modeCounts.pyq_shift ?? 0}
-      sectionSprintCount={modeCounts.speed_sprint ?? 0}
-      sections={dashboard.readiness.sectionReadiness.map((section) => ({
-        id: section.section,
-        title: section.title,
-        readinessPercent: section.readinessPercent,
-        reviewedQuestions: section.reviewedQuestions
-      }))}
-      featuredTest={featuredTest ? {
-        id: featuredTest.id,
-        title: featuredTest.title,
-        questionCount: featuredTest.questionCount,
-        durationMinutes: Math.round(featuredTest.durationSeconds / 60)
-      } : undefined}
-    />
+    <>
+      <section className="page ssc-page">
+        <Link className="panel ssc-exam-card" href="/exams/cat/quant/practice">
+          <span className="home-icon-badge"><Calculator size={20} aria-hidden="true" /></span>
+          <div><strong>CAT Quant practice</strong><p>Work through the Quantum CAT bank chapter by chapter.</p></div>
+          <ArrowRight size={18} aria-hidden="true" />
+        </Link>
+      </section>
+      <SscExamSetup
+        overviewHref="/practice"
+        reviewedQuestions={dashboard.readiness.reviewedQuestions}
+        testCount={dashboard.readiness.tests}
+        topicCount={dashboard.readiness.topics}
+        fullMockCount={dashboard.readiness.fullMocks}
+        pyqShiftCount={modeCounts.pyq_shift ?? 0}
+        sectionSprintCount={modeCounts.speed_sprint ?? 0}
+        sections={dashboard.readiness.sectionReadiness.map((section) => ({
+          id: section.section,
+          title: section.title,
+          readinessPercent: section.readinessPercent,
+          reviewedQuestions: section.reviewedQuestions
+        }))}
+        featuredTest={featuredTest ? {
+          id: featuredTest.id,
+          title: featuredTest.title,
+          questionCount: featuredTest.questionCount,
+          durationMinutes: Math.round(featuredTest.durationSeconds / 60)
+        } : undefined}
+      />
+    </>
   );
 }

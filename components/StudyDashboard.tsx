@@ -78,7 +78,9 @@ function groupCourses(courses: Course[]): CourseGroup[] {
 }
 
 function courseHref(course: Course) {
-  return course.code === "SSC-CGL" ? "/exams/ssc-cgl" : `/courses/${encodeURIComponent(course.code)}`;
+  return course.code === "SSC-CGL" ? "/exams/ssc-cgl"
+    : course.code === "CAT" ? "/exams/cat/quant"
+      : `/courses/${encodeURIComponent(course.code)}`;
 }
 
 function courseMatches(course: Course, courseCode: string | null, courseName: string | null) {

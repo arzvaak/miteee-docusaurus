@@ -10112,6 +10112,90 @@ button {
   background: color-mix(in srgb, var(--surface-strong) 72%, transparent);
 }
 
+.cat-question-image-stimulus img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(70vh, 760px);
+  object-fit: contain;
+  border-radius: calc(var(--radius) - 4px);
+}
+
+.cat-question-image-stimulus figcaption {
+  margin-top: 9px;
+  color: var(--text-soft);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.cat-practice-option {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  min-width: 0;
+  min-height: 64px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-soft);
+  text-align: left;
+  background: var(--surface-strong);
+  cursor: pointer;
+}
+
+.cat-practice-option strong {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--text);
+  background: var(--surface-soft);
+}
+
+.cat-practice-option:hover:not(:disabled),
+.cat-practice-option:focus-visible,
+.cat-practice-option.active {
+  border-color: color-mix(in srgb, var(--accent) 58%, var(--border));
+  background: var(--accent-soft);
+}
+
+.cat-practice-option.correct {
+  border-color: color-mix(in srgb, var(--emerald) 58%, var(--border));
+  background: color-mix(in srgb, var(--emerald-soft) 65%, var(--surface-strong));
+}
+
+.cat-practice-option.wrong {
+  border-color: color-mix(in srgb, var(--danger) 58%, var(--border));
+  background: color-mix(in srgb, var(--danger-soft) 65%, var(--surface-strong));
+}
+
+.cat-practice-option:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.cat-practice-jump-field {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  color: var(--text-soft);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.cat-practice-jump-field input {
+  width: 88px;
+  min-height: 38px;
+  padding: 7px 9px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  background: var(--surface-strong);
+}
+
 .ssc-question-stimulus figcaption {
   margin: 0 0 9px;
   color: var(--text);

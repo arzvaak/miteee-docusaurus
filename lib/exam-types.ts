@@ -12,6 +12,58 @@ export type SscCglReviewStatus = "reviewed" | "needs_review" | "rejected";
 
 export type SscCglOptionId = "a" | "b" | "c" | "d";
 
+export type CatQuantOptionId = SscCglOptionId;
+
+export type CatQuantSourceType = "book_user_provided" | "original_practice";
+
+export type CatQuantImageStimulus = {
+  type: "image";
+  src: string;
+  alt: string;
+  caption?: string;
+};
+
+export type CatQuantQuestionStimulus = SscCglQuestionStimulus | CatQuantImageStimulus;
+
+export type CatQuantQuestion = {
+  id: string;
+  exam: "CAT";
+  section: "quantitative-aptitude";
+  topic: string;
+  subtopic: string;
+  chapterNumber: number;
+  difficulty: "easy" | "medium" | "hard";
+  questionType: "mcq" | "tita";
+  stem: string;
+  stimulus?: CatQuantQuestionStimulus;
+  options?: SscCglOption[];
+  correctOption?: CatQuantOptionId;
+  correctAnswer?: string;
+  explanation: string;
+  reviewStatus: SscCglReviewStatus;
+  ocrConfidence: number;
+  conceptTags: string[];
+  provenance: {
+    sourceId: string;
+    sourceType: CatQuantSourceType;
+    title: string;
+    file?: string;
+    pageNumber?: number;
+    chapterTitle: string;
+    licenseNote: string;
+  };
+};
+
+export type CatQuantTopic = {
+  slug: string;
+  title: string;
+  chapterNumber: number;
+  summary: string;
+  noteBody: string;
+  questionIds: string[];
+  questionCount: number;
+};
+
 export type SscCglOption = {
   id: SscCglOptionId;
   text: string;

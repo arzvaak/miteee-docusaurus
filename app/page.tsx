@@ -4,7 +4,7 @@ import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
   title: "MITEEE - Notes, Subjects, Practice, and Revision",
-  description: "Explore MIT EEE, SSC CGL, and UPSC notes, tutorials, formulas, question banks, practice, and revision paths.",
+  description: "Explore MIT EEE, CAT, SSC CGL, and UPSC notes, tutorials, formulas, question banks, practice, and revision paths.",
   pathname: "/"
 });
 

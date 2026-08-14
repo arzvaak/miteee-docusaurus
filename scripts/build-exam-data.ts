@@ -3,7 +3,9 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { buildSscCglQuestions, buildSscCglTestSummaries, buildSscCglTopics, sscCglPattern } from "@/lib/ssc-cgl-source";
 import { validateSscCglExamData } from "@/lib/ssc-cgl";
-import type { SscCglQuestion, SscCglTopic } from "@/lib/exam-types";
+import { buildCatQuantQuestions, buildCatQuantTopics } from "@/lib/cat-quant-source";
+import { validateCatQuantData } from "@/lib/cat";
+import type { CatQuantQuestion, CatQuantTopic, SscCglQuestion, SscCglTopic } from "@/lib/exam-types";
 
 type BuildExamDataOptions = {
   generatedRoot?: string;
@@ -109,10 +111,33 @@ export function buildExamData(options: BuildExamDataOptions = {}) {
   writeJson(path.join(outputRoot, "validation-report.json"), validation);
   writeJson(path.join(outputRoot, "ai-audit-report.json"), aiAudit);
 
-  return { data, validation, aiAudit };
+  const catOutputRoot = path.join(generatedRoot, "exams", "cat");
+  const catQuestions: CatQuantQuestion[] = buildCatQuantQuestions();
+  const catTopics: CatQuantTopic[] = buildCatQuantTopics(catQuestions);
+  const catData = {
+    generatedAt: new Date().toISOString(),
+    exam: {
+      code: "CAT" as const,
+      activeSection: "quantitative-aptitude" as const,
+      sourceTitle: "Quantitative Aptitude Quantum CAT by Sarvesh K. Verma"
+    },
+    questions: catQuestions,
+    topics: catTopics
+  };
+  const catValidation = validateCatQuantData(catData);
+  if (!catValidation.ok) {
+    throw new Error(`CAT Quant generated data failed validation:\n${catValidation.errors.join("\n")}`);
+  }
+  writeJson(path.join(catOutputRoot, "index.json"), catData);
+  writeJson(path.join(catOutputRoot, "questions.json"), catQuestions);
+  writeJson(path.join(catOutputRoot, "topics.json"), catTopics);
+  writeJson(path.join(catOutputRoot, "validation-report.json"), catValidation);
+
+  return { data, validation, aiAudit, catData, catValidation };
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] || "").href) {
   const result = buildExamData();
   console.log(`Generated ${result.data.questions.length} SSC CGL questions, ${result.data.topics.length} topics, and ${result.data.tests.length} tests.`);
+  console.log(`Generated ${result.catData.questions.length} CAT Quant questions and ${result.catData.topics.length} topics.`);
 }
