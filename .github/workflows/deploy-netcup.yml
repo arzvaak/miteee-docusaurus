@@ -210,11 +210,9 @@ jobs:
           set -euo pipefail
           VERIFY_BASE_URL='https://note.arzvak.com:38443'
           ssh -i ~/.ssh/netcup_deploy_key \
-            -o ControlMaster=no \
-            -o ControlPath=none \
-            -o ExitOnForwardFailure=yes \
-            -fN -L 38443:127.0.0.1:443 \
+            -O forward -L 38443:127.0.0.1:443 \
             "$NETCUP_USER@$NETCUP_HOST"
+          trap 'ssh -i ~/.ssh/netcup_deploy_key -O cancel -L 38443:127.0.0.1:443 "$NETCUP_USER@$NETCUP_HOST" >/dev/null 2>&1 || true' EXIT
           curl() {
             command curl \
               --noproxy '*' \

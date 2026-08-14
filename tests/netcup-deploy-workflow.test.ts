@@ -66,7 +66,7 @@ test("Netcup workflow deploys the current Next standalone app instead of stale D
   assert.match(workflow, /composition-map-feature-audit\.png/);
   assert.match(workflow, /npx playwright install --with-deps chromium/);
   assert.match(workflow, /VERIFY_BASE_URL='https:\/\/note\.arzvak\.com:38443'/);
-  assert.match(workflow, /-o ControlPath=none/);
+  assert.match(workflow, /-O forward -L 38443:127\.0\.0\.1:443/);
   assert.match(workflow, /--noproxy '\*'/);
   assert.match(workflow, /SSC_BROWSER_BASE_URL="\$VERIFY_BASE_URL"/);
   assert.match(workflow, /SSC_BROWSER_HOST_RESOLVER_RULES='MAP note\.arzvak\.com 127\.0\.0\.1'/);
