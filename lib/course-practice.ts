@@ -41,44 +41,43 @@ function scorePracticeNote(note: IndexedNote) {
 
 function focusForNote(note: IndexedNote) {
   const stats = note.stats;
-  if (stats.questionBlocks > 0) return "Question sprint";
-  if (stats.mathBlocks > 0) return "Derivation rebuild";
-  if (stats.mermaidBlocks > 0) return "Diagram recall";
-  if (note.runnable || stats.codeBlocks > 0) return "Code trace";
-  return "Recall outline";
+  if (stats.questionBlocks > 0) return "Question practice";
+  if (stats.mathBlocks > 0) return "Formula practice";
+  if (stats.mermaidBlocks > 0) return "Diagram practice";
+  if (note.runnable || stats.codeBlocks > 0) return "Code walkthrough";
+  return "Quick review";
 }
 
 function methodForFocus(focus: string): CoursePracticeDrill["method"] {
-  if (focus === "Derivation rebuild" || focus === "Code trace") return "self-explanation";
-  if (focus === "Diagram recall") return "retrieval";
-  if (focus === "Recall outline") return "spacing";
+  if (focus === "Formula practice" || focus === "Code walkthrough") return "self-explanation";
+  if (focus === "Diagram practice") return "retrieval";
+  if (focus === "Quick review") return "spacing";
   return "retrieval";
 }
 
 function promptForNote(note: IndexedNote, focus: string) {
   const title = noteLabel(note);
-  if (focus === "Question sprint") {
-    return `Close ${title}, answer one question section from memory, then reopen it and mark the exact missing step or value.`;
+  if (focus === "Question practice") {
+    return `Choose one question from ${title}, solve it without looking at the answer, then check your method.`;
   }
-  if (focus === "Derivation rebuild") {
-    return `Rebuild one formula or derivation from ${title} without looking, then explain the condition where it applies.`;
+  if (focus === "Formula practice") {
+    return `Choose one useful formula from ${title}, write it from memory, and explain when to use it.`;
   }
-  if (focus === "Diagram recall") {
-    return `Draw the main diagram or flow from ${title} from memory, then compare it with the source and label the missing relationship.`;
+  if (focus === "Diagram practice") {
+    return `Draw one important diagram from ${title} from memory, then compare its labels and connections with the note.`;
   }
-  if (focus === "Code trace") {
-    return `Trace one code or runnable block from ${title}, predict the output or state change, then verify against the note.`;
+  if (focus === "Code walkthrough") {
+    return `Work through one example from ${title}, predict what happens at each step, then check it against the note.`;
   }
   return `Write a closed-book outline for ${title}, then reopen the note and add the three terms you missed.`;
 }
 
 function reasonForNote(note: IndexedNote, focus: string) {
-  const stats = note.stats;
-  if (focus === "Question sprint") return `${stats.questionBlocks} question sections make this a high-yield exam drill.`;
-  if (focus === "Derivation rebuild") return `${stats.mathBlocks} math blocks need active reconstruction, not rereading.`;
-  if (focus === "Diagram recall") return "The diagram content is useful only if you can redraw the structure from memory.";
-  if (focus === "Code trace") return "Executable or code-heavy notes should be predicted before they are run.";
-  return truncateText(cleanText(note.excerpt), 110) || "This note keeps the course sequence warm.";
+  if (focus === "Question practice") return "Use this chapter for a focused question-and-solution check.";
+  if (focus === "Formula practice") return "Use this chapter to practise recalling formulas and choosing when to apply them.";
+  if (focus === "Diagram practice") return "Use this chapter to check whether you can explain the diagram clearly.";
+  if (focus === "Code walkthrough") return "Use this chapter to practise following an example step by step.";
+  return truncateText(cleanText(note.excerpt), 110) || "Use this note for a short closed-book review.";
 }
 
 export function buildCoursePracticeDrills(course: Course, notes: IndexedNote[], limit = 3): CoursePracticeDrill[] {
@@ -97,13 +96,13 @@ export function buildCoursePracticeDrills(course: Course, notes: IndexedNote[], 
         courseName: course.name,
         focus,
         method: methodForFocus(focus),
-        minutes: focus === "Recall outline" ? 15 : 25,
+        minutes: focus === "Quick review" ? 15 : 25,
         prompt: promptForNote(note, focus),
         reason: reasonForNote(note, focus),
         checklist: [
-          "Produce the answer before opening the note.",
-          "Check against the source and mark one concrete gap.",
-          "If the gap repeats, add it as a mistake from the note page."
+          "Try it before opening the note.",
+          "Compare your answer with the note and correct what you missed.",
+          "Save any repeated mistake for your next review."
         ]
       };
     });

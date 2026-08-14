@@ -37,6 +37,12 @@ function coursePracticeTotal(course: Course) {
   return course.questionCount + (course.practicePromptCount ?? 0);
 }
 
+function courseHref(course: Course) {
+  if (course.code === "SSC-CGL") return "/exams/ssc-cgl";
+  if (course.code === "CAT") return "/exams/cat/quant";
+  return `/courses/${course.code}`;
+}
+
 function iconForCourse(course: Course): LucideIcon {
   const identity = `${course.code} ${course.name}`;
   if (/SSC-CGL/i.test(identity)) return Trophy;
@@ -151,7 +157,7 @@ export function CourseCatalog({ courses }: { courses: Course[] }) {
                       className={styles.courseCard}
                       data-featured={isFeaturedCourse(course) ? "true" : "false"}
                       data-tone={toneForCourse(course)}
-                      href={`/courses/${course.code}`}
+                      href={courseHref(course)}
                       key={course.code}
                       prefetch={false}
                     >
@@ -174,11 +180,11 @@ export function CourseCatalog({ courses }: { courses: Course[] }) {
                         </div>
                         <div>
                           <dt>Practice</dt>
-                          <dd>{practiceTotal}</dd>
+                          <dd>{practiceTotal > 0 ? "Ready" : "Notes"}</dd>
                         </div>
                         <div>
-                          <dt>Runnable</dt>
-                          <dd>{course.runnableNoteCount}</dd>
+                          <dt>Format</dt>
+                          <dd>{course.runnableNoteCount > 0 ? "Interactive" : "Reading"}</dd>
                         </div>
                       </dl>
 

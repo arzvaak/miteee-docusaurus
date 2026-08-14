@@ -36,18 +36,16 @@ export function seoDescription(value: string, fallback = DEFAULT_SITE_DESCRIPTIO
 
 export function courseDescription(course: Course) {
   const summary = course.syllabusSummary.find((item) => item.length > 48);
-  const practiceCount = course.questionCount + (course.practicePromptCount ?? 0);
-  const practiceLabel = (course.practicePromptCount ?? 0) > 0 ? "practice prompts" : "question sections";
   return seoDescription(
     summary ||
-      `${course.name} (${course.code}) dashboard with ${course.noteCount} notes, ${practiceCount} ${practiceLabel}, and exam-focused study material.`
+      `${course.name} (${course.code}) dashboard with ${course.noteCount} notes, guided practice, and exam-focused study material.`
   );
 }
 
 export function noteDescription(note: Note | Omit<Note, "content">) {
   const signals = [
-    note.stats.questionBlocks > 0 ? `${note.stats.questionBlocks} question sections` : "",
-    note.stats.mathBlocks > 0 ? `${note.stats.mathBlocks} math blocks` : "",
+    note.stats.questionBlocks > 0 ? "practice material" : "",
+    note.stats.mathBlocks > 0 ? "formulas and worked steps" : "",
     note.stats.mermaidBlocks > 0 ? `${note.stats.mermaidBlocks} diagrams` : ""
   ].filter(Boolean);
   return seoDescription(`${note.title} study note${note.courseName ? ` for ${note.courseName}` : ""}.${signals.length ? ` Includes ${signals.join(", ")}.` : ""}`);

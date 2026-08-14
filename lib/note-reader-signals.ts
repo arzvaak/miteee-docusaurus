@@ -13,20 +13,14 @@ export type FormulaReaderSignal = {
   steps: string[];
 };
 
-const numberFormatter = new Intl.NumberFormat("en-IN");
-
-function formatNumber(value: number) {
-  return numberFormatter.format(value);
-}
-
 export function buildFormulaReaderSignal(stats: NoteStats): FormulaReaderSignal | null {
   if (stats.mathBlocks <= 0) return null;
 
   if (stats.mathBlocks >= 1000 && stats.questionBlocks >= 20) {
     return {
       tone: "pyq-formula",
-      title: "PYQ formula bank",
-      summary: `${formatNumber(stats.mathBlocks)} math blocks and ${formatNumber(stats.questionBlocks)} question sections. Sample, solve, then repair instead of scrolling the whole bank.`,
+      title: "Formula and question practice",
+      summary: "Choose a small set of formulas and questions to practise instead of trying to finish the whole page at once.",
       steps: [
         "Pick five formulas before reading and write what each symbol means.",
         "Solve one nearby question closed-book, then check the worked line.",
@@ -38,8 +32,8 @@ export function buildFormulaReaderSignal(stats: NoteStats): FormulaReaderSignal 
   if (stats.mathBlocks >= 8) {
     return {
       tone: "formula",
-      title: "Derivation rebuild",
-      summary: `${formatNumber(stats.mathBlocks)} math blocks. Treat this page as active reconstruction, not rereading.`,
+      title: "Formula practice",
+      summary: "Choose a few important formulas from this page and check that you know what they mean and when to use them.",
       steps: [
         "Choose three equations and write the symbols and conditions from memory.",
         "Rebuild one derivation step-by-step before opening the surrounding text.",
@@ -51,7 +45,7 @@ export function buildFormulaReaderSignal(stats: NoteStats): FormulaReaderSignal 
   return {
     tone: "formula",
     title: "Formula check",
-    summary: `${formatNumber(stats.mathBlocks)} math ${stats.mathBlocks === 1 ? "block" : "blocks"}. Pause before the equation and predict the missing condition.`,
+    summary: "Pause before each equation and check whether you can explain what it means and when it applies.",
     steps: [
       "Cover the next equation and say what it should express.",
       "Name every symbol before reading the explanation.",

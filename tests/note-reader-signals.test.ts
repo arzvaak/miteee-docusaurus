@@ -22,8 +22,9 @@ test("formula reader signal turns math-heavy pages into an active recall loop", 
   });
 
   assert.equal(signal?.tone, "formula");
-  assert.equal(signal?.title, "Derivation rebuild");
-  assert.match(signal?.summary ?? "", /32 math blocks/);
+  assert.equal(signal?.title, "Formula practice");
+  assert.match(signal?.summary ?? "", /important formulas/i);
+  assert.doesNotMatch(signal?.summary ?? "", /math blocks?|active reconstruction/i);
   assert.match(signal?.steps[0] ?? "", /write the symbols and conditions/i);
   assert.match(signal?.steps[2] ?? "", /log the exact rule/i);
 });
@@ -38,8 +39,8 @@ test("formula reader signal escalates PYQ formula banks", () => {
   });
 
   assert.equal(signal?.tone, "pyq-formula");
-  assert.equal(signal?.title, "PYQ formula bank");
-  assert.match(signal?.summary ?? "", /3,090 math blocks/);
-  assert.match(signal?.summary ?? "", /141 question sections/);
+  assert.equal(signal?.title, "Formula and question practice");
+  assert.match(signal?.summary ?? "", /small set of formulas and questions/i);
+  assert.doesNotMatch(signal?.summary ?? "", /math blocks?|question sections?/i);
   assert.match(signal?.steps[0] ?? "", /five formulas/i);
 });

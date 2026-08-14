@@ -1,6 +1,6 @@
 import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
-import { ArrowRight, BookOpen, FileText, ListChecks, Sigma } from "lucide-react";
+import { ArrowRight, BookOpen, ListChecks } from "lucide-react";
 import { CourseOutline } from "@/components/CourseOutline";
 import { CoursePracticeSection } from "@/components/CoursePracticeSection";
 import { CourseResumePanel } from "@/components/CourseResumePanel";
@@ -36,6 +36,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
   const course = getCourse(code);
   if (!course) notFound();
   if (course.code === "SSC-CGL") redirect("/exams/ssc-cgl");
+  if (course.code === "CAT") redirect("/exams/cat/quant");
   const notes = getCourseNotes(course.code);
   const courseGroups = getCourseNavigationGroups(course.code);
   const structuredData = [
@@ -58,9 +59,6 @@ export default async function CoursePage({ params }: CoursePageProps) {
 
   const upscDrills = course.code === "UPSC-CSE-POLITICAL-SCIENCE" ? buildUpscActiveRecallDrills(notes, 4) : [];
   const coursePracticeDrills = course.code === "UPSC-CSE-POLITICAL-SCIENCE" ? [] : buildCoursePracticeDrills(course, notes, 3);
-  const activePracticeCount = course.questionCount + (course.practicePromptCount ?? 0);
-  const activePracticeLabel = (course.practicePromptCount ?? 0) > 0 ? "Practice" : "Questions";
-
   return (
     <div className="page course-detail-page">
       <JsonLd
@@ -82,9 +80,8 @@ export default async function CoursePage({ params }: CoursePageProps) {
           <summary>Course numbers</summary>
           <div className="stats-grid">
             <Stat icon={<BookOpen size={17} aria-hidden="true" />} label="Notes" value={formatNumber(course.noteCount)} />
-            <Stat icon={<ListChecks size={17} aria-hidden="true" />} label={activePracticeLabel} value={formatNumber(activePracticeCount)} />
-            <Stat icon={<Sigma size={17} aria-hidden="true" />} label="Math" value={formatNumber(notes.filter((note) => note.stats.mathBlocks > 0).length)} />
-            <Stat icon={<FileText size={17} aria-hidden="true" />} label="Code" value={formatNumber(course.runnableNoteCount)} />
+            <Stat icon={<BookOpen size={17} aria-hidden="true" />} label="Sections" value={formatNumber(courseGroups.length)} />
+            <Stat icon={<ListChecks size={17} aria-hidden="true" />} label="Practice" value={coursePracticeDrills.length > 0 || upscDrills.length > 0 ? "Available" : "Use notes"} />
           </div>
         </details>
       </section>

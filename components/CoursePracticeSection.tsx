@@ -48,7 +48,7 @@ export function CoursePracticeSection({ courseName, drills }: { courseName: stri
       <div className="section-header">
         <div>
           <span className="micro-label">Course practice</span>
-          <h2 className="section-title">Turn this subject into work.</h2>
+          <h2 className="section-title">Turn this subject into practice.</h2>
         </div>
         <Dumbbell size={20} aria-hidden="true" />
       </div>

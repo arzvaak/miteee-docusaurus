@@ -38,11 +38,12 @@ function note(overrides: Partial<IndexedNote>): IndexedNote {
 test("buildNotePractice turns a question-heavy note into a focused retrieval session", () => {
   const practice = buildNotePractice(note({}));
 
-  assert.equal(practice.focus, "Question drill");
+  assert.equal(practice.focus, "Question practice");
   assert.equal(practice.method, "retrieval");
   assert.equal(practice.minutes, 30);
-  assert.match(practice.prompt, /solve one question section/i);
-  assert.match(practice.evidence, /141 question sections/);
+  assert.match(practice.prompt, /solve one question/i);
+  assert.match(practice.evidence, /questions you can solve/i);
+  assert.doesNotMatch(`${practice.prompt} ${practice.evidence}`, /math blocks?|question sections?|active reconstruction/i);
 });
 
 test("buildNotePractice treats extracted quiz items as note practice", () => {
@@ -70,11 +71,11 @@ test("buildNotePractice treats extracted quiz items as note practice", () => {
     ]
   }));
 
-  assert.equal(practice.focus, "Question drill");
+  assert.equal(practice.focus, "Question practice");
   assert.equal(practice.method, "retrieval");
   assert.equal(practice.minutes, 30);
-  assert.match(practice.prompt, /extracted quiz or 200\/200 drill/i);
-  assert.match(practice.evidence, /35 quiz items/);
+  assert.match(practice.prompt, /quiz or timed drill/i);
+  assert.match(practice.evidence, /quiz questions and worked examples/i);
 });
 
 test("buildNotePractice turns a math-heavy note without questions into derivation practice", () => {
@@ -91,7 +92,7 @@ test("buildNotePractice turns a math-heavy note without questions into derivatio
     }
   }));
 
-  assert.equal(practice.focus, "Formula rebuild");
+  assert.equal(practice.focus, "Formula practice");
   assert.equal(practice.method, "self-explanation");
   assert.equal(practice.minutes, 20);
   assert.match(practice.prompt, /rebuild one formula/i);
@@ -126,7 +127,7 @@ test("buildNotePractice turns UPSC expansion sections into direct drill jumps", 
     }
   }));
 
-  assert.equal(practice.focus, "UPSC expansion drill");
+  assert.equal(practice.focus, "UPSC answer practice");
   assert.equal(practice.method, "retrieval");
   assert.match(practice.prompt, /Mains Answer Scaffold/);
   assert.deepEqual(practice.expansionSections, [

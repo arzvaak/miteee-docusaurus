@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, ClipboardList, FileText, ListChecks, Sigma } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, ClipboardList, ListChecks, Sigma } from "lucide-react";
 import { ActiveRecallPanel } from "@/components/ActiveRecallPanel";
 import { JsonLd } from "@/components/JsonLd";
 import { MarkdownNote } from "@/components/MarkdownNote";
@@ -121,11 +121,8 @@ export default async function NotePage({ params }: NotePageProps) {
 
         <ReaderToolsPanel>
           <div className="reader-signal-grid" aria-label="Lesson signals">
-            <Signal icon={<ListChecks size={16} aria-hidden="true" />} label="Questions" value={note.stats.questionBlocks + quizQuestionCount} />
-            <Signal icon={<ClipboardList size={16} aria-hidden="true" />} label="Drills" value={quizQuestionCount} />
-            <Signal icon={<Sigma size={16} aria-hidden="true" />} label="Math" value={note.stats.mathBlocks} />
-            <Signal icon={<FileText size={16} aria-hidden="true" />} label="Code" value={note.stats.codeBlocks} />
-            <Signal icon={<BookOpen size={16} aria-hidden="true" />} label="Headings" value={note.headings.length} />
+            {quizQuestionCount > 0 ? <Signal icon={<ListChecks size={16} aria-hidden="true" />} label="Practice questions" value={quizQuestionCount} /> : null}
+            <Signal icon={<BookOpen size={16} aria-hidden="true" />} label="Sections" value={note.headings.length} />
           </div>
           <FormulaReaderCard signal={formulaSignal} />
           <ReaderProgressPanel note={{ slug: note.slug, title: note.sidebarLabel || note.title, courseCode: note.courseCode, courseName: note.courseName }} />
@@ -274,12 +271,6 @@ function RelatedLessonsSection({ previews }: { previews: NotePreview[] }) {
       </div>
       <div className="related-lesson-grid">
         {previews.slice(0, 3).map((preview, index) => {
-          const signals = [
-            { count: preview.stats.mathBlocks, label: "formulas", icon: <Sigma size={13} aria-hidden="true" /> },
-            { count: preview.stats.questionBlocks, label: "questions", icon: <ClipboardList size={13} aria-hidden="true" /> },
-            { count: preview.stats.codeBlocks, label: "code blocks", icon: <FileText size={13} aria-hidden="true" /> }
-          ].filter((signal) => signal.count > 0).slice(0, 2);
-
           return (
             <Link
               prefetch={false}
@@ -297,9 +288,7 @@ function RelatedLessonsSection({ previews }: { previews: NotePreview[] }) {
                 </span>
                 <strong>{preview.label}</strong>
                 <span className="related-lesson-meta">
-                  {signals.length > 0 ? signals.map((signal) => (
-                    <span key={signal.label}>{signal.icon}{signal.count} {signal.label}</span>
-                  )) : <span><BookOpen size={13} aria-hidden="true" />Reading note</span>}
+                  <span><BookOpen size={13} aria-hidden="true" />Open lesson</span>
                 </span>
               </span>
               <span className="related-lesson-open" aria-hidden="true"><ArrowUpRight size={17} /></span>

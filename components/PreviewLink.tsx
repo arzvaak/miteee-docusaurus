@@ -2,7 +2,7 @@
 
 import { useId, useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight, BookOpen, ClipboardList, Eye, Sigma } from "lucide-react";
+import { ArrowUpRight, BookOpen, Eye } from "lucide-react";
 import type { NotePreview } from "@/lib/content";
 
 export function PreviewCard({ preview, compact = false }: { preview: NotePreview; compact?: boolean }) {
@@ -16,9 +16,7 @@ export function PreviewCard({ preview, compact = false }: { preview: NotePreview
       <h3>{preview.label}</h3>
       <p>{preview.excerpt || "Imported note preview from the local study vault."}</p>
       <div className="preview-meta">
-        <span><Sigma size={13} aria-hidden="true" />{preview.stats.mathBlocks} math</span>
-        <span><ClipboardList size={13} aria-hidden="true" />{preview.stats.questionBlocks} questions</span>
-        <span><BookOpen size={13} aria-hidden="true" />{preview.stats.codeBlocks} code</span>
+        <span><BookOpen size={13} aria-hidden="true" />Study note</span>
       </div>
     </div>
   );

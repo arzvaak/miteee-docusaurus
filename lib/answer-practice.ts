@@ -105,10 +105,6 @@ function cleanInline(value: string) {
     .trim();
 }
 
-function compactCount(value: number, noun: string) {
-  return `${value} ${value === 1 ? noun : `${noun}s`}`;
-}
-
 function isUpscNote(note: IndexedNote) {
   const values = [
     note.courseCode,
@@ -195,7 +191,7 @@ function framingForNote(note: IndexedNote, focus: AnswerPracticeFocus) {
   if (isUpscNote(note)) {
     const parts = upscFramingParts(note);
     const fallback = [
-      (note.stats.practicePrompts ?? 0) > 0 ? `Use ${compactCount(note.stats.practicePrompts ?? 0, "indexed practice prompt")} from this UPSC note.` : "",
+      (note.stats.practicePrompts ?? 0) > 0 ? "Use one of the answer-practice prompts included in this UPSC note." : "",
       note.headings.length > 0 ? `Use note headings as the answer scaffold: ${note.headings.slice(0, 4).map((heading) => cleanInline(heading.text)).join("; ")}.` : "",
       note.excerpt ? `Anchor the answer in this excerpt: ${truncateText(cleanInline(note.excerpt), 260)}` : ""
     ].filter(Boolean);
@@ -241,13 +237,11 @@ function sourceContextForNote(note: IndexedNote, framing: string) {
 }
 
 function evidenceForNote(note: IndexedNote) {
-  const signals = [
-    note.stats.questionBlocks > 0 ? compactCount(note.stats.questionBlocks, "question section") : "",
-    (note.stats.practicePrompts ?? 0) > 0 ? compactCount(note.stats.practicePrompts ?? 0, "practice prompt") : "",
-    note.stats.mathBlocks > 0 ? compactCount(note.stats.mathBlocks, "math block") : "",
-    note.stats.mermaidBlocks > 0 ? compactCount(note.stats.mermaidBlocks, "diagram") : ""
-  ].filter(Boolean);
-  return signals.length > 0 ? signals.join(", ") : "Indexed note with enough context for a recall answer.";
+  if ((note.stats.practicePrompts ?? 0) > 0) return "This note includes ready-made prompts for answer practice.";
+  if (note.stats.questionBlocks > 0) return "This note includes questions you can answer and check.";
+  if (note.stats.mathBlocks > 0) return "This note includes formulas and worked steps you can explain in your own words.";
+  if (note.stats.mermaidBlocks > 0) return "This note includes a diagram you can use to structure your answer.";
+  return "This note has enough context for a short closed-book answer.";
 }
 
 export function buildAnswerPracticePrompt(note: IndexedNote): AnswerPracticePrompt {

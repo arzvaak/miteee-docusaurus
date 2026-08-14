@@ -367,7 +367,7 @@ export function ReaderCourseNavigator({ groups, courseLabel }: ReaderCourseNavig
                             ref={item.current ? currentCourseLinkRef : undefined}
                           >
                             <span>{item.label}</span>
-                            <small>{progress ? `${progress}% read · ` : ""}{item.stats.questionBlocks}q · {item.stats.mathBlocks}m</small>
+                            <small>{progress ? `${progress}% read` : "Open lesson"}</small>
                           </Link>
                         );
                       })}

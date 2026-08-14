@@ -54,21 +54,21 @@ function statusForCourse(course: Course, track: StudyReadinessTrack, score: numb
 function summaryForStatus(course: Course, status: StudyReadinessStatus) {
   const practicePromptCount = course.practicePromptCount ?? 0;
   if (status === "answer-practice-debt") {
-    return `${course.noteCount} notes are indexed, but active UPSC answer practice is not visible in the question counter.`;
+    return `${course.noteCount} notes are available. The next step is to add more UPSC answer practice.`;
   }
   if (course.code.startsWith("UPSC-CSE") && practicePromptCount > 0) {
     return `${practicePromptCount} answer-practice prompts are ready across ${course.noteCount} UPSC notes.`;
   }
   if (status === "practice-anchor") {
-    return `${course.questionCount} question sections make this a strong active-recall anchor.`;
+    return `${course.questionCount} practice questions are ready across this course.`;
   }
   if (status === "question-bank-ready") {
-    return `${course.questionCount} question sections are ready for focused practice.`;
+    return `${course.questionCount} practice questions are ready for focused study.`;
   }
   if (status === "interactive-review") {
     return `${course.runnableNoteCount} runnable notes can be used for quick checks and worked examples.`;
   }
-  return `${course.noteCount} notes are available, but the next upgrade is more recall pressure.`;
+  return `${course.noteCount} notes are available. Start with a short closed-book review.`;
 }
 
 function actionForStatus(status: StudyReadinessStatus) {

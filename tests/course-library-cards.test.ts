@@ -15,7 +15,8 @@ test("library renders every real subject as a routed card", () => {
   assert.ok(courses.length >= 10);
   assert.match(page, /!\["SSC-CGL", "MITEEE", "SUPERPOWERS"\]\.includes\(course\.code\)/);
   assert.match(catalog, /group\.courses\.map\(\(course\) =>/);
-  assert.match(catalog, /href=\{`\/courses\/\$\{course\.code\}`\}/);
+  assert.match(catalog, /href=\{courseHref\(course\)\}/);
+  assert.match(catalog, /course\.code === "CAT"\) return "\/exams\/cat\/quant"/);
   assert.match(catalog, /className=\{styles\.courseCard\}/);
   assert.match(catalog, /course\.noteCount/);
   assert.match(catalog, /coursePracticeTotal\(course\)/);

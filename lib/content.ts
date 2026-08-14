@@ -408,16 +408,14 @@ export function getFeaturedCourses() {
 
 export function courseDisplaySummary(course: Course) {
   const practiceCount = course.questionCount + (course.practicePromptCount ?? 0);
-  const practiceLabel = (course.practicePromptCount ?? 0) > 0 ? "practice prompts" : "question sections";
-  const codeLabel = course.runnableNoteCount === 1 ? "code note" : "code notes";
   const scope = [course.level, course.category].filter((item, index, items) => item && items.indexOf(item) === index).join(" ");
-  const metrics = [
+  const features = [
     `${formatNumber(course.noteCount)} notes`,
-    `${formatNumber(practiceCount)} ${practiceLabel}`,
-    course.runnableNoteCount > 0 ? `${formatNumber(course.runnableNoteCount)} ${codeLabel}` : ""
+    practiceCount > 0 ? "guided practice" : "",
+    course.runnableNoteCount > 0 ? "interactive examples" : ""
   ].filter(Boolean).join(", ");
 
-  return `${course.name} study dashboard with ${metrics}${scope ? ` for ${scope}` : ""}. Use the reading order, course map, and practice panels to move through the material without losing your place.`;
+  return `${course.name} study dashboard with ${features}${scope ? ` for ${scope}` : ""}. Use the reading order, course map, and practice panels to move through the material without losing your place.`;
 }
 
 export function formatNumber(value: number) {

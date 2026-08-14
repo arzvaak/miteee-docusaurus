@@ -192,7 +192,7 @@ function CourseOutlineNote({ note, position }: { note: NotePreview; position: nu
       <span className="course-outline-position">{String(position).padStart(2, "0")}</span>
       <span>
         <strong>{note.label}</strong>
-        <small>{note.stats.questionBlocks}q · {note.stats.mathBlocks}m</small>
+        <small>Open lesson</small>
       </span>
       <ArrowRight size={14} aria-hidden="true" />
     </Link>

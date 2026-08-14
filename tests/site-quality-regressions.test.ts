@@ -153,8 +153,8 @@ test("course page header uses a readable product summary instead of SEO-truncate
 
   assert.match(coursePage, /courseDisplaySummary\(course\)/);
   assert.ok(courseDisplaySummary(course).includes("58 notes"));
-  assert.ok(courseDisplaySummary(course).includes("102 practice prompts"));
-  assert.doesNotMatch(courseDisplaySummary(course), /0 code notes/);
+  assert.ok(courseDisplaySummary(course).includes("guided practice"));
+  assert.doesNotMatch(courseDisplaySummary(course), /math blocks?|question sections?|102 practice prompts|0 code notes/i);
   assert.doesNotMatch(courseDisplaySummary(course), /\bAI generated st\b|\bsour$/i);
 });
 

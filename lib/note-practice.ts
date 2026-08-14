@@ -9,7 +9,7 @@ export type NotePractice = {
   title: string;
   courseCode: string | null;
   courseName: string | null;
-  focus: "UPSC expansion drill" | "Question drill" | "Formula rebuild" | "Diagram redraw" | "Code trace" | "Recall outline";
+  focus: "UPSC answer practice" | "Question practice" | "Formula practice" | "Diagram practice" | "Code walkthrough" | "Quick review";
   method: StudyTaskActivityInput["method"];
   minutes: number;
   prompt: string;
@@ -74,7 +74,7 @@ export function buildNotePractice(note: IndexedNote): NotePractice {
     const sectionLabels = practiceSections.map((section) => section.text);
     return {
       ...base,
-      focus: "UPSC expansion drill",
+      focus: "UPSC answer practice",
       method: "retrieval",
       minutes: 25,
       prompt: `Work through ${sectionLabels.slice(0, 3).join(", ")} from ${title} as a closed-book UPSC drill.`,
@@ -89,54 +89,54 @@ export function buildNotePractice(note: IndexedNote): NotePractice {
   if (practiceQuestionCount > 0) {
     return {
       ...base,
-      focus: "Question drill",
+      focus: "Question practice",
       method: "retrieval",
       minutes: practiceQuestionCount >= 8 ? 30 : 20,
       prompt: note.stats.quizBlocks
-        ? `Work one extracted quiz or 200/200 drill from ${title} under timer before reading the explanation.`
-        : `Pick and solve one question section from ${title} without reading the answer first.`,
+        ? `Work one quiz or timed drill from ${title} before reading the explanation.`
+        : `Pick and solve one question from ${title} without reading the answer first.`,
       evidence: note.stats.quizBlocks
-        ? `${plural(note.stats.quizBlocks, "quiz item")} from solved examples and timed drills make this note practice-ready.`
-        : `${plural(note.stats.questionBlocks, "question section")} make this note practice-ready.`
+        ? "This note includes quiz questions and worked examples for practice."
+        : "This note includes questions you can solve and check immediately."
     };
   }
 
   if (note.stats.mathBlocks > 0) {
     return {
       ...base,
-      focus: "Formula rebuild",
+      focus: "Formula practice",
       method: "self-explanation",
       minutes: note.stats.mathBlocks >= 8 ? 20 : 15,
       prompt: `Rebuild one formula or derivation from ${title}, then explain when it applies.`,
-      evidence: `${plural(note.stats.mathBlocks, "math block")} should be reconstructed, not reread.`
+      evidence: "This note includes formulas you can recall and apply."
     };
   }
 
   if (note.stats.mermaidBlocks > 0) {
     return {
       ...base,
-      focus: "Diagram redraw",
+      focus: "Diagram practice",
       method: "retrieval",
       minutes: 15,
       prompt: `Redraw one diagram or flow from ${title}, then compare labels and missing links.`,
-      evidence: `${plural(note.stats.mermaidBlocks, "diagram")} can be turned into visual recall.`
+      evidence: "This note includes a diagram you can redraw and explain."
     };
   }
 
   if (note.runnable || note.stats.codeBlocks > 0) {
     return {
       ...base,
-      focus: "Code trace",
+      focus: "Code walkthrough",
       method: "self-explanation",
       minutes: 15,
       prompt: `Trace one code block from ${title}, predict its output or state, then verify it.`,
-      evidence: `${plural(note.stats.codeBlocks, "code block")} should be predicted before running or rereading.`
+      evidence: "This note includes an example you can follow and explain step by step."
     };
   }
 
   return {
     ...base,
-    focus: "Recall outline",
+    focus: "Quick review",
     method: "spacing",
     minutes: 10,
     prompt: `Write a closed-book outline for ${title}, then add the three terms you missed.`,

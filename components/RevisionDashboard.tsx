@@ -415,7 +415,7 @@ export function RevisionDashboard({ suggestions }: { suggestions: NotePreview[] 
               <span>{note.courseName || note.courseCode || "MITEEE"}</span>
               <strong>{note.label}</strong>
               <p>{note.excerpt}</p>
-              <small>{note.stats.questionBlocks} question blocks <ArrowRight size={13} aria-hidden="true" /></small>
+              <small>Practise this note <ArrowRight size={13} aria-hidden="true" /></small>
             </Link>
           ))}
         </div>

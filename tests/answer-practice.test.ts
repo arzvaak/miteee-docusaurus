@@ -49,7 +49,8 @@ test("buildAnswerPracticePrompt prefers exam-answer prompts for question-heavy n
   assert.equal(prompt.focus, "Exam answer");
   assert.equal(prompt.id, "answer-practice:sem5-em2-pyq-answer-bank");
   assert.match(prompt.prompt, /exam-style answer/i);
-  assert.match(prompt.evidence, /24 question sections/);
+  assert.match(prompt.evidence, /questions you can answer and check/i);
+  assert.doesNotMatch(prompt.evidence, /math blocks?|question sections?|indexed/i);
   assert.match(prompt.sourceContext, /Electrical Machines II/);
   assert.match(prompt.sourceContext, /Induction Motor Problems/);
 });
@@ -104,7 +105,8 @@ test("buildAnswerPracticePrompt falls back to derivation practice for math-heavy
 
   assert.equal(prompt.focus, "Derivation");
   assert.match(prompt.prompt, /rebuild one derivation/i);
-  assert.match(prompt.evidence, /9 math blocks/);
+  assert.match(prompt.evidence, /formulas and worked steps/i);
+  assert.doesNotMatch(prompt.evidence, /math blocks?|active reconstruction/i);
 });
 
 test("buildAnswerPracticePrompts ranks practice-ready notes ahead of plain context notes", () => {

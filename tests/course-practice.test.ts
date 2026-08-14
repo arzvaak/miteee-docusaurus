@@ -79,8 +79,9 @@ test("buildCoursePracticeDrills creates logged practice prompts for technical co
   assert.equal(drills[0]?.slug, "sem5-em2-pyq-answer-bank");
   assert.equal(drills[0]?.method, "retrieval");
   assert.equal(drills[0]?.minutes, 25);
-  assert.match(drills[0]?.prompt ?? "", /answer one question section/i);
-  assert.match(drills[1]?.prompt ?? "", /formula|derivation/i);
+  assert.match(drills[0]?.prompt ?? "", /choose one question/i);
+  assert.match(drills[1]?.prompt ?? "", /formula/i);
+  assert.doesNotMatch(drills.map((drill) => `${drill.prompt} ${drill.reason}`).join(" "), /math blocks?|question sections?|active reconstruction/i);
   assert.equal(drills.some((drill) => drill.slug === "upsc-polity"), false);
 });
 
