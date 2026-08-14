@@ -208,15 +208,17 @@ jobs:
           NETCUP_USER: ${{ secrets.NETCUP_USER }}
         run: |
           set -euo pipefail
-          VERIFY_BASE_URL='https://note.arzvak.com:8443'
+          VERIFY_BASE_URL='https://note.arzvak.com:38443'
           ssh -i ~/.ssh/netcup_deploy_key \
+            -o ControlMaster=no \
+            -o ControlPath=none \
             -o ExitOnForwardFailure=yes \
-            -fN -L 8443:127.0.0.1:443 \
+            -fN -L 38443:127.0.0.1:443 \
             "$NETCUP_USER@$NETCUP_HOST"
           curl() {
             command curl \
               --noproxy '*' \
-              --resolve note.arzvak.com:8443:127.0.0.1 \
+              --resolve note.arzvak.com:38443:127.0.0.1 \
               --user-agent 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 MITEEE-Deploy-Verify/1.0' \
               --retry 3 \
               --retry-delay 2 \
