@@ -129,7 +129,7 @@ jobs:
           NETCUP_APP_DIR: ${{ secrets.NETCUP_APP_DIR }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
           MISTRAL_MODEL: mistral-small-latest
-          DEEPTUTOR_EMBEDDING_MODEL: all-minilm
+          DEEPTUTOR_EMBEDDING_MODEL: miteee-all-minilm
           DEEPTUTOR_EMBEDDING_DIMENSION: "384"
           DEEPTUTOR_ALLOWED_EMAILS: ${{ secrets.DEEPTUTOR_ALLOWED_EMAILS }}
           DEEPTUTOR_SSH_TARGET: ${{ secrets.NETCUP_USER }}@${{ secrets.NETCUP_HOST }}
@@ -169,7 +169,7 @@ jobs:
           DEEPTUTOR_SSH_TARGET: ${{ secrets.NETCUP_USER }}@${{ secrets.NETCUP_HOST }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
           MISTRAL_MODEL: mistral-small-latest
-          DEEPTUTOR_EMBEDDING_MODEL: all-minilm
+          DEEPTUTOR_EMBEDDING_MODEL: miteee-all-minilm
           DEEPTUTOR_EMBEDDING_DIMENSION: "384"
         run: |
           set -euo pipefail

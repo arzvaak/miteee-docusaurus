@@ -83,10 +83,10 @@ test("DeepTutor is isolated, persisted, indexed, and never published directly", 
   assert.match(serviceBlock, /cpus: "1\.0"/);
   assert.match(serviceBlock, /mem_limit: 2g/);
   assert.match(ollamaBlock, /ollama\/ollama:0\.11\.4@sha256:/);
-  assert.match(ollamaBlock, /cpus: "0\.5"/);
+  assert.match(ollamaBlock, /cpus: "2\.0"/);
   assert.match(ollamaBlock, /mem_limit: 512m/);
   assert.doesNotMatch(ollamaBlock, /\n\s+ports:/);
-  assert.match(serviceBlock, /DEEPTUTOR_EMBEDDING_MODEL: \$\{DEEPTUTOR_EMBEDDING_MODEL:-all-minilm\}/);
+  assert.match(serviceBlock, /DEEPTUTOR_EMBEDDING_MODEL: \$\{DEEPTUTOR_EMBEDDING_MODEL:-miteee-all-minilm\}/);
   assert.match(serviceBlock, /DEEPTUTOR_EMBEDDING_DIMENSION: \$\{DEEPTUTOR_EMBEDDING_DIMENSION:-384\}/);
   assert.match(serviceBlock, /http:\/\/ollama:11434\/api\/embed/);
   assert.match(compose, /profiles: \["deeptutor-tools"\]/);
@@ -97,7 +97,9 @@ test("DeepTutor is isolated, persisted, indexed, and never published directly", 
   assert.doesNotMatch(workflow, /DEEPTUTOR_SSH_TARGET: .*@note\.arzvak\.com/);
   assert.match(workflow, /tutor_status/);
   assert.match(publish, /--profile deeptutor-tools run --rm deeptutor-sync/);
-  assert.match(publish, /exec -T ollama ollama pull "\$DEEPTUTOR_EMBEDDING_MODEL"/);
+  assert.match(publish, /exec -T ollama ollama pull "\$DEEPTUTOR_EMBEDDING_BASE_MODEL"/);
+  assert.match(publish, /exec -T ollama ollama create "\$DEEPTUTOR_EMBEDDING_MODEL"/);
+  assert.match(source("ops/deeptutor/Modelfile.all-minilm"), /PARAMETER num_ctx 512/);
   assert.match(publish, /miteee-notes knowledge base is not ready/);
   const sync = source("ops/deeptutor/sync_notes.py");
   assert.match(sync, /extensions = \{"\.md", "\.mdx"\}/);

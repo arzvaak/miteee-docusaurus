@@ -1,0 +1,2 @@
+FROM all-minilm
+PARAMETER num_ctx 512

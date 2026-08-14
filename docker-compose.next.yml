@@ -4,7 +4,7 @@ services:
     pull_policy: missing
     container_name: miteee-ollama
     restart: unless-stopped
-    cpus: "0.5"
+    cpus: "2.0"
     mem_limit: 512m
     pids_limit: 128
     environment:
@@ -15,6 +15,7 @@ services:
       - "11434"
     volumes:
       - ./data/ollama:/root/.ollama:z
+      - ./ops/deeptutor/Modelfile.all-minilm:/opt/miteee/Modelfile.all-minilm:ro,Z
     healthcheck:
       test: ["CMD", "ollama", "list"]
       interval: 15s
@@ -34,7 +35,7 @@ services:
     environment:
       MISTRAL_API_KEY: ${MISTRAL_API_KEY:-}
       MISTRAL_MODEL: ${MISTRAL_MODEL:-mistral-small-latest}
-      DEEPTUTOR_EMBEDDING_MODEL: ${DEEPTUTOR_EMBEDDING_MODEL:-all-minilm}
+      DEEPTUTOR_EMBEDDING_MODEL: ${DEEPTUTOR_EMBEDDING_MODEL:-miteee-all-minilm}
       DEEPTUTOR_EMBEDDING_DIMENSION: ${DEEPTUTOR_EMBEDDING_DIMENSION:-384}
       DEEPTUTOR_EMBEDDING_URL: ${DEEPTUTOR_EMBEDDING_URL:-http://ollama:11434/api/embed}
     expose:

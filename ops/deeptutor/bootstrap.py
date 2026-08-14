@@ -37,7 +37,10 @@ def main():
     catalog = read_catalog()
     catalog["version"] = 1
     llm_model = os.environ.get("MISTRAL_MODEL", "mistral-small-latest").strip() or "mistral-small-latest"
-    embedding_model = os.environ.get("DEEPTUTOR_EMBEDDING_MODEL", "all-minilm").strip() or "all-minilm"
+    embedding_model = (
+        os.environ.get("DEEPTUTOR_EMBEDDING_MODEL", "miteee-all-minilm").strip()
+        or "miteee-all-minilm"
+    )
     embedding_url = os.environ.get("DEEPTUTOR_EMBEDDING_URL", "http://ollama:11434/api/embed").strip()
     try:
         embedding_dimension = int(os.environ.get("DEEPTUTOR_EMBEDDING_DIMENSION", "384"))

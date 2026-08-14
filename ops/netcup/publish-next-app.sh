@@ -12,7 +12,8 @@ AUTH_SECRET_PATH="$AUTH_DATA_DIR/.better-auth-secret"
 BETTER_AUTH_URL="${BETTER_AUTH_URL:-https://note.arzvak.com}"
 MISTRAL_API_KEY="${MISTRAL_API_KEY:-}"
 MISTRAL_MODEL="${MISTRAL_MODEL:-mistral-small-latest}"
-DEEPTUTOR_EMBEDDING_MODEL="${DEEPTUTOR_EMBEDDING_MODEL:-all-minilm}"
+DEEPTUTOR_EMBEDDING_MODEL="${DEEPTUTOR_EMBEDDING_MODEL:-miteee-all-minilm}"
+DEEPTUTOR_EMBEDDING_BASE_MODEL="${DEEPTUTOR_EMBEDDING_BASE_MODEL:-all-minilm}"
 DEEPTUTOR_EMBEDDING_DIMENSION="${DEEPTUTOR_EMBEDDING_DIMENSION:-384}"
 DEEPTUTOR_ALLOWED_EMAILS="${DEEPTUTOR_ALLOWED_EMAILS:-}"
 DEEPTUTOR_SSH_TARGET="${DEEPTUTOR_SSH_TARGET:-root@note.arzvak.com}"
@@ -56,7 +57,7 @@ if command -v chown >/dev/null 2>&1; then
   chown -R 1001:1001 "$AUTH_DATA_DIR" 2>/dev/null || true
 fi
 
-export AUTH_DB_PATH BETTER_AUTH_URL MISTRAL_API_KEY MISTRAL_MODEL DEEPTUTOR_EMBEDDING_MODEL DEEPTUTOR_EMBEDDING_DIMENSION DEEPTUTOR_ALLOWED_EMAILS DEEPTUTOR_SSH_TARGET
+export AUTH_DB_PATH BETTER_AUTH_URL MISTRAL_API_KEY MISTRAL_MODEL DEEPTUTOR_EMBEDDING_MODEL DEEPTUTOR_EMBEDDING_BASE_MODEL DEEPTUTOR_EMBEDDING_DIMENSION DEEPTUTOR_ALLOWED_EMAILS DEEPTUTOR_SSH_TARGET
 
 mkdir -p /root/note-arzvak-backups
 mkdir -p "$APP_DIR/data/deeptutor"
@@ -87,7 +88,8 @@ if command -v docker >/dev/null 2>&1 && docker compose version >/dev/null 2>&1 &
   docker compose -f docker-compose.next.yml up -d --build
   docker compose -f docker-compose.next.yml ps
   test -n "$MISTRAL_API_KEY"
-  docker compose -f docker-compose.next.yml exec -T ollama ollama pull "$DEEPTUTOR_EMBEDDING_MODEL"
+  docker compose -f docker-compose.next.yml exec -T ollama ollama pull "$DEEPTUTOR_EMBEDDING_BASE_MODEL"
+  docker compose -f docker-compose.next.yml exec -T ollama ollama create "$DEEPTUTOR_EMBEDDING_MODEL" -f /opt/miteee/Modelfile.all-minilm
   docker compose -f docker-compose.next.yml --profile deeptutor-tools run --rm deeptutor-sync
   docker compose -f docker-compose.next.yml exec -T deeptutor python - <<'PY'
 import json
