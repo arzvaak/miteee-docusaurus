@@ -51,7 +51,7 @@ test("CAT Quant source normalizes book MCQs and chapter notes", () => {
     explanation: "This fixture should be rejected before runtime generation.",
     provenance: { pageNumber: 302, chapterTitle: "Percentages" }
   }], null, 2));
-  fs.writeFileSync(path.join(notesRoot, "05-percentages.md"), "---\ntitle: Percentages\ndescription: CAT percentage methods and traps.\n---\n\n# Percentages\n\n## Core method\n\nUse the original base.\n\n![Percentage comparison](assets/percentages/page-301-figure-01.png)\n");
+  fs.writeFileSync(path.join(notesRoot, "05-percentages.md"), "---\ntitle: Percentages\n---\n\n# Percentages\n\n## Core method\n\nUse the original base.\n\n![Percentage comparison](assets/percentages/page-301-figure-01.png)\n");
   const previous = process.env.CAT_QUANT_BOOK_QUESTIONS_PATH;
   process.env.CAT_QUANT_BOOK_QUESTIONS_PATH = questionsPath;
   try {
@@ -69,6 +69,7 @@ test("CAT Quant source normalizes book MCQs and chapter notes", () => {
     });
     assert.equal(topics.length, 1);
     assert.equal(topics[0]?.slug, "percentages");
+    assert.equal(topics[0]?.summary, "Study Percentages from the Quantum CAT source, then practice every reviewed question from this chapter.");
     assert.match(topics[0]?.noteBody ?? "", /Core method/);
     assert.match(topics[0]?.noteBody ?? "", /!\[Percentage comparison\]\(\/content-assets\/cat\/quant\/assets\/percentages\/page-301-figure-01\.png\)/);
     assert.equal(topics[0]?.questionCount, 2);

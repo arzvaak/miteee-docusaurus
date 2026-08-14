@@ -195,7 +195,7 @@ function noteForTopic(root: string, slug: string) {
   const parsed = matter(fs.readFileSync(notePath, "utf8"));
   const noteRelativePath = path.relative(path.join(root, "docs"), notePath);
   return {
-    summary: text(parsed.data.description) || text(parsed.content.split(/\n\n+/).find((part) => !part.trim().startsWith("#"))),
+    summary: text(parsed.data.description),
     noteBody: rewriteCatNoteImageAssets(parsed.content.replace(/^#\s+[^\n]+\n+/, "").trim(), noteRelativePath)
   };
 }
