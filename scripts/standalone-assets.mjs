@@ -91,6 +91,7 @@ export function ensureStandaloneAssets(root = process.cwd()) {
   ].forEach((relativePath) => removeRelative(standaloneRoot, relativePath));
   copyDirectory(path.join(root, "public"), path.join(standaloneRoot, "public"));
   copyDirectory(requireDirectory(root, ".next/static"), path.join(standaloneRoot, ".next", "static"));
+  copyDirectory(requireDirectory(root, "data/generated/notes"), path.join(standaloneRoot, "data", "generated", "notes"));
   copyDirectoryOrCreateEmpty(path.join(root, "data", "current-affairs", "daily"), path.join(standaloneRoot, "data", "current-affairs", "daily"));
   copyFileIfExists(path.join(root, "data", "current-affairs", "state.json"), path.join(standaloneRoot, "data", "current-affairs", "state.json"));
   copyFileIfExists(path.join(root, "data", "exams", "ssc-cgl", "resource-candidates.json"), path.join(standaloneRoot, "data", "exams", "ssc-cgl", "resource-candidates.json"));
