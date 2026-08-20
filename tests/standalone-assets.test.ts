@@ -32,6 +32,14 @@ function seedGeneratedNotes(root: string) {
   );
 }
 
+function seedGeneratedSscExamData(root: string) {
+  fs.mkdirSync(path.join(root, "data", "generated", "exams", "ssc-cgl"), { recursive: true });
+  fs.writeFileSync(
+    path.join(root, "data", "generated", "exams", "ssc-cgl", "index.json"),
+    JSON.stringify({ generatedAt: "2026-08-20T00:00:00Z", questions: [{ id: "ssc-runtime-probe" }], topics: [], tests: [] })
+  );
+}
+
 test("ensureStandaloneAssets stages public and Next static assets for standalone runtime", () => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "miteee-standalone-"));
   fs.mkdirSync(path.join(root, "public", "img"), { recursive: true });
@@ -40,6 +48,7 @@ test("ensureStandaloneAssets stages public and Next static assets for standalone
   fs.writeFileSync(path.join(root, ".next", "static", "chunks", "app.js"), "console.log('ok');");
   fs.mkdirSync(path.join(root, ".next", "standalone"), { recursive: true });
   seedGeneratedNotes(root);
+  seedGeneratedSscExamData(root);
   seedCurrentAffairsRuntimeData(root);
   seedSscResourceRuntimeData(root);
 
@@ -48,6 +57,7 @@ test("ensureStandaloneAssets stages public and Next static assets for standalone
   assert.equal(fs.readFileSync(path.join(root, ".next", "standalone", "public", "img", "logo.svg"), "utf8"), "<svg />");
   assert.equal(fs.readFileSync(path.join(root, ".next", "standalone", ".next", "static", "chunks", "app.js"), "utf8"), "console.log('ok');");
   assert.match(fs.readFileSync(path.join(root, ".next", "standalone", "data", "generated", "notes", "sem7-psps-week-1.json"), "utf8"), /Protective Relaying Fundamentals/);
+  assert.match(fs.readFileSync(path.join(root, ".next", "standalone", "data", "generated", "exams", "ssc-cgl", "index.json"), "utf8"), /ssc-runtime-probe/);
   assert.match(fs.readFileSync(path.join(root, ".next", "standalone", "data", "current-affairs", "daily", "2026-06-29.json"), "utf8"), /2026-06-29/);
   assert.match(fs.readFileSync(path.join(root, ".next", "standalone", "data", "current-affairs", "state.json"), "utf8"), /lastSuccessfulDate/);
   assert.match(fs.readFileSync(path.join(root, ".next", "standalone", "data", "exams", "ssc-cgl", "resource-candidates.json"), "utf8"), /book-lane/);
@@ -62,6 +72,7 @@ test("standalone asset script runs the staging helper when invoked directly", ()
   fs.writeFileSync(path.join(root, ".next", "static", "chunks", "app.js"), "console.log('ok');");
   fs.mkdirSync(path.join(root, ".next", "standalone"), { recursive: true });
   seedGeneratedNotes(root);
+  seedGeneratedSscExamData(root);
   seedCurrentAffairsRuntimeData(root);
   seedSscResourceRuntimeData(root);
 
@@ -78,6 +89,7 @@ test("ensureStandaloneAssets removes traced deployment artifacts from standalone
   fs.mkdirSync(path.join(root, ".next", "standalone", "deploy-artifacts", "release"), { recursive: true });
   fs.writeFileSync(path.join(root, ".next", "standalone", "deploy-artifacts", "release", "server.js"), "stale");
   seedGeneratedNotes(root);
+  seedGeneratedSscExamData(root);
   seedCurrentAffairsRuntimeData(root);
   seedSscResourceRuntimeData(root);
 
@@ -92,6 +104,7 @@ test("ensureStandaloneAssets supports a fresh checkout without current-affairs r
   fs.mkdirSync(path.join(root, ".next", "static"), { recursive: true });
   fs.mkdirSync(path.join(root, ".next", "standalone"), { recursive: true });
   seedGeneratedNotes(root);
+  seedGeneratedSscExamData(root);
   seedSscResourceRuntimeData(root);
 
   ensureStandaloneAssets(root);
@@ -107,6 +120,7 @@ test("ensureStandaloneAssets rejects leaked workspace source in a real standalon
   fs.mkdirSync(path.join(root, ".next", "standalone", "tests"), { recursive: true });
   fs.writeFileSync(path.join(root, ".next", "standalone", "server.js"), "// server");
   seedGeneratedNotes(root);
+  seedGeneratedSscExamData(root);
   seedCurrentAffairsRuntimeData(root);
   seedSscResourceRuntimeData(root);
 
@@ -123,6 +137,7 @@ test("ensureStandaloneAssets requires the auth native addon in a real standalone
   fs.mkdirSync(path.join(root, ".next", "standalone"), { recursive: true });
   fs.writeFileSync(path.join(root, ".next", "standalone", "server.js"), "// server");
   seedGeneratedNotes(root);
+  seedGeneratedSscExamData(root);
   seedCurrentAffairsRuntimeData(root);
   seedSscResourceRuntimeData(root);
 
@@ -146,7 +161,7 @@ test("ensureStandaloneAssets removes traced SSC OCR and review intermediates fro
     "work/tmp.txt"
   ];
   const sourceCorpusPath = "data/exams/ssc-cgl/book-imports/questions.json";
-  const keptPath = "data/generated/exams/ssc-cgl/questions.json";
+  const keptPath = "data/generated/exams/ssc-cgl/index.json";
 
   for (const relativePath of [...removedPaths, sourceCorpusPath, keptPath]) {
     const filePath = path.join(standaloneRoot, ...relativePath.split("/"));
@@ -154,6 +169,7 @@ test("ensureStandaloneAssets removes traced SSC OCR and review intermediates fro
     fs.writeFileSync(filePath, "artifact");
   }
   seedGeneratedNotes(root);
+  seedGeneratedSscExamData(root);
   seedCurrentAffairsRuntimeData(root);
   seedSscResourceRuntimeData(root);
 
@@ -173,6 +189,7 @@ test("ensureStandaloneAssets fails clearly when the Next static output is missin
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "miteee-standalone-missing-static-"));
   fs.mkdirSync(path.join(root, ".next", "standalone"), { recursive: true });
   seedGeneratedNotes(root);
+  seedGeneratedSscExamData(root);
 
   assert.throws(
     () => ensureStandaloneAssets(root),

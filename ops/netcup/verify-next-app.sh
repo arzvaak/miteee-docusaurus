@@ -44,6 +44,20 @@ if grep -q "Study Vault" "$work_dir/ssc-cgl.html"; then
   exit 1
 fi
 
+curl --fail --location --silent --show-error \
+  "$base_url/api/exams/ssc-cgl/session?mode=endless&section=quantitative-aptitude&length=endless&timer=off&source=book&difficulty=all&seed=deployment-probe&cursor=0&limit=1" \
+  > "$work_dir/ssc-cgl-session.json"
+node - "$work_dir/ssc-cgl-session.json" <<'NODE'
+const fs = require("node:fs");
+const payload = JSON.parse(fs.readFileSync(process.argv[2], "utf8"));
+if (!Number.isInteger(payload.total) || payload.total < 1) {
+  throw new Error(`SSC CGL session corpus is empty (total=${String(payload.total)}).`);
+}
+if (!Array.isArray(payload.questions) || payload.questions.length !== 1) {
+  throw new Error("SSC CGL session probe did not return one question.");
+}
+NODE
+
 curl --fail --location --silent --show-error "$base_url/exams/cat/quant" > "$work_dir/cat-quant.html"
 grep -q "CAT Quant" "$work_dir/cat-quant.html"
 grep -q "3,386" "$work_dir/cat-quant.html"

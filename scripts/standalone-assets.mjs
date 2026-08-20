@@ -35,6 +35,14 @@ function requireDirectory(root, relativePath) {
   return directory;
 }
 
+function requireFile(root, relativePath) {
+  const filePath = path.join(root, ...relativePath.split("/"));
+  if (!fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) {
+    throw new Error(`Missing required standalone asset source: ${relativePath}. Run \`npm run build\` before staging or starting the standalone server.`);
+  }
+  return filePath;
+}
+
 function assertLeanStandaloneBundle(standaloneRoot) {
   if (!fs.existsSync(path.join(standaloneRoot, "server.js"))) return;
 
@@ -92,6 +100,10 @@ export function ensureStandaloneAssets(root = process.cwd()) {
   copyDirectory(path.join(root, "public"), path.join(standaloneRoot, "public"));
   copyDirectory(requireDirectory(root, ".next/static"), path.join(standaloneRoot, ".next", "static"));
   copyDirectory(requireDirectory(root, "data/generated/notes"), path.join(standaloneRoot, "data", "generated", "notes"));
+  copyFileIfExists(
+    requireFile(root, "data/generated/exams/ssc-cgl/index.json"),
+    path.join(standaloneRoot, "data", "generated", "exams", "ssc-cgl", "index.json")
+  );
   copyDirectoryOrCreateEmpty(path.join(root, "data", "current-affairs", "daily"), path.join(standaloneRoot, "data", "current-affairs", "daily"));
   copyFileIfExists(path.join(root, "data", "current-affairs", "state.json"), path.join(standaloneRoot, "data", "current-affairs", "state.json"));
   copyFileIfExists(path.join(root, "data", "exams", "ssc-cgl", "resource-candidates.json"), path.join(standaloneRoot, "data", "exams", "ssc-cgl", "resource-candidates.json"));
