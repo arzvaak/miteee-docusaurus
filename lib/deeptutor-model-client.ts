@@ -18,8 +18,9 @@ type ModelResponse = {
     modelCount: number;
     activeModel: string | null;
     errorCode: string | null;
+    userCode: string | null;
+    verificationUrl: string | null;
   } | null;
-  sshCommand: string | null;
 };
 
 function readSelection(): DeepTutorModelSelection | null {
@@ -34,7 +35,7 @@ function readSelection(): DeepTutorModelSelection | null {
 }
 
 export function useDeepTutorModels(enabled = true) {
-  const [data, setData] = useState<ModelResponse>({ options: [], active: null, oauth: null, sshCommand: null });
+  const [data, setData] = useState<ModelResponse>({ options: [], active: null, oauth: null });
   const [selected, setSelectedState] = useState<DeepTutorModelSelection | null>(null);
   const [loading, setLoading] = useState(true);
 

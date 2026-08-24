@@ -308,7 +308,6 @@ export function DeepTutorDrawer({ hasAccess, available: initialAvailability }: {
               options={models.options}
               selected={models.selected}
               oauth={models.oauth}
-              savedSshCommand={models.sshCommand}
               loading={models.loading}
               onSelect={models.select}
               onRefresh={models.refresh}

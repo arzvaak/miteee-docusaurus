@@ -30,6 +30,22 @@ type Catalog = {
   }>;
 };
 
+type ModelsDevModel = {
+  id?: unknown;
+  name?: unknown;
+  status?: unknown;
+  limit?: { context?: unknown };
+  provider?: { npm?: unknown };
+};
+
+type ModelsDevProvider = {
+  npm?: unknown;
+  api?: unknown;
+  models?: Record<string, ModelsDevModel>;
+};
+
+const modelsDevUrl = "https://models.dev/api.json";
+
 async function authorized(request: Request) {
   await ensureAuthMigrations();
   const session = await auth.api.getSession({ headers: request.headers });
@@ -38,6 +54,19 @@ async function authorized(request: Request) {
 
 async function upstream(path: string, init?: RequestInit) {
   return fetch(`${deepTutorApiBaseUrl()}${path}`, {
+    ...init,
+    cache: "no-store",
+    signal: AbortSignal.timeout(30_000),
+    headers: {
+      ...(init?.body ? { "Content-Type": "application/json" } : {}),
+      ...init?.headers
+    }
+  });
+}
+
+async function authUpstream(path: string, init?: RequestInit) {
+  const baseUrl = (process.env.DEEPTUTOR_AUTH_BASE_URL?.trim() || "http://deeptutor-auth:8002").replace(/\/$/, "");
+  return fetch(`${baseUrl}${path}`, {
     ...init,
     cache: "no-store",
     signal: AbortSignal.timeout(30_000),
@@ -92,25 +121,78 @@ function cleanOauth(payload: unknown) {
     callbackPort: typeof input.callback_port === "number" ? input.callback_port : null,
     modelCount: typeof input.model_count === "number" ? input.model_count : 0,
     activeModel: typeof input.active_model === "string" ? input.active_model : null,
-    errorCode: typeof input.error_code === "string" ? input.error_code : null
+    errorCode: typeof input.error_code === "string" ? input.error_code : null,
+    userCode: typeof input.user_code === "string" ? input.user_code : null,
+    verificationUrl: typeof input.verification_url === "string" ? input.verification_url : null
   };
 }
 
-function sshBridgeCommand(callbackPort: number | null | undefined) {
-  return callbackPort
-    ? `ssh -N -L ${callbackPort}:127.0.0.1:${process.env.NEXT_APP_PORT?.trim() || "3025"} ${process.env.DEEPTUTOR_SSH_TARGET?.trim() || "root@note.arzvak.com"}`
-    : null;
+async function openCodeProfiles(plan: "go" | "zen", apiKey: string) {
+  const providerId = plan === "go" ? "opencode-go" : "opencode";
+  const expectedApi = plan === "go" ? "https://opencode.ai/zen/go/v1" : "https://opencode.ai/zen/v1";
+  const response = await fetch(modelsDevUrl, { cache: "no-store", signal: AbortSignal.timeout(20_000) });
+  if (!response.ok) throw new Error("OpenCode model catalog unavailable");
+  const providers = await response.json() as Record<string, ModelsDevProvider>;
+  const provider = providers[providerId];
+  if (!provider || provider.api !== expectedApi || !provider.models) throw new Error("OpenCode provider catalog invalid");
+
+  const compatible: Array<Record<string, unknown>> = [];
+  const anthropic: Array<Record<string, unknown>> = [];
+  for (const [slug, item] of Object.entries(provider.models)) {
+    if (item.status === "deprecated") continue;
+    const model = typeof item.id === "string" && item.id ? item.id : slug;
+    const name = typeof item.name === "string" && item.name ? item.name : model;
+    const context = typeof item.limit?.context === "number" && item.limit.context > 0 ? item.limit.context : 128_000;
+    const npm = typeof item.provider?.npm === "string" ? item.provider.npm : provider.npm;
+    const target = npm === "@ai-sdk/anthropic" ? anthropic : npm === "@ai-sdk/openai-compatible" ? compatible : null;
+    if (!target) continue;
+    target.push({
+      id: `miteee-opencode-${plan}-${model.replace(/[^a-zA-Z0-9_-]/g, "-")}`,
+      name,
+      model,
+      context_window: context
+    });
+  }
+
+  const profiles: Array<Record<string, unknown>> = [];
+  if (compatible.length) profiles.push({
+    id: `miteee-opencode-${plan}-chat`,
+    name: plan === "go" ? "OpenCode Go" : "OpenCode Zen",
+    binding: "custom",
+    base_url: expectedApi,
+    api_key: apiKey,
+    api_version: "",
+    extra_headers: {},
+    models: compatible
+  });
+  if (anthropic.length) profiles.push({
+    id: `miteee-opencode-${plan}-anthropic`,
+    name: plan === "go" ? "OpenCode Go (Anthropic)" : "OpenCode Zen (Anthropic)",
+    binding: "custom_anthropic",
+    base_url: `${expectedApi}/messages`,
+    api_key: apiKey,
+    api_version: "",
+    extra_headers: {},
+    models: anthropic
+  });
+  if (!profiles.length) throw new Error("No DeepTutor-compatible OpenCode models found");
+  return profiles;
 }
 
 async function modelPayload() {
-  const [modelsResponse, oauthResponse] = await Promise.all([
+  const [modelsResponse, oauthResponse, deviceResponse] = await Promise.all([
     upstream("/api/v1/settings/llm-options"),
-    upstream("/api/v1/settings/providers/openai-codex/oauth/status")
+    upstream("/api/v1/settings/providers/openai-codex/oauth/status"),
+    authUpstream("/status").catch(() => null)
   ]);
   if (!modelsResponse.ok) throw new Error(`Model list returned ${modelsResponse.status}`);
   const models = cleanOptions(await modelsResponse.json());
-  const oauth = oauthResponse.ok ? cleanOauth(await oauthResponse.json()) : null;
-  return { ...models, oauth, sshCommand: sshBridgeCommand(oauth?.callbackPort) };
+  const upstreamOauth = oauthResponse.ok ? cleanOauth(await oauthResponse.json()) : null;
+  const deviceOauth = deviceResponse?.ok ? cleanOauth(await deviceResponse.json()) : null;
+  const oauth = deviceOauth?.connection === "authorizing" || deviceOauth?.operationState === "failed"
+    ? deviceOauth
+    : upstreamOauth;
+  return { ...models, oauth };
 }
 
 export async function GET(request: Request) {
@@ -132,25 +214,24 @@ export async function POST(request: Request) {
   const action = typeof body?.action === "string" ? body.action : "";
 
   try {
-    if (["oauth_start", "oauth_cancel", "oauth_logout", "oauth_refresh"].includes(action)) {
-      const paths: Record<string, string> = {
-        oauth_start: "/api/v1/settings/providers/openai-codex/oauth/start",
-        oauth_cancel: "/api/v1/settings/providers/openai-codex/oauth/cancel",
-        oauth_logout: "/api/v1/settings/providers/openai-codex/oauth/logout",
-        oauth_refresh: "/api/v1/settings/providers/openai-codex/models/refresh"
-      };
-      const response = await upstream(paths[action], { method: "POST" });
+    if (["oauth_start", "oauth_cancel"].includes(action)) {
+      const response = await authUpstream(action === "oauth_start" ? "/start" : "/cancel", { method: "POST" });
       const payload = await response.json().catch(() => null);
       if (!response.ok) {
         return NextResponse.json({ error: "ChatGPT connection could not be updated.", detail: payload }, { status: 502, headers: privateHeaders });
       }
       const cleaned = cleanOauth(payload);
-      return NextResponse.json({
-        oauth: cleaned,
-        authorizeUrl: cleaned?.authorizeUrl,
-        callbackPort: cleaned?.callbackPort,
-        sshCommand: sshBridgeCommand(cleaned?.callbackPort)
-      }, { headers: privateHeaders });
+      return NextResponse.json({ oauth: cleaned }, { headers: privateHeaders });
+    }
+
+    if (["oauth_logout", "oauth_refresh"].includes(action)) {
+      if (action === "oauth_logout") await authUpstream("/cancel", { method: "POST" }).catch(() => null);
+      const path = action === "oauth_logout"
+        ? "/api/v1/settings/providers/openai-codex/oauth/logout"
+        : "/api/v1/settings/providers/openai-codex/models/refresh";
+      const response = await upstream(path, { method: "POST" });
+      if (!response.ok) return NextResponse.json({ error: "ChatGPT connection could not be updated." }, { status: 502, headers: privateHeaders });
+      return NextResponse.json(await modelPayload(), { headers: privateHeaders });
     }
 
     if (action === "configure_deepseek") {
@@ -179,6 +260,32 @@ export async function POST(request: Request) {
         models: [{ id: `miteee-deepseek-${model.replace(/[^a-zA-Z0-9_-]/g, "-")}`, name: model, model, context_window: 128000 }]
       };
       llm.profiles = [...profiles.filter((item) => item.id !== profile.id), profile];
+      const saveResponse = await upstream("/api/v1/settings/catalog", {
+        method: "PUT",
+        body: JSON.stringify({ catalog })
+      });
+      if (!saveResponse.ok) throw new Error("Catalog save failed");
+      const applyResponse = await upstream("/api/v1/settings/apply", { method: "POST" });
+      if (!applyResponse.ok) throw new Error("Catalog apply failed");
+      return NextResponse.json(await modelPayload(), { headers: privateHeaders });
+    }
+
+    if (action === "configure_opencode") {
+      const apiKey = typeof body?.apiKey === "string" ? body.apiKey.trim() : "";
+      const plan = body?.plan === "go" || body?.plan === "zen" ? body.plan : null;
+      if (!plan || !apiKey || apiKey.length > 512) {
+        return NextResponse.json({ error: "Enter a valid OpenCode Go or Zen API key." }, { status: 400, headers: privateHeaders });
+      }
+      const catalogResponse = await upstream("/api/v1/settings/catalog");
+      if (!catalogResponse.ok) throw new Error("Catalog unavailable");
+      const wrapper = await catalogResponse.json() as { catalog?: Catalog };
+      const catalog = wrapper.catalog || {};
+      const services = catalog.services ||= {};
+      const llm = services.llm ||= { active_profile_id: null, active_model_id: null, profiles: [] };
+      const profiles = Array.isArray(llm.profiles) ? llm.profiles : [];
+      const prefix = `miteee-opencode-${plan}-`;
+      const additions = await openCodeProfiles(plan, apiKey);
+      llm.profiles = [...profiles.filter((item) => typeof item.id !== "string" || !item.id.startsWith(prefix)), ...additions];
       const saveResponse = await upstream("/api/v1/settings/catalog", {
         method: "PUT",
         body: JSON.stringify({ catalog })

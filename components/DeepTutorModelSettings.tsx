@@ -14,13 +14,14 @@ type OauthStatus = {
   modelCount: number;
   activeModel: string | null;
   errorCode: string | null;
+  userCode: string | null;
+  verificationUrl: string | null;
 } | null;
 
 type Props = {
   options: DeepTutorModelOption[];
   selected: DeepTutorModelSelection | null;
   oauth: OauthStatus;
-  savedSshCommand: string | null;
   loading: boolean;
   onSelect: (selection: DeepTutorModelSelection | null) => void;
   onRefresh: () => Promise<unknown>;
@@ -37,16 +38,17 @@ async function modelAction(body: Record<string, unknown>) {
   return payload;
 }
 
-export function DeepTutorModelSettings({ options, selected, oauth, savedSshCommand, loading, onSelect, onRefresh }: Props) {
+export function DeepTutorModelSettings({ options, selected, oauth, loading, onSelect, onRefresh }: Props) {
   const [open, setOpen] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
-  const [sshCommand, setSshCommand] = useState("");
-  const [authorizeUrl, setAuthorizeUrl] = useState("");
   const [copied, setCopied] = useState(false);
   const [deepSeekOpen, setDeepSeekOpen] = useState(false);
   const [deepSeekKey, setDeepSeekKey] = useState("");
   const [deepSeekModel, setDeepSeekModel] = useState("deepseek-chat");
+  const [openCodeOpen, setOpenCodeOpen] = useState(false);
+  const [openCodePlan, setOpenCodePlan] = useState<"go" | "zen">("go");
+  const [openCodeKey, setOpenCodeKey] = useState("");
 
   useEffect(() => {
     if (!open || oauth?.connection !== "authorizing") return;
@@ -60,9 +62,22 @@ export function DeepTutorModelSettings({ options, selected, oauth, savedSshComma
     setBusy(true);
     setError("");
     try {
-      const payload = await modelAction({ action });
-      if (typeof payload?.sshCommand === "string") setSshCommand(payload.sshCommand);
-      if (typeof payload?.authorizeUrl === "string") setAuthorizeUrl(payload.authorizeUrl);
+      await modelAction({ action });
+      await onRefresh();
+    } catch (caught) {
+      setError((caught as Error).message);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function connectOpenCode() {
+    setBusy(true);
+    setError("");
+    try {
+      await modelAction({ action: "configure_opencode", plan: openCodePlan, apiKey: openCodeKey });
+      setOpenCodeKey("");
+      setOpenCodeOpen(false);
       await onRefresh();
     } catch (caught) {
       setError((caught as Error).message);
@@ -87,9 +102,6 @@ export function DeepTutorModelSettings({ options, selected, oauth, savedSshComma
   }
 
   const selectedValue = selected ? `${selected.profileId}::${selected.modelId}` : "";
-  const bridgeCommand = sshCommand || savedSshCommand || "";
-  const bridgeAuthorizeUrl = authorizeUrl || oauth?.authorizeUrl || "";
-
   return (
     <div className={styles.root}>
       <label className={styles.selectorLabel}>
@@ -124,17 +136,34 @@ export function DeepTutorModelSettings({ options, selected, oauth, savedSshComma
                 <button type="button" disabled={busy} onClick={() => run("oauth_refresh")}><RefreshCw size={13} /> Refresh</button>
                 <button type="button" disabled={busy} onClick={() => run("oauth_logout")}><LogOut size={13} /> Sign out</button>
               </div>
-            ) : (
+            ) : oauth?.connection === "authorizing" ? null : (
               <button className={styles.primary} type="button" disabled={busy} onClick={() => run("oauth_start")}>
                 {busy ? <LoaderCircle className={styles.spin} size={14} /> : <ExternalLink size={14} />} Sign in with ChatGPT
               </button>
             )}
-            {bridgeCommand && oauth?.connection === "authorizing" ? (
+            {oauth?.userCode && oauth?.verificationUrl && oauth.connection === "authorizing" ? (
               <div className={styles.bridge}>
-                <strong>One-time secure bridge</strong>
-                <p>Paste this into PowerShell and leave it open, then continue to ChatGPT.</p>
-                <button type="button" onClick={async () => { await navigator.clipboard.writeText(bridgeCommand); setCopied(true); }}><Copy size={13} /> {copied ? "Copied" : "Copy PowerShell command"}</button>
-                {bridgeAuthorizeUrl ? <a href={bridgeAuthorizeUrl} target="_blank" rel="noreferrer">Continue to ChatGPT <ExternalLink size={12} /></a> : null}
+                <strong>Enter this one-time code</strong>
+                <p className={styles.deviceCode}>{oauth.userCode}</p>
+                <button type="button" onClick={async () => { await navigator.clipboard.writeText(oauth.userCode || ""); setCopied(true); }}><Copy size={13} /> {copied ? "Copied" : "Copy code"}</button>
+                <a href={oauth.verificationUrl} target="_blank" rel="noreferrer">Continue to ChatGPT <ExternalLink size={12} /></a>
+                <button type="button" disabled={busy} onClick={() => run("oauth_cancel")}>Cancel</button>
+              </div>
+            ) : null}
+            {oauth?.connection === "error" ? <p className={styles.error}>ChatGPT sign-in failed. Check device-code access for this account, then try again.</p> : null}
+          </div>
+
+          <div className={styles.providerCard}>
+            <div className={styles.providerHead}>
+              <span className={styles.providerIcon}>OC</span>
+              <div><strong>OpenCode</strong><small>Use an OpenCode Go or Zen API key</small></div>
+            </div>
+            <button className={styles.secondary} type="button" onClick={() => setOpenCodeOpen((value) => !value)}>{openCodeOpen ? "Close" : "Connect OpenCode"}</button>
+            {openCodeOpen ? (
+              <div className={styles.deepSeekForm}>
+                <label>Plan<select value={openCodePlan} onChange={(event) => setOpenCodePlan(event.target.value as "go" | "zen")}><option value="go">OpenCode Go</option><option value="zen">OpenCode Zen</option></select></label>
+                <label>API key<input value={openCodeKey} onChange={(event) => setOpenCodeKey(event.target.value)} type="password" autoComplete="off" placeholder="Stored only on the server" /></label>
+                <button className={styles.primary} type="button" disabled={busy || !openCodeKey.trim()} onClick={connectOpenCode}>Save OpenCode</button>
               </div>
             ) : null}
           </div>

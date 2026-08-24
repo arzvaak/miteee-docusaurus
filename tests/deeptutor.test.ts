@@ -68,6 +68,7 @@ test("DeepTutor is isolated, persisted, indexed, and never published directly", 
   const notePage = source("app/notes/[slug]/page.tsx");
   const nextConfig = source("next.config.mjs");
   const serviceBlock = compose.slice(compose.indexOf("  deeptutor:"), compose.indexOf("  miteee-next:"));
+  const authBlock = compose.slice(compose.indexOf("  deeptutor-auth:"), compose.indexOf("  miteee-next:"));
   const ollamaBlock = compose.slice(compose.indexOf("  ollama:"), compose.indexOf("  deeptutor:"));
 
   assert.match(compose, /ghcr\.io\/hkuds\/deeptutor:1\.5\.9@sha256:/);
@@ -95,8 +96,7 @@ test("DeepTutor is isolated, persisted, indexed, and never published directly", 
   assert.doesNotMatch(serviceBlock, /\n\s+ports:/);
   assert.match(workflow, /--exclude 'data\/deeptutor\/'/);
   assert.match(workflow, /--exclude 'data\/ollama\/'/);
-  assert.match(workflow, /DEEPTUTOR_SSH_TARGET: \$\{\{ secrets\.NETCUP_USER \}\}@\$\{\{ secrets\.NETCUP_HOST \}\}/);
-  assert.doesNotMatch(workflow, /DEEPTUTOR_SSH_TARGET: .*@note\.arzvak\.com/);
+  assert.doesNotMatch(workflow, /DEEPTUTOR_SSH_TARGET/);
   assert.match(verifier, /tutor_status/);
   assert.match(verifier, /\/api\/deeptutor/);
   assert.match(publish, /--profile deeptutor-tools run --rm deeptutor-sync/);
@@ -108,8 +108,16 @@ test("DeepTutor is isolated, persisted, indexed, and never published directly", 
   assert.match(publish, /up -d deeptutor-refresh/);
   assert.match(source("ops/deeptutor/Modelfile.all-minilm"), /PARAMETER num_ctx 512/);
   assert.match(source("ops/deeptutor/bootstrap.py"), /"chunk_size": 508/);
-  assert.match(source("ops/deeptutor/bootstrap.py"), /"binding": "custom_anthropic"/);
+  assert.match(source("ops/deeptutor/bootstrap.py"), /"binding": "custom"/);
   assert.match(source("ops/deeptutor/bootstrap.py"), /https:\/\/opencode\.ai\/zen\/go\/v1/);
+  assert.match(authBlock, /codex_device_auth:app/);
+  assert.match(authBlock, /http:\/\/127\.0\.0\.1:8002\/health/);
+  assert.doesNotMatch(authBlock, /\n\s+ports:/);
+  const deviceAuth = source("ops/deeptutor/codex_device_auth.py");
+  assert.match(deviceAuth, /deviceauth\/usercode/);
+  assert.match(deviceAuth, /deviceauth\/token/);
+  assert.match(deviceAuth, /DEVICE_CODE_REDIRECT_URI/);
+  assert.match(deviceAuth, /commit_credentials/);
   assert.doesNotMatch(source("ops/deeptutor/bootstrap.py"), /mistral-small-latest|mistral-embed/);
   assert.match(publish, /miteee-notes knowledge base is not ready/);
   const sync = source("ops/deeptutor/sync_notes.py");
@@ -124,6 +132,8 @@ test("DeepTutor is isolated, persisted, indexed, and never published directly", 
   assert.match(nextConfig, /"\/tutor": authTraceExcludes/);
   assert.match(nextConfig, /"\/tutor": authTraceIncludes/);
   assert.match(publish, /openai-codex\/oauth\/status/);
+  assert.match(publish, /exec -T deeptutor-auth python/);
+  assert.match(publish, /127\.0\.0\.1:8002\/health/);
 });
 
 test("DeepTutor drawer supports streamed study modes and conversation controls", () => {
@@ -161,21 +171,26 @@ test("DeepTutor has a private full-page chat sharing the drawer conversation", (
   assert.match(chat, /model: models\.selected/);
 });
 
-test("DeepTutor model controls support ChatGPT OAuth and server-held DeepSeek credentials", () => {
+test("DeepTutor model controls support ChatGPT device login and server-held provider credentials", () => {
   const modelRoute = source("app/api/deeptutor/models/route.ts");
-  const callbackRoute = source("app/api/v1/auth/openai-codex/callback/route.ts");
   const settings = source("components/DeepTutorModelSettings.tsx");
   const modelClient = source("lib/deeptutor-model-client.ts");
   const tutorRoute = source("app/api/deeptutor/route.ts");
 
   assert.match(modelRoute, /hasDeepTutorAccess\(session\.user\.email\)/);
   assert.match(modelRoute, /status: 404/);
-  assert.match(modelRoute, /openai-codex\/oauth\/start/);
+  assert.match(modelRoute, /authUpstream\(action === "oauth_start" \? "\/start" : "\/cancel"/);
+  assert.match(modelRoute, /configure_opencode/);
+  assert.match(modelRoute, /https:\/\/models\.dev\/api\.json/);
+  assert.match(modelRoute, /https:\/\/opencode\.ai\/zen\/go\/v1/);
+  assert.match(modelRoute, /https:\/\/opencode\.ai\/zen\/v1/);
   assert.match(modelRoute, /configure_deepseek/);
   assert.match(modelRoute, /https:\/\/api\.deepseek\.com/);
   assert.doesNotMatch(modelRoute, /localStorage/);
-  assert.match(callbackRoute, /\["code", "state", "error"\]/);
   assert.match(settings, /Sign in with ChatGPT/);
+  assert.match(settings, /Enter this one-time code/);
+  assert.match(settings, /OpenCode Go/);
+  assert.match(settings, /OpenCode Zen/);
   assert.match(settings, /Same API credential OpenCode uses/);
   assert.match(settings, /type="password"/);
   assert.match(modelClient, /miteee-deeptutor-model-v1/);

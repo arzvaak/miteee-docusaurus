@@ -59,7 +59,7 @@ def main():
         upsert_profile(llm, {
             "id": "miteee-opencode-go",
             "name": "MITEEE OpenCode Go",
-            "binding": "custom_anthropic",
+            "binding": "custom",
             "base_url": "https://opencode.ai/zen/go/v1",
             "api_key": api_key,
             "api_version": "",
@@ -68,7 +68,7 @@ def main():
                 "id": "miteee-opencode-go-deepseek-flash",
                 "name": llm_model,
                 "model": llm_model,
-                "context_window": 128000
+                "context_window": 1000000
             }]
         }, "miteee-opencode-go-deepseek-flash")
         llm["profiles"] = [

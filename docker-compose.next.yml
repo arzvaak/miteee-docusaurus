@@ -52,6 +52,30 @@ services:
       retries: 5
       start_period: 60s
 
+  deeptutor-auth:
+    image: ghcr.io/hkuds/deeptutor:1.5.9@sha256:c7f811572d00edddeb4382ce8fab805a1f1517268481c207543d873dc2751767
+    pull_policy: missing
+    container_name: miteee-deeptutor-auth
+    restart: unless-stopped
+    cpus: "0.10"
+    mem_limit: 128m
+    pids_limit: 64
+    entrypoint: ["python", "-m", "uvicorn", "codex_device_auth:app", "--app-dir", "/opt/miteee", "--host", "0.0.0.0", "--port", "8002"]
+    expose:
+      - "8002"
+    volumes:
+      - ./data/deeptutor:/app/data:z
+      - ./ops/deeptutor/codex_device_auth.py:/opt/miteee/codex_device_auth.py:ro,Z
+    depends_on:
+      deeptutor:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8002/health', timeout=5)"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 15s
+
   miteee-next:
     build:
       context: .
@@ -69,8 +93,7 @@ services:
       BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:-}
       DEEPTUTOR_API_BASE_URL: http://deeptutor:8001
       DEEPTUTOR_WS_URL: ws://deeptutor:8001/api/v1/ws
-      NEXT_APP_PORT: ${NEXT_APP_PORT:-3025}
-      DEEPTUTOR_SSH_TARGET: ${DEEPTUTOR_SSH_TARGET:-root@note.arzvak.com}
+      DEEPTUTOR_AUTH_BASE_URL: http://deeptutor-auth:8002
       DEEPTUTOR_KB_NAME: ${DEEPTUTOR_KB_NAME:-miteee-notes}
       DEEPTUTOR_INDEX_TIMEOUT_SECONDS: ${DEEPTUTOR_INDEX_TIMEOUT_SECONDS:-7200}
       DEEPTUTOR_ALLOWED_EMAILS: ${DEEPTUTOR_ALLOWED_EMAILS:-}
@@ -81,6 +104,8 @@ services:
       - ./data/auth:/app/data/auth:Z
     depends_on:
       deeptutor:
+        condition: service_healthy
+      deeptutor-auth:
         condition: service_healthy
     healthcheck:
       test: ["CMD-SHELL", "node -e \"Promise.all(['http://127.0.0.1:3000/exams/ssc-cgl','http://127.0.0.1:3000/api/auth/get-session'].map(url=>fetch(url))).then(responses=>process.exit(responses.every(response=>response.ok)?0:1)).catch(()=>process.exit(1))\""]

@@ -131,14 +131,13 @@ jobs:
           DEEPTUTOR_EMBEDDING_MODEL: miteee-all-minilm
           DEEPTUTOR_EMBEDDING_DIMENSION: "384"
           DEEPTUTOR_ALLOWED_EMAILS: ${{ secrets.DEEPTUTOR_ALLOWED_EMAILS }}
-          DEEPTUTOR_SSH_TARGET: ${{ secrets.NETCUP_USER }}@${{ secrets.NETCUP_HOST }}
         run: |
           set -euo pipefail
           ssh -i ~/.ssh/netcup_deploy_key "$NETCUP_USER@$NETCUP_HOST" \
             "set -euo pipefail
              cd '$NETCUP_APP_DIR'
              chmod +x ops/netcup/publish-next-app.sh
-             OPENCODE_GO_MODEL='$OPENCODE_GO_MODEL' DEEPTUTOR_EMBEDDING_MODEL='$DEEPTUTOR_EMBEDDING_MODEL' DEEPTUTOR_EMBEDDING_DIMENSION='$DEEPTUTOR_EMBEDDING_DIMENSION' DEEPTUTOR_ALLOWED_EMAILS='$DEEPTUTOR_ALLOWED_EMAILS' DEEPTUTOR_SSH_TARGET='$DEEPTUTOR_SSH_TARGET' ops/netcup/publish-next-app.sh '$NETCUP_APP_DIR'"
+             OPENCODE_GO_MODEL='$OPENCODE_GO_MODEL' DEEPTUTOR_EMBEDDING_MODEL='$DEEPTUTOR_EMBEDDING_MODEL' DEEPTUTOR_EMBEDDING_DIMENSION='$DEEPTUTOR_EMBEDDING_DIMENSION' DEEPTUTOR_ALLOWED_EMAILS='$DEEPTUTOR_ALLOWED_EMAILS' ops/netcup/publish-next-app.sh '$NETCUP_APP_DIR'"
 
       - name: Install SSC CGL news cron container
         env:
@@ -165,7 +164,6 @@ jobs:
           NETCUP_USER: ${{ secrets.NETCUP_USER }}
           NETCUP_APP_DIR: ${{ secrets.NETCUP_APP_DIR }}
           DEEPTUTOR_ALLOWED_EMAILS: ${{ secrets.DEEPTUTOR_ALLOWED_EMAILS }}
-          DEEPTUTOR_SSH_TARGET: ${{ secrets.NETCUP_USER }}@${{ secrets.NETCUP_HOST }}
           OPENCODE_GO_MODEL: deepseek-v4-flash
           DEEPTUTOR_EMBEDDING_MODEL: miteee-all-minilm
           DEEPTUTOR_EMBEDDING_DIMENSION: "384"
@@ -184,7 +182,6 @@ jobs:
              export NEXT_APP_PUBLISHED_PORT=3025
              export BETTER_AUTH_URL=https://note.arzvak.com
              export DEEPTUTOR_ALLOWED_EMAILS='$DEEPTUTOR_ALLOWED_EMAILS'
-             export DEEPTUTOR_SSH_TARGET='$DEEPTUTOR_SSH_TARGET'
              export OPENCODE_GO_MODEL='$OPENCODE_GO_MODEL'
              export DEEPTUTOR_EMBEDDING_MODEL='$DEEPTUTOR_EMBEDDING_MODEL'
              export DEEPTUTOR_EMBEDDING_DIMENSION='$DEEPTUTOR_EMBEDDING_DIMENSION'

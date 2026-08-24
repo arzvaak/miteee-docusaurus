@@ -247,7 +247,6 @@ export function DeepTutorChat({ initialNote }: { initialNote: DeepTutorNoteConte
           options={models.options}
           selected={models.selected}
           oauth={models.oauth}
-          savedSshCommand={models.sshCommand}
           loading={models.loading}
           onSelect={models.select}
           onRefresh={models.refresh}

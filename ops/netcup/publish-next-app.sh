@@ -15,7 +15,6 @@ DEEPTUTOR_EMBEDDING_MODEL="${DEEPTUTOR_EMBEDDING_MODEL:-miteee-all-minilm}"
 DEEPTUTOR_EMBEDDING_BASE_MODEL="${DEEPTUTOR_EMBEDDING_BASE_MODEL:-all-minilm}"
 DEEPTUTOR_EMBEDDING_DIMENSION="${DEEPTUTOR_EMBEDDING_DIMENSION:-384}"
 DEEPTUTOR_ALLOWED_EMAILS="${DEEPTUTOR_ALLOWED_EMAILS:-}"
-DEEPTUTOR_SSH_TARGET="${DEEPTUTOR_SSH_TARGET:-root@note.arzvak.com}"
 
 cd "$APP_DIR"
 
@@ -56,7 +55,7 @@ if command -v chown >/dev/null 2>&1; then
   chown -R 1001:1001 "$AUTH_DATA_DIR" 2>/dev/null || true
 fi
 
-export AUTH_DB_PATH BETTER_AUTH_URL OPENCODE_GO_MODEL DEEPTUTOR_EMBEDDING_MODEL DEEPTUTOR_EMBEDDING_BASE_MODEL DEEPTUTOR_EMBEDDING_DIMENSION DEEPTUTOR_ALLOWED_EMAILS DEEPTUTOR_SSH_TARGET
+export AUTH_DB_PATH BETTER_AUTH_URL OPENCODE_GO_MODEL DEEPTUTOR_EMBEDDING_MODEL DEEPTUTOR_EMBEDDING_BASE_MODEL DEEPTUTOR_EMBEDDING_DIMENSION DEEPTUTOR_ALLOWED_EMAILS
 
 mkdir -p /root/note-arzvak-backups
 mkdir -p "$APP_DIR/data/deeptutor"
@@ -113,6 +112,14 @@ if not isinstance(models.get("options"), list):
 oauth = json.load(urllib.request.urlopen("http://127.0.0.1:8001/api/v1/settings/providers/openai-codex/oauth/status", timeout=10))
 if oauth.get("connection") not in {"disconnected", "authorizing", "connected", "error"}:
     raise SystemExit(f"DeepTutor ChatGPT OAuth endpoint is not ready: {oauth}")
+PY
+  docker compose -f docker-compose.next.yml exec -T deeptutor-auth python - <<'PY'
+import json
+import urllib.request
+
+health = json.load(urllib.request.urlopen("http://127.0.0.1:8002/health", timeout=10))
+if health.get("ok") is not True:
+    raise SystemExit(f"DeepTutor device-auth helper is not ready: {health}")
 PY
   docker compose -f docker-compose.next.yml up -d deeptutor-refresh
   trap - EXIT
