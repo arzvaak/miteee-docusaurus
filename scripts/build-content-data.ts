@@ -101,6 +101,7 @@ const courseNames: Record<string, string> = {
   "SEM6-SGT": "Smart Grid Technologies",
   "SEM6-SPM": "Sejarah Pemikiran Modern",
   "SEM7-PSPS": "Power System Protection and Switchgear",
+  "SEM7-EA": "Energy Auditing (ELE 4446)",
   "UPSC-CSE-POLITICAL-SCIENCE": "UPSC Political Science NCERT",
   "SSC-CGL": "SSC CGL Tier-I 200/200 System",
   "CAT": "CAT Quantitative Aptitude",

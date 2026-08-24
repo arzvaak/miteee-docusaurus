@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "courseCode": "SEM7-EA",
+  "validatedAt": "2026-08-24T13:45:00+05:30",
+  "sourceCoverage": {
+    "decks": 35,
+    "slides": 851,
+    "lectures": 23,
+    "tutorials": 12,
+    "mistralOcrComplete": 35,
+    "mistralModel": "mistral-ocr-latest",
+    "l23Transport": "pdf_conversion"
+  },
+  "pyqCoverage": {
+    "papers": 10,
+    "ocrComplete": 10,
+    "predecessorCodes": [
+      "ELE 423",
+      "ELE 4006"
+    ],
+    "presentedAsExactEle4446": false
+  },
+  "learnerNotes": {
+    "total": 49,
+    "lectures": 23,
+    "tutorials": 12,
+    "paperSpecificPyq": 10,
+    "support": 4,
+    "orderedNoteHashSha256": "71be91269cfe0dc7252b2a64a75ff27614343eaa91766406c28e3abe84cea19d"
+  },
+  "authoring": {
+    "oxAlphaFreeMaxNotesRetained": 14,
+    "deterministicSourceCompleteNotes": 31,
+    "deterministicSupportNotes": 4,
+    "reason": "The user stopped the slow subagent retry loop and asked the primary agent to finish directly.",
+    "unsupportedContentPolicy": "Source wording remains bounded to native extraction and Mistral OCR. Derived PYQ answers are labelled worked solution, not official answer. OCR asset placeholders are not published as learner links."
+  },
+  "repairs": [
+    "Removed an unsupported expansion of ISEER in Lecture 02.",
+    "Removed an unsupported licensing claim from Lecture 02.",
+    "Normalized split L-squared notation in Tutorial 05.",
+    "Repaired escaped KaTeX in Tutorial 10, Tutorial 11, and PYQ 10.",
+    "Removed raw OCR image and table placeholders from learner-facing Markdown."
+  ],
+  "verification": {
+    "focusedEnergyTests": "12 passed, 0 failed",
+    "repositoryTests": "777 passed, 0 failed, 1 skipped",
+    "lint": "pass",
+    "typecheck": "pass",
+    "productionBuild": "pass with pre-existing auth file-tracing warnings",
+    "standaloneAssets": "pass",
+    "desktopBrowser": "pass",
+    "mobileBrowser390x844": "pass"
+  }
+}

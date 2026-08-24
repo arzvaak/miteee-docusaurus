@@ -65,6 +65,15 @@ test("Netcup workflow deploys the current Next standalone app instead of stale D
   assert.match(verifier, /Reader layout/);
   assert.match(verifier, /\/exams\/cat\/quant/);
   assert.match(verifier, /3,386/);
+  assert.match(verifier, /\/courses\/SEM7-EA/);
+  assert.match(verifier, /Energy Auditing \(ELE 4446\)/);
+  assert.match(verifier, /data\/generated\/notes-index\.json/);
+  assert.match(verifier, /courseCode === "SEM7-EA"/);
+  assert.match(verifier, /exactly 49 notes/);
+  assert.match(verifier, /new Set\(energyNotes\.map\(\(note\) => note\.slug\)\)/);
+  assert.match(verifier, /base_url\/notes\/\$ea_slug/);
+  assert.match(verifier, /test "\$ea_note_status" = "200"/);
+  assert.match(verifier, /grep -Fq -- "\$ea_title"/);
   assert.match(workflow, /ops\/netcup\/verify-next-app\.sh http:\/\/127\.0\.0\.1:3025/);
 });
 

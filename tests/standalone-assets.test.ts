@@ -30,6 +30,14 @@ function seedGeneratedNotes(root: string) {
     path.join(root, "data", "generated", "notes", "sem7-psps-week-1.json"),
     JSON.stringify({ slug: "sem7-psps-week-1", title: "Week 1 - Protective Relaying Fundamentals" })
   );
+  fs.writeFileSync(
+    path.join(root, "data", "generated", "catalog.json"),
+    JSON.stringify({ courses: [{ code: "SEM7-PSPS", name: "Power System Protection and Switchgear" }] })
+  );
+  fs.writeFileSync(
+    path.join(root, "data", "generated", "notes-index.json"),
+    JSON.stringify([{ slug: "sem7-psps-week-1", courseCode: "SEM7-PSPS", title: "Week 1 - Protective Relaying Fundamentals" }])
+  );
 }
 
 function seedGeneratedSscExamData(root: string) {
@@ -57,6 +65,8 @@ test("ensureStandaloneAssets stages public and Next static assets for standalone
   assert.equal(fs.readFileSync(path.join(root, ".next", "standalone", "public", "img", "logo.svg"), "utf8"), "<svg />");
   assert.equal(fs.readFileSync(path.join(root, ".next", "standalone", ".next", "static", "chunks", "app.js"), "utf8"), "console.log('ok');");
   assert.match(fs.readFileSync(path.join(root, ".next", "standalone", "data", "generated", "notes", "sem7-psps-week-1.json"), "utf8"), /Protective Relaying Fundamentals/);
+  assert.match(fs.readFileSync(path.join(root, ".next", "standalone", "data", "generated", "catalog.json"), "utf8"), /SEM7-PSPS/);
+  assert.match(fs.readFileSync(path.join(root, ".next", "standalone", "data", "generated", "notes-index.json"), "utf8"), /sem7-psps-week-1/);
   assert.match(fs.readFileSync(path.join(root, ".next", "standalone", "data", "generated", "exams", "ssc-cgl", "index.json"), "utf8"), /ssc-runtime-probe/);
   assert.match(fs.readFileSync(path.join(root, ".next", "standalone", "data", "current-affairs", "daily", "2026-06-29.json"), "utf8"), /2026-06-29/);
   assert.match(fs.readFileSync(path.join(root, ".next", "standalone", "data", "current-affairs", "state.json"), "utf8"), /lastSuccessfulDate/);

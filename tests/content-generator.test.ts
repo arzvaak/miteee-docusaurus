@@ -32,6 +32,7 @@ test("slugFromRelativePath keeps nested docs addressable", () => {
 test("courseCodeFromSegments maps current MITEEE roots into stable course codes", () => {
   assert.equal(courseCodeFromSegments(["sem5", "em2", "overview.md"]), "SEM5-EM2");
   assert.equal(courseCodeFromSegments(["sem6", "mi", "tutorial-1.md"]), "SEM6-MI");
+  assert.equal(courseCodeFromSegments(["sem7", "ea", "lecture-01-energy-scenario.md"]), "SEM7-EA");
   assert.equal(courseCodeFromSegments(["upsc-cse", "political-science", "overview.md"]), "UPSC-CSE-POLITICAL-SCIENCE");
   assert.equal(courseCodeFromSegments(["upsc-cse", "political-science", "class-11", "chapter-1.md"]), "UPSC-CSE-POLITICAL-SCIENCE");
   assert.equal(courseCodeFromSegments(["ssc-cgl", "quant", "percentages.md"]), "SSC-CGL");

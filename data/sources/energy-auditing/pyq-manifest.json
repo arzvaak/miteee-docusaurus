@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-24T10:07:51.289829+00:00",
+  "generatedAt": "2026-08-24T10:11:12.741001+00:00",
   "course": {
     "courseCode": "SEM7-EA",
     "title": "Energy Auditing",
@@ -25,7 +25,7 @@
       "limit": "160",
       "offset": "0"
     },
-    "retrievedAt": "2026-08-24T10:07:51.289841+00:00",
+    "retrievedAt": "2026-08-24T10:11:12.741011+00:00",
     "reportedCount": 73,
     "returnedRows": 73,
     "snapshotPath": "tmp/energy-auditing/pyq/api/papers.json",
@@ -71,12 +71,12 @@
       "ocr": {
         "provider": "mistral",
         "model": "mistral-ocr-latest",
-        "status": "pending_missing_process_key",
-        "rawResponsePath": null,
-        "pageMarkdownDir": null,
-        "pageCount": 0,
-        "confidenceFieldCount": 0,
-        "error": "Set MISTRAL_API_KEY (or a supported process-only alias) to run OCR."
+        "status": "complete",
+        "rawResponsePath": "tmp/energy-auditing/pyq/ocr/2014-regular-ele-423-bef8bf76/mistral-ocr.json",
+        "pageMarkdownDir": "tmp/energy-auditing/pyq/ocr/2014-regular-ele-423-bef8bf76/pages",
+        "pageCount": 2,
+        "confidenceFieldCount": 30,
+        "error": null
       },
       "metadataWarnings": []
     },
@@ -102,12 +102,12 @@
       "ocr": {
         "provider": "mistral",
         "model": "mistral-ocr-latest",
-        "status": "pending_missing_process_key",
-        "rawResponsePath": null,
-        "pageMarkdownDir": null,
-        "pageCount": 0,
-        "confidenceFieldCount": 0,
-        "error": "Set MISTRAL_API_KEY (or a supported process-only alias) to run OCR."
+        "status": "complete",
+        "rawResponsePath": "tmp/energy-auditing/pyq/ocr/2014-makeup-ele-423-910e8bc2/mistral-ocr.json",
+        "pageMarkdownDir": "tmp/energy-auditing/pyq/ocr/2014-makeup-ele-423-910e8bc2/pages",
+        "pageCount": 1,
+        "confidenceFieldCount": 35,
+        "error": null
       },
       "metadataWarnings": []
     },
@@ -133,12 +133,12 @@
       "ocr": {
         "provider": "mistral",
         "model": "mistral-ocr-latest",
-        "status": "pending_missing_process_key",
-        "rawResponsePath": null,
-        "pageMarkdownDir": null,
-        "pageCount": 0,
-        "confidenceFieldCount": 0,
-        "error": "Set MISTRAL_API_KEY (or a supported process-only alias) to run OCR."
+        "status": "complete",
+        "rawResponsePath": "tmp/energy-auditing/pyq/ocr/2015-regular-ele-423-068a88bf/mistral-ocr.json",
+        "pageMarkdownDir": "tmp/energy-auditing/pyq/ocr/2015-regular-ele-423-068a88bf/pages",
+        "pageCount": 2,
+        "confidenceFieldCount": 54,
+        "error": null
       },
       "metadataWarnings": []
     },
@@ -164,12 +164,12 @@
       "ocr": {
         "provider": "mistral",
         "model": "mistral-ocr-latest",
-        "status": "pending_missing_process_key",
-        "rawResponsePath": null,
-        "pageMarkdownDir": null,
-        "pageCount": 0,
-        "confidenceFieldCount": 0,
-        "error": "Set MISTRAL_API_KEY (or a supported process-only alias) to run OCR."
+        "status": "complete",
+        "rawResponsePath": "tmp/energy-auditing/pyq/ocr/2015-makeup-ele-423-d49ea151/mistral-ocr.json",
+        "pageMarkdownDir": "tmp/energy-auditing/pyq/ocr/2015-makeup-ele-423-d49ea151/pages",
+        "pageCount": 2,
+        "confidenceFieldCount": 41,
+        "error": null
       },
       "metadataWarnings": []
     },
@@ -195,12 +195,12 @@
       "ocr": {
         "provider": "mistral",
         "model": "mistral-ocr-latest",
-        "status": "pending_missing_process_key",
-        "rawResponsePath": null,
-        "pageMarkdownDir": null,
-        "pageCount": 0,
-        "confidenceFieldCount": 0,
-        "error": "Set MISTRAL_API_KEY (or a supported process-only alias) to run OCR."
+        "status": "complete",
+        "rawResponsePath": "tmp/energy-auditing/pyq/ocr/2017-regular-ele-423-4f28f9f2/mistral-ocr.json",
+        "pageMarkdownDir": "tmp/energy-auditing/pyq/ocr/2017-regular-ele-423-4f28f9f2/pages",
+        "pageCount": 3,
+        "confidenceFieldCount": 51,
+        "error": null
       },
       "metadataWarnings": []
     },
@@ -226,12 +226,12 @@
       "ocr": {
         "provider": "mistral",
         "model": "mistral-ocr-latest",
-        "status": "pending_missing_process_key",
-        "rawResponsePath": null,
-        "pageMarkdownDir": null,
-        "pageCount": 0,
-        "confidenceFieldCount": 0,
-        "error": "Set MISTRAL_API_KEY (or a supported process-only alias) to run OCR."
+        "status": "complete",
+        "rawResponsePath": "tmp/energy-auditing/pyq/ocr/2017-makeup-ele-423-9cfe6080/mistral-ocr.json",
+        "pageMarkdownDir": "tmp/energy-auditing/pyq/ocr/2017-makeup-ele-423-9cfe6080/pages",
+        "pageCount": 2,
+        "confidenceFieldCount": 37,
+        "error": null
       },
       "metadataWarnings": []
     },
@@ -257,12 +257,12 @@
       "ocr": {
         "provider": "mistral",
         "model": "mistral-ocr-latest",
-        "status": "pending_missing_process_key",
-        "rawResponsePath": null,
-        "pageMarkdownDir": null,
-        "pageCount": 0,
-        "confidenceFieldCount": 0,
-        "error": "Set MISTRAL_API_KEY (or a supported process-only alias) to run OCR."
+        "status": "complete",
+        "rawResponsePath": "tmp/energy-auditing/pyq/ocr/2018-regular-ele-4006-7d622b1f/mistral-ocr.json",
+        "pageMarkdownDir": "tmp/energy-auditing/pyq/ocr/2018-regular-ele-4006-7d622b1f/pages",
+        "pageCount": 1,
+        "confidenceFieldCount": 19,
+        "error": null
       },
       "metadataWarnings": [
         "API exam_type='Regular' conflicts with title qualifier='Makeup'"
@@ -290,12 +290,12 @@
       "ocr": {
         "provider": "mistral",
         "model": "mistral-ocr-latest",
-        "status": "pending_missing_process_key",
-        "rawResponsePath": null,
-        "pageMarkdownDir": null,
-        "pageCount": 0,
-        "confidenceFieldCount": 0,
-        "error": "Set MISTRAL_API_KEY (or a supported process-only alias) to run OCR."
+        "status": "complete",
+        "rawResponsePath": "tmp/energy-auditing/pyq/ocr/2019-regular-ele-4006-a500f38b/mistral-ocr.json",
+        "pageMarkdownDir": "tmp/energy-auditing/pyq/ocr/2019-regular-ele-4006-a500f38b/pages",
+        "pageCount": 3,
+        "confidenceFieldCount": 50,
+        "error": null
       },
       "metadataWarnings": []
     },
@@ -321,12 +321,12 @@
       "ocr": {
         "provider": "mistral",
         "model": "mistral-ocr-latest",
-        "status": "pending_missing_process_key",
-        "rawResponsePath": null,
-        "pageMarkdownDir": null,
-        "pageCount": 0,
-        "confidenceFieldCount": 0,
-        "error": "Set MISTRAL_API_KEY (or a supported process-only alias) to run OCR."
+        "status": "complete",
+        "rawResponsePath": "tmp/energy-auditing/pyq/ocr/2019-makeup-ele-4006-08a2a301/mistral-ocr.json",
+        "pageMarkdownDir": "tmp/energy-auditing/pyq/ocr/2019-makeup-ele-4006-08a2a301/pages",
+        "pageCount": 2,
+        "confidenceFieldCount": 44,
+        "error": null
       },
       "metadataWarnings": []
     },
@@ -352,12 +352,12 @@
       "ocr": {
         "provider": "mistral",
         "model": "mistral-ocr-latest",
-        "status": "pending_missing_process_key",
-        "rawResponsePath": null,
-        "pageMarkdownDir": null,
-        "pageCount": 0,
-        "confidenceFieldCount": 0,
-        "error": "Set MISTRAL_API_KEY (or a supported process-only alias) to run OCR."
+        "status": "complete",
+        "rawResponsePath": "tmp/energy-auditing/pyq/ocr/2021-regular-ele-4006-0734f852/mistral-ocr.json",
+        "pageMarkdownDir": "tmp/energy-auditing/pyq/ocr/2021-regular-ele-4006-0734f852/pages",
+        "pageCount": 3,
+        "confidenceFieldCount": 44,
+        "error": null
       },
       "metadataWarnings": [
         "missing branch metadata; admitted via category=Electrical and approved API id"

@@ -1,0 +1,367 @@
+{
+  "generatedAt": "2026-08-24T11:26:48.909226+00:00",
+  "model": "opencode-go/ox-alpha-free",
+  "variant": "max",
+  "jobs": [
+    {
+      "slug": "tutorial-t01-energy-calculations",
+      "kind": "tutorial",
+      "status": "authored",
+      "sourceLabel": "T01-Energy_Calculations.pptx (21 slides)",
+      "outputPath": "docs/sem7/ea/tutorial-t01-energy-calculations.md",
+      "chunkCount": 5,
+      "chunks": [
+        {
+          "ordinal": 1,
+          "slides": [
+            1,
+            4
+          ],
+          "attachments": [],
+          "modelRun": {
+            "sessionId": "ses_fcc8ddfc8ffeIfQ2GD6fuegJNH",
+            "tokens": {
+              "total": 12373,
+              "input": 7107,
+              "output": 2703,
+              "reasoning": 259,
+              "cache": {
+                "write": 0,
+                "read": 2304
+              }
+            },
+            "cost": 0
+          },
+          "auditHistory": [
+            {
+              "attempt": 1,
+              "result": {
+                "status": "pass",
+                "issues": [],
+                "coverage": {
+                  "complete": true,
+                  "notes": "Slides 1-4 fully covered: title (slide 1), Q1 and Q2 with verbatim question text, worked solutions (slide 3) and stated answers 103,680 kcal / 495 ton/hr, Q3 with all four statements verbatim and source answer \"1 and 4\". All arithmetic verified (120x4800=576,000; x0.82=472,320; diff=103,680; 0.25 m2, 0.125 m3/s, 0.1375 ton/s, x3600=495). Units and formulas match source; SHA256, filename, slide count match provenance; no invented marks or official answers beyond source-stated ones; Markdown/KaTeX well-formed. Slides 5-21 correctly declared out of scope for this part."
+                }
+              },
+              "modelRun": {
+                "sessionId": "ses_fcc8cbeb3ffeVAMkEDJE4WDoNn",
+                "tokens": {
+                  "total": 15619,
+                  "input": 7760,
+                  "output": 3078,
+                  "reasoning": 1261,
+                  "cache": {
+                    "write": 0,
+                    "read": 3520
+                  }
+                },
+                "cost": 0
+              }
+            }
+          ],
+          "resumed": false
+        },
+        {
+          "ordinal": 2,
+          "slides": [
+            5,
+            8
+          ],
+          "attachments": [],
+          "modelRun": {
+            "resumed": true,
+            "checkpoint": "tmp/energy-auditing/tutorial-chunks/tutorial-t01-energy-calculations/chunk-02-slides-05-08-latest.md"
+          },
+          "auditHistory": [
+            {
+              "attempt": 1,
+              "result": {
+                "status": "repair",
+                "issues": [
+                  "Q8 commentary is self-contradictory/incorrect: it states 'The value 9.9 kW would be the losses', then computes losses as P_in − P_out = 12.22 − 11 ≈ 1.22 kW. 9.9 kW is the result of the mistaken 11 × 0.9 multiplication, not the loss figure (losses ≈ 1.22 kW).",
+                  "Source labels the water-heating item '9)' as a Question; draft renames it 'Example 9', deviating from the source's own labeling (content itself is preserved).",
+                  "Q6 commentary introduces external figures absent from SOURCE (Shockley–Queisser ~33%, ~26% lab-record cells, '~15–20%' commercial range) without attribution; the slide only prints the MCQ and the formatted mark on b) 15%. Keep such context clearly flagged as non-source or trim."
+                ],
+                "coverage": {
+                  "complete": true,
+                  "notes": "All six source items across slides 5–8 are present with exact wording and printed answers: Q4 (ANS 5 g/hr), Q5 (ANS 20 + slide working 100*0.05 = Product*0.25), Q6 MCQ options intact with b)15% formatting mark per mistralOcr, Q7 (formula Head×Flow(lps)×9.81; ANS : 2.35 KW; 12×20×9.81 = 2354.4 W verified), Q8 (FALSE + 12.22 kW; 11/0.9 verified), Q9 + slide-8 solution (ΔT=40, 16744 kJ, 16744/3600 = 4.65 kWh verified; kcal cross-check 4000×0.00116222 ≈ 4.65 consistent with slide-7 constants). Chunk boundaries correctly limited to slides 5–8 with disclaimer; no invented official answers; Markdown/KaTeX well-formed."
+                }
+              },
+              "modelRun": {
+                "sourceSession": "ses_fcc994313ffez5IkdAl8OQCvnV",
+                "recovered": true
+              },
+              "repairModelRun": {
+                "sourceSession": "ses_fcc975737ffetA2aBLh3csPVfR",
+                "recovered": true
+              }
+            },
+            {
+              "attempt": 2,
+              "result": {
+                "status": "repair",
+                "issues": [
+                  "Header provenance overstatement: 'All wording, answers, and working below are transcribed from those slides' is false for derived work — Q4's proportional-scaling relation (60 g/hr ÷ 60 W factor), Q8's η = P_out/P_in division working, and the Q7 P = ρgQH restatement are reconstructions, not slide content (slides print only answers/formula fragments). Rephrase to: wording and printed answers are transcribed; worked solutions are derived where slides omit working.",
+                  "Q6 mark characterization error: draft claims 'b) 15%' is 'shown underlined/bolded in the source', but the Mistral OCR shows only italic emphasis (_b)_ ... _15%_) with empty bold spans (__ __) and no underline, while the native text carries no formatting information. Restate as 'emphasized (italicized) in the OCR layer' and retain that it is not a printed 'ANS' label — otherwise this drifts toward an invented official mark.",
+                  "Minor: Q9 cross-check line '100 kg × 40 °C = 4,000 kcal' silently applies c = 1 kcal/kg·°C; state the factor explicitly for consistency with the slide constants."
+                ],
+                "coverage": {
+                  "complete": true,
+                  "notes": "All source items on slides 5–8 present: Q4/Q5 (slide 5), Q6/Q7 (slide 6), Q8/Q9 (slide 7), slide-8 worked solution for Q9. Printed answers preserved verbatim: ANS 5 g/hr, ANS 20, ANS : 2.35 KW, FALSE/(draws 12.22 kW), ANS : 4.65 kWh; slide-5 balance 100*0.05 = Product*0.25 and slide-6 hydraulic-power formula retained. Scope statement correctly excludes slides 1–4 and 9–21. Arithmetic verified: 60×5/60=5; 5/0.25=20 t/hr; 12×20×9.81=2354.4 W≈2.35 kW; 11/0.9≈12.22 kW; 100×4.186×40=16,744 kJ; 16744/3600≈4.65 kWh; 4000 kcal×0.00116222≈4.65 kWh."
+                }
+              },
+              "modelRun": {
+                "sourceSession": "ses_fcc962c75ffeiMxvQHGneD0LEw",
+                "recovered": true
+              },
+              "repairModelRun": {
+                "sourceSession": "ses_fcc931632ffeq2xp3HkSCxqY7e",
+                "recovered": true
+              }
+            },
+            {
+              "attempt": 3,
+              "result": {
+                "status": "pass",
+                "issues": [],
+                "coverage": {
+                  "complete": true,
+                  "notes": "All source content in scope (slides 5–8) is represented: Q4 (60 W→5 W LED, printed ANS 5 g/hr), Q5 (crystallizer 100 t/hr 5%→25%, ANS 20, working '100×0.05 = Product×0.25' correctly attributed), Q6 (all four MCQ options a)30%/b)15%/c)75%/d)50% preserved; answer attributed only to OCR-layer italics on b) 15%, explicitly disclaimed as not a printed 'ANS'), Q7 ('ANS : 2.35 KW', both formula lines incl. 'Hydraulic Power = Watts'), Q8 (FALSE + 12.22 kW note), Q9 (slide-7 constants incl. 1 KCAL = 0.00116222 KWH; slide-8 solution Q=mcΔT, 100 L=100 kg, c=4.186, ΔT=40, 16744/3600). Arithmetic verified: 60×5/60=5; 5/0.25=20; 12×20×9.81=2354.4 W≈2.35 kW; 11/0.9≈12.22 kW; 100×4.186×40=16744 kJ; /3600≈4.65 kWh; cross-check 4000 kcal×0.00116222≈4.649 kWh. Derived workings (Q4 scaling relation, Q7 restatement, Q8 division, Q5 evaporation implication, Q8 9.9-kW trap mechanism) are disclosed as derived/implied, never presented as official; no invented marks or answers. Units faithful ('KW' preserved verbatim in coverage table); Markdown tables and KaTeX ($\\overline{2}$, \\tfrac, {,} separators, \\text{} units) all valid. Slides 1–4 and 9–21 correctly excluded per chunk boundary."
+                }
+              },
+              "modelRun": {
+                "sessionId": "ses_fcc8b48ffffe9tfSEmspmTzIhl",
+                "tokens": {
+                  "total": 19278,
+                  "input": 12560,
+                  "output": 4786,
+                  "reasoning": 1868,
+                  "cache": {
+                    "write": 0,
+                    "read": 64
+                  }
+                },
+                "cost": 0
+              }
+            }
+          ],
+          "resumed": true
+        },
+        {
+          "ordinal": 3,
+          "slides": [
+            9,
+            12
+          ],
+          "attachments": [],
+          "modelRun": {
+            "sessionId": "ses_fcc8907f6ffeMLN4jyIlZQJzsP",
+            "tokens": {
+              "total": 14675,
+              "input": 2863,
+              "output": 4400,
+              "reasoning": 564,
+              "cache": {
+                "write": 0,
+                "read": 6848
+              }
+            },
+            "cost": 0
+          },
+          "auditHistory": [
+            {
+              "attempt": 1,
+              "result": {
+                "status": "pass",
+                "issues": [],
+                "coverage": {
+                  "complete": true,
+                  "notes": "All 4 source slides (9–12) covered: Ex10 statement+ANS 2.89% quoted verbatim, slide-10 solution transcribed (93/0.23=404.35; 0.60×404.35=242.61; 7/242.61×100≈2.89% all recompute correctly); Ex11 formula+conversion preserved, 1000×9.81×0.04×12×0.55=2589.84W≈2.59kW matches printed ANS; Ex12 relations preserved, 500×1.2×1×40=24,000 kcal /860=27.91≈27.9 kWh matches printed ANS; Ex13 correctly flagged as having NO printed official answer, computed 744000/520=1430.8, 420000/520=807.7, reduction≈623.1 kg/hr (cross-check 12000×27/520=623.1 holds). Slide-12 anomalous 'Tutorial 02' footer faithfully reported, not silently corrected. Units KW/KWH→kW/kWh normalization only cosmetic. No invented marks, no fabricated official answers, KaTeX/markdown well-formed, provenance scope (slides 9–12 of 21) respected."
+                }
+              },
+              "modelRun": {
+                "sessionId": "ses_fcc87557effeCuqoNwXNRD2BPS",
+                "tokens": {
+                  "total": 16489,
+                  "input": 6798,
+                  "output": 2803,
+                  "reasoning": 1000,
+                  "cache": {
+                    "write": 0,
+                    "read": 5888
+                  }
+                },
+                "cost": 0
+              }
+            }
+          ],
+          "resumed": false
+        },
+        {
+          "ordinal": 4,
+          "slides": [
+            13,
+            16
+          ],
+          "attachments": [],
+          "modelRun": {
+            "sessionId": "ses_fcc8627efffePJzVvkdZqb3NO8",
+            "tokens": {
+              "total": 17143,
+              "input": 2760,
+              "output": 5972,
+              "reasoning": 1563,
+              "cache": {
+                "write": 0,
+                "read": 6848
+              }
+            },
+            "cost": 0
+          },
+          "auditHistory": [
+            {
+              "attempt": 1,
+              "result": {
+                "status": "pass",
+                "issues": [],
+                "coverage": {
+                  "complete": true,
+                  "notes": "All 4 source slides (13-16) covered: slide 13 answer figures (744,000 kcal/hr; 1431 kg/hr; 420,000 kcal/hr; 808 kg/hr; 623 kg/hr) transcribed exactly with verified arithmetic; slide 14 question and answer quoted verbatim incl. 'little bit higher' and '220,000m3' (X = 956,000 gm/hr = 956 Kg/hr); slide 15 question verbatim with all six data values correct; slide 16 formula and evaluation chain (20*0.82*7200*[...] * 5.2 = 118080*[1.1494-1.0638]*5.2 = 52,560/-) reproduced and arithmetically confirmed. Excluded slides 1-12 and 17-21 explicitly declared out of scope; T01-file vs 'Tutorial 02' footer discrepancy disclosed as-is rather than silently corrected. All added material (scenario inference for slide 13, 43.5% reduction, sanity checks, common traps) is clearly marked as author commentary, not source content; no invented marks or fabricated official answers; Markdown tables and KaTeX ($...$, $$...$$, \\frac, \\left\\{\\right\\}, \\text) all well-formed."
+                }
+              },
+              "modelRun": {
+                "sessionId": "ses_fcc83c920ffecBOXIGQXSrSeeh",
+                "tokens": {
+                  "total": 14918,
+                  "input": 11656,
+                  "output": 2269,
+                  "reasoning": 993,
+                  "cache": {
+                    "write": 0,
+                    "read": 0
+                  }
+                },
+                "cost": 0
+              }
+            }
+          ],
+          "resumed": false
+        },
+        {
+          "ordinal": 5,
+          "slides": [
+            17,
+            21
+          ],
+          "attachments": [],
+          "modelRun": {
+            "sessionId": "ses_fcc8241afffeNz69C0ebyIdrbC",
+            "tokens": {
+              "total": 21984,
+              "input": 10237,
+              "output": 9798,
+              "reasoning": 1949,
+              "cache": {
+                "write": 0,
+                "read": 0
+              }
+            },
+            "cost": 0
+          },
+          "auditHistory": [
+            {
+              "attempt": 1,
+              "result": {
+                "status": "pass",
+                "issues": [],
+                "coverage": {
+                  "complete": true,
+                  "notes": "All 10 items on slides 17-21 transcribed verbatim in source order (2+3+2+1+2), incl. hints/citations ('9*%H/gm', 'Book1- Example 3.9 Pg69'); all printed answers preserved exactly (30000kWh, 600 gm, 114.3, 2222 KVA, 5.6 kW, 3.7 kWh, 5/3.78 kWh, 4500 kWh, 10KG/S/15KG/S, 51.2%). Added solutions verified arithmetically (e.g., hydro 0.6*1000*9.81*0.04*24=5650.6W; motor sqrt(3)*415*12*0.7=6.04kW over 11.8kW=51.2%) and agree with slide answers; slide-only workings quoted as such (lamp 3.7 vs 3.68 noted). Provenance honored: chunk limited to slides 17-21, SHA256 f9a614de...b94c4ef cited, footer Tutorial 02/16-09-2025 vs Tutorial 01/16-Sep-25 inconsistency disclosed as source-inherent. Markdown/KaTeX delimiters balanced; units and sanity checks correct."
+                }
+              },
+              "modelRun": {
+                "sessionId": "ses_fcc7e6da9ffeMR5CP2YEZCwfmE",
+                "tokens": {
+                  "total": 20618,
+                  "input": 8486,
+                  "output": 3861,
+                  "reasoning": 1423,
+                  "cache": {
+                    "write": 0,
+                    "read": 6848
+                  }
+                },
+                "cost": 0
+              }
+            }
+          ],
+          "resumed": false
+        }
+      ],
+      "auditHistory": [
+        {
+          "attempt": 1,
+          "result": {
+            "status": "pass",
+            "issues": [],
+            "coverage": {
+              "complete": true,
+              "notes": "All 21 slides mapped across the five chunks: title (1), Q1-Q3 (2-4), Q4-Q9 (5-8), Ex10-13 (9-13), Ex14/motor-savings (14-16), fixed-electricity through homework (17-21). Every question stem is preserved verbatim (including 'TRUE/FALSE', blanks, MCQ options, hints like '9*%H/gm' and 'Book1- Example 3.9 Pg69'); all printed answers match exactly (103680 kcal; 495 ton/hr; 1 and 4; 5 g/hr; 20; 2.35 KW; FALSE/12.22 kW; 4.65 kWh; 2.89%; 2.59 KW; 27.9 KWH; 1431/808/623 kg/hr; 956 Kg/hr; 52560/-; 30000kWh; 600 gm; 114.3; 2222 KVA; 5.6 kW; 3.7 kWh; 5/3.78 kWh; 4500 kWh; 10 KG/S, 15 KG/S; 51.2%). All recomputed arithmetic checks out (576000x0.82; 93/0.23=404.35; 24000/860; 20x0.82x7200x[1.1494-1.0638]x5.2=52560; sqrt(3)x415x12x0.7/...=51.2%; etc.). Derived-only values are correctly flagged (Ex13 ~623 kg/hr with 'no printed answer'; Q6's b) 15% attributed to OCR-layer emphasis, not an ANS label; Q10 input power 6.04 kW derived from the cited book method). Provenance boundaries respected (footer T01/T02 mismatch recorded as-is; chunk scopes declared); Markdown tables and KaTeX are well-formed."
+            }
+          },
+          "modelRun": {
+            "sessionId": "ses_fcc7cb04affeNZhjlukXM34NDD",
+            "tokens": {
+              "total": 39557,
+              "input": 24299,
+              "output": 6070,
+              "reasoning": 2340,
+              "cache": {
+                "write": 0,
+                "read": 6848
+              }
+            },
+            "cost": 0
+          }
+        }
+      ]
+    },
+    {
+      "slug": "tutorial-t03-cumsum-analysis",
+      "kind": "tutorial",
+      "status": "authored-recovered",
+      "outputPath": "docs/sem7/ea/tutorial-t03-cumsum-analysis.md",
+      "authorSession": "ses_fccad76f7ffemTqj5qhLJbTC5e",
+      "auditHistory": [
+        {
+          "attempt": 1,
+          "result": {
+            "status": "pass",
+            "issues": [
+              "Minor (non-blocking): concept-refresher line 'which is why it is preferred for verifying savings' is general pedagogy beyond the source, though clearly framed as refresher and consistent with the source's '(- = Saving)' convention",
+              "Minor (non-blocking): Q2 quote normalizes source spacing ('2003.For' → '2003. For', '4000MT/Month' → '4000 MT/Month') without meaning change"
+            ],
+            "coverage": {
+              "complete": true,
+              "notes": "All 5 slides covered: title (slide 1); Q1 statement + field table May–Dec/predicted 1335 + printed 'Ans : 1,68,000 kWh' (slide 2); Q1 answer table verified cell-by-cell against slide-003 image, final CUSUM −28, '28 x 6000 =1,68,000 kWh' (slide 3); Q2 statement + Jan–Jun 2003 table/predicted 265 + both retrofit/pre-Jan-2003 notes (slide 4); Q2 answer table verified against slide-005 image (final CUSUM −45), printed '47 kWh/MT x 4000 MT x 6 months' and '10.80 lakh kWh' quoted verbatim with the 47-vs-45 inconsistency correctly flagged (47×4000×6=11.28 lakh ≠ 10.80 lakh; 45×4000×6=10.80 lakh ✓) and the ×6 vs Q1's ×1 convention discrepancy disclosed. All arithmetic in draft verified: Q1 diffs sum −24−27+33−1+3+16−13−15=−28 ✓, Oct diff +16 cancels −16 → 0 ✓; Q2 diffs sum −23−27+22−28+30−19=−45 ✓. Provenance (filename, SHA-256, slide count, image paths, footer 'Tutorial 04…' sibling-deck note, speaker notes '5') matches SOURCE. No invented marks or answers; both official answers are source-stated. Markdown tables and KaTeX ($$...$$, \\text, 1{,}68{,}000) all valid."
+            }
+          },
+          "modelRun": {
+            "sessionId": "ses_fcca04a7bffeYhORl2dH6207Sn",
+            "tokens": {
+              "total": 18390,
+              "input": 13544,
+              "output": 471,
+              "reasoning": 3095,
+              "cache": {
+                "write": 0,
+                "read": 1280
+              }
+            },
+            "cost": 0
+          }
+        }
+      ]
+    }
+  ]
+}

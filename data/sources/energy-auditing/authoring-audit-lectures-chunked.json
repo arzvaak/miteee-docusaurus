@@ -1,0 +1,445 @@
+{
+  "generatedAt": "2026-08-24T13:07:43.172353+00:00",
+  "model": "opencode-go/ox-alpha-free",
+  "variant": "max",
+  "jobs": [
+    {
+      "slug": "lecture-01-energy-scenario",
+      "status": "skipped",
+      "outputPath": "docs/sem7/ea/lecture-01-energy-scenario.md"
+    },
+    {
+      "slug": "lecture-02-energy-act-and-energy-audit",
+      "kind": "lecture",
+      "status": "authored",
+      "chunkSize": 10,
+      "chunks": [
+        {
+          "startSlide": 1,
+          "endSlide": 10,
+          "attachmentCount": 0,
+          "authorModelRun": {
+            "sessionId": "ses_fcc624eb3ffeYKF1P9sqZtJGpr",
+            "tokens": {
+              "total": 13632,
+              "input": 10198,
+              "output": 2943,
+              "reasoning": 491,
+              "cache": {
+                "write": 0,
+                "read": 0
+              }
+            },
+            "cost": 0
+          },
+          "deterministicChecks": "pass",
+          "status": "resumed"
+        },
+        {
+          "startSlide": 11,
+          "endSlide": 20,
+          "attachmentCount": 0,
+          "authorModelRun": {
+            "sessionId": "ses_fcc612d38ffegKQvfltfZb2bbC",
+            "tokens": {
+              "total": 14941,
+              "input": 3729,
+              "output": 3783,
+              "reasoning": 581,
+              "cache": {
+                "write": 0,
+                "read": 6848
+              }
+            },
+            "cost": 0
+          },
+          "deterministicChecks": "pass",
+          "status": "resumed"
+        },
+        {
+          "startSlide": 21,
+          "endSlide": 30,
+          "attachmentCount": 1,
+          "authorModelRun": {
+            "sessionId": "ses_fcc60014dffeT4YwpoOa8t1KOL",
+            "tokens": {
+              "total": 14489,
+              "input": 9089,
+              "output": 1976,
+              "reasoning": 1120,
+              "cache": {
+                "write": 0,
+                "read": 2304
+              }
+            },
+            "cost": 0
+          },
+          "deterministicChecks": "pass",
+          "status": "resumed"
+        },
+        {
+          "startSlide": 31,
+          "endSlide": 40,
+          "attachmentCount": 1,
+          "authorModelRun": {
+            "sessionId": "ses_fcc5d7afdffeYX8GNWEcY9RXvI",
+            "tokens": {
+              "total": 13992,
+              "input": 10349,
+              "output": 1825,
+              "reasoning": 1818,
+              "cache": {
+                "write": 0,
+                "read": 0
+              }
+            },
+            "cost": 0
+          },
+          "deterministicChecks": "pass",
+          "status": "resumed"
+        },
+        {
+          "startSlide": 41,
+          "endSlide": 50,
+          "attachmentCount": 6,
+          "authorModelRun": {
+            "sessionId": "ses_fcc5b91adffeHV3expeVvjAtYn",
+            "tokens": {
+              "total": 16202,
+              "input": 13045,
+              "output": 2128,
+              "reasoning": 1029,
+              "cache": {
+                "write": 0,
+                "read": 0
+              }
+            },
+            "cost": 0
+          },
+          "deterministicChecks": "pass",
+          "status": "resumed"
+        },
+        {
+          "startSlide": 51,
+          "endSlide": 60,
+          "attachmentCount": 1,
+          "authorModelRun": {
+            "sessionId": "ses_fcc5978a5ffe2JMNMC2EQDS1xQ",
+            "tokens": {
+              "total": 14031,
+              "input": 9272,
+              "output": 1916,
+              "reasoning": 1563,
+              "cache": {
+                "write": 0,
+                "read": 1280
+              }
+            },
+            "cost": 0
+          },
+          "deterministicChecks": "pass",
+          "status": "resumed"
+        },
+        {
+          "startSlide": 61,
+          "endSlide": 70,
+          "attachmentCount": 0,
+          "authorModelRun": {
+            "sessionId": "ses_fcc54c493ffe7yp4SEB3GV4Wv1",
+            "tokens": {
+              "total": 15532,
+              "input": 54,
+              "output": 2420,
+              "reasoning": 322,
+              "cache": {
+                "write": 0,
+                "read": 12736
+              }
+            },
+            "cost": 0
+          },
+          "deterministicChecks": "pass"
+        },
+        {
+          "startSlide": 71,
+          "endSlide": 78,
+          "attachmentCount": 8,
+          "authorModelRun": {
+            "sessionId": "ses_fcc52dedeffeT6t1rGeDnWdhtp",
+            "tokens": {
+              "total": 18770,
+              "input": 13528,
+              "output": 2209,
+              "reasoning": 3033,
+              "cache": {
+                "write": 0,
+                "read": 0
+              }
+            },
+            "cost": 0
+          },
+          "deterministicChecks": "pass"
+        }
+      ],
+      "assemblyAudit": {
+        "result": {
+          "status": "pass",
+          "issues": [
+            "Minor (outside fact): Slide 21 heading expands ISEER as 'Indian Seasonal Energy Efficiency Ratio' — the source says only 'seasonal energy efficiency rating for air conditioners'; the word 'Indian' is not in the deck.",
+            "Minor (outside fact): Slide 41 trap asserts 'transmission, distribution and supply remain licensed activities under the Act' — this is not stated anywhere in the source slides.",
+            "Minor (structure): Chunk 7 places the 'Slide 70' section after its own 'Chunk coverage' table, breaking the section ordering used in every other chunk (coverage itself is complete).",
+            "Minor (structure): Duplicate H2 headings at the start of chunks 1, 6 and 8 (e.g., '## Slides 1–10' immediately followed by a second '## ... (Slides 1–10)' banner). Valid Markdown but redundant.",
+            "Minor (attribution): The Slide 26 section reproduces the EPI formula that the source defines on slide 30; it is also correctly given at slide 30, so content is supported but the cross-slide attribution is loose."
+          ],
+          "chunkIssues": [
+            {
+              "startSlide": 1,
+              "endSlide": 10,
+              "issues": [
+                "Duplicate H2 heading pair at chunk start ('## Slides 1–10' + '## Lecture 02 — ... (Slides 1–10)')."
+              ]
+            },
+            {
+              "startSlide": 11,
+              "endSlide": 20,
+              "issues": []
+            },
+            {
+              "startSlide": 21,
+              "endSlide": 30,
+              "issues": [
+                "'Indian' expansion of ISEER (slide 21) not in source; EPI formula from slide 30 duplicated under slide 26."
+              ]
+            },
+            {
+              "startSlide": 31,
+              "endSlide": 40,
+              "issues": []
+            },
+            {
+              "startSlide": 41,
+              "endSlide": 50,
+              "issues": [
+                "Slide 41 trap adds the unsourced claim that transmission, distribution and supply remain licensed under the Act."
+              ]
+            },
+            {
+              "startSlide": 51,
+              "endSlide": 60,
+              "issues": [
+                "Duplicate H2 heading pair at chunk start."
+              ]
+            },
+            {
+              "startSlide": 61,
+              "endSlide": 70,
+              "issues": [
+                "Slide 70 section and assessment Q&A appear after/around the chunk coverage table rather than before it."
+              ]
+            },
+            {
+              "startSlide": 71,
+              "endSlide": 78,
+              "issues": [
+                "Duplicate H2 heading pair at chunk start."
+              ]
+            }
+          ],
+          "coverage": {
+            "complete": true,
+            "notes": "All 78 slides are mapped in the coverage map and cited in per-slide sections; visual-only slides (22–24, 65, 68) and title-only slides (47, 66, 67, 70) are correctly flagged as unrecoverable rather than invented. All source numbers/units preserved verbatim: 60%/30%, ~1,396 and 2,211 million m², 800,000 m², 9–10%, ₹10,000 + ₹1,000/day, BEE 1-Mar-2002, Poland 1962, 9 mandatory / 12 voluntary appliances, ISEER = cooling load / energy consumed, 1–5 stars, AAhEPI Wh/hr/sq.m vs EPI kWh/sq m/year, ECBC Rules 2018 under EC Act 2001, built-up area excludes parking, 20–25% savings, 15 GW, EPI ratio proposed/baseline ≤ 1, 100 kW / 120 kVA, ECBC 25% / ECBC+ 35% / SuperECBC 50%, 10-Jun-2003, 1910/1948/1998, PAT cycles I–VI with exact periods, 8 DC sectors (both slide 9 and slide 44 lists), 1 certificate per 1 MWh saved, mass balance equations, 100 J → 10 J light + 90 J heat. All 15 attached images were inspected and every visual description (climate-zone map incl. NBC 2005 credit, building-envelope equation, ESCert with lightning seal, certificate⇄rupee trade, audit process/audit cycle loops, audit flowchart + feedback iteration, Assess–Measure–Evaluate–Improve–Validate cycle with all sub-items, Figures 5.1–5.4 stream/notation details, bulb and furnace Sankeys) matches the visuals exactly. All assessment Q&As are answered strictly from cited slides; Markdown and KaTeX are valid."
+          }
+        },
+        "modelRun": {
+          "sessionId": "ses_fcc5104e5ffePoDarKWTvDMwvq",
+          "tokens": {
+            "total": 68249,
+            "input": 64481,
+            "output": 991,
+            "reasoning": 2713,
+            "cache": {
+              "write": 0,
+              "read": 64
+            }
+          },
+          "cost": 0
+        }
+      },
+      "repairHistory": [],
+      "outputPath": "docs/sem7/ea/lecture-02-energy-act-and-energy-audit.md"
+    },
+    {
+      "slug": "lecture-03-energy-management",
+      "kind": "lecture",
+      "status": "authored",
+      "chunkSize": 10,
+      "chunks": [
+        {
+          "startSlide": 1,
+          "endSlide": 10,
+          "attachmentCount": 0,
+          "authorModelRun": {
+            "sessionId": "ses_fcc466b24ffebs8orwOfEUjzrE",
+            "tokens": {
+              "total": 12665,
+              "input": 2835,
+              "output": 2549,
+              "reasoning": 433,
+              "cache": {
+                "write": 0,
+                "read": 6848
+              }
+            },
+            "cost": 0
+          },
+          "deterministicChecks": "pass"
+        },
+        {
+          "startSlide": 11,
+          "endSlide": 20,
+          "attachmentCount": 0,
+          "authorModelRun": {
+            "sessionId": "ses_fcc456e0dffeTmzaE8Mwk945JS",
+            "tokens": {
+              "total": 35645,
+              "input": 11170,
+              "output": 3804,
+              "reasoning": 63,
+              "cache": {
+                "write": 0,
+                "read": 20608
+              }
+            },
+            "cost": 0
+          },
+          "deterministicChecks": "pass"
+        }
+      ],
+      "assemblyAudit": {
+        "result": {
+          "status": "pass",
+          "issues": [],
+          "chunkIssues": [],
+          "coverage": {
+            "complete": true,
+            "notes": "All 20 slides mapped/cited; slides 5, 10, 12 flagged image-only with no invented visuals. All numbers verified: 18-month tables, regression worksheet (totals ΣX=4100, ΣY=3264, ΣXY=1537280, ΣX²=1994800, ΣY²=1204576), model E=0.4P+182, and full CUSUM table through −76 kWh match the source exactly; b/m regression formulas reproduced correctly in KaTeX. Added material (CUSUM summation formula, arithmetic checks, sign-convention note) is explicitly labeled and derives solely from slide definitions/data. Markdown/KaTeX valid; assessment answers cite only slide content."
+          }
+        },
+        "modelRun": {
+          "sessionId": "ses_fcc401c68ffeCfFgqncceXpdw1",
+          "tokens": {
+            "total": 24903,
+            "input": 16866,
+            "output": 3879,
+            "reasoning": 1342,
+            "cache": {
+              "write": 0,
+              "read": 2816
+            }
+          },
+          "cost": 0
+        }
+      },
+      "repairHistory": [],
+      "outputPath": "docs/sem7/ea/lecture-03-energy-management.md"
+    },
+    {
+      "slug": "lecture-04-financial-management",
+      "kind": "lecture",
+      "status": "authored",
+      "chunkSize": 10,
+      "chunks": [
+        {
+          "startSlide": 1,
+          "endSlide": 10,
+          "attachmentCount": 4,
+          "authorModelRun": {
+            "sessionId": "ses_fcc3c0b35ffe9d5Rut3pvSybIm",
+            "tokens": {
+              "total": 19763,
+              "input": 12430,
+              "output": 2728,
+              "reasoning": 4605,
+              "cache": {
+                "write": 0,
+                "read": 0
+              }
+            },
+            "cost": 0
+          },
+          "deterministicChecks": "pass",
+          "status": "resumed"
+        },
+        {
+          "startSlide": 11,
+          "endSlide": 20,
+          "attachmentCount": 3,
+          "authorModelRun": {
+            "sessionId": "ses_fcc39fedeffe8Ipll1h37G4oT1",
+            "tokens": {
+              "total": 19424,
+              "input": 12561,
+              "output": 3106,
+              "reasoning": 3693,
+              "cache": {
+                "write": 0,
+                "read": 64
+              }
+            },
+            "cost": 0
+          },
+          "deterministicChecks": "pass",
+          "status": "resumed"
+        },
+        {
+          "startSlide": 21,
+          "endSlide": 22,
+          "attachmentCount": 1,
+          "authorModelRun": {
+            "sessionId": "ses_fcc387365ffe2nKrJCJUFKvgoh",
+            "tokens": {
+              "total": 11150,
+              "input": 9098,
+              "output": 997,
+              "reasoning": 1055,
+              "cache": {
+                "write": 0,
+                "read": 0
+              }
+            },
+            "cost": 0
+          },
+          "deterministicChecks": "pass",
+          "status": "resumed"
+        }
+      ],
+      "assemblyAudit": {
+        "result": {
+          "status": "pass",
+          "issues": [],
+          "chunkIssues": [],
+          "coverage": {
+            "complete": true,
+            "notes": "All 22 slides mapped and sectioned (1–10, 11–20, 21–22); every native text element, number, and unit preserved (2°C/1.5°C, 196 countries, USD 27T 2016–2050, Rs. 60/1.5/20 lakhs → 60/(20−1.5)=3 yr 3 mo, 100/110/90.91 @10%, ROI rules, NPV symbols t=0..n, κ=10% → (5,273), IRR flows (100,000;30,000;30,000;40,000;45,000), 15%→100,802 / 16%→98,641, relining every 5 yr, ESCO lists). All 8 attached images inspected: slide-2 bar chart (309/343/662 USD billion/yr, >2x) and donut (110 USD trillion; 37/35%, 27/24%, 26/23%, 20/18%), slide-3 NDC map (839+260 Asia, 100+125 Africa, 204+14 LatAm, 20+10 ME, 4+12 SIDS, 68+83 Others, footnote, legend), slide-4 lightning icon, and slides 12/15/16/21 transcriptions all match the note exactly; illegible 'NPV='/ 'ROI=' labels correctly flagged rather than invented. Assessment answers trace solely to slide content; Markdown tables, <details> blocks, and KaTeX ($$, \\frac, \\sum, \\kappa, \\%, \\ldots) all parse cleanly."
+          }
+        },
+        "modelRun": {
+          "sessionId": "ses_fcc219d51fferqBvVTLEB0Huvx",
+          "tokens": {
+            "total": 33306,
+            "input": 1690,
+            "output": 383,
+            "reasoning": 3457,
+            "cache": {
+              "write": 0,
+              "read": 27776
+            }
+          },
+          "cost": 0
+        }
+      },
+      "repairHistory": [],
+      "outputPath": "docs/sem7/ea/lecture-04-financial-management.md"
+    }
+  ]
+}

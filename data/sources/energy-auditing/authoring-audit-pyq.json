@@ -1,0 +1,56 @@
+{
+  "generatedAt": "2026-08-24T11:02:30.282304+00:00",
+  "model": "opencode-go/ox-alpha-free",
+  "variant": "max",
+  "jobs": [
+    {
+      "slug": "pyq-01-2014-regular-ele-423-bef8bf76",
+      "kind": "pyq",
+      "status": "authored",
+      "sourceLabel": "Energy Auditing and Management Program Elective -II (ELE 423) - 2014 Regular",
+      "outputPath": "docs/sem7/ea/pyq-01-2014-regular-ele-423-bef8bf76.md",
+      "sourceBytes": 7457,
+      "authorModelRun": {
+        "sessionId": "ses_fcc99a263ffeSYobRlf10nM1q2",
+        "tokens": {
+          "total": 24161,
+          "input": 12568,
+          "output": 4716,
+          "reasoning": 29,
+          "cache": {
+            "write": 0,
+            "read": 6848
+          }
+        },
+        "cost": 0
+      },
+      "auditHistory": [
+        {
+          "attempt": 1,
+          "result": {
+            "status": "pass",
+            "issues": [],
+            "coverage": {
+              "complete": true,
+              "notes": "All 15 subparts (1A-6B) present in source order with correct marks summing to 50 under answer any FIVE; ELE 423 explicit in title/provenance; every subpart carries the exact phrase Worked solution - not an official answer; arithmetic verified for 3A, 4A, 5B, 6A, and 6B."
+            }
+          },
+          "modelRun": {
+            "sessionId": "ses_fcc94acf7ffeteE4CRcAwF659D",
+            "tokens": {
+              "total": 21114,
+              "input": 8264,
+              "output": 5193,
+              "reasoning": 1769,
+              "cache": {
+                "write": 0,
+                "read": 5888
+              }
+            },
+            "cost": 0
+          }
+        }
+      ]
+    }
+  ]
+}

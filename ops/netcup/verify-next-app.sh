@@ -62,4 +62,41 @@ curl --fail --location --silent --show-error "$base_url/exams/cat/quant" > "$wor
 grep -q "CAT Quant" "$work_dir/cat-quant.html"
 grep -q "3,386" "$work_dir/cat-quant.html"
 
+curl --fail --location --silent --show-error "$base_url/courses/SEM7-EA" > "$work_dir/energy-auditing.html"
+grep -q "Energy Auditing (ELE 4446)" "$work_dir/energy-auditing.html"
+
+ea_notes_index="data/generated/notes-index.json"
+test -s "$ea_notes_index"
+node - "$ea_notes_index" "$work_dir/energy-auditing-routes.tsv" <<'NODE'
+const fs = require("node:fs");
+
+const indexPath = process.argv[2];
+const outputPath = process.argv[3];
+const notes = JSON.parse(fs.readFileSync(indexPath, "utf8"));
+if (!Array.isArray(notes)) throw new Error("Generated notes index is not an array.");
+
+const energyNotes = notes.filter((note) => note && note.courseCode === "SEM7-EA");
+if (energyNotes.length !== 49) {
+  throw new Error(`Energy Auditing note index must contain exactly 49 notes (found ${energyNotes.length}).`);
+}
+if (new Set(energyNotes.map((note) => note.slug)).size !== energyNotes.length) {
+  throw new Error("Energy Auditing note index contains duplicate slugs.");
+}
+
+const rows = energyNotes.map((note) => {
+  if (typeof note.slug !== "string" || !note.slug || typeof note.title !== "string" || !note.title) {
+    throw new Error("Every Energy Auditing index entry needs a slug and title.");
+  }
+  return `${note.slug}\t${note.title.replace(/[\r\n\t]/g, " ")}`;
+});
+fs.writeFileSync(outputPath, `${rows.join("\n")}\n`);
+NODE
+
+while IFS=$'\t' read -r ea_slug ea_title; do
+  test -n "$ea_slug"
+  ea_note_status="$(curl --location --silent --show-error --output "$work_dir/energy-auditing-note.html" --write-out '%{http_code}' "$base_url/notes/$ea_slug")"
+  test "$ea_note_status" = "200"
+  grep -Fq -- "$ea_title" "$work_dir/energy-auditing-note.html"
+done < "$work_dir/energy-auditing-routes.tsv"
+
 echo "Production Next app verification passed."
