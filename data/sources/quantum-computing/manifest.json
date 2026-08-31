@@ -1,0 +1,32 @@
+{
+  "title": "Introduction to Quantum Computing",
+  "sourceFile": "Introduction to Quantum Computing.pdf",
+  "sourceFormat": "PDF exported from Microsoft PowerPoint",
+  "authorMetadata": "Mamatha D. Daivajna [MAHE-MITBLR]",
+  "pageCount": 135,
+  "sha256": "8c97a5b7e689779795b05ba05b0e388ae9f4a64bdced46fffcb1364a81277c11",
+  "sourceLabel": "Unit IV - Introduction to Quantum Computing (12 Hrs)",
+  "studyOsId": "SEM7-QC",
+  "studyOsIdStatus": "internal catalog identifier; no official subject code appears in the source",
+  "extraction": {
+    "nativeText": true,
+    "visualReview": true,
+    "renderedPagesReviewed": "1-135",
+    "imageDominantPagesReviewedIndividually": [7, 87, 88, 102, 103, 113, 114, 115, 116, 132, 133, 134, 135]
+  },
+  "coverage": [
+    { "pages": "1-20", "note": "01-foundations-and-linear-algebra.md" },
+    { "pages": "21-44", "note": "02-operators-and-quantum-postulates.md" },
+    { "pages": "45-71", "note": "03-qubits-and-multi-qubit-states.md" },
+    { "pages": "72-93", "note": "04-quantum-gates.md" },
+    { "pages": "94-116", "note": "05-circuits-algorithms-and-no-cloning.md" },
+    { "pages": "117-125", "note": "06-quantum-measurement.md" },
+    { "pages": "126-135", "note": "07-question-bank-and-worked-problems.md" }
+  ],
+  "editorialCorrections": [
+    "An n-qubit register has 2^n computational-basis states and 2^n amplitudes, not 2^n qubits.",
+    "Quantum algorithms do not solve problems that are uncomputable classically; they can accelerate particular computable problems.",
+    "Quantum cryptography is not universally unbreakable; security depends on the protocol, assumptions, implementation, and authentication.",
+    "A POVM is a general measurement description and is not inherently deterministic."
+  ]
+}
