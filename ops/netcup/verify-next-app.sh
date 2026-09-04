@@ -62,6 +62,25 @@ curl --fail --location --silent --show-error "$base_url/exams/cat/quant" > "$wor
 grep -q "CAT Quant" "$work_dir/cat-quant.html"
 grep -q "3,386" "$work_dir/cat-quant.html"
 
+curl --fail --location --silent --show-error "$base_url/exams/gate" > "$work_dir/gate.html"
+grep -q "Turn every GATE topic into a practice lane" "$work_dir/gate.html"
+grep -q "Electrical Engineering" "$work_dir/gate.html"
+grep -q "Data Science &amp; Artificial Intelligence" "$work_dir/gate.html"
+
+curl --fail --location --silent --show-error "$base_url/exams/gate/ee" > "$work_dir/gate-ee.html"
+grep -q "Practice all" "$work_dir/gate-ee.html"
+grep -q "Electric circuits" "$work_dir/gate-ee.html"
+
+curl --fail --location --silent --show-error \
+  "$base_url/exams/gate/ee/practice/EE-S02-L008?length=5&mode=practice" \
+  > "$work_dir/gate-ee-practice.html"
+grep -q "Mark for review" "$work_dir/gate-ee-practice.html"
+
+curl --fail --location --silent --show-error \
+  "$base_url/content-assets/gate/ee/GATE-2024-EE-S8-Q13-e95a2bbe014d.png" \
+  > "$work_dir/gate-circuit.png"
+test -s "$work_dir/gate-circuit.png"
+
 curl --fail --location --silent --show-error "$base_url/courses/SEM7-EA" > "$work_dir/energy-auditing.html"
 grep -q "Energy Auditing (ELE 4446)" "$work_dir/energy-auditing.html"
 

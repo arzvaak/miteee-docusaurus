@@ -3,6 +3,7 @@ import { getAllCourses, getNotesIndex } from "@/lib/content";
 import { SITE_URL } from "@/lib/seo";
 import { getSscTopics } from "@/lib/ssc-cgl";
 import { getCatQuantTopics } from "@/lib/cat";
+import { getGateTopics } from "@/lib/gate";
 import { sscCglSubjectDefinitions, sscCglSubjectHref } from "@/lib/ssc-cgl-subjects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -21,6 +22,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/exams/cat`, lastModified: now },
     { url: `${SITE_URL}/exams/cat/quant`, lastModified: now },
     { url: `${SITE_URL}/exams/cat/quant/practice`, lastModified: now },
+    { url: `${SITE_URL}/exams/gate`, lastModified: now },
+    { url: `${SITE_URL}/exams/gate/ee`, lastModified: now },
+    { url: `${SITE_URL}/exams/gate/ee/practice`, lastModified: now },
+    { url: `${SITE_URL}/exams/gate/da`, lastModified: now },
+    { url: `${SITE_URL}/exams/gate/da/practice`, lastModified: now },
     { url: `${SITE_URL}/exams/ssc-cgl`, lastModified: now },
     { url: `${SITE_URL}/notes/research-valorant-preliminary-findings-index`, lastModified: now },
     ...getAllCourses()
@@ -38,6 +44,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       { url: `${SITE_URL}/exams/cat/quant/topics/${topic.slug}`, lastModified: now },
       { url: `${SITE_URL}/exams/cat/quant/practice/${topic.slug}`, lastModified: now }
     ])),
+    ...(["EE", "DA"] as const).flatMap((subject) =>
+      getGateTopics(subject)
+        .filter((topic) => (topic.questionCount ?? topic.questionIds.length) > 0)
+        .map((topic) => ({
+          url: `${SITE_URL}/exams/gate/${subject.toLowerCase()}/practice/${topic.slug}`,
+          lastModified: now
+        }))
+    ),
     ...getNotesIndex()
       .filter((note) => !sscTopicNoteSlugs.has(note.slug))
       .map((note) => ({ url: `${SITE_URL}/notes/${note.slug}`, lastModified: now }))

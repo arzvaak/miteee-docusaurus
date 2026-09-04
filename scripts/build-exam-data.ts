@@ -5,6 +5,7 @@ import { buildSscCglQuestions, buildSscCglTestSummaries, buildSscCglTopics, sscC
 import { validateSscCglExamData } from "@/lib/ssc-cgl";
 import { buildCatQuantQuestions, buildCatQuantTopics } from "@/lib/cat-quant-source";
 import { validateCatQuantData } from "@/lib/cat";
+import { buildGateDataFromSource, validateGateData } from "@/lib/gate";
 import type { CatQuantQuestion, CatQuantTopic, SscCglQuestion, SscCglTopic } from "@/lib/exam-types";
 
 type BuildExamDataOptions = {
@@ -133,11 +134,27 @@ export function buildExamData(options: BuildExamDataOptions = {}) {
   writeJson(path.join(catOutputRoot, "topics.json"), catTopics);
   writeJson(path.join(catOutputRoot, "validation-report.json"), catValidation);
 
-  return { data, validation, aiAudit, catData, catValidation };
+  const gateOutputRoot = path.join(generatedRoot, "exams", "gate");
+  const gateSourceRoot = path.join(process.cwd(), "data", "exams", "gate");
+  const gateData = buildGateDataFromSource(
+    JSON.parse(fs.readFileSync(path.join(gateSourceRoot, "questions.json"), "utf8")),
+    JSON.parse(fs.readFileSync(path.join(gateSourceRoot, "topics.json"), "utf8"))
+  );
+  const gateValidation = validateGateData(gateData);
+  if (!gateValidation.ok) {
+    throw new Error(`GATE generated data failed validation:\n${gateValidation.errors.join("\n")}`);
+  }
+  writeJson(path.join(gateOutputRoot, "index.json"), gateData);
+  writeJson(path.join(gateOutputRoot, "questions.json"), gateData.questions);
+  writeJson(path.join(gateOutputRoot, "topics.json"), gateData.topics);
+  writeJson(path.join(gateOutputRoot, "validation-report.json"), gateValidation);
+
+  return { data, validation, aiAudit, catData, catValidation, gateData, gateValidation };
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] || "").href) {
   const result = buildExamData();
   console.log(`Generated ${result.data.questions.length} SSC CGL questions, ${result.data.topics.length} topics, and ${result.data.tests.length} tests.`);
   console.log(`Generated ${result.catData.questions.length} CAT Quant questions and ${result.catData.topics.length} topics.`);
+  console.log(`Generated ${result.gateData.questions.length} GATE EE/DA questions and ${result.gateData.topics.length} syllabus topics.`);
 }

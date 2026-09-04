@@ -112,6 +112,10 @@ export function ensureStandaloneAssets(root = process.cwd()) {
     requireFile(root, "data/generated/exams/ssc-cgl/index.json"),
     path.join(standaloneRoot, "data", "generated", "exams", "ssc-cgl", "index.json")
   );
+  copyFileIfExists(
+    requireFile(root, "data/generated/exams/gate/index.json"),
+    path.join(standaloneRoot, "data", "generated", "exams", "gate", "index.json")
+  );
   copyDirectoryOrCreateEmpty(path.join(root, "data", "current-affairs", "daily"), path.join(standaloneRoot, "data", "current-affairs", "daily"));
   copyFileIfExists(path.join(root, "data", "current-affairs", "state.json"), path.join(standaloneRoot, "data", "current-affairs", "state.json"));
   copyFileIfExists(path.join(root, "data", "exams", "ssc-cgl", "resource-candidates.json"), path.join(standaloneRoot, "data", "exams", "ssc-cgl", "resource-candidates.json"));

@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { ArrowRight, Calculator, Gauge, Target } from "lucide-react";
+import { ArrowRight, Calculator, Gauge, GraduationCap, Target } from "lucide-react";
 import { getCatQuantQuestions, getCatQuantTopics } from "@/lib/cat";
+import { getGateDashboard } from "@/lib/gate";
 import { getSscCglDashboard } from "@/lib/ssc-cgl";
 import { buildPageMetadata } from "@/lib/seo";
 
@@ -14,6 +15,7 @@ export default function ExamsPage() {
   const ssc = getSscCglDashboard();
   const catTopics = getCatQuantTopics();
   const catQuestions = getCatQuantQuestions();
+  const gate = getGateDashboard();
 
   return (
     <section className="page ssc-page">
@@ -40,6 +42,16 @@ export default function ExamsPage() {
         <div>
           <strong>CAT</strong>
           <p>Quantitative Aptitude is active with {catTopics.length} chapter notes and {catQuestions.length.toLocaleString("en-IN")} reviewed questions.</p>
+        </div>
+        <Gauge size={18} aria-hidden="true" />
+        <ArrowRight size={18} aria-hidden="true" />
+      </Link>
+
+      <Link className="panel ssc-exam-card" href="/exams/gate">
+        <span className="home-icon-badge"><GraduationCap size={20} aria-hidden="true" /></span>
+        <div>
+          <strong>GATE EE &amp; DA</strong>
+          <p>Topic-wise Electrical Engineering and Data Science practice with {gate.questionCount.toLocaleString("en-IN")} official-key-backed questions.</p>
         </div>
         <Gauge size={18} aria-hidden="true" />
         <ArrowRight size={18} aria-hidden="true" />

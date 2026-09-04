@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowRight, Calculator } from "lucide-react";
+import { ArrowRight, Calculator, GraduationCap } from "lucide-react";
+import { getGateDashboard } from "@/lib/gate";
 import { SscExamSetup } from "@/components/SscExamSetup";
 import { getSscCglDashboard, getSscCglTests } from "@/lib/ssc-cgl";
 import { buildPageMetadata } from "@/lib/seo";
@@ -15,6 +16,7 @@ export default function PracticePage() {
   const tests = getSscCglTests();
   const featuredTest = tests.find((test) => test.mode === "full_mock");
   const modeCounts = dashboard.readiness.testModeCounts;
+  const gate = getGateDashboard();
 
   return (
     <>
@@ -22,6 +24,11 @@ export default function PracticePage() {
         <Link className="panel ssc-exam-card" href="/exams/cat/quant/practice">
           <span className="home-icon-badge"><Calculator size={20} aria-hidden="true" /></span>
           <div><strong>CAT Quant practice</strong><p>Work through the Quantum CAT bank chapter by chapter.</p></div>
+          <ArrowRight size={18} aria-hidden="true" />
+        </Link>
+        <Link className="panel ssc-exam-card" href="/exams/gate">
+          <span className="home-icon-badge"><GraduationCap size={20} aria-hidden="true" /></span>
+          <div><strong>GATE EE &amp; DA practice</strong><p>Build a topic-wise set from {gate.questionCount.toLocaleString("en-IN")} verified questions.</p></div>
           <ArrowRight size={18} aria-hidden="true" />
         </Link>
       </section>

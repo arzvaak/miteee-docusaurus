@@ -65,6 +65,10 @@ test("Netcup workflow deploys the current Next standalone app instead of stale D
   assert.match(verifier, /Reader layout/);
   assert.match(verifier, /\/exams\/cat\/quant/);
   assert.match(verifier, /3,386/);
+  assert.match(verifier, /\/exams\/gate/);
+  assert.match(verifier, /Turn every GATE topic into a practice lane/);
+  assert.match(verifier, /\/exams\/gate\/ee\/practice\/EE-S02-L008/);
+  assert.match(verifier, /content-assets\/gate\/ee\/GATE-2024-EE-S8-Q13/);
   assert.match(verifier, /\/courses\/SEM7-EA/);
   assert.match(verifier, /Energy Auditing \(ELE 4446\)/);
   assert.match(verifier, /data\/generated\/notes-index\.json/);

@@ -1,0 +1,3438 @@
+{
+  "schema_version": 1,
+  "exam": "GATE",
+  "topics": [
+    {
+      "id": "DA-S01-L001",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Permutations",
+      "question_count": 1
+    },
+    {
+      "id": "DA-S01-L002",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Combinations",
+      "question_count": 2
+    },
+    {
+      "id": "DA-S01-L003",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Probability Axioms",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S01-L004",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Sample Space",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S01-L005",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Events and Event Operations",
+      "question_count": 1
+    },
+    {
+      "id": "DA-S01-L006",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Independent Events",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S01-L007",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Mutually Exclusive Events",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S01-L008",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Marginal Probability",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S01-L009",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Conditional Probability and Law of Total Probability",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S01-L010",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Joint Probability and Joint Distribution",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S01-L011",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Bayes Theorem",
+      "question_count": 3
+    },
+    {
+      "id": "DA-S01-L012",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Conditional Expectation",
+      "question_count": 2
+    },
+    {
+      "id": "DA-S01-L013",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Conditional Variance",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S01-L014",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Mean (Expected Value)",
+      "question_count": 2
+    },
+    {
+      "id": "DA-S01-L015",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Median",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S01-L016",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Mode",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S01-L017",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Standard Deviation and Variance",
+      "question_count": 1
+    },
+    {
+      "id": "DA-S01-L018",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Correlation",
+      "question_count": 1
+    },
+    {
+      "id": "DA-S01-L019",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Covariance",
+      "question_count": 1
+    },
+    {
+      "id": "DA-S01-L020",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Random Variables",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S01-L021",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Discrete Random Variables and Probability Mass Function",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S01-L022",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Discrete Uniform Distribution",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S01-L023",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Bernoulli Distribution",
+      "question_count": 2
+    },
+    {
+      "id": "DA-S01-L024",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Binomial Distribution",
+      "question_count": 2
+    },
+    {
+      "id": "DA-S01-L025",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Continuous Random Variables and Probability Density Function",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S01-L026",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Continuous Uniform Distribution",
+      "question_count": 1
+    },
+    {
+      "id": "DA-S01-L027",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Exponential Distribution",
+      "question_count": 4
+    },
+    {
+      "id": "DA-S01-L028",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Poisson Distribution",
+      "question_count": 2
+    },
+    {
+      "id": "DA-S01-L029",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Normal Distribution",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S01-L030",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Standard Normal Distribution",
+      "question_count": 2
+    },
+    {
+      "id": "DA-S01-L031",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "t-Distribution",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S01-L032",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Chi-Squared Distribution",
+      "question_count": 2
+    },
+    {
+      "id": "DA-S01-L033",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Cumulative Distribution Function",
+      "question_count": 3
+    },
+    {
+      "id": "DA-S01-L034",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Conditional PDF",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S01-L035",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Central Limit Theorem",
+      "question_count": 1
+    },
+    {
+      "id": "DA-S01-L036",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Confidence Interval",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S01-L037",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "z-test",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S01-L038",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "t-test",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S01-L039",
+      "paper": "DA",
+      "section_number": 1,
+      "section_title": "Probability and Statistics",
+      "title": "Chi-Squared Test",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S02-L001",
+      "paper": "DA",
+      "section_number": 2,
+      "section_title": "Linear Algebra",
+      "title": "Vector space: definition and axioms",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S02-L002",
+      "paper": "DA",
+      "section_number": 2,
+      "section_title": "Linear Algebra",
+      "title": "Subspaces: definition and the subspace test",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S02-L003",
+      "paper": "DA",
+      "section_number": 2,
+      "section_title": "Linear Algebra",
+      "title": "Linear combinations and span of vectors",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S02-L004",
+      "paper": "DA",
+      "section_number": 2,
+      "section_title": "Linear Algebra",
+      "title": "Linear dependence and independence of vectors",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S02-L005",
+      "paper": "DA",
+      "section_number": 2,
+      "section_title": "Linear Algebra",
+      "title": "Basis and dimension of vector spaces",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S02-L006",
+      "paper": "DA",
+      "section_number": 2,
+      "section_title": "Linear Algebra",
+      "title": "Matrices: operations and algebraic properties",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S02-L007",
+      "paper": "DA",
+      "section_number": 2,
+      "section_title": "Linear Algebra",
+      "title": "Inverse of a matrix: existence, computation, and properties",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S02-L008",
+      "paper": "DA",
+      "section_number": 2,
+      "section_title": "Linear Algebra",
+      "title": "Projection matrix and its properties",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S02-L009",
+      "paper": "DA",
+      "section_number": 2,
+      "section_title": "Linear Algebra",
+      "title": "Orthogonal matrix and its properties",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S02-L010",
+      "paper": "DA",
+      "section_number": 2,
+      "section_title": "Linear Algebra",
+      "title": "Idempotent matrix and its properties",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S02-L011",
+      "paper": "DA",
+      "section_number": 2,
+      "section_title": "Linear Algebra",
+      "title": "Partition (block) matrices and their properties",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S02-L012",
+      "paper": "DA",
+      "section_number": 2,
+      "section_title": "Linear Algebra",
+      "title": "Quadratic forms: matrix representation and reduction",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S02-L013",
+      "paper": "DA",
+      "section_number": 2,
+      "section_title": "Linear Algebra",
+      "title": "Definiteness of quadratic forms",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S02-L014",
+      "paper": "DA",
+      "section_number": 2,
+      "section_title": "Linear Algebra",
+      "title": "Systems of linear equations: representation and solution classification",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S02-L015",
+      "paper": "DA",
+      "section_number": 2,
+      "section_title": "Linear Algebra",
+      "title": "Gaussian elimination and row-echelon forms",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S02-L016",
+      "paper": "DA",
+      "section_number": 2,
+      "section_title": "Linear Algebra",
+      "title": "Eigenvalues and eigenvectors: definitions, computation, and properties",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S02-L017",
+      "paper": "DA",
+      "section_number": 2,
+      "section_title": "Linear Algebra",
+      "title": "Eigenvalues and eigenvectors of special matrices",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S02-L018",
+      "paper": "DA",
+      "section_number": 2,
+      "section_title": "Linear Algebra",
+      "title": "Diagonalization of matrices and matrix powers",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S02-L019",
+      "paper": "DA",
+      "section_number": 2,
+      "section_title": "Linear Algebra",
+      "title": "Determinant: computation and properties",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S02-L020",
+      "paper": "DA",
+      "section_number": 2,
+      "section_title": "Linear Algebra",
+      "title": "Rank of a matrix: definition, computation, and properties",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S02-L021",
+      "paper": "DA",
+      "section_number": 2,
+      "section_title": "Linear Algebra",
+      "title": "Nullity and the rank–nullity theorem",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S02-L022",
+      "paper": "DA",
+      "section_number": 2,
+      "section_title": "Linear Algebra",
+      "title": "Projections onto subspaces and orthogonal decomposition",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S02-L023",
+      "paper": "DA",
+      "section_number": 2,
+      "section_title": "Linear Algebra",
+      "title": "LU decomposition",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S02-L024",
+      "paper": "DA",
+      "section_number": 2,
+      "section_title": "Linear Algebra",
+      "title": "Singular value decomposition (SVD)",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S03-L001",
+      "paper": "DA",
+      "section_number": 3,
+      "section_title": "Calculus and Optimization",
+      "title": "Function of a single variable: domain, range and graph",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S03-L002",
+      "paper": "DA",
+      "section_number": 3,
+      "section_title": "Calculus and Optimization",
+      "title": "Composition and inverse of single-variable functions",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S03-L003",
+      "paper": "DA",
+      "section_number": 3,
+      "section_title": "Calculus and Optimization",
+      "title": "Elementary single-variable functions and their graphs",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S03-L004",
+      "paper": "DA",
+      "section_number": 3,
+      "section_title": "Calculus and Optimization",
+      "title": "Limit of a function: concept, existence and one-sided limits",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S03-L005",
+      "paper": "DA",
+      "section_number": 3,
+      "section_title": "Calculus and Optimization",
+      "title": "Algebra of limits, standard limits and indeterminate forms",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S03-L006",
+      "paper": "DA",
+      "section_number": 3,
+      "section_title": "Calculus and Optimization",
+      "title": "Continuity: definition, discontinuities and intermediate value theorem",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S03-L007",
+      "paper": "DA",
+      "section_number": 3,
+      "section_title": "Calculus and Optimization",
+      "title": "Differentiability: definition, geometric meaning and tangent lines",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S03-L008",
+      "paper": "DA",
+      "section_number": 3,
+      "section_title": "Calculus and Optimization",
+      "title": "Differentiation rules and derivatives of elementary functions",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S03-L009",
+      "paper": "DA",
+      "section_number": 3,
+      "section_title": "Calculus and Optimization",
+      "title": "Higher-order derivatives and the Leibniz rule",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S03-L010",
+      "paper": "DA",
+      "section_number": 3,
+      "section_title": "Calculus and Optimization",
+      "title": "L'Hôpital's rule for limits",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S03-L011",
+      "paper": "DA",
+      "section_number": 3,
+      "section_title": "Calculus and Optimization",
+      "title": "Taylor's theorem and Taylor series about a point",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S03-L012",
+      "paper": "DA",
+      "section_number": 3,
+      "section_title": "Calculus and Optimization",
+      "title": "Maclaurin series and standard series expansions",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S03-L013",
+      "paper": "DA",
+      "section_number": 3,
+      "section_title": "Calculus and Optimization",
+      "title": "Critical points and the first derivative test",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S03-L014",
+      "paper": "DA",
+      "section_number": 3,
+      "section_title": "Calculus and Optimization",
+      "title": "Second derivative test, convexity and inflection points",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S03-L015",
+      "paper": "DA",
+      "section_number": 3,
+      "section_title": "Calculus and Optimization",
+      "title": "Global extrema on closed intervals and the extreme value theorem",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S03-L016",
+      "paper": "DA",
+      "section_number": 3,
+      "section_title": "Calculus and Optimization",
+      "title": "Applied single-variable optimization",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S04-L001",
+      "paper": "DA",
+      "section_number": 4,
+      "section_title": "Programming, Data Structures and Algorithms",
+      "title": "Programming in Python: syntax, control flow, and built-in containers as implementation vehicle",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S04-L002",
+      "paper": "DA",
+      "section_number": 4,
+      "section_title": "Programming, Data Structures and Algorithms",
+      "title": "Stacks: LIFO semantics, operations, and array-based implementation",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S04-L003",
+      "paper": "DA",
+      "section_number": 4,
+      "section_title": "Programming, Data Structures and Algorithms",
+      "title": "Queues: FIFO semantics, operations, circular queue, and deque",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S04-L004",
+      "paper": "DA",
+      "section_number": 4,
+      "section_title": "Programming, Data Structures and Algorithms",
+      "title": "Linked lists: node structure, traversal, insertion, and deletion",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S04-L005",
+      "paper": "DA",
+      "section_number": 4,
+      "section_title": "Programming, Data Structures and Algorithms",
+      "title": "Trees: terminology, binary trees, and binary search tree basics",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S04-L006",
+      "paper": "DA",
+      "section_number": 4,
+      "section_title": "Programming, Data Structures and Algorithms",
+      "title": "Hash tables: hash functions, collisions, chaining, and open addressing",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S04-L007",
+      "paper": "DA",
+      "section_number": 4,
+      "section_title": "Programming, Data Structures and Algorithms",
+      "title": "Linear search: sequential scan, comparisons, and complexity",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S04-L008",
+      "paper": "DA",
+      "section_number": 4,
+      "section_title": "Programming, Data Structures and Algorithms",
+      "title": "Binary search: halving on a sorted array, boundaries, and complexity",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S04-L009",
+      "paper": "DA",
+      "section_number": 4,
+      "section_title": "Programming, Data Structures and Algorithms",
+      "title": "Selection sort: minimum selection, swaps, and complexity",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S04-L010",
+      "paper": "DA",
+      "section_number": 4,
+      "section_title": "Programming, Data Structures and Algorithms",
+      "title": "Bubble sort: adjacent swaps, passes, and early termination",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S04-L011",
+      "paper": "DA",
+      "section_number": 4,
+      "section_title": "Programming, Data Structures and Algorithms",
+      "title": "Insertion sort: sorted-prefix growth, shifting, and complexity",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S04-L012",
+      "paper": "DA",
+      "section_number": 4,
+      "section_title": "Programming, Data Structures and Algorithms",
+      "title": "Divide and conquer: the paradigm, recurrences, and complexity derivation",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S04-L013",
+      "paper": "DA",
+      "section_number": 4,
+      "section_title": "Programming, Data Structures and Algorithms",
+      "title": "Mergesort: recursive halving, merging, complexity, stability, and space",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S04-L014",
+      "paper": "DA",
+      "section_number": 4,
+      "section_title": "Programming, Data Structures and Algorithms",
+      "title": "Quicksort: pivot selection, partitioning, complexity, and stability",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S04-L015",
+      "paper": "DA",
+      "section_number": 4,
+      "section_title": "Programming, Data Structures and Algorithms",
+      "title": "Introduction to graph theory: definitions, types, and representations",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S04-L016",
+      "paper": "DA",
+      "section_number": 4,
+      "section_title": "Programming, Data Structures and Algorithms",
+      "title": "Breadth-first traversal (BFS): queue-based level exploration",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S04-L017",
+      "paper": "DA",
+      "section_number": 4,
+      "section_title": "Programming, Data Structures and Algorithms",
+      "title": "Depth-first traversal (DFS): stack/recursion-based exploration and cycle detection",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S04-L018",
+      "paper": "DA",
+      "section_number": 4,
+      "section_title": "Programming, Data Structures and Algorithms",
+      "title": "Shortest path: BFS for unweighted graphs and Dijkstra for non-negative weights",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L001",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "ER model: entities, attributes, and keys",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L002",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "ER model: constraints and weak entity types",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L003",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "Mapping ER model to relational schema",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L004",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "Relational model: structure, domains, and keys",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L005",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "Relational algebra: fundamental operators",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L006",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "Relational algebra: joins and division",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L007",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "Tuple relational calculus",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L008",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "SQL: data definition language",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L009",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "SQL: queries, joins, and subqueries",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L010",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "SQL: aggregation and grouping",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L011",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "SQL: data modification and views",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L012",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "Integrity constraints",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L013",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "Functional dependencies and keys",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L014",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "Normal forms and normalization",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L015",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "Higher normal forms: 4NF and multivalued dependencies",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L016",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "File organization",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L017",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "Indexing fundamentals",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L018",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "Tree-based indexing: B-tree and B+-tree",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L019",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "Hash-based indexing and hashing schemes",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L020",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "Data types",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L021",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "Data transformation: normalization of attribute values",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L022",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "Data transformation: discretization",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L023",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "Data transformation: sampling",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L024",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "Data transformation: compression",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L025",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "Data warehouse modelling: fundamentals",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L026",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "Multidimensional data model schemas",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L027",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "Concept hierarchies",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L028",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "Measures: categorization",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S05-L029",
+      "paper": "DA",
+      "section_number": 5,
+      "section_title": "Database Management and Warehousing",
+      "title": "Measures: computations",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L001",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "Supervised learning: paradigm, labeled data, and generalization",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L002",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "Regression problems: continuous targets and squared-error evaluation",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L003",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "Classification problems: categorical targets and decision boundaries",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L004",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "Simple linear regression: least-squares fit with one predictor",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L005",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "Multiple linear regression: several predictors and the normal equations",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L006",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "Ridge regression: L2-regularized linear regression with shrinkage",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L007",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "Logistic regression: sigmoid, log-odds, and the linear decision boundary",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L008",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "k-nearest neighbour: distance-based lazy classification and regression",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L009",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "Naive Bayes classifier: Bayes' theorem with conditional independence",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L010",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "Linear discriminant analysis: Gaussian classes with a shared covariance",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L011",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "Support vector machine: maximum-margin hyperplane and support vectors",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L012",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "Decision trees: entropy, information gain, and Gini-based splitting",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L013",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "Bias-variance trade-off: decomposition, underfitting and overfitting",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L014",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "Cross-validation: the resampling family for model selection",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L015",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "Leave-one-out (LOO) cross-validation: the n-fold special case",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L016",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "k-folds cross-validation: partitioning and averaged performance",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L017",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "Multi-layer perceptron: hidden layers, activation, and backpropagation",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L018",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "Feed-forward neural network: acyclic layered architecture",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L019",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "Unsupervised learning: unlabeled data and structure discovery",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L020",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "Clustering algorithms: partitioning data by similarity",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L021",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "k-means clustering: centroid reassignment and within-cluster SSE",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L022",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "k-medoid clustering: representative objects robust to outliers",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L023",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "Hierarchical clustering: nested clusters and the dendrogram",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L024",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "Top-down (divisive) hierarchical clustering",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L025",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "Bottom-up (agglomerative) hierarchical clustering",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L026",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "Single-linkage: minimum-distance merging and the chaining effect",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L027",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "Multiple-linkage: maximum-distance (complete) merging for compact clusters",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L028",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "Dimensionality reduction: selection, extraction, and motivation",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S06-L029",
+      "paper": "DA",
+      "section_number": 6,
+      "section_title": "Machine Learning",
+      "title": "Principal component analysis: eigenvectors of the covariance matrix",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S07-L001",
+      "paper": "DA",
+      "section_number": 7,
+      "section_title": "AI",
+      "title": "State-space search framework and problem formulation",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S07-L002",
+      "paper": "DA",
+      "section_number": 7,
+      "section_title": "AI",
+      "title": "Uninformed search: breadth-first and uniform-cost search",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S07-L003",
+      "paper": "DA",
+      "section_number": 7,
+      "section_title": "AI",
+      "title": "Uninformed search: depth-first, depth-limited and iterative deepening",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S07-L004",
+      "paper": "DA",
+      "section_number": 7,
+      "section_title": "AI",
+      "title": "Informed search: best-first search and greedy best-first",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S07-L005",
+      "paper": "DA",
+      "section_number": 7,
+      "section_title": "AI",
+      "title": "Informed search: A* search, admissibility and consistency",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S07-L006",
+      "paper": "DA",
+      "section_number": 7,
+      "section_title": "AI",
+      "title": "Heuristics: dominance, effectiveness and design",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S07-L007",
+      "paper": "DA",
+      "section_number": 7,
+      "section_title": "AI",
+      "title": "Adversarial search: games and the minimax algorithm",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S07-L008",
+      "paper": "DA",
+      "section_number": 7,
+      "section_title": "AI",
+      "title": "Adversarial search: alpha-beta pruning",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S07-L009",
+      "paper": "DA",
+      "section_number": 7,
+      "section_title": "AI",
+      "title": "Adversarial search: cutoff depth, evaluation functions and chance nodes",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S07-L010",
+      "paper": "DA",
+      "section_number": 7,
+      "section_title": "AI",
+      "title": "Logic: knowledge bases, entailment and inference",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S07-L011",
+      "paper": "DA",
+      "section_number": 7,
+      "section_title": "AI",
+      "title": "Propositional logic: syntax and semantics",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S07-L012",
+      "paper": "DA",
+      "section_number": 7,
+      "section_title": "AI",
+      "title": "Propositional inference: rules, model checking and resolution",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S07-L013",
+      "paper": "DA",
+      "section_number": 7,
+      "section_title": "AI",
+      "title": "Propositional reasoning with Horn clauses and chaining",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S07-L014",
+      "paper": "DA",
+      "section_number": 7,
+      "section_title": "AI",
+      "title": "Predicate logic: syntax of first-order logic",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S07-L015",
+      "paper": "DA",
+      "section_number": 7,
+      "section_title": "AI",
+      "title": "Predicate logic: semantics, models and quantifier manipulation",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S07-L016",
+      "paper": "DA",
+      "section_number": 7,
+      "section_title": "AI",
+      "title": "Predicate logic: unification and lifted inference (Generalized Modus Ponens)",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S07-L017",
+      "paper": "DA",
+      "section_number": 7,
+      "section_title": "AI",
+      "title": "Predicate logic: resolution and refutation in first-order logic",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S07-L018",
+      "paper": "DA",
+      "section_number": 7,
+      "section_title": "AI",
+      "title": "Reasoning under uncertainty: probability and Bayesian belief updating",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S07-L019",
+      "paper": "DA",
+      "section_number": 7,
+      "section_title": "AI",
+      "title": "Conditional independence representation: Bayesian networks",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S07-L020",
+      "paper": "DA",
+      "section_number": 7,
+      "section_title": "AI",
+      "title": "Conditional independence representation: d-separation and reading independencies",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S07-L021",
+      "paper": "DA",
+      "section_number": 7,
+      "section_title": "AI",
+      "title": "Exact inference through variable elimination",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S07-L022",
+      "paper": "DA",
+      "section_number": 7,
+      "section_title": "AI",
+      "title": "Approximate inference through sampling: prior and rejection sampling",
+      "question_count": 0
+    },
+    {
+      "id": "DA-S07-L023",
+      "paper": "DA",
+      "section_number": 7,
+      "section_title": "AI",
+      "title": "Approximate inference through sampling: likelihood weighting and Gibbs sampling",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L001",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Matrix Algebra",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L002",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Systems of Linear Equations",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L003",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Eigenvalues",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L004",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Eigenvectors and Diagonalization",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L005",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Mean Value Theorems",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L006",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Theorems of Integral Calculus",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L007",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Evaluation of Definite Integrals",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L008",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Evaluation of Improper Integrals",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L009",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Partial Derivatives",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L010",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Maxima and Minima",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L011",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Multiple Integrals",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L012",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Fourier Series",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L013",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Vector Identities",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L014",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Directional Derivatives",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L015",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Line Integrals",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L016",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Surface Integrals",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L017",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Volume Integrals",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L018",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Stokes's Theorem",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L019",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Gauss's Divergence Theorem",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L020",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Green's Theorem",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L021",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "First-Order Linear Differential Equations",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L022",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "First-Order Nonlinear Differential Equations",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L023",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Higher-Order Linear Differential Equations with Constant Coefficients",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L024",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Method of Variation of Parameters",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L025",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Cauchy's Equation (Equidimensional Linear ODE)",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L026",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Euler's Equation (Second-Order Equidimensional Form)",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L027",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Initial and Boundary Value Problems",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L028",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Partial Differential Equations",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L029",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Method of Separation of Variables",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L030",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Analytic Functions",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L031",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Cauchy's Integral Theorem",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L032",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Cauchy's Integral Formula",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L033",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Taylor Series (Complex)",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L034",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Laurent Series and Singularities",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L035",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Residue Theorem",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L036",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Solution of Integrals by Contour Methods",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L037",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Sampling Theorems",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L038",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Conditional Probability",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L039",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Mean",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L040",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Median",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L041",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Mode",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L042",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Standard Deviation",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L043",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Random Variables",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L044",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Discrete and Continuous Distributions",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L045",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Poisson Distribution",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L046",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Normal Distribution",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L047",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Binomial Distribution",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L048",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Correlation Analysis",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S01-L049",
+      "paper": "EE",
+      "section_number": 1,
+      "section_title": "Engineering Mathematics",
+      "title": "Regression Analysis",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S02-L001",
+      "paper": "EE",
+      "section_number": 2,
+      "section_title": "Electric circuits",
+      "title": "Ideal voltage and current sources",
+      "question_count": 1
+    },
+    {
+      "id": "EE-S02-L002",
+      "paper": "EE",
+      "section_number": 2,
+      "section_title": "Electric circuits",
+      "title": "Dependent (controlled) sources",
+      "question_count": 2
+    },
+    {
+      "id": "EE-S02-L003",
+      "paper": "EE",
+      "section_number": 2,
+      "section_title": "Electric circuits",
+      "title": "R, L, C, and M elements",
+      "question_count": 2
+    },
+    {
+      "id": "EE-S02-L004",
+      "paper": "EE",
+      "section_number": 2,
+      "section_title": "Electric circuits",
+      "title": "Kirchhoff's Current Law (KCL)",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S02-L005",
+      "paper": "EE",
+      "section_number": 2,
+      "section_title": "Electric circuits",
+      "title": "Kirchhoff's Voltage Law (KVL)",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S02-L006",
+      "paper": "EE",
+      "section_number": 2,
+      "section_title": "Electric circuits",
+      "title": "Node analysis",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S02-L007",
+      "paper": "EE",
+      "section_number": 2,
+      "section_title": "Electric circuits",
+      "title": "Mesh analysis",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S02-L008",
+      "paper": "EE",
+      "section_number": 2,
+      "section_title": "Electric circuits",
+      "title": "Thevenin's theorem",
+      "question_count": 3
+    },
+    {
+      "id": "EE-S02-L009",
+      "paper": "EE",
+      "section_number": 2,
+      "section_title": "Electric circuits",
+      "title": "Norton's theorem",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S02-L010",
+      "paper": "EE",
+      "section_number": 2,
+      "section_title": "Electric circuits",
+      "title": "Superposition theorem",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S02-L011",
+      "paper": "EE",
+      "section_number": 2,
+      "section_title": "Electric circuits",
+      "title": "Maximum Power Transfer theorem",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S02-L012",
+      "paper": "EE",
+      "section_number": 2,
+      "section_title": "Electric circuits",
+      "title": "Transient response of DC networks",
+      "question_count": 3
+    },
+    {
+      "id": "EE-S02-L013",
+      "paper": "EE",
+      "section_number": 2,
+      "section_title": "Electric circuits",
+      "title": "Transient response of AC networks",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S02-L014",
+      "paper": "EE",
+      "section_number": 2,
+      "section_title": "Electric circuits",
+      "title": "Sinusoidal steady-state analysis",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S02-L015",
+      "paper": "EE",
+      "section_number": 2,
+      "section_title": "Electric circuits",
+      "title": "Resonance in AC circuits",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S02-L016",
+      "paper": "EE",
+      "section_number": 2,
+      "section_title": "Electric circuits",
+      "title": "Two port networks",
+      "question_count": 2
+    },
+    {
+      "id": "EE-S02-L017",
+      "paper": "EE",
+      "section_number": 2,
+      "section_title": "Electric circuits",
+      "title": "Balanced three phase circuits",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S02-L018",
+      "paper": "EE",
+      "section_number": 2,
+      "section_title": "Electric circuits",
+      "title": "Star-delta transformation",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S02-L019",
+      "paper": "EE",
+      "section_number": 2,
+      "section_title": "Electric circuits",
+      "title": "Complex power in AC circuits",
+      "question_count": 2
+    },
+    {
+      "id": "EE-S02-L020",
+      "paper": "EE",
+      "section_number": 2,
+      "section_title": "Electric circuits",
+      "title": "Power factor in AC circuits",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S03-L001",
+      "paper": "EE",
+      "section_number": 3,
+      "section_title": "Electromagnetic Fields",
+      "title": "Coulomb's Law for Point Charges",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S03-L002",
+      "paper": "EE",
+      "section_number": 3,
+      "section_title": "Electromagnetic Fields",
+      "title": "Electric Field Intensity: Definition and Superposition",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S03-L003",
+      "paper": "EE",
+      "section_number": 3,
+      "section_title": "Electromagnetic Fields",
+      "title": "Electric Flux Density D",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S03-L004",
+      "paper": "EE",
+      "section_number": 3,
+      "section_title": "Electromagnetic Fields",
+      "title": "Gauss's Law in Integral and Point Form",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S03-L005",
+      "paper": "EE",
+      "section_number": 3,
+      "section_title": "Electromagnetic Fields",
+      "title": "Divergence of a Vector Field",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S03-L006",
+      "paper": "EE",
+      "section_number": 3,
+      "section_title": "Electromagnetic Fields",
+      "title": "Electric Field and Potential due to Point Charge Distributions",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S03-L007",
+      "paper": "EE",
+      "section_number": 3,
+      "section_title": "Electromagnetic Fields",
+      "title": "Electric Field and Potential due to Line Charge Distributions",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S03-L008",
+      "paper": "EE",
+      "section_number": 3,
+      "section_title": "Electromagnetic Fields",
+      "title": "Electric Field and Potential due to Plane Charge Distributions",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S03-L009",
+      "paper": "EE",
+      "section_number": 3,
+      "section_title": "Electromagnetic Fields",
+      "title": "Electric Field and Potential due to Spherical Charge Distributions",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S03-L010",
+      "paper": "EE",
+      "section_number": 3,
+      "section_title": "Electromagnetic Fields",
+      "title": "Effect of Dielectric Medium",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S03-L011",
+      "paper": "EE",
+      "section_number": 3,
+      "section_title": "Electromagnetic Fields",
+      "title": "Capacitance of Simple Configurations",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S03-L012",
+      "paper": "EE",
+      "section_number": 3,
+      "section_title": "Electromagnetic Fields",
+      "title": "Biot-Savart's Law",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S03-L013",
+      "paper": "EE",
+      "section_number": 3,
+      "section_title": "Electromagnetic Fields",
+      "title": "Ampere's Law (Circuital)",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S03-L014",
+      "paper": "EE",
+      "section_number": 3,
+      "section_title": "Electromagnetic Fields",
+      "title": "Curl of a Vector Field",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S03-L015",
+      "paper": "EE",
+      "section_number": 3,
+      "section_title": "Electromagnetic Fields",
+      "title": "Faraday's Law of Electromagnetic Induction",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S03-L016",
+      "paper": "EE",
+      "section_number": 3,
+      "section_title": "Electromagnetic Fields",
+      "title": "Lorentz Force",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S03-L017",
+      "paper": "EE",
+      "section_number": 3,
+      "section_title": "Electromagnetic Fields",
+      "title": "Inductance: Definition and Magnetic Energy",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S03-L018",
+      "paper": "EE",
+      "section_number": 3,
+      "section_title": "Electromagnetic Fields",
+      "title": "Magnetomotive Force (MMF)",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S03-L019",
+      "paper": "EE",
+      "section_number": 3,
+      "section_title": "Electromagnetic Fields",
+      "title": "Reluctance",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S03-L020",
+      "paper": "EE",
+      "section_number": 3,
+      "section_title": "Electromagnetic Fields",
+      "title": "Magnetic Circuits",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S03-L021",
+      "paper": "EE",
+      "section_number": 3,
+      "section_title": "Electromagnetic Fields",
+      "title": "Self-Inductance of Simple Configurations",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S03-L022",
+      "paper": "EE",
+      "section_number": 3,
+      "section_title": "Electromagnetic Fields",
+      "title": "Mutual Inductance of Simple Configurations",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S04-L001",
+      "paper": "EE",
+      "section_number": 4,
+      "section_title": "Signals and Systems",
+      "title": "Representation of Continuous-Time (CT) Signals",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S04-L002",
+      "paper": "EE",
+      "section_number": 4,
+      "section_title": "Signals and Systems",
+      "title": "Representation of Discrete-Time (DT) Signals",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S04-L003",
+      "paper": "EE",
+      "section_number": 4,
+      "section_title": "Signals and Systems",
+      "title": "Time Shifting of Signals (CT and DT)",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S04-L004",
+      "paper": "EE",
+      "section_number": 4,
+      "section_title": "Signals and Systems",
+      "title": "Time Scaling, Compression, Expansion and Time Reversal",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S04-L005",
+      "paper": "EE",
+      "section_number": 4,
+      "section_title": "Signals and Systems",
+      "title": "Linear Time-Invariant (LTI) Systems",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S04-L006",
+      "paper": "EE",
+      "section_number": 4,
+      "section_title": "Signals and Systems",
+      "title": "Causal Systems",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S04-L007",
+      "paper": "EE",
+      "section_number": 4,
+      "section_title": "Signals and Systems",
+      "title": "Fourier Series of Continuous-Time Periodic Signals",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S04-L008",
+      "paper": "EE",
+      "section_number": 4,
+      "section_title": "Signals and Systems",
+      "title": "Fourier Series of Discrete-Time Periodic Sequences",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S04-L009",
+      "paper": "EE",
+      "section_number": 4,
+      "section_title": "Signals and Systems",
+      "title": "Sampling Theorem and Aliasing",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S04-L010",
+      "paper": "EE",
+      "section_number": 4,
+      "section_title": "Signals and Systems",
+      "title": "Fourier Transform of Continuous-Time Signals and Its Applications",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S04-L011",
+      "paper": "EE",
+      "section_number": 4,
+      "section_title": "Signals and Systems",
+      "title": "Fourier Transform of Discrete-Time Signals (DTFT) and Its Applications",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S04-L012",
+      "paper": "EE",
+      "section_number": 4,
+      "section_title": "Signals and Systems",
+      "title": "Laplace Transform and Its Applications to LTI Systems",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S04-L013",
+      "paper": "EE",
+      "section_number": 4,
+      "section_title": "Signals and Systems",
+      "title": "Z Transform and Its Applications to Discrete-Time LTI Systems",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S04-L014",
+      "paper": "EE",
+      "section_number": 4,
+      "section_title": "Signals and Systems",
+      "title": "Root-Mean-Square (R.M.S.) Value of Periodic Waveforms",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S04-L015",
+      "paper": "EE",
+      "section_number": 4,
+      "section_title": "Signals and Systems",
+      "title": "Average (Mean) Value of General Periodic Waveforms",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L001",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Single-Phase Transformer: Exact and Approximate Equivalent Circuit",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L002",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Single-Phase Transformer: Phasor Diagram",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L003",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Open-Circuit Test on a Single-Phase Transformer",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L004",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Short-Circuit Test on a Single-Phase Transformer",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L005",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Voltage Regulation of a Single-Phase Transformer",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L006",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Efficiency of a Single-Phase Transformer",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L007",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Three-Phase Transformer Connections",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L008",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Three-Phase Transformer Vector Groups",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L009",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Parallel Operation of Three-Phase Transformers",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L010",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Auto-Transformer",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L011",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Electromechanical Energy Conversion Principles",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L012",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "DC Machine: Separately Excited Configuration",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L013",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "DC Machine: Shunt Configuration",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L014",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "DC Machine: Series Configuration",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L015",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "DC Machines: Motoring and Generating Modes of Operation",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L016",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Characteristics of DC Machines",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L017",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Speed Control of DC Motors",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L018",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Three-Phase Induction Machine: Principle of Operation",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L019",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Three-Phase Induction Machine: Types",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L020",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Three-Phase Induction Machine: Performance (Power Flow and Torque)",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L021",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Three-Phase Induction Machine: Torque-Speed Characteristics",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L022",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Three-Phase Induction Machine: No-Load Test",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L023",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Three-Phase Induction Machine: Blocked-Rotor Test",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L024",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Three-Phase Induction Machine: Equivalent Circuit",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L025",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Starting of Three-Phase Induction Motors",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L026",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Speed Control of Three-Phase Induction Motors",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L027",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Operating Principle of Single-Phase Induction Motors",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L028",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Synchronous Machines: Cylindrical and Salient Pole Machines",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L029",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Synchronous Machines: Performance and Characteristics",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L030",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Synchronous Generator: Voltage Regulation",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L031",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Parallel Operation of Synchronous Generators",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L032",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Starting of Synchronous Motors",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S05-L033",
+      "paper": "EE",
+      "section_number": 5,
+      "section_title": "Electrical Machines",
+      "title": "Types of Losses and Efficiency Calculations of Electric Machines",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S06-L001",
+      "paper": "EE",
+      "section_number": 6,
+      "section_title": "Power Systems",
+      "title": "Basic concepts of electrical power generation",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S06-L002",
+      "paper": "EE",
+      "section_number": 6,
+      "section_title": "Power Systems",
+      "title": "AC and DC transmission concepts",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S06-L003",
+      "paper": "EE",
+      "section_number": 6,
+      "section_title": "Power Systems",
+      "title": "Models of transmission lines",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S06-L004",
+      "paper": "EE",
+      "section_number": 6,
+      "section_title": "Power Systems",
+      "title": "Performance of transmission lines",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S06-L005",
+      "paper": "EE",
+      "section_number": 6,
+      "section_title": "Power Systems",
+      "title": "Underground cables",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S06-L006",
+      "paper": "EE",
+      "section_number": 6,
+      "section_title": "Power Systems",
+      "title": "Economic Load Dispatch without losses",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S06-L007",
+      "paper": "EE",
+      "section_number": 6,
+      "section_title": "Power Systems",
+      "title": "Economic Load Dispatch with transmission losses",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S06-L008",
+      "paper": "EE",
+      "section_number": 6,
+      "section_title": "Power Systems",
+      "title": "Series compensation",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S06-L009",
+      "paper": "EE",
+      "section_number": 6,
+      "section_title": "Power Systems",
+      "title": "Shunt compensation",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S06-L010",
+      "paper": "EE",
+      "section_number": 6,
+      "section_title": "Power Systems",
+      "title": "Electric field distribution and insulators",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S06-L011",
+      "paper": "EE",
+      "section_number": 6,
+      "section_title": "Power Systems",
+      "title": "Distribution systems",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S06-L012",
+      "paper": "EE",
+      "section_number": 6,
+      "section_title": "Power Systems",
+      "title": "Per-unit quantities",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S06-L013",
+      "paper": "EE",
+      "section_number": 6,
+      "section_title": "Power Systems",
+      "title": "Bus admittance matrix",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S06-L014",
+      "paper": "EE",
+      "section_number": 6,
+      "section_title": "Power Systems",
+      "title": "Gauss-Seidel load flow method",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S06-L015",
+      "paper": "EE",
+      "section_number": 6,
+      "section_title": "Power Systems",
+      "title": "Newton-Raphson load flow method",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S06-L016",
+      "paper": "EE",
+      "section_number": 6,
+      "section_title": "Power Systems",
+      "title": "Voltage control",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S06-L017",
+      "paper": "EE",
+      "section_number": 6,
+      "section_title": "Power Systems",
+      "title": "Frequency control",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S06-L018",
+      "paper": "EE",
+      "section_number": 6,
+      "section_title": "Power Systems",
+      "title": "Power factor correction",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S06-L019",
+      "paper": "EE",
+      "section_number": 6,
+      "section_title": "Power Systems",
+      "title": "Symmetrical components",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S06-L020",
+      "paper": "EE",
+      "section_number": 6,
+      "section_title": "Power Systems",
+      "title": "Symmetrical fault analysis",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S06-L021",
+      "paper": "EE",
+      "section_number": 6,
+      "section_title": "Power Systems",
+      "title": "Unsymmetrical fault analysis",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S06-L022",
+      "paper": "EE",
+      "section_number": 6,
+      "section_title": "Power Systems",
+      "title": "Principles of over-current protection",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S06-L023",
+      "paper": "EE",
+      "section_number": 6,
+      "section_title": "Power Systems",
+      "title": "Differential protection",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S06-L024",
+      "paper": "EE",
+      "section_number": 6,
+      "section_title": "Power Systems",
+      "title": "Directional protection",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S06-L025",
+      "paper": "EE",
+      "section_number": 6,
+      "section_title": "Power Systems",
+      "title": "Distance protection",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S06-L026",
+      "paper": "EE",
+      "section_number": 6,
+      "section_title": "Power Systems",
+      "title": "Circuit breakers",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S06-L027",
+      "paper": "EE",
+      "section_number": 6,
+      "section_title": "Power Systems",
+      "title": "System stability concepts",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S06-L028",
+      "paper": "EE",
+      "section_number": 6,
+      "section_title": "Power Systems",
+      "title": "Equal area criterion",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S07-L001",
+      "paper": "EE",
+      "section_number": 7,
+      "section_title": "Control Systems",
+      "title": "Mathematical Modelling of Systems",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S07-L002",
+      "paper": "EE",
+      "section_number": 7,
+      "section_title": "Control Systems",
+      "title": "Transfer Function",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S07-L003",
+      "paper": "EE",
+      "section_number": 7,
+      "section_title": "Control Systems",
+      "title": "Representation of Systems and LTI Properties",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S07-L004",
+      "paper": "EE",
+      "section_number": 7,
+      "section_title": "Control Systems",
+      "title": "Feedback Principle",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S07-L005",
+      "paper": "EE",
+      "section_number": 7,
+      "section_title": "Control Systems",
+      "title": "Block Diagrams and Reduction",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S07-L006",
+      "paper": "EE",
+      "section_number": 7,
+      "section_title": "Control Systems",
+      "title": "Signal Flow Graphs and Mason's Gain Formula",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S07-L007",
+      "paper": "EE",
+      "section_number": 7,
+      "section_title": "Control Systems",
+      "title": "Transient Analysis of LTI Systems",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S07-L008",
+      "paper": "EE",
+      "section_number": 7,
+      "section_title": "Control Systems",
+      "title": "Steady-State Analysis of LTI Systems",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S07-L009",
+      "paper": "EE",
+      "section_number": 7,
+      "section_title": "Control Systems",
+      "title": "Routh-Hurwitz Stability Criterion",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S07-L010",
+      "paper": "EE",
+      "section_number": 7,
+      "section_title": "Control Systems",
+      "title": "Nyquist Stability Criterion",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S07-L011",
+      "paper": "EE",
+      "section_number": 7,
+      "section_title": "Control Systems",
+      "title": "Bode Plots",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S07-L012",
+      "paper": "EE",
+      "section_number": 7,
+      "section_title": "Control Systems",
+      "title": "Root Loci",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S07-L013",
+      "paper": "EE",
+      "section_number": 7,
+      "section_title": "Control Systems",
+      "title": "Lead Compensator",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S07-L014",
+      "paper": "EE",
+      "section_number": 7,
+      "section_title": "Control Systems",
+      "title": "Lag Compensator",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S07-L015",
+      "paper": "EE",
+      "section_number": 7,
+      "section_title": "Control Systems",
+      "title": "Lead-Lag Compensator",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S07-L016",
+      "paper": "EE",
+      "section_number": 7,
+      "section_title": "Control Systems",
+      "title": "P Controller",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S07-L017",
+      "paper": "EE",
+      "section_number": 7,
+      "section_title": "Control Systems",
+      "title": "PI Controller",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S07-L018",
+      "paper": "EE",
+      "section_number": 7,
+      "section_title": "Control Systems",
+      "title": "PID Controller",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S07-L019",
+      "paper": "EE",
+      "section_number": 7,
+      "section_title": "Control Systems",
+      "title": "State Space Model",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S07-L020",
+      "paper": "EE",
+      "section_number": 7,
+      "section_title": "Control Systems",
+      "title": "Solution of State Equations of LTI Systems",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S08-L001",
+      "paper": "EE",
+      "section_number": 8,
+      "section_title": "Electrical and Electronic Measurements",
+      "title": "DC Bridges (Wheatstone and Kelvin double bridge) for resistance measurement",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S08-L002",
+      "paper": "EE",
+      "section_number": 8,
+      "section_title": "Electrical and Electronic Measurements",
+      "title": "AC Bridges for inductance, capacitance, and frequency (Maxwell, Hay, Anderson, Owen, Schering, Wien, De Sauty)",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S08-L003",
+      "paper": "EE",
+      "section_number": 8,
+      "section_title": "Electrical and Electronic Measurements",
+      "title": "Potentiometers (DC slide-wire and stepped/rational types, standardization, and derived measurements)",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S08-L004",
+      "paper": "EE",
+      "section_number": 8,
+      "section_title": "Electrical and Electronic Measurements",
+      "title": "Measurement of voltage (range extension with multipliers, loading effect, AC voltmeters, form-factor corrections)",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S08-L005",
+      "paper": "EE",
+      "section_number": 8,
+      "section_title": "Electrical and Electronic Measurements",
+      "title": "Measurement of current (shunts, range extension, AC current instruments)",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S08-L006",
+      "paper": "EE",
+      "section_number": 8,
+      "section_title": "Electrical and Electronic Measurements",
+      "title": "Measurement of power (electrodynamometer wattmeters, single-phase and three-phase, two-wattmeter method)",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S08-L007",
+      "paper": "EE",
+      "section_number": 8,
+      "section_title": "Electrical and Electronic Measurements",
+      "title": "Measurement of energy (induction kWh meter, meter constant, creep, and errors)",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S08-L008",
+      "paper": "EE",
+      "section_number": 8,
+      "section_title": "Electrical and Electronic Measurements",
+      "title": "Measurement of power factor (electrodynamometer power factor meters)",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S08-L009",
+      "paper": "EE",
+      "section_number": 8,
+      "section_title": "Electrical and Electronic Measurements",
+      "title": "Instrument transformers (current transformer and potential transformer, ratio/phase-angle errors, burden)",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S08-L010",
+      "paper": "EE",
+      "section_number": 8,
+      "section_title": "Electrical and Electronic Measurements",
+      "title": "Digital voltmeters (ramp, dual-slope integrating, successive approximation, resolution and specs)",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S08-L011",
+      "paper": "EE",
+      "section_number": 8,
+      "section_title": "Electrical and Electronic Measurements",
+      "title": "Multi-meters (digital multimeter functions, ranges, input impedance, AC modes)",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S08-L012",
+      "paper": "EE",
+      "section_number": 8,
+      "section_title": "Electrical and Electronic Measurements",
+      "title": "Phase measurement (Lissajous figures, dual-trace time-delay, wattmeter method)",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S08-L013",
+      "paper": "EE",
+      "section_number": 8,
+      "section_title": "Electrical and Electronic Measurements",
+      "title": "Time measurement (time-interval counters, CRO time base, resolution and +/-1 count error)",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S08-L014",
+      "paper": "EE",
+      "section_number": 8,
+      "section_title": "Electrical and Electronic Measurements",
+      "title": "Frequency measurement (frequency meters, digital counters, CRO and Wien-bridge methods)",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S08-L015",
+      "paper": "EE",
+      "section_number": 8,
+      "section_title": "Electrical and Electronic Measurements",
+      "title": "Oscilloscopes (CRT, time base, triggering, voltage/time/frequency/phase measurement, DSO basics)",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S08-L016",
+      "paper": "EE",
+      "section_number": 8,
+      "section_title": "Electrical and Electronic Measurements",
+      "title": "Error analysis (error classification, limiting error, accuracy vs precision, statistical measures)",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S09-L001",
+      "paper": "EE",
+      "section_number": 9,
+      "section_title": "Analog and Digital Electronics",
+      "title": "Diode clipping circuits",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S09-L002",
+      "paper": "EE",
+      "section_number": 9,
+      "section_title": "Analog and Digital Electronics",
+      "title": "Diode clamping circuits",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S09-L003",
+      "paper": "EE",
+      "section_number": 9,
+      "section_title": "Analog and Digital Electronics",
+      "title": "Diode rectifiers",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S09-L004",
+      "paper": "EE",
+      "section_number": 9,
+      "section_title": "Analog and Digital Electronics",
+      "title": "Transistor amplifier biasing",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S09-L005",
+      "paper": "EE",
+      "section_number": 9,
+      "section_title": "Analog and Digital Electronics",
+      "title": "Amplifier small-signal equivalent circuit",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S09-L006",
+      "paper": "EE",
+      "section_number": 9,
+      "section_title": "Analog and Digital Electronics",
+      "title": "Amplifier frequency response",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S09-L007",
+      "paper": "EE",
+      "section_number": 9,
+      "section_title": "Analog and Digital Electronics",
+      "title": "Negative feedback amplifiers",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S09-L008",
+      "paper": "EE",
+      "section_number": 9,
+      "section_title": "Analog and Digital Electronics",
+      "title": "Oscillators",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S09-L009",
+      "paper": "EE",
+      "section_number": 9,
+      "section_title": "Analog and Digital Electronics",
+      "title": "Operational amplifier characteristics",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S09-L010",
+      "paper": "EE",
+      "section_number": 9,
+      "section_title": "Analog and Digital Electronics",
+      "title": "Operational amplifier applications",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S09-L011",
+      "paper": "EE",
+      "section_number": 9,
+      "section_title": "Analog and Digital Electronics",
+      "title": "Single-stage active filters",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S09-L012",
+      "paper": "EE",
+      "section_number": 9,
+      "section_title": "Analog and Digital Electronics",
+      "title": "Sallen-Key active filter topology",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S09-L013",
+      "paper": "EE",
+      "section_number": 9,
+      "section_title": "Analog and Digital Electronics",
+      "title": "Butterworth filter response",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S09-L014",
+      "paper": "EE",
+      "section_number": 9,
+      "section_title": "Analog and Digital Electronics",
+      "title": "Voltage-controlled oscillators (VCOs)",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S09-L015",
+      "paper": "EE",
+      "section_number": 9,
+      "section_title": "Analog and Digital Electronics",
+      "title": "Timers (555 timer)",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S09-L016",
+      "paper": "EE",
+      "section_number": 9,
+      "section_title": "Analog and Digital Electronics",
+      "title": "Combinational logic circuits",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S09-L017",
+      "paper": "EE",
+      "section_number": 9,
+      "section_title": "Analog and Digital Electronics",
+      "title": "Sequential logic circuits",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S09-L018",
+      "paper": "EE",
+      "section_number": 9,
+      "section_title": "Analog and Digital Electronics",
+      "title": "Multiplexers",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S09-L019",
+      "paper": "EE",
+      "section_number": 9,
+      "section_title": "Analog and Digital Electronics",
+      "title": "Demultiplexers",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S09-L020",
+      "paper": "EE",
+      "section_number": 9,
+      "section_title": "Analog and Digital Electronics",
+      "title": "Schmitt triggers",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S09-L021",
+      "paper": "EE",
+      "section_number": 9,
+      "section_title": "Analog and Digital Electronics",
+      "title": "Sample and hold circuits",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S09-L022",
+      "paper": "EE",
+      "section_number": 9,
+      "section_title": "Analog and Digital Electronics",
+      "title": "A/D (analog-to-digital) converters",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S09-L023",
+      "paper": "EE",
+      "section_number": 9,
+      "section_title": "Analog and Digital Electronics",
+      "title": "D/A (digital-to-analog) converters",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S10-L001",
+      "paper": "EE",
+      "section_number": 10,
+      "section_title": "Power Electronics",
+      "title": "Static V-I characteristics of the Thyristor",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S10-L002",
+      "paper": "EE",
+      "section_number": 10,
+      "section_title": "Power Electronics",
+      "title": "Firing circuits for the Thyristor",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S10-L003",
+      "paper": "EE",
+      "section_number": 10,
+      "section_title": "Power Electronics",
+      "title": "Static V-I characteristics of the MOSFET",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S10-L004",
+      "paper": "EE",
+      "section_number": 10,
+      "section_title": "Power Electronics",
+      "title": "Gating circuits for the MOSFET",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S10-L005",
+      "paper": "EE",
+      "section_number": 10,
+      "section_title": "Power Electronics",
+      "title": "Static V-I characteristics of the IGBT",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S10-L006",
+      "paper": "EE",
+      "section_number": 10,
+      "section_title": "Power Electronics",
+      "title": "Gating circuits for the IGBT",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S10-L007",
+      "paper": "EE",
+      "section_number": 10,
+      "section_title": "Power Electronics",
+      "title": "Buck (step-down) DC-DC converter",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S10-L008",
+      "paper": "EE",
+      "section_number": 10,
+      "section_title": "Power Electronics",
+      "title": "Boost (step-up) DC-DC converter",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S10-L009",
+      "paper": "EE",
+      "section_number": 10,
+      "section_title": "Power Electronics",
+      "title": "Buck-Boost converter",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S10-L010",
+      "paper": "EE",
+      "section_number": 10,
+      "section_title": "Power Electronics",
+      "title": "Single-phase configuration of uncontrolled rectifiers",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S10-L011",
+      "paper": "EE",
+      "section_number": 10,
+      "section_title": "Power Electronics",
+      "title": "Three-phase configuration of uncontrolled rectifiers",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S10-L012",
+      "paper": "EE",
+      "section_number": 10,
+      "section_title": "Power Electronics",
+      "title": "Voltage commutated Thyristor based converters",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S10-L013",
+      "paper": "EE",
+      "section_number": 10,
+      "section_title": "Power Electronics",
+      "title": "Current commutated Thyristor based converters",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S10-L014",
+      "paper": "EE",
+      "section_number": 10,
+      "section_title": "Power Electronics",
+      "title": "Bidirectional AC to DC voltage source converters",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S10-L015",
+      "paper": "EE",
+      "section_number": 10,
+      "section_title": "Power Electronics",
+      "title": "Magnitude of line current harmonics for uncontrolled rectifiers",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S10-L016",
+      "paper": "EE",
+      "section_number": 10,
+      "section_title": "Power Electronics",
+      "title": "Phase of line current harmonics for uncontrolled rectifiers",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S10-L017",
+      "paper": "EE",
+      "section_number": 10,
+      "section_title": "Power Electronics",
+      "title": "Magnitude of line current harmonics for thyristor based converters",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S10-L018",
+      "paper": "EE",
+      "section_number": 10,
+      "section_title": "Power Electronics",
+      "title": "Phase of line current harmonics for thyristor based converters",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S10-L019",
+      "paper": "EE",
+      "section_number": 10,
+      "section_title": "Power Electronics",
+      "title": "Power factor of AC to DC converters",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S10-L020",
+      "paper": "EE",
+      "section_number": 10,
+      "section_title": "Power Electronics",
+      "title": "Distortion Factor of AC to DC converters",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S10-L021",
+      "paper": "EE",
+      "section_number": 10,
+      "section_title": "Power Electronics",
+      "title": "Single-phase voltage source inverters",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S10-L022",
+      "paper": "EE",
+      "section_number": 10,
+      "section_title": "Power Electronics",
+      "title": "Three-phase voltage source inverters",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S10-L023",
+      "paper": "EE",
+      "section_number": 10,
+      "section_title": "Power Electronics",
+      "title": "Single-phase current source inverters",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S10-L024",
+      "paper": "EE",
+      "section_number": 10,
+      "section_title": "Power Electronics",
+      "title": "Three-phase current source inverters",
+      "question_count": 0
+    },
+    {
+      "id": "EE-S10-L025",
+      "paper": "EE",
+      "section_number": 10,
+      "section_title": "Power Electronics",
+      "title": "Sinusoidal pulse width modulation (SPWM)",
+      "question_count": 0
+    }
+  ]
+}

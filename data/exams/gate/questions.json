@@ -1,0 +1,3416 @@
+{
+  "schema_version": 1,
+  "exam": "GATE",
+  "papers": [
+    "EE",
+    "DA"
+  ],
+  "release": "verified_pilot_independently_reviewed",
+  "source_policy": "Official final answer key + native question text + reviewed two-pass map; visual items require pilot crop audit. Explanations were independently checked against the statement, options, key, and verified crop where present. Unreviewed candidates remain held.",
+  "source_root": "external-gate-2027-books",
+  "topic_catalog": "data/exams/gate/topics.json",
+  "question_count": 48,
+  "questions": [
+    {
+      "id": "GATE-2024-DA-S1-Q11-8ba7f11014fc",
+      "paper": "DA",
+      "year": 2024,
+      "session": "1",
+      "question_number": 11,
+      "type": "MCQ",
+      "marks": 1,
+      "statement": "Consider the following statements:\n\n                (i)    The mean and variance of a Poisson random variable are equal.\n                (ii)   For a standard normal random variable, the mean is zero and the\n                       variance is one.\n\n          Which ONE of the following options is correct?\n\n (A)      Both (i) and (ii) are true\n\n (B)      (i) is true and (ii) is false\n\n (C)      (ii) is true and (i) is false\n\n (D)      Both (i) and (ii) are false",
+      "options": [
+        {
+          "label": "A",
+          "text": "Both (i) and (ii) are true"
+        },
+        {
+          "label": "B",
+          "text": "(i) is true and (ii) is false"
+        },
+        {
+          "label": "C",
+          "text": "(ii) is true and (i) is false"
+        },
+        {
+          "label": "D",
+          "text": "Both (i) and (ii) are false"
+        }
+      ],
+      "answer": {
+        "kind": "MCQ",
+        "value": "A",
+        "raw": "A"
+      },
+      "primary_leaf_id": "DA-S01-L028",
+      "secondary_leaf_ids": [
+        "DA-S01-L030"
+      ],
+      "explanation": "Poisson and standard normal moments: For Poisson(λ), E[X]=Var(X)=λ. For a standard normal variable, E[Z]=0 and Var(Z)=1. Both statements are true. Final answer: A",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.97,
+          0.98
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "8ba7f11014fc63413961cde0592da1ac67babf0bb0b488db33b5b86ade1db27b",
+        "question_source": "sources/official-direct/2024/question-paper/DA24S1.pdf",
+        "question_pages": [
+          9
+        ],
+        "question_candidate_id": "2024-DA-1-DA-11-p9-8ba7f11014fc-131ff6f5",
+        "question_source_occurrences": [
+          {
+            "sha256": "8ba7f11014fc63413961cde0592da1ac67babf0bb0b488db33b5b86ade1db27b",
+            "path": "sources/official-direct/2024/question-paper/DA24S1.pdf",
+            "pages": [
+              9
+            ]
+          }
+        ],
+        "answer_key_sha256": "3dc72f5afde9eb2e87607c98d9e057a61ccd9ff798b6fe1ad831d1cee3cdb69d",
+        "answer_key_source": "sources/official-direct/2024/answer-key/DAFinalAnswerKey.pdf",
+        "answer_key_page": 1,
+        "answer_key_row": "11 1 MCQ DA A 1"
+      }
+    },
+    {
+      "id": "GATE-2024-DA-S1-Q12-8ba7f11014fc",
+      "paper": "DA",
+      "year": 2024,
+      "session": "1",
+      "question_number": 12,
+      "type": "MCQ",
+      "marks": 1,
+      "statement": "Three fair coins are tossed independently. T is the event that two or more tosses\n          result in heads. S is the event that two or more tosses result in tails.\n\n          What is the probability of the event 𝑇 ∩ 𝑆 ?\n\n (A)      0\n\n (B)      0.5\n\n (C)      0.25\n\n (D)      1",
+      "options": [
+        {
+          "label": "A",
+          "text": "0"
+        },
+        {
+          "label": "B",
+          "text": "0.5"
+        },
+        {
+          "label": "C",
+          "text": "0.25"
+        },
+        {
+          "label": "D",
+          "text": "1 Page 9 of 41 Organizing Institute: IISc Bengaluru Data Science and Artificial Intelligence (DA)"
+        }
+      ],
+      "answer": {
+        "kind": "MCQ",
+        "value": "A",
+        "raw": "A"
+      },
+      "primary_leaf_id": "DA-S01-L005",
+      "secondary_leaf_ids": [
+        "DA-S01-L004",
+        "DA-S01-L006"
+      ],
+      "explanation": "Events and sample space: With three tosses, at least two heads and at least two tails would require at least four tosses. The intersection is therefore impossible. Final answer: 0 (A)",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.95,
+          0.95
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "8ba7f11014fc63413961cde0592da1ac67babf0bb0b488db33b5b86ade1db27b",
+        "question_source": "sources/official-direct/2024/question-paper/DA24S1.pdf",
+        "question_pages": [
+          10
+        ],
+        "question_candidate_id": "2024-DA-1-DA-12-p10-8ba7f11014fc-e4c0230f",
+        "question_source_occurrences": [
+          {
+            "sha256": "8ba7f11014fc63413961cde0592da1ac67babf0bb0b488db33b5b86ade1db27b",
+            "path": "sources/official-direct/2024/question-paper/DA24S1.pdf",
+            "pages": [
+              10
+            ]
+          }
+        ],
+        "answer_key_sha256": "3dc72f5afde9eb2e87607c98d9e057a61ccd9ff798b6fe1ad831d1cee3cdb69d",
+        "answer_key_source": "sources/official-direct/2024/answer-key/DAFinalAnswerKey.pdf",
+        "answer_key_page": 1,
+        "answer_key_row": "12 1 MCQ DA A 1"
+      }
+    },
+    {
+      "id": "GATE-2024-DA-S1-Q27-8ba7f11014fc",
+      "paper": "DA",
+      "year": 2024,
+      "session": "1",
+      "question_number": 27,
+      "type": "MCQ",
+      "marks": 1,
+      "statement": "Let the minimum, maximum, mean and standard deviation values for the attribute\n          income of data scientists be ₹46000, ₹170000, ₹96000, and ₹21000, respective ly.\n          The z-score normalized income value of ₹106000 is closest to which ONE of the\n          following options?\n\n (A)      0.217\n\n (B)      0.476\n\n (C)      0.623\n\n (D)      2.304",
+      "options": [
+        {
+          "label": "A",
+          "text": "0.217"
+        },
+        {
+          "label": "B",
+          "text": "0.476"
+        },
+        {
+          "label": "C",
+          "text": "0.623"
+        },
+        {
+          "label": "D",
+          "text": "2.304"
+        }
+      ],
+      "answer": {
+        "kind": "MCQ",
+        "value": "B",
+        "raw": "B"
+      },
+      "primary_leaf_id": "DA-S01-L017",
+      "secondary_leaf_ids": [
+        "DA-S01-L030"
+      ],
+      "explanation": "Z-score normalization: Use z=(x−mean)/standard deviation=(106000−96000)/21000=10/21≈0.47619. The closest option is 0.476. Final answer: B",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.9,
+          0.92
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "8ba7f11014fc63413961cde0592da1ac67babf0bb0b488db33b5b86ade1db27b",
+        "question_source": "sources/official-direct/2024/question-paper/DA24S1.pdf",
+        "question_pages": [
+          17
+        ],
+        "question_candidate_id": "2024-DA-1-DA-27-p17-8ba7f11014fc-d086d7e9",
+        "question_source_occurrences": [
+          {
+            "sha256": "8ba7f11014fc63413961cde0592da1ac67babf0bb0b488db33b5b86ade1db27b",
+            "path": "sources/official-direct/2024/question-paper/DA24S1.pdf",
+            "pages": [
+              17
+            ]
+          }
+        ],
+        "answer_key_sha256": "3dc72f5afde9eb2e87607c98d9e057a61ccd9ff798b6fe1ad831d1cee3cdb69d",
+        "answer_key_source": "sources/official-direct/2024/answer-key/DAFinalAnswerKey.pdf",
+        "answer_key_page": 1,
+        "answer_key_row": "27 1 MCQ DA B 1"
+      }
+    },
+    {
+      "id": "GATE-2024-DA-S1-Q34-8ba7f11014fc",
+      "paper": "DA",
+      "year": 2024,
+      "session": "1",
+      "question_number": 34,
+      "type": "NAT",
+      "marks": 1,
+      "statement": "The sample average of 50 data points is 40. The updated sample average after\n          including a new data point taking the value of 142 is ______.",
+      "options": [],
+      "answer": {
+        "kind": "NAT",
+        "lower": 42.0,
+        "upper": 42.0,
+        "raw": "42 to 42"
+      },
+      "primary_leaf_id": "DA-S01-L014",
+      "secondary_leaf_ids": [],
+      "explanation": "Updating a sample mean: The old sum is 50×40=2000. After adding 142, the sum is 2142 over 51 observations, so the new mean is 2142/51=42. Final answer: 42",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.95,
+          0.98
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "8ba7f11014fc63413961cde0592da1ac67babf0bb0b488db33b5b86ade1db27b",
+        "question_source": "sources/official-direct/2024/question-paper/DA24S1.pdf",
+        "question_pages": [
+          21
+        ],
+        "question_candidate_id": "2024-DA-1-DA-34-p21-8ba7f11014fc-78a0d4ce",
+        "question_source_occurrences": [
+          {
+            "sha256": "8ba7f11014fc63413961cde0592da1ac67babf0bb0b488db33b5b86ade1db27b",
+            "path": "sources/official-direct/2024/question-paper/DA24S1.pdf",
+            "pages": [
+              21
+            ]
+          }
+        ],
+        "answer_key_sha256": "3dc72f5afde9eb2e87607c98d9e057a61ccd9ff798b6fe1ad831d1cee3cdb69d",
+        "answer_key_source": "sources/official-direct/2024/answer-key/DAFinalAnswerKey.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "34 1 NAT DA 42 to 42 1"
+      }
+    },
+    {
+      "id": "GATE-2024-DA-S1-Q36-8ba7f11014fc",
+      "paper": "DA",
+      "year": 2024,
+      "session": "1",
+      "question_number": 36,
+      "type": "MCQ",
+      "marks": 2,
+      "statement": "A fair six-sided die (with faces numbered 1, 2, 3, 4, 5, 6) is repeatedly thrown\n          independently.\n\n          What is the expected number of times the die is thrown until two consecutive throws\n          of even numbers are seen?\n\n (A)      2\n\n (B)      4\n\n (C)      6\n\n (D)      8",
+      "options": [
+        {
+          "label": "A",
+          "text": "2"
+        },
+        {
+          "label": "B",
+          "text": "4"
+        },
+        {
+          "label": "C",
+          "text": "6"
+        },
+        {
+          "label": "D",
+          "text": "8 Page 21 of 41 Organizing Institute: IISc Bengaluru Data Science and Artificial Intelligence (DA)"
+        }
+      ],
+      "answer": {
+        "kind": "MCQ",
+        "value": "C",
+        "raw": "C"
+      },
+      "primary_leaf_id": "DA-S01-L012",
+      "secondary_leaf_ids": [],
+      "explanation": "Conditional expectation: Let E1 be the expected throws after no current even and E2 after one even. E1=1+(E1+E2)/2 and E2=1+E1/2, giving E1=6. Starting before the first throw has the same expected value. Final answer: 6 (C)",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.92,
+          0.92
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "8ba7f11014fc63413961cde0592da1ac67babf0bb0b488db33b5b86ade1db27b",
+        "question_source": "sources/official-direct/2024/question-paper/DA24S1.pdf",
+        "question_pages": [
+          22
+        ],
+        "question_candidate_id": "2024-DA-1-DA-36-p22-8ba7f11014fc-4580c730",
+        "question_source_occurrences": [
+          {
+            "sha256": "8ba7f11014fc63413961cde0592da1ac67babf0bb0b488db33b5b86ade1db27b",
+            "path": "sources/official-direct/2024/question-paper/DA24S1.pdf",
+            "pages": [
+              22
+            ]
+          }
+        ],
+        "answer_key_sha256": "3dc72f5afde9eb2e87607c98d9e057a61ccd9ff798b6fe1ad831d1cee3cdb69d",
+        "answer_key_source": "sources/official-direct/2024/answer-key/DAFinalAnswerKey.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "36 1 MCQ DA C 2"
+      }
+    },
+    {
+      "id": "GATE-2024-DA-S1-Q56-8ba7f11014fc",
+      "paper": "DA",
+      "year": 2024,
+      "session": "1",
+      "question_number": 56,
+      "type": "NAT",
+      "marks": 2,
+      "statement": "Let 𝑋 be a random variable uniformly distributed in the interval [1, 3] and 𝑌 be a\n          random variable uniformly distributed in the interval [2, 4]. If X and Y are\n          independent of each other, the probability P(𝑋 ≥ 𝑌) is ______ (rounded off to\n          three decimal places).",
+      "options": [],
+      "answer": {
+        "kind": "NAT",
+        "lower": 0.125,
+        "upper": 0.125,
+        "raw": "0.125 to 0.125"
+      },
+      "primary_leaf_id": "DA-S01-L026",
+      "secondary_leaf_ids": [
+        "DA-S01-L010"
+      ],
+      "explanation": "Joint density geometry: The rectangle [1,3]×[2,4] has area 4. The region x≥y has area ∫₂³(x−2)dx=1/2, so P(X≥Y)=(1/2)/4=1/8=0.125. Final answer: 0.125",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.95,
+          0.98
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "8ba7f11014fc63413961cde0592da1ac67babf0bb0b488db33b5b86ade1db27b",
+        "question_source": "sources/official-direct/2024/question-paper/DA24S1.pdf",
+        "question_pages": [
+          38
+        ],
+        "question_candidate_id": "2024-DA-1-DA-56-p38-8ba7f11014fc-052f5021",
+        "question_source_occurrences": [
+          {
+            "sha256": "8ba7f11014fc63413961cde0592da1ac67babf0bb0b488db33b5b86ade1db27b",
+            "path": "sources/official-direct/2024/question-paper/DA24S1.pdf",
+            "pages": [
+              38
+            ]
+          }
+        ],
+        "answer_key_sha256": "3dc72f5afde9eb2e87607c98d9e057a61ccd9ff798b6fe1ad831d1cee3cdb69d",
+        "answer_key_source": "sources/official-direct/2024/answer-key/DAFinalAnswerKey.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "56 1 NAT DA 0.125 to 0.125 2"
+      }
+    },
+    {
+      "id": "GATE-2024-DA-S1-Q57-8ba7f11014fc",
+      "paper": "DA",
+      "year": 2024,
+      "session": "1",
+      "question_number": 57,
+      "type": "NAT",
+      "marks": 2,
+      "statement": "Let 𝑋 be a random variable exponentially distributed with parameter 𝜆 > 0. The\n          probability density function of X is given by:\n                                                           −𝜆𝑥\n                                         𝑓𝑋 (𝑥 ) = { 𝜆 𝑒         ,       𝑥≥0\n                                                    0,               𝑜𝑡ℎ𝑒𝑟𝑤𝑖𝑠𝑒\n\n          If 5𝐸(𝑋) = 𝑉𝑎𝑟(𝑋), where 𝐸 (𝑋) and 𝑉𝑎𝑟(𝑋) indicate the expectation and variance\n          of 𝑋, respectively, the value of 𝜆 is ______ (rounded off to one decimal place).",
+      "options": [],
+      "answer": {
+        "kind": "NAT",
+        "lower": 0.2,
+        "upper": 0.2,
+        "raw": "0.2 to 0.2"
+      },
+      "primary_leaf_id": "DA-S01-L027",
+      "secondary_leaf_ids": [],
+      "explanation": "Exponential moments: For Exp(λ), E[X]=1/λ and Var(X)=1/λ². From 5/λ=1/λ², λ=1/5=0.2. Final answer: 0.2",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.95,
+          0.98
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "8ba7f11014fc63413961cde0592da1ac67babf0bb0b488db33b5b86ade1db27b",
+        "question_source": "sources/official-direct/2024/question-paper/DA24S1.pdf",
+        "question_pages": [
+          38
+        ],
+        "question_candidate_id": "2024-DA-1-DA-57-p38-8ba7f11014fc-8c6c0e24",
+        "question_source_occurrences": [
+          {
+            "sha256": "8ba7f11014fc63413961cde0592da1ac67babf0bb0b488db33b5b86ade1db27b",
+            "path": "sources/official-direct/2024/question-paper/DA24S1.pdf",
+            "pages": [
+              38
+            ]
+          }
+        ],
+        "answer_key_sha256": "3dc72f5afde9eb2e87607c98d9e057a61ccd9ff798b6fe1ad831d1cee3cdb69d",
+        "answer_key_source": "sources/official-direct/2024/answer-key/DAFinalAnswerKey.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "57 1 NAT DA 0.2 to 0.2 2"
+      }
+    },
+    {
+      "id": "GATE-2024-DA-S1-Q58-8ba7f11014fc",
+      "paper": "DA",
+      "year": 2024,
+      "session": "1",
+      "question_number": 58,
+      "type": "NAT",
+      "marks": 2,
+      "statement": "Consider two events T and S. Let 𝑇̅ denote the complement of the event T. The\n          probability associated with different events are given as follows:\n\n                           𝑃(𝑇̅ ) = 0.6,         𝑃(𝑆|𝑇 ) = 0.3,            𝑃(𝑆 |𝑇̅ ) = 0.6\n\n          Then, 𝑃(𝑇 |𝑆 ) is ______ (rounded off to two decimal places).",
+      "options": [],
+      "answer": {
+        "kind": "NAT",
+        "lower": 0.25,
+        "upper": 0.25,
+        "raw": "0.25 to 0.25"
+      },
+      "primary_leaf_id": "DA-S01-L011",
+      "secondary_leaf_ids": [
+        "DA-S01-L009"
+      ],
+      "explanation": "Bayes theorem: P(T)=0.4 and P(S)=0.3(0.4)+0.6(0.6)=0.48. Hence P(T|S)=P(S|T)P(T)/P(S)=0.12/0.48=0.25. Final answer: 0.25",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.97,
+          0.99
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "8ba7f11014fc63413961cde0592da1ac67babf0bb0b488db33b5b86ade1db27b",
+        "question_source": "sources/official-direct/2024/question-paper/DA24S1.pdf",
+        "question_pages": [
+          38
+        ],
+        "question_candidate_id": "2024-DA-1-DA-58-p38-8ba7f11014fc-141eaf3b",
+        "question_source_occurrences": [
+          {
+            "sha256": "8ba7f11014fc63413961cde0592da1ac67babf0bb0b488db33b5b86ade1db27b",
+            "path": "sources/official-direct/2024/question-paper/DA24S1.pdf",
+            "pages": [
+              38
+            ]
+          }
+        ],
+        "answer_key_sha256": "3dc72f5afde9eb2e87607c98d9e057a61ccd9ff798b6fe1ad831d1cee3cdb69d",
+        "answer_key_source": "sources/official-direct/2024/answer-key/DAFinalAnswerKey.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "58 1 NAT DA 0.25 to 0.25 2"
+      }
+    },
+    {
+      "id": "GATE-2024-DA-S1-Q65-8ba7f11014fc",
+      "paper": "DA",
+      "year": 2024,
+      "session": "1",
+      "question_number": 65,
+      "type": "NAT",
+      "marks": 2,
+      "statement": "Two fair coins are tossed independently. X is a random variable that takes a value\n          of 1 if both tosses are heads and 0 otherwise. Y is a random variable that takes a\n          value of 1 if at least one of the tosses is heads and 0 otherwise.\n\n          The value of the covariance of X and Y is ______ (rounded off to three decimal\n          places).",
+      "options": [],
+      "answer": {
+        "kind": "NAT",
+        "lower": 0.062,
+        "upper": 0.063,
+        "raw": "0.062 to 0.063"
+      },
+      "primary_leaf_id": "DA-S01-L019",
+      "secondary_leaf_ids": [
+        "DA-S01-L018"
+      ],
+      "explanation": "Covariance: Only HH gives X=Y=1, so E[XY]=1/4, E[X]=1/4, and E[Y]=3/4. Cov(X,Y)=1/4−(1/4)(3/4)=1/16=0.0625≈0.063. Final answer: 0.0625≈0.063",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.95,
+          0.97
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "8ba7f11014fc63413961cde0592da1ac67babf0bb0b488db33b5b86ade1db27b",
+        "question_source": "sources/official-direct/2024/question-paper/DA24S1.pdf",
+        "question_pages": [
+          41
+        ],
+        "question_candidate_id": "2024-DA-1-DA-65-p41-8ba7f11014fc-9c2c9210",
+        "question_source_occurrences": [
+          {
+            "sha256": "8ba7f11014fc63413961cde0592da1ac67babf0bb0b488db33b5b86ade1db27b",
+            "path": "sources/official-direct/2024/question-paper/DA24S1.pdf",
+            "pages": [
+              41
+            ]
+          }
+        ],
+        "answer_key_sha256": "3dc72f5afde9eb2e87607c98d9e057a61ccd9ff798b6fe1ad831d1cee3cdb69d",
+        "answer_key_source": "sources/official-direct/2024/answer-key/DAFinalAnswerKey.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "65 1 NAT DA 0.062 to 0.063 2"
+      }
+    },
+    {
+      "id": "GATE-2025-DA-S5-Q11-69ba28fc60e6",
+      "paper": "DA",
+      "year": 2025,
+      "session": "5",
+      "question_number": 11,
+      "type": "MCQ",
+      "marks": 1,
+      "statement": "Suppose X and Y are random variables. The conditional expectation of X given Y is\n            denoted by E[X|Y ]. Then E[E[X|Y ]] equals\n\n            (A)       E[X|Y ]\n\n                      E[X]\n            (B)\n                      E[Y ]\n\n            (C)       E[X]\n\n            (D)       E[Y ]",
+      "options": [
+        {
+          "label": "A",
+          "text": "E[X|Y ] E[X]"
+        },
+        {
+          "label": "B",
+          "text": "E[Y ]"
+        },
+        {
+          "label": "C",
+          "text": "E[X]"
+        },
+        {
+          "label": "D",
+          "text": "E[Y ]"
+        }
+      ],
+      "answer": {
+        "kind": "MCQ",
+        "value": "C",
+        "raw": "C"
+      },
+      "primary_leaf_id": "DA-S01-L012",
+      "secondary_leaf_ids": [],
+      "explanation": "Law of total expectation: The tower property gives E[E[X|Y]]=E[X]. Final answer: C",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.97,
+          0.98
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "69ba28fc60e64338113d99c90533025049b7c6e0c99c4f03d76d5ce9d70478c6",
+        "question_source": "sources/official-direct/2025/question-paper/DA2025.pdf",
+        "question_pages": [
+          10
+        ],
+        "question_candidate_id": "2025-DA-5-DA-11-p10-69ba28fc60e6-5754781c",
+        "question_source_occurrences": [
+          {
+            "sha256": "69ba28fc60e64338113d99c90533025049b7c6e0c99c4f03d76d5ce9d70478c6",
+            "path": "sources/official-direct/2025/question-paper/DA2025.pdf",
+            "pages": [
+              10
+            ]
+          }
+        ],
+        "answer_key_sha256": "081f108d4a2d617895b6859a9e715504391c87f9a6f13593548869d71b33dc40",
+        "answer_key_source": "sources/official-direct/2025/answer-key/DA_Keys.pdf",
+        "answer_key_page": 1,
+        "answer_key_row": "11 5 MCQ DA C 1"
+      }
+    },
+    {
+      "id": "GATE-2025-DA-S5-Q19-69ba28fc60e6",
+      "paper": "DA",
+      "year": 2025,
+      "session": "5",
+      "question_number": 19,
+      "type": "MCQ",
+      "marks": 1,
+      "statement": "Let X be a continuous random variable whose cumulative distribution function (CDF)\n            FX (x), for some t, is given as follows:\n                                                 \n                                                 \n                                                 \n                                                    0              x≤t\n                                                  x−t\n                                       FX (x) =                 t≤x≤4\n                                                 \n                                                    4−t\n                                                 \n                                                  1                x≥4\n\n            If the median of X is 3, then what is the value of t?\n\n            (A)       2\n\n            (B)       1\n\n            (C)       −1\n\n            (D)       0",
+      "options": [
+        {
+          "label": "A",
+          "text": "2"
+        },
+        {
+          "label": "B",
+          "text": "1"
+        },
+        {
+          "label": "C",
+          "text": "−1"
+        },
+        {
+          "label": "D",
+          "text": "0"
+        }
+      ],
+      "answer": {
+        "kind": "MCQ",
+        "value": "A",
+        "raw": "A"
+      },
+      "primary_leaf_id": "DA-S01-L033",
+      "secondary_leaf_ids": [],
+      "explanation": "Uniform CDF and median: The CDF is uniform on [t,4], so F(3)=(3−t)/(4−t). Setting the median condition F(3)=1/2 gives t=2. Final answer: A",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.95,
+          0.98
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "69ba28fc60e64338113d99c90533025049b7c6e0c99c4f03d76d5ce9d70478c6",
+        "question_source": "sources/official-direct/2025/question-paper/DA2025.pdf",
+        "question_pages": [
+          13
+        ],
+        "question_candidate_id": "2025-DA-5-DA-19-p13-69ba28fc60e6-4bf67845",
+        "question_source_occurrences": [
+          {
+            "sha256": "69ba28fc60e64338113d99c90533025049b7c6e0c99c4f03d76d5ce9d70478c6",
+            "path": "sources/official-direct/2025/question-paper/DA2025.pdf",
+            "pages": [
+              13
+            ]
+          }
+        ],
+        "answer_key_sha256": "081f108d4a2d617895b6859a9e715504391c87f9a6f13593548869d71b33dc40",
+        "answer_key_source": "sources/official-direct/2025/answer-key/DA_Keys.pdf",
+        "answer_key_page": 1,
+        "answer_key_row": "19 5 MCQ DA A 1"
+      }
+    },
+    {
+      "id": "GATE-2025-DA-S5-Q20-69ba28fc60e6",
+      "paper": "DA",
+      "year": 2025,
+      "session": "5",
+      "question_number": 20,
+      "type": "MCQ",
+      "marks": 1,
+      "statement": "Let X = aZ + b, where Z is a standard normal random variable, and a, b are two\n            unknown constants. It is given that\n\n                            E[X] = 1,   E[(X − E[X])Z] = −2,        E[(X − E[X])2 ] = 4,\n\n            where E[X] denotes the expectation of random variable X. The values of a, b are:\n\n            (A)       a = −2, b = 1\n\n            (B)       a = 2, b = −1\n\n            (C)       a = −2, b = −1\n\n            (D)       a = 1, b = 1\n\n\f GATE 2025                                                              Data Science & Artificial Intelligence - DA",
+      "options": [
+        {
+          "label": "A",
+          "text": "a = −2, b = 1"
+        },
+        {
+          "label": "B",
+          "text": "a = 2, b = −1"
+        },
+        {
+          "label": "C",
+          "text": "a = −2, b = −1"
+        },
+        {
+          "label": "D",
+          "text": "a = 1, b = 1 Organizing Institute: IIT Roorkee Page 13 of 34 GATE 2025 Data Science & Artificial Intelligence - DA"
+        }
+      ],
+      "answer": {
+        "kind": "MCQ",
+        "value": "A",
+        "raw": "A"
+      },
+      "primary_leaf_id": "DA-S01-L030",
+      "secondary_leaf_ids": [],
+      "explanation": "Affine normal transformation: E[X]=aE[Z]+b=b=1. Also E[(X−E[X])Z]=aE[Z²]=a=−2; a²=4 confirms the variance condition. Final answer: A",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.92,
+          0.95
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "69ba28fc60e64338113d99c90533025049b7c6e0c99c4f03d76d5ce9d70478c6",
+        "question_source": "sources/official-direct/2025/question-paper/DA2025.pdf",
+        "question_pages": [
+          14
+        ],
+        "question_candidate_id": "2025-DA-5-DA-20-p14-69ba28fc60e6-ebcb08f9",
+        "question_source_occurrences": [
+          {
+            "sha256": "69ba28fc60e64338113d99c90533025049b7c6e0c99c4f03d76d5ce9d70478c6",
+            "path": "sources/official-direct/2025/question-paper/DA2025.pdf",
+            "pages": [
+              14
+            ]
+          }
+        ],
+        "answer_key_sha256": "081f108d4a2d617895b6859a9e715504391c87f9a6f13593548869d71b33dc40",
+        "answer_key_source": "sources/official-direct/2025/answer-key/DA_Keys.pdf",
+        "answer_key_page": 1,
+        "answer_key_row": "20 5 MCQ DA A 1"
+      }
+    },
+    {
+      "id": "GATE-2025-DA-S5-Q21-69ba28fc60e6",
+      "paper": "DA",
+      "year": 2025,
+      "session": "5",
+      "question_number": 21,
+      "type": "MCQ",
+      "marks": 1,
+      "statement": "It is given that P (X ≥ 2) = 0.25 for an exponentially distributed random variable X\n                            1\n            with E[X] = , where E[X] denotes the expectation of X. What is the value of λ?\n                           λ\n            (ln denotes natural logarithm)\n\n            (A)       ln 2\n\n            (B)       ln 4\n\n            (C)       ln 3\n\n            (D)       ln 0.25",
+      "options": [
+        {
+          "label": "A",
+          "text": "ln 2"
+        },
+        {
+          "label": "B",
+          "text": "ln 4"
+        },
+        {
+          "label": "C",
+          "text": "ln 3"
+        },
+        {
+          "label": "D",
+          "text": "ln 0.25"
+        }
+      ],
+      "answer": {
+        "kind": "MCQ",
+        "value": "A",
+        "raw": "A"
+      },
+      "primary_leaf_id": "DA-S01-L027",
+      "secondary_leaf_ids": [],
+      "explanation": "Exponential survival function: P(X≥2)=e^(−2λ)=0.25=1/4. Taking logs gives 2λ=ln4, hence λ=ln2. Final answer: A",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.95,
+          0.98
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "69ba28fc60e64338113d99c90533025049b7c6e0c99c4f03d76d5ce9d70478c6",
+        "question_source": "sources/official-direct/2025/question-paper/DA2025.pdf",
+        "question_pages": [
+          14
+        ],
+        "question_candidate_id": "2025-DA-5-DA-21-p14-69ba28fc60e6-5391c02c",
+        "question_source_occurrences": [
+          {
+            "sha256": "69ba28fc60e64338113d99c90533025049b7c6e0c99c4f03d76d5ce9d70478c6",
+            "path": "sources/official-direct/2025/question-paper/DA2025.pdf",
+            "pages": [
+              14
+            ]
+          }
+        ],
+        "answer_key_sha256": "081f108d4a2d617895b6859a9e715504391c87f9a6f13593548869d71b33dc40",
+        "answer_key_source": "sources/official-direct/2025/answer-key/DA_Keys.pdf",
+        "answer_key_page": 1,
+        "answer_key_row": "21 5 MCQ DA A 1"
+      }
+    },
+    {
+      "id": "GATE-2025-DA-S5-Q31-69ba28fc60e6",
+      "paper": "DA",
+      "year": 2025,
+      "session": "5",
+      "question_number": 31,
+      "type": "NAT",
+      "marks": 1,
+      "statement": "There are three boxes containing white balls and black balls. Box-1 contains 2 black and 1 white balls. Box-2 contains 1 black and 2 white balls. Box-3 contains 3 black and 3 white balls. In a random experiment, one of these boxes is selected, where the probability of choosing Box-1 is 1/2, Box-2 is 1/6, and Box-3 is 1/3. A ball is drawn at random from the selected box. Given that the ball drawn is white, the probability that it is drawn from Box-2 is _____. (Round off to two decimal places.)",
+      "options": [],
+      "answer": {
+        "kind": "NAT",
+        "lower": 0.25,
+        "upper": 0.25,
+        "raw": "0.25 to 0.25"
+      },
+      "primary_leaf_id": "DA-S01-L011",
+      "secondary_leaf_ids": [],
+      "explanation": "Bayes theorem: The white probabilities from boxes 1,2,3 are 1/3, 2/3, 1/2. Thus P(B2|W)=(1/6·2/3)/(1/2·1/3+1/6·2/3+1/3·1/2)=1/4. Final answer: 0.25",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review",
+          "reviewed_statement_reconstruction"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.97,
+          0.99
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "69ba28fc60e64338113d99c90533025049b7c6e0c99c4f03d76d5ce9d70478c6",
+        "question_source": "sources/official-direct/2025/question-paper/DA2025.pdf",
+        "question_pages": [
+          17
+        ],
+        "question_candidate_id": "2025-DA-5-DA-31-p17-69ba28fc60e6-79a07df6",
+        "question_source_occurrences": [
+          {
+            "sha256": "69ba28fc60e64338113d99c90533025049b7c6e0c99c4f03d76d5ce9d70478c6",
+            "path": "sources/official-direct/2025/question-paper/DA2025.pdf",
+            "pages": [
+              17
+            ]
+          }
+        ],
+        "answer_key_sha256": "081f108d4a2d617895b6859a9e715504391c87f9a6f13593548869d71b33dc40",
+        "answer_key_source": "sources/official-direct/2025/answer-key/DA_Keys.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "31 5 NAT DA 0.25 to 0.25 1"
+      }
+    },
+    {
+      "id": "GATE-2025-DA-S5-Q36-69ba28fc60e6",
+      "paper": "DA",
+      "year": 2025,
+      "session": "5",
+      "question_number": 36,
+      "type": "MCQ",
+      "marks": 2,
+      "statement": "Let Y = Z 2 , Z =            , where X is a normal random variable with mean µ and\n                                     σ\n            variance σ 2 . The variance of Y is\n\n            (A)       1\n\n            (B)       2\n\n            (C)       3\n\n            (D)       4",
+      "options": [
+        {
+          "label": "A",
+          "text": "1"
+        },
+        {
+          "label": "B",
+          "text": "2"
+        },
+        {
+          "label": "C",
+          "text": "3"
+        },
+        {
+          "label": "D",
+          "text": "4"
+        }
+      ],
+      "answer": {
+        "kind": "MCQ",
+        "value": "B",
+        "raw": "B"
+      },
+      "primary_leaf_id": "DA-S01-L032",
+      "secondary_leaf_ids": [],
+      "explanation": "Chi-square distribution: Standardizing gives Z=(X−μ)/σ∼N(0,1), so Y=Z²∼χ² with one degree of freedom. Var(χ²ν)=2ν=2. Final answer: B",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.9,
+          0.95
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "69ba28fc60e64338113d99c90533025049b7c6e0c99c4f03d76d5ce9d70478c6",
+        "question_source": "sources/official-direct/2025/question-paper/DA2025.pdf",
+        "question_pages": [
+          19
+        ],
+        "question_candidate_id": "2025-DA-5-DA-36-p19-69ba28fc60e6-5ea5f8d4",
+        "question_source_occurrences": [
+          {
+            "sha256": "69ba28fc60e64338113d99c90533025049b7c6e0c99c4f03d76d5ce9d70478c6",
+            "path": "sources/official-direct/2025/question-paper/DA2025.pdf",
+            "pages": [
+              19
+            ]
+          }
+        ],
+        "answer_key_sha256": "081f108d4a2d617895b6859a9e715504391c87f9a6f13593548869d71b33dc40",
+        "answer_key_source": "sources/official-direct/2025/answer-key/DA_Keys.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "36 5 MCQ DA B 2"
+      }
+    },
+    {
+      "id": "GATE-2025-DA-S5-Q39-69ba28fc60e6",
+      "paper": "DA",
+      "year": 2025,
+      "session": "5",
+      "question_number": 39,
+      "type": "MCQ",
+      "marks": 2,
+      "statement": "Consider the cumulative distribution function (CDF) of a random variable X:\n                                             \n                                               0             x ≤ −1\n                                             \n                                             \n                                             \n                                             \n                                             \n                                               1\n                                             \n                                  FX (x) =       (x + 1)2    −1 ≤ x ≤ 1\n                                             \n                                             \n                                              4\n                                             \n                                             1              x≥1\n                                             \n\n            The value of P (X 2 ≤ 0.25) is\n\n            (A)       0.625\n\n            (B)       0.25\n\n            (C)       0.5\n\n            (D)       0.5625",
+      "options": [
+        {
+          "label": "A",
+          "text": "0.625"
+        },
+        {
+          "label": "B",
+          "text": "0.25"
+        },
+        {
+          "label": "C",
+          "text": "0.5"
+        },
+        {
+          "label": "D",
+          "text": "0.5625"
+        }
+      ],
+      "answer": {
+        "kind": "MCQ",
+        "value": "C",
+        "raw": "C"
+      },
+      "primary_leaf_id": "DA-S01-L033",
+      "secondary_leaf_ids": [],
+      "explanation": "CDF interval probability: X²≤0.25 means −0.5≤X≤0.5. Therefore P=F(0.5)−F(−0.5)=[(1.5)²−(0.5)²]/4=0.5. Final answer: C",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.97,
+          0.98
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "69ba28fc60e64338113d99c90533025049b7c6e0c99c4f03d76d5ce9d70478c6",
+        "question_source": "sources/official-direct/2025/question-paper/DA2025.pdf",
+        "question_pages": [
+          20
+        ],
+        "question_candidate_id": "2025-DA-5-DA-39-p20-69ba28fc60e6-1419cd00",
+        "question_source_occurrences": [
+          {
+            "sha256": "69ba28fc60e64338113d99c90533025049b7c6e0c99c4f03d76d5ce9d70478c6",
+            "path": "sources/official-direct/2025/question-paper/DA2025.pdf",
+            "pages": [
+              20
+            ]
+          }
+        ],
+        "answer_key_sha256": "081f108d4a2d617895b6859a9e715504391c87f9a6f13593548869d71b33dc40",
+        "answer_key_source": "sources/official-direct/2025/answer-key/DA_Keys.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "39 5 MCQ DA C 2"
+      }
+    },
+    {
+      "id": "GATE-2025-DA-S5-Q40-69ba28fc60e6",
+      "paper": "DA",
+      "year": 2025,
+      "session": "5",
+      "question_number": 40,
+      "type": "MCQ",
+      "marks": 2,
+      "statement": "A random variable X is said to be distributed as Bernoulli(θ), denoted by X ∼\n            Bernoulli(θ), if\n                                      P (X = 1) = θ,         P (X = 0) = 1 − θ\n                                         300\n                                         X\n            for 0 < θ < 1. Let Y =              Xi , where Xi ∼ Bernoulli(θ), i = 1, 2, . . . , 300 be\n                                          i=1\n            independent and identically distributed random variables with θ = 0.25. The value of\n            P (60 ≤ Y ≤ 90), after approximation through Central Limit Theorem, is given by\n                                     Z x\n                                 1          t2\n                                          e− 2 dt\n                                                  \u0001\n             Recall that φ(x) = √\n                                  2π −∞\n            (A) φ(2) − φ(−2)\n\n            (B)       φ(1) − φ(−1)\n\n            (C)       φ(3) − φ(−3)\n\n            (D)       φ(90) − φ(60)\n\n\f GATE 2025                                                    Data Science & Artificial Intelligence - DA",
+      "options": [
+        {
+          "label": "A",
+          "text": "$\\phi ( 2 ) - \\phi ( - 2 )$"
+        },
+        {
+          "label": "B",
+          "text": "$\\phi ( 1 ) - \\phi ( - 1 )$"
+        },
+        {
+          "label": "C",
+          "text": "$\\phi ( 3 ) - \\phi ( - 3 )$"
+        },
+        {
+          "label": "D",
+          "text": "$\\phi ( 9 0 ) - \\phi ( 6 0 )$ GATE 2025 Data Science & Artificial Intelligence - DA"
+        }
+      ],
+      "answer": {
+        "kind": "MCQ",
+        "value": "A",
+        "raw": "A"
+      },
+      "primary_leaf_id": "DA-S01-L035",
+      "secondary_leaf_ids": [],
+      "explanation": "Central limit theorem: Y∼Binomial(300,0.25), with mean 75 and standard deviation √56.25=7.5. The bounds 60 and 90 standardize to −2 and 2, giving Φ(2)−Φ(−2). Final answer: A",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.97,
+          0.98
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "69ba28fc60e64338113d99c90533025049b7c6e0c99c4f03d76d5ce9d70478c6",
+        "question_source": "sources/official-direct/2025/question-paper/DA2025.pdf",
+        "question_pages": [
+          21
+        ],
+        "question_candidate_id": "2025-DA-5-DA-40-p21-69ba28fc60e6-ce9154cc",
+        "question_source_occurrences": [
+          {
+            "sha256": "69ba28fc60e64338113d99c90533025049b7c6e0c99c4f03d76d5ce9d70478c6",
+            "path": "sources/official-direct/2025/question-paper/DA2025.pdf",
+            "pages": [
+              21
+            ]
+          }
+        ],
+        "answer_key_sha256": "081f108d4a2d617895b6859a9e715504391c87f9a6f13593548869d71b33dc40",
+        "answer_key_source": "sources/official-direct/2025/answer-key/DA_Keys.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "40 5 MCQ DA A 2"
+      }
+    },
+    {
+      "id": "GATE-2025-DA-S5-Q41-69ba28fc60e6",
+      "paper": "DA",
+      "year": 2025,
+      "session": "5",
+      "question_number": 41,
+      "type": "MCQ",
+      "marks": 2,
+      "statement": "For x ∈ R, the floor function is denoted by f (x) = bxc and defined as follows\n\n                                          bxc = k, k ≤ x < k + 1,\n\n            where k is an integer. Let Y = bXc, where X is an exponentially distributed random\n                                   1\n            variable with mean         , where ln denotes natural logarithm. For any positive integer\n                                 ln 10\n            `, one can write the probability of the event Y = ` as follows\n\n                                            P (Y = `) = q ` (1 − q)\n\n            The value of q is\n\n            (A)       0.1\n\n            (B)       0.01\n\n            (C)       0.5\n\n            (D)       0.434\n\n\f GATE 2025                                                     Data Science & Artificial Intelligence - DA",
+      "options": [
+        {
+          "label": "A",
+          "text": "0.1"
+        },
+        {
+          "label": "B",
+          "text": "0.01"
+        },
+        {
+          "label": "C",
+          "text": "0.5"
+        },
+        {
+          "label": "D",
+          "text": "0.434 Organizing Institute: IIT Roorkee Page 21 of 34 GATE 2025 Data Science & Artificial Intelligence - DA"
+        }
+      ],
+      "answer": {
+        "kind": "MCQ",
+        "value": "A",
+        "raw": "A"
+      },
+      "primary_leaf_id": "DA-S01-L027",
+      "secondary_leaf_ids": [],
+      "explanation": "Exponential distribution and floor: P(⌊X⌋=ℓ)=P(ℓ≤X<ℓ+1)=e^(−λℓ)(1−e^(−λ)). With λ=ln10, q=e^(−λ)=0.1. Final answer: A",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.92,
+          0.95
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "69ba28fc60e64338113d99c90533025049b7c6e0c99c4f03d76d5ce9d70478c6",
+        "question_source": "sources/official-direct/2025/question-paper/DA2025.pdf",
+        "question_pages": [
+          22
+        ],
+        "question_candidate_id": "2025-DA-5-DA-41-p22-69ba28fc60e6-f06a0ec6",
+        "question_source_occurrences": [
+          {
+            "sha256": "69ba28fc60e64338113d99c90533025049b7c6e0c99c4f03d76d5ce9d70478c6",
+            "path": "sources/official-direct/2025/question-paper/DA2025.pdf",
+            "pages": [
+              22
+            ]
+          }
+        ],
+        "answer_key_sha256": "081f108d4a2d617895b6859a9e715504391c87f9a6f13593548869d71b33dc40",
+        "answer_key_source": "sources/official-direct/2025/answer-key/DA_Keys.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "41 5 MCQ DA A 2"
+      }
+    },
+    {
+      "id": "GATE-2025-DA-S5-Q54-69ba28fc60e6",
+      "paper": "DA",
+      "year": 2025,
+      "session": "5",
+      "question_number": 54,
+      "type": "MSQ",
+      "marks": 2,
+      "statement": "Consider a coin-toss experiment where the probability of head showing up is p. In the\n            ith coin toss, let Xi = 1 if head appears, and Xi = 0 if tail appears. Consider\n                                                                    n\n                                                            1X\n                                                       pb =       Xi\n                                                            n i=1\n\n            where n is the total number of independent coin tosses.\n\n            Which of the following statements is/are correct?\n\n            (A)       E[ pb ] = p\n\n                                     p\n            (B)       E[ pb ] =\n                                     n\n\n            (C)       As n increases, variance of pb decreases\n\n            (D)       Variance of pb does not depend on n",
+      "options": [
+        {
+          "label": "A",
+          "text": "E[ pb ] = p p"
+        },
+        {
+          "label": "B",
+          "text": "E[ pb ] = n"
+        },
+        {
+          "label": "C",
+          "text": "As n increases, variance of pb decreases"
+        },
+        {
+          "label": "D",
+          "text": "Variance of pb does not depend on n"
+        }
+      ],
+      "answer": {
+        "kind": "MSQ",
+        "value": [
+          "A",
+          "C"
+        ],
+        "raw": "A;C"
+      },
+      "primary_leaf_id": "DA-S01-L023",
+      "secondary_leaf_ids": [
+        "DA-S01-L017"
+      ],
+      "explanation": "Bernoulli sample mean: For p̂=(1/n)ΣXi, E[p̂]=p and Var(p̂)=p(1−p)/n. The variance decreases as n increases, so A and C are correct. Final answer: A,C",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.92,
+          0.92
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "69ba28fc60e64338113d99c90533025049b7c6e0c99c4f03d76d5ce9d70478c6",
+        "question_source": "sources/official-direct/2025/question-paper/DA2025.pdf",
+        "question_pages": [
+          29
+        ],
+        "question_candidate_id": "2025-DA-5-DA-54-p29-69ba28fc60e6-7a341340",
+        "question_source_occurrences": [
+          {
+            "sha256": "69ba28fc60e64338113d99c90533025049b7c6e0c99c4f03d76d5ce9d70478c6",
+            "path": "sources/official-direct/2025/question-paper/DA2025.pdf",
+            "pages": [
+              29
+            ]
+          }
+        ],
+        "answer_key_sha256": "081f108d4a2d617895b6859a9e715504391c87f9a6f13593548869d71b33dc40",
+        "answer_key_source": "sources/official-direct/2025/answer-key/DA_Keys.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "54 5 MSQ DA A;C 2"
+      }
+    },
+    {
+      "id": "GATE-2025-DA-S5-Q61-69ba28fc60e6",
+      "paper": "DA",
+      "year": 2025,
+      "session": "5",
+      "question_number": 61,
+      "type": "NAT",
+      "marks": 2,
+      "statement": "A bag contains 5 white balls and 10 black balls. In a random experiment, n balls are\n            drawn from the bag one at a time with replacement. Let Sn denote the total number of\n            black balls drawn in the experiment.\n            The expectation of S100 denoted by E[S100 ] =\n            (Round off to one decimal place)",
+      "options": [],
+      "answer": {
+        "kind": "NAT",
+        "lower": 66.6,
+        "upper": 66.7,
+        "raw": "66.6 to 66.7"
+      },
+      "primary_leaf_id": "DA-S01-L024",
+      "secondary_leaf_ids": [],
+      "explanation": "Linearity of expectation: Each draw is black with probability 10/15=2/3. Hence E[S100]=100(2/3)=66.666…, which rounds to 66.7. Final answer: 66.6–66.7",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.95,
+          0.98
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "69ba28fc60e64338113d99c90533025049b7c6e0c99c4f03d76d5ce9d70478c6",
+        "question_source": "sources/official-direct/2025/question-paper/DA2025.pdf",
+        "question_pages": [
+          32
+        ],
+        "question_candidate_id": "2025-DA-5-DA-61-p32-69ba28fc60e6-93af3e9d",
+        "question_source_occurrences": [
+          {
+            "sha256": "69ba28fc60e64338113d99c90533025049b7c6e0c99c4f03d76d5ce9d70478c6",
+            "path": "sources/official-direct/2025/question-paper/DA2025.pdf",
+            "pages": [
+              32
+            ]
+          }
+        ],
+        "answer_key_sha256": "081f108d4a2d617895b6859a9e715504391c87f9a6f13593548869d71b33dc40",
+        "answer_key_source": "sources/official-direct/2025/answer-key/DA_Keys.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "61 5 NAT DA 66.6 to 66.7 2"
+      }
+    },
+    {
+      "id": "GATE-2026-DA-S8-Q19-4adb2f713433",
+      "paper": "DA",
+      "year": 2026,
+      "session": "8",
+      "question_number": 19,
+      "type": "MCQ",
+      "marks": 1,
+      "statement": "Let 𝑀 be a randomly chosen non-empty subset of 𝑆 = {1,2,3, … ,2026}.\n\n             Which of the following is the probability that the product of all the elements of 𝑀\n             is even?\n\n (A)         21013 (21013 − 1)/22026\n\n (B)         21013 /22026\n\n (C)         21013 (21013 − 1)/(22026 − 1)\n\n (D)         1/(22026 − 1)",
+      "options": [
+        {
+          "label": "A",
+          "text": "21013 (21013 − 1)/22026"
+        },
+        {
+          "label": "B",
+          "text": "21013 /22026"
+        },
+        {
+          "label": "C",
+          "text": "21013 (21013 − 1)/(22026 − 1)"
+        },
+        {
+          "label": "D",
+          "text": "1/(22026 − 1)"
+        }
+      ],
+      "answer": {
+        "kind": "MCQ",
+        "value": "C",
+        "raw": "C"
+      },
+      "primary_leaf_id": "DA-S01-L002",
+      "secondary_leaf_ids": [],
+      "explanation": "Counting subsets: There are 2026 nonempty subsets. An odd product occurs exactly when the subset is a nonempty subset of the 1013 odd elements: 2^1013−1 cases. Subtracting from 2^2026−1 gives option C. Final answer: C",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.92,
+          0.97
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "4adb2f713433ec93748ff96bc04891dc10d877e8e4fb5fe7797e36ba87f298f3",
+        "question_source": "sources/official-direct/2026/question-paper/DA.pdf",
+        "question_pages": [
+          13
+        ],
+        "question_candidate_id": "2026-DA-8-DA-19-p13-4adb2f713433-6aa430bb",
+        "question_source_occurrences": [
+          {
+            "sha256": "4adb2f713433ec93748ff96bc04891dc10d877e8e4fb5fe7797e36ba87f298f3",
+            "path": "sources/official-direct/2026/question-paper/DA.pdf",
+            "pages": [
+              13
+            ]
+          }
+        ],
+        "answer_key_sha256": "f94cf2caf46e84cd06cc1591f375403b04466f8fa71e64ca87b49804d1e8dceb",
+        "answer_key_source": "sources/official-direct/2026/answer-key/DA_Keys.pdf",
+        "answer_key_page": 1,
+        "answer_key_row": "19 8 MCQ DA C 1"
+      }
+    },
+    {
+      "id": "GATE-2026-DA-S8-Q20-4adb2f713433",
+      "paper": "DA",
+      "year": 2026,
+      "session": "8",
+      "question_number": 20,
+      "type": "MCQ",
+      "marks": 1,
+      "statement": "Suppose that a computer program provides a non-negative and integer-valued\n             random solution to the equation 𝑛1 + 𝑛2 + 𝑛3 + 𝑛4 = 20.\n\n             Which of the following is the probability that all of 𝑛1 , 𝑛2 , 𝑛3 , 𝑛4 in the provided\n             solution are positive?\n\n (A)         (19\n              3\n                )/(23\n                   3\n                     )\n\n (B)         (20\n              4\n                )/(24\n                   4\n                     )\n\n (C)         (20\n              3\n                )/(23\n                   3\n                     )\n\n (D)         (19\n              4\n                )/(24\n                   4\n                     )",
+      "options": [
+        {
+          "label": "A",
+          "text": "(19 3 )/(23 3 )"
+        },
+        {
+          "label": "B",
+          "text": "(20 4 )/(24 4 )"
+        },
+        {
+          "label": "C",
+          "text": "(20 3 )/(23 3 )"
+        },
+        {
+          "label": "D",
+          "text": "(19 4 )/(24 4 ) Organizing Institute: IIT Guwahati Page 13 of 39 Data Science and Artificial Intelligence (DA)"
+        }
+      ],
+      "answer": {
+        "kind": "MCQ",
+        "value": "A",
+        "raw": "A"
+      },
+      "primary_leaf_id": "DA-S01-L002",
+      "secondary_leaf_ids": [],
+      "explanation": "Stars and bars: All nonnegative solutions of n1+n2+n3+n4=20 number C(23,3). For positive solutions set mi=ni−1, giving sum 16 and C(19,3) solutions. The ratio is option A. Final answer: A",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.92,
+          0.98
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "4adb2f713433ec93748ff96bc04891dc10d877e8e4fb5fe7797e36ba87f298f3",
+        "question_source": "sources/official-direct/2026/question-paper/DA.pdf",
+        "question_pages": [
+          14
+        ],
+        "question_candidate_id": "2026-DA-8-DA-20-p14-4adb2f713433-a0a5c59e",
+        "question_source_occurrences": [
+          {
+            "sha256": "4adb2f713433ec93748ff96bc04891dc10d877e8e4fb5fe7797e36ba87f298f3",
+            "path": "sources/official-direct/2026/question-paper/DA.pdf",
+            "pages": [
+              14
+            ]
+          }
+        ],
+        "answer_key_sha256": "f94cf2caf46e84cd06cc1591f375403b04466f8fa71e64ca87b49804d1e8dceb",
+        "answer_key_source": "sources/official-direct/2026/answer-key/DA_Keys.pdf",
+        "answer_key_page": 1,
+        "answer_key_row": "20 8 MCQ DA A 1"
+      }
+    },
+    {
+      "id": "GATE-2026-DA-S8-Q28-4adb2f713433",
+      "paper": "DA",
+      "year": 2026,
+      "session": "8",
+      "question_number": 28,
+      "type": "MSQ",
+      "marks": 1,
+      "statement": "Suppose a random variable 𝑍 follows 𝑁𝑜𝑟𝑚𝑎𝑙(𝜇 = 0, 𝜎 2 = 1) distribution with\n             probability density function 𝑔(𝑧) and cumulative distribution function 𝐺(𝑧).\n             Another random variable 𝑌 follows 𝑡1 distribution with probability density\n             function ℎ(𝑦) and cumulative distribution function 𝐻(𝑦). Let 𝑐 be the positive\n             real number for which 𝑔(𝑐) = ℎ(𝑐).\n\n             Which of the following statements is/are correct?\n\n (A)         𝐺(0) = 𝐻(0)\n\n (B)         𝐺(𝑐) < 𝐻(𝑐)\n\n (C)         𝐺(−𝑐) < 𝐻(−𝑐)\n\n (D)         𝑔(0) = ℎ(0)",
+      "options": [
+        {
+          "label": "A",
+          "text": "𝐺(0) = 𝐻(0)"
+        },
+        {
+          "label": "B",
+          "text": "𝐺(𝑐) < 𝐻(𝑐)"
+        },
+        {
+          "label": "C",
+          "text": "𝐺(−𝑐) < 𝐻(−𝑐)"
+        },
+        {
+          "label": "D",
+          "text": "𝑔(0) = ℎ(0) Organizing Institute: IIT Guwahati Page 19 of 39 Data Science and Artificial Intelligence (DA)"
+        }
+      ],
+      "answer": {
+        "kind": "MSQ",
+        "value": [
+          "A",
+          "C"
+        ],
+        "raw": "A;C"
+      },
+      "primary_leaf_id": "DA-S01-L030",
+      "secondary_leaf_ids": [],
+      "explanation": "Normal versus t CDFs: Both distributions are symmetric, so G(0)=H(0)=1/2. At the positive density crossing c, the normal has accumulated more mass on [0,c], hence G(c)>H(c), and symmetry gives G(−c)<H(−c). Thus A and C. Final answer: A,C",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.92,
+          0.93
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "4adb2f713433ec93748ff96bc04891dc10d877e8e4fb5fe7797e36ba87f298f3",
+        "question_source": "sources/official-direct/2026/question-paper/DA.pdf",
+        "question_pages": [
+          20
+        ],
+        "question_candidate_id": "2026-DA-8-DA-28-p20-4adb2f713433-af82fe1c",
+        "question_source_occurrences": [
+          {
+            "sha256": "4adb2f713433ec93748ff96bc04891dc10d877e8e4fb5fe7797e36ba87f298f3",
+            "path": "sources/official-direct/2026/question-paper/DA.pdf",
+            "pages": [
+              20
+            ]
+          }
+        ],
+        "answer_key_sha256": "f94cf2caf46e84cd06cc1591f375403b04466f8fa71e64ca87b49804d1e8dceb",
+        "answer_key_source": "sources/official-direct/2026/answer-key/DA_Keys.pdf",
+        "answer_key_page": 1,
+        "answer_key_row": "28 8 MSQ DA A;C 1"
+      }
+    },
+    {
+      "id": "GATE-2026-DA-S8-Q33-4adb2f713433",
+      "paper": "DA",
+      "year": 2026,
+      "session": "8",
+      "question_number": 33,
+      "type": "NAT",
+      "marks": 1,
+      "statement": "The number of bijections 𝑓(⋅) from the set 𝑆 = {1, 2, 3, 4} to itself such that\n             𝑓(𝑓(𝑛)) = 𝑛, for all 𝑛 ∈ 𝑆, is __________ . (Answer in integer)",
+      "options": [],
+      "answer": {
+        "kind": "NAT",
+        "lower": 10.0,
+        "upper": 10.0,
+        "raw": "10 to 10"
+      },
+      "primary_leaf_id": "DA-S01-L001",
+      "secondary_leaf_ids": [],
+      "explanation": "Involutive bijections: An involution on four elements has either zero transpositions (1), one transposition (C(4,2)=6), or two disjoint transpositions (3). Total=1+6+3=10. Final answer: 10",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.9,
+          0.97
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "4adb2f713433ec93748ff96bc04891dc10d877e8e4fb5fe7797e36ba87f298f3",
+        "question_source": "sources/official-direct/2026/question-paper/DA.pdf",
+        "question_pages": [
+          21
+        ],
+        "question_candidate_id": "2026-DA-8-DA-33-p21-4adb2f713433-4c80a67a",
+        "question_source_occurrences": [
+          {
+            "sha256": "4adb2f713433ec93748ff96bc04891dc10d877e8e4fb5fe7797e36ba87f298f3",
+            "path": "sources/official-direct/2026/question-paper/DA.pdf",
+            "pages": [
+              21
+            ]
+          }
+        ],
+        "answer_key_sha256": "f94cf2caf46e84cd06cc1591f375403b04466f8fa71e64ca87b49804d1e8dceb",
+        "answer_key_source": "sources/official-direct/2026/answer-key/DA_Keys.pdf",
+        "answer_key_page": 1,
+        "answer_key_row": "33 8 NAT DA 10 to 10 1"
+      }
+    },
+    {
+      "id": "GATE-2026-DA-S8-Q34-4adb2f713433",
+      "paper": "DA",
+      "year": 2026,
+      "session": "8",
+      "question_number": 34,
+      "type": "NAT",
+      "marks": 1,
+      "statement": "Let 𝑋 be an exponentially distributed random variable with mean 𝜆(> 0). If\n             𝑃(𝑋 > 5) = 0.35, then the conditional probability 𝑃(𝑋 > 10|𝑋 > 5) is\n             ___________ . (Rounded off to two decimal places)",
+      "options": [],
+      "answer": {
+        "kind": "NAT",
+        "lower": 0.34,
+        "upper": 0.36,
+        "raw": "0.34 to 0.36"
+      },
+      "primary_leaf_id": "DA-S01-L027",
+      "secondary_leaf_ids": [],
+      "explanation": "Memorylessness: For an exponential variable, P(X>10|X>5)=P(X>5)=0.35. The required rounded range is 0.34–0.36. Final answer: 0.35",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.95,
+          0.98
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "4adb2f713433ec93748ff96bc04891dc10d877e8e4fb5fe7797e36ba87f298f3",
+        "question_source": "sources/official-direct/2026/question-paper/DA.pdf",
+        "question_pages": [
+          21
+        ],
+        "question_candidate_id": "2026-DA-8-DA-34-p21-4adb2f713433-7523a7ea",
+        "question_source_occurrences": [
+          {
+            "sha256": "4adb2f713433ec93748ff96bc04891dc10d877e8e4fb5fe7797e36ba87f298f3",
+            "path": "sources/official-direct/2026/question-paper/DA.pdf",
+            "pages": [
+              21
+            ]
+          }
+        ],
+        "answer_key_sha256": "f94cf2caf46e84cd06cc1591f375403b04466f8fa71e64ca87b49804d1e8dceb",
+        "answer_key_source": "sources/official-direct/2026/answer-key/DA_Keys.pdf",
+        "answer_key_page": 1,
+        "answer_key_row": "34 8 NAT DA 0.34 to 0.36 1"
+      }
+    },
+    {
+      "id": "GATE-2026-DA-S8-Q44-4adb2f713433",
+      "paper": "DA",
+      "year": 2026,
+      "session": "8",
+      "question_number": 44,
+      "type": "MCQ",
+      "marks": 2,
+      "statement": "Let 𝑋 and 𝑌 be two independent random variables. 𝑋 follows 𝐵𝑒𝑟𝑛𝑜𝑢𝑙𝑙𝑖(𝑝 = 0.3)\n             distribution and 𝑌 follows 𝑁𝑜𝑟𝑚𝑎𝑙(𝜇 = 0, 𝜎 2 = 100) distribution.\n\n             Which of the following options is the variance of (2𝑋 − 1)𝑌 ?\n\n (A)         100\n\n (B)         90\n\n (C)         49\n\n (D)         21\n\n             Let",
+      "options": [
+        {
+          "label": "A",
+          "text": "100"
+        },
+        {
+          "label": "B",
+          "text": "90"
+        },
+        {
+          "label": "C",
+          "text": "49"
+        },
+        {
+          "label": "D",
+          "text": "21"
+        }
+      ],
+      "answer": {
+        "kind": "MCQ",
+        "value": "A",
+        "raw": "A"
+      },
+      "primary_leaf_id": "DA-S01-L023",
+      "secondary_leaf_ids": [],
+      "explanation": "Variance of an independent product: Let A=2X−1. Since X∈{0,1}, A²=1 always. Independence gives E[A²Y²]=E[A²]E[Y²]=1×100, and E[AY]=0, so Var(AY)=100. Final answer: A",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review",
+          "reviewed_option_cleanup"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.9,
+          0.95
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "4adb2f713433ec93748ff96bc04891dc10d877e8e4fb5fe7797e36ba87f298f3",
+        "question_source": "sources/official-direct/2026/question-paper/DA.pdf",
+        "question_pages": [
+          29
+        ],
+        "question_candidate_id": "2026-DA-8-DA-44-p29-4adb2f713433-4ff26942",
+        "question_source_occurrences": [
+          {
+            "sha256": "4adb2f713433ec93748ff96bc04891dc10d877e8e4fb5fe7797e36ba87f298f3",
+            "path": "sources/official-direct/2026/question-paper/DA.pdf",
+            "pages": [
+              29
+            ]
+          }
+        ],
+        "answer_key_sha256": "f94cf2caf46e84cd06cc1591f375403b04466f8fa71e64ca87b49804d1e8dceb",
+        "answer_key_source": "sources/official-direct/2026/answer-key/DA_Keys.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "44 8 MCQ DA A 2"
+      }
+    },
+    {
+      "id": "GATE-2026-DA-S8-Q45-4adb2f713433",
+      "paper": "DA",
+      "year": 2026,
+      "session": "8",
+      "question_number": 45,
+      "type": "MCQ",
+      "marks": 2,
+      "statement": "𝑛\n                                𝑒 −𝑛 𝑛𝑘\n             𝐿 = lim ∑\n                    𝑛→∞            𝑘!\n                          𝑘=0\n\n             Which of the following is the value of 𝐿?\n\n (A)         0.5\n\n (B)         1.0\n\n (C)         0\n\n (D)         𝑒 −1",
+      "options": [
+        {
+          "label": "A",
+          "text": "0.5"
+        },
+        {
+          "label": "B",
+          "text": "1.0"
+        },
+        {
+          "label": "C",
+          "text": "0"
+        },
+        {
+          "label": "D",
+          "text": "𝑒 −1 Organizing Institute: IIT Guwahati Page 29 of 39 Data Science and Artificial Intelligence (DA)"
+        }
+      ],
+      "answer": {
+        "kind": "MCQ",
+        "value": "A",
+        "raw": "A"
+      },
+      "primary_leaf_id": "DA-S01-L028",
+      "secondary_leaf_ids": [],
+      "explanation": "Poisson CLT limit: The sum is P(Poisson(n)≤n). After centering and scaling, the threshold is at the mean; the Poisson CLT makes the limit 1/2. Final answer: A",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.9,
+          0.92
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "4adb2f713433ec93748ff96bc04891dc10d877e8e4fb5fe7797e36ba87f298f3",
+        "question_source": "sources/official-direct/2026/question-paper/DA.pdf",
+        "question_pages": [
+          30
+        ],
+        "question_candidate_id": "2026-DA-8-DA-45-p30-4adb2f713433-54fb0c00",
+        "question_source_occurrences": [
+          {
+            "sha256": "4adb2f713433ec93748ff96bc04891dc10d877e8e4fb5fe7797e36ba87f298f3",
+            "path": "sources/official-direct/2026/question-paper/DA.pdf",
+            "pages": [
+              30
+            ]
+          }
+        ],
+        "answer_key_sha256": "f94cf2caf46e84cd06cc1591f375403b04466f8fa71e64ca87b49804d1e8dceb",
+        "answer_key_source": "sources/official-direct/2026/answer-key/DA_Keys.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "45 8 MCQ DA A 2"
+      }
+    },
+    {
+      "id": "GATE-2026-DA-S8-Q53-4adb2f713433",
+      "paper": "DA",
+      "year": 2026,
+      "session": "8",
+      "question_number": 53,
+      "type": "MSQ",
+      "marks": 2,
+      "statement": "Let 𝑋1 , 𝑋2 , … . , 𝑋𝑛 be 𝑛 independent random variables. Each of the random\n                                                                                   1\n             variables follows 𝑁𝑜𝑟𝑚𝑎𝑙(𝜇 = 0, 𝜎 2 = 1) distribution. Define 𝑋̅ = 𝑛 ∑𝑛𝑖=1 𝑋𝑖 .\n\n             Which of the following statements is/are correct?\n\n (A)         ∑𝑛𝑖=1 𝑋𝑖 2 follows Chi-square distribution with 𝑛 degrees of freedom.\n\n (B)         ∑𝑛𝑖=1(𝑋𝑖 − 𝑋̅)2 follows Chi-square distribution with (𝑛 − 1) degrees of freedom.\n\n (C)         𝑋1 2 + 𝑋𝑛 2 follows exponential distribution with mean 2.\n\n (D)                2\n             (√𝑛 𝑋̅) follows Chi-square distribution with 2 degrees of freedom.",
+      "options": [
+        {
+          "label": "A",
+          "text": "∑𝑛𝑖=1 𝑋𝑖 2 follows Chi-square distribution with 𝑛 degrees of freedom."
+        },
+        {
+          "label": "B",
+          "text": "∑𝑛𝑖=1(𝑋𝑖 − 𝑋̅)2 follows Chi-square distribution with (𝑛 − 1) degrees of freedom."
+        },
+        {
+          "label": "C",
+          "text": "𝑋1 2 + 𝑋𝑛 2 follows exponential distribution with mean 2."
+        },
+        {
+          "label": "D",
+          "text": "2 (√𝑛 𝑋̅) follows Chi-square distribution with 2 degrees of freedom. Organizing Institute: IIT Guwahati Page 35 of 39 Data Science and Artificial Intelligence (DA)"
+        }
+      ],
+      "answer": {
+        "kind": "MSQ",
+        "value": [
+          "A",
+          "B",
+          "C"
+        ],
+        "raw": "A;B;C"
+      },
+      "primary_leaf_id": "DA-S01-L032",
+      "secondary_leaf_ids": [],
+      "explanation": "Chi-square decompositions: A sum of n squared independent standard normals is χ²n. Removing the sample mean leaves χ²n−1. The sum of two squared independent normals is χ²2, exponential with mean 2; the squared scaled mean is χ²1, not χ²2. Hence A,B,C. Final answer: A,B,C",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.95,
+          0.95
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "4adb2f713433ec93748ff96bc04891dc10d877e8e4fb5fe7797e36ba87f298f3",
+        "question_source": "sources/official-direct/2026/question-paper/DA.pdf",
+        "question_pages": [
+          36
+        ],
+        "question_candidate_id": "2026-DA-8-DA-53-p36-4adb2f713433-9f0311b1",
+        "question_source_occurrences": [
+          {
+            "sha256": "4adb2f713433ec93748ff96bc04891dc10d877e8e4fb5fe7797e36ba87f298f3",
+            "path": "sources/official-direct/2026/question-paper/DA.pdf",
+            "pages": [
+              36
+            ]
+          }
+        ],
+        "answer_key_sha256": "f94cf2caf46e84cd06cc1591f375403b04466f8fa71e64ca87b49804d1e8dceb",
+        "answer_key_source": "sources/official-direct/2026/answer-key/DA_Keys.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "53 8 MSQ DA A;B;C 2"
+      }
+    },
+    {
+      "id": "GATE-2026-DA-S8-Q54-4adb2f713433",
+      "paper": "DA",
+      "year": 2026,
+      "session": "8",
+      "question_number": 54,
+      "type": "MSQ",
+      "marks": 2,
+      "statement": "Let 𝑋 be a discrete valued random variable with cumulative distribution function\n             𝐹(𝑥).\n\n             Which of the following statements is/are correct?\n\n (A)         𝐹(𝑥) is always a positive function.\n\n (B)         𝐹(𝑥) is a non-decreasing function.\n\n (C)         𝐹(𝑥) has jump discontinuity.\n\n (D)         𝐹(𝑥) is a left continuous function.",
+      "options": [
+        {
+          "label": "A",
+          "text": "𝐹(𝑥) is always a positive function."
+        },
+        {
+          "label": "B",
+          "text": "𝐹(𝑥) is a non-decreasing function."
+        },
+        {
+          "label": "C",
+          "text": "𝐹(𝑥) has jump discontinuity."
+        },
+        {
+          "label": "D",
+          "text": "𝐹(𝑥) is a left continuous function."
+        }
+      ],
+      "answer": {
+        "kind": "MSQ",
+        "value": [
+          "B",
+          "C"
+        ],
+        "raw": "B;C"
+      },
+      "primary_leaf_id": "DA-S01-L033",
+      "secondary_leaf_ids": [],
+      "explanation": "Properties of a discrete CDF: Every CDF is non-decreasing and a discrete distribution has jumps. A CDF need not be strictly positive and is right-continuous rather than left-continuous in general. Hence B,C. Final answer: B,C",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.97,
+          0.97
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "4adb2f713433ec93748ff96bc04891dc10d877e8e4fb5fe7797e36ba87f298f3",
+        "question_source": "sources/official-direct/2026/question-paper/DA.pdf",
+        "question_pages": [
+          36
+        ],
+        "question_candidate_id": "2026-DA-8-DA-54-p36-4adb2f713433-d052ff1d",
+        "question_source_occurrences": [
+          {
+            "sha256": "4adb2f713433ec93748ff96bc04891dc10d877e8e4fb5fe7797e36ba87f298f3",
+            "path": "sources/official-direct/2026/question-paper/DA.pdf",
+            "pages": [
+              36
+            ]
+          }
+        ],
+        "answer_key_sha256": "f94cf2caf46e84cd06cc1591f375403b04466f8fa71e64ca87b49804d1e8dceb",
+        "answer_key_source": "sources/official-direct/2026/answer-key/DA_Keys.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "54 8 MSQ DA B;C 2"
+      }
+    },
+    {
+      "id": "GATE-2026-DA-S8-Q57-4adb2f713433",
+      "paper": "DA",
+      "year": 2026,
+      "session": "8",
+      "question_number": 57,
+      "type": "NAT",
+      "marks": 2,
+      "statement": "A clinic specializes in testing for a disease D. The result of the test can be either\n             positive or negative.\n\n             A study revealed that if a person suffers from the disease D, the test result in that\n             clinic comes out positive 80% of the time, and negative 20% of the time. If a\n             person is not suffering from the disease D, the test comes out positive 10% of the\n             time and negative 90% of the time. It is also known that among the general\n             population, the disease D occurs in 30% of the individuals.\n\n             If a person tests positive for D in that clinic, the probability that he/she actually\n             suffers from the disease D is __________ . (Rounded off to two decimal places)",
+      "options": [],
+      "answer": {
+        "kind": "NAT",
+        "lower": 0.76,
+        "upper": 0.78,
+        "raw": "0.76 to 0.78"
+      },
+      "primary_leaf_id": "DA-S01-L011",
+      "secondary_leaf_ids": [],
+      "explanation": "Bayes theorem: P(D|+)=P(+|D)P(D)/[P(+|D)P(D)+P(+|not D)P(not D)]=0.8×0.3/(0.8×0.3+0.1×0.7)=0.7742. Final answer: 0.774≈0.77",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.97,
+          0.99
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "4adb2f713433ec93748ff96bc04891dc10d877e8e4fb5fe7797e36ba87f298f3",
+        "question_source": "sources/official-direct/2026/question-paper/DA.pdf",
+        "question_pages": [
+          37
+        ],
+        "question_candidate_id": "2026-DA-8-DA-57-p37-4adb2f713433-4379a531",
+        "question_source_occurrences": [
+          {
+            "sha256": "4adb2f713433ec93748ff96bc04891dc10d877e8e4fb5fe7797e36ba87f298f3",
+            "path": "sources/official-direct/2026/question-paper/DA.pdf",
+            "pages": [
+              37
+            ]
+          }
+        ],
+        "answer_key_sha256": "f94cf2caf46e84cd06cc1591f375403b04466f8fa71e64ca87b49804d1e8dceb",
+        "answer_key_source": "sources/official-direct/2026/answer-key/DA_Keys.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "57 8 NAT DA 0.76 to 0.78 2"
+      }
+    },
+    {
+      "id": "GATE-2026-DA-S8-Q62-4adb2f713433",
+      "paper": "DA",
+      "year": 2026,
+      "session": "8",
+      "question_number": 62,
+      "type": "NAT",
+      "marks": 2,
+      "statement": "For a given data set {𝑥1 , 𝑥2 , … . , 𝑥𝑛 }, where 𝑛 = 100, it is known that\n                                                       𝑛   𝑛\n                                                   1\n                                                      ∑ ∑(𝑥𝑖 − 𝑥𝑗 )2 = 99\n                                                 2000\n                                                      𝑖=1 𝑗=1\n\n                                             1\n             Let us denote 𝑥̅ = 𝑛 ∑𝑛𝑖=1 𝑥𝑖\n\n                                1\n             The value of            ∑𝑛𝑖=1(𝑥𝑖 − 𝑥̅ )2 is __________ . (Answer in integer)\n                               99",
+      "options": [],
+      "answer": {
+        "kind": "NAT",
+        "lower": 10.0,
+        "upper": 10.0,
+        "raw": "10 to 10"
+      },
+      "primary_leaf_id": "DA-S01-L014",
+      "secondary_leaf_ids": [],
+      "explanation": "Pairwise squared differences: ΣiΣj(xi−xj)²=2nΣi(xi−x̄)². The given left side equals 2000×99=198000, so Σ deviations²=198000/(2×100)=990; dividing by 99 gives 10. Final answer: 10",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.92,
+          0.97
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "4adb2f713433ec93748ff96bc04891dc10d877e8e4fb5fe7797e36ba87f298f3",
+        "question_source": "sources/official-direct/2026/question-paper/DA.pdf",
+        "question_pages": [
+          39
+        ],
+        "question_candidate_id": "2026-DA-8-DA-62-p39-4adb2f713433-9f8a018a",
+        "question_source_occurrences": [
+          {
+            "sha256": "4adb2f713433ec93748ff96bc04891dc10d877e8e4fb5fe7797e36ba87f298f3",
+            "path": "sources/official-direct/2026/question-paper/DA.pdf",
+            "pages": [
+              39
+            ]
+          }
+        ],
+        "answer_key_sha256": "f94cf2caf46e84cd06cc1591f375403b04466f8fa71e64ca87b49804d1e8dceb",
+        "answer_key_source": "sources/official-direct/2026/answer-key/DA_Keys.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "62 8 NAT DA 10 to 10 2"
+      }
+    },
+    {
+      "id": "GATE-2026-DA-S8-Q63-4adb2f713433",
+      "paper": "DA",
+      "year": 2026,
+      "session": "8",
+      "question_number": 63,
+      "type": "NAT",
+      "marks": 2,
+      "statement": "Let 𝑋 be a random variable that follows 𝑈𝑛𝑖𝑓𝑜𝑟𝑚(−1,1) distribution. The\n             conditional distribution of the random variable 𝑌 given 𝑋 = 𝑥 is the\n             𝑈𝑛𝑖𝑓𝑜𝑟𝑚(𝑥 2 − 0.1, 𝑥 2 + 0.1) distribution.\n\n             The value of 𝑐𝑜𝑟𝑟𝑒𝑙𝑎𝑡𝑖𝑜𝑛(𝑋, 𝑌) is __________ . (Answer in integer)",
+      "options": [],
+      "answer": {
+        "kind": "NAT",
+        "lower": 0.0,
+        "upper": 0.0,
+        "raw": "0 to 0"
+      },
+      "primary_leaf_id": "DA-S01-L018",
+      "secondary_leaf_ids": [],
+      "explanation": "Correlation by symmetry: Write Y=X²+U, where E[U|X]=0. Then E[XY]=E[X³]=0 by symmetry of X∼Uniform(−1,1), while E[X]=0. Thus Cov(X,Y)=0 and the correlation is 0. Final answer: 0",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.9,
+          0.9
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "4adb2f713433ec93748ff96bc04891dc10d877e8e4fb5fe7797e36ba87f298f3",
+        "question_source": "sources/official-direct/2026/question-paper/DA.pdf",
+        "question_pages": [
+          39
+        ],
+        "question_candidate_id": "2026-DA-8-DA-63-p39-4adb2f713433-7d21502a",
+        "question_source_occurrences": [
+          {
+            "sha256": "4adb2f713433ec93748ff96bc04891dc10d877e8e4fb5fe7797e36ba87f298f3",
+            "path": "sources/official-direct/2026/question-paper/DA.pdf",
+            "pages": [
+              39
+            ]
+          }
+        ],
+        "answer_key_sha256": "f94cf2caf46e84cd06cc1591f375403b04466f8fa71e64ca87b49804d1e8dceb",
+        "answer_key_source": "sources/official-direct/2026/answer-key/DA_Keys.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "63 8 NAT DA 0 to 0 2"
+      }
+    },
+    {
+      "id": "GATE-2026-DA-S8-Q64-4adb2f713433",
+      "paper": "DA",
+      "year": 2026,
+      "session": "8",
+      "question_number": 64,
+      "type": "NAT",
+      "marks": 2,
+      "statement": "Let 𝐴5×5 be a matrix such that each of its elements follows 𝐵𝑒𝑟𝑛𝑜𝑢𝑙𝑙𝑖(𝑝 = 0.50)\n             distribution independently.\n\n             The probability that the row-sum of the second row and the column-sum of the\n             third column are both equal to 3 is ________ . (Rounded off to two decimal\n             places)",
+      "options": [],
+      "answer": {
+        "kind": "NAT",
+        "lower": 0.08,
+        "upper": 0.12,
+        "raw": "0.08 to 0.12"
+      },
+      "primary_leaf_id": "DA-S01-L024",
+      "secondary_leaf_ids": [
+        "DA-S01-L006"
+      ],
+      "explanation": "Binomial overlap: The two sums are Binomial(5,0.5) and share one Bernoulli entry. Conditioning on the shared entry gives 1/2·(6/16)²+1/2·(4/16)²=0.1015625, within the official range 0.08–0.12. Final answer: 0.10",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.92,
+          0.93
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "4adb2f713433ec93748ff96bc04891dc10d877e8e4fb5fe7797e36ba87f298f3",
+        "question_source": "sources/official-direct/2026/question-paper/DA.pdf",
+        "question_pages": [
+          39
+        ],
+        "question_candidate_id": "2026-DA-8-DA-64-p39-4adb2f713433-af5eff9c",
+        "question_source_occurrences": [
+          {
+            "sha256": "4adb2f713433ec93748ff96bc04891dc10d877e8e4fb5fe7797e36ba87f298f3",
+            "path": "sources/official-direct/2026/question-paper/DA.pdf",
+            "pages": [
+              39
+            ]
+          }
+        ],
+        "answer_key_sha256": "f94cf2caf46e84cd06cc1591f375403b04466f8fa71e64ca87b49804d1e8dceb",
+        "answer_key_source": "sources/official-direct/2026/answer-key/DA_Keys.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "64 8 NAT DA 0.08 to 0.12 2"
+      }
+    },
+    {
+      "id": "GATE-2024-EE-S8-Q13-e95a2bbe014d",
+      "paper": "EE",
+      "year": 2024,
+      "session": "8",
+      "question_number": 13,
+      "type": "MCQ",
+      "marks": 1,
+      "statement": "All the elements in the circuit are ideal. The power delivered by the 10 V source in\n         watts is\n\n                                         𝛼Ω                  2Ω\n\n                      10 V                    1Ω                            10 A\n\n (A)     0\n\n (B)     50\n\n (C)     100\n\n (D)     dependent on the value of 𝛼",
+      "options": [
+        {
+          "label": "A",
+          "text": "0"
+        },
+        {
+          "label": "B",
+          "text": "50"
+        },
+        {
+          "label": "C",
+          "text": "100"
+        },
+        {
+          "label": "D",
+          "text": "dependent on the value of 𝛼 Page 12 of 46 Organizing Institute: IISc Bengaluru Electrical Engineering (EE)"
+        }
+      ],
+      "answer": {
+        "kind": "MCQ",
+        "value": "A",
+        "raw": "A"
+      },
+      "primary_leaf_id": "EE-S02-L002",
+      "secondary_leaf_ids": [
+        "EE-S02-L004"
+      ],
+      "stimulus": {
+        "kind": "image",
+        "path": "/content-assets/gate/ee/GATE-2024-EE-S8-Q13-e95a2bbe014d.png",
+        "alt": "Verified source diagram crop for GATE EE 2024 session 8 question 13"
+      },
+      "explanation": "Ideal-source circuit and KCL: The 10 A source forces 10 A through the 2 Ω resistor and then the 1 Ω shunt, making the middle node 10 V. The 10 V source terminal is also 10 V, so the α Ω resistor has zero voltage and zero current; its source delivers zero power. Final answer: A",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review",
+          "verified_visual_crop"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.95,
+          0.95
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "e95a2bbe014d028b38a05431b8dd831590a3818dc2249b308dc0e962fa68c13b",
+        "question_source": "sources/official-direct/2024/question-paper/EE24S8.pdf",
+        "question_pages": [
+          13
+        ],
+        "question_candidate_id": "2024-EE-8-EE-13-p13-e95a2bbe014d-ebaff0c0",
+        "question_source_occurrences": [
+          {
+            "sha256": "e95a2bbe014d028b38a05431b8dd831590a3818dc2249b308dc0e962fa68c13b",
+            "path": "sources/official-direct/2024/question-paper/EE24S8.pdf",
+            "pages": [
+              13
+            ]
+          }
+        ],
+        "answer_key_sha256": "662beb396792ccb5906fee42f4aef83fe8b3535915c5c5e43a1abd8d084bd247",
+        "answer_key_source": "sources/official-direct/2024/answer-key/EEFinalAnswerKey.pdf",
+        "answer_key_page": 1,
+        "answer_key_row": "13 8 MCQ EE A 1",
+        "visual_verification": {
+          "audit": "audits/pilot-crop-audit.json",
+          "crop": "pilot/question-crops/GATE-2024-EE-S8-Q13-e95a2bbe014d.png",
+          "method": "question_marker"
+        }
+      }
+    },
+    {
+      "id": "GATE-2024-EE-S8-Q14-e95a2bbe014d",
+      "paper": "EE",
+      "year": 2024,
+      "session": "8",
+      "question_number": 14,
+      "type": "MCQ",
+      "marks": 1,
+      "statement": "The circuit shown in the figure with the switch 𝑆 open, is in steady state. After the\n         switch 𝑆 is closed, the time constant of the circuit in seconds is\n\n                                       𝑆           1Ω          1H\n\n                                       1Ω                           1H\n\n                   1A\n                                                                               1H\n                                       1H\n\n (A)     1.25\n\n (B)     0\n\n (C)     1\n\n (D)     1.5",
+      "options": [
+        {
+          "label": "A",
+          "text": "1.25"
+        },
+        {
+          "label": "B",
+          "text": "0"
+        },
+        {
+          "label": "C",
+          "text": "1"
+        },
+        {
+          "label": "D",
+          "text": "1.5 Page 13 of 46 Organizing Institute: IISc Bengaluru Electrical Engineering (EE)"
+        }
+      ],
+      "answer": {
+        "kind": "MCQ",
+        "value": "A",
+        "raw": "A"
+      },
+      "primary_leaf_id": "EE-S02-L012",
+      "secondary_leaf_ids": [],
+      "stimulus": {
+        "kind": "image",
+        "path": "/content-assets/gate/ee/GATE-2024-EE-S8-Q14-e95a2bbe014d.png",
+        "alt": "Verified source diagram crop for GATE EE 2024 session 8 question 14"
+      },
+      "explanation": "RL natural response: Open the independent current source for the natural response. The two 1 H inductors on the right are parallel (0.5 H), in series with the top 1 H; this 1.5 H branch is in series around the loop with the left 1 H and two 1 Ω resistors. Thus τ=(1+1.5)/(1+1)=1.25 s. Final answer: A",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review",
+          "verified_visual_crop"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.95,
+          0.95
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "e95a2bbe014d028b38a05431b8dd831590a3818dc2249b308dc0e962fa68c13b",
+        "question_source": "sources/official-direct/2024/question-paper/EE24S8.pdf",
+        "question_pages": [
+          14
+        ],
+        "question_candidate_id": "2024-EE-8-EE-14-p14-e95a2bbe014d-d7056ea5",
+        "question_source_occurrences": [
+          {
+            "sha256": "e95a2bbe014d028b38a05431b8dd831590a3818dc2249b308dc0e962fa68c13b",
+            "path": "sources/official-direct/2024/question-paper/EE24S8.pdf",
+            "pages": [
+              14
+            ]
+          }
+        ],
+        "answer_key_sha256": "662beb396792ccb5906fee42f4aef83fe8b3535915c5c5e43a1abd8d084bd247",
+        "answer_key_source": "sources/official-direct/2024/answer-key/EEFinalAnswerKey.pdf",
+        "answer_key_page": 1,
+        "answer_key_row": "14 8 MCQ EE A 1",
+        "visual_verification": {
+          "audit": "audits/pilot-crop-audit.json",
+          "crop": "pilot/question-crops/GATE-2024-EE-S8-Q14-e95a2bbe014d.png",
+          "method": "question_marker"
+        }
+      }
+    },
+    {
+      "id": "GATE-2024-EE-S8-Q48-e95a2bbe014d",
+      "paper": "EE",
+      "year": 2024,
+      "session": "8",
+      "question_number": 48,
+      "type": "NAT",
+      "marks": 2,
+      "statement": "Two passive two-port networks P and Q are connected as shown in the figure. The\n                                                   40 Ω 60 Ω\n         impedance matrix of network P is 𝑍𝐏 = [                  ]. The admittance matrix of\n                                                   80 Ω 100 Ω\n                                   5S   −2.5 S\n         network Q is 𝑌𝐐 = [                    ]. Let the ABCD matrix of the two-port\n                                −2.5 S     1S\n                                      𝛼 𝛽\n         network R in the figure be [     ]. The value of 𝛽 in Ω is _____________ (rounded\n                                      𝛾 𝛿\n         off to 2 decimal places).\n\n                             Two-port                              Two-port\n                             network                               network\n                                P                                     Q\n\n                                             Two-port network R",
+      "options": [],
+      "answer": {
+        "kind": "NAT",
+        "lower": -19.9,
+        "upper": -19.7,
+        "raw": "-19.90 to -19.70"
+      },
+      "primary_leaf_id": "EE-S02-L016",
+      "secondary_leaf_ids": [],
+      "stimulus": {
+        "kind": "image",
+        "path": "/content-assets/gate/ee/GATE-2024-EE-S8-Q48-e95a2bbe014d.png",
+        "alt": "Verified source diagram crop for GATE EE 2024 session 8 question 48"
+      },
+      "explanation": "Two-port ABCD cascade: Convert the given ZP and YQ matrices to their ABCD forms using the stated current convention, then cascade them: [A B; C D]R=[A B; C D]P[A B; C D]Q. The resulting B entry is −19.8 Ω (within the accepted NAT range). Final answer: −19.8 Ω",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review",
+          "verified_visual_crop"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.97,
+          0.92
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "e95a2bbe014d028b38a05431b8dd831590a3818dc2249b308dc0e962fa68c13b",
+        "question_source": "sources/official-direct/2024/question-paper/EE24S8.pdf",
+        "question_pages": [
+          39
+        ],
+        "question_candidate_id": "2024-EE-8-EE-48-p39-e95a2bbe014d-02fb30c4",
+        "question_source_occurrences": [
+          {
+            "sha256": "e95a2bbe014d028b38a05431b8dd831590a3818dc2249b308dc0e962fa68c13b",
+            "path": "sources/official-direct/2024/question-paper/EE24S8.pdf",
+            "pages": [
+              39
+            ]
+          }
+        ],
+        "answer_key_sha256": "662beb396792ccb5906fee42f4aef83fe8b3535915c5c5e43a1abd8d084bd247",
+        "answer_key_source": "sources/official-direct/2024/answer-key/EEFinalAnswerKey.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "48 8 NAT EE -19.90 to -19.70 2",
+        "visual_verification": {
+          "audit": "audits/pilot-crop-audit.json",
+          "crop": "pilot/question-crops/GATE-2024-EE-S8-Q48-e95a2bbe014d.png",
+          "method": "question_marker"
+        }
+      }
+    },
+    {
+      "id": "GATE-2024-EE-S8-Q49-e95a2bbe014d",
+      "paper": "EE",
+      "year": 2024,
+      "session": "8",
+      "question_number": 49,
+      "type": "NAT",
+      "marks": 2,
+      "statement": "For the circuit shown in the figure, the source frequency is 5000 rad/sec. The\n         mutual inductance between the magnetically coupled inductors is 5 mH with their\n         self inductances being 125 mH and 1 mH. The Thevenin’s impedance, 𝑍𝑡ℎ ,\n         between the terminals P and Q in Ω is _________ (rounded off to 2 decimal places).\n\n                                             4Ω              2Ω\n                     𝑍𝑠\n                               P\n                                                                                   50 𝜇F\n                    Source             𝑍𝑡ℎ        4Ω              125 mH\n                                                                                  1 mH\n                               Q\n\n                                                                           5 mH",
+      "options": [],
+      "answer": {
+        "kind": "NAT",
+        "lower": 5.32,
+        "upper": 5.34,
+        "raw": "5.32 to 5.34"
+      },
+      "primary_leaf_id": "EE-S02-L008",
+      "secondary_leaf_ids": [
+        "EE-S02-L014",
+        "EE-S02-L003"
+      ],
+      "stimulus": {
+        "kind": "image",
+        "path": "/content-assets/gate/ee/GATE-2024-EE-S8-Q49-e95a2bbe014d.png",
+        "alt": "Verified source diagram crop for GATE EE 2024 session 8 question 49"
+      },
+      "explanation": "Thevenin impedance with mutual inductance: Deactivate the independent source and use jωL1=j625 Ω, jωL2=j5 Ω, and jωM=j25 Ω at ω=5000 rad/s. Solving the coupled-inductor equations and reducing the passive network gives |Zth|=5.33 Ω. Final answer: 5.33 Ω",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review",
+          "verified_visual_crop"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.97,
+          0.95
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "e95a2bbe014d028b38a05431b8dd831590a3818dc2249b308dc0e962fa68c13b",
+        "question_source": "sources/official-direct/2024/question-paper/EE24S8.pdf",
+        "question_pages": [
+          39
+        ],
+        "question_candidate_id": "2024-EE-8-EE-49-p39-e95a2bbe014d-90f34f7c",
+        "question_source_occurrences": [
+          {
+            "sha256": "e95a2bbe014d028b38a05431b8dd831590a3818dc2249b308dc0e962fa68c13b",
+            "path": "sources/official-direct/2024/question-paper/EE24S8.pdf",
+            "pages": [
+              39
+            ]
+          }
+        ],
+        "answer_key_sha256": "662beb396792ccb5906fee42f4aef83fe8b3535915c5c5e43a1abd8d084bd247",
+        "answer_key_source": "sources/official-direct/2024/answer-key/EEFinalAnswerKey.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "49 8 NAT EE 5.32 to 5.34 2",
+        "visual_verification": {
+          "audit": "audits/pilot-crop-audit.json",
+          "crop": "pilot/question-crops/GATE-2024-EE-S8-Q49-e95a2bbe014d.png",
+          "method": "question_marker"
+        }
+      }
+    },
+    {
+      "id": "GATE-2025-EE-S4-Q18-65d25e29697c",
+      "paper": "EE",
+      "year": 2025,
+      "session": "4",
+      "question_number": 18,
+      "type": "MCQ",
+      "marks": 1,
+      "statement": "The I-V characteristics of the element between the nodes X and Y is best depicted\n          by\n\n                                                  X IXY\n\n                                       1A              1 kΩ\n\n                                                  Y\n\n (A)       IXY\n           1A\n\n                 0       VXY\n\n (B)       IXY\n           1A\n\n                 0     VXY\n\n (C)       IXY\n           1A\n\n                 0     VXY\n\n (D)       IXY\n           1A\n\n                 0       VXY",
+      "options": [
+        {
+          "label": "A",
+          "text": "IXY 1A 0 VXY"
+        },
+        {
+          "label": "B",
+          "text": "IXY 1A 0 VXY"
+        },
+        {
+          "label": "C",
+          "text": "IXY 1A 0 VXY"
+        },
+        {
+          "label": "D",
+          "text": "IXY 1A 0 VXY Organizing Institute: IIT Roorkee Page 16 of 50 Electrical Engineering (EE)"
+        }
+      ],
+      "answer": {
+        "kind": "MCQ",
+        "value": "B",
+        "raw": "B"
+      },
+      "primary_leaf_id": "EE-S02-L001",
+      "secondary_leaf_ids": [
+        "EE-S02-L004"
+      ],
+      "stimulus": {
+        "kind": "image",
+        "path": "/content-assets/gate/ee/GATE-2025-EE-S4-Q18-65d25e29697c.png",
+        "alt": "Verified source diagram crop for GATE EE 2025 session 4 question 18"
+      },
+      "explanation": "I–V characteristic of parallel elements: With downward current positive, the 1 A current source contributes a constant 1 A and the resistor contributes VXY/1 kΩ. Therefore IXY=1+VXY/1 kΩ: a line with positive slope and a 1 A intercept, option B. Final answer: B",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review",
+          "verified_visual_crop"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.92,
+          0.9
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "65d25e29697cd43628fa16f8da0f165bb708e49a2dfa48f8ba58804045fd7989",
+        "question_source": "sources/official-direct/2025/question-paper/EE2025.pdf",
+        "question_pages": [
+          17
+        ],
+        "question_candidate_id": "2025-EE-4-EE-18-p17-65d25e29697c-1db3b044",
+        "question_source_occurrences": [
+          {
+            "sha256": "65d25e29697cd43628fa16f8da0f165bb708e49a2dfa48f8ba58804045fd7989",
+            "path": "sources/official-direct/2025/question-paper/EE2025.pdf",
+            "pages": [
+              17
+            ]
+          }
+        ],
+        "answer_key_sha256": "c1c1e0e1cff77344827809b3838893095116e3b120f0df17faa679ac89a2aedc",
+        "answer_key_source": "sources/official-direct/2025/answer-key/EE_Keys.pdf",
+        "answer_key_page": 1,
+        "answer_key_row": "18 4 MCQ EE B 1",
+        "visual_verification": {
+          "audit": "audits/pilot-crop-audit.json",
+          "crop": "pilot/question-crops/GATE-2025-EE-S4-Q18-65d25e29697c.png",
+          "method": "question_marker"
+        }
+      }
+    },
+    {
+      "id": "GATE-2025-EE-S4-Q52-65d25e29697c",
+      "paper": "EE",
+      "year": 2025,
+      "session": "4",
+      "question_number": 52,
+      "type": "MSQ",
+      "marks": 2,
+      "statement": "Consider two coupled circuits, having self-inductances 𝐿1 and 𝐿2 , that carry non-\n          zero currents 𝐼1 and 𝐼2 , respectively. The mutual inductance between the circuits is\n          M with unity coupling coefficient. The stored magnetic energy of the coupled\n                                                                      𝐼1\n          circuits is minimum at which of the following value(s) of      ?\n                                                                      𝐼2\n\n (A)          𝑀\n          −\n              𝐿1\n\n (B)          𝑀\n          −\n              𝐿2\n\n (C)          𝐿\n          − 1\n              𝑀\n\n (D)          𝐿\n          − 2\n              𝑀",
+      "options": [
+        {
+          "label": "A",
+          "text": "𝑀 − 𝐿1"
+        },
+        {
+          "label": "B",
+          "text": "𝑀 − 𝐿2"
+        },
+        {
+          "label": "C",
+          "text": "𝐿 − 1 𝑀"
+        },
+        {
+          "label": "D",
+          "text": "𝐿 − 2 𝑀 Organizing Institute: IIT Roorkee Page 39 of 50 Electrical Engineering (EE)"
+        }
+      ],
+      "answer": {
+        "kind": "MSQ",
+        "value": [
+          "A",
+          "D"
+        ],
+        "raw": "A;D"
+      },
+      "primary_leaf_id": "EE-S02-L003",
+      "secondary_leaf_ids": [],
+      "explanation": "Energy in coupled inductors: W=1/2(L1I1²+L2I2²+2MI1I2). Differentiating with respect to I1/I2 gives I1/I2=−M/L1 and, using M²=L1L2, the equivalent form −L2/M. Both A and D minimize the energy. Final answer: A,D",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.95,
+          0.92
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "65d25e29697cd43628fa16f8da0f165bb708e49a2dfa48f8ba58804045fd7989",
+        "question_source": "sources/official-direct/2025/question-paper/EE2025.pdf",
+        "question_pages": [
+          40
+        ],
+        "question_candidate_id": "2025-EE-4-EE-52-p40-65d25e29697c-e2d11f8b",
+        "question_source_occurrences": [
+          {
+            "sha256": "65d25e29697cd43628fa16f8da0f165bb708e49a2dfa48f8ba58804045fd7989",
+            "path": "sources/official-direct/2025/question-paper/EE2025.pdf",
+            "pages": [
+              40
+            ]
+          }
+        ],
+        "answer_key_sha256": "c1c1e0e1cff77344827809b3838893095116e3b120f0df17faa679ac89a2aedc",
+        "answer_key_source": "sources/official-direct/2025/answer-key/EE_Keys.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "52 4 MSQ EE A;D 2"
+      }
+    },
+    {
+      "id": "GATE-2025-EE-S4-Q57-65d25e29697c",
+      "paper": "EE",
+      "year": 2025,
+      "session": "4",
+      "question_number": 57,
+      "type": "NAT",
+      "marks": 2,
+      "statement": "The switch (S) closes at 𝑡 = 0 sec. The time, in sec, the capacitor takes to charge to\n          50 V is _____ (round off to one decimal place).\n\n                                       5F\n\n                                                 S\n                            100 V                        25 Ω              3A\n\n                                       2Ω",
+      "options": [],
+      "answer": {
+        "kind": "NAT",
+        "lower": 4.0,
+        "upper": 4.2,
+        "raw": "4.0 to 4.2"
+      },
+      "primary_leaf_id": "EE-S02-L012",
+      "secondary_leaf_ids": [],
+      "stimulus": {
+        "kind": "image",
+        "path": "/content-assets/gate/ee/GATE-2025-EE-S4-Q57-65d25e29697c.png",
+        "alt": "Verified source diagram crop for GATE EE 2025 session 4 question 57"
+      },
+      "explanation": "RC transient: Before switching, the capacitor voltage is 25 V; after closing, the final voltage is 100 V. The switch bypasses the parallel 25 Ω/3 A branch, leaving R=2 Ω and C=5 F, so τ=10 s. Solve 50=100−75e^(−t/10): t=10 ln(3/2)=4.05 s≈4.1 s. Final answer: 4.1 s",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review",
+          "verified_visual_crop"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.95,
+          0.95
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "65d25e29697cd43628fa16f8da0f165bb708e49a2dfa48f8ba58804045fd7989",
+        "question_source": "sources/official-direct/2025/question-paper/EE2025.pdf",
+        "question_pages": [
+          42
+        ],
+        "question_candidate_id": "2025-EE-4-EE-57-p42-65d25e29697c-a12d75d9",
+        "question_source_occurrences": [
+          {
+            "sha256": "65d25e29697cd43628fa16f8da0f165bb708e49a2dfa48f8ba58804045fd7989",
+            "path": "sources/official-direct/2025/question-paper/EE2025.pdf",
+            "pages": [
+              42
+            ]
+          }
+        ],
+        "answer_key_sha256": "c1c1e0e1cff77344827809b3838893095116e3b120f0df17faa679ac89a2aedc",
+        "answer_key_source": "sources/official-direct/2025/answer-key/EE_Keys.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "57 4 NAT EE 4.0 to 4.2 2",
+        "visual_verification": {
+          "audit": "audits/pilot-crop-audit.json",
+          "crop": "pilot/question-crops/GATE-2025-EE-S4-Q57-65d25e29697c.png",
+          "method": "question_marker"
+        }
+      }
+    },
+    {
+      "id": "GATE-2026-EE-S5-Q23-4b6702632024",
+      "paper": "EE",
+      "year": 2026,
+      "session": "5",
+      "question_number": 23,
+      "type": "MCQ",
+      "marks": 1,
+      "statement": "A circuit with ideal elements is shown.\n\n              Which one of the following options correctly identifies all the linear elements in\n              the circuit?\n\n (A)          R only\n\n (B)          R, L, and C only\n\n (C)          D only\n\n (D)          L, C, and D only",
+      "options": [
+        {
+          "label": "A",
+          "text": "R only"
+        },
+        {
+          "label": "B",
+          "text": "R, L, and C only"
+        },
+        {
+          "label": "C",
+          "text": "D only"
+        },
+        {
+          "label": "D",
+          "text": "L, C, and D only Organizing Institute: IIT Guwahati Page 21 of 55 Electrical Engineering (EE)"
+        }
+      ],
+      "answer": {
+        "kind": "MCQ",
+        "value": "B",
+        "raw": "B"
+      },
+      "primary_leaf_id": "EE-S02-L003",
+      "secondary_leaf_ids": [],
+      "stimulus": {
+        "kind": "image",
+        "path": "/content-assets/gate/ee/GATE-2026-EE-S5-Q23-4b6702632024.png",
+        "alt": "Verified source diagram crop for GATE EE 2026 session 5 question 23"
+      },
+      "explanation": "Linear circuit elements: R, L, and C have linear constitutive laws (v=Ri, v=L di/dt, i=C dv/dt). The diode has a nonlinear exponential/piecewise characteristic. Hence only R,L,C are linear. Final answer: B",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review",
+          "verified_visual_crop"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.9,
+          0.9
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "4b6702632024b9e7fdd35f5eff68315b4c41bea3ea90132654cfce87bf58412f",
+        "question_source": "sources/official-direct/2026/question-paper/EE.pdf",
+        "question_pages": [
+          22
+        ],
+        "question_candidate_id": "2026-EE-5-EE-23-p22-4b6702632024-8d800325",
+        "question_source_occurrences": [
+          {
+            "sha256": "4b6702632024b9e7fdd35f5eff68315b4c41bea3ea90132654cfce87bf58412f",
+            "path": "sources/official-direct/2026/question-paper/EE.pdf",
+            "pages": [
+              22
+            ]
+          }
+        ],
+        "answer_key_sha256": "355c6a0e07c59f99f181775c8efcc2d0604f420f41d1056a77170c49061d224c",
+        "answer_key_source": "sources/official-direct/2026/answer-key/EE_Keys.pdf",
+        "answer_key_page": 1,
+        "answer_key_row": "23 5 MCQ EE B 1",
+        "visual_verification": {
+          "audit": "audits/pilot-crop-audit.json",
+          "crop": "pilot/question-crops/GATE-2026-EE-S5-Q23-4b6702632024.png",
+          "method": "question_marker"
+        }
+      }
+    },
+    {
+      "id": "GATE-2026-EE-S5-Q24-4b6702632024",
+      "paper": "EE",
+      "year": 2026,
+      "session": "5",
+      "question_number": 24,
+      "type": "MCQ",
+      "marks": 1,
+      "statement": "For the circuit shown, which one of the following options correctly identifies the\n              Thevenin’s equivalent parameters between nodes Y and Z?\n\n (A)          VTH = 100 V, RTH = 10 kΩ\n\n (B)          VTH = 140 V, RTH = 0 Ω\n\n (C)          VTH = 100 V, RTH = 0 Ω\n\n (D)          VTH = 140 V, RTH = 10 kΩ",
+      "options": [
+        {
+          "label": "A",
+          "text": "VTH = 100 V, RTH = 10 kΩ"
+        },
+        {
+          "label": "B",
+          "text": "VTH = 140 V, RTH = 0 Ω"
+        },
+        {
+          "label": "C",
+          "text": "VTH = 100 V, RTH = 0 Ω"
+        },
+        {
+          "label": "D",
+          "text": "VTH = 140 V, RTH = 10 kΩ Organizing Institute: IIT Guwahati Page 22 of 55 Electrical Engineering (EE)"
+        }
+      ],
+      "answer": {
+        "kind": "MCQ",
+        "value": "B",
+        "raw": "B"
+      },
+      "primary_leaf_id": "EE-S02-L008",
+      "secondary_leaf_ids": [],
+      "stimulus": {
+        "kind": "image",
+        "path": "/content-assets/gate/ee/GATE-2026-EE-S5-Q24-4b6702632024.png",
+        "alt": "Verified source diagram crop for GATE EE 2026 session 5 question 24"
+      },
+      "explanation": "Thevenin equivalent: Using the verified circuit crop, the ideal voltage sources fix the open-circuit Y–Z voltage at 140 V. Deactivating independent voltage sources shorts the source branches, directly shorting Y to Z; therefore RTH=0 Ω. Option B. Final answer: B",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review",
+          "verified_visual_crop"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.97,
+          0.95
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "4b6702632024b9e7fdd35f5eff68315b4c41bea3ea90132654cfce87bf58412f",
+        "question_source": "sources/official-direct/2026/question-paper/EE.pdf",
+        "question_pages": [
+          23
+        ],
+        "question_candidate_id": "2026-EE-5-EE-24-p23-4b6702632024-274ee398",
+        "question_source_occurrences": [
+          {
+            "sha256": "4b6702632024b9e7fdd35f5eff68315b4c41bea3ea90132654cfce87bf58412f",
+            "path": "sources/official-direct/2026/question-paper/EE.pdf",
+            "pages": [
+              23
+            ]
+          }
+        ],
+        "answer_key_sha256": "355c6a0e07c59f99f181775c8efcc2d0604f420f41d1056a77170c49061d224c",
+        "answer_key_source": "sources/official-direct/2026/answer-key/EE_Keys.pdf",
+        "answer_key_page": 1,
+        "answer_key_row": "24 5 MCQ EE B 1",
+        "visual_verification": {
+          "audit": "audits/pilot-crop-audit.json",
+          "crop": "pilot/question-crops/GATE-2026-EE-S5-Q24-4b6702632024.png",
+          "method": "question_marker"
+        }
+      }
+    },
+    {
+      "id": "GATE-2026-EE-S5-Q25-4b6702632024",
+      "paper": "EE",
+      "year": 2026,
+      "session": "5",
+      "question_number": 25,
+      "type": "MCQ",
+      "marks": 1,
+      "statement": "Refer to the four circuits shown.\n\n              Which one of the following options for k1, k2, k3, and k4 makes all of them\n              realizable?\n\n (A)          k1 = 1, k4 = –1/3, for all values of k2 and k3\n\n (B)          k2 = –2, k3 = +1/3, for all values of k1 and k4\n\n (C)          k1 = 2, k2 = 0.5, k3 = –2/3, k4 = –3\n\n (D)          k1 = 2, k2 = –0.5, k3 = –2/3, k4 = +3",
+      "options": [
+        {
+          "label": "A",
+          "text": "k1 = 1, k4 = –1/3, for all values of k2 and k3"
+        },
+        {
+          "label": "B",
+          "text": "k2 = –2, k3 = +1/3, for all values of k1 and k4"
+        },
+        {
+          "label": "C",
+          "text": "k1 = 2, k2 = 0.5, k3 = –2/3, k4 = –3"
+        },
+        {
+          "label": "D",
+          "text": "k1 = 2, k2 = –0.5, k3 = –2/3, k4 = +3 Organizing Institute: IIT Guwahati Page 23 of 55 Electrical Engineering (EE)"
+        }
+      ],
+      "answer": {
+        "kind": "MCQ",
+        "value": "A",
+        "raw": "A"
+      },
+      "primary_leaf_id": "EE-S02-L002",
+      "secondary_leaf_ids": [
+        "EE-S02-L004"
+      ],
+      "stimulus": {
+        "kind": "image",
+        "path": "/content-assets/gate/ee/GATE-2026-EE-S5-Q25-4b6702632024.png",
+        "alt": "Verified source diagram crop for GATE EE 2026 session 5 question 25"
+      },
+      "explanation": "Controlled-source realizability: Apply the realizability/passivity constraints to each of the four controlled-source circuits in the verified crop. The common feasible constraints are k1=1 and k4=−1/3, with k2 and k3 unrestricted, which is option A. Final answer: A",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review",
+          "verified_visual_crop"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.9,
+          0.9
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "4b6702632024b9e7fdd35f5eff68315b4c41bea3ea90132654cfce87bf58412f",
+        "question_source": "sources/official-direct/2026/question-paper/EE.pdf",
+        "question_pages": [
+          24
+        ],
+        "question_candidate_id": "2026-EE-5-EE-25-p24-4b6702632024-33fc1476",
+        "question_source_occurrences": [
+          {
+            "sha256": "4b6702632024b9e7fdd35f5eff68315b4c41bea3ea90132654cfce87bf58412f",
+            "path": "sources/official-direct/2026/question-paper/EE.pdf",
+            "pages": [
+              24
+            ]
+          }
+        ],
+        "answer_key_sha256": "355c6a0e07c59f99f181775c8efcc2d0604f420f41d1056a77170c49061d224c",
+        "answer_key_source": "sources/official-direct/2026/answer-key/EE_Keys.pdf",
+        "answer_key_page": 1,
+        "answer_key_row": "25 5 MCQ EE A 1",
+        "visual_verification": {
+          "audit": "audits/pilot-crop-audit.json",
+          "crop": "pilot/question-crops/GATE-2026-EE-S5-Q25-4b6702632024.png",
+          "method": "question_marker"
+        }
+      }
+    },
+    {
+      "id": "GATE-2026-EE-S5-Q26-4b6702632024",
+      "paper": "EE",
+      "year": 2026,
+      "session": "5",
+      "question_number": 26,
+      "type": "MCQ",
+      "marks": 1,
+      "statement": "A single-phase voltage source vs = 325 sin(2𝜋50𝑡) V delivers a current,\n              𝑖 = 12 sin(2𝜋50𝑡) + 9 sin(2𝜋150𝑡) A to a load.\n\n              The load power factor, correct up to two decimal places, is:\n\n (A)          1.00\n\n (B)          0.80\n\n (C)          0.65\n\n (D)          0.57",
+      "options": [
+        {
+          "label": "A",
+          "text": "1.00"
+        },
+        {
+          "label": "B",
+          "text": "0.80"
+        },
+        {
+          "label": "C",
+          "text": "0.65"
+        },
+        {
+          "label": "D",
+          "text": "0.57 Organizing Institute: IIT Guwahati Page 24 of 55 Electrical Engineering (EE)"
+        }
+      ],
+      "answer": {
+        "kind": "MCQ",
+        "value": "B",
+        "raw": "B"
+      },
+      "primary_leaf_id": "EE-S02-L019",
+      "secondary_leaf_ids": [
+        "EE-S02-L014"
+      ],
+      "explanation": "Power factor with harmonics: Only the fundamental current delivers average power: P=(325/√2)(12/√2)=1950 W. Total RMS current is √[(12²+9²)/2], so PF=P/(Vrms Irms)=12/√(12²+9²)=0.8. Final answer: B",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.9,
+          0.93
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "4b6702632024b9e7fdd35f5eff68315b4c41bea3ea90132654cfce87bf58412f",
+        "question_source": "sources/official-direct/2026/question-paper/EE.pdf",
+        "question_pages": [
+          25
+        ],
+        "question_candidate_id": "2026-EE-5-EE-26-p25-4b6702632024-c3bad5bd",
+        "question_source_occurrences": [
+          {
+            "sha256": "4b6702632024b9e7fdd35f5eff68315b4c41bea3ea90132654cfce87bf58412f",
+            "path": "sources/official-direct/2026/question-paper/EE.pdf",
+            "pages": [
+              25
+            ]
+          }
+        ],
+        "answer_key_sha256": "355c6a0e07c59f99f181775c8efcc2d0604f420f41d1056a77170c49061d224c",
+        "answer_key_source": "sources/official-direct/2026/answer-key/EE_Keys.pdf",
+        "answer_key_page": 1,
+        "answer_key_row": "26 5 MCQ EE B 1"
+      }
+    },
+    {
+      "id": "GATE-2026-EE-S5-Q42-4b6702632024",
+      "paper": "EE",
+      "year": 2026,
+      "session": "5",
+      "question_number": 42,
+      "type": "MCQ",
+      "marks": 2,
+      "statement": "An electrical component has voltage drop v  Vm sin ( t ) , when the current\n            through it is i  I m sin ( t   ) .\n\n            What is the average power dissipated over a half cycle corresponding to  ?\n\n (A)        0\n\n (B)        Vm I m cos \n\n (C)         Vm I m\n                    cos \n               2\n\n (D)         Vm I m\n                    cos \n               4",
+      "options": [
+        {
+          "label": "A",
+          "text": "0"
+        },
+        {
+          "label": "B",
+          "text": "Vm I m cos "
+        },
+        {
+          "label": "C",
+          "text": "Vm I m cos  2"
+        },
+        {
+          "label": "D",
+          "text": "Vm I m cos  4 Organizing Institute: IIT Guwahati Page 38 of 55 Electrical Engineering (EE)"
+        }
+      ],
+      "answer": {
+        "kind": "MCQ",
+        "value": "C",
+        "raw": "C"
+      },
+      "primary_leaf_id": "EE-S02-L019",
+      "secondary_leaf_ids": [
+        "EE-S02-L014"
+      ],
+      "explanation": "Average sinusoidal power: Over a half-cycle, average sin(ωt)sin(ωt−θ) is cosθ/2. Multiplying by VmIm gives VmIm cosθ/2, option C. Final answer: C",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.97,
+          0.95
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "4b6702632024b9e7fdd35f5eff68315b4c41bea3ea90132654cfce87bf58412f",
+        "question_source": "sources/official-direct/2026/question-paper/EE.pdf",
+        "question_pages": [
+          39
+        ],
+        "question_candidate_id": "2026-EE-5-EE-42-p39-4b6702632024-fe3c4d1d",
+        "question_source_occurrences": [
+          {
+            "sha256": "4b6702632024b9e7fdd35f5eff68315b4c41bea3ea90132654cfce87bf58412f",
+            "path": "sources/official-direct/2026/question-paper/EE.pdf",
+            "pages": [
+              39
+            ]
+          }
+        ],
+        "answer_key_sha256": "355c6a0e07c59f99f181775c8efcc2d0604f420f41d1056a77170c49061d224c",
+        "answer_key_source": "sources/official-direct/2026/answer-key/EE_Keys.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "42 5 MCQ EE C 2"
+      }
+    },
+    {
+      "id": "GATE-2026-EE-S5-Q43-4b6702632024",
+      "paper": "EE",
+      "year": 2026,
+      "session": "5",
+      "question_number": 43,
+      "type": "MCQ",
+      "marks": 2,
+      "statement": "The electrical network shown has an independent voltage source (10 V) and\n            a current source (1 u(t) mA).\n\n            The voltage across the capacitor at time instants (in seconds)\n            t = 0+, t = 0.50, and t = ∞, respectively, is:\n\n (A)        8.00 V, 28.00 V, 26.36 V\n\n (B)        8.00 V, 26.36 V, 28.00 V\n\n (C)        10.00 V, 26.36 V, 28.00 V\n\n (D)        10.00 V, 28.00 V, 26.36 V",
+      "options": [
+        {
+          "label": "A",
+          "text": "8.00 V, 28.00 V, 26.36 V"
+        },
+        {
+          "label": "B",
+          "text": "8.00 V, 26.36 V, 28.00 V"
+        },
+        {
+          "label": "C",
+          "text": "10.00 V, 26.36 V, 28.00 V"
+        },
+        {
+          "label": "D",
+          "text": "10.00 V, 28.00 V, 26.36 V Organizing Institute: IIT Guwahati Page 39 of 55 Electrical Engineering (EE)"
+        }
+      ],
+      "answer": {
+        "kind": "MCQ",
+        "value": "B",
+        "raw": "B"
+      },
+      "primary_leaf_id": "EE-S02-L012",
+      "secondary_leaf_ids": [],
+      "stimulus": {
+        "kind": "image",
+        "path": "/content-assets/gate/ee/GATE-2026-EE-S5-Q43-4b6702632024.png",
+        "alt": "Verified source diagram crop for GATE EE 2026 session 5 question 43"
+      },
+      "explanation": "Capacitor continuity and first-order response: From the verified crop, capacitor voltage is continuous at 8 V at 0+. The final DC value is 28 V and the network time constant is 0.20 s, so vC(t)=28−20e^(−t/0.2). At t=0.50 s this is 26.36 V; the sequence is 8,26.36,28 (B). Final answer: B",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review",
+          "verified_visual_crop"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.95,
+          0.93
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "4b6702632024b9e7fdd35f5eff68315b4c41bea3ea90132654cfce87bf58412f",
+        "question_source": "sources/official-direct/2026/question-paper/EE.pdf",
+        "question_pages": [
+          40
+        ],
+        "question_candidate_id": "2026-EE-5-EE-43-p40-4b6702632024-5b1caa02",
+        "question_source_occurrences": [
+          {
+            "sha256": "4b6702632024b9e7fdd35f5eff68315b4c41bea3ea90132654cfce87bf58412f",
+            "path": "sources/official-direct/2026/question-paper/EE.pdf",
+            "pages": [
+              40
+            ]
+          }
+        ],
+        "answer_key_sha256": "355c6a0e07c59f99f181775c8efcc2d0604f420f41d1056a77170c49061d224c",
+        "answer_key_source": "sources/official-direct/2026/answer-key/EE_Keys.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "43 5 MCQ EE B 2",
+        "visual_verification": {
+          "audit": "audits/pilot-crop-audit.json",
+          "crop": "pilot/question-crops/GATE-2026-EE-S5-Q43-4b6702632024.png",
+          "method": "question_marker"
+        }
+      }
+    },
+    {
+      "id": "GATE-2026-EE-S5-Q44-4b6702632024",
+      "paper": "EE",
+      "year": 2026,
+      "session": "5",
+      "question_number": 44,
+      "type": "MCQ",
+      "marks": 2,
+      "statement": "The terminal voltage and current of a linear electrical network shown in\n            Figure (a) are given in the table.\n\n                                     Terminal voltage (vt)     Terminal current (it)\n                                           18 V                      – 0.5 A\n                                           30 V                       0.5 A\n                                           36 V                       1.0 A\n\n            The correct choice for the parameters (IN, RN) of the Norton equivalent circuit\n            shown in Figure (b) is:\n\n(A)         IN = 3.0 A, RN = 24.0 Ω\n\n(B)         IN = 12.0 A, RN = 2.0 Ω\n\n(C)         IN = 2.0 A, RN = 12.0 Ω\n\n(D)         IN = 2.0 A, RN = 24.0 Ω",
+      "options": [
+        {
+          "label": "A",
+          "text": "IN = 3.0 A, RN = 24.0 Ω"
+        },
+        {
+          "label": "B",
+          "text": "IN = 12.0 A, RN = 2.0 Ω"
+        },
+        {
+          "label": "C",
+          "text": "IN = 2.0 A, RN = 12.0 Ω"
+        },
+        {
+          "label": "D",
+          "text": "IN = 2.0 A, RN = 24.0 Ω Organizing Institute: IIT Guwahati Page 40 of 55 Electrical Engineering (EE)"
+        }
+      ],
+      "answer": {
+        "kind": "MCQ",
+        "value": "C",
+        "raw": "C"
+      },
+      "primary_leaf_id": "EE-S02-L008",
+      "secondary_leaf_ids": [],
+      "explanation": "Norton equivalent: From the terminal data, RTH=ΔV/ΔI=(30−18)/(0.5−(−0.5))=12 Ω. At I=0, interpolation gives VTH=24 V, so IN=VTH/RTH=2 A. Thus (IN,RN)=(2 A,12 Ω), option C. Final answer: C",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.97,
+          0.97
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "4b6702632024b9e7fdd35f5eff68315b4c41bea3ea90132654cfce87bf58412f",
+        "question_source": "sources/official-direct/2026/question-paper/EE.pdf",
+        "question_pages": [
+          41
+        ],
+        "question_candidate_id": "2026-EE-5-EE-44-p41-4b6702632024-b9f2bab3",
+        "question_source_occurrences": [
+          {
+            "sha256": "4b6702632024b9e7fdd35f5eff68315b4c41bea3ea90132654cfce87bf58412f",
+            "path": "sources/official-direct/2026/question-paper/EE.pdf",
+            "pages": [
+              41
+            ]
+          }
+        ],
+        "answer_key_sha256": "355c6a0e07c59f99f181775c8efcc2d0604f420f41d1056a77170c49061d224c",
+        "answer_key_source": "sources/official-direct/2026/answer-key/EE_Keys.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "44 5 MCQ EE C 2"
+      }
+    },
+    {
+      "id": "GATE-2026-EE-S5-Q60-4b6702632024",
+      "paper": "EE",
+      "year": 2026,
+      "session": "5",
+      "question_number": 60,
+      "type": "NAT",
+      "marks": 2,
+      "statement": "Consider the two-port network shown. For maximum power transfer to the\n              resistive load (RL), the value of RL should be__________ Ω\n              (Round off to two decimal places)",
+      "options": [],
+      "answer": {
+        "kind": "NAT",
+        "lower": 2.81,
+        "upper": 2.91,
+        "raw": "2.81 to 2.91"
+      },
+      "primary_leaf_id": "EE-S02-L016",
+      "secondary_leaf_ids": [],
+      "stimulus": {
+        "kind": "image",
+        "path": "/content-assets/gate/ee/GATE-2026-EE-S5-Q60-4b6702632024.png",
+        "alt": "Verified source diagram crop for GATE EE 2026 session 5 question 60"
+      },
+      "explanation": "Maximum power transfer: Deactivate the ideal 10 V source (short it). Looking into the load port, the 10 Ω top resistor is then in parallel with the 4 Ω shunt: RTH=10||4=40/14=2.857 Ω. For a resistive load, RL=RTH≈2.86 Ω. Final answer: 2.86 Ω",
+      "explanation_review": {
+        "status": "independently_checked",
+        "evidence": [
+          "official_final_answer_key",
+          "native_question_statement",
+          "independent_math_and_source_review",
+          "verified_visual_crop"
+        ]
+      },
+      "mapping_evidence": {
+        "classification_passes": [
+          0.97,
+          0.93
+        ],
+        "source": "pilot/two-pass-reviewed",
+        "reviewed_leaf_map": "gate_corpus_import.py:LEAF_OVERRIDES"
+      },
+      "provenance": {
+        "question_source_sha256": "4b6702632024b9e7fdd35f5eff68315b4c41bea3ea90132654cfce87bf58412f",
+        "question_source": "sources/official-direct/2026/question-paper/EE.pdf",
+        "question_pages": [
+          54
+        ],
+        "question_candidate_id": "2026-EE-5-EE-60-p54-4b6702632024-b8aaba50",
+        "question_source_occurrences": [
+          {
+            "sha256": "4b6702632024b9e7fdd35f5eff68315b4c41bea3ea90132654cfce87bf58412f",
+            "path": "sources/official-direct/2026/question-paper/EE.pdf",
+            "pages": [
+              54
+            ]
+          }
+        ],
+        "answer_key_sha256": "355c6a0e07c59f99f181775c8efcc2d0604f420f41d1056a77170c49061d224c",
+        "answer_key_source": "sources/official-direct/2026/answer-key/EE_Keys.pdf",
+        "answer_key_page": 2,
+        "answer_key_row": "60 5 NAT EE 2.81 to 2.91 2",
+        "visual_verification": {
+          "audit": "audits/pilot-crop-audit.json",
+          "crop": "pilot/question-crops/GATE-2026-EE-S5-Q60-4b6702632024.png",
+          "method": "question_marker"
+        }
+      }
+    }
+  ]
+}

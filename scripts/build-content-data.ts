@@ -505,6 +505,15 @@ function copyStaticAssets(staticRoot: string, publicRoot: string) {
   }
 }
 
+/** Restore durable GATE question figures after the content asset cleanup. */
+function copyGateAssets(cwd: string, publicRoot: string) {
+  const source = path.join(cwd, "data", "exams", "gate", "assets");
+  if (!fs.existsSync(source)) return;
+  const destination = path.join(publicRoot, "content-assets", "gate");
+  ensureDirectory(destination);
+  fs.cpSync(source, destination, { recursive: true, force: true });
+}
+
 function writeJson(filePath: string, value: unknown) {
   ensureDirectory(path.dirname(filePath));
   fs.writeFileSync(filePath, `${JSON.stringify(value, null, 2)}\n`);
@@ -523,6 +532,7 @@ export function buildContentData(options: BuildOptions = {}) {
   removeDirectory(path.join(generatedRoot, "notes"));
   copyDocAssets(docsRoot, publicRoot);
   copyStaticAssets(staticRoot, publicRoot);
+  copyGateAssets(cwd, publicRoot);
 
   const markdownFiles = getMarkdownFiles(docsRoot).filter((filePath) => isPublicLearnerNote(path.relative(docsRoot, filePath)));
   const slugByRelativePath = new Map(
