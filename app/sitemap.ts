@@ -4,6 +4,7 @@ import { SITE_URL } from "@/lib/seo";
 import { getSscTopics } from "@/lib/ssc-cgl";
 import { getCatQuantTopics } from "@/lib/cat";
 import { getGateTopics } from "@/lib/gate";
+import { getSscQuantBookChapters } from "@/lib/ssc-quant-book";
 import { sscCglSubjectDefinitions, sscCglSubjectHref } from "@/lib/ssc-cgl-subjects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -37,9 +38,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now
     })),
     ...getSscTopics().map((topic) => ({
-      url: `${SITE_URL}/exams/ssc-cgl/topics/${topic.slug}`,
+      url: `${SITE_URL}/exams/ssc-cgl/practice/${topic.slug}`,
       lastModified: now
     })),
+    ...getSscQuantBookChapters().flatMap((chapter) => ([
+      {
+        url: `${SITE_URL}/exams/ssc-cgl/subjects/quantitative-aptitude/chapters/${chapter.slug}`,
+        lastModified: now
+      },
+      {
+        url: `${SITE_URL}/exams/ssc-cgl/subjects/quantitative-aptitude/chapters/${chapter.slug}/practice`,
+        lastModified: now
+      }
+    ])),
     ...getCatQuantTopics().flatMap((topic) => ([
       { url: `${SITE_URL}/exams/cat/quant/topics/${topic.slug}`, lastModified: now },
       { url: `${SITE_URL}/exams/cat/quant/practice/${topic.slug}`, lastModified: now }

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { notFound, redirect } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, ClipboardList, ListChecks, Sigma } from "lucide-react";
 import { ActiveRecallPanel } from "@/components/ActiveRecallPanel";
 import { JsonLd } from "@/components/JsonLd";
@@ -17,7 +17,6 @@ import { buildHeadingAnchors, buildQuestionAnchors } from "@/lib/heading-anchors
 import { buildFormulaReaderSignal, type FormulaReaderSignal } from "@/lib/note-reader-signals";
 import { buildNotePractice } from "@/lib/note-practice";
 import { buildBreadcrumbJsonLd, buildNoteJsonLd, buildPageMetadata, noteDescription } from "@/lib/seo";
-import { getSscTopic } from "@/lib/ssc-cgl";
 import { sscCglSubjectDefinitions, sscCglTopicSlugFromNote } from "@/lib/ssc-cgl-subjects";
 import type { QuizSet } from "@/scripts/build-content-data";
 
@@ -25,13 +24,25 @@ type NotePageProps = {
   params: Promise<{ slug: string }>;
 };
 
-function canonicalSscTopicHref(note: { slug: string; courseCode: string | null }) {
-  if (note.courseCode !== "SSC-CGL") return null;
+function legacySscPracticeHref(slug: string) {
   for (const subject of sscCglSubjectDefinitions) {
-    const topicSlug = sscCglTopicSlugFromNote(subject, note.slug);
-    if (topicSlug && getSscTopic(topicSlug)) return `/exams/ssc-cgl/topics/${topicSlug}`;
+    const topicSlug = sscCglTopicSlugFromNote(subject, slug);
+    if (topicSlug) return `/exams/ssc-cgl/practice/${topicSlug}`;
+  }
+  // Keep the redirect stable even after the retired generated note index is
+  // rebuilt away. Known subject prefixes above preserve their exact mapping;
+  // an unknown legacy SSC slug still lands on the corresponding practice slug.
+  if (slug.startsWith("ssc-cgl-")) {
+    const topicSlug = slug
+      .slice("ssc-cgl-".length)
+      .replace(/^(?:reasoning|ga|quant|english)-/, "");
+    return topicSlug ? `/exams/ssc-cgl/practice/${topicSlug}` : null;
   }
   return null;
+}
+
+function canonicalSscTopicHref(note: { slug: string; courseCode: string | null }) {
+  return note.courseCode === "SSC-CGL" ? legacySscPracticeHref(note.slug) : null;
 }
 
 export async function generateMetadata({ params }: NotePageProps) {
@@ -48,10 +59,12 @@ export async function generateMetadata({ params }: NotePageProps) {
 
 export default async function NotePage({ params }: NotePageProps) {
   const { slug } = await params;
+  const legacyPracticeHref = legacySscPracticeHref(slug);
+  if (legacyPracticeHref) permanentRedirect(legacyPracticeHref);
   const note = getNote(slug);
   if (!note) notFound();
   const canonicalTopicHref = canonicalSscTopicHref(note);
-  if (canonicalTopicHref) redirect(canonicalTopicHref);
+  if (canonicalTopicHref) permanentRedirect(canonicalTopicHref);
   if (note.contentType === "research_note" || note.courseCode === "RESEARCH") return <ResearchNote note={note} />;
   const related = getResolvedPreviewsForNote(note);
   const navigation = getNoteNavigation(note);

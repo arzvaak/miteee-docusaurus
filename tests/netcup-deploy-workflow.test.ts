@@ -56,6 +56,11 @@ test("Netcup workflow deploys the current Next standalone app instead of stale D
   assert.match(verifier, /grep -q "Build each subject\. Then test it\."/);
   assert.match(verifier, /grep -q "Four sections, clearly separated\."/);
   assert.match(verifier, /Legacy Study Vault label is still present/);
+  assert.match(verifier, /subjects\/quantitative-aptitude/);
+  assert.match(verifier, /Build your quant base, chapter by chapter/);
+  assert.match(verifier, /chapters\/number-system\/practice/);
+  assert.match(verifier, /Reset chapter/);
+  assert.match(verifier, /location: \/exams\/ssc-cgl\/practice\/number-system/);
   assert.match(verifier, /api\/exams\/ssc-cgl\/session\?mode=endless&section=quantitative-aptitude/);
   assert.match(verifier, /SSC CGL session corpus is empty/);
   assert.match(verifier, /payload\.questions\.length !== 1/);

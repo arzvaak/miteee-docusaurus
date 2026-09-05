@@ -126,27 +126,16 @@ test("course navigation groups expose quick table of contents sections", () => {
   assert.ok(em2Groups.some((group) => group.label.startsWith("Reference") && group.notes.some((note) => note.slug === "sem5-em2-overview")));
 });
 
-test("SSC CGL course navigation is organized as four Tier-I subject levels", () => {
+test("SSC CGL Markdown course navigation is retired from the general notes catalog", () => {
   buildContentData();
 
   const ssc = getCourse("SSC-CGL");
   const notes = getCourseNotes("SSC-CGL");
   const groups = getCourseNavigationGroups("SSC-CGL");
 
-  assert.ok(ssc);
-  assert.equal(ssc.folder, "ssc-cgl");
-  assert.equal(ssc.level, "SSC CGL Tier-I");
-  assert.equal(ssc.category, "Competitive exams");
-  assert.deepEqual(groups.map((group) => group.label), [
-    "General Intelligence and Reasoning",
-    "General Awareness",
-    "Quantitative Aptitude",
-    "English Comprehension"
-  ]);
-  assert.equal(notes.length, groups.reduce((total, group) => total + group.notes.length, 0));
-  assert.ok(notes.length >= 46);
-  assert.ok(groups.every((group) => group.notes.length > 0));
-  assert.equal(groups.some((group) => /pipeline|source|corpus|audit/i.test(group.notes.map((note) => note.label).join(" "))), false);
+  assert.equal(ssc, null);
+  assert.deepEqual(notes, []);
+  assert.deepEqual(groups, []);
 });
 
 test("SSC CGL learner notes do not expose internal current-affairs infrastructure", () => {

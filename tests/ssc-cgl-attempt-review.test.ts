@@ -83,6 +83,6 @@ test("SSC CGL attempt review rows classify correct wrong and unattempted answers
   assert.equal(rows[1]?.correctOptionText, "Option B");
   assert.equal(rows[2]?.chosenOptionText, "Not attempted");
   assert.equal(rows[0]?.explanation, "Explanation for q-correct.");
-  assert.equal(rows[0]?.topicHref, "/exams/ssc-cgl/topics/calculation-speed");
+  assert.equal(rows[0]?.topicHref, "/exams/ssc-cgl/practice/calculation-speed");
   assert.equal(rows[0]?.sourceLabel, "Fixture Book · page 12");
 });

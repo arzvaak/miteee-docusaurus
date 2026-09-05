@@ -88,7 +88,6 @@ test("SSC CGL topic practice exposes one-by-one corpus practice", () => {
   const practiceClient = fs.readFileSync(path.join(root, "components", "SscTopicPracticeClient.tsx"), "utf8");
   const explanationPanel = fs.readFileSync(path.join(root, "components", "SscExplanationPanel.tsx"), "utf8");
   const topicPracticeMemory = fs.readFileSync(path.join(root, "lib", "ssc-cgl-topic-practice-memory.ts"), "utf8");
-  const topicStudyPage = fs.readFileSync(path.join(root, "components", "SscTopicStudyPage.tsx"), "utf8");
   const setup = fs.readFileSync(path.join(root, "components", "SscExamSetup.tsx"), "utf8");
   const css = fs.readFileSync(path.join(root, "app", "globals.css"), "utf8");
 
@@ -147,10 +146,8 @@ test("SSC CGL topic practice exposes one-by-one corpus practice", () => {
   assert.match(practiceClient, /Over pace/);
   assert.match(practiceClient, /elapsedSeconds > targetSecondsPerQuestion/);
   assert.match(explanationPanel, /parseSscExplanationBlocks/);
-  assert.match(topicStudyPage, /\/exams\/ssc-cgl\/practice\//);
-  assert.match(topicStudyPage, /Practice this topic/);
   assert.match(setup, /href: "\/exams\/ssc-cgl\/practice"/);
-  assert.match(setup, /href: "\/exams\/ssc-cgl\/topics"/);
+  assert.match(setup, /href: "\/exams\/ssc-cgl\/subjects\/quantitative-aptitude"/);
   assert.match(setup, /href: "\/exams\/ssc-cgl\/current-affairs"/);
   assert.match(setup, /Open question bank/);
   assert.match(setup, /Section question-bank readiness/);
@@ -247,30 +244,11 @@ test("SSC CGL result page exposes question-by-question answer review", () => {
   assert.match(css, /\.ssc-explanation-block/);
 });
 
-test("SSC CGL topic reader keeps one learner lesson and a separate practice action", () => {
+test("retired SSC CGL topic readers permanently redirect to preserved practice", () => {
   const topicRoute = fs.readFileSync(path.join(root, "app", "exams", "ssc-cgl", "topics", "[slug]", "page.tsx"), "utf8");
-  const topicReader = fs.readFileSync(path.join(root, "components", "SscTopicStudyPage.tsx"), "utf8");
-  const topicReaderCss = fs.readFileSync(path.join(root, "components", "SscTopicStudyPage.module.css"), "utf8");
-  const combinedSource = topicRoute + topicReader;
-
-  assert.match(topicRoute, /<SscTopicStudyPage/);
-  assert.equal(
-    (topicReader.match(/<MarkdownNote content=\{section\.body\}/g) ?? []).length,
-    1,
-    "the lesson body should have exactly one render path"
-  );
-  assert.match(topicReader, /<NoteQuizClient \/>/);
-  assert.match(topicReader, /Practice this topic/);
-  assert.match(topicReader, /\/exams\/ssc-cgl\/practice\//);
-  assert.match(topicReader, /Start timed drill/);
-  assert.match(topicReader, /<details className=\{styles\.questionBankDetails\}>/);
-  assert.match(topicReaderCss, /max-width:\s*900px/);
-  assert.match(topicReaderCss, /\.outline\s*\{[\s\S]*?position:\s*sticky/);
-
-  assert.doesNotMatch(combinedSource, /ssc-topic-mastery-route|Corpus pressure|200\/200 route/);
-  assert.doesNotMatch(combinedSource, /getSscTopicPracticePreview|previewQuestions/);
-  assert.doesNotMatch(combinedSource, /SscExplanationPanel|Reviewed PYQ-style questions from this topic/);
-  assert.doesNotMatch(combinedSource, /topic\.study\.formulaTable|topic\.study\.flowchart|topic\.practice\.drillPrompt/);
+  assert.match(topicRoute, /permanentRedirect/);
+  assert.match(topicRoute, /\/exams\/ssc-cgl\/practice\//);
+  assert.doesNotMatch(topicRoute, /SscTopicStudyPage/);
 });
 
 test("SSC CGL canonical hierarchy runs from exam to subject to topic", () => {
@@ -286,9 +264,9 @@ test("SSC CGL canonical hierarchy runs from exam to subject to topic", () => {
   assert.match(subjectHrefSource, /\/exams\/ssc-cgl\/subjects\//);
   assert.match(subjectRoute, /generateStaticParams/);
   assert.match(subjectRoute, /sscCglSubjectDefinitions/);
-  assert.match(subjectRoute, /<SscCglSubjectLanding/);
-  assert.match(subjectRoute, /\/exams\/ssc-cgl\/topics\//);
-  assert.match(topicRoute, /<SscTopicStudyPage/);
+  assert.match(subjectRoute, /<SscCglQuestionSubjectLanding/);
+  assert.match(subjectRoute, /<SscQuantBookDirectory/);
+  assert.match(topicRoute, /permanentRedirect/);
 });
 
 test("SSC CGL landing is an exam overview with study and test paths", () => {
@@ -296,7 +274,8 @@ test("SSC CGL landing is an exam overview with study and test paths", () => {
   const landing = fs.readFileSync(path.join(root, "components", "SscCglLibraryLanding.tsx"), "utf8");
 
   assert.match(page, /SscCglLibraryLanding/);
-  assert.match(page, /getCourseNavigationGroups\("SSC-CGL"\)/);
+  assert.match(page, /getSscTopics\(\)/);
+  assert.match(page, /getSscQuantBookChapters\(\)/);
   assert.match(page, /getSscCglDashboard\(\)/);
   assert.match(landing, /sscCglSubjectDefinitions/);
   assert.match(landing, /\/exams\/ssc-cgl\/tests|\/exams\/ssc-cgl\/session|Start a test/);
@@ -385,7 +364,7 @@ test("SSC CGL readiness page exposes clean 200/200 proof", () => {
   assert.match(page, /SSC CGL 200\/200 proof/);
   assert.match(page, /Question bank/);
   assert.match(page, /Timed mocks/);
-  assert.match(page, /Deep notes/);
+  assert.match(page, /Quant course/);
   assert.match(page, /Resources/);
   assert.match(page, /Current affairs/);
   assert.match(page, /Strict proof gates/);

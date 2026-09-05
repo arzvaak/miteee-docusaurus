@@ -168,19 +168,6 @@ test("SSC topic section bodies render 200/200 drills when the heading is supplie
   assert.doesNotMatch(normalized, /^<h2/m);
 });
 
-test("SSC analogy note keeps the thermometer self-check next to its exact explanation", () => {
-  const source = fs.readFileSync(path.join("docs", "ssc-cgl", "reasoning", "analogy-classification.md"), "utf8");
-  const normalized = prepareMarkdownContent(source);
-  const checkStart = normalized.indexOf("Thermometer : Temperature :: Clock : ?");
-  assert.ok(checkStart >= 0, "thermometer self-check should stay in the chapter");
-  const check = normalized.slice(checkStart, checkStart + 700);
-
-  assert.match(check, /Options: Time, Hour, Hand, Alarm/);
-  assert.match(check, /> \*\*Answer and explanation\*\*/);
-  assert.match(check, /> \*\*Time\.\*\* A thermometer measures temperature; a clock measures time/);
-  assert.doesNotMatch(check, /data-answer="d"|Answer:<\/strong> D|q-correct|q-wrong/);
-});
-
 test("SSC 200/200 drill answers expand thin keys into method-level explanations", () => {
   const source = [
     "## 200/200 Drill",

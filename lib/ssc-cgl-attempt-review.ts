@@ -56,7 +56,7 @@ export function buildSscAttemptQuestionReview(
       questionNumber,
       topic: question.topic,
       subtopic: question.subtopic,
-      topicHref: `/exams/ssc-cgl/topics/${question.topic}`,
+      topicHref: `/exams/ssc-cgl/practice/${question.topic}`,
       stem: question.stem,
       stimulus: question.stimulus,
       status,

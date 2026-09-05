@@ -128,8 +128,11 @@ function featuredNotes(group: CourseNavigationGroup, progressStore: ReaderProgre
 function studyHrefForNote(groupKey: string, noteSlug: string) {
   const subject = sscCglSubjectDefinitions.find((definition) => definition.groupKey === groupKey);
   if (!subject) return "/exams/ssc-cgl";
+  if (subject.section === "quantitative-aptitude" && noteSlug.startsWith("ssc-quant-book-")) {
+    return `/exams/ssc-cgl/subjects/quantitative-aptitude/chapters/${noteSlug.slice("ssc-quant-book-".length)}`;
+  }
   const topicSlug = sscCglTopicSlugFromNote(subject, noteSlug);
-  return topicSlug ? `/exams/ssc-cgl/topics/${topicSlug}` : sscCglSubjectHref(subject.section);
+  return topicSlug ? `/exams/ssc-cgl/practice/${topicSlug}` : sscCglSubjectHref(subject.section);
 }
 
 export function SscCglLibraryLanding({ groups, corpus }: SscCglLibraryLandingProps) {
@@ -211,7 +214,7 @@ export function SscCglLibraryLanding({ groups, corpus }: SscCglLibraryLandingPro
         <div className={styles.heroCopy}>
           <span className={styles.eyebrow}>SSC CGL Tier-I exam</span>
           <h1 id="ssc-library-title">Build each subject. Then test it.</h1>
-          <p>Choose one of the four Tier-I subjects, learn a focused topic, then practise it at exam pace. Your lessons and tests stay separate, but always connected.</p>
+          <p>Choose one of the four Tier-I subjects and practise it at exam pace. Quantitative Aptitude also includes a complete 20-chapter source-book course.</p>
           <div className={styles.heroActions}>
             <Link className={styles.primaryAction} href="/exams/ssc-cgl/tests">
               <ClipboardCheck size={17} aria-hidden="true" /> Start a test <ArrowRight size={15} aria-hidden="true" />
@@ -243,14 +246,14 @@ export function SscCglLibraryLanding({ groups, corpus }: SscCglLibraryLandingPro
             <>
               <span>Start studying</span>
               <strong>{firstNote?.label || "Choose your first subject"}</strong>
-              <p>Your reading progress begins only after you open a topic. Nothing is marked complete in advance.</p>
+              <p>Open Quant notes or start directly from any retained SSC question set.</p>
               {firstNote && firstNoteHref ? <Link href={firstNoteHref}>Open first topic <ArrowRight size={15} aria-hidden="true" /></Link> : null}
             </>
           )}
         </aside>
 
         <div className={styles.corpusStrip} aria-label="SSC CGL library facts">
-          <span><strong>{formatNumber(totalNotes)}</strong><small>Study topics</small></span>
+          <span><strong>{formatNumber(totalNotes)}</strong><small>Topic lanes</small></span>
           <span><strong>{formatNumber(corpus.reviewedQuestions)}</strong><small>Practice questions</small></span>
           <span><strong>{formatNumber(groups.length)}</strong><small>Tier-I subjects</small></span>
           <span><strong>{formatNumber(corpus.fullMocks)}</strong><small>Full mocks</small></span>
@@ -262,7 +265,7 @@ export function SscCglLibraryLanding({ groups, corpus }: SscCglLibraryLandingPro
           <div>
             <span className={styles.eyebrow}>Your subjects</span>
             <h2 id="ssc-subjects-title">Four sections, clearly separated.</h2>
-            <p>Each subject keeps its topics, progress, and practice routes together.</p>
+            <p>Reasoning, General Awareness, and English are question-first. Quant keeps its source-faithful chapter course beside practice.</p>
           </div>
           <div className={styles.activeNotice} aria-live="polite">
             <Sparkles size={16} aria-hidden="true" />
@@ -315,7 +318,7 @@ export function SscCglLibraryLanding({ groups, corpus }: SscCglLibraryLandingPro
                 >
                   <summary>
                     <span className={styles.subjectIcon}><Icon size={19} aria-hidden="true" /></span>
-                    <span><strong>{subject.group.label}</strong><small>{subject.group.notes.length} notes · {subject.progress.started} started</small></span>
+                    <span><strong>{subject.group.label}</strong><small>{subject.group.notes.length} topics · {subject.progress.started} started</small></span>
                     <ChevronDown size={17} aria-hidden="true" />
                   </summary>
                   <div className={styles.noteGrid}>
@@ -347,6 +350,7 @@ type SubjectRow = {
 function SubjectCard({ progressStore, subject }: { progressStore: ReaderProgressStore; subject: SubjectRow }) {
   const Icon = subject.definition.icon;
   const subjectHref = sscCglSubjectHref(subject.definition.section);
+  const isQuantCourse = subject.definition.section === "quantitative-aptitude";
   const progressLabel = subject.progress.active
     ? `${subject.progress.started} started · ${subject.progress.completed} finished`
     : "Not started";
@@ -363,25 +367,32 @@ function SubjectCard({ progressStore, subject }: { progressStore: ReaderProgress
             <span>{subject.progress.active ? "In progress" : "Tier-I subject"}</span>
             <h3>{subject.definition.shortTitle}</h3>
           </div>
-          {subject.progress.completed > 0 ? <CheckCircle2 size={18} aria-label={`${subject.progress.completed} notes finished`} /> : null}
+          {isQuantCourse && subject.progress.completed > 0 ? <CheckCircle2 size={18} aria-label={`${subject.progress.completed} chapters finished`} /> : null}
         </div>
         <p>{subject.definition.description}</p>
 
         <div className={styles.subjectFacts}>
-          <span><strong>{subject.group.notes.length}</strong><small>Study topics</small></span>
+          <span><strong>{subject.group.notes.length}</strong><small>Topic lanes</small></span>
           <span><strong>{formatNumber(subject.corpusSection?.reviewedQuestions || 0)}</strong><small>Practice questions</small></span>
           <span><strong>{formatNumber(subject.corpusSection?.bookBackedQuestions || 0)}</strong><small>Source-backed</small></span>
         </div>
       </Link>
 
-      <div className={styles.readingProgress} aria-label={`Saved reading progress: ${subject.progress.readingPercent}%`}>
-        <div><span>Saved reading progress</span><strong>{subject.progress.readingPercent}%</strong></div>
-        <span className={styles.progressTrack} aria-hidden="true"><i style={{ width: `${subject.progress.readingPercent}%` }} /></span>
-        <small>{progressLabel}</small>
-      </div>
+      {isQuantCourse ? (
+        <div className={styles.readingProgress} aria-label={`Saved reading progress: ${subject.progress.readingPercent}%`}>
+          <div><span>Saved chapter progress</span><strong>{subject.progress.readingPercent}%</strong></div>
+          <span className={styles.progressTrack} aria-hidden="true"><i style={{ width: `${subject.progress.readingPercent}%` }} /></span>
+          <small>{progressLabel}</small>
+        </div>
+      ) : (
+        <div className={styles.readingProgress} aria-label="Question-only subject">
+          <div><span>Question-only navigation</span><strong>Practice</strong></div>
+          <small>All retained questions remain available by topic.</small>
+        </div>
+      )}
 
       <div className={styles.featuredTopics}>
-        <span>{subject.progress.active ? "Continue in this subject" : "Start with"}</span>
+        <span>{isQuantCourse && subject.progress.active ? "Continue in this subject" : isQuantCourse ? "Start with" : "Practice topics"}</span>
         {subject.featuredNotes.map((note) => (
           <Link href={studyHrefForNote(subject.group.key, note.slug)} key={note.slug}>
             <span>{note.label}</span>
@@ -399,11 +410,12 @@ function SubjectCard({ progressStore, subject }: { progressStore: ReaderProgress
 }
 
 function SyllabusNote({ groupKey, note, progress }: { groupKey: string; note: CourseNavigationItem; progress?: number }) {
+  const isQuantCourse = groupKey === "ssc-cgl-quant" && note.slug.startsWith("ssc-quant-book-");
   return (
     <Link className={styles.noteLink} href={studyHrefForNote(groupKey, note.slug)}>
       <span>
         <strong>{note.label}</strong>
-        <small>{progress ? `${progress}% read` : "Topic guide"}</small>
+        <small>{isQuantCourse ? (progress ? `${progress}% read` : "Read chapter") : "Practice topic"}</small>
       </span>
       <ArrowRight size={14} aria-hidden="true" />
     </Link>

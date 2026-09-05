@@ -382,7 +382,7 @@ function publicGateLabel(id: string | undefined, fallback: string | undefined) {
     "book-corpus-completeness": "Book-backed question base",
     "fifty-year-ranked-corpus": "Ranked year coverage",
     "book-pyq-provenance": "PYQ-backed book provenance",
-    "topic-mastery": "Topic mastery floor",
+    "topic-mastery": "Topic practice floor",
     "type-system-coverage": "Question-type coverage",
     "source-manifest": "Resource coverage",
     "current-affairs": "Daily current-affairs brief"
@@ -396,8 +396,8 @@ function publicGateEvidence(id: string | undefined, fallback: string | undefined
     "book-corpus-completeness": "22,160/22,823 indexed book questions are promoted; the remaining 650-row tail is tracked without blocking practice.",
     "fifty-year-ranked-corpus": "50/50 ranked practice years have coverage.",
     "book-pyq-provenance": "22,160 reviewed questions carry book-provided PYQ provenance.",
-    "topic-mastery": "46/46 topics pass the total practice and deep-note gates.",
-    "type-system-coverage": "46/46 topic notes cover their top corpus-derived question types.",
+    "topic-mastery": "46/46 topics pass the retained-question practice floor.",
+    "type-system-coverage": "46/46 topic banks cover their top corpus-derived question types.",
     "source-manifest": "188 resource candidates are recorded for continued expansion.",
     "current-affairs": "Latest daily brief: 2026-06-29 with 6 SSC-relevant facts."
   };
@@ -701,7 +701,7 @@ function buildStudyDepthNotes(topics: SscCglTopic[]): SscCglStudyDepthNote[] {
       slug: topic.slug,
       title: topic.title,
       subject: topic.subject,
-      href: `/exams/ssc-cgl/topics/${topic.slug}`,
+      href: `/exams/ssc-cgl/practice/${topic.slug}`,
       manualReviewed,
       bodyLength,
       examples,
@@ -789,7 +789,7 @@ function buildRepairPlan(
       id: "top-pressure-topic",
       label: "02 Repair",
       title: `Repair ${topPressureTopic.title}`,
-      href: `/exams/ssc-cgl/topics/${topPressureTopic.slug}`,
+      href: `/exams/ssc-cgl/practice/${topPressureTopic.slug}`,
       minutes: 35,
       section: topPressureTopic.section,
       reason: topPressureTopic.nextAction,
@@ -941,10 +941,9 @@ function noteHasCompleteLesson(note: SscCglStudyDepthNote | undefined) {
   return (note?.bodyLength ?? 0) >= DEEP_NOTE_TARGET_CHARS;
 }
 
-function topicCoverageLabel(row: SscCglTopicReadiness, note: SscCglStudyDepthNote | undefined) {
-  if (row.readinessLabel === "mastery-bank" && noteHasCompleteLesson(note)) return "Mastery bank";
-  if (row.readinessLabel === "ranked-ready" && noteHasCompleteLesson(note)) return "Ranked ready";
-  if (!noteHasCompleteLesson(note)) return "Deep-note repair";
+function topicCoverageLabel(row: SscCglTopicReadiness) {
+  if (row.readinessLabel === "mastery-bank") return "Mastery bank";
+  if (row.readinessLabel === "ranked-ready") return "Ranked ready";
   return "Practice repair";
 }
 
@@ -956,26 +955,9 @@ function topicDrill(slug: string, tests: SscCglTestSummary[]) {
   };
 }
 
-function topicSufficiency(row: SscCglTopicReadiness, note: SscCglStudyDepthNote | undefined, hasTimedDrill: boolean) {
-  const lessonChecks = note?.manualReviewed
-    ? [
-        { ok: note.bodyLength >= 6000, gap: "add enough explanation for a complete reviewed lesson" },
-        { ok: note.examples >= EXAMPLE_TARGET_PER_TOPIC, gap: `${EXAMPLE_TARGET_PER_TOPIC - note.examples} more placed worked examples or self-checks` },
-        { ok: note.sectionCount >= 6 && note.sectionCount <= 8, gap: "organize the reviewed lesson into 6-8 purposeful sections" },
-        { ok: note.answerReveals >= 5, gap: `${5 - note.answerReveals} more adjacent answer reveals` },
-        { ok: note.hasFlowchart, gap: "add a concept map or flowchart" },
-        { ok: note.hasMixedPractice, gap: "add a final mixed-practice section" },
-        { ok: note.hasCanonicalPracticeLink, gap: "add the canonical topic-practice link" }
-      ]
-    : [
-        { ok: (note?.bodyLength ?? 0) >= DEEP_NOTE_TARGET_CHARS, gap: "add enough explanation for a complete topic lesson" },
-        { ok: (note?.examples ?? 0) >= EXAMPLE_TARGET_PER_TOPIC, gap: `${EXAMPLE_TARGET_PER_TOPIC - (note?.examples ?? 0)} more worked examples or self-checks` },
-        { ok: note?.hasFlowchart ?? false, gap: "add a concept map or flowchart" },
-        { ok: note?.hasTrapTable ?? false, gap: "add trap-control guidance" }
-      ];
+function topicSufficiency(row: SscCglTopicReadiness, hasTimedDrill: boolean) {
   const practiceChecks = [
     { ok: row.reviewedQuestions >= MASTERY_TARGET_QUESTIONS_PER_TOPIC, gap: `${MASTERY_TARGET_QUESTIONS_PER_TOPIC - row.reviewedQuestions} more reviewed questions` },
-    ...lessonChecks,
     { ok: hasTimedDrill, gap: "add 36-second timed drill" }
   ];
   const bookFloorGap = Math.max(0, BOOK_BACKED_TARGET_QUESTIONS_PER_TOPIC - row.bookBackedQuestions);
@@ -1009,10 +991,10 @@ export function getSscCglTopicCoverageMap(): SscCglTopicCoverageMap {
   const rows = topicReadiness.map((topic) => {
     const note = noteBySlug.get(topic.slug);
     const drill = topicDrill(topic.slug, tests);
-    const sufficiency = topicSufficiency(topic, note, drill.hasTimedDrill);
+    const sufficiency = topicSufficiency(topic, drill.hasTimedDrill);
     return {
       ...topic,
-      href: `/exams/ssc-cgl/topics/${topic.slug}`,
+      href: `/exams/ssc-cgl/practice/${topic.slug}`,
       drillHref: drill.href,
       noteBodyLength: note?.bodyLength ?? 0,
       exampleCount: note?.examples ?? 0,
@@ -1021,7 +1003,7 @@ export function getSscCglTopicCoverageMap(): SscCglTopicCoverageMap {
       hasTimedDrill: drill.hasTimedDrill,
       ...sufficiency,
       sectionRank: 0,
-      coverageLabel: topicCoverageLabel(topic, note)
+      coverageLabel: topicCoverageLabel(topic)
     };
   });
 

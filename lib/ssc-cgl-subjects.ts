@@ -1,7 +1,6 @@
 import type { SscCglSectionId } from "@/lib/exam-types";
 
 export type SscCglSubjectTone = "blue" | "amber" | "violet" | "green";
-export type SscCglSubjectStage = "guide" | "foundation" | "high-yield" | "speed" | "revision";
 
 export type SscCglSubjectDefinition = {
   section: SscCglSectionId;
@@ -15,32 +14,6 @@ export type SscCglSubjectDefinition = {
   tone: SscCglSubjectTone;
   cockpitHref: string;
   focusAreas: string[];
-};
-
-export type SscCglSubjectLandingNote = {
-  slug: string;
-  title: string;
-  label: string;
-  description: string;
-  headings: string[];
-  stage: SscCglSubjectStage;
-  topicSlug: string | null;
-  studyHref: string;
-  practiceHref: string | null;
-  drillHref: string | null;
-  reviewedQuestions: number;
-  bookBackedQuestions: number;
-  gapRepairQuestions: number;
-  readinessPercent: number;
-  coverageLabel: string | null;
-};
-
-export type SscCglSubjectLandingStats = {
-  studyNotes: number;
-  canonicalTopics: number;
-  reviewedQuestions: number;
-  bookBackedQuestions: number;
-  gapRepairQuestions: number;
 };
 
 export const sscCglSubjectDefinitions: readonly SscCglSubjectDefinition[] = [

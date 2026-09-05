@@ -2,7 +2,6 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { buildExamData } from "@/scripts/build-exam-data";
 import {
-  EXAMPLE_TARGET_PER_TOPIC,
   getSscCglDashboard,
   getSscCglTopicCoverageMap,
   getSscCglTests,
@@ -46,20 +45,15 @@ test("SSC CGL dashboard exposes the official 2026 Tier-I pattern", () => {
   assert.equal(dashboard.readiness.repairPlan[0]?.id, "quant-36-second-sprint");
   assert.match(dashboard.readiness.repairPlan[0]?.title ?? "", /36-second/i);
   assert.ok(dashboard.readiness.repairPlan.some((item) => item.href === "/exams/ssc-cgl/current-affairs"));
-  assert.ok(dashboard.readiness.repairPlan.some((item) => item.href.startsWith("/exams/ssc-cgl/topics/")));
+  assert.ok(dashboard.readiness.repairPlan.some((item) => item.href.startsWith("/exams/ssc-cgl/practice/")));
   assert.ok(dashboard.readiness.repairPlan.every((item) => item.minutes > 0 && item.target.length > 20));
   assert.equal(dashboard.readiness.studyDepth.totalTopics, dashboard.readiness.topics);
-  assert.equal(dashboard.readiness.studyDepth.topicsWithNotes, dashboard.readiness.topics);
-  assert.equal(dashboard.readiness.studyDepth.missingNotes, 0);
-  assert.equal(dashboard.readiness.studyDepth.notesWithPractice, dashboard.readiness.topics);
-  assert.equal(dashboard.readiness.studyDepth.notesWithFlowcharts, dashboard.readiness.topics);
-  assert.ok(dashboard.readiness.studyDepth.deepNotes >= dashboard.readiness.topics);
-  assert.ok(
-    dashboard.readiness.studyDepth.totalExamples
-      >= dashboard.readiness.topics * EXAMPLE_TARGET_PER_TOPIC
-  );
+  assert.equal(dashboard.readiness.studyDepth.topicsWithNotes, 0);
+  assert.equal(dashboard.readiness.studyDepth.missingNotes, dashboard.readiness.topics);
+  assert.equal(dashboard.readiness.studyDepth.deepNotes, 0);
+  assert.equal(dashboard.readiness.studyDepth.totalExamples, 0);
   assert.ok(dashboard.readiness.studyDepth.weakestNotes.length > 0);
-  assert.ok(dashboard.readiness.studyDepth.weakestNotes.every((note) => note.href.startsWith("/exams/ssc-cgl/topics/")));
+  assert.ok(dashboard.readiness.studyDepth.weakestNotes.every((note) => note.href.startsWith("/exams/ssc-cgl/practice/")));
   assert.equal(dashboard.readiness.strictAudit.readyFor200, true);
   assert.ok(dashboard.readiness.strictAudit.gates.length >= 7);
   assert.deepEqual(
@@ -83,7 +77,7 @@ test("SSC CGL dashboard exposes the official 2026 Tier-I pattern", () => {
   assert.match(dashboard.readiness.strictAudit.summary, /current affairs \d{4}-\d{2}-\d{2}/);
 });
 
-test("SSC CGL topic coverage map proves every sublevel has corpus and note depth", () => {
+test("SSC CGL topic coverage map proves every question-only sublevel has corpus depth", () => {
   const coverage = getSscCglTopicCoverageMap();
 
   assert.equal(coverage.sections.length, 4);
@@ -96,22 +90,22 @@ test("SSC CGL topic coverage map proves every sublevel has corpus and note depth
   assert.equal(coverage.topicsBelowMastery, 0);
   assert.equal(coverage.weakestTopics.length, Math.min(8, coverage.totalTopics));
   assert.equal(coverage.thinTopics, 0);
-  assert.equal(coverage.deepNotes, coverage.totalTopics);
+  assert.equal(coverage.deepNotes, 0);
   assert.ok(coverage.sections.every((section) => section.rows.length === section.topics));
   assert.ok(coverage.sections.every((section) => section.reviewedQuestions >= 150 * section.topics));
-  assert.ok(coverage.sections.every((section) => section.deepNotes === section.topics));
+  assert.ok(coverage.sections.every((section) => section.deepNotes === 0));
 
   const allRows = coverage.sections.flatMap((section) => section.rows);
   assert.equal(allRows.length, coverage.totalTopics);
   assert.deepEqual(
     allRows
-      .filter((row) => row.href !== `/exams/ssc-cgl/topics/${row.slug}`)
+      .filter((row) => row.href !== `/exams/ssc-cgl/practice/${row.slug}`)
       .map((row) => ({ slug: row.slug, href: row.href })),
     []
   );
   assert.ok(allRows.every((row) => row.drillHref.startsWith("/exams/ssc-cgl/tests")));
   assert.ok(allRows.every((row) => row.reviewedQuestions >= coverage.masteryTargetQuestionsPerTopic));
-  assert.ok(allRows.every((row) => row.exampleCount >= coverage.exampleTargetPerTopic));
+  assert.ok(allRows.every((row) => row.exampleCount === 0));
   assert.equal(coverage.minimumReviewedQuestions, Math.min(...allRows.map((row) => row.reviewedQuestions)));
   assert.deepEqual(
     coverage.weakestTopics.map((row) => row.slug),
@@ -265,41 +259,22 @@ test("SSC CGL old promoted full mocks do not survive the book-corpus reset", () 
   }
 });
 
-test("SSC CGL topic pages connect study material to reviewed practice", () => {
+test("SSC CGL topic records preserve every reviewed practice mapping", () => {
   const topic = getSscTopic("percentages");
   const probability = getSscTopic("probability");
 
   assert.ok(topic);
   assert.equal(topic.slug, "percentages");
   assert.equal(topic.subject, "Quantitative Aptitude");
-  assert.ok(topic.study.sections.length >= 3);
   assert.equal(
     topic.practice.questionIds.length,
     topic.practice.bookQuestionIds.length + topic.practice.gapRepairQuestionIds.length + topic.practice.sourceBreakdown.otherReviewed
   );
   assert.ok(topic.practice.gapRepairQuestionIds.length > 0);
   assert.ok(topic.practice.pyqQuestionIds.length >= 12);
-  assert.ok(topic.study.flowchart.includes("mermaid"));
   assert.ok(probability);
   assert.equal(probability.subject, "Quantitative Aptitude");
   assert.ok(probability.practice.pyqQuestionIds.length >= 50);
-  assert.match(probability.study.summary, /favorable|total|probability/i);
-});
-
-test("SSC CGL generated topics expose full DeepSeek note depth", () => {
-  const shallowTopics = getSscTopics()
-    .map((topic) => ({
-      slug: topic.slug,
-      sections: topic.study.sections.length,
-      bodyLength: topic.study.sections.reduce((sum, section) => sum + section.title.length + section.body.length, 0)
-    }))
-    .filter((topic) => topic.sections < 6 || topic.bodyLength < 5000);
-
-  assert.deepEqual(shallowTopics, []);
-
-  const percentages = getSscTopic("percentages");
-  assert.ok(percentages);
-  assert.match(percentages.study.sections.map((section) => `${section.title}\n${section.body}`).join("\n"), /36-second|successive|trap/i);
 });
 
 test("SSC CGL reasoning book corpus has usable practice depth for every core reasoning topic", () => {

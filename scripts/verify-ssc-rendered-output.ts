@@ -1,6 +1,5 @@
 import fs from "node:fs";
 import path from "node:path";
-import { prepareMarkdownContent } from "../lib/markdown-normalize";
 
 const root = process.cwd();
 const revealMarkerPattern = /data-correct="true"|q-correct|q-wrong|<details class="quiz-exp" open>/i;
@@ -25,37 +24,28 @@ function relative(filePath: string) {
   return path.relative(root, filePath).replace(/\\/g, "/");
 }
 
-function articleBlocks(html: string) {
-  return Array.from(html.matchAll(/<article class="quiz-block note-quiz-block" data-answer="[a-d]">([\s\S]*?)<\/article>/g)).map((match) => match[0] || "");
-}
-
-function verifySscMarkdownNotes() {
+function verifyQuantBook() {
   const docsRoot = path.join(root, "docs", "ssc-cgl");
+  const dataPath = path.join(root, "data", "exams", "ssc-cgl", "quant-book", "index.json");
   const offenders: string[] = [];
+  const retiredNotes = listFiles(docsRoot, ".md");
+  if (retiredNotes.length) offenders.push(`docs/ssc-cgl: ${retiredNotes.length} retired Markdown notes remain`);
+  if (!fs.existsSync(dataPath)) return [...offenders, `${relative(dataPath)}: missing Quant book artifact`];
 
-  for (const filePath of listFiles(docsRoot, ".md")) {
-    const rendered = prepareMarkdownContent(fs.readFileSync(filePath, "utf8"));
-    const name = relative(filePath);
-    if (revealMarkerPattern.test(rendered)) offenders.push(`${name}: pre-revealed quiz marker`);
-
-    for (const block of articleBlocks(rendered)) {
-      if (!/200\/200 Drill/.test(block)) continue;
-      if (!/<p><strong>Method:<\/strong>[\s\S]*?<\/p>/.test(block)) offenders.push(`${name}: 200/200 drill missing Method`);
-      if (!/<p><strong>Why it fits:<\/strong>[\s\S]*?<\/p>/.test(block)) offenders.push(`${name}: 200/200 drill missing Why it fits`);
-      if (!/<p><strong>Trap:<\/strong>[\s\S]*?<\/p>/.test(block)) offenders.push(`${name}: 200/200 drill missing Trap`);
+  const book = JSON.parse(fs.readFileSync(dataPath, "utf8")) as { chapters?: Array<{ examples?: unknown[]; exercises?: Array<{ options?: Array<{ id?: string; text?: string }>; correctOption?: string }>; answerKeyPage?: number; sections?: Array<{ stimulus?: { type?: string; src?: string } }> }> };
+  const chapters = book.chapters || [];
+  const examples = chapters.flatMap((chapter) => chapter.examples || []);
+  const exercises = chapters.flatMap((chapter) => chapter.exercises || []);
+  if (chapters.length !== 20) offenders.push(`${relative(dataPath)}: expected 20 chapters, found ${chapters.length}`);
+  if (examples.length !== 519) offenders.push(`${relative(dataPath)}: expected 519 examples, found ${examples.length}`);
+  if (exercises.length !== 665) offenders.push(`${relative(dataPath)}: expected 665 exercises, found ${exercises.length}`);
+  if (chapters.some((chapter) => !chapter.answerKeyPage)) offenders.push(`${relative(dataPath)}: every chapter must retain its answer-key page`);
+  if (exercises.some((exercise) => exercise.options?.length !== 4 || exercise.options.some((option) => !option.id || !option.text) || !exercise.correctOption)) offenders.push(`${relative(dataPath)}: malformed or unkeyed exercise`);
+  for (const chapter of chapters) {
+    for (const section of chapter.sections || []) {
+      const stimulus = section.stimulus;
+      if (stimulus?.type === "image" && stimulus.src && !fs.existsSync(path.join(root, "public", stimulus.src.replace(/^\//, "")))) offenders.push(`${stimulus.src}: missing visual asset`);
     }
-  }
-
-  const analogyPath = path.join(docsRoot, "reasoning", "analogy-classification.md");
-  const analogy = prepareMarkdownContent(fs.readFileSync(analogyPath, "utf8"));
-  const questionIndex = analogy.indexOf("Thermometer : Temperature :: Clock : ?");
-  const selfCheck = questionIndex >= 0 ? analogy.slice(questionIndex, questionIndex + 700) : "";
-  if (!selfCheck) offenders.push(`${relative(analogyPath)}: thermometer self-check did not render`);
-  if (selfCheck && !/Options: Time, Hour, Hand, Alarm/.test(selfCheck)) {
-    offenders.push(`${relative(analogyPath)}: thermometer self-check options are missing`);
-  }
-  if (selfCheck && !/> \*\*Answer and explanation\*\*[\s\S]*?> \*\*Time\.\*\* A thermometer measures temperature; a clock measures time/.test(selfCheck)) {
-    offenders.push(`${relative(analogyPath)}: thermometer self-check lacks its adjacent Time explanation`);
   }
 
   return offenders;
@@ -73,7 +63,7 @@ function verifyBuiltHtml() {
   return offenders;
 }
 
-const offenders = [...verifySscMarkdownNotes(), ...verifyBuiltHtml()];
+const offenders = [...verifyQuantBook(), ...verifyBuiltHtml()];
 
 if (offenders.length > 0) {
   console.error("SSC rendered output verification failed:");
@@ -82,4 +72,4 @@ if (offenders.length > 0) {
   process.exit(1);
 }
 
-console.log("SSC rendered output verified: no pre-revealed quiz answers and 200/200 drill explanations are present.");
+console.log("SSC rendered output verified: retired notes are absent, Quant completeness gates pass, visual assets resolve, and no quiz answer is pre-revealed.");

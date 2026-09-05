@@ -150,7 +150,7 @@ test("SSC CGL topic practice misses are stored in the same mistake bank format",
   assert.equal(wrong.testTitle, "Calculation Speed topic practice");
   assert.equal(wrong.resultHref, "/exams/ssc-cgl/practice/calculation-speed");
   assert.equal(wrong.sectionTitle, "Quantitative Aptitude");
-  assert.equal(wrong.topicHref, "/exams/ssc-cgl/topics/calculation-speed");
+  assert.equal(wrong.topicHref, "/exams/ssc-cgl/practice/calculation-speed");
   assert.equal(wrong.status, "wrong");
   assert.equal(wrong.chosenOptionText, "A · Option A");
   assert.equal(wrong.correctOptionText, "B · Option B");
@@ -188,7 +188,7 @@ test("SSC CGL current-affairs missed recall cards enter the same mistake bank fo
   assert.equal(item.sectionTitle, "General Awareness");
   assert.equal(item.topic, "Current Affairs and Static GK");
   assert.equal(item.subtopic, "RBI conducts VRR auction");
-  assert.equal(item.topicHref, "/exams/ssc-cgl/topics/current-affairs-static-gk");
+  assert.equal(item.topicHref, "/exams/ssc-cgl/practice/current-affairs-static-gk");
   assert.equal(item.stem, "Which institution conducts VRR auctions?");
   assert.equal(item.status, "wrong");
   assert.equal(item.chosenOptionText, "Missed during recall");

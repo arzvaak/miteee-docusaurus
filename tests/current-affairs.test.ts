@@ -341,7 +341,7 @@ test("current affairs study brief builds SSC static-GK revision packets", () => 
   assert.equal(brief.revisionPackets[0]?.recallCardId, brief.recallCards[0]?.id);
   assert.ok(brief.revisionPackets[0]?.staticAnchors.some((anchor) => anchor.topicSlug === "economics-budget-banking"));
   assert.ok(brief.revisionPackets[0]?.staticAnchors.some((anchor) => anchor.topicSlug === "current-affairs-static-gk"));
-  assert.ok(brief.revisionPackets[0]?.staticAnchors.every((anchor) => anchor.href.startsWith("/exams/ssc-cgl/topics/")));
+  assert.ok(brief.revisionPackets[0]?.staticAnchors.every((anchor) => anchor.href.startsWith("/exams/ssc-cgl/practice/")));
   assert.equal(brief.revisionPackets[0]?.mcqSeeds.length, 2);
   assert.match(brief.revisionPackets[0]?.mcqSeeds[1]?.question ?? "", /static/i);
   assert.equal(brief.sourceQuality.staticAnchorCount, 2);

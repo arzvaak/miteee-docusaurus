@@ -171,7 +171,7 @@ test("scoreSscAttempt builds a repair queue from wrong and unattempted answers",
   assert.equal(result.repairQueue[0]!.wrong, 1);
   assert.equal(result.repairQueue[0]!.unattempted, 1);
   assert.equal(result.repairQueue[0]!.totalRepair, 2);
-  assert.equal(result.repairQueue[0]!.href, `/exams/ssc-cgl/topics/${firstQuestion.topic}`);
+  assert.equal(result.repairQueue[0]!.href, `/exams/ssc-cgl/practice/${firstQuestion.topic}`);
   assert.match(result.repairQueue[0]!.recommendedAction, /wrong answer|unattempted/i);
   assert.ok(result.repairQueue.some((item) => item.slug === otherTopic.topic && item.unattempted >= 1));
 });

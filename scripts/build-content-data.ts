@@ -514,6 +514,15 @@ function copyGateAssets(cwd: string, publicRoot: string) {
   fs.cpSync(source, destination, { recursive: true, force: true });
 }
 
+/** Restore durable SSC Quant source visuals after the content asset cleanup. */
+function copySscQuantAssets(cwd: string, publicRoot: string) {
+  const source = path.join(cwd, "data", "exams", "ssc-cgl", "quant-book", "assets");
+  if (!fs.existsSync(source)) return;
+  const destination = path.join(publicRoot, "content-assets", "ssc-cgl", "quant-book");
+  ensureDirectory(destination);
+  fs.cpSync(source, destination, { recursive: true, force: true });
+}
+
 function writeJson(filePath: string, value: unknown) {
   ensureDirectory(path.dirname(filePath));
   fs.writeFileSync(filePath, `${JSON.stringify(value, null, 2)}\n`);
@@ -533,6 +542,7 @@ export function buildContentData(options: BuildOptions = {}) {
   copyDocAssets(docsRoot, publicRoot);
   copyStaticAssets(staticRoot, publicRoot);
   copyGateAssets(cwd, publicRoot);
+  copySscQuantAssets(cwd, publicRoot);
 
   const markdownFiles = getMarkdownFiles(docsRoot).filter((filePath) => isPublicLearnerNote(path.relative(docsRoot, filePath)));
   const slugByRelativePath = new Map(

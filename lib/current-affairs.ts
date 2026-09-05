@@ -33,7 +33,7 @@ const officialCurrentAffairsSources = new Set(["PIB", "RBI", "SSC", "PRS"]);
 const defaultStaticAnchor: CurrentAffairsStaticAnchor = {
   topicSlug: "current-affairs-static-gk",
   label: "Current Affairs and Static GK",
-  href: "/exams/ssc-cgl/topics/current-affairs-static-gk",
+  href: "/exams/ssc-cgl/practice/current-affairs-static-gk",
   reason: "Convert the news fact into institution, date, place, report, scheme, or appointment recall."
 };
 const staticAnchorRules: Array<{ pattern: RegExp; anchor: CurrentAffairsStaticAnchor }> = [
@@ -42,7 +42,7 @@ const staticAnchorRules: Array<{ pattern: RegExp; anchor: CurrentAffairsStaticAn
     anchor: {
       topicSlug: "economics-budget-banking",
       label: "Economics, Budget, and Banking",
-      href: "/exams/ssc-cgl/topics/economics-budget-banking",
+      href: "/exams/ssc-cgl/practice/economics-budget-banking",
       reason: "Revise RBI tools, banking terms, budget language, debt instruments, and economy traps."
     }
   },
@@ -51,7 +51,7 @@ const staticAnchorRules: Array<{ pattern: RegExp; anchor: CurrentAffairsStaticAn
     anchor: {
       topicSlug: "indian-polity-basics",
       label: "Indian Polity Basics",
-      href: "/exams/ssc-cgl/topics/indian-polity-basics",
+      href: "/exams/ssc-cgl/practice/indian-polity-basics",
       reason: "Attach the news to constitutional body, article, act, appointment, and function recall."
     }
   },
@@ -60,7 +60,7 @@ const staticAnchorRules: Array<{ pattern: RegExp; anchor: CurrentAffairsStaticAn
     anchor: {
       topicSlug: "sports-awards",
       label: "Sports, Awards, and Honours",
-      href: "/exams/ssc-cgl/topics/sports-awards",
+      href: "/exams/ssc-cgl/practice/sports-awards",
       reason: "Memorize awarding body, field, winner, host, trophy, and common name-confusion traps."
     }
   },
@@ -69,7 +69,7 @@ const staticAnchorRules: Array<{ pattern: RegExp; anchor: CurrentAffairsStaticAn
     anchor: {
       topicSlug: "science-everyday",
       label: "General Science and Everyday Applications",
-      href: "/exams/ssc-cgl/topics/science-everyday",
+      href: "/exams/ssc-cgl/practice/science-everyday",
       reason: "Tie the current fact to everyday science, units, applications, discoveries, and definitions."
     }
   },
@@ -78,7 +78,7 @@ const staticAnchorRules: Array<{ pattern: RegExp; anchor: CurrentAffairsStaticAn
     anchor: {
       topicSlug: "geography-india-world",
       label: "Geography of India and World",
-      href: "/exams/ssc-cgl/topics/geography-india-world",
+      href: "/exams/ssc-cgl/practice/geography-india-world",
       reason: "Attach the event to map location, river system, resource, crop, climate, and state ordering."
     }
   }

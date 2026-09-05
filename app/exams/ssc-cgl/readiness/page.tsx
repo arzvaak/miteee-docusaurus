@@ -2,11 +2,12 @@ import Link from "next/link";
 import { ArrowRight, BookOpenCheck, CheckCircle2, Clock3, Gauge, Newspaper, SearchCheck, ShieldCheck, Trophy } from "lucide-react";
 import { getCurrentAffairsStudyBrief } from "@/lib/current-affairs";
 import { getSscCglDashboard, getSscCglResources } from "@/lib/ssc-cgl";
+import { getSscQuantBookChapters } from "@/lib/ssc-quant-book";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
   title: "SSC CGL 200/200 Readiness Proof",
-  description: "Learner-facing SSC CGL 200/200 proof board for question depth, mocks, notes, resources, and current affairs freshness.",
+  description: "Learner-facing SSC CGL 200/200 proof board for question depth, mocks, the Quant course, resources, and current affairs freshness.",
   pathname: "/exams/ssc-cgl/readiness"
 });
 
@@ -14,9 +15,9 @@ const gateLinks: Record<string, string> = {
   "book-corpus-completeness": "/exams/ssc-cgl/practice",
   "fifty-year-ranked-corpus": "/exams/ssc-cgl/tests",
   "book-pyq-provenance": "/exams/ssc-cgl/resources",
-  "topic-mastery": "/exams/ssc-cgl/topics",
-  "type-system-coverage": "/exams/ssc-cgl/topics",
-  "visual-study-material": "/exams/ssc-cgl/topics",
+  "topic-mastery": "/exams/ssc-cgl/practice",
+  "type-system-coverage": "/exams/ssc-cgl/practice",
+  "visual-study-material": "/exams/ssc-cgl/subjects/quantitative-aptitude",
   "practice-explanations": "/exams/ssc-cgl/practice",
   "source-manifest": "/exams/ssc-cgl/resources",
   "current-affairs": "/exams/ssc-cgl/current-affairs"
@@ -32,7 +33,9 @@ export default function SscCglReadinessPage() {
   const currentAffairs = getCurrentAffairsStudyBrief();
   const gates = dashboard.readiness.strictAudit.gates;
   const passCount = gates.filter((gate) => gate.status === "pass").length;
-  const totalExamples = dashboard.readiness.studyDepth.totalExamples;
+  const quantChapters = getSscQuantBookChapters();
+  const totalExamples = quantChapters.reduce((sum, chapter) => sum + chapter.examples.length, 0);
+  const totalExercises = quantChapters.reduce((sum, chapter) => sum + chapter.exercises.length, 0);
 
   const evidenceCards = [
     {
@@ -48,10 +51,10 @@ export default function SscCglReadinessPage() {
       href: "/exams/ssc-cgl/tests"
     },
     {
-      label: "Deep notes",
-      value: `${dashboard.readiness.studyDepth.deepNotes}/${dashboard.readiness.studyDepth.totalTopics}`,
-      detail: `${formatNumber(totalExamples)} worked examples, visual maps, trap tables, and practice links.`,
-      href: "/exams/ssc-cgl/topics"
+      label: "Quant course",
+      value: `${quantChapters.length} chapters`,
+      detail: `${formatNumber(totalExamples)} worked examples and ${formatNumber(totalExercises)} separate source-book exercises.`,
+      href: "/exams/ssc-cgl/subjects/quantitative-aptitude"
     },
     {
       label: "Resources",
@@ -73,12 +76,12 @@ export default function SscCglReadinessPage() {
         <div>
           <p className="panel-kicker">SSC CGL 200/200 proof</p>
           <h1>{dashboard.readiness.strictAudit.readyFor200 ? "The system is ready for full-score practice." : "The system still has repair gates."}</h1>
-          <p>Use this board as the single evidence view: question depth, timed tests, note depth, source coverage, and daily GA freshness.</p>
+          <p>Use this board as the single evidence view: question depth, timed tests, the Quant source course, source coverage, and daily GA freshness.</p>
         </div>
         <div className="ssc-score-grid">
           <span><strong>{passCount}/{gates.length}</strong><small>proof gates</small></span>
           <span><strong>{formatNumber(dashboard.readiness.reviewedQuestions)}</strong><small>practice questions</small></span>
-          <span><strong>{dashboard.readiness.studyDepth.deepNotes}/{dashboard.readiness.topics}</strong><small>deep topics</small></span>
+          <span><strong>{quantChapters.length}</strong><small>Quant chapters</small></span>
           <span><strong>{currentAffairs.runState.freshnessLabel}</strong><small>news status</small></span>
         </div>
       </header>
@@ -92,7 +95,7 @@ export default function SscCglReadinessPage() {
         <div className="ssc-proof-launch-grid">
           <Link href="/exams/ssc-cgl/practice"><Gauge size={18} aria-hidden="true" /><strong>Question bank</strong><span>one-by-one topic queues</span></Link>
           <Link href="/exams/ssc-cgl/tests"><Clock3 size={18} aria-hidden="true" /><strong>Timed tests</strong><span>mocks and section locks</span></Link>
-          <Link href="/exams/ssc-cgl/topics"><BookOpenCheck size={18} aria-hidden="true" /><strong>Deep notes</strong><span>type ladders and traps</span></Link>
+          <Link href="/exams/ssc-cgl/subjects/quantitative-aptitude"><BookOpenCheck size={18} aria-hidden="true" /><strong>Quant course</strong><span>notes, examples, and exercises</span></Link>
           <Link href="/exams/ssc-cgl/current-affairs"><Newspaper size={18} aria-hidden="true" /><strong>Current affairs</strong><span>fresh GA recall</span></Link>
           <Link href="/exams/ssc-cgl/resources"><SearchCheck size={18} aria-hidden="true" /><strong>Resources</strong><span>source and PDF leads</span></Link>
         </div>

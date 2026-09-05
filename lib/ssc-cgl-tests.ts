@@ -188,7 +188,7 @@ export function scoreSscAttempt(test: SscCglTestDetail, attempt: SscCglAttemptIn
         slug,
         ...value,
         totalRepair,
-        href: `/exams/ssc-cgl/topics/${slug}`,
+        href: `/exams/ssc-cgl/practice/${slug}`,
         recommendedAction: repairAction(value)
       };
     })

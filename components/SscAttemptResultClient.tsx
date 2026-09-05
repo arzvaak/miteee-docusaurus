@@ -75,7 +75,7 @@ export function SscAttemptResultClient({ attemptId }: { attemptId: string }) {
     wrong: topic.misses,
     unattempted: 0,
     totalRepair: topic.misses,
-    href: `/exams/ssc-cgl/topics/${topic.slug}`,
+    href: `/exams/ssc-cgl/practice/${topic.slug}`,
     recommendedAction: "Open the topic note, repair the miss, then redo a timed section set."
   }));
   const questionReview = buildSscAttemptQuestionReview(test, attempt.answers ?? {});

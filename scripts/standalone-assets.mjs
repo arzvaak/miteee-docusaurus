@@ -113,6 +113,10 @@ export function ensureStandaloneAssets(root = process.cwd()) {
     path.join(standaloneRoot, "data", "generated", "exams", "ssc-cgl", "index.json")
   );
   copyFileIfExists(
+    requireFile(root, "data/exams/ssc-cgl/quant-book/index.json"),
+    path.join(standaloneRoot, "data", "exams", "ssc-cgl", "quant-book", "index.json")
+  );
+  copyFileIfExists(
     requireFile(root, "data/generated/exams/gate/index.json"),
     path.join(standaloneRoot, "data", "generated", "exams", "gate", "index.json")
   );

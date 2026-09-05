@@ -46,6 +46,11 @@ function seedGeneratedSscExamData(root: string) {
     path.join(root, "data", "generated", "exams", "ssc-cgl", "index.json"),
     JSON.stringify({ generatedAt: "2026-08-20T00:00:00Z", questions: [{ id: "ssc-runtime-probe" }], topics: [], tests: [] })
   );
+  fs.mkdirSync(path.join(root, "data", "exams", "ssc-cgl", "quant-book"), { recursive: true });
+  fs.writeFileSync(
+    path.join(root, "data", "exams", "ssc-cgl", "quant-book", "index.json"),
+    JSON.stringify({ counts: { chapters: 20, examples: 519, exercises: 665 } })
+  );
   fs.mkdirSync(path.join(root, "data", "generated", "exams", "gate"), { recursive: true });
   fs.writeFileSync(
     path.join(root, "data", "generated", "exams", "gate", "index.json"),
@@ -73,6 +78,7 @@ test("ensureStandaloneAssets stages public and Next static assets for standalone
   assert.match(fs.readFileSync(path.join(root, ".next", "standalone", "data", "generated", "catalog.json"), "utf8"), /SEM7-PSPS/);
   assert.match(fs.readFileSync(path.join(root, ".next", "standalone", "data", "generated", "notes-index.json"), "utf8"), /sem7-psps-week-1/);
   assert.match(fs.readFileSync(path.join(root, ".next", "standalone", "data", "generated", "exams", "ssc-cgl", "index.json"), "utf8"), /ssc-runtime-probe/);
+  assert.match(fs.readFileSync(path.join(root, ".next", "standalone", "data", "exams", "ssc-cgl", "quant-book", "index.json"), "utf8"), /"exercises":665/);
   assert.match(fs.readFileSync(path.join(root, ".next", "standalone", "data", "generated", "exams", "gate", "index.json"), "utf8"), /gate-runtime-probe/);
   assert.match(fs.readFileSync(path.join(root, ".next", "standalone", "data", "current-affairs", "daily", "2026-06-29.json"), "utf8"), /2026-06-29/);
   assert.match(fs.readFileSync(path.join(root, ".next", "standalone", "data", "current-affairs", "state.json"), "utf8"), /lastSuccessfulDate/);
