@@ -1,0 +1,306 @@
+{
+  "archiveSha256": "57995593e831e46330dbbc43ea86bb3943fa0d07302c599e765386462af6acee",
+  "chapters": [
+    {
+      "slug": "number-system",
+      "pages": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "sections": 81
+    },
+    {
+      "slug": "simplification",
+      "pages": [
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32
+      ],
+      "sections": 117
+    },
+    {
+      "slug": "hcf-and-lcm",
+      "pages": [
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43
+      ],
+      "sections": 61
+    },
+    {
+      "slug": "average",
+      "pages": [
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53
+      ],
+      "sections": 75
+    },
+    {
+      "slug": "ratio-proportion",
+      "pages": [
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64
+      ],
+      "sections": 49
+    },
+    {
+      "slug": "problems-on-ages",
+      "pages": [
+        65,
+        66,
+        67,
+        68,
+        69
+      ],
+      "sections": 19
+    },
+    {
+      "slug": "partnership",
+      "pages": [
+        70,
+        71,
+        72,
+        73,
+        74
+      ],
+      "sections": 26
+    },
+    {
+      "slug": "mixture-and-alligation",
+      "pages": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "sections": 20
+    },
+    {
+      "slug": "percentage",
+      "pages": [
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92
+      ],
+      "sections": 48
+    },
+    {
+      "slug": "profit-and-loss",
+      "pages": [
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105
+      ],
+      "sections": 57
+    },
+    {
+      "slug": "discount",
+      "pages": [
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112
+      ],
+      "sections": 19
+    },
+    {
+      "slug": "simple-interest",
+      "pages": [
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "sections": 42
+    },
+    {
+      "slug": "compound-interest",
+      "pages": [
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128
+      ],
+      "sections": 33
+    },
+    {
+      "slug": "time-and-work",
+      "pages": [
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139
+      ],
+      "sections": 40
+    },
+    {
+      "slug": "work-and-wages",
+      "pages": [
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "sections": 16
+    },
+    {
+      "slug": "pipe-and-cistern",
+      "pages": [
+        145,
+        146,
+        147,
+        148,
+        149,
+        150
+      ],
+      "sections": 36
+    },
+    {
+      "slug": "speed-time-and-distance",
+      "pages": [
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159
+      ],
+      "sections": 35
+    },
+    {
+      "slug": "trains",
+      "pages": [
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168
+      ],
+      "sections": 43
+    },
+    {
+      "slug": "boat-and-stream",
+      "pages": [
+        169,
+        170,
+        171,
+        172,
+        173,
+        174
+      ],
+      "sections": 28
+    },
+    {
+      "slug": "data-interpretation",
+      "pages": [
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186
+      ],
+      "sections": 16
+    }
+  ]
+}
