@@ -158,6 +158,11 @@ function normalizeChapter(value: unknown, index: number): SscQuantBookChapter {
     pdfPageStart: number(row.pdfPageStart ?? row.pageStart, 0),
     pdfPageEnd: number(row.pdfPageEnd ?? row.pageEnd, 0),
     sections,
+    readingSections: Array.isArray(row.readingSections) ? row.readingSections.map((item, i) => {
+      const source = record(item);
+      const kind = text(source.kind);
+      return { ...normalizeSection(item, i), kind: kind === "example" || kind === "exercise" || kind === "answers" ? kind : "concept" };
+    }) : undefined,
     examples: Array.isArray(examplesValue) ? examplesValue.map(normalizeExample) : [],
     exercises: Array.isArray(exercisesValue) ? exercisesValue.map(normalizeExercise) : []
   };

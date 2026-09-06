@@ -36,9 +36,9 @@ test("SSC Quant book surfaces use the PDF chapter hierarchy", () => {
   assert.match(practice, /localStorage/);
   assert.match(practice, /Reveal answer key only/);
   assert.doesNotMatch(practice, /Show full solution|answerKeyOnly/);
-  assert.match(reader, /Reveal worked solution/);
-  assert.match(reader, /SscQuantBookStimulus/);
-  assert.match(reader, /example\.options/);
+  assert.doesNotMatch(reader, /Reveal worked solution/);
+  assert.match(reader, /readingSections/);
+  assert.match(reader, /BookMarkdown content=\{section\.content\}/);
 });
 
 test("SSC Quant stimuli include semantic tables and accessible native SVG paths", () => {

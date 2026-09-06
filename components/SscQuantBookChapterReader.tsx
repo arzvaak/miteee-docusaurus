@@ -1,66 +1,44 @@
-"use client";
-
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, BookOpen, CheckCircle2, ChevronRight, Eye, FileText, Lightbulb, RotateCcw } from "lucide-react";
-import { useState } from "react";
-import { MathText } from "@/components/MathText";
-import { SscQuantBookStimulus } from "@/components/SscQuantBookStimulus";
-import type { SscQuantBookChapter, SscQuantWorkedExample } from "@/lib/ssc-quant-book-types";
-import styles from "@/components/SscQuantBook.module.css";
+import Image from "next/image";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import { ArrowLeft, ArrowRight, BookOpen, ExternalLink } from "lucide-react";
+import type { SscQuantBookChapter } from "@/lib/ssc-quant-book-types";
+import { SscBookReadingShell } from "@/components/SscBookReadingShell";
+import styles from "./SscBookReader.module.css";
 
 const chapterHref = (slug: string) => `/exams/ssc-cgl/subjects/quantitative-aptitude/chapters/${slug}`;
-const practiceHref = (slug: string) => `${chapterHref(slug)}/practice`;
 
-function ExampleCard({ example, index }: { example: SscQuantWorkedExample; index: number }) {
-  const [selected, setSelected] = useState<string | null>(null);
-  const [revealed, setRevealed] = useState(false);
-  const answered = Boolean(selected) || revealed;
-  const isCorrect = Boolean(selected && example.correctOption && selected.toLowerCase() === example.correctOption.toLowerCase());
-  return (
-    <article className={styles.exampleCard}>
-      <div className={styles.exampleHeading}><span>Example {String(index + 1).padStart(2, "0")}</span><Lightbulb size={16} aria-hidden="true" /><h3>{example.title}</h3></div>
-      <SscQuantBookStimulus stimulus={example.stimulus} />
-      <div className={`${styles.prompt} ${styles.sourceText}`}><MathText text={example.prompt} /></div>
-      {example.options?.length ? (
-        <div className={styles.optionGrid} aria-label={`Options for ${example.title}`}>
-          {example.options.map((option) => (
-            <button className={`${styles.option} ${selected === option.id ? styles.optionSelected : ""} ${answered && option.id === example.correctOption ? styles.optionCorrect : ""} ${answered && selected === option.id && !isCorrect ? styles.optionWrong : ""}`} disabled={answered} key={option.id} onClick={() => setSelected(option.id)} type="button">
-              <strong>{option.id.toUpperCase()}</strong><MathText text={option.text} />
-            </button>
-          ))}
-        </div>
-      ) : null}
-      {!answered && !example.options?.length ? <button className={styles.revealButton} onClick={() => setRevealed(true)} type="button"><Eye size={15} aria-hidden="true" /> Reveal worked solution</button> : null}
-      {answered ? (
-        <section className={styles.solution} aria-live="polite">
-          <div className={styles.solutionTitle}>{isCorrect ? <CheckCircle2 size={17} aria-hidden="true" /> : <BookOpen size={17} aria-hidden="true" />}<strong>{isCorrect ? "Correct choice" : "Worked solution"}</strong></div>
-          {example.answer || example.correctOption ? <p><strong>Answer:</strong> {example.answer || example.correctOption}</p> : null}
-          {example.steps.length ? <ol>{example.steps.map((step) => <li key={step}><MathText text={step} /></li>)}</ol> : null}
-          {example.solution ? <div className={styles.sourceText}><MathText text={example.solution} /></div> : <p className={styles.muted}>The source presents this as a direct illustration and does not print a separate solution.</p>}
-        </section>
-      ) : null}
-    </article>
-  );
+function BookMarkdown({ content }: { content: string }) {
+  return <div className={styles.prose}><ReactMarkdown remarkPlugins={[[remarkGfm, { singleTilde: false }], remarkMath]} rehypePlugins={[[rehypeKatex, { strict: false, throwOnError: false, trust: false }]]} components={{
+    h1: ({ children }) => <h3>{children}</h3>,
+    h2: ({ children }) => <h3>{children}</h3>,
+    table: ({ children }) => <div className={styles.tableScroll} tabIndex={0} role="region" aria-label="Book table"><table>{children}</table></div>,
+    img: ({ src, alt }) => typeof src === "string" ? <a className={styles.figure} href={src} target="_blank" rel="noreferrer" aria-label={`${alt}. Open full-size diagram`}><Image src={src} alt={alt || "Book diagram"} width={760} height={420} unoptimized /><span>View diagram <ExternalLink size={12} aria-hidden="true" /></span></a> : null,
+  }}>{content.replace(/\$\$([\s\S]*?)\$\$/g, (_, formula: string) => `\n\n$$\n${formula.trim()}\n$$\n\n`)}</ReactMarkdown></div>;
 }
 
 export function SscQuantBookChapterReader({ chapter, previousSlug, nextSlug }: { chapter: SscQuantBookChapter; previousSlug?: string; nextSlug?: string }) {
-  const [resetKey, setResetKey] = useState(0);
-  const sections = chapter.sections.filter((section) => section.content.trim() || section.stimulus);
-  return (
-    <main className={styles.page} key={resetKey}>
-      <nav className={styles.breadcrumbs} aria-label="Breadcrumb"><Link href="/exams">Exams</Link><ChevronRight size={13} aria-hidden="true" /><Link href="/exams/ssc-cgl">SSC CGL</Link><ChevronRight size={13} aria-hidden="true" /><Link href="/exams/ssc-cgl/subjects/quantitative-aptitude">Quantitative Aptitude</Link><ChevronRight size={13} aria-hidden="true" /><span aria-current="page">{chapter.title}</span></nav>
-      <header className={styles.hero}>
-        <div><p className={styles.eyebrow}>SSC CGL Quant · Chapter {String(chapter.chapterNumber).padStart(2, "0")}</p><h1>{chapter.title}</h1><p>Read the concept notes, test the worked examples, then practise this chapter with saved progress.</p><div className={styles.meta}><span><FileText size={14} aria-hidden="true" /> PDF pages {chapter.pdfPageStart || "—"}–{chapter.pdfPageEnd || "—"}</span><span>{sections.length} study blocks</span><span>{chapter.examples.length} worked examples</span><span>{chapter.exercises.length} exercises</span></div></div>
-        <Link className={styles.primaryAction} href={practiceHref(chapter.slug)}><BookOpen size={17} aria-hidden="true" /> Start chapter practice <ArrowRight size={15} aria-hidden="true" /></Link>
-      </header>
-      <div className={styles.layout}>
-        <aside className={styles.outline} aria-label="Chapter outline"><strong>On this chapter</strong><ol>{sections.map((section) => <li key={section.id}><a href={`#${section.id}`}>{section.title}</a></li>)}{chapter.examples.length ? <li><a href="#worked-examples">Worked examples</a></li> : null}</ol></aside>
-        <article className={styles.reader}>
-          {sections.map((section) => <section className={styles.section} id={section.id} key={section.id}><h2>{section.title}</h2>{section.content ? <div className={styles.sourceText}><MathText text={section.content} /></div> : null}<SscQuantBookStimulus stimulus={section.stimulus} /></section>)}
-          {chapter.examples.length ? <section className={styles.examples} id="worked-examples"><div className={styles.sectionHeading}><p className={styles.eyebrow}>Worked examples</p><h2>See the decision path before you drill.</h2></div>{chapter.examples.map((example, index) => <ExampleCard example={example} index={index} key={example.id} />)}</section> : null}
-          <footer className={styles.chapterNav}><div>{previousSlug ? <Link href={chapterHref(previousSlug)}><ArrowLeft size={15} aria-hidden="true" /> Previous chapter</Link> : null}</div><button className={styles.secondaryAction} onClick={() => setResetKey((current) => current + 1)} type="button"><RotateCcw size={15} aria-hidden="true" /> Reset reveals</button><div>{nextSlug ? <Link href={chapterHref(nextSlug)}>Next chapter <ArrowRight size={15} aria-hidden="true" /></Link> : null}</div></footer>
-        </article>
-      </div>
-    </main>
-  );
+  const sections = chapter.readingSections || chapter.sections.map(section => ({ ...section, kind: "concept" as const }));
+  const lessons = sections.filter(section => section.kind !== "exercise" && section.kind !== "answers");
+  const references = sections.filter(section => section.kind === "exercise" || section.kind === "answers");
+  const examples = lessons.filter(section => section.kind === "example").length;
+  const minutes = Math.max(1, Math.ceil(lessons.reduce((n, s) => n + s.content.split(/\s+/).length, 0) / 180));
+  return <main className={styles.page}>
+    <nav className={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/exams/ssc-cgl/subjects/quantitative-aptitude"><ArrowLeft size={15} /> Quantitative Aptitude</Link><span>Chapter {String(chapter.chapterNumber).padStart(2, "0")}</span></nav>
+    <header className={styles.header}><p className={styles.eyebrow}>THE QUANTITATIVE APTITUDE NOTEBOOK</p><h1>{chapter.title}</h1><p className={styles.subtitle}>Concepts, worked examples and explanations — in the book’s original order.</p><div className={styles.meta}><span>Chapter {chapter.chapterNumber} / 20</span><span>{minutes} min read</span><span>{examples} worked examples</span><span>Book pages {chapter.pdfPageStart}–{chapter.pdfPageEnd}</span></div></header>
+    <SscBookReadingShell slug={chapter.slug} outline={lessons.map(({ id, title, kind }) => ({ id, title, kind }))}>
+      <article className={styles.article} id="chapter-reading" aria-label={`${chapter.title} chapter notes`}>
+        {lessons.map((section, index) => <section className={section.kind === "example" ? styles.example : styles.concept} id={section.id} key={section.id} data-reading-section>
+          <div className={styles.sectionMeta}><span>{section.kind === "example" ? "WORKED EXAMPLE" : index === 0 ? "START HERE" : "CONCEPT"}</span><span>p. {section.pdfPageStart}{section.pdfPageEnd !== section.pdfPageStart ? `–${section.pdfPageEnd}` : ""}</span></div>
+          <h2>{section.title}</h2><BookMarkdown content={section.content} />
+        </section>)}
+        <section className={styles.practice}><BookOpen size={25} aria-hidden="true" /><div><p className={styles.eyebrow}>PUT IT INTO PRACTICE</p><h2>Ready to try it yourself?</h2><p>Work through the chapter’s exercises at your own pace.</p></div><Link href={`${chapterHref(chapter.slug)}/practice`}>Practise this chapter <ArrowRight size={16} /></Link></section>
+        {references.map(section => <details className={styles.reference} id={section.id} key={section.id}><summary>{section.title}<span>Book reference · pp. {section.pdfPageStart}–{section.pdfPageEnd}</span></summary><BookMarkdown content={section.content} /></details>)}
+        <footer className={styles.footer}><p>Transcribed from the supplied book export. Original notation and explanations are retained; transcription may contain source or OCR errors.</p><nav aria-label="Chapter navigation">{previousSlug ? <Link href={chapterHref(previousSlug)}><ArrowLeft size={16} /> Previous chapter</Link> : <span />}{nextSlug ? <Link href={chapterHref(nextSlug)}>Next chapter <ArrowRight size={16} /></Link> : <Link href="/exams/ssc-cgl/subjects/quantitative-aptitude">All chapters</Link>}</nav></footer>
+      </article>
+    </SscBookReadingShell>
+  </main>;
 }

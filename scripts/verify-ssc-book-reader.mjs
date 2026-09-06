@@ -1,0 +1,55 @@
+import { chromium } from 'playwright';
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const base = process.env.SSC_BROWSER_BASE_URL || 'http://127.0.0.1:3041';
+const book = JSON.parse(fs.readFileSync('data/exams/ssc-cgl/quant-book/index.json', 'utf8'));
+const browser = await chromium.launch({ headless: true });
+const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+const errors = [];
+page.on('pageerror', error => errors.push(error.message));
+const prefix = '/exams/ssc-cgl/subjects/quantitative-aptitude/chapters/';
+fs.mkdirSync('output/ssc-reader', { recursive: true });
+for (const chapter of book.chapters) {
+  const response = await page.goto(base + prefix + chapter.slug, { waitUntil: 'networkidle' });
+  assert.equal(response.status(), 200, chapter.slug);
+  assert.equal(await page.locator('h1').innerText(), chapter.title);
+  assert.equal(await page.locator('.katex-error').count(), 0, chapter.slug);
+  assert.equal(await page.locator('[data-reading-section]').count(), chapter.readingSections.filter(s => !['exercise','answers'].includes(s.kind)).length);
+  await page.locator('details').evaluateAll(elements => elements.forEach(element => { element.open = true; }));
+  const images = await page.locator('article img').evaluateAll(async images => { images.forEach(img => { img.loading = "eager"; }); await Promise.all(images.map(img => img.decode().catch(() => {}))); return images.filter(img => !img.naturalWidth).map(img => img.src); });
+  assert.deepEqual(images, [], chapter.slug);
+  console.log('PASS', chapter.slug);
+}
+await page.goto(base + prefix + 'mixture-and-alligation', { waitUntil: 'networkidle' });
+await page.screenshot({ path: 'output/ssc-reader/desktop.png' });
+await page.getByRole('link', { name: 'Example 1 · Wheat prices', exact: true }).click();
+await page.screenshot({ path: 'output/ssc-reader/example.png' });
+assert.equal(await page.locator('article del').count(), 0);
+await page.getByRole('button', { name: 'Increase text size' }).click();
+await page.getByText('19px', { exact: true }).waitFor();
+await page.getByRole('button', { name: 'Focus', exact: true }).click();
+assert.equal(await page.locator('aside[aria-label="Chapter contents"]').isVisible(), false);
+await page.getByRole('button', { name: 'Focus', exact: true }).click();
+await page.getByRole('button', { name: 'Mark as read', exact: true }).click();
+await page.reload({ waitUntil: 'networkidle' });
+await page.getByRole('button', { name: 'Chapter read', exact: true }).waitFor();
+await page.getByRole('link', { name: 'Practise this chapter', exact: true }).click();
+await page.waitForURL('**/mixture-and-alligation/practice');
+await page.goto(base + prefix + 'mixture-and-alligation', { waitUntil: 'networkidle' });
+await page.setViewportSize({ width: 390, height: 844 });
+await page.screenshot({ path: 'output/ssc-reader/mobile.png' });
+await page.getByRole('button', { name: 'Contents', exact: true }).click();
+await page.getByRole('link', { name: 'Mixing containers of different volumes', exact: true }).click();
+await page.waitForFunction(() => { const section = document.getElementById(location.hash.slice(1)); const y = section?.getBoundingClientRect().top; return y !== undefined && y >= 90 && y < 180; });
+await page.screenshot({ path: 'output/ssc-reader/mobile-formula.png' });
+for (const slug of ['mixture-and-alligation','number-system','data-interpretation']) {
+  await page.goto(base + prefix + slug, { waitUntil: 'networkidle' });
+  const widths = await page.evaluate(() => [document.documentElement.scrollWidth, innerWidth]);
+  assert.ok(widths[0] <= widths[1] + 1, `${slug} mobile overflow: ${widths}`);
+}
+await page.goto(base + prefix + 'mixture-and-alligation', { waitUntil: 'networkidle' });
+await page.evaluate(() => document.documentElement.dataset.theme = 'paper');
+await page.screenshot({ path: 'output/ssc-reader/paper-mobile.png' });
+assert.deepEqual(errors, []);
+await browser.close();
+console.log('PASS reader controls, practice navigation, saved read state, mobile layout and console');
