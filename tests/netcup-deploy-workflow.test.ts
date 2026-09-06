@@ -57,7 +57,7 @@ test("Netcup workflow deploys the current Next standalone app instead of stale D
   assert.match(verifier, /grep -q "Four sections, clearly separated\."/);
   assert.match(verifier, /Legacy Study Vault label is still present/);
   assert.match(verifier, /subjects\/quantitative-aptitude/);
-  assert.match(verifier, /Build your quant base, chapter by chapter/);
+  assert.match(verifier, /The Quantitative Aptitude Notebook/);
   assert.match(verifier, /chapters\/number-system\/practice/);
   assert.match(verifier, /Reset chapter/);
   assert.match(verifier, /location: \/exams\/ssc-cgl\/practice\/number-system/);

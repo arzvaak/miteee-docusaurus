@@ -47,14 +47,14 @@ fi
 curl --fail --location --silent --show-error \
   "$base_url/exams/ssc-cgl/subjects/quantitative-aptitude" \
   > "$work_dir/ssc-cgl-quant.html"
-grep -q "Build your quant base, chapter by chapter\." "$work_dir/ssc-cgl-quant.html"
+grep -q "The Quantitative Aptitude Notebook" "$work_dir/ssc-cgl-quant.html"
 grep -Eq "20(.{0,80})chapters" "$work_dir/ssc-cgl-quant.html"
 
 curl --fail --location --silent --show-error \
   "$base_url/exams/ssc-cgl/subjects/quantitative-aptitude/chapters/number-system" \
   > "$work_dir/ssc-cgl-quant-chapter.html"
 grep -q "Number System" "$work_dir/ssc-cgl-quant-chapter.html"
-grep -q "Worked examples" "$work_dir/ssc-cgl-quant-chapter.html"
+grep -q "WORKED EXAMPLE" "$work_dir/ssc-cgl-quant-chapter.html"
 
 curl --fail --location --silent --show-error \
   "$base_url/exams/ssc-cgl/subjects/quantitative-aptitude/chapters/number-system/practice" \
