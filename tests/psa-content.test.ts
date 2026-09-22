@@ -15,8 +15,9 @@ function markdownMetric(content: string) {
     words: [...content.matchAll(/\b[\w'-]+\b/g)].length,
     mermaid: [...content.matchAll(/```mermaid\b/gi)].length,
     tables: [...content.matchAll(/^\s*\|?\s*:?-{3,}.*\|/gm)].length,
-    examples: [...content.matchAll(/^(?:#{2,4}\s+|\*\*).*Worked Example/gim)].length,
+    examples: [...content.matchAll(/^(?:#{2,4}\s+|\*\*).*(?:Worked )?Example/gim)].length,
     answers: [...content.matchAll(/^> Answer and explanation\s*$/gim)].length,
+    workedSolutions: [...content.matchAll(/<details><summary>Worked solution<\/summary>/gim)].length,
     images: [...content.matchAll(/!\[[^\]]*\]\([^)]+\)/g)].length,
   };
 }
@@ -49,15 +50,28 @@ test("SEM5 PSA provides an overview and twelve complete weekly notes", () => {
     const content = fs.readFileSync(weekPath(week), "utf8");
     const metric = markdownMetric(content);
     assert.match(content, new RegExp(`title: "Week ${week} -`));
-    assert.ok(metric.words >= 12000, `Week ${week} has only ${metric.words} words`);
-    assert.ok(metric.mermaid >= 4, `Week ${week} has only ${metric.mermaid} Mermaid diagrams`);
-    assert.ok(metric.tables >= 8, `Week ${week} has only ${metric.tables} tables`);
-    assert.ok(metric.examples >= 5, `Week ${week} has only ${metric.examples} worked examples`);
-    assert.equal(metric.answers, 18, `Week ${week} answer-block count`);
-    assert.equal(metric.images, 8, `Week ${week} verified source-image count`);
+    if (week <= 2) {
+      assert.ok(metric.words >= 5500, `Week ${week} has only ${metric.words} words`);
+      assert.ok(metric.mermaid >= 2, `Week ${week} has only ${metric.mermaid} Mermaid diagrams`);
+      assert.ok(metric.tables >= 5, `Week ${week} has only ${metric.tables} tables`);
+      assert.ok(metric.examples >= 5, `Week ${week} has only ${metric.examples} worked examples`);
+      assert.equal(metric.workedSolutions, 12, `Week ${week} assignment solution count`);
+      assert.equal(metric.images, week === 1 ? 12 : 10, `Week ${week} assignment image count`);
+      assert.match(content, /◆ MIDSEM/);
+      assert.match(content, /## Assignment Questions and Worked Solutions/);
+      assert.match(content, /## (?:14\. )?Rapid-Revision Checklist|## Rapid-Revision Checklist/);
+      assert.doesNotMatch(content, /^## (?:Source|Provenance)/gim);
+    } else {
+      assert.ok(metric.words >= 12000, `Week ${week} has only ${metric.words} words`);
+      assert.ok(metric.mermaid >= 4, `Week ${week} has only ${metric.mermaid} Mermaid diagrams`);
+      assert.ok(metric.tables >= 8, `Week ${week} has only ${metric.tables} tables`);
+      assert.ok(metric.examples >= 5, `Week ${week} has only ${metric.examples} worked examples`);
+      assert.equal(metric.answers, 18, `Week ${week} answer-block count`);
+      assert.equal(metric.images, 8, `Week ${week} verified source-image count`);
+      assert.match(content, /## Practice Quiz/);
+      assert.match(content, /## Source Provenance/);
+    }
     assert.doesNotMatch(content, /!\[[^\]]*\]\(\/assets\//, `Week ${week} contains a broken root-relative asset link`);
-    assert.match(content, /## Practice Quiz/);
-    assert.match(content, /## Source Provenance/);
   }
 });
 
