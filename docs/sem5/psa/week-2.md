@@ -533,7 +533,7 @@ flowchart TD
 - [ ] **Power-sum check:** Exponents in the GMR product must sum to $n^2$.
 - [ ] **Bundle GMR:** 2-conductor $= \sqrt{r' d}$; 3-conductor $= (r' d^2)^{1/3}$; 4-conductor $= (r' \sqrt{2}\, d^3)^{1/4}$.
 - [ ] **Double-circuit:** $D_{\text{eq}} = 2^{1/6} D^{1/2} d_2^{1/3} d_1^{1/6}$; $D_s = (r')^{1/2} d_1^{1/6} d_3^{1/3}$.
-- [ ] **Mutual interference:** $M = 0.921 \log_{10}(d_2/d_1)$ mH/km; $|V_T| = 2\pi f M I$ V/km.
+- [ ] **Mutual interference:** $M = 0.921 \log_{10}(d_2/d_1)$ mH/km; $|V_T| = 2\pi f M I \times 10^{-3}$ V/km.
 - [ ] **Hollow conductor:** Internal inductance uses $\ln$; external uses $\log_{10}$ in the 0.4605 form.
 - [ ] **Logarithm discipline:** The 0.4605 family uses $\log_{10}$; derivations from Ampère's law use $\ln$.
 - [ ] **Units:** All distances in metres; final answer in mH/km; flux linkage in mWb/km.
