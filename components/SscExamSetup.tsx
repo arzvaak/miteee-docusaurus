@@ -18,7 +18,6 @@ import {
   Home,
   Infinity as InfinityIcon,
   LayoutGrid,
-  Newspaper,
   RotateCcw,
   SlidersHorizontal,
   Sparkles,
@@ -162,7 +161,6 @@ const examRailLinks: Array<{ href: string; label: string; icon: LucideIcon; acti
   { href: "/exams/ssc-cgl/tests", label: "Tests", icon: ClipboardList },
   { href: "/exams/ssc-cgl/practice", label: "Question Bank", icon: BookOpen },
   { href: "/exams/ssc-cgl/subjects/quantitative-aptitude", label: "Quant Course", icon: LayoutGrid },
-  { href: "/exams/ssc-cgl/current-affairs", label: "Current Affairs", icon: Newspaper },
   { href: "/exams/ssc-cgl/tests#attempt-history", label: "Results", icon: BarChart3 }
 ];
 

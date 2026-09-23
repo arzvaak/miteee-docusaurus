@@ -60,12 +60,3 @@ test("SSC CGL source registry keeps risky web resources out of copied corpus", (
   assert.match(scribd.acquisition, /link/i);
   assert.match(scribd.publishPolicy, /do not copy/i);
 });
-
-test("daily news pipeline tracks official source mix beyond PIB", () => {
-  const script = fs.readFileSync(path.join(process.cwd(), "scripts", "daily_news_pipeline.py"), "utf8");
-
-  assert.match(script, /RBI/);
-  assert.match(script, /PRS/);
-  assert.match(script, /robots/i);
-  assert.match(script, /Crawl-delay/i);
-});

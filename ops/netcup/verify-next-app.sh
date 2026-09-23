@@ -107,17 +107,18 @@ grep -q "Energy Auditing (ELE 4446)" "$work_dir/energy-auditing.html"
 
 ea_notes_index="data/generated/notes-index.json"
 test -s "$ea_notes_index"
-node - "$ea_notes_index" "$work_dir/energy-auditing-routes.tsv" <<'NODE'
+node - "$ea_notes_index" "$work_dir/energy-auditing-routes.tsv" "$work_dir/studies-routes.tsv" <<'NODE'
 const fs = require("node:fs");
 
 const indexPath = process.argv[2];
 const outputPath = process.argv[3];
+const studiesOutputPath = process.argv[4];
 const notes = JSON.parse(fs.readFileSync(indexPath, "utf8"));
 if (!Array.isArray(notes)) throw new Error("Generated notes index is not an array.");
 
-const energyNotes = notes.filter((note) => note && note.courseCode === "SEM7-EA");
+const energyNotes = notes.filter((note) => note && note.courseCode === "SEM7-EA" && note.relativePath?.startsWith("sem7/ea/"));
 if (energyNotes.length !== 49) {
-  throw new Error(`Energy Auditing note index must contain exactly 49 notes (found ${energyNotes.length}).`);
+  throw new Error(`Energy Auditing must retain exactly 49 original notes (found ${energyNotes.length}).`);
 }
 if (new Set(energyNotes.map((note) => note.slug)).size !== energyNotes.length) {
   throw new Error("Energy Auditing note index contains duplicate slugs.");
@@ -130,6 +131,26 @@ const rows = energyNotes.map((note) => {
   return `${note.slug}\t${note.title.replace(/[\r\n\t]/g, " ")}`;
 });
 fs.writeFileSync(outputPath, `${rows.join("\n")}\n`);
+
+const expectedStudiesCounts = new Map([
+  ["cra-4411-data-science-part-ii", 22],
+  ["cra-4412-advanced-data-science-part-iii", 22],
+  ["energy-auditing", 13],
+  ["introduction-to-data-science", 15],
+  ["introduction-to-quantum-computing", 19],
+  ["power-system-analysis", 15],
+  ["power-system-protection-and-switchgear", 73],
+  ["renewable-energy", 24]
+]);
+const studiesNotes = notes.filter((note) => note?.relativePath?.startsWith("studies/"));
+for (const [subject, count] of expectedStudiesCounts) {
+  const actual = studiesNotes.filter((note) => note.relativePath.startsWith(`studies/${subject}/`)).length;
+  if (actual !== count) throw new Error(`Studies ${subject} needs ${count} notes (found ${actual}).`);
+}
+if (studiesNotes.length !== 203 || new Set(studiesNotes.map((note) => note.slug)).size !== 203) {
+  throw new Error("Studies vault must contain 203 unique note routes.");
+}
+fs.writeFileSync(studiesOutputPath, `${studiesNotes.map((note) => note.slug).join("\n")}\n`);
 NODE
 
 while IFS=$'\t' read -r ea_slug ea_title; do
@@ -138,5 +159,14 @@ while IFS=$'\t' read -r ea_slug ea_title; do
   test "$ea_note_status" = "200"
   grep -Fq -- "$ea_title" "$work_dir/energy-auditing-note.html"
 done < "$work_dir/energy-auditing-routes.tsv"
+
+while IFS= read -r studies_slug; do
+  test -n "$studies_slug"
+  studies_status="$(curl --location --silent --show-error --output /dev/null --write-out '%{http_code}' "$base_url/notes/$studies_slug")"
+  test "$studies_status" = "200"
+done < "$work_dir/studies-routes.tsv"
+
+news_status="$(curl --silent --show-error --output /dev/null --write-out '%{http_code}' "$base_url/exams/ssc-cgl/current-affairs")"
+test "$news_status" = "404"
 
 echo "Production Next app verification passed."

@@ -22,7 +22,9 @@ test("quantum-computing course and every authored note are generated", () => {
   assert.equal(course.name, "Introduction to Quantum Computing");
 
   const notes = getCourseNotes("SEM7-QC");
-  assert.equal(notes.length, 8);
+  assert.equal(notes.length, 27);
+  assert.equal(notes.filter((note) => note.relativePath.startsWith("sem7/qc/")).length, 8);
+  assert.equal(notes.filter((note) => note.relativePath.startsWith("studies/introduction-to-quantum-computing/")).length, 19);
   assert.equal(notes.every((note) => note.courseCode === "SEM7-QC"), true);
   assert.equal(notes.some((note) => /Question Bank/.test(note.title)), true);
   assert.equal(notes.some((note) => /Quantum Measurement/.test(note.title)), true);

@@ -100,7 +100,6 @@ services:
     ports:
       - "127.0.0.1:${NEXT_APP_PUBLISHED_PORT:-3000}:3000"
     volumes:
-      - ./data/current-affairs:/app/data/current-affairs:z
       - ./data/auth:/app/data/auth:Z
     depends_on:
       deeptutor:

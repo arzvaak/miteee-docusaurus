@@ -26,8 +26,7 @@ test("SSC CGL exam routes are mounted as first-class study surfaces", () => {
     "app/exams/ssc-cgl/topics/page.tsx",
     "app/exams/ssc-cgl/topics/[slug]/page.tsx",
     "app/exams/ssc-cgl/resources/page.tsx",
-    "app/exams/ssc-cgl/import-review/page.tsx",
-    "app/exams/ssc-cgl/current-affairs/page.tsx"
+    "app/exams/ssc-cgl/import-review/page.tsx"
   ];
 
   for (const relativePath of expectedFiles) {
@@ -148,7 +147,6 @@ test("SSC CGL topic practice exposes one-by-one corpus practice", () => {
   assert.match(explanationPanel, /parseSscExplanationBlocks/);
   assert.match(setup, /href: "\/exams\/ssc-cgl\/practice"/);
   assert.match(setup, /href: "\/exams\/ssc-cgl\/subjects\/quantitative-aptitude"/);
-  assert.match(setup, /href: "\/exams\/ssc-cgl\/current-affairs"/);
   assert.match(setup, /Open question bank/);
   assert.match(setup, /Section question-bank readiness/);
   assert.match(css, /\.ssc-topic-practice-shell/);
@@ -280,7 +278,6 @@ test("SSC CGL landing is an exam overview with study and test paths", () => {
   assert.match(landing, /sscCglSubjectDefinitions/);
   assert.match(landing, /\/exams\/ssc-cgl\/tests|\/exams\/ssc-cgl\/session|Start a test/);
   assert.match(landing, /\/exams\/ssc-cgl\/practice/);
-  assert.match(landing, /\/exams\/ssc-cgl\/current-affairs/);
   assert.doesNotMatch(landing, /pipeline|OCR|Import review/i);
 });
 
@@ -338,21 +335,6 @@ test("SSC CGL section 50/50 cockpits expose four section workflows", () => {
   assert.match(css, /\.ssc-quant-drill-list/);
 });
 
-test("SSC CGL current-affairs page mounts the same-screen magazine and account-ready actions", () => {
-  const page = fs.readFileSync(path.join(root, "app", "exams", "ssc-cgl", "current-affairs", "page.tsx"), "utf8");
-  const actions = fs.readFileSync(path.join(root, "components", "CurrentAffairsActions.tsx"), "utf8");
-
-  assert.match(page, /CurrentAffairsFeed/);
-  assert.match(page, /ssc-current-affairs-page/);
-  assert.match(page, /data-shell-full-bleed/);
-  assert.match(page, /buildCurrentAffairsStoryRecords/);
-  assert.match(page, /getCurrentAffairsWeeklyIssue/);
-  assert.match(page, /getCurrentAffairsMonthlyIssue/);
-  assert.match(actions, /CurrentAffairsActionsAdapter/);
-  assert.match(actions, /Save for revision/);
-  assert.match(actions, /Hide/);
-});
-
 test("SSC CGL readiness page exposes clean 200/200 proof", () => {
   const page = fs.readFileSync(path.join(root, "app", "exams", "ssc-cgl", "readiness", "page.tsx"), "utf8");
   const landing = fs.readFileSync(path.join(root, "app", "exams", "ssc-cgl", "page.tsx"), "utf8");
@@ -360,18 +342,16 @@ test("SSC CGL readiness page exposes clean 200/200 proof", () => {
 
   assert.match(page, /getSscCglDashboard/);
   assert.match(page, /getSscCglResources/);
-  assert.match(page, /getCurrentAffairsStudyBrief/);
   assert.match(page, /SSC CGL 200\/200 proof/);
   assert.match(page, /Question bank/);
   assert.match(page, /Timed mocks/);
   assert.match(page, /Quant course/);
   assert.match(page, /Resources/);
-  assert.match(page, /Current affairs/);
   assert.match(page, /Strict proof gates/);
   assert.match(page, /gateLinks/);
   assert.match(page, /book-corpus-completeness/);
   assert.match(page, /source-manifest/);
-  assert.match(page, /current-affairs/);
+  assert.doesNotMatch(page, /href="\/exams\/ssc-cgl\/current-affairs"/);
   assert.doesNotMatch(page, /pipeline|OCR|Import review|quarantine/i);
   assert.match(landing, /SscCglLibraryLanding/);
   assert.match(css, /\.ssc-proof-page/);

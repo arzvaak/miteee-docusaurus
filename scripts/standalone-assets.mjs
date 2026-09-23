@@ -78,8 +78,6 @@ export function ensureStandaloneAssets(root = process.cwd()) {
     "work",
     "backups",
     "data/auth",
-    "data/current-affairs/logs",
-    "data/current-affairs/raw",
     "data/exams/ssc-cgl/agent-answer-key",
     "data/exams/ssc-cgl/agent-review",
     "data/exams/ssc-cgl/aligned",
@@ -120,8 +118,6 @@ export function ensureStandaloneAssets(root = process.cwd()) {
     requireFile(root, "data/generated/exams/gate/index.json"),
     path.join(standaloneRoot, "data", "generated", "exams", "gate", "index.json")
   );
-  copyDirectoryOrCreateEmpty(path.join(root, "data", "current-affairs", "daily"), path.join(standaloneRoot, "data", "current-affairs", "daily"));
-  copyFileIfExists(path.join(root, "data", "current-affairs", "state.json"), path.join(standaloneRoot, "data", "current-affairs", "state.json"));
   copyFileIfExists(path.join(root, "data", "exams", "ssc-cgl", "resource-candidates.json"), path.join(standaloneRoot, "data", "exams", "ssc-cgl", "resource-candidates.json"));
   copyFileIfExists(path.join(root, "data", "exams", "ssc-cgl", "source-registry.json"), path.join(standaloneRoot, "data", "exams", "ssc-cgl", "source-registry.json"));
   assertLeanStandaloneBundle(standaloneRoot);

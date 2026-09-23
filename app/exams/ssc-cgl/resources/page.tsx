@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BookOpenCheck, ExternalLink, FileText, Gauge, Landmark, LibraryBig, Newspaper, SearchCheck, Sparkles } from "lucide-react";
+import { ArrowRight, BookOpenCheck, ExternalLink, FileText, Gauge, Landmark, LibraryBig, SearchCheck, Sparkles } from "lucide-react";
 import { getSscCglResources, type SscCglResourceLane } from "@/lib/ssc-cgl";
 import { buildPageMetadata } from "@/lib/seo";
 
@@ -71,12 +71,6 @@ export default function SscCglResourcesPage() {
           <strong>Read by sublevel</strong>
           <p>Jump from each topic note into its own practice queue.</p>
           <span>Open notes <ArrowRight size={15} aria-hidden="true" /></span>
-        </Link>
-        <Link className="panel ssc-action-card" href="/exams/ssc-cgl/current-affairs">
-          <Newspaper size={22} aria-hidden="true" />
-          <strong>Daily GA brief</strong>
-          <p>Official-first facts converted into recall and MCQ seeds.</p>
-          <span>Open brief <ArrowRight size={15} aria-hidden="true" /></span>
         </Link>
       </div>
 

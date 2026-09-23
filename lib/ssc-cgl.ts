@@ -328,10 +328,6 @@ type RawStrictReadinessAudit = {
     total?: number;
     ready?: number;
   };
-  currentAffairs?: {
-    latestDailyDate?: string;
-    latestSummaryItems?: number;
-  };
 };
 
 function readStrictReadinessAudit(): SscCglStrictReadinessAudit {
@@ -341,14 +337,13 @@ function readStrictReadinessAudit(): SscCglStrictReadinessAudit {
     const practiceQuestions = raw.learnerPractice?.reviewedQuestions ?? 0;
     const readyTopics = raw.topics?.ready ?? 0;
     const totalTopics = raw.topics?.total ?? 0;
-    const latestDailyDate = raw.currentAffairs?.latestDailyDate ?? "not run";
-    const latestSummaryItems = raw.currentAffairs?.latestSummaryItems ?? 0;
+    const gates = (raw.gates ?? []).filter((gate) => gate.id !== "current-affairs");
 
     return {
       generatedAt: raw.generatedAt ?? "missing-strict-readiness-date",
-      readyFor200: raw.readyFor200 === true,
-      summary: `${formatAuditNumber(bookQuestions)} book-backed questions, ${formatAuditNumber(practiceQuestions)} total practice questions, ${readyTopics}/${totalTopics} topics ready, current affairs ${latestDailyDate} (${latestSummaryItems} facts).`,
-      gates: (raw.gates ?? []).map((gate) => ({
+      readyFor200: raw.readyFor200 === true || (gates.length > 0 && gates.every((gate) => gate.status === "pass")),
+      summary: `${formatAuditNumber(bookQuestions)} book-backed questions, ${formatAuditNumber(practiceQuestions)} total practice questions, ${readyTopics}/${totalTopics} topics ready.`,
+      gates: gates.map((gate) => ({
         id: gate.id ?? "unknown-gate",
         label: publicGateLabel(gate.id, gate.label),
         status: gate.status === "pass" || gate.status === "warn" || gate.status === "fail" ? gate.status : "fail",
@@ -384,8 +379,7 @@ function publicGateLabel(id: string | undefined, fallback: string | undefined) {
     "book-pyq-provenance": "PYQ-backed book provenance",
     "topic-mastery": "Topic practice floor",
     "type-system-coverage": "Question-type coverage",
-    "source-manifest": "Resource coverage",
-    "current-affairs": "Daily current-affairs brief"
+    "source-manifest": "Resource coverage"
   };
 
   return id ? labels[id] ?? fallback ?? id : fallback ?? "Readiness gate";
@@ -398,8 +392,7 @@ function publicGateEvidence(id: string | undefined, fallback: string | undefined
     "book-pyq-provenance": "22,160 reviewed questions carry book-provided PYQ provenance.",
     "topic-mastery": "46/46 topics pass the retained-question practice floor.",
     "type-system-coverage": "46/46 topic banks cover their top corpus-derived question types.",
-    "source-manifest": "188 resource candidates are recorded for continued expansion.",
-    "current-affairs": "Latest daily brief: 2026-06-29 with 6 SSC-relevant facts."
+    "source-manifest": "188 resource candidates are recorded for continued expansion."
   };
 
   return id ? evidence[id] ?? fallback ?? "Evidence unavailable." : fallback ?? "Evidence unavailable.";
@@ -481,7 +474,6 @@ export function getSscCglDashboard() {
   const reviewedQuestions = data.questions.filter((question) => question.reviewStatus === "reviewed");
   const liveBookQuestions = reviewedQuestions.filter((question) => question.provenance.sourceType === "book_user_provided").length;
   const liveReadyTopics = topicReadiness.filter((topic) => topic.readinessLabel !== "thin").length;
-  const currentAffairsSummary = strictAudit.summary.match(/current affairs .+$/i)?.[0] ?? "current affairs not run (0 facts).";
   const testModeCounts = tests.reduce((counts, test) => {
     counts[test.mode] = (counts[test.mode] ?? 0) + 1;
     return counts;
@@ -506,7 +498,7 @@ export function getSscCglDashboard() {
       studyDepth: buildStudyDepthAudit(data.topics),
       strictAudit: {
         ...strictAudit,
-        summary: `${formatAuditNumber(liveBookQuestions)} book-backed questions, ${formatAuditNumber(reviewedQuestions.length)} total practice questions, ${liveReadyTopics}/${data.topics.length} topics ready, ${currentAffairsSummary}`
+        summary: `${formatAuditNumber(liveBookQuestions)} book-backed questions, ${formatAuditNumber(reviewedQuestions.length)} total practice questions, ${liveReadyTopics}/${data.topics.length} topics ready.`
       },
       testModeCounts
     },
@@ -811,18 +803,6 @@ function buildRepairPlan(
       evidence: `${weakestSection.readinessPercent}% readiness with ${weakestSection.reviewedQuestions} reviewed questions.`
     });
   }
-
-  items.push({
-    id: "current-affairs-static-loop",
-    label: "04 GA",
-    title: "Current affairs to static GK loop",
-    href: "/exams/ssc-cgl/current-affairs",
-    minutes: 20,
-    section: "general-awareness",
-    reason: "Daily facts are only useful when tied back to static anchors, traps, and one MCQ seed.",
-    target: "Convert the brief into ten recall cards, then connect each high-value fact to one static GK topic.",
-    evidence: "The daily route is official/RSS-first and feeds the current-affairs-static-GK note."
-  });
 
   items.push({
     id: "full-mock-audit",

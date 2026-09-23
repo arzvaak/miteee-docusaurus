@@ -41,10 +41,9 @@ test("SSC CGL dashboard exposes the official 2026 Tier-I pattern", () => {
   assert.ok(dashboard.readiness.pressureQueue.length > 0);
   assert.ok(dashboard.readiness.pressureQueue.every((topic) => topic.nextAction.length > 20));
   assert.equal(dashboard.readiness.testModeCounts.full_mock, dashboard.readiness.fullMocks);
-  assert.ok(dashboard.readiness.repairPlan.length >= 5);
+  assert.ok(dashboard.readiness.repairPlan.length >= 4);
   assert.equal(dashboard.readiness.repairPlan[0]?.id, "quant-36-second-sprint");
   assert.match(dashboard.readiness.repairPlan[0]?.title ?? "", /36-second/i);
-  assert.ok(dashboard.readiness.repairPlan.some((item) => item.href === "/exams/ssc-cgl/current-affairs"));
   assert.ok(dashboard.readiness.repairPlan.some((item) => item.href.startsWith("/exams/ssc-cgl/practice/")));
   assert.ok(dashboard.readiness.repairPlan.every((item) => item.minutes > 0 && item.target.length > 20));
   assert.equal(dashboard.readiness.studyDepth.totalTopics, dashboard.readiness.topics);
@@ -55,7 +54,7 @@ test("SSC CGL dashboard exposes the official 2026 Tier-I pattern", () => {
   assert.ok(dashboard.readiness.studyDepth.weakestNotes.length > 0);
   assert.ok(dashboard.readiness.studyDepth.weakestNotes.every((note) => note.href.startsWith("/exams/ssc-cgl/practice/")));
   assert.equal(dashboard.readiness.strictAudit.readyFor200, true);
-  assert.ok(dashboard.readiness.strictAudit.gates.length >= 7);
+  assert.ok(dashboard.readiness.strictAudit.gates.length >= 6);
   assert.deepEqual(
     dashboard.readiness.strictAudit.gates
       .filter((gate) => gate.status !== "pass")
@@ -63,7 +62,7 @@ test("SSC CGL dashboard exposes the official 2026 Tier-I pattern", () => {
     []
   );
   assert.deepEqual(
-    ["book-corpus-completeness", "topic-mastery", "current-affairs"].filter((gateId) => (
+    ["book-corpus-completeness", "topic-mastery"].filter((gateId) => (
       !dashboard.readiness.strictAudit.gates.some((gate) => gate.id === gateId)
     )),
     []
@@ -74,7 +73,7 @@ test("SSC CGL dashboard exposes the official 2026 Tier-I pattern", () => {
   )).length;
   assert.ok(dashboard.readiness.strictAudit.summary.includes(bookBackedQuestions.toLocaleString("en-US")));
   assert.ok(dashboard.readiness.strictAudit.summary.includes("46/46"));
-  assert.match(dashboard.readiness.strictAudit.summary, /current affairs \d{4}-\d{2}-\d{2}/);
+  assert.doesNotMatch(dashboard.readiness.strictAudit.summary, /current affairs/i);
 });
 
 test("SSC CGL topic coverage map proves every question-only sublevel has corpus depth", () => {

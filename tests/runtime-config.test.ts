@@ -65,8 +65,7 @@ test("README documents Docker production verification and LLM env setup", () => 
   assert.match(readme, /http:\/\/127\.0\.0\.1:3000\/robots\.txt/);
   assert.match(readme, /http:\/\/127\.0\.0\.1:3000\/site\.webmanifest/);
   assert.match(readme, /docker compose -f docker-compose\.next\.yml down/);
-  assert.match(readme, /DEEPSEEK_API_KEY/);
-  assert.match(readme, /DEEPSEEK_MODEL=deepseek-v4-pro/);
+  assert.doesNotMatch(readme, /daily_news_pipeline|ssc-cgl-news/);
   assert.match(readme, /MISTRAL_API_KEY/);
   assert.match(readme, /MISTRAL_MODEL=mistral-small-latest/);
   assert.match(readme, /MISTRAK_API_KEY/);

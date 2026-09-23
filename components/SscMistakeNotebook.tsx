@@ -53,7 +53,7 @@ export function SscMistakeNotebook() {
             <h2>Mistake notebook</h2>
           </div>
         </header>
-        <p className="ssc-muted">Wrong, missed, unattempted, and slow questions from tests, topic practice, and current-affairs recall will appear here for repeat repair.</p>
+        <p className="ssc-muted">Wrong, missed, unattempted, and slow questions from tests and topic practice will appear here for repeat repair.</p>
       </section>
     );
   }

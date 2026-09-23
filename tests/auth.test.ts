@@ -93,8 +93,8 @@ test("auth deployment keeps the database persistent and out of build artifacts",
   assert.match(gitignore, /^data\/auth\/$/m);
   assert.match(standalone, /"data\/auth"/);
   assert.match(workflow, /--exclude 'data\/auth\/'/);
-  assert.match(workflow, /chown -R 1001:1001 data\/auth/);
-  assert.match(workflow, /chmod 700 data\/auth/);
+  assert.match(publish, /chown -R 1001:1001 "\$AUTH_DATA_DIR"/);
+  assert.match(publish, /chmod 700 "\$AUTH_DATA_DIR"/);
   assert.doesNotMatch(workflow, /miteee-next-netcup-ports\.yml/);
   assert.ok(publish.indexOf('mkdir -p "$AUTH_DATA_DIR"') < publish.indexOf("docker compose"));
   assert.ok(publish.indexOf('chown -R 1001:1001 "$AUTH_DATA_DIR"') < publish.indexOf("docker compose"));

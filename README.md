@@ -106,18 +106,13 @@ docker compose -f docker-compose.next.yml exec -T ollama ollama create miteee-al
 docker compose -f docker-compose.next.yml --profile deeptutor-tools run --rm deeptutor-sync
 ```
 
-The sync compares a corpus hash and skips an unchanged collection. A changed collection is rebuilt only from tracked `docs/**/*.md` and `docs/**/*.mdx` notes. Discovery is recursive, so future Markdown notes join the Tutor without maintaining a hand-written file list; generated question banks and current-affairs JSON are deliberately excluded to keep indexing and idle resource use small. Production rechecks the notes every 15 minutes, while unchanged checks remain no-ops. DeepTutor conversations and memory remain in their separate persistent directories; browser-local learner history is not copied into the corpus.
+The sync compares a corpus hash and skips an unchanged collection. A changed collection is rebuilt only from tracked `docs/**/*.md` and `docs/**/*.mdx` notes. Discovery is recursive, so future Markdown notes join the Tutor without maintaining a hand-written file list; generated question banks are excluded to keep indexing and idle resource use small. Production rechecks the notes every 15 minutes, while unchanged checks remain no-ops. DeepTutor conversations and memory remain in their separate persistent directories; browser-local learner history is not copied into the corpus.
 
-## SSC CGL Current Affairs
+## Studies vault notes and math
 
-The SSC CGL module includes a daily official-source current-affairs fetcher:
+The eight `docs/studies/` subjects are an imported snapshot of the local Obsidian Studies vault. To refresh them, run `python scripts/import-studies-vault.py --source /path/to/Studies`. The importer preserves note links, attachments, and source names, and marks the imported notes with `math_syntax: typst` front matter.
 
-```bash
-python scripts/daily_news_pipeline.py --date 2026-06-25
-docker compose -f docker-compose.ssc-cgl-news.yml up -d --build
-```
-
-It writes raw metadata to `data/current-affairs/raw/`, SSC recall briefs to `data/current-affairs/daily/`, and a continuity ledger to `data/current-affairs/state.json`. DeepSeek is the primary summary provider through `DEEPSEEK_API_KEY` and `DEEPSEEK_MODEL=deepseek-v4-pro`; `MISTRAL_API_KEY` remains a fallback only. The Netcup Docker cron service and source policy live in `data/exams/ssc-cgl/internal-docs/current-affairs-pipeline.md`.
+Notes without that marker use LaTeX math through KaTeX. Notes marked `math_syntax: typst` compile their `$…$` and `$$…$$` expressions into accessible SVGs during `npm run build:content`. The generated SVGs live under `public/content-assets/typst-math/` and are rebuilt on deployment.
 
 Keep the raw SSC CGL book-PYQ corpus outside the repository. The default local location is:
 

@@ -221,11 +221,13 @@ test("Energy Auditing is mapped to the generated catalog and every note has a ru
   assert.ok(course);
   assert.equal(course?.name, "Energy Auditing (ELE 4446)");
   assert.equal(course?.folder, "sem7/ea");
-  assert.equal(course?.noteCount, 49);
+  assert.equal(course?.noteCount, 62);
 
   const notes = getCourseNotes("SEM7-EA");
-  assert.equal(notes.length, 49);
-  assert.equal(getNotesIndex().filter((note) => note.courseCode === "SEM7-EA").length, 49);
+  assert.equal(notes.length, 62);
+  assert.equal(notes.filter((note) => note.relativePath.startsWith("sem7/ea/")).length, 49);
+  assert.equal(notes.filter((note) => note.relativePath.startsWith("studies/energy-auditing/")).length, 13);
+  assert.equal(getNotesIndex().filter((note) => note.courseCode === "SEM7-EA").length, 62);
   for (const note of notes) {
     assert.equal(note.courseCode, "SEM7-EA");
     assert.ok(fs.existsSync(path.join(generatedNotesRoot, `${note.slug}.json`)), `${note.slug} needs a generated runtime payload`);
