@@ -103,7 +103,6 @@ function runAudit(tempRoot: string) {
     "--ocr-progress-path", path.join(tempRoot, "mistral-ocr-import-progress.json"),
     "--resource-candidates-path", path.join(tempRoot, "resource-candidates.json"),
     "--pyq-backlog-path", path.join(tempRoot, "pyq-source-backlog.json"),
-    "--current-affairs-root", path.join(tempRoot, "current-affairs"),
     "--generated-exam-data-path", path.join(tempRoot, "generated-ssc-cgl-index.json"),
     "--output-path", outputPath,
     "--report-path", reportPath
@@ -150,7 +149,6 @@ function runAudit(tempRoot: string) {
       sourceLanes?: Record<string, number | boolean>;
       missingSourceLanes?: string[];
     };
-    currentAffairs: { latestSummaryItems: number };
   };
   return { audit, report: fs.readFileSync(reportPath, "utf8") };
 }
@@ -266,7 +264,6 @@ test("SSC CGL 200/200 readiness audit fails explicitly when corpus, notes, resou
   assert.equal(audit.gates.find((gate) => gate.id === "book-pyq-provenance")?.status, "pass");
   assert.equal(audit.gates.find((gate) => gate.id === "practice-explanations")?.status, "fail");
   assert.equal(audit.gates.find((gate) => gate.id === "source-manifest")?.status, "fail");
-  assert.equal(audit.gates.find((gate) => gate.id === "current-affairs")?.status, "fail");
   assert.equal(audit.explanations.weakExplanations, 1);
   assert.ok(audit.topics.visualAssetCoverage);
   assert.ok(audit.topics.visualAssetCoverage!.topicsMissingVisuals >= 1);
@@ -366,7 +363,6 @@ test("SSC CGL 200/200 readiness audit records source/resource evidence when mani
   assert.equal(audit.resources.rankedEligibleYears, 50);
   assert.equal(audit.resources.officialPaperYears, 50);
   assert.equal(audit.resources.bookPyqQuestionCount, 22_000);
-  assert.equal(audit.currentAffairs.latestSummaryItems, 4);
   assert.equal(audit.corpus.segmentedCandidates, 505);
   assert.equal(audit.corpus.answerEvidenceRows, 22_000);
   assert.equal(audit.corpus.missingAnswerEvidence, 5);

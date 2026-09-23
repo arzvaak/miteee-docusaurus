@@ -5,11 +5,8 @@ import test from "node:test";
 
 const root = process.cwd();
 const workflowPath = path.join(root, ".github", "workflows", "deploy-netcup.yml");
-const newsInstallerPath = path.join(root, "ops", "netcup", "install-ssc-cgl-news.sh");
-const newsVerifierPath = path.join(root, "ops", "netcup", "verify-ssc-cgl-news.sh");
 const nextPublisherPath = path.join(root, "ops", "netcup", "publish-next-app.sh");
 const nextVerifierPath = path.join(root, "ops", "netcup", "verify-next-app.sh");
-const currentAffairsDocPath = path.join(root, "data", "exams", "ssc-cgl", "internal-docs", "current-affairs-pipeline.md");
 
 test("Netcup workflow deploys the current Next standalone app instead of stale Docusaurus build output", () => {
   const workflow = fs.readFileSync(workflowPath, "utf8");
@@ -28,24 +25,15 @@ test("Netcup workflow deploys the current Next standalone app instead of stale D
   assert.match(workflow, /ops\/netcup\/publish-next-app\.sh/);
   assert.match(workflow, /chmod \+x ops\/netcup\/publish-next-app\.sh/);
   assert.match(workflow, /--exclude 'data\/auth\/'/);
-  assert.match(workflow, /--exclude 'data\/current-affairs\/'/);
   assert.match(workflow, /note-arzvak-predeploy-/);
   assert.match(workflow, /note-nginx-predeploy-/);
   assert.match(workflow, /chmod 600 .*note-arzvak-predeploy-/);
-  assert.match(workflow, /Refresh Next app after current-affairs artifacts/);
-  assert.match(workflow, /test -s data\/current-affairs\/daily\/\\\$RUN_DATE\.json/);
-  assert.match(workflow, /echo "CURRENT_AFFAIRS_RUN_DATE=\$RUN_DATE" >> "\$GITHUB_ENV"/);
-  assert.match(workflow, /RUN_DATE='\$CURRENT_AFFAIRS_RUN_DATE'/);
-  assert.match(workflow, /chmod -R a\+rX data\/current-affairs/);
-  assert.match(workflow, /export NEXT_APP_PUBLISHED_PORT=3025/);
-  assert.match(workflow, /docker compose -f docker-compose\.next\.yml up -d --no-build/);
+  assert.match(workflow, /--exclude 'data\/current-affairs\/'/);
+  assert.doesNotMatch(workflow, /ssc-cgl-news|Install SSC CGL news cron|Refresh Next app after current-affairs/);
   assert.doesNotMatch(workflow, /docker compose -f docker-compose\.next\.yml up -d --no-build --force-recreate/);
   assert.doesNotMatch(workflow, /docker cp data\/current-affairs\/\. miteee-next-app:\/app\/data\/current-affairs\//);
   assert.doesNotMatch(workflow, /docker compose -f docker-compose\.next\.yml restart miteee-next/);
-  assert.match(workflow, /ls -lah \/app\/data\/current-affairs\/daily && test -s \/app\/data\/current-affairs\/daily\/\\\$RUN_DATE\.json/);
-  assert.match(workflow, /grep -q 'Daily depth, weekly clarity, monthly revision\.'/);
-  assert.match(workflow, /http:\/\/127\.0\.0\.1:3025\/exams\/ssc-cgl\/current-affairs/);
-  assert.match(workflow, /http:\/\/127\.0\.0\.1:3025\/api\/auth\/get-session/);
+  assert.match(workflow, /ops\/netcup\/verify-next-app\.sh http:\/\/127\.0\.0\.1:3025/);
   assert.match(verifier, /deployment-auth-probe@invalid\.example/);
   assert.match(verifier, /test "\$auth_status" = "401"/);
   assert.doesNotMatch(workflow, /miteee-next-netcup-ports\.yml/);
@@ -78,7 +66,8 @@ test("Netcup workflow deploys the current Next standalone app instead of stale D
   assert.match(verifier, /Energy Auditing \(ELE 4446\)/);
   assert.match(verifier, /data\/generated\/notes-index\.json/);
   assert.match(verifier, /courseCode === "SEM7-EA"/);
-  assert.match(verifier, /exactly 49 notes/);
+  assert.match(verifier, /exactly 49 original notes/);
+  assert.match(verifier, /203 unique note routes/);
   assert.match(verifier, /new Set\(energyNotes\.map\(\(note\) => note\.slug\)\)/);
   assert.match(verifier, /base_url\/notes\/\$ea_slug/);
   assert.match(verifier, /test "\$ea_note_status" = "200"/);
@@ -147,17 +136,6 @@ test("SSC CGL browser smoke verifier covers subjects, exam setup, timed sessions
   assert.match(script, /mobile/);
 });
 
-test("Netcup workflow can install the SSC CGL news Docker cron service from the synced repo", () => {
-  const workflow = fs.readFileSync(workflowPath, "utf8");
-
-  assert.match(workflow, /ops\/netcup\/install-ssc-cgl-news\.sh/);
-  assert.match(workflow, /chmod \+x ops\/netcup\/install-ssc-cgl-news\.sh/);
-  assert.match(workflow, /DEEPSEEK_API_KEY/);
-  assert.match(workflow, /MISTRAL_API_KEY/);
-  assert.match(workflow, /RUN_DATE="\$\(TZ=Asia\/Kolkata date \+%F\)"/);
-  assert.match(workflow, /echo "CURRENT_AFFAIRS_RUN_DATE=\$RUN_DATE" >> "\$GITHUB_ENV"/);
-});
-
 test("Netcup and Docker builds include the promoted SSC CGL book corpus", () => {
   const dockerignore = fs.readFileSync(path.join(root, ".dockerignore"), "utf8");
   const gitignore = fs.readFileSync(path.join(root, ".gitignore"), "utf8");
@@ -167,51 +145,4 @@ test("Netcup and Docker builds include the promoted SSC CGL book corpus", () => 
   assert.ok(promotedCorpus.size > 50_000_000);
   assert.doesNotMatch(dockerignore, /^data\/exams\/ssc-cgl\/book-imports\/questions\.json$/m);
   assert.doesNotMatch(gitignore, /^data\/exams\/ssc-cgl\/book-imports\/questions\.json$/m);
-});
-
-test("Netcup and Docker mount server-generated current-affairs data instead of baking it into images", () => {
-  const dockerignore = fs.readFileSync(path.join(root, ".dockerignore"), "utf8");
-  const nextCompose = fs.readFileSync(path.join(root, "docker-compose.next.yml"), "utf8");
-
-  assert.match(dockerignore, /^data\/current-affairs$/m);
-  assert.match(nextCompose, /\.\/data\/current-affairs:\/app\/data\/current-affairs:z/);
-});
-
-test("Netcup SSC CGL news installer starts cron, runs once, and verifies artifacts", () => {
-  const installer = fs.readFileSync(newsInstallerPath, "utf8");
-  const compose = fs.readFileSync(path.join(root, "docker-compose.ssc-cgl-news.yml"), "utf8");
-  const dockerfile = fs.readFileSync(path.join(root, "docker", "ssc-cgl-news.Dockerfile"), "utf8");
-
-  assert.match(installer, /docker compose -f docker-compose\.ssc-cgl-news\.yml up -d --build/);
-  assert.match(installer, /docker compose -f docker-compose\.ssc-cgl-news\.yml exec -T ssc-cgl-news/);
-  assert.match(installer, /TZ=Asia\/Kolkata date \+%F/);
-  assert.match(installer, /scripts\/run_ssc_cgl_daily_news_once\.sh --date "\$RUN_DATE"/);
-  assert.match(installer, /ops\/netcup\/verify-ssc-cgl-news\.sh "\$APP_DIR"/);
-  assert.match(installer, /DEEPSEEK_API_KEY/);
-  assert.match(installer, /MISTRAL_API_KEY/);
-  assert.match(installer, /source \.env/);
-  assert.match(installer, /COMPOSE_PROJECT_NAME/);
-  assert.match(compose, /\.\/data\/current-affairs:\/app\/data\/current-affairs:z/);
-  assert.doesNotMatch(compose, /\.\/:\/app/);
-  assert.doesNotMatch(compose, /data\/current-affairs:\/app\/data\/current-affairs:Z/);
-  assert.match(dockerfile, /COPY scripts\/daily_news_pipeline\.py scripts\/run_ssc_cgl_daily_news_once\.sh \.\/scripts\//);
-  assert.match(dockerfile, /sed -i 's\/\\r\$\/\/' \/etc\/cron\.d\/ssc-cgl-news/);
-  assert.doesNotMatch(installer, /schtasks|powershell\.exe/i);
-});
-
-test("Netcup SSC CGL news verifier proves the cron service and latest artifacts", () => {
-  const verifier = fs.readFileSync(newsVerifierPath, "utf8");
-  const docs = fs.readFileSync(currentAffairsDocPath, "utf8");
-
-  assert.match(verifier, /docker compose -f docker-compose\.ssc-cgl-news\.yml ps --status running ssc-cgl-news/);
-  assert.match(verifier, /TZ=Asia\/Kolkata date \+%F/);
-  assert.match(verifier, /docker compose -f docker-compose\.ssc-cgl-news\.yml exec -T ssc-cgl-news python scripts\/daily_news_pipeline\.py --validate-date "\$RUN_DATE"/);
-  assert.match(verifier, /data\/current-affairs\/raw\/"\$RUN_DATE"\.jsonl/);
-  assert.match(verifier, /data\/current-affairs\/daily\/"\$RUN_DATE"\.json/);
-  assert.match(verifier, /lastSuccessfulDate/);
-  assert.match(verifier, /successfulRuns/);
-  assert.match(verifier, /ssc-cgl-news verified/);
-  assert.doesNotMatch(verifier, /schtasks|powershell\.exe/i);
-  assert.match(docs, /ops\/netcup\/verify-ssc-cgl-news\.sh/);
-  assert.match(docs, /07:00 IST job actually ran/);
 });

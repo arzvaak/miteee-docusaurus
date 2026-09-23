@@ -6,12 +6,6 @@ import path from "node:path";
 import test from "node:test";
 import { ensureStandaloneAssets } from "../scripts/standalone-assets.mjs";
 
-function seedCurrentAffairsRuntimeData(root: string) {
-  fs.mkdirSync(path.join(root, "data", "current-affairs", "daily"), { recursive: true });
-  fs.writeFileSync(path.join(root, "data", "current-affairs", "daily", "2026-06-29.json"), JSON.stringify({ date: "2026-06-29", items: [] }));
-  fs.writeFileSync(path.join(root, "data", "current-affairs", "state.json"), JSON.stringify({ lastSuccessfulDate: "2026-06-29" }));
-}
-
 function seedSscResourceRuntimeData(root: string) {
   fs.mkdirSync(path.join(root, "data", "exams", "ssc-cgl"), { recursive: true });
   fs.writeFileSync(path.join(root, "data", "exams", "ssc-cgl", "resource-candidates.json"), JSON.stringify({
@@ -67,7 +61,6 @@ test("ensureStandaloneAssets stages public and Next static assets for standalone
   fs.mkdirSync(path.join(root, ".next", "standalone"), { recursive: true });
   seedGeneratedNotes(root);
   seedGeneratedSscExamData(root);
-  seedCurrentAffairsRuntimeData(root);
   seedSscResourceRuntimeData(root);
 
   ensureStandaloneAssets(root);
@@ -80,8 +73,6 @@ test("ensureStandaloneAssets stages public and Next static assets for standalone
   assert.match(fs.readFileSync(path.join(root, ".next", "standalone", "data", "generated", "exams", "ssc-cgl", "index.json"), "utf8"), /ssc-runtime-probe/);
   assert.match(fs.readFileSync(path.join(root, ".next", "standalone", "data", "exams", "ssc-cgl", "quant-book", "index.json"), "utf8"), /"exercises":665/);
   assert.match(fs.readFileSync(path.join(root, ".next", "standalone", "data", "generated", "exams", "gate", "index.json"), "utf8"), /gate-runtime-probe/);
-  assert.match(fs.readFileSync(path.join(root, ".next", "standalone", "data", "current-affairs", "daily", "2026-06-29.json"), "utf8"), /2026-06-29/);
-  assert.match(fs.readFileSync(path.join(root, ".next", "standalone", "data", "current-affairs", "state.json"), "utf8"), /lastSuccessfulDate/);
   assert.match(fs.readFileSync(path.join(root, ".next", "standalone", "data", "exams", "ssc-cgl", "resource-candidates.json"), "utf8"), /book-lane/);
   assert.match(fs.readFileSync(path.join(root, ".next", "standalone", "data", "exams", "ssc-cgl", "source-registry.json"), "utf8"), /official/);
 });
@@ -95,7 +86,6 @@ test("standalone asset script runs the staging helper when invoked directly", ()
   fs.mkdirSync(path.join(root, ".next", "standalone"), { recursive: true });
   seedGeneratedNotes(root);
   seedGeneratedSscExamData(root);
-  seedCurrentAffairsRuntimeData(root);
   seedSscResourceRuntimeData(root);
 
   execFileSync(process.execPath, [path.join(process.cwd(), "scripts", "standalone-assets.mjs")], { cwd: root });
@@ -112,7 +102,6 @@ test("ensureStandaloneAssets removes traced deployment artifacts from standalone
   fs.writeFileSync(path.join(root, ".next", "standalone", "deploy-artifacts", "release", "server.js"), "stale");
   seedGeneratedNotes(root);
   seedGeneratedSscExamData(root);
-  seedCurrentAffairsRuntimeData(root);
   seedSscResourceRuntimeData(root);
 
   ensureStandaloneAssets(root);
@@ -120,7 +109,7 @@ test("ensureStandaloneAssets removes traced deployment artifacts from standalone
   assert.equal(fs.existsSync(path.join(root, ".next", "standalone", "deploy-artifacts")), false);
 });
 
-test("ensureStandaloneAssets supports a fresh checkout without current-affairs runtime data", () => {
+test("ensureStandaloneAssets supports a fresh checkout", () => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "miteee-standalone-fresh-"));
   fs.mkdirSync(path.join(root, "public"), { recursive: true });
   fs.mkdirSync(path.join(root, ".next", "static"), { recursive: true });
@@ -131,8 +120,6 @@ test("ensureStandaloneAssets supports a fresh checkout without current-affairs r
 
   ensureStandaloneAssets(root);
 
-  assert.equal(fs.existsSync(path.join(root, ".next", "standalone", "data", "current-affairs", "daily")), true);
-  assert.equal(fs.existsSync(path.join(root, ".next", "standalone", "data", "current-affairs", "state.json")), false);
 });
 
 test("ensureStandaloneAssets rejects leaked workspace source in a real standalone bundle", () => {
@@ -143,7 +130,6 @@ test("ensureStandaloneAssets rejects leaked workspace source in a real standalon
   fs.writeFileSync(path.join(root, ".next", "standalone", "server.js"), "// server");
   seedGeneratedNotes(root);
   seedGeneratedSscExamData(root);
-  seedCurrentAffairsRuntimeData(root);
   seedSscResourceRuntimeData(root);
 
   assert.throws(
@@ -160,7 +146,6 @@ test("ensureStandaloneAssets requires the auth native addon in a real standalone
   fs.writeFileSync(path.join(root, ".next", "standalone", "server.js"), "// server");
   seedGeneratedNotes(root);
   seedGeneratedSscExamData(root);
-  seedCurrentAffairsRuntimeData(root);
   seedSscResourceRuntimeData(root);
 
   assert.throws(
@@ -178,7 +163,6 @@ test("ensureStandaloneAssets removes traced SSC OCR and review intermediates fro
     "data/exams/ssc-cgl/book-ocr/source/report.json",
     "data/exams/ssc-cgl/aligned-mistral/source/chunk/aligned-candidates.json",
     "data/exams/ssc-cgl/topic-review-mistral/review.json",
-    "data/current-affairs/raw/2026-06-29.jsonl",
     "output/playwright/screenshot.png",
     "work/tmp.txt"
   ];
@@ -192,7 +176,6 @@ test("ensureStandaloneAssets removes traced SSC OCR and review intermediates fro
   }
   seedGeneratedNotes(root);
   seedGeneratedSscExamData(root);
-  seedCurrentAffairsRuntimeData(root);
   seedSscResourceRuntimeData(root);
 
   ensureStandaloneAssets(root);
@@ -202,7 +185,6 @@ test("ensureStandaloneAssets removes traced SSC OCR and review intermediates fro
   }
   assert.equal(fs.existsSync(path.join(standaloneRoot, ...sourceCorpusPath.split("/"))), false);
   assert.equal(fs.existsSync(path.join(standaloneRoot, ...keptPath.split("/"))), true);
-  assert.equal(fs.existsSync(path.join(standaloneRoot, "data", "current-affairs", "daily", "2026-06-29.json")), true);
   assert.equal(fs.existsSync(path.join(standaloneRoot, "data", "exams", "ssc-cgl", "resource-candidates.json")), true);
   assert.equal(fs.existsSync(path.join(standaloneRoot, "data", "exams", "ssc-cgl", "source-registry.json")), true);
 });

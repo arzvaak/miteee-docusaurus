@@ -64,7 +64,7 @@ if [ -d "$APP_DIR/data/deeptutor/user" ]; then
   tar --exclude='deeptutor/knowledge_bases' -C "$APP_DIR/data" -czf "/root/note-arzvak-backups/deeptutor-state-$(date +%Y%m%d%H%M%S).tar.gz" deeptutor 2>/dev/null || true
 fi
 if [ -d "$APP_DIR/.next/standalone" ]; then
-  tar -C "$APP_DIR" -czf "/root/note-arzvak-backups/note-arzvak-next-$(date +%Y%m%d%H%M%S).tar.gz" .next public data/current-affairs 2>/dev/null || true
+  tar -C "$APP_DIR" -czf "/root/note-arzvak-backups/note-arzvak-next-$(date +%Y%m%d%H%M%S).tar.gz" .next public 2>/dev/null || true
 else
   mkdir -p "$APP_DIR"
 fi

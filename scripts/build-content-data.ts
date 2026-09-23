@@ -1,7 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
+import crypto from "node:crypto";
 import { pathToFileURL } from "node:url";
 import matter from "gray-matter";
+import { NodeCompiler } from "@myriaddreamin/typst-ts-node-compiler";
 import { normalizeLegacyMathDelimiters } from "../lib/markdown-normalize";
 
 type BuildOptions = {
@@ -109,6 +111,64 @@ const courseNames: Record<string, string> = {
   "RESEARCH": "Research notes"
 };
 
+const studiesCourseNames: Record<string, string> = {
+  "CRA-4411-DATA-SCIENCE-PART-II": "CRA 4411 - Data Science Part II",
+  "CRA-4412-ADVANCED-DATA-SCIENCE-PART-III": "CRA 4412 - Advanced Data Science Part III",
+  "ENERGY-AUDITING": "Energy Auditing",
+  "INTRODUCTION-TO-DATA-SCIENCE": "Introduction to Data Science",
+  "INTRODUCTION-TO-QUANTUM-COMPUTING": "Introduction to Quantum Computing",
+  "POWER-SYSTEM-ANALYSIS": "Power System Analysis",
+  "POWER-SYSTEM-PROTECTION-AND-SWITCHGEAR": "Power System Protection and Switchgear",
+  "RENEWABLE-ENERGY": "Renewable Energy"
+};
+
+const existingStudiesCourses: Record<string, { code: string; folder: string }> = {
+  "energy-auditing": { code: "SEM7-EA", folder: "sem7/ea" },
+  "introduction-to-quantum-computing": { code: "SEM7-QC", folder: "sem7/qc" },
+  "power-system-analysis": { code: "SEM5-PSA", folder: "sem5/psa" },
+  "power-system-protection-and-switchgear": { code: "SEM7-PSPS", folder: "sem7/psps" }
+};
+
+function escapeHtmlAttribute(value: string) {
+  return value.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function renderTypstMath(content: string, publicRoot: string, generatedRoot: string, compiler: ReturnType<typeof NodeCompiler.create>) {
+  const outputRoot = path.join(publicRoot, "content-assets", "typst-math");
+  const cacheRoot = path.join(generatedRoot, "typst-cache");
+  ensureDirectory(outputRoot);
+  ensureDirectory(cacheRoot);
+  const protectedBlocks: string[] = [];
+  const protectedContent = content
+    .replace(/```[\s\S]*?```/g, (block) => {
+      const token = `@@TYPST_PROTECTED_${protectedBlocks.length}@@`;
+      protectedBlocks.push(block);
+      return token;
+    })
+    .replace(/`[^`\n]+`/g, (block) => {
+      const token = `@@TYPST_PROTECTED_${protectedBlocks.length}@@`;
+      protectedBlocks.push(block);
+      return token;
+    });
+  const rendered = protectedContent.replace(/\$\$([\s\S]+?)\$\$|(?<!\$)\$(?!\$)([\s\S]+?)(?<!\$)\$(?!\$)/g, (raw, display: string | undefined, inline: string | undefined) => {
+    const expression = (display || inline || "").split("\n").map((line) => line.replace(/^\s*>+\s?/, "")).join("\n").trim();
+    if (!expression) return raw;
+    const hash = crypto.createHash("sha256").update(`typst-16pt-v1:${expression}`).digest("hex").slice(0, 24);
+    const name = `${hash}.svg`;
+    const cachePath = path.join(cacheRoot, name);
+    const outputPath = path.join(outputRoot, name);
+    if (!fs.existsSync(cachePath)) {
+      const source = `#set page(margin: 0pt, width: auto, height: auto)\n#set text(size: 16pt)\n$ ${expression} $`;
+      const result = compiler.compile({ mainFileContent: source });
+      if (result.hasError()) throw new Error(`Typst math failed: ${expression.slice(0, 120)}: ${JSON.stringify(compiler.fetchDiagnostics(result.takeError()!))}`);
+      fs.writeFileSync(cachePath, compiler.svg({ mainFileContent: source }));
+    }
+    if (!fs.existsSync(outputPath)) fs.copyFileSync(cachePath, outputPath);
+    return `<img class="${display !== undefined ? "typst-math-display" : "typst-math-inline"}" src="/content-assets/typst-math/${name}" alt="${escapeHtmlAttribute(expression)}" />`;
+  });
+  return rendered.replace(/@@TYPST_PROTECTED_(\d+)@@/g, (_, index: string) => protectedBlocks[Number(index)] || "");
+}
+
 function posixPath(value: string) {
   return value.split(path.sep).join("/");
 }
@@ -205,6 +265,7 @@ export function slugFromRelativePath(relativePath: string) {
 
 export function courseCodeFromSegments(segments: string[]) {
   if (segments.length <= 1) return "MITEEE";
+  if (segments[0] === "studies" && segments[1]) return existingStudiesCourses[segments[1]]?.code || `STUDIES-${segments[1]}`.toUpperCase();
   if (segments[0] === "ssc-cgl") return "SSC-CGL";
   if (segments[0] === "cat") return "CAT";
   if (segments[0] === "upsc-cse" && segments[1] === "political-science") return "UPSC-CSE-POLITICAL-SCIENCE";
@@ -214,6 +275,7 @@ export function courseCodeFromSegments(segments: string[]) {
 }
 
 function categoryFromSegments(segments: string[]) {
+  if (segments[0] === "studies") return "Study vault";
   if (segments[0] === "research") return "Research";
   if (segments[0] === "ssc-cgl") return "Competitive exams";
   if (segments[0] === "cat") return "Competitive exams";
@@ -223,6 +285,7 @@ function categoryFromSegments(segments: string[]) {
 }
 
 function levelFromSegments(segments: string[]) {
+  if (segments[0] === "studies") return "Study notes";
   if (segments[0] === "research") return "Note collection";
   if (segments[0] === "ssc-cgl") return "SSC CGL Tier-I";
   if (segments[0] === "cat") return "CAT";
@@ -240,10 +303,12 @@ function titleCase(value: string) {
 }
 
 function courseName(code: string, segments: string[]) {
+  if (segments[0] === "studies") return courseNames[code] || studiesCourseNames[segments[1]?.toUpperCase() || ""] || titleCase(segments[1] || "Studies");
   return courseNames[code] || titleCase(segments[1] || segments[0] || "MIT EEE");
 }
 
 function courseFolderFromSegments(code: string, segments: string[]) {
+  if (segments[0] === "studies" && segments[1]) return existingStudiesCourses[segments[1]]?.folder || segments.slice(0, 2).join("/");
   if (code === "SSC-CGL") return "ssc-cgl";
   if (code === "CAT") return "cat";
   if (code === "RESEARCH") return "research";
@@ -543,6 +608,7 @@ export function buildContentData(options: BuildOptions = {}) {
   copyStaticAssets(staticRoot, publicRoot);
   copyGateAssets(cwd, publicRoot);
   copySscQuantAssets(cwd, publicRoot);
+  const typstCompiler = NodeCompiler.create();
 
   const markdownFiles = getMarkdownFiles(docsRoot).filter((filePath) => isPublicLearnerNote(path.relative(docsRoot, filePath)));
   const slugByRelativePath = new Map(
@@ -560,9 +626,12 @@ export function buildContentData(options: BuildOptions = {}) {
     const sidebarLabel = cleanInlineMarkdown(String(parsed.data.sidebar_label || parsed.data.sidebarLabel || title));
     const description = cleanInlineMarkdown(String(parsed.data.description || ""));
     const cleanedContent = stripLeadingTitleHeading(parsed.content.trim(), title);
-    const content = rewriteMarkdownAssetLinks(cleanedContent, relativePath, { slugByRelativePath });
+    const linkedContent = rewriteMarkdownAssetLinks(cleanedContent, relativePath, { slugByRelativePath });
+    const content = parsed.data.math_syntax === "typst"
+      ? renderTypstMath(linkedContent, publicRoot, generatedRoot, typstCompiler)
+      : linkedContent;
     const code = courseCodeFromSegments(segments);
-    const stats = noteStats(content);
+    const stats = noteStats(linkedContent);
     const quizSets = parseQuizSets(content);
     stats.quizBlocks = quizSets.reduce((sum, quizSet) => sum + quizSet.count, 0);
 

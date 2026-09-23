@@ -1,7 +1,7 @@
 """Build a strict SSC CGL 200/200 readiness audit.
 
 This is an internal gate, not learner note content. It checks whether the
-current local corpus, source manifests, topic notes, and current-affairs ledger
+current local corpus, source manifests, and topic notes
 prove the full 200/200 preparation target or expose remaining recovery work.
 """
 
@@ -25,7 +25,6 @@ OCR_PROGRESS_PATH = ROOT / "data" / "exams" / "ssc-cgl" / "book-sources" / "mist
 TOPIC_RULES_PATH = ROOT / "data" / "exams" / "ssc-cgl" / "topic-rules.json"
 RESOURCE_CANDIDATES_PATH = ROOT / "data" / "exams" / "ssc-cgl" / "resource-candidates.json"
 PYQ_BACKLOG_PATH = ROOT / "data" / "exams" / "ssc-cgl" / "pyq-source-backlog.json"
-CURRENT_AFFAIRS_ROOT = ROOT / "data" / "current-affairs"
 GENERATED_EXAM_DATA_PATH = ROOT / "data" / "generated" / "exams" / "ssc-cgl" / "index.json"
 
 TARGET_YEARS = 50
@@ -700,7 +699,6 @@ def build_markdown_report(audit: dict[str, Any]) -> str:
     learner_practice = audit.get("learnerPractice") if isinstance(audit.get("learnerPractice"), dict) else {}
     explanations = audit.get("explanations") if isinstance(audit.get("explanations"), dict) else {}
     resources = audit.get("resources") if isinstance(audit.get("resources"), dict) else {}
-    current_affairs = audit.get("currentAffairs") if isinstance(audit.get("currentAffairs"), dict) else {}
     weakest = topics.get("weakest") if isinstance(topics.get("weakest"), list) else []
     source_lane_counts = resources.get("sourceLaneCounts") if isinstance(resources.get("sourceLaneCounts"), dict) else {}
 
@@ -738,7 +736,7 @@ def build_markdown_report(audit: dict[str, Any]) -> str:
     lines = [
         "---",
         "title: SSC CGL 200/200 Readiness Repair Report",
-        "description: Internal repair queue generated from the strict corpus, notes, source, and current-affairs audit.",
+        "description: Internal repair queue generated from the strict corpus, notes, and source audit.",
         "tags: [ssc-cgl, readiness, 200-200, repair]",
         "---",
         "",
@@ -772,7 +770,6 @@ def build_markdown_report(audit: dict[str, Any]) -> str:
             f"scribdReference={source_lane_counts.get('scribdReference', 0)}, "
             f"bookReference={source_lane_counts.get('bookReference', 0)}"
         ),
-        f"- Current-affairs latest date: {current_affairs.get('latestDailyDate')} with {current_affairs.get('latestSummaryItems', 0)} summaries",
         "",
         "## Topic Repair Queue",
         "",
@@ -784,19 +781,6 @@ def build_markdown_report(audit: dict[str, Any]) -> str:
         "",
     ]
     return "\n".join(lines)
-
-
-def latest_daily_count(current_affairs_root: Path) -> tuple[str | None, int]:
-    daily_root = current_affairs_root / "daily"
-    if not daily_root.exists():
-        return None, 0
-    files = sorted(daily_root.glob("*.json"))
-    if not files:
-        return None, 0
-    latest = files[-1]
-    payload = load_json(latest, {})
-    items = payload.get("items") if isinstance(payload, dict) else []
-    return latest.stem, len(items) if isinstance(items, list) else 0
 
 
 def resource_candidate_blob(candidate: dict[str, Any]) -> str:
@@ -960,8 +944,6 @@ def build_audit(args: argparse.Namespace) -> dict[str, Any]:
     )
     resources = load_json(args.resource_candidates_path, {})
     backlog = load_json(args.pyq_backlog_path, {})
-    current_state = load_json(args.current_affairs_root / "state.json", {})
-    latest_current_affairs_date, latest_current_affairs_items = latest_daily_count(args.current_affairs_root)
 
     completeness_totals = completeness.get("totals") if isinstance(completeness, dict) else {}
     resource_candidates = resources.get("candidates") if isinstance(resources, dict) else []
@@ -1075,13 +1057,6 @@ def build_audit(args: argparse.Namespace) -> dict[str, Any]:
             ),
             "Refresh with Scrapling, SearXNG/Firecrawl metadata, and uploaded-book reference lanes until no source lane is missing.",
         ),
-        gate(
-            "current-affairs",
-            "Current-affairs daily brief is running",
-            bool(current_state.get("lastSuccessfulDate")) and latest_current_affairs_items >= 4,
-            f"lastSuccessfulDate={current_state.get('lastSuccessfulDate')}; latest={latest_current_affairs_date}; summaries={latest_current_affairs_items}.",
-            "Run the Docker verifier and keep the daily server cron healthy.",
-        ),
     ]
 
     weakest_topics = sorted(
@@ -1166,13 +1141,6 @@ def build_audit(args: argparse.Namespace) -> dict[str, Any]:
             "sourceLanes": resource_metrics["sourceLanes"],
             "missingSourceLanes": missing_source_lanes,
         },
-        "currentAffairs": {
-            "lastSuccessfulDate": current_state.get("lastSuccessfulDate"),
-            "latestDailyDate": latest_current_affairs_date,
-            "latestSummaryItems": latest_current_affairs_items,
-            "totalRuns": current_state.get("totalRuns"),
-            "successfulRuns": current_state.get("successfulRuns"),
-        },
     }
 
 
@@ -1185,7 +1153,6 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--ocr-progress-path", type=Path, default=OCR_PROGRESS_PATH)
     parser.add_argument("--resource-candidates-path", type=Path, default=RESOURCE_CANDIDATES_PATH)
     parser.add_argument("--pyq-backlog-path", type=Path, default=PYQ_BACKLOG_PATH)
-    parser.add_argument("--current-affairs-root", type=Path, default=CURRENT_AFFAIRS_ROOT)
     parser.add_argument("--generated-exam-data-path", type=Path, default=GENERATED_EXAM_DATA_PATH)
     parser.add_argument("--output-path", type=Path, default=OUTPUT_PATH)
     parser.add_argument("--report-path", type=Path, default=REPORT_PATH)

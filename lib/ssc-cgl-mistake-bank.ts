@@ -1,4 +1,4 @@
-import type { CurrentAffairsRecallCard, SscCglOptionId, SscCglQuestion, SscCglSectionId, SscCglTopic } from "@/lib/exam-types";
+import type { SscCglOptionId, SscCglQuestion, SscCglSectionId, SscCglTopic } from "@/lib/exam-types";
 import type { SscAttemptQuestionReviewRow } from "@/lib/ssc-cgl-attempt-review";
 
 export const sscMistakeBankStorageKey = "ssc-cgl-mistake-bank";
@@ -135,34 +135,6 @@ export function buildSscTopicPracticeMistakeBankItem(
     correctOptionText: questionOptionText(question, question.correctOption),
     explanation: speedExplanation,
     sourceLabel: questionSourceLabel(question),
-    savedAt
-  };
-}
-
-export function buildSscCurrentAffairsMistakeBankItem(
-  card: CurrentAffairsRecallCard,
-  savedAt: string
-): SscMistakeBankItem {
-  const recallId = `current-affairs-${card.date}`;
-  const areas = card.examAreas.length > 0 ? ` Exam areas: ${card.examAreas.join(", ")}.` : "";
-
-  return {
-    questionId: card.id,
-    attemptId: recallId,
-    testId: recallId,
-    testTitle: `Current affairs recall ${card.date}`,
-    resultHref: `/exams/ssc-cgl/current-affairs?date=${card.date}`,
-    sectionId: "general-awareness",
-    sectionTitle: "General Awareness",
-    topic: "Current Affairs and Static GK",
-    subtopic: card.title,
-    topicHref: "/exams/ssc-cgl/practice/current-affairs-static-gk",
-    stem: card.prompt,
-    status: "wrong",
-    chosenOptionText: "Missed during recall",
-    correctOptionText: card.answer,
-    explanation: `Memory hook: ${card.memoryHook} Trap: ${card.trap}.${areas}`,
-    sourceLabel: `${card.source} · ${card.date}`,
     savedAt
   };
 }

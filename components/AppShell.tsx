@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
-import { BookOpen, BrainCircuit, ClipboardCheck, LayoutDashboard, Newspaper, PenLine, RotateCcw, Settings } from "lucide-react";
+import { BookOpen, BrainCircuit, ClipboardCheck, LayoutDashboard, PenLine, RotateCcw, Settings } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { HashScroller } from "@/components/HashScroller";
@@ -31,17 +31,10 @@ const navItems: NavItem[] = [
     isActive: (pathname) => pathname.startsWith("/courses") || pathname.startsWith("/notes")
   },
   {
-    href: "/exams/ssc-cgl/current-affairs",
-    label: "Current Affairs",
-    shortLabel: "News",
-    icon: Newspaper,
-    isActive: (pathname) => pathname.startsWith("/exams/ssc-cgl/current-affairs")
-  },
-  {
     href: "/exams/ssc-cgl",
     label: "Exams",
     icon: ClipboardCheck,
-    isActive: (pathname) => pathname.startsWith("/exams") && !pathname.startsWith("/exams/ssc-cgl/current-affairs")
+    isActive: (pathname) => pathname.startsWith("/exams")
   },
   { href: "/practice", label: "Practice", icon: PenLine, isActive: (pathname) => pathname.startsWith("/practice") },
   { href: "/revision", label: "Revision", icon: RotateCcw, isActive: (pathname) => pathname.startsWith("/revision") }

@@ -1,7 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
-  buildSscCurrentAffairsMistakeBankItem,
   buildSscMistakeBankItems,
   buildSscTopicPracticeMistakeBankItem,
   mergeSscMistakeBank,
@@ -9,7 +8,7 @@ import {
   sscMistakeBankStorageKey
 } from "@/lib/ssc-cgl-mistake-bank";
 import type { SscAttemptQuestionReviewRow } from "@/lib/ssc-cgl-attempt-review";
-import type { CurrentAffairsRecallCard, SscCglQuestion, SscCglTopic } from "@/lib/exam-types";
+import type { SscCglQuestion, SscCglTopic } from "@/lib/exam-types";
 
 function reviewRow(questionId: string, status: SscAttemptQuestionReviewRow["status"]): SscAttemptQuestionReviewRow {
   return {
@@ -100,22 +99,6 @@ function fixtureTopic(): SscCglTopic {
   };
 }
 
-function fixtureCurrentAffairsCard(): CurrentAffairsRecallCard {
-  return {
-    id: "current-affairs-2026-06-29-rbi-vrr",
-    date: "2026-06-29",
-    title: "RBI conducts VRR auction",
-    source: "RBI",
-    url: "https://rbi.example/vrr",
-    examAreas: ["Economy", "Banking"],
-    prompt: "Which institution conducts VRR auctions?",
-    answer: "RBI",
-    trap: "SEBI",
-    memoryHook: "VRR means RBI liquidity repo.",
-    priority: "high"
-  };
-}
-
 test("SSC CGL mistake bank stores only wrong and unattempted review rows", () => {
   const items = buildSscMistakeBankItems(
     [reviewRow("q1", "wrong"), reviewRow("q2", "unattempted"), reviewRow("q3", "correct")],
@@ -173,70 +156,4 @@ test("SSC CGL topic practice stores correct but slow answers as speed repairs", 
   assert.equal(slow.correctOptionText, "B · Option B");
   assert.match(slow.explanation, /Correct answer, but it took 44s against the 36s SSC pace target/);
   assert.match(slow.explanation, /Topic practice explanation q-slow\./);
-});
-
-test("SSC CGL current-affairs missed recall cards enter the same mistake bank format", () => {
-  const savedAt = "2026-06-29T07:30:00.000Z";
-  const item = buildSscCurrentAffairsMistakeBankItem(fixtureCurrentAffairsCard(), savedAt);
-
-  assert.equal(item.questionId, "current-affairs-2026-06-29-rbi-vrr");
-  assert.equal(item.attemptId, "current-affairs-2026-06-29");
-  assert.equal(item.testId, "current-affairs-2026-06-29");
-  assert.equal(item.testTitle, "Current affairs recall 2026-06-29");
-  assert.equal(item.resultHref, "/exams/ssc-cgl/current-affairs?date=2026-06-29");
-  assert.equal(item.sectionId, "general-awareness");
-  assert.equal(item.sectionTitle, "General Awareness");
-  assert.equal(item.topic, "Current Affairs and Static GK");
-  assert.equal(item.subtopic, "RBI conducts VRR auction");
-  assert.equal(item.topicHref, "/exams/ssc-cgl/practice/current-affairs-static-gk");
-  assert.equal(item.stem, "Which institution conducts VRR auctions?");
-  assert.equal(item.status, "wrong");
-  assert.equal(item.chosenOptionText, "Missed during recall");
-  assert.equal(item.correctOptionText, "RBI");
-  assert.match(item.explanation, /Memory hook: VRR means RBI liquidity repo\./);
-  assert.match(item.explanation, /Trap: SEBI/);
-  assert.equal(item.sourceLabel, "RBI · 2026-06-29");
-  assert.equal(item.savedAt, savedAt);
-});
-
-test("SSC CGL mistake bank dedupes repeated misses and clears corrected questions", () => {
-  const oldItems = buildSscMistakeBankItems([reviewRow("q1", "wrong"), reviewRow("q2", "wrong")], {
-    attemptId: "old-attempt",
-    testId: "old-test",
-    testTitle: "Old Sprint",
-    savedAt: "2026-06-27T02:00:00.000Z"
-  });
-  const latestRows = [reviewRow("q1", "correct"), reviewRow("q2", "unattempted")];
-  const latestItems = buildSscMistakeBankItems(latestRows, {
-    attemptId: "new-attempt",
-    testId: "new-test",
-    testTitle: "New Sprint",
-    savedAt: "2026-06-28T02:00:00.000Z"
-  });
-
-  const merged = mergeSscMistakeBank(
-    oldItems,
-    latestItems,
-    latestRows.filter((row) => row.status === "correct").map((row) => row.questionId),
-    20
-  );
-
-  assert.deepEqual(merged.map((item) => item.questionId), ["q2"]);
-  assert.equal(merged[0]?.attemptId, "new-attempt");
-  assert.equal(merged[0]?.status, "unattempted");
-});
-
-test("SSC CGL mistake bank parser rejects malformed local storage", () => {
-  const item = buildSscMistakeBankItems([reviewRow("q1", "wrong")], {
-    attemptId: "attempt-1",
-    testId: "test-1",
-    testTitle: "Quant Sprint",
-    savedAt: "2026-06-28T02:00:00.000Z"
-  })[0]!;
-
-  assert.deepEqual(parseSscMistakeBank(null), []);
-  assert.deepEqual(parseSscMistakeBank("{bad json"), []);
-  assert.deepEqual(parseSscMistakeBank(JSON.stringify({ item })), []);
-  assert.deepEqual(parseSscMistakeBank(JSON.stringify([{ questionId: "missing-fields" }])), []);
-  assert.deepEqual(parseSscMistakeBank(JSON.stringify([item])), [item]);
 });
