@@ -28,7 +28,8 @@ test("Netcup workflow deploys the current Next standalone app instead of stale D
   assert.match(workflow, /note-arzvak-predeploy-/);
   assert.match(workflow, /note-nginx-predeploy-/);
   assert.match(workflow, /chmod 600 .*note-arzvak-predeploy-/);
-  assert.doesNotMatch(workflow, /ssc-cgl-news|current-affairs/);
+  assert.match(workflow, /--exclude 'data\/current-affairs\/'/);
+  assert.doesNotMatch(workflow, /ssc-cgl-news|Install SSC CGL news cron|Refresh Next app after current-affairs/);
   assert.doesNotMatch(workflow, /docker compose -f docker-compose\.next\.yml up -d --no-build --force-recreate/);
   assert.doesNotMatch(workflow, /docker cp data\/current-affairs\/\. miteee-next-app:\/app\/data\/current-affairs\//);
   assert.doesNotMatch(workflow, /docker compose -f docker-compose\.next\.yml restart miteee-next/);
