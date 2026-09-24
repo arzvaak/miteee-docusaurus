@@ -56,7 +56,7 @@ Friendly course names for established subjects live in the `courseNames` map in 
 - `# Title` matching the frontmatter title is removed from the generated body because the page renders its own `<h1>`. Start the visible lesson structure at `##` after the title.
 - Headings from `##` through `####` become the reader outline. Stable, descriptive headings make navigation and search better.
 - A code fence makes a note “runnable” for catalog statistics. A `mermaid` fence becomes a rendered diagram.
-- Math is normalized and rendered with KaTeX. Prefer `$…$` for inline math and `$$…$$` for display math.
+- Notes use LaTeX math through KaTeX by default. Notes marked `math_syntax: typst` compile math to SVG during the content build. Use `$…$` for inline math and `$$…$$` for display math.
 
 ## State and persistence
 
@@ -65,7 +65,6 @@ There are two different persistence models:
 | Data | Current persistence |
 |---|---|
 | Accounts and sessions | Server-backed Better Auth with SQLite under `data/auth/` |
-| Private DeepTutor sessions, memory, and knowledge indexes | Server-backed DeepTutor data under `data/deeptutor/`; available only through the owner-gated app proxy |
 | Reading progress, study plans, attempts, mistakes, saved items, themes, layout preferences | Browser `localStorage`; device/browser-local |
 | Generated course catalog and note bodies | Build output from tracked source files |
 | Secrets | Environment variables or ignored local secret files |
@@ -77,9 +76,6 @@ A new feature must choose its persistence model explicitly. Do not put account d
 - `next.config.mjs` sets `output: "standalone"`.
 - `npm run build` produces `.next/standalone`.
 - Docker is the local production-verification path.
-- DeepTutor runs as a private Docker-network service. It has no published host port; the compact drawer, access-aware Tutor navigation tab, and `/tutor` chat all use `app/api/deeptutor`, the only browser-facing bridge. The owner account is always authorized and optional additional emails come only from the server-side `DEEPTUTOR_ALLOWED_EMAILS` allowlist.
-- Model discovery and changes use the separate owner-gated `app/api/deeptutor/models` proxy. ChatGPT sign-in uses an internal device-code sidecar so remote learners never need a localhost callback or SSH access. OpenCode Go, OpenCode Zen, and DeepSeek credentials are submitted once to the server-side catalog and never returned by the safe model-list response; only selected profile/model identifiers are saved in browser storage and attached to a tutor turn.
-- The DeepTutor corpus sync discovers all public note sources recursively, converts every generated `exams/**/questions.json` bank into bounded Markdown chunks, and includes published daily current-affairs briefs. A corpus digest triggers reindexing after future content changes without pulling browser-local learner history into server memory; the private refresh service rechecks that digest every 15 minutes so cron-generated briefs do not wait for another deployment.
 - A push to `main` triggers `.github/workflows/deploy-netcup.yml`, which generates data, tests, lints, typechecks, builds, deploys, and verifies public routes.
 - The live origin is `https://note.arzvak.com`.
 

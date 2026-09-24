@@ -77,13 +77,7 @@ export default async function NotePage({ params }: NotePageProps) {
   const quizQuestionCount = note.stats.quizBlocks ?? 0;
 
   return (
-    <div
-      className="page note-page"
-      data-tutor-note-slug={note.slug}
-      data-tutor-note-title={note.sidebarLabel || note.title}
-      data-tutor-course-code={note.courseCode || undefined}
-      data-tutor-course-name={note.courseName || undefined}
-    >
+    <div className="page note-page">
       <ReaderKeyboardShortcuts previous={navigation.previous} next={navigation.next} />
       <JsonLd
         data={[

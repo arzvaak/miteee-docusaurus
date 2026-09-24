@@ -106,6 +106,10 @@ jobs:
              fi
              if [ -f /etc/nginx/conf.d/note.arzvak.com.conf ]; then
                install -m 600 /etc/nginx/conf.d/note.arzvak.com.conf \"\$backup_dir/note-nginx-predeploy-\$stamp.conf\"
+             fi
+             if [ -d '$NETCUP_APP_DIR/data/deeptutor' ] && [ -d '$NETCUP_APP_DIR/data/ollama' ]; then
+               tar -C '$NETCUP_APP_DIR' -czf \"\$backup_dir/tutor-retired-\$stamp.tar.gz\" data/deeptutor data/ollama
+               chmod 600 \"\$backup_dir/tutor-retired-\$stamp.tar.gz\"
              fi"
           rsync -az --delete \
             --exclude '.docusaurus/' \
@@ -116,8 +120,6 @@ jobs:
             --exclude '.next/cache/' \
             --exclude 'node_modules/' \
             --exclude 'data/auth/' \
-            --exclude 'data/deeptutor/' \
-            --exclude 'data/ollama/' \
             --exclude 'data/current-affairs/' \
             -e "ssh -i ~/.ssh/netcup_deploy_key" \
             ./ "$NETCUP_USER@$NETCUP_HOST:$NETCUP_APP_DIR/"
@@ -127,17 +129,13 @@ jobs:
           NETCUP_HOST: ${{ secrets.NETCUP_HOST }}
           NETCUP_USER: ${{ secrets.NETCUP_USER }}
           NETCUP_APP_DIR: ${{ secrets.NETCUP_APP_DIR }}
-          OPENCODE_GO_MODEL: deepseek-v4-flash
-          DEEPTUTOR_EMBEDDING_MODEL: miteee-all-minilm
-          DEEPTUTOR_EMBEDDING_DIMENSION: "384"
-          DEEPTUTOR_ALLOWED_EMAILS: ${{ secrets.DEEPTUTOR_ALLOWED_EMAILS }}
         run: |
           set -euo pipefail
           ssh -i ~/.ssh/netcup_deploy_key "$NETCUP_USER@$NETCUP_HOST" \
             "set -euo pipefail
              cd '$NETCUP_APP_DIR'
              chmod +x ops/netcup/publish-next-app.sh
-             OPENCODE_GO_MODEL='$OPENCODE_GO_MODEL' DEEPTUTOR_EMBEDDING_MODEL='$DEEPTUTOR_EMBEDDING_MODEL' DEEPTUTOR_EMBEDDING_DIMENSION='$DEEPTUTOR_EMBEDDING_DIMENSION' DEEPTUTOR_ALLOWED_EMAILS='$DEEPTUTOR_ALLOWED_EMAILS' ops/netcup/publish-next-app.sh '$NETCUP_APP_DIR'"
+             ops/netcup/publish-next-app.sh '$NETCUP_APP_DIR'"
 
       - name: Verify deployed app
         env:
