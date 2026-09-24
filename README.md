@@ -91,23 +91,6 @@ MISTRAL_MODEL=mistral-small-latest
 `MISTRAL_MODEL` is optional; it defaults to `mistral-small-latest` when unset. Do not commit `.env`; it is intentionally ignored.
 The older typo alias `MISTRAK_API_KEY` is still accepted for compatibility, but new local configs should use `MISTRAL_API_KEY`.
 
-## Private DeepTutor chat and drawer
-
-I run HKUDS DeepTutor as an internal companion service for the `arzvak@gmail.com` account. Authorized accounts get a Tutor tab in both desktop and mobile navigation, the compact drawer handles quick questions from anywhere, and `/tutor` provides the full chat workspace. The two surfaces share one saved conversation and can carry the current note into the chat. They are omitted or return not found for every other account, and `/api/deeptutor` repeats that authorization check before opening an internal streamed turn. `DEEPTUTOR_ALLOWED_EMAILS` can extend access with a server-side comma-separated allowlist; the owner account always remains allowed. DeepTutor has no published host port.
-
-The drawer and full Tutor page also share a model picker. I can connect my ChatGPT account with the device-code flow, open the supplied ChatGPT page, and enter its one-time code. This works from a remote browser without a localhost callback, SSH access, or an OpenAI API key. I can also save an OpenCode Go or OpenCode Zen API key; the server discovers the current compatible models and adds them to the picker. DeepSeek remains available as a separate API-key provider. Provider keys are accepted only by the owner-gated server route, kept in DeepTutor's private server-side catalog, and never written to browser storage or returned to the browser.
-
-The normal production Compose stack starts the pinned DeepTutor image and persists its state under `data/deeptutor/`. Tutor responses use my persisted OpenCode Go credential with `deepseek-v4-flash`; Mistral is not part of the DeepTutor path. A private local Ollama `all-minilm` profile builds the note embeddings without depending on paid embedding credits. The local profile raises the model's packaged 256-token default to its supported 512-token context, and DeepTutor uses 508-token text chunks to leave room for model framing. Ollama has no published host port, is capped at 2 CPU and 512 MB RAM, and unloads the model after five idle minutes. The CPU allowance is used only while an index is being built; idle use stays near zero. To rebuild the generated `miteee-notes` knowledge base locally after changing `docs/**/*.md`:
-
-```powershell
-docker compose -f docker-compose.next.yml up -d
-docker compose -f docker-compose.next.yml exec -T ollama ollama pull all-minilm
-docker compose -f docker-compose.next.yml exec -T ollama ollama create miteee-all-minilm -f /opt/miteee/Modelfile.all-minilm
-docker compose -f docker-compose.next.yml --profile deeptutor-tools run --rm deeptutor-sync
-```
-
-The sync compares a corpus hash and skips an unchanged collection. A changed collection is rebuilt only from tracked `docs/**/*.md` and `docs/**/*.mdx` notes. Discovery is recursive, so future Markdown notes join the Tutor without maintaining a hand-written file list; generated question banks are excluded to keep indexing and idle resource use small. Production rechecks the notes every 15 minutes, while unchanged checks remain no-ops. DeepTutor conversations and memory remain in their separate persistent directories; browser-local learner history is not copied into the corpus.
-
 ## Studies vault notes and math
 
 The eight `docs/studies/` subjects are an imported snapshot of the local Obsidian Studies vault. To refresh them, run `python scripts/import-studies-vault.py --source /path/to/Studies`. The importer preserves note links, attachments, and source names, and marks the imported notes with `math_syntax: typst` front matter.

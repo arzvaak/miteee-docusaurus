@@ -29,12 +29,10 @@ auth_status="$(curl --location --silent --show-error --output "$work_dir/auth-pr
   "$base_url/api/auth/sign-in/email")"
 test "$auth_status" = "401"
 
-tutor_status="$(curl --silent --show-error --output "$work_dir/deeptutor-probe.json" --write-out '%{http_code}' \
-  --request POST \
-  --header 'Content-Type: application/json' \
-  --data '{"message":"private route probe"}' \
-  "$base_url/api/deeptutor")"
-test "$tutor_status" = "404"
+for removed_path in /tutor /api/deeptutor /api/deeptutor/models; do
+  removed_status="$(curl --silent --show-error --output /dev/null --write-out '%{http_code}' "$base_url$removed_path")"
+  test "$removed_status" = "404"
+done
 
 curl --fail --location --silent --show-error "$base_url/exams/ssc-cgl" > "$work_dir/ssc-cgl.html"
 grep -q "Build each subject. Then test it." "$work_dir/ssc-cgl.html"
